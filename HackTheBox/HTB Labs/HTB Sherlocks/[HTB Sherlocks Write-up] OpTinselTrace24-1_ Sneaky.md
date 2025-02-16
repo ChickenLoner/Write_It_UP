@@ -3,6 +3,8 @@ Created: 15/12/2024 23:01
 Last Updated: 17/02/2025 01:09
 * * *
 ![41f5c5b38e992f65aa0b0af16d42b04f.png](../../../_resources/41f5c5b38e992f65aa0b0af16d42b04f.png)
+
+Krampus, the cyber threat actor, infiltrated Santa Workshop's digital infrastructure. After last year’s incident, Santa notified the team to be aware of social engineering and instructed the sysadmin to secure the environment. Bingle Jollybeard, who is an app developer and will be workinremotely from the South Pole, was visiting the workshop to set up his system for remote access. His workstation was mysteriously compromised and potentially paved the way for Krampus to wreck chaos again this season. Figure out what happened using the artifacts provided by the beachhead host.
 * * *
 >Task 1: Krampus, a notorious threat actor, possibly social-engineered bingle as email security filters were offline for maintenance. Find any suspicious files under Bingle Jollybeard User directory and get back to us with the full file name
 
