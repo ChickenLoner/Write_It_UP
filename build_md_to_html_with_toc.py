@@ -25,20 +25,32 @@ def generate_main_toc(md_files):
             folders[folder] = []
         folders[folder].append(f)
     
-    toc = ["<h1>Chicken0248's Write-Ups Index</h1>"]
+    toc = ["<h1>🔐 Chicken0248 Write-Ups Index</h1>"]
+    toc.append(f'<p style="color: #656d76; font-size: 1.1rem;">Total Write-ups: <strong>{len(md_files)}</strong></p>')
     
     # Sort folders
     for folder in sorted(folders.keys()):
         if str(folder) == ".":
-            folder_name = "Root"
+            folder_name = "📁 Root"
         else:
-            folder_name = str(folder).replace("\\", " / ").replace("/", " / ")
+            folder_name = f"📁 {str(folder).replace(os.sep, ' → ')}"
+        
+        files = sorted(folders[folder], key=lambda x: x.stem)
+        file_count = len(files)
         
         toc.append(f"<h2>{folder_name}</h2>")
+        
+        # Add collapsible section for folders with more than 10 files
+        if file_count > 10:
+            toc.append("<details open>")
+            toc.append(f'<summary style="cursor: pointer; font-size: 1rem; color: #656d76; margin-bottom: 1rem;">📝 {file_count} write-ups (click to collapse)</summary>')
+        else:
+            toc.append(f'<p style="color: #656d76; margin-bottom: 0.5rem;">📝 {file_count} write-ups</p>')
+        
         toc.append("<ul>")
         
-        for f in sorted(folders[folder]):
-            # Use the original filename for display (cleaned up)
+        for f in files:
+            # Use the original filename for display
             name = f.stem
             
             # Create the path: folder/filename.html (preserve exact structure)
@@ -48,6 +60,10 @@ def generate_main_toc(md_files):
             toc.append(f'<li><a href="{relative_path}">{name}</a></li>')
         
         toc.append("</ul>")
+        
+        # Close details tag if opened
+        if file_count > 10:
+            toc.append("</details>")
     
     return "\n".join(toc)
 
@@ -136,18 +152,67 @@ def create_index_html(toc_html: str):
 <link rel="stylesheet" href="{GITHUB_CSS}">
 <style>
 body {{ max-width: 1000px; margin: auto; padding: 2rem; }}
-h1 {{ border-bottom: 2px solid #d0d7de; padding-bottom: 0.5rem; }}
-h2 {{ margin-top: 2rem; color: #0969da; border-bottom: 1px solid #d0d7de; padding-bottom: 0.3rem; }}
+h1 {{ border-bottom: 2px solid #d0d7de; padding-bottom: 0.5rem; margin-bottom: 1rem; }}
+h2 {{ 
+    margin-top: 2.5rem; 
+    color: #0969da; 
+    border-bottom: 1px solid #d0d7de; 
+    padding-bottom: 0.3rem;
+    font-size: 1.5rem;
+}}
 ul {{ list-style: none; padding-left: 0; }}
-li {{ padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0; }}
-a {{ color: #0969da; text-decoration: none; font-size: 1.1rem; }}
-a:hover {{ text-decoration: underline; color: #0550ae; background: #f6f8fa; padding: 0.2rem; }}
+li {{ 
+    padding: 0.6rem 0.8rem; 
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+}}
+li:hover {{
+    background-color: #f6f8fa;
+    border-radius: 6px;
+}}
+a {{ 
+    color: #0969da; 
+    text-decoration: none; 
+    font-size: 1rem;
+    display: block;
+}}
+a:hover {{ 
+    text-decoration: underline; 
+    color: #0550ae;
+}}
+details {{
+    margin: 1rem 0;
+}}
+details summary {{
+    cursor: pointer;
+    padding: 0.5rem;
+    background: #f6f8fa;
+    border-radius: 6px;
+    user-select: none;
+    font-weight: 500;
+}}
+details summary:hover {{
+    background: #eaeef2;
+}}
+details[open] summary {{
+    margin-bottom: 0.5rem;
+}}
+footer {{
+    margin-top: 3rem; 
+    padding-top: 1rem; 
+    border-top: 1px solid #d0d7de; 
+    color: #656d76; 
+    text-align: center;
+}}
 </style>
 </head>
 <body class="markdown-body">
 {toc_html}
-<footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #d0d7de; color: #656d76; text-align: center;">
-<p>Chicken0248 Write-Ups Collection | Generated with ❤️ and 🤖</p>
+<footer>
+<p>🔐 Chicken0248 Write-Ups Collection | Generated with ❤️ and 🤖</p>
+<p style="font-size: 0.9rem;">
+    <a href="https://github.com/ChickenLoner/Write_It_UP" target="_blank">View on GitHub</a>
+</p>
 </footer>
 </body>
 </html>"""
