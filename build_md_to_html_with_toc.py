@@ -25,7 +25,7 @@ def generate_main_toc(md_files):
             folders[folder] = []
         folders[folder].append(f)
     
-    toc = ["<h1>Write-Ups Index</h1>"]
+    toc = ["<h1>Chicken0248's Write-Ups Index</h1>"]
     
     # Sort folders
     for folder in sorted(folders.keys()):
@@ -132,7 +132,7 @@ def create_index_html(toc_html: str):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CTF Write-Ups Collection</title>
+<title>Chicken0248 Write-Ups Collection</title>
 <link rel="stylesheet" href="{GITHUB_CSS}">
 <style>
 body {{ max-width: 1000px; margin: auto; padding: 2rem; }}
@@ -147,7 +147,7 @@ a:hover {{ text-decoration: underline; color: #0550ae; background: #f6f8fa; padd
 <body class="markdown-body">
 {toc_html}
 <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #d0d7de; color: #656d76; text-align: center;">
-<p>CTF Write-Ups Collection | Generated with ❤️</p>
+<p>Chicken0248 Write-Ups Collection | Generated with ❤️ and 🤖</p>
 </footer>
 </body>
 </html>"""
