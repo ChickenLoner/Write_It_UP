@@ -18,21 +18,21 @@ Last Updated: 01/06/2024 12:57
 >Verify
 
 Lets check out an email to verify this QR code
-![Screenshot_20240401_105330.jpg](../../_resources/Screenshot_20240401_105330.jpg)
+![Screenshot_20240401_105330.jpg](/resources/Screenshot_20240401_105330.jpg)
 Looking at this email, there are couple of red flags here
 1. Domain name of the sender 
 2. Normally when setup Microsoft's MFA/2FA, QR code will not be sent via an email but on website where user went into setting to setup MFA 
 
 Now lets decode this QR code using CyberChef
-![1961a3425b3f788ac41d4b7dbe1f7d4e.png](../../_resources/1961a3425b3f788ac41d4b7dbe1f7d4e.png)
+![1961a3425b3f788ac41d4b7dbe1f7d4e.png](/resources/1961a3425b3f788ac41d4b7dbe1f7d4e.png)
 This is the third red flag, its not look like a link that would come from legit Microsoft at all.
-![b876bfd0bf477585acb2c4822035a20f.png](../../_resources/b876bfd0bf477585acb2c4822035a20f.png)
+![b876bfd0bf477585acb2c4822035a20f.png](/resources/b876bfd0bf477585acb2c4822035a20f.png)
 Result from VirusTotal shows us that this url is a phishing site mimicking Microsoft Login Page, so this alert is true positive.
 
 >Identify potential reconnaissance activity on the network
 
 Lets search SMTP address on Log Management
-![25be218718764cd092ccf4b3e079eed6.png](../../_resources/25be218718764cd092ccf4b3e079eed6.png)
+![25be218718764cd092ccf4b3e079eed6.png](/resources/25be218718764cd092ccf4b3e079eed6.png)
 There is only 1 activity from this email, the destination address is Exchange Server so it make sense because this IP responsible for sending a phishing email. 
 
 There is no network recon found on log management.
@@ -40,9 +40,9 @@ There is no network recon found on log management.
 >Check Alert Details at the Investigation Channel
 
 Now lets check the endpoint since this mail was allowed, user might opened it
-![0405bd0fb3b007c911e10b38cb474836.png](../../_resources/0405bd0fb3b007c911e10b38cb474836.png)
+![0405bd0fb3b007c911e10b38cb474836.png](/resources/0405bd0fb3b007c911e10b38cb474836.png)
 I found that outlook.exe is running so we need to confirm on Browser History that user visited phishing site on this endpoint or not
-![00a4a97947847963c5abe3f524d38494.png](../../_resources/00a4a97947847963c5abe3f524d38494.png)
+![00a4a97947847963c5abe3f524d38494.png](/resources/00a4a97947847963c5abe3f524d38494.png)
 I found none, but we still couldn't be certained yet that user didn't access this url because its a QR code
 
 User could scan this QR code on a phone too.
@@ -61,7 +61,7 @@ External
 Is the attacker IP suspicious or not?
 
 Lets check SMTP address on AbuseIPDB
-![b5e14493df95ce7bf786bb14cd3b0030.png](../../_resources/b5e14493df95ce7bf786bb14cd3b0030.png)
+![b5e14493df95ce7bf786bb14cd3b0030.png](/resources/b5e14493df95ce7bf786bb14cd3b0030.png)
 This IP address has a bad reputation, its very suspicious or even malicious
 ```
 Yes
@@ -69,9 +69,9 @@ Yes
 
 >Determine the Scope
 
-![3c139d3efbe9b84b8f3aec74f95f0270.png](../../_resources/3c139d3efbe9b84b8f3aec74f95f0270.png)
+![3c139d3efbe9b84b8f3aec74f95f0270.png](/resources/3c139d3efbe9b84b8f3aec74f95f0270.png)
 We got an IP address that hosting this phishing site from VirusTotal so lets search for this IP address on Log Management
-![a547ba04c21abaa557a6445f538e2ec7.png](../../_resources/a547ba04c21abaa557a6445f538e2ec7.png)
+![a547ba04c21abaa557a6445f538e2ec7.png](/resources/a547ba04c21abaa557a6445f538e2ec7.png)
 There is no activity related to this IP address found 
 
 This mail is targeted only 1 user 
@@ -108,7 +108,7 @@ An employee's endpoint is contained temporary until the investigation process is
 ## Close Alert
 <div align=center>
 
-![6a0e56166f71bdf148581b524d94a250.png](../../_resources/6a0e56166f71bdf148581b524d94a250.png)
+![6a0e56166f71bdf148581b524d94a250.png](/resources/6a0e56166f71bdf148581b524d94a250.png)
 </div>
 
 [Editor's Note](https://files-ld.s3.us-east-2.amazonaws.com/Alert-Reports/EventID_214+-+SOC251+-+Quishing+Detected+(QR+Code+Phishing).pdf)

@@ -8,7 +8,7 @@ On this challenge, we will have to analyze python script that used to exploit CV
 
 [Here](https://www.volexity.com/blog/2024/04/12/zero-day-exploitation-of-unauthenticated-remote-code-execution-vulnerability-in-globalprotect-cve-2024-3400/) and [here](https://www.zscaler.com/blogs/security-research/look-cve-2024-3400-activity-and-upstyle-backdoor-technical-analysis) are the resource that I cited to
 
-![e3e28d97c274cbc29519d61fba44a54d.png](../../_resources/e3e28d97c274cbc29519d61fba44a54d.png)
+![e3e28d97c274cbc29519d61fba44a54d.png](/resources/e3e28d97c274cbc29519d61fba44a54d.png)
 <--credit to Volexity Threat Research-->
 
 To put it simply, it will exploit Palo Alto GlobalProtect VPN by 
@@ -28,7 +28,7 @@ So now we can analyze malicious python script used for this exploit with knowing
 >What function is responsible for monitoring a log file for embedded commands and executing them, while also restoring the file to its original state?
 **Answer Format**: functionname()
 
-![0db51865f73626616f8a62070cc255df.png](../../_resources/0db51865f73626616f8a62070cc255df.png)
+![0db51865f73626616f8a62070cc255df.png](/resources/0db51865f73626616f8a62070cc255df.png)
 
 We can see that inside `check()` function, it does everything we learned from our research
 
@@ -38,7 +38,7 @@ check()
 
 >What is the system path that is used by the threat actor?
 
-![658875d0514407d9e67c703b081066c1.png](../../_resources/658875d0514407d9e67c703b081066c1.png)
+![658875d0514407d9e67c703b081066c1.png](/resources/658875d0514407d9e67c703b081066c1.png)
 
 Here is a path that backdoor will be installed
 
@@ -48,21 +48,21 @@ Here is a path that backdoor will be installed
 
 >What is the CSS path used by the script?
 
-![02287993aa5d6c5e11ae7e0aeaa5c278.png](../../_resources/02287993aa5d6c5e11ae7e0aeaa5c278.png)
+![02287993aa5d6c5e11ae7e0aeaa5c278.png](/resources/02287993aa5d6c5e11ae7e0aeaa5c278.png)
 ```
 /var/appweb/sslvpndocs/global-protect/portal/css/bootstrap.min.css
 ```
 
 >Where does the script attempt to remove certain license files from?
 
-![0f12e5a88e4526f0d4eb59b86b6388c1.png](../../_resources/0f12e5a88e4526f0d4eb59b86b6388c1.png)
+![0f12e5a88e4526f0d4eb59b86b6388c1.png](/resources/0f12e5a88e4526f0d4eb59b86b6388c1.png)
 ```
 /opt/pancfg/mgmt/licenses/
 ```
 
 >What specific signal does the protection function respond to?
 
-![92d12103a221a6553d496907bab8d435.png](../../_resources/92d12103a221a6553d496907bab8d435.png)
+![92d12103a221a6553d496907bab8d435.png](/resources/92d12103a221a6553d496907bab8d435.png)
 ```
 SIGTERM
 ```
@@ -88,7 +88,7 @@ On this challenge, we analyzed a script use to exploit CVE-2024-3400 or Upstyle 
 
 <div align=center>
 
-![75ecec2300e453c6a533b2d2542916c8.png](../../_resources/75ecec2300e453c6a533b2d2542916c8.png)
+![75ecec2300e453c6a533b2d2542916c8.png](/resources/75ecec2300e453c6a533b2d2542916c8.png)
 </div>
 
 * * *

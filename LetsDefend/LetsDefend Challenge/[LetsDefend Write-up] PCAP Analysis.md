@@ -5,7 +5,7 @@ Last Updated: 22/02/2024 15:16
 <div align=center>
 
 **PCAP Analysis**
-![6b0df1791fdcf814308866740fa93af3.png](../../_resources/6b0df1791fdcf814308866740fa93af3.png)
+![6b0df1791fdcf814308866740fa93af3.png](/resources/6b0df1791fdcf814308866740fa93af3.png)
 </div>
 We have captured this traffic from P13's computer. Can you help him?
 
@@ -16,25 +16,25 @@ We have captured this traffic from P13's computer. Can you help him?
 I started by looking at the statistics of this pcapng file
 <div align=center>
 
-![a6856e21ec5291c711c20b658e2ea985.png](../../_resources/a6856e21ec5291c711c20b658e2ea985.png)
+![a6856e21ec5291c711c20b658e2ea985.png](/resources/a6856e21ec5291c711c20b658e2ea985.png)
 There are a lot of IP addresses that were captured.
-![6feb7df4c4f9b883ca78e7c6b6efc3d8.png](../../_resources/6feb7df4c4f9b883ca78e7c6b6efc3d8.png)
+![6feb7df4c4f9b883ca78e7c6b6efc3d8.png](/resources/6feb7df4c4f9b883ca78e7c6b6efc3d8.png)
 Protocol that was used the most is UDP Data and there are also a bunch of TCP protocol including HTTP that got captured as well
 </div>
 
 I don't think I can get the valuable information from TLS and UDP so I shifted my focus on TCP and Follow TCP stream
 <div align=center>
 
-![80f1f38ee22f51e7343652ecccf7cb96.png](../../_resources/80f1f38ee22f51e7343652ecccf7cb96.png)
+![80f1f38ee22f51e7343652ecccf7cb96.png](/resources/80f1f38ee22f51e7343652ecccf7cb96.png)
 Look like I found a chat? look like P13 and Cu713 has a communicatation.
 </div>
 Cu713 had created a new file encryption scrip and challenge P13 to find it so the script might be found on this pcapng as well and might upload to the server so HTTP it is
 
 <div align=center>
 
-![ba3af9733ccaf3d7cd7a07ce543a2a3d.png](../../_resources/ba3af9733ccaf3d7cd7a07ce543a2a3d.png)
-![5964e7766f1805ec6e1493802ed9ea3b.png](../../_resources/5964e7766f1805ec6e1493802ed9ea3b.png)
-![a504f594617883e883d93c46ee297a8f.png](../../_resources/a504f594617883e883d93c46ee297a8f.png)
+![ba3af9733ccaf3d7cd7a07ce543a2a3d.png](/resources/ba3af9733ccaf3d7cd7a07ce543a2a3d.png)
+![5964e7766f1805ec6e1493802ed9ea3b.png](/resources/5964e7766f1805ec6e1493802ed9ea3b.png)
+![a504f594617883e883d93c46ee297a8f.png](/resources/a504f594617883e883d93c46ee297a8f.png)
 I filtered with `192.168.235.137` as a source and found out that this IP address uploaded file to an Apache web server (`192.168.1.7`) which was saved at `uploads` directory
 </div>
 
@@ -72,7 +72,7 @@ uploads
 This question can be answered by looking at Conversations of the sender IP and server IP address at Statistics
 <div align=center>
 
-![91ed640fc265097b72367123cb99f50d.png](../../_resources/91ed640fc265097b72367123cb99f50d.png)
+![91ed640fc265097b72367123cb99f50d.png](/resources/91ed640fc265097b72367123cb99f50d.png)
 </div>
 
 
@@ -86,7 +86,7 @@ A communication between 2 user P13 and Cu713 was captured, There was a challenge
 
 <div align=center>
 
-![25270d42296731ae833d1f134360de22.png](../../_resources/25270d42296731ae833d1f134360de22.png)
+![25270d42296731ae833d1f134360de22.png](/resources/25270d42296731ae833d1f134360de22.png)
 </div>
 
 * * *
