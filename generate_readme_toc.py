@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from collections import defaultdict
+from urllib.parse import quote
 
 # Source folder (repo root)
 SRC_DIR = Path(".")
@@ -24,7 +25,7 @@ def find_all_writeups():
 def generate_toc_markdown(folders):
     """Generate markdown TOC from folders and files."""
     lines = [
-        "# 🔐 CTF Write-Ups Collection",
+        "# 🔐 Chicken0248's Write-Ups Collection",
         "",
         "Welcome to my collection of CTF (Capture The Flag) write-ups! This repository contains detailed solutions and analysis for various cybersecurity challenges.",
         "",
@@ -51,19 +52,31 @@ def generate_toc_markdown(folders):
         if str(folder) == ".":
             folder_name = "📁 Root"
         else:
-            folder_name = f"📁 {str(folder).replace(os.sep, ' / ')}"
+            folder_name = f"📁 {str(folder).replace(os.sep, ' → ')}"
         
         lines.append(f"### {folder_name}")
         lines.append("")
-        lines.append(f"*{len(files)} write-up(s)*")
-        lines.append("")
+        
+        # Create a collapsible section for folders with many files
+        if len(files) > 10:
+            lines.append("<details>")
+            lines.append(f"<summary>📝 {len(files)} write-ups (click to expand)</summary>")
+            lines.append("")
         
         # List files
         for file in files:
             # Create GitHub link to the markdown file
             relative_path = file.relative_to(SRC_DIR).as_posix()
-            name = file.stem.replace("_", " ").replace("-", " ")
-            lines.append(f"- [{name}]({relative_path})")
+            # URL encode the path to handle spaces and special characters
+            encoded_path = quote(relative_path)
+            # Clean up the display name
+            name = file.stem
+            lines.append(f"- [{name}]({encoded_path})")
+        
+        # Close collapsible section if it was opened
+        if len(files) > 10:
+            lines.append("")
+            lines.append("</details>")
         
         lines.append("")
     
