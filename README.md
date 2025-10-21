@@ -1,7 +1,5 @@
 # Chicken0248's Write-up
 
-**Table of Contents (Auto-Generated)**
-
 <!-- TOC START -->
 
 **Table of Contents (Auto-Generated)**
