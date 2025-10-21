@@ -1,0 +1,58 @@
+name: Auto Generate Table of Contents
+
+on:
+  push:
+    branches:
+      - main # Change to your primary branch (e.g., 'master')
+    paths:
+      - '**.md' # Trigger only when markdown files change
+  workflow_dispatch:
+
+jobs:
+  generate_toc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate TOC and update README.md
+        id: generate
+        run: |
+          # --- SCRIPT TO GENERATE TOC ---
+          TOC_START=''
+          TOC_END=''
+          
+          # Use find to list all .md files (excluding README.md and files in .github)
+          TOC_ENTRIES=$(find . -type f -name "*.md" ! -name "README.md" ! -path "./.github/*" | sort | while read FILE; do
+            # 1. Clean up path: remove leading './'
+            CLEAN_PATH=${FILE#./}
+            
+            # 2. Extract filename without extension (e.g., 'my_new_post.md' -> 'my_new_post')
+            FILENAME_ONLY=$(basename "$FILE" .md)
+            
+            # 3. Create readable link text: replace underscores with spaces and capitalize words
+            LINK_TEXT=$(echo "$FILENAME_ONLY" | tr '_' ' ' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2));}1')
+            
+            # 4. Format as a markdown list item: * [Link Text](URL)
+            echo "* [$LINK_TEXT]($CLEAN_PATH)"
+          done)
+
+          # Add an informative header to the generated content
+          TOC_CONTENT="\n**Table of Contents (Auto-Generated)**\n\n$TOC_ENTRIES\n"
+
+          # Use awk to replace the content between the markers in README.md
+          awk -v start="$TOC_START" -v end="$TOC_END" -v content="$TOC_CONTENT" '
+            $0 == start { print; print content; in_toc=1; next }
+            $0 == end { print; in_toc=0; next }
+            !in_toc { print }
+          ' README.md > README.md.new
+          
+          mv README.md.new README.md
+
+      - name: Commit and push changes if README.md was updated
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: Auto-generate Table of Contents"
+          file_pattern: README.md
+          # Only commit if there are changes to avoid unnecessary workflow runs
+          commit_options: '--no-verify --allow-empty'
