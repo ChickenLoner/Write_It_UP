@@ -24,11 +24,11 @@ Recently, we have seen a resurgence of Excel-based malicous office documents. Ho
 ## Questions
 > Q1: Sample1: What is the document decryption password?
 
-![8a08b8d8e54a6acd4b445a31b2a335aa.png](/_resources/8a08b8d8e54a6acd4b445a31b2a335aa.png)
+![8a08b8d8e54a6acd4b445a31b2a335aa.png](/resources/8a08b8d8e54a6acd4b445a31b2a335aa.png)
 
 We got 2 microsoft excel sample to investigate and we will have to investigate sample 1 first and step up to sample 2 
 
-![fe65e2858be639ae0516bd206fd2c46b.png](/_resources/fe65e2858be639ae0516bd206fd2c46b.png)
+![fe65e2858be639ae0516bd206fd2c46b.png](/resources/fe65e2858be639ae0516bd206fd2c46b.png)
 
 First, we will determine if this file is encrypted or not with `msoffcrypto-tool -t -v sample1-fb5ed444ddc37d748639f624397cff2a.bin`, we use `-t` which we can see it is encrypted so we will use `msoffcrypto-crack.py sample1-fb5ed444ddc37d748639f624397cff2a.bin` to find for the password hence the answer of this question
 
@@ -38,15 +38,15 @@ VelvetSweatshop
 
 > Q2: Sample1: This document contains six hidden sheets. What are their names? Provide the value of the one starting with S.
 
-![0c42ce263d814c87b3f5cfcb3cb28707.png](/_resources/0c42ce263d814c87b3f5cfcb3cb28707.png)
+![0c42ce263d814c87b3f5cfcb3cb28707.png](/resources/0c42ce263d814c87b3f5cfcb3cb28707.png)
 
 We can easily obtain this answer by using `olevba` but to expand our knowledge and toolset, lets do it as this challenge was intended to be solved
 
-![1c4131e353660f05da2e38d23c7e1381.png](/_resources/1c4131e353660f05da2e38d23c7e1381.png)
+![1c4131e353660f05da2e38d23c7e1381.png](/resources/1c4131e353660f05da2e38d23c7e1381.png)
 
 First, using password we got from the last time to decrypt it then we will have a new file that all contents are decrypted 
 
-![3e2608382f859e6d90056375408a46b1.png](/_resources/3e2608382f859e6d90056375408a46b1.png)
+![3e2608382f859e6d90056375408a46b1.png](/resources/3e2608382f859e6d90056375408a46b1.png)
 
 Next lets use `oledump.py sample1_decrypt -p /opt/oledump-files/plugin_biff.py --pluginoptions '-x'` to dump all relevant information for us then at the top we can see all sheet information including hidden sheets
 
@@ -56,7 +56,7 @@ SOCWNEScLLxkLhtJp
 
 > Q3: Sample1: What URL is the malware using to download the next stage? Only include the second-level and top-level domain. For example, xyz.com.
 
-![3d93f066f84880aaf2d49d7d6d786151.png](/_resources/3d93f066f84880aaf2d49d7d6d786151.png)
+![3d93f066f84880aaf2d49d7d6d786151.png](/resources/3d93f066f84880aaf2d49d7d6d786151.png)
 
 Back to `olevba`, just take a look that IOC this tool caught for us
 
@@ -66,7 +66,7 @@ http://rilaer.com
 
 > Q4: Sample1: What malware family was this document attempting to drop?
 
-![f6ac8715d4ac7514a31065706c902862.png](/_resources/f6ac8715d4ac7514a31065706c902862.png)
+![f6ac8715d4ac7514a31065706c902862.png](/resources/f6ac8715d4ac7514a31065706c902862.png)
 
 Searching this domain on [urlhaus](https://urlhaus.abuse.ch/browse.php?search=rilaer.com) and you will see which malware family was dropped from this domain
 
@@ -76,11 +76,11 @@ Dridex
 
 > Q5: Sample2: This document has a very hidden sheet. What is the name of this sheet?
 
-![80b167adf3e964b5af52b9764f2d430e.png](/_resources/80b167adf3e964b5af52b9764f2d430e.png)
+![80b167adf3e964b5af52b9764f2d430e.png](/resources/80b167adf3e964b5af52b9764f2d430e.png)
 
 First we need to check if this file is encrypted or not which is not
 
-![df4fac18e454318f36b9c4e97fa1a89a.png](/_resources/df4fac18e454318f36b9c4e97fa1a89a.png)
+![df4fac18e454318f36b9c4e97fa1a89a.png](/resources/df4fac18e454318f36b9c4e97fa1a89a.png)
 
 So we can proceed with `oledump.py sample2-b5d469a07709b5ca6fee934b1e5e8e38.bin -p /opt/oledump-files/plugin_biff.py --pluginoptions '-x'` which we can see that there is only 1 sheet that is very hidden
 
@@ -90,15 +90,15 @@ CSHykdYHvi
 
 > Q6: Sample2: This document uses reg.exe. What registry key is it checking?
 
-![572f47771a103183b918eee23fe2919a.png](/_resources/572f47771a103183b918eee23fe2919a.png)
+![572f47771a103183b918eee23fe2919a.png](/resources/572f47771a103183b918eee23fe2919a.png)
 
 Using `olevba` and go to XLM Macro that was extracted for us, we can see that this macro is using registry key to check microsoft excel specific security option of a system
 
-![ad7c99e854ec6215424d89988d0678b9.png](/_resources/ad7c99e854ec6215424d89988d0678b9.png)
+![ad7c99e854ec6215424d89988d0678b9.png](/resources/ad7c99e854ec6215424d89988d0678b9.png)
 
 To find which key is really check, we need to use `strings` then you will found this registry key that related to VBA warning when open macro embbed microsoft excel file
 
-![2ac61413960be0ab7a510dcb2177b031.png](/_resources/2ac61413960be0ab7a510dcb2177b031.png)
+![2ac61413960be0ab7a510dcb2177b031.png](/resources/2ac61413960be0ab7a510dcb2177b031.png)
 
 Here is the describe for each value it could represent
 
@@ -108,7 +108,7 @@ VBAWarnings
 
 > Q7: Sample2: From the use of reg.exe, what value of the assessed key indicates a sandbox environment?
 
-![872e011cefafee2fb5d48397c41d2fb2.png](/_resources/872e011cefafee2fb5d48397c41d2fb2.png)
+![872e011cefafee2fb5d48397c41d2fb2.png](/resources/872e011cefafee2fb5d48397c41d2fb2.png)
 
 We can see that after it retrieve `VBAWarnings` key value, it will be check with "0001" to check if this sheet will be closed or not
 
@@ -120,11 +120,11 @@ As we can see that "1" mean its potentially mean a sandbox which it need least r
 
 > Q8: Sample2: This document performs several additional anti-analysis checks. What Excel 4 macro function does it use?
 
-![f0dc0755d31849f3c44a8db1f38864f8.png](/_resources/f0dc0755d31849f3c44a8db1f38864f8.png)
+![f0dc0755d31849f3c44a8db1f38864f8.png](/resources/f0dc0755d31849f3c44a8db1f38864f8.png)
 
 We can see these chains of formula so lets ChatGPT analyze them for us
 
-![5035d676e3817a6f2064ca7f6dc1dc2a.png](/_resources/5035d676e3817a6f2064ca7f6dc1dc2a.png)
+![5035d676e3817a6f2064ca7f6dc1dc2a.png](/resources/5035d676e3817a6f2064ca7f6dc1dc2a.png)
 
 So it use `GET.WORKSPACE` to retrieve environment information to determine if it should exit or not 
 
@@ -139,7 +139,7 @@ Windows
 
 > Q10: Sample2: What type of payload is downloaded?
 
-![edd15caf1f52a4eb4f8f4f1699008b17.png](/_resources/edd15caf1f52a4eb4f8f4f1699008b17.png)
+![edd15caf1f52a4eb4f8f4f1699008b17.png](/resources/edd15caf1f52a4eb4f8f4f1699008b17.png)
 
 After It passed all tests, this macro will download a file from specific url and run it with `rundll32.exe` which is an executable file designed to run dll file hence the file that will be downloaded is dll 
 
@@ -149,14 +149,14 @@ dll
 
 > Q11: Sample2: What URL does the malware download the payload from?
 
-![428ae43e5155ac717f61399756400b65.png](/_resources/428ae43e5155ac717f61399756400b65.png)
+![428ae43e5155ac717f61399756400b65.png](/resources/428ae43e5155ac717f61399756400b65.png)
 ```
 https://ethelenecrace.xyz/fbb3
 ```
 
 > Q12: Sample2: What is the filename that the payload is saved as?
 
-![150868672a430cc8ebb0254e48e82a81.png](/_resources/150868672a430cc8ebb0254e48e82a81.png)
+![150868672a430cc8ebb0254e48e82a81.png](/resources/150868672a430cc8ebb0254e48e82a81.png)
 ```
 bmjn5ef.html
 ```
@@ -168,14 +168,14 @@ rundll32.exe
 
 > Q14: Sample2: What was the malware family?
 
-![7a03b7ff4c0f00d3c5578e40264f9e32.png](/_resources/7a03b7ff4c0f00d3c5578e40264f9e32.png)
+![7a03b7ff4c0f00d3c5578e40264f9e32.png](/resources/7a03b7ff4c0f00d3c5578e40264f9e32.png)
 
 I couldn't find this domain on URLHaus so I searched it on google and found someone posted about this on T**X**ITTER
 
-![827091ae449c5e9ffd30500d69d9c278.png](/_resources/827091ae449c5e9ffd30500d69d9c278.png)
+![827091ae449c5e9ffd30500d69d9c278.png](/resources/827091ae449c5e9ffd30500d69d9c278.png)
 ```
 zloader
 ```
 
-![d999e856aee989f74d85b8552156fea2.png](/_resources/d999e856aee989f74d85b8552156fea2.png)
+![d999e856aee989f74d85b8552156fea2.png](/resources/d999e856aee989f74d85b8552156fea2.png)
 * * *

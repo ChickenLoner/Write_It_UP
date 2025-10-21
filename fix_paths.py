@@ -2,8 +2,8 @@ import os
 import re
 
 # --- Configuration ---
-OLD_FOLDER_NAME = "resources"
-NEW_FOLDER_NAME = "_resources"
+OLD_FOLDER_NAME = "_resources"
+NEW_FOLDER_NAME = "resources"
 FILE_EXTENSION = ".md"
 SCRIPT_NAME = "fix_paths.py"  # name of this script
 # ---------------------

@@ -20,7 +20,7 @@ As a soc analyst, analyze the artifacts and answer the questions.
 ## Questions
 > Q1: Multiple systems were targeted. Provide the IP address of the highest one.
 
-![30532941901ae70ead4533e6987d1e9f.png](/_resources/30532941901ae70ead4533e6987d1e9f.png)
+![30532941901ae70ead4533e6987d1e9f.png](/resources/30532941901ae70ead4533e6987d1e9f.png)
 
 Open pcap file on Wireshark and go to Statistics and sort for the highest IP address
 
@@ -38,15 +38,15 @@ http
 
 > Q3: What was the URL for the page used to serve malicious executables (don't include URL parameters)?
 
-![626cae242103e02da83f82a80ada737e.png](/_resources/626cae242103e02da83f82a80ada737e.png)
+![626cae242103e02da83f82a80ada737e.png](/resources/626cae242103e02da83f82a80ada737e.png)
 
 After filtered for HTTP protocol, then follow some HTTP stream we can see that there are some obfuscated JS embedded on this particular sites
 
-![b10c1b94444033652ee50e61f9938918.png](/_resources/b10c1b94444033652ee50e61f9938918.png)
+![b10c1b94444033652ee50e61f9938918.png](/resources/b10c1b94444033652ee50e61f9938918.png)
 
 Following through it, we can see that an executable file was served on `/fg/load.php` and we can speculate that parameter `e` might indicate which file to be served and it this case it served `video.exe`
 
-![a93c1b079972ba9e6d4042652a8be740.png](/_resources/a93c1b079972ba9e6d4042652a8be740.png)
+![a93c1b079972ba9e6d4042652a8be740.png](/resources/a93c1b079972ba9e6d4042652a8be740.png)
 
 The other way to find this is to use NetworkMiner, but we will miss those details information of each request / response
 
@@ -56,15 +56,15 @@ http://sploitme.com.cn/fg/load.php
 
 > Q4: What is the number of the packet that includes a redirect to the french version of Google and probably is an indicator for Geo-based targeting?
 
-![4f7e5058a8f8eb742c7e3ed59cc9024e.png](/_resources/4f7e5058a8f8eb742c7e3ed59cc9024e.png)
+![4f7e5058a8f8eb742c7e3ed59cc9024e.png](/resources/4f7e5058a8f8eb742c7e3ed59cc9024e.png)
 
 We can use NetworkMiner to reduce our time by scoping which request were sent to Google, we can see that packet 302 and 322 had sessions with french version of Google here
 
-![498317b5987f94dc18318cb5024d577c.png](/_resources/498317b5987f94dc18318cb5024d577c.png)
+![498317b5987f94dc18318cb5024d577c.png](/resources/498317b5987f94dc18318cb5024d577c.png)
 
 Go back to Wireshark, and use Find Packet function to jump to the first packet with `google.fr` domain then we can see packet 300 is the DNS query to `google.fr` so we will have to follow packet before this DNS query to find how it was redirected to `google.fr` 
 
-![c96fcf884017c93c5e709a25220d518c.png](/_resources/c96fcf884017c93c5e709a25220d518c.png)
+![c96fcf884017c93c5e709a25220d518c.png](/resources/c96fcf884017c93c5e709a25220d518c.png)
 
 It was packet 299, GET request was sent to `google.com` then it was redirected to `google.fr` hence the DNS query and sessions to `google.fr` were made after this packet
 
@@ -74,11 +74,11 @@ It was packet 299, GET request was sent to `google.com` then it was redirected t
 
 > Q5: What was the CMS used to generate the page 'shop.honeynet.sg/catalog/'? (Three words, space in between)
 
-![2219088bdb8e614c22fa8911d301246d.png](/_resources/2219088bdb8e614c22fa8911d301246d.png)
+![2219088bdb8e614c22fa8911d301246d.png](/resources/2219088bdb8e614c22fa8911d301246d.png)
 
 Find for `/catalog` then we can see which packet we should look into
 
-![5de2973b9ea5316d94bf94ad077227a6.png](/_resources/5de2973b9ea5316d94bf94ad077227a6.png)
+![5de2973b9ea5316d94bf94ad077227a6.png](/resources/5de2973b9ea5316d94bf94ad077227a6.png)
 
 Follow HTTP request and try to find any CMS-like name that blended inside HTML code 
 
@@ -88,19 +88,19 @@ osCommerce Online Merchant
 
 > Q6: What is the number of the packet that indicates that 'show.php' will not try to infect the same host twice?
 
-![ab25d15b16132a1156cdd98824736273.png](/_resources/ab25d15b16132a1156cdd98824736273.png)
+![ab25d15b16132a1156cdd98824736273.png](/resources/ab25d15b16132a1156cdd98824736273.png)
 
 I used brim to easily filter out all `show.php` uri, then we can see that there are several requested to `/fg/show.php?s=3feb5a6b2f` uri so we will investigate this uri and see that what difference between first request and other requests 
 
-![f69cc37f645bd5dacbcc2850519b8bdb.png](/_resources/f69cc37f645bd5dacbcc2850519b8bdb.png)
+![f69cc37f645bd5dacbcc2850519b8bdb.png](/resources/f69cc37f645bd5dacbcc2850519b8bdb.png)
 
 This is the response of the first request to `/fg/show.php?s=3feb5a6b2f`, suspicious obfuscated js 
 
-![d88a666f42fabc3f13d5029482734d95.png](/_resources/d88a666f42fabc3f13d5029482734d95.png)
+![d88a666f42fabc3f13d5029482734d95.png](/resources/d88a666f42fabc3f13d5029482734d95.png)
 
 Most of them have JS code except for this one
 
-![c1eca199786ab232fc602f1e2bea3729.png](/_resources/c1eca199786ab232fc602f1e2bea3729.png)
+![c1eca199786ab232fc602f1e2bea3729.png](/resources/c1eca199786ab232fc602f1e2bea3729.png)
 
 Which is packet 366
 
@@ -110,7 +110,7 @@ Which is packet 366
 
 > Q7: One of the exploits being served targets a vulnerability in "msdds.dll". Provide the corresponding CVE number.
 
-![c74ab136de67c7133e2c3f783dbd1144.png](/_resources/c74ab136de67c7133e2c3f783dbd1144.png)
+![c74ab136de67c7133e2c3f783dbd1144.png](/resources/c74ab136de67c7133e2c3f783dbd1144.png)
 
 After searching for `msdds.dll` vulnerability then we will see there is one particular CVE related to this dll file which is Microsoft Internet Explorer "Msdds.dll" Remote Code Execution Exploit
 
@@ -123,15 +123,15 @@ CVE-2005-2127
 
 > Q8: What is the name of the executable being served via 'http://sploitme.com.cn/fg/load.php?e=8' ?
 
-![44ff15c1391d16947d6726db44392f8d.png](/_resources/44ff15c1391d16947d6726db44392f8d.png)
+![44ff15c1391d16947d6726db44392f8d.png](/resources/44ff15c1391d16947d6726db44392f8d.png)
 
 I did not find any `/load.php?e=8` were requested so we will have to dig into each obfuscated js which we can print out the deobfuscated js by replacing `eval` with `console.log`
 
-![93aeb382da9714f235d22cdb88e86767.png](/_resources/93aeb382da9714f235d22cdb88e86767.png)
+![93aeb382da9714f235d22cdb88e86767.png](/resources/93aeb382da9714f235d22cdb88e86767.png)
 
 We do not see anything specific to `/load.php?e=8` here and from the clue from got from previous question we will have to find the right packet that contains shellcode
 
-![6b838c9250ea414c72afa8fe638280b7.png](/_resources/6b838c9250ea414c72afa8fe638280b7.png)
+![6b838c9250ea414c72afa8fe638280b7.png](/resources/6b838c9250ea414c72afa8fe638280b7.png)
 
 After some search we will eventually found that packet 496 got the longest js and after print out deobfuscated js, we can see that it got so many shellcode here
 
@@ -451,15 +451,15 @@ function spreadsheet() {
 mdac();
 ```
 
-![c8f84f1f7d3b0ad2d30e3300ded9d07f.png](/_resources/c8f84f1f7d3b0ad2d30e3300ded9d07f.png)
+![c8f84f1f7d3b0ad2d30e3300ded9d07f.png](/resources/c8f84f1f7d3b0ad2d30e3300ded9d07f.png)
 
 We have to pick each one of them and convert them from Hex, which we will eventually find out that `shellcode` from `spreadsheet()` related to uri we are looking for
 
-![d3a5435cdb56d9599d7a162420f13a31.png](/_resources/d3a5435cdb56d9599d7a162420f13a31.png)
+![d3a5435cdb56d9599d7a162420f13a31.png](/resources/d3a5435cdb56d9599d7a162420f13a31.png)
 
 We will need to "Swap endianness" by 2 word length bytes before convert it "From Hex" then we can save this binary output to a file to simulate shellcode with scdbg (shellcode debugger)
 
-![d9419e554761433596ca1ae6e3706b2c.png](/_resources/d9419e554761433596ca1ae6e3706b2c.png)
+![d9419e554761433596ca1ae6e3706b2c.png](/resources/d9419e554761433596ca1ae6e3706b2c.png)
 
 Do not forget to use "Unlimited steps" and "FindSc", after we simulated it then we can see that `urlmon.dll` was loaded to use `URLDownloadToFileA` function and it was used to download `e.exe` from `http//sploitme.com.cn/fg/load.php?e=8` to user's temp folder then execute it with `WinExec` 
 
@@ -469,11 +469,11 @@ e.exe
 
 > Q9: One of the malicious files was first submitted for analysis on VirusTotal at 2010-02-17 11:02:35 and has an MD5 hash ending with '78873f791'. Provide the full MD5 hash.
 
-![6b1b8df43acbb286cd26ce8f3cef429c.png](/_resources/6b1b8df43acbb286cd26ce8f3cef429c.png)
+![6b1b8df43acbb286cd26ce8f3cef429c.png](/resources/6b1b8df43acbb286cd26ce8f3cef429c.png)
 
 Remember `video.exe` that was served on Q3?, its filehash end with '78873f791'
 
-![8cfbdc0734b41bec9788f262e2cccbec.png](/_resources/8cfbdc0734b41bec9788f262e2cccbec.png)
+![8cfbdc0734b41bec9788f262e2cccbec.png](/resources/8cfbdc0734b41bec9788f262e2cccbec.png)
 
 And after we searched it on VirusTotal, we can also see that First Submission Date is also matched so there is no doubt that we got the right file
 
@@ -483,11 +483,11 @@ And after we searched it on VirusTotal, we can also see that First Submission Da
 
 > Q10: What is the name of the function that hosted the shellcode relevant to 'http://sploitme.com.cn/fg/load.php?e=3'?
 
-![0df840e029253378240db81be113435f.png](/_resources/0df840e029253378240db81be113435f.png)
+![0df840e029253378240db81be113435f.png](/resources/0df840e029253378240db81be113435f.png)
 
 After converting each shellcode then we will eventually found that url found in `shellcode` inside `aolwinamp` function matched the url we are looking for
 
-![ec96a135678bd694cb85900ccd541182.png](/_resources/ec96a135678bd694cb85900ccd541182.png)
+![ec96a135678bd694cb85900ccd541182.png](/resources/ec96a135678bd694cb85900ccd541182.png)
 
 ```
 aolwinamp
@@ -495,15 +495,15 @@ aolwinamp
 
 > Q11: Deobfuscate the JS at 'shop.honeynet.sg/catalog/' and provide the value of the 'click' parameter in the resulted URL.
 
-![d48296284650f1bed9230f51963b06ca.png](/_resources/d48296284650f1bed9230f51963b06ca.png)
+![d48296284650f1bed9230f51963b06ca.png](/resources/d48296284650f1bed9230f51963b06ca.png)
 
 Lets find relavant packet related to `shop.honeynet.sg/catalog/` then we can follow HTTP stream to find it script
 
-![3480c41f3af9a4c1e96dbbd8bb0ef151.png](/_resources/3480c41f3af9a4c1e96dbbd8bb0ef151.png)
+![3480c41f3af9a4c1e96dbbd8bb0ef151.png](/resources/3480c41f3af9a4c1e96dbbd8bb0ef151.png)
 
 ๋JS script would not be so obvious here so we can search for it and paste it somewhere else
 
-![0a4b99be8169f9ad0ecb4a273f4b9718.png](/_resources/0a4b99be8169f9ad0ecb4a273f4b9718.png)
+![0a4b99be8169f9ad0ecb4a273f4b9718.png](/resources/0a4b99be8169f9ad0ecb4a273f4b9718.png)
 
 After replacing `document.write` with `console.log`, we can see that it is an invisible iframe to load specific url and `click` parameter was assigned value on this url might trigger different payload / interaction that will be taken for each parameter
 
@@ -513,15 +513,15 @@ After replacing `document.write` with `console.log`, we can see that it is an in
 
 > Q12: Deobfuscate the JS at 'rapidshare.com.eyu32.ru/login.php' and provide the value of the 'click' parameter in the resulted URL.
 
-![b5310033495e820212d9f0aa6363693d.png](/_resources/b5310033495e820212d9f0aa6363693d.png)
+![b5310033495e820212d9f0aa6363693d.png](/resources/b5310033495e820212d9f0aa6363693d.png)
 
 We will repeat the same steps from the previous question to find an answer
 
-![29145fac60c3fa0603e306c89adf0a0c.png](/_resources/29145fac60c3fa0603e306c89adf0a0c.png)
+![29145fac60c3fa0603e306c89adf0a0c.png](/resources/29145fac60c3fa0603e306c89adf0a0c.png)
 
 This time look like we need one more step to convert this hex to ascii
 
-![299b0c8670825726229a7a7ab0575ed2.png](/_resources/299b0c8670825726229a7a7ab0575ed2.png)
+![299b0c8670825726229a7a7ab0575ed2.png](/resources/299b0c8670825726229a7a7ab0575ed2.png)
 
 But in the end, its an another invisible iframe here
 
@@ -531,11 +531,11 @@ But in the end, its an another invisible iframe here
 
 > Q13: What was the version of 'mingw-gcc' that compiled the malware?
 
-![53eab55928571d7de123f706211d8b0a.png](/_resources/53eab55928571d7de123f706211d8b0a.png)
+![53eab55928571d7de123f706211d8b0a.png](/resources/53eab55928571d7de123f706211d8b0a.png)
 
 There are 2 ways to solve this, first is to find where `video.exe` were sent and looking for `gcc` which eventually telling us it was compiled by mingw-gcc version 3.4.5 here
 
-![5c31f0e83b3f3a2d10afd4a595a92a1b.png](/_resources/5c31f0e83b3f3a2d10afd4a595a92a1b.png)
+![5c31f0e83b3f3a2d10afd4a595a92a1b.png](/resources/5c31f0e83b3f3a2d10afd4a595a92a1b.png)
 
 Or you can use `strings` on this malware directly to find it, its still the same answer 
 
@@ -545,10 +545,10 @@ Or you can use `strings` on this malware directly to find it, its still the same
 
 > Q14: The shellcode used a native function inside 'urlmon.dll' to download files from the internet to the compromised host. What is the name of the function?
 
-![b25a86a0dea643796cc0295d3d4f7dda.png](/_resources/b25a86a0dea643796cc0295d3d4f7dda.png)
+![b25a86a0dea643796cc0295d3d4f7dda.png](/resources/b25a86a0dea643796cc0295d3d4f7dda.png)
 ```
 URLDownloadToFile
 ```
 
-![f4d7676d704f3c1844155925fc32acf5.png](/_resources/f4d7676d704f3c1844155925fc32acf5.png)
+![f4d7676d704f3c1844155925fc32acf5.png](/resources/f4d7676d704f3c1844155925fc32acf5.png)
 * * *

@@ -5,7 +5,7 @@ Last Updated: 26/07/2024 07:20
 <div align=center>
 
 **Batch Downloader**
-![b4b7d7b12eed45db4de22cf920c819aa.png](/_resources/b4b7d7b12eed45db4de22cf920c819aa.png)
+![b4b7d7b12eed45db4de22cf920c819aa.png](/resources/b4b7d7b12eed45db4de22cf920c819aa.png)
 </div>
 A malicious batch file has been discovered that downloads and executes files associated with the Laplas Clipper malware. Analyze this batch file to understand its behavior and help us investigate its activities.
 
@@ -13,7 +13,7 @@ A malicious batch file has been discovered that downloads and executes files ass
 ## Start Investigation
 >What command is used to prevent the command echoing in the console?
 
-![c15e351d9d5b73efbdd8d12ca635b593.png](/_resources/c15e351d9d5b73efbdd8d12ca635b593.png)
+![c15e351d9d5b73efbdd8d12ca635b593.png](/resources/c15e351d9d5b73efbdd8d12ca635b593.png)
 
 We got windows batch script that will start by not output anything to the console with `@echo off` then 
 - it begins to use [bitsadmin](https://lolbas-project.github.io/lolbas/Binaries/Bitsadmin/) (LOLBIN) to download zip file from C2 server to Temp folder
@@ -66,7 +66,7 @@ On this challenge, we got a malicious Windows batch script to analyze and when i
 
 <div align=center>
 
-![25af82fbdd094e8393f7e31f3e416070.png](/_resources/25af82fbdd094e8393f7e31f3e416070.png)
+![25af82fbdd094e8393f7e31f3e416070.png](/resources/25af82fbdd094e8393f7e31f3e416070.png)
 </div>
 
 * * *
