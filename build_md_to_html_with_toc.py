@@ -37,11 +37,14 @@ def generate_main_toc(md_files):
         toc.append("<ul>")
         
         for f in sorted(folders[folder]):
-            name = f.stem.replace("_", " ").replace("-", " ")
-            relative = f.relative_to(SRC_DIR).with_suffix(".html")
-            # Fix path separators for web
-            relative_web = str(relative).replace("\\", "/")
-            toc.append(f'<li><a href="{relative_web}">{name}</a></li>')
+            # Use the original filename for display (cleaned up)
+            name = f.stem
+            
+            # Create the path: folder/filename.html (preserve exact structure)
+            # Convert to posix path for web URLs
+            relative_path = f.relative_to(SRC_DIR).with_suffix(".html").as_posix()
+            
+            toc.append(f'<li><a href="{relative_path}">{name}</a></li>')
         
         toc.append("</ul>")
     
@@ -49,8 +52,13 @@ def generate_main_toc(md_files):
 
 def md_to_html(md_path: Path, out_path: Path, back_to_index=True):
     """Convert a single Markdown file to HTML with styling."""
-    with md_path.open("r", encoding="utf-8") as f:
-        md_content = f.read()
+    try:
+        with md_path.open("r", encoding="utf-8") as f:
+            md_content = f.read()
+    except UnicodeDecodeError:
+        # Try with different encoding if UTF-8 fails
+        with md_path.open("r", encoding="latin-1") as f:
+            md_content = f.read()
 
     html_body = markdown2.markdown(md_content, extras=["fenced-code-blocks", "tables", "header-ids"])
     
@@ -60,17 +68,31 @@ def md_to_html(md_path: Path, out_path: Path, back_to_index=True):
     
     back_nav = f'<div style="margin-bottom: 2rem;"><a href="{back_link}">← Back to Index</a></div>' if back_to_index else ""
     
+    # Extract title from markdown (first # heading) or use filename
+    title = md_path.stem
+    lines = md_content.split('\n')
+    for line in lines:
+        if line.startswith('# '):
+            title = line.replace('# ', '').strip()
+            break
+    
     full_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{md_path.stem}</title>
+<title>{title}</title>
 <link rel="stylesheet" href="{GITHUB_CSS}">
 <style>
 body {{ max-width: 900px; margin: auto; padding: 2rem; }}
 a {{ color: #0969da; text-decoration: none; }}
 a:hover {{ text-decoration: underline; }}
+code {{ background: #f6f8fa; padding: 0.2em 0.4em; border-radius: 3px; }}
+pre {{ background: #f6f8fa; padding: 1rem; border-radius: 6px; overflow-x: auto; }}
+img {{ max-width: 100%; height: auto; }}
+table {{ border-collapse: collapse; width: 100%; margin: 1rem 0; }}
+th, td {{ border: 1px solid #d0d7de; padding: 0.5rem; text-align: left; }}
+th {{ background: #f6f8fa; }}
 </style>
 </head>
 <body class="markdown-body">
@@ -95,15 +117,18 @@ def create_index_html(toc_html: str):
 <style>
 body {{ max-width: 1000px; margin: auto; padding: 2rem; }}
 h1 {{ border-bottom: 2px solid #d0d7de; padding-bottom: 0.5rem; }}
-h2 {{ margin-top: 2rem; color: #0969da; }}
+h2 {{ margin-top: 2rem; color: #0969da; border-bottom: 1px solid #d0d7de; padding-bottom: 0.3rem; }}
 ul {{ list-style: none; padding-left: 0; }}
 li {{ padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0; }}
 a {{ color: #0969da; text-decoration: none; font-size: 1.1rem; }}
-a:hover {{ text-decoration: underline; color: #0550ae; }}
+a:hover {{ text-decoration: underline; color: #0550ae; background: #f6f8fa; padding: 0.2rem; }}
 </style>
 </head>
 <body class="markdown-body">
 {toc_html}
+<footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #d0d7de; color: #656d76; text-align: center;">
+<p>CTF Write-Ups Collection | Generated with ❤️</p>
+</footer>
 </body>
 </html>"""
     
@@ -119,11 +144,15 @@ def main():
     md_files = []
     for root, dirs, files in os.walk(SRC_DIR):
         # Skip build folder and .github
-        dirs[:] = [d for d in dirs if d not in ["build", ".github", ".git"]]
+        dirs[:] = [d for d in dirs if d not in ["build", ".github", ".git", "node_modules"]]
 
         for file in files:
             if file.endswith(".md") and file.lower() != "readme.md":
                 md_files.append(Path(root) / file)
+
+    if not md_files:
+        print("❌ No markdown files found!")
+        return
 
     print(f"Found {len(md_files)} Markdown files")
 
@@ -140,10 +169,14 @@ def main():
         rel_folder = md_file.parent.relative_to(SRC_DIR)
         build_folder = BUILD_DIR / rel_folder
 
-        # Output HTML path
+        # Output HTML path (same structure, same filename, just .html extension)
         out_file = build_folder / f"{md_file.stem}.html"
-        md_to_html(md_file, out_file)
-        print(f"✅ Converted: {md_file.relative_to(SRC_DIR)}")
+        
+        try:
+            md_to_html(md_file, out_file)
+            print(f"✅ Converted: {md_file.relative_to(SRC_DIR)}")
+        except Exception as e:
+            print(f"❌ Error converting {md_file}: {e}")
 
     print(f"\n✅ All Markdown files converted to HTML in '{BUILD_DIR}'")
     print(f"📁 Total files processed: {len(md_files)}")
