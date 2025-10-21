@@ -5,7 +5,7 @@ Last Updated: 05/06/2024 20:40
 <div align=center>
 
 **Http Basic Auth**
-![1ebadb060b33b33f4906f0640a7e9528.png](/resources/1ebadb060b33b33f4906f0640a7e9528.png)
+![1ebadb060b33b33f4906f0640a7e9528.png](../../_resources/1ebadb060b33b33f4906f0640a7e9528.png)
 </div>
 We receive a log indicating a possible attack, can you gather information from the .pcap file?
 
@@ -20,7 +20,7 @@ Note: pcap file found public resources.
 ```
 <div align=center>
 
-![be71793331ad1f36cf37e6845839a17b.png](/resources/be71793331ad1f36cf37e6845839a17b.png)
+![be71793331ad1f36cf37e6845839a17b.png](../../_resources/be71793331ad1f36cf37e6845839a17b.png)
 </div>
 
 > What is the server operating system?
@@ -29,7 +29,7 @@ FreeBSD
 ```
 <div align=center>
 
-![a8a4b774a6101ba125aa2cac6556064d.png](/resources/a8a4b774a6101ba125aa2cac6556064d.png)
+![a8a4b774a6101ba125aa2cac6556064d.png](../../_resources/a8a4b774a6101ba125aa2cac6556064d.png)
 </div>
 
 
@@ -54,8 +54,8 @@ webadmin
 ```
 <div align=center>
 
-![6746132e8475a700515a3c7427d37618.png](/resources/6746132e8475a700515a3c7427d37618.png)
-![1634775f864642d8ab79ee57e69b9048.png](/resources/1634775f864642d8ab79ee57e69b9048.png)
+![6746132e8475a700515a3c7427d37618.png](../../_resources/6746132e8475a700515a3c7427d37618.png)
+![1634775f864642d8ab79ee57e69b9048.png](../../_resources/1634775f864642d8ab79ee57e69b9048.png)
 </div>
 
 > What is the user password used for Basic Authentication?
@@ -70,7 +70,7 @@ There is a basic authentication happened during in this pcap file.
 
 <div align=center>
 
-![e4ccc3723ebe6783710a4517525081c6.png](/resources/e4ccc3723ebe6783710a4517525081c6.png)
+![e4ccc3723ebe6783710a4517525081c6.png](../../_resources/e4ccc3723ebe6783710a4517525081c6.png)
 Badge Acquired
 </div>
 

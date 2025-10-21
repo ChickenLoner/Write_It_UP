@@ -5,7 +5,7 @@ Last Updated: 16/01/2024 14:15
 <div align=center>
 
 **Shellshock Attack**
-![5b8815e97ea59e43289532d0cc7cfab2.png](/resources/5b8815e97ea59e43289532d0cc7cfab2.png)
+![5b8815e97ea59e43289532d0cc7cfab2.png](../../_resources/5b8815e97ea59e43289532d0cc7cfab2.png)
 </div>
 You must to find details of shellshock attacks
 
@@ -17,14 +17,14 @@ Note: pcap file found public resources.
 Let's open this pcap file in Wireshark
 <div align=center>
 
-![cd21034328076f37ea60a893ed755e16.png](/resources/cd21034328076f37ea60a893ed755e16.png)
+![cd21034328076f37ea60a893ed755e16.png](../../_resources/cd21034328076f37ea60a893ed755e16.png)
 At first sight, There were some SSH,TCP,HTTP and ICMP packets in this pcap file
 </div>
 
 I followed HTTP/TCP stream to find out about some basic server information
 <div align=center>
 
-![eb1a4ee4df8b41d3575ba742dbfa7a95.png](/resources/eb1a4ee4df8b41d3575ba742dbfa7a95.png)
+![eb1a4ee4df8b41d3575ba742dbfa7a95.png](../../_resources/eb1a4ee4df8b41d3575ba742dbfa7a95.png)
 And jackpot! We also found all the answers including payload that trying to exploit shellshock vulnerability.
 </div>
 
@@ -50,7 +50,7 @@ This pcap file captured a moment where system `10.246.50.2` tried to use shellsh
 
 <div align=center>
 
-![c963f0eee00291c29df25e42ab5e183a.png](/resources/c963f0eee00291c29df25e42ab5e183a.png)
+![c963f0eee00291c29df25e42ab5e183a.png](../../_resources/c963f0eee00291c29df25e42ab5e183a.png)
 Badge Acquired
 </div>
 

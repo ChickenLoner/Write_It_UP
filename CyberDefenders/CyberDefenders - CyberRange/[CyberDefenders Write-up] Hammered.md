@@ -17,7 +17,7 @@ This challenge takes you into the world of virtual systems and confusing log dat
 ## Questions
 > Q1: Which service did the attackers use to gain access to the system?
 
-![8f7bee49139857116707f9a250274353.png](/resources/8f7bee49139857116707f9a250274353.png)
+![8f7bee49139857116707f9a250274353.png](../../_resources/8f7bee49139857116707f9a250274353.png)
 
 I used `grep "Invalid" auth.log` first to determine if there were brute force attempts that were logged on authentication log and look like we have the answer right away since sshd is a service than handle SSH 
 
@@ -27,7 +27,7 @@ ssh
 
 > Q2: What is the operating system version of the targeted system? (one word)
 
-![4e691264afb9eb0d1063505c2234cc78.png](/resources/4e691264afb9eb0d1063505c2234cc78.png)
+![4e691264afb9eb0d1063505c2234cc78.png](../../_resources/4e691264afb9eb0d1063505c2234cc78.png)
 
 By print out content of `dmesg` file, we can determine which version of OS that generated these logs
 
@@ -39,15 +39,15 @@ By print out content of `dmesg` file, we can determine which version of OS that 
 
 From earlier we know that there are bruteforce attempt on SSH so after determined valid user then attackers will continue to bruteforce for password
 
-![ca2985aefb335deac246f23a9bc3e66e.png](/resources/ca2985aefb335deac246f23a9bc3e66e.png)
+![ca2985aefb335deac246f23a9bc3e66e.png](../../_resources/ca2985aefb335deac246f23a9bc3e66e.png)
 
 So I used `grep "Failed password for" auth.log` to find which user that got bruteforced and stand out
 
-![dccd343338bd58c7d953192258b8f1e2.png](/resources/dccd343338bd58c7d953192258b8f1e2.png)
+![dccd343338bd58c7d953192258b8f1e2.png](../../_resources/dccd343338bd58c7d953192258b8f1e2.png)
 
 Which is "root"
 
-![87238ea2b7986314b06d7897e39df903.png](/resources/87238ea2b7986314b06d7897e39df903.png)
+![87238ea2b7986314b06d7897e39df903.png](../../_resources/87238ea2b7986314b06d7897e39df903.png)
 
 I used `grep "Accepted password for" auth.log` to confirm that the IP address that bruteforced for root user was successful.
 
@@ -57,15 +57,15 @@ root
 
 > Q4: Consider that each unique IP represents a different attacker. How many attackers were able to get access to the system?
 
-![c677cfb60da0e191d2df9412a40d8128.png](/resources/c677cfb60da0e191d2df9412a40d8128.png)
+![c677cfb60da0e191d2df9412a40d8128.png](../../_resources/c677cfb60da0e191d2df9412a40d8128.png)
 
 First we need to get all IP addresses that have many occurrences authentication successfully as root with `grep "Accepted password for root" auth.log | awk '{for(i=1;i<=NF;i++) if ($i ~ /from/) print $(i+1)}' | sort | uniq > /tmp/ham/suclog`
 
-![db3af1e0c11b5ce7a95c98204339b60a.png](/resources/db3af1e0c11b5ce7a95c98204339b60a.png)
+![db3af1e0c11b5ce7a95c98204339b60a.png](../../_resources/db3af1e0c11b5ce7a95c98204339b60a.png)
 
 Then we will use `grep "authentication failure" auth.log | awk '{for(i=1;i<=NF;i++) if ($i ~ /rhost=/ && $i ~ /[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/) print $i}' | sed 's/rhost=//' | sort | uniq > /tmp/ham/faillogin` to get all IP addresses that were unsuccessful to authenticate.
 
-![5a101434c416bd1bf22f27a459b6373a.png](/resources/5a101434c416bd1bf22f27a459b6373a.png)
+![5a101434c416bd1bf22f27a459b6373a.png](../../_resources/5a101434c416bd1bf22f27a459b6373a.png)
 
 Then compare them with `comm -12 /tmp/ham/suclog /tmp/ham/faillogin > /tmp/ham/comm1` then we will have IP addresses that were successfully logged in as root but also have some authentication failure.
 
@@ -100,7 +100,7 @@ cat $RESULTS
 
 I asked ChatGPT to write me a bash script to count all number of authentication failure of each IP addresses we got earlier
 
-![e991980792a24a088b3f8ae994898191.png](/resources/e991980792a24a088b3f8ae994898191.png)
+![e991980792a24a088b3f8ae994898191.png](../../_resources/e991980792a24a088b3f8ae994898191.png)
 Then we're down to 6 IP addresses
 
 ```
@@ -109,7 +109,7 @@ Then we're down to 6 IP addresses
 
 > Q5: Which attacker's IP address successfully logged into the system the most number of times?
 
-![764167be4bfff9f05d281773b7fae0ac.png](/resources/764167be4bfff9f05d281773b7fae0ac.png)
+![764167be4bfff9f05d281773b7fae0ac.png](../../_resources/764167be4bfff9f05d281773b7fae0ac.png)
 
 We already got 6 IP addresses and we need to search on successfully logged in for each IP address
 
@@ -135,7 +135,7 @@ done < "$IP_LIST"
 
 So I told ChatGPT to write me another script to do them all at once
 
-![c343ae5099caaabce46d31ff9574c435.png](/resources/c343ae5099caaabce46d31ff9574c435.png)
+![c343ae5099caaabce46d31ff9574c435.png](../../_resources/c343ae5099caaabce46d31ff9574c435.png)
 
 Here is the result
 
@@ -145,7 +145,7 @@ Here is the result
 
 > Q6: How many requests were sent to the Apache Server?
 
-![798830ac2c8294a912f4083e5478da88.png](/resources/798830ac2c8294a912f4083e5478da88.png)
+![798830ac2c8294a912f4083e5478da88.png](../../_resources/798830ac2c8294a912f4083e5478da88.png)
 
 Each line on access log mean each request so we can use `wc -l www-access.log` to count and we will have number of all requests sent to Apache Server
 
@@ -155,7 +155,7 @@ Each line on access log mean each request so we can use `wc -l www-access.log` t
 
 > Q7: How many rules have been added to the firewall?
 
-![328b0ae57efe81d08ddab1899be2c276.png](/resources/328b0ae57efe81d08ddab1899be2c276.png)
+![328b0ae57efe81d08ddab1899be2c276.png](../../_resources/328b0ae57efe81d08ddab1899be2c276.png)
 
 iptables is the command-line tool to manage firewall rules on Linux and we can also used `grep "iptables" auth.log` to filter out all `iptables` commands there were executed  
 
@@ -167,7 +167,7 @@ iptables is the command-line tool to manage firewall rules on Linux and we can a
 
 dpkg log file records information about package installations, upgrades, and removals performed using `dpkg`.
 
-![d82c04239a77a15362b0a7913d77ae98.png](/resources/d82c04239a77a15362b0a7913d77ae98.png)
+![d82c04239a77a15362b0a7913d77ae98.png](../../_resources/d82c04239a77a15362b0a7913d77ae98.png)
 
 There are a lot to read so I used `grep "configure" dpkg.log` to search for something that related to scanning and I found nmap here so it has to be this one
 
@@ -177,7 +177,7 @@ nmap
 
 > Q9: When was the last login from the attacker with IP 219.150.161.20? Format: MM/DD/YYYY HH:MM:SS AM
 
-![f8ecc08b5e549b0458c6c66535857214.png](/resources/f8ecc08b5e549b0458c6c66535857214.png)
+![f8ecc08b5e549b0458c6c66535857214.png](../../_resources/f8ecc08b5e549b0458c6c66535857214.png)
 
 Lets use `grep "Accepted password" auth.log | grep "219.150.161.20"` to find all successful logged on from this IP address and pick the latest one to answer
 
@@ -187,11 +187,11 @@ Lets use `grep "Accepted password" auth.log | grep "219.150.161.20"` to find all
 
 > Q10: The database displayed two warning messages, provide the most important and dangerous one.
 
-![c949aae72d0a46a4ad1b2b1563d4d858.png](/resources/c949aae72d0a46a4ad1b2b1563d4d858.png)
+![c949aae72d0a46a4ad1b2b1563d4d858.png](../../_resources/c949aae72d0a46a4ad1b2b1563d4d858.png)
 
 First off, I used `grep "mysql" .` to find anything related to mysql database and I found that `daemon.log` has sevaral WARNING messages for mysql
 
-![3fa9f91b43653a273db0bea40e3cc6eb.png](/resources/3fa9f91b43653a273db0bea40e3cc6eb.png)
+![3fa9f91b43653a273db0bea40e3cc6eb.png](../../_resources/3fa9f91b43653a273db0bea40e3cc6eb.png)
 
 So next we can use `grep "mysql" daemon.log | grep "WARNING"` to filter for all warning messages from mysql
 
@@ -203,7 +203,7 @@ mysql.user contains 2 root accounts without password!
 
 > Q11: Multiple accounts were created on the target system. Which one was created on Apr 26 04:43:15?
 
-![8d8412e158e2a6b13bf9feafb32b52ae.png](/resources/8d8412e158e2a6b13bf9feafb32b52ae.png)
+![8d8412e158e2a6b13bf9feafb32b52ae.png](../../_resources/8d8412e158e2a6b13bf9feafb32b52ae.png)
 
 We will use `grep -i "useradd" auth.log` to find for all `useradd` command from authentication log and look like the timestamp to find which one was created at the same time as question's timestamp
 
@@ -213,7 +213,7 @@ wind3str0y
 
 > Q12: Few attackers were using a proxy to run their scans. What is the corresponding user-agent used by this proxy?
 
-![b0e9430bb3278db564391f27c12beda3.png](/resources/b0e9430bb3278db564391f27c12beda3.png)
+![b0e9430bb3278db564391f27c12beda3.png](../../_resources/b0e9430bb3278db564391f27c12beda3.png)
 
 Lets use `awk -F'"' '{print $6}' www-access.log | sort | uniq` to display all unique user-agent from `access.log` then we can see a special user-agent related to proxy scanner
 
@@ -221,5 +221,5 @@ Lets use `awk -F'"' '{print $6}' www-access.log | sort | uniq` to display all un
 pxyscand/2.1
 ```
 
-![2371c087e9a9892ba86858d3c1d81e16.png](/resources/2371c087e9a9892ba86858d3c1d81e16.png)
+![2371c087e9a9892ba86858d3c1d81e16.png](../../_resources/2371c087e9a9892ba86858d3c1d81e16.png)
 * * *

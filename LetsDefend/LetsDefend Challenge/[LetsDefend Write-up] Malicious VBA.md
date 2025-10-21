@@ -5,7 +5,7 @@ Last Updated: 05/06/2024 20:07
 <div align=center>
 
 **Malicious VBA**
-![a686d83413674b7ba6628728287f9f07.png](/resources/a686d83413674b7ba6628728287f9f07.png)
+![a686d83413674b7ba6628728287f9f07.png](../../_resources/a686d83413674b7ba6628728287f9f07.png)
 </div>
 
 One of the employees has received a suspicious document attached in the invoice email. They sent you the file to investigate. You managed to extract some strings from the VBA Macro document. Can you refer to CyberChef and decode the suspicious strings?
@@ -20,15 +20,15 @@ This challenge prepared by [@RussianPanda](https://www.linkedin.com/in/an-fam-86
 ## Start Investigation
 <div align=center>
 
-![b234f7db516574107f62c7bb0a629795.png](/resources/b234f7db516574107f62c7bb0a629795.png)
+![b234f7db516574107f62c7bb0a629795.png](../../_resources/b234f7db516574107f62c7bb0a629795.png)
 This file is obviously obfuscated.
-![7e33dbcad18bb62415ba8f0788ef44c9.png](/resources/7e33dbcad18bb62415ba8f0788ef44c9.png)
+![7e33dbcad18bb62415ba8f0788ef44c9.png](../../_resources/7e33dbcad18bb62415ba8f0788ef44c9.png)
 This function look like it tries to send requrest to a specific URL.
-![e2bdbced22ef8ce2d899ae738e3a328c.png](/resources/e2bdbced22ef8ce2d899ae738e3a328c.png)
+![e2bdbced22ef8ce2d899ae738e3a328c.png](../../_resources/e2bdbced22ef8ce2d899ae738e3a328c.png)
 And I was right. it also include payload name, method and user-agent.
-![f5657ad010926bdf1e62c7d7f3a43619.png](/resources/f5657ad010926bdf1e62c7d7f3a43619.png)
+![f5657ad010926bdf1e62c7d7f3a43619.png](../../_resources/f5657ad010926bdf1e62c7d7f3a43619.png)
 Move to the last function, it also contains a lot of string that hex-encoded.
-![6c56f18a4420e79588bfb96bc7c1a5c6.png](/resources/6c56f18a4420e79588bfb96bc7c1a5c6.png)
+![6c56f18a4420e79588bfb96bc7c1a5c6.png](../../_resources/6c56f18a4420e79588bfb96bc7c1a5c6.png)
 And it is a WMI namespace and class reference.
 </div>
 
@@ -69,7 +69,7 @@ This visual basic script once it executed, It will try to connect to a certain U
 
 <div align=center>
 
-![00873fa03ebea65517701a10f8bb743d.png](/resources/00873fa03ebea65517701a10f8bb743d.png)
+![00873fa03ebea65517701a10f8bb743d.png](../../_resources/00873fa03ebea65517701a10f8bb743d.png)
 Badge Acquired
 </div>
 

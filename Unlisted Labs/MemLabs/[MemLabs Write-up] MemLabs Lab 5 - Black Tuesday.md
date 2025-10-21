@@ -19,45 +19,45 @@ Also, he noticed his most loved application that he always used crashed every ti
 ***
 Almost done! We're at Lab 5 of MemLabs, lets contiue this journey to the end!
 
-![2728990d727d84774be62b817e430cc7.png](/resources/2728990d727d84774be62b817e430cc7.png)
+![2728990d727d84774be62b817e430cc7.png](../../_resources/2728990d727d84774be62b817e430cc7.png)
 
 Always start with `vol.py -f MemoryDump_Lab5.raw imageinfo` to determine suitable profile for this memory dump.
 
-![6945c4bd2f585e23aa377206ace5030d.png](/resources/6945c4bd2f585e23aa377206ace5030d.png)
+![6945c4bd2f585e23aa377206ace5030d.png](../../_resources/6945c4bd2f585e23aa377206ace5030d.png)
 
 Now after we got suitable profile, lets see how many processes that might pick up our investigation sense with `vol.py -f MemoryDump_Lab5.raw --profile=Win7SP1x64 pstree` which you can see that there are so many `NOTEPAD.exe` processes and 1 `WinRAR.exe` process that we may need to take a look.
 
-![3ecd9df1ab98dd32970bac1f21609b7c.png](/resources/3ecd9df1ab98dd32970bac1f21609b7c.png)
+![3ecd9df1ab98dd32970bac1f21609b7c.png](../../_resources/3ecd9df1ab98dd32970bac1f21609b7c.png)
 
 Then after using `vol.py -f MemoryDump_Lab5.raw --profile=Win7SP1x64 cmdline`, we can see this rar archive file that might contains a flag.
 
-![57729c4141dffe509bb2ad3938840e85.png](/resources/57729c4141dffe509bb2ad3938840e85.png)
+![57729c4141dffe509bb2ad3938840e85.png](../../_resources/57729c4141dffe509bb2ad3938840e85.png)
 
 So lets scan for offset with `vol.py -f MemoryDump_Lab5.raw --profile=Win7SP1x64 filescan > mem5_filescan.txt` then dump that file with `vol.py -f MemoryDump_Lab5.raw --profile=Win7SP1x64 dumpfiles -Q 0x000000003eed56f0 -D .` and lastly, rename it to its original name.
 
-![3bef0dd2bba4fe5ee92f04c6e05d1271.png](/resources/3bef0dd2bba4fe5ee92f04c6e05d1271.png)
+![3bef0dd2bba4fe5ee92f04c6e05d1271.png](../../_resources/3bef0dd2bba4fe5ee92f04c6e05d1271.png)
 
 But its password-protected as expect but we could still see that this archive file store stage 2 image which should be second flag of this lab and by now we could guess that we need first flag as a password for this archive.
 
-![4fe1658e3e919c6ab526004e320692ce.png](/resources/4fe1658e3e919c6ab526004e320692ce.png)
+![4fe1658e3e919c6ab526004e320692ce.png](../../_resources/4fe1658e3e919c6ab526004e320692ce.png)
 
 I tried to use many plugins to get some clues like `chromehistory`, `firefoxhistory` which got no luck but there is one plugin that actually give me anything that is `iehistory` and from this screenshot, you can see that strange bmp file was accessed on IE that was opened from  `explorer.exe` and it also matches challenge description.
 
-![d7f591c59c4f33382a7796668b393312.png](/resources/d7f591c59c4f33382a7796668b393312.png)
+![d7f591c59c4f33382a7796668b393312.png](../../_resources/d7f591c59c4f33382a7796668b393312.png)
 
 I tried decode it with base64 and turns out, It is the first flag!
 
-![Stage2.png](/resources/Stage2.png)
+![Stage2.png](../../_resources/Stage2.png)
 
 Now we can use first flag as a password to get second file inside rar archive we just dumped
 
 ## Bonus Flag
 
-![2f337aff160c0a1bf708065bfda24123.png](/resources/2f337aff160c0a1bf708065bfda24123.png)
+![2f337aff160c0a1bf708065bfda24123.png](../../_resources/2f337aff160c0a1bf708065bfda24123.png)
 
 But since there is one more flag, I could not let it end like this but I remembered that there are multiple `NOTEPAD.exe` when we scanned with `pstree` and `cmdline` plugin also gave us a hint that this notepad is not definitely windows native notepad since its in User's folder
 
-![5b47ab09f6903637a867b7c4225d27ca.png](/resources/5b47ab09f6903637a867b7c4225d27ca.png)
+![5b47ab09f6903637a867b7c4225d27ca.png](../../_resources/5b47ab09f6903637a867b7c4225d27ca.png)
 
 So I dumped that file and open it with IDA (Freeware btw) which lead to these weird strings push to stack and when I putted it together, turns out it is a flag and now we're done with Lab 5.
 
