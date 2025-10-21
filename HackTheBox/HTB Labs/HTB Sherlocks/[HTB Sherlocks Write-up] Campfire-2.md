@@ -3,7 +3,7 @@ Created: 28/06/2024 16:47
 Last Updated: 28/06/2024 17:33
 * * *
 
-![dcb96c3ad154a9cabbe67efeb2c35489.png](/resources/dcb96c3ad154a9cabbe67efeb2c35489.png)
+![dcb96c3ad154a9cabbe67efeb2c35489.png](/_resources/dcb96c3ad154a9cabbe67efeb2c35489.png)
 **Scenario:**
 Forela's Network is constantly under attack. The security system raised an alert about an old admin account requesting a ticket from KDC on a domain controller. Inventory shows that this user account is not used as of now so you are tasked to take a look at this. This may be an AsREP roasting attack as anyone can request any user's ticket which has preauthentication disabled.
 
@@ -26,7 +26,7 @@ So what is [ASREP Roasting](https://attack.mitre.org/techniques/T1558/004/) atta
 
 So we have to find event related to Kerberos Authentication Server and does not require pre-authentication
 
-![d6d5d900d5c655ceabf9dadf4d682277.png](/resources/d6d5d900d5c655ceabf9dadf4d682277.png)
+![d6d5d900d5c655ceabf9dadf4d682277.png](/_resources/d6d5d900d5c655ceabf9dadf4d682277.png)
 
 If we filtered for event id 4768 then we will come across this event which is totally suspicious in a lot of way 
 - First, It requested for encrypted ticket, so threat actor can crack the password later
@@ -34,7 +34,7 @@ If we filtered for event id 4768 then we will come across this event which is to
 
 So we have to find Kerberos authentication that happened after this timestamp to confirm that ASREP Roasting attack actually occurred
 
-![5488f78aaec7f520f7b5f9359daca78d.png](/resources/5488f78aaec7f520f7b5f9359daca78d.png)
+![5488f78aaec7f520f7b5f9359daca78d.png](/_resources/5488f78aaec7f520f7b5f9359daca78d.png)
 
 Which we can see that after another domain user was authenticated after quite some times which mean threat actor successfully cracked this password and legitimately authenticate as domain user.
 
@@ -62,5 +62,5 @@ S-1-5-21-3239415629-1862073780-2394361899-1601
 happy.grunwald
 ```
 
-![dbb7aba657c7b20640228a5dd80c5197.png](/resources/dbb7aba657c7b20640228a5dd80c5197.png)
+![dbb7aba657c7b20640228a5dd80c5197.png](/_resources/dbb7aba657c7b20640228a5dd80c5197.png)
 * * *

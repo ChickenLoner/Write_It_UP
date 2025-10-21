@@ -5,7 +5,7 @@ Last Updated: 05/06/2024 20:42
 <div align=center>
 
 **Excel 4.0 Macros**
-![3185e1ce2601d178dba5982049d570c7.png](/resources/3185e1ce2601d178dba5982049d570c7.png)
+![3185e1ce2601d178dba5982049d570c7.png](/_resources/3185e1ce2601d178dba5982049d570c7.png)
 </div>
 One of the employees has received a suspicious document attached in the email. When the e-mail flow is examined, it is seen that there is a suspicious Office file. Employees forward the email to the security team for analysis.
 
@@ -20,7 +20,7 @@ Malicious Office Document (Zip password: **infected**): [~~Download~~](https://f
 * Note : These files were used in [EventID 93 - SOC146 - Phishing Mail Detected - Excel 4.0 Macros](../../undefined), so you can use the analysis result from that alert on this challenge.
 ## Start Investigation
 There are 3 files that was extracted for this challenge.
-![2b03388de13dd27a7fd919ef0d9562d9.png](/resources/2b03388de13dd27a7fd919ef0d9562d9.png)
+![2b03388de13dd27a7fd919ef0d9562d9.png](/_resources/2b03388de13dd27a7fd919ef0d9562d9.png)
 
 Before getting into an investigation, we need to know what is Excel 4.0 Macro first, here i quoted from this [MalwareBytes Labs Blog](https://www.malwarebytes.com/blog/news/2022/01/microsoft-is-now-disabling-excel-4-0-macros-by-default)
 
@@ -33,16 +33,16 @@ But luckily I found this [blog](https://sneakymonkey.net/excel-4-0-macros-so-hot
 First I used [Future Record Triage](https://tria.ge/240129-e973taabe9/behavioral1) to examine the file directly and I found this.
 <div align=center>
 
-![7e79fb24b20a402a64ec7e08aebbf8d7.png](/resources/7e79fb24b20a402a64ec7e08aebbf8d7.png)
+![7e79fb24b20a402a64ec7e08aebbf8d7.png](/_resources/7e79fb24b20a402a64ec7e08aebbf8d7.png)
 `Auto_Open` was used here.
 
-![67841602cfa4d562a16393027cc72d50.png](/resources/67841602cfa4d562a16393027cc72d50.png)
+![67841602cfa4d562a16393027cc72d50.png](/_resources/67841602cfa4d562a16393027cc72d50.png)
 [regsvr32](https://lolbas-project.github.io/lolbas/Binaries/Regsvr32/) process were spawned to execute `iroto.dll` file
 
-![2179c9cac5c0754c34611128cff28e64.png](/resources/2179c9cac5c0754c34611128cff28e64.png)
+![2179c9cac5c0754c34611128cff28e64.png](/_resources/2179c9cac5c0754c34611128cff28e64.png)
 It contacted C2 server.
 
-![a9a90ed6cef6575820cb295ce621cc03.png](/resources/a9a90ed6cef6575820cb295ce621cc03.png)
+![a9a90ed6cef6575820cb295ce621cc03.png](/_resources/a9a90ed6cef6575820cb295ce621cc03.png)
 That C2 was to download these dll to use regsvr32 to execute as second payload.
 </div>
 
@@ -55,7 +55,7 @@ Error [deobfuscator.py:3195 process_file(**vars(args))]
 
 <div align=center>
 
-![86ccbef99e760a19aae7c84fbe978025.png](/resources/86ccbef99e760a19aae7c84fbe978025.png)
+![86ccbef99e760a19aae7c84fbe978025.png](/_resources/86ccbef99e760a19aae7c84fbe978025.png)
 The function that used at the start was auto_open and it was linked by absolute reference to `'Doc4'!$BA$7`
 </div>
 
@@ -63,7 +63,7 @@ And you can see those URLs to download dlls, and it was hidden so we can't see t
 
 <div align=center>
 
-![48f35ca516c741bf0a61eb04f467a9b6.png](/resources/48f35ca516c741bf0a61eb04f467a9b6.png)
+![48f35ca516c741bf0a61eb04f467a9b6.png](/_resources/48f35ca516c741bf0a61eb04f467a9b6.png)
 Here the EXEC formula to execute LOLBAS
 </div>
 
@@ -100,7 +100,7 @@ iroto.dll
 ```
 Amanda
 ```
-![05c4be109286fcaaf93e19b8807620a3.png](/resources/05c4be109286fcaaf93e19b8807620a3.png)
+![05c4be109286fcaaf93e19b8807620a3.png](/_resources/05c4be109286fcaaf93e19b8807620a3.png)
 
 * * *
 ## Summary
@@ -110,7 +110,7 @@ An XLS file was using Excel 4.0 Macro to download malicous dlls and executed the
 
 <div align=center>
 
-![6ba14573d0784a6d814aed7d4d750bea.png](/resources/6ba14573d0784a6d814aed7d4d750bea.png)
+![6ba14573d0784a6d814aed7d4d750bea.png](/_resources/6ba14573d0784a6d814aed7d4d750bea.png)
 Badge Acquired
 </div>
 

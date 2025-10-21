@@ -5,7 +5,7 @@ Last Updated: 25/01/2024 13:07
 <div align=center>
 
 **Disclose The Agent**
-![8d446a4e6126b56bfef10fdb927326f5.png](/resources/8d446a4e6126b56bfef10fdb927326f5.png)
+![8d446a4e6126b56bfef10fdb927326f5.png](/_resources/8d446a4e6126b56bfef10fdb927326f5.png)
 </div>
 
 We reached the data of an agent leaking information. You have to disclose the agent.
@@ -18,13 +18,13 @@ Note: pcap file found public resources.
 We got a pcap file to work with so let's roll!
 <div align=center>
 
-![cc2c7f945ee1a20251146602e2ea1e39.png](/resources/cc2c7f945ee1a20251146602e2ea1e39.png)
+![cc2c7f945ee1a20251146602e2ea1e39.png](/_resources/cc2c7f945ee1a20251146602e2ea1e39.png)
 First thing I checked is the Protocol Hierarchy Statistics and there are a lot of SMTP packets were captured and there are some of Syslog, NetBIOS, SMB, and ARP Protocol as well.
 
-![9805245ae370e1d087e0d37bfd2eb718.png](/resources/9805245ae370e1d087e0d37bfd2eb718.png)
+![9805245ae370e1d087e0d37bfd2eb718.png](/_resources/9805245ae370e1d087e0d37bfd2eb718.png)
 SMTP conversation caught my eyes right away when I examined this pcap file, I saw login credential and some emails.
 
-![0df3db051716c83d0a5a304a96da3c44.png](/resources/0df3db051716c83d0a5a304a96da3c44.png)
+![0df3db051716c83d0a5a304a96da3c44.png](/_resources/0df3db051716c83d0a5a304a96da3c44.png)
 Follow the TCP stream we can see the message of the email.
 </div>
 
@@ -35,19 +35,19 @@ And the recipient is `sec558@gmail.com`
 She's talking about Lunch, let's find out if there is another email were captured
 <div align=center>
 
-![c897fc0b68e247c939d3d02640c7dd1b.png](/resources/c897fc0b68e247c939d3d02640c7dd1b.png)
+![c897fc0b68e247c939d3d02640c7dd1b.png](/_resources/c897fc0b68e247c939d3d02640c7dd1b.png)
 There it is an email from Ann to `mistersecretx@aol.com`
 
-![33d0445f63ed898ef62bf6a204f404b6.png](/resources/33d0445f63ed898ef62bf6a204f404b6.png)
+![33d0445f63ed898ef62bf6a204f404b6.png](/_resources/33d0445f63ed898ef62bf6a204f404b6.png)
 Look like they're planning to go to a date, so this mistersecretx is the Ann's secret boyfriend.
 
-![3e2acc41473ea13f3f55925813168d12.png](/resources/3e2acc41473ea13f3f55925813168d12.png)
+![3e2acc41473ea13f3f55925813168d12.png](/_resources/3e2acc41473ea13f3f55925813168d12.png)
 An attachment was also sent with this email.
 
-![9caa35458cd3c0806ed46cb347a45532.png](/resources/9caa35458cd3c0806ed46cb347a45532.png)
+![9caa35458cd3c0806ed46cb347a45532.png](/_resources/9caa35458cd3c0806ed46cb347a45532.png)
 I used NetworkMiner to extract the attachment
 
-![55d90f8cac407e41468bfae243bbc76a.png](/resources/55d90f8cac407e41468bfae243bbc76a.png)
+![55d90f8cac407e41468bfae243bbc76a.png](/_resources/55d90f8cac407e41468bfae243bbc76a.png)
 An attachment is a picture of location they decided to meet up, It's in Mexico
 </div>
 
@@ -63,7 +63,7 @@ mistersecretx@aol.com
 
 <div align=center>
 
-![1c1864692c4ff2c5fcff820036c40c39.png](/resources/1c1864692c4ff2c5fcff820036c40c39.png)
+![1c1864692c4ff2c5fcff820036c40c39.png](/_resources/1c1864692c4ff2c5fcff820036c40c39.png)
 </div>
 
 ```
@@ -87,7 +87,7 @@ Mexico
 ```
 <div align=center>
 
-![6746acb89959d9efd9676755554f8aed.png](/resources/6746acb89959d9efd9676755554f8aed.png)
+![6746acb89959d9efd9676755554f8aed.png](/_resources/6746acb89959d9efd9676755554f8aed.png)
 </div>
 
 * * *

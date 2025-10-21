@@ -28,7 +28,7 @@ Other
 Look at the alert details, it clearly says Device Action is allowed so it still there on the endpoint even if I didn't see any process running
 <div align=center>
 
-![7f8c9c7816ce550e59459ebc7a0e7db1.png](/resources/7f8c9c7816ce550e59459ebc7a0e7db1.png)
+![7f8c9c7816ce550e59459ebc7a0e7db1.png](/_resources/7f8c9c7816ce550e59459ebc7a0e7db1.png)
 </div>
 
 ```
@@ -40,9 +40,9 @@ Not Quarantined
 Let's start by searching with hash in [VirusTotal](https://www.virustotal.com/gui/file/e8a091a84dd2ea7ee429135ff48e9f48f7787637ccb79f6c3eb42f34588bc684/detection)
 <div align=center>
 
-![3eb9ca965471f14f77eb877c4f433989.png](/resources/3eb9ca965471f14f77eb877c4f433989.png)
+![3eb9ca965471f14f77eb877c4f433989.png](/_resources/3eb9ca965471f14f77eb877c4f433989.png)
 **61** vendors flagged this file as malicious
-![3b3f7b2aba494ed59a0ec494a730667c.png](/resources/3b3f7b2aba494ed59a0ec494a730667c.png)
+![3b3f7b2aba494ed59a0ec494a730667c.png](/_resources/3b3f7b2aba494ed59a0ec494a730667c.png)
 Popular threat label: `ransomware.maze/deepscan`
 </div>
 
@@ -51,7 +51,7 @@ Now this is a hugh red flag right here, most of security vendors flagged this fi
 In **Behavior** tab, we can see how this ransomware doing it jobs with MITRE ATT&CK Tactics and Techniques
 <div align=center>
 
-![ea810f2a46338ba13e1c854ea41fb81c.png](/resources/ea810f2a46338ba13e1c854ea41fb81c.png)
+![ea810f2a46338ba13e1c854ea41fb81c.png](/_resources/ea810f2a46338ba13e1c854ea41fb81c.png)
 </div>
 
 We can see that this ransomware can
@@ -71,21 +71,21 @@ We can see that this ransomware can
 And there are a bunch of **HTTP POST requests** it tries to communicate to probably C2 servers
 <div align=center>
 
-![3ffeeb666d590bb396b158839e730600.png](/resources/3ffeeb666d590bb396b158839e730600.png)
+![3ffeeb666d590bb396b158839e730600.png](/_resources/3ffeeb666d590bb396b158839e730600.png)
 </div>
 
 Now let's investigate with [hybrid analysis](https://www.hybrid-analysis.com/sample/e8a091a84dd2ea7ee429135ff48e9f48f7787637ccb79f6c3eb42f34588bc684) and compare the result to VirusTotal so after that we can form a conclusion.
 
 <div align=center>
 
-![f9147e92cfcdcef09df71adb82d13475.png](/resources/f9147e92cfcdcef09df71adb82d13475.png)
+![f9147e92cfcdcef09df71adb82d13475.png](/_resources/f9147e92cfcdcef09df71adb82d13475.png)
 This file also flagged with Malicious with `Threat Score 100:100` but labeled as **Trojan.Generic**
 </div>
 
 In the **Incident Response** section, We can see additional information that we missed from VirusTotal result
 <div align=center>
 
-![a4568b1ed8398b95658c1d6fadbe4d48.png](/resources/a4568b1ed8398b95658c1d6fadbe4d48.png)
+![a4568b1ed8398b95658c1d6fadbe4d48.png](/_resources/a4568b1ed8398b95658c1d6fadbe4d48.png)
 </div>
 This file also deletes volumn snapshots, read active computer name and broadcast ARP request so it can spread to other system as well. 
 
@@ -98,7 +98,7 @@ Malicious
 
 <div align=center>
 
-![04a8cc63a97c185cfd5cb8da94c3623e.png](/resources/04a8cc63a97c185cfd5cb8da94c3623e.png)
+![04a8cc63a97c185cfd5cb8da94c3623e.png](/_resources/04a8cc63a97c185cfd5cb8da94c3623e.png)
 </div>
 
 In **Log Management**, We found that there is a communication between host and C2 server so i answered this question as 
@@ -110,7 +110,7 @@ Accessed
 
 <div align=center>
 
-![ee0a25a9c288fb3344c94c2c159a7150.png](/resources/ee0a25a9c288fb3344c94c2c159a7150.png)
+![ee0a25a9c288fb3344c94c2c159a7150.png](/_resources/ee0a25a9c288fb3344c94c2c159a7150.png)
 </div>
 
 ** *
@@ -118,7 +118,7 @@ Accessed
 
 <div align=center>
 
-![0353ab0472c2475c15613dd9857fdd03.png](/resources/0353ab0472c2475c15613dd9857fdd03.png)
+![0353ab0472c2475c15613dd9857fdd03.png](/_resources/0353ab0472c2475c15613dd9857fdd03.png)
 </div>
 
 ```
@@ -138,8 +138,8 @@ Host Containment is confirmed upon this investigation.
 ## Close Alert
 <div align=center>
 
-![b27b365e38b81119e5c80b36d5a1b9eb.png](/resources/b27b365e38b81119e5c80b36d5a1b9eb.png)
-![ae310cc69d4ff07be1999a297f253027.png](/resources/ae310cc69d4ff07be1999a297f253027.png)
+![b27b365e38b81119e5c80b36d5a1b9eb.png](/_resources/b27b365e38b81119e5c80b36d5a1b9eb.png)
+![ae310cc69d4ff07be1999a297f253027.png](/_resources/ae310cc69d4ff07be1999a297f253027.png)
 </div>
 
 * * *
