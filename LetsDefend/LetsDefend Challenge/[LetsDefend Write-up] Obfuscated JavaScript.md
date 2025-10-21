@@ -2,28 +2,28 @@
 Created: 24/03/2025 20:11
 Last Updated: 20/04/2025 19:29
 * * *
-![3647ce49b28d9c65730d254446ee55c8.png](../../_resources/3647ce49b28d9c65730d254446ee55c8.png)
+![3647ce49b28d9c65730d254446ee55c8.png](/resources/3647ce49b28d9c65730d254446ee55c8.png)
 Imagine you are a cybersecurity analyst at a mid-sized tech company. One morning, you receive multiple reports from employees that their web applications are behaving erratically. Upon investigation, you discover that the source code of several critical JavaScript files has been heavily obfuscated, making it difficult to understand and troubleshoot the code. This obfuscation includes the insertion of numerous misleading comments, variable renaming, and string encoding. Your task is to analyze the obfuscated JavaScript code, identify the obfuscation techniques used, and determine if any malicious code has been inserted.
 
 * * *
 ## Start Investigation
-![ef3b7c531b43e728efa05119118b5789.png](../../_resources/ef3b7c531b43e728efa05119118b5789.png)
+![ef3b7c531b43e728efa05119118b5789.png](/resources/ef3b7c531b43e728efa05119118b5789.png)
 
 As the name of this challenge, we have a single JavaScript file to analyze and find out what it will do upon execution.
 
-![e34fbe24b7edf00c3902e3f4aed50201.png](../../_resources/e34fbe24b7edf00c3902e3f4aed50201.png)
+![e34fbe24b7edf00c3902e3f4aed50201.png](/resources/e34fbe24b7edf00c3902e3f4aed50201.png)
 
 First thing we will notice upon opening this script, we can see the obfuscation technique that was used and its just simply spam random comments in the script to make this bloat and hard to find the actual code.
 
-![e7c21368253767650f0e9d8a1810962a.png](../../_resources/e7c21368253767650f0e9d8a1810962a.png)
+![e7c21368253767650f0e9d8a1810962a.png](/resources/e7c21368253767650f0e9d8a1810962a.png)
 
 So we can filter out all `//` (comments in JavaScript) to see what is left and what we got is some functions but look like the code is hiding itself within the comments as well.
 
-![2a05b664f7fe7d96d88a7ffa5b82af63.png](../../_resources/2a05b664f7fe7d96d88a7ffa5b82af63.png)
+![2a05b664f7fe7d96d88a7ffa5b82af63.png](/resources/2a05b664f7fe7d96d88a7ffa5b82af63.png)
 
 While manually cleaning then we can see that the actual code is actually hiding after `////////` so there should be a line that remove this string from the script and interpret the whole script again.
 
-![49c0ee31b0c4a6f8c29de66b07470765.png](../../_resources/49c0ee31b0c4a6f8c29de66b07470765.png)
+![49c0ee31b0c4a6f8c29de66b07470765.png](/resources/49c0ee31b0c4a6f8c29de66b07470765.png)
 
 If we grep only this string (`////////`) then we can see that there is one line that will replace the `////////` string with newline (`\n`) if it found as the first charactor
 
@@ -52,15 +52,15 @@ output_file = "cleaned_script.js"       # Output file path
 clean_script(input_file, output_file)
 ```
 
-![63dda74ea3cbea059dd84c13418e86bd.png](../../_resources/63dda74ea3cbea059dd84c13418e86bd.png)
+![63dda74ea3cbea059dd84c13418e86bd.png](/resources/63dda74ea3cbea059dd84c13418e86bd.png)
 
 Execute the script then we will get the cleaned javascript file ready to be analyzed 
 
-![c2b4fc98e1136c08ae651db4149be494.png](../../_resources/c2b4fc98e1136c08ae651db4149be494.png)
+![c2b4fc98e1136c08ae651db4149be494.png](/resources/c2b4fc98e1136c08ae651db4149be494.png)
 
 Lets start by the code that will get execute first (uncomment part), It will create an object to retrieve the name of this script and then read the content if found and remove the comment (`///////`) of the actual malicious code then create a new function from it and execute it
 
-![33738ffcbb85f0eb70707ce32a4fa396.png](../../_resources/33738ffcbb85f0eb70707ce32a4fa396.png)
+![33738ffcbb85f0eb70707ce32a4fa396.png](/resources/33738ffcbb85f0eb70707ce32a4fa396.png)
 
 Now we can remove the comment to make it easier to read, and here is the flow of the script
 1. It creates wscript network object (Q1), WMI object (Q2) and initiate value for attempt variable (Q3), connection status and drive letter.
@@ -119,7 +119,7 @@ On this challenge, we analyzed obfuscated javascript sample that hide the actual
 
 <div align=center>
 
-![fa8a793e058e57c1c5e6df083f769509.png](../../_resources/fa8a793e058e57c1c5e6df083f769509.png)
+![fa8a793e058e57c1c5e6df083f769509.png](/resources/fa8a793e058e57c1c5e6df083f769509.png)
 https://app.letsdefend.io/my-rewards/detail/2065a4517b5749f984a7c8e06cbeebdf
 </div>
 
