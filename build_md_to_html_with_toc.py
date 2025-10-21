@@ -1,5 +1,6 @@
 import os
 import markdown2
+import shutil
 from pathlib import Path
 
 # Source folder (repo root)
@@ -61,6 +62,25 @@ def md_to_html(md_path: Path, out_path: Path, back_to_index=True):
             md_content = f.read()
 
     html_body = markdown2.markdown(md_content, extras=["fenced-code-blocks", "tables", "header-ids"])
+    
+    # Fix absolute image paths to be relative from the HTML file location
+    # Calculate depth to go back to root
+    depth = len(md_path.parent.relative_to(SRC_DIR).parts)
+    root_prefix = "../" * depth if depth > 0 else "./"
+    
+    # Replace absolute paths like /resources/image.png with ../../resources/image.png
+    import re
+    html_body = re.sub(
+        r'src="/resources/',
+        f'src="{root_prefix}resources/',
+        html_body
+    )
+    html_body = re.sub(
+        r'src="/([^"]*\.(?:png|jpg|jpeg|gif|svg|webp))"',
+        rf'src="{root_prefix}\1"',
+        html_body,
+        flags=re.IGNORECASE
+    )
     
     # Calculate relative path back to index
     depth = len(md_path.parent.relative_to(SRC_DIR).parts)
@@ -139,6 +159,15 @@ a:hover {{ text-decoration: underline; color: #0550ae; background: #f6f8fa; padd
 def main():
     # Create build directory
     ensure_build_path(BUILD_DIR)
+    
+    # Copy resources folder to build directory if it exists
+    resources_src = SRC_DIR / "resources"
+    resources_dst = BUILD_DIR / "resources"
+    if resources_src.exists():
+        if resources_dst.exists():
+            shutil.rmtree(resources_dst)
+        shutil.copytree(resources_src, resources_dst)
+        print(f"✅ Copied resources folder to build directory")
     
     # Walk through the repo and find all .md files (excluding .github and build)
     md_files = []
