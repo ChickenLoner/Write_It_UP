@@ -5,15 +5,16 @@ on:
     branches: [main]
 
 permissions:
-  contents: write
+  contents: read
   pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout the repository
+      # 1. Checkout your main branch
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -28,30 +29,19 @@ jobs:
         run: pip install markdown2
 
       # 4. Build HTML from Markdown
-      - name: Build HTML from Markdown
+      - name: Convert Markdown to HTML
         run: python build_md_to_html_with_toc.py
 
-      # 5. Deploy to gh-pages branch
+      # 5. Upload generated HTML folder as artifact
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: build  # this folder is created by your Python script
+
+  deploy:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      # Deploy artifact to GitHub Pages
       - name: Deploy to GitHub Pages
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # Configure git
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-          # Clone gh-pages branch (or create if missing)
-          git clone --branch gh-pages https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY} gh-pages || \
-            git clone https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY} gh-pages
-          
-          # Clean old files
-          rm -rf gh-pages/*
-
-          # Copy new build
-          cp -r build/* gh-pages/
-
-          # Commit and push
-          cd gh-pages
-          git add .
-          git commit -m "Deploy site from workflow" || echo "No changes to commit"
-          git push origin gh-pages
+        uses: actions/deploy-pages@v4
