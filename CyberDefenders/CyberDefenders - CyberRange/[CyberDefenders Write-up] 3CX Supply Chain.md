@@ -17,7 +17,7 @@ As the threat intelligence analyst, it's your responsibility to examine this pos
 ## Questions
 >Q1: Understanding the scope of the attack and identifying which versions exhibit malicious behavior is crucial for making informed decisions if these compromised versions are present in the organization. How many versions of 3CX running on Windows have been flagged as malware?
 
-![4165c170490bc3315deb83177da34dd4.png](/resources/4165c170490bc3315deb83177da34dd4-2.png)
+![4165c170490bc3315deb83177da34dd4.png](https://github.com/ChickenLoner/Write_It_UP/blob/150b7d20831bfd538163f1c7cad82fdd85dfa3b2/resources/4165c170490bc3315deb83177da34dd4-2.png)
 I did some research on this Supply Chain compromised and there are a lot of news, blogs, articles were made about this so pick one of them and you should be able to answer this question correctly (this image was taken from an article on [The Hacker News](https://thehackernews.com/2023/03/3cx-supply-chain-attack-heres-what-we.html))
 ```
 2
