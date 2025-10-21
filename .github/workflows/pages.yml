@@ -14,20 +14,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Setup Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
 
+      # Install dependencies
       - name: Install dependencies
         run: pip install markdown2
 
+      # Build HTML from Markdown
       - name: Build HTML from Markdown
         run: python build_md_to_html_with_toc.py
 
+      # Upload Pages artifact (for deployment)
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v1
         with:
@@ -36,6 +41,8 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+
     steps:
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
