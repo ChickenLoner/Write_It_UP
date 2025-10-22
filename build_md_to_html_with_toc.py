@@ -132,7 +132,12 @@ a {{ color: #0969da; text-decoration: none; }}
 a:hover {{ text-decoration: underline; }}
 code {{ background: #f6f8fa; padding: 0.2em 0.4em; border-radius: 3px; }}
 pre {{ background: #f6f8fa; padding: 1rem; border-radius: 6px; overflow-x: auto; }}
-img {{ max-width: 100%; height: auto; }}
+img {{ 
+    max-width: 100%; 
+    height: auto; 
+    display: block; 
+    margin: 1rem auto;
+}}
 table {{ border-collapse: collapse; width: 100%; margin: 1rem 0; }}
 th, td {{ border: 1px solid #d0d7de; padding: 0.5rem; text-align: left; }}
 th {{ background: #f6f8fa; }}
