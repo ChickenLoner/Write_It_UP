@@ -1,4 +1,4 @@
-# SEC Playground Bloody Xmas2024 CTF - [Incident & Rev - Wowza]
+# SECPlayground Bloody Xmas2024 CTF - [Incident & Rev - Wowza]
 [toc]
 ***
 ![2849d1b54a7607881c6a9fb1bf98e0c4.png](/resources/2849d1b54a7607881c6a9fb1bf98e0c4.png)
