@@ -41,7 +41,7 @@ def generate_main_toc(md_files):
         toc.append(f"<h2>{folder_name}</h2>")
         
         # Add collapsible section for folders with more than 10 files
-        if file_count > 5:
+        if file_count > 10:
             toc.append("<details open>")
             toc.append(f'<summary style="cursor: pointer; font-size: 1rem; color: #656d76; margin-bottom: 1rem;">📝 {file_count} write-ups (click to collapse)</summary>')
         else:
@@ -62,7 +62,7 @@ def generate_main_toc(md_files):
         toc.append("</ul>")
         
         # Close details tag if opened
-        if file_count > 5:
+        if file_count > 10:
             toc.append("</details>")
     
     return "\n".join(toc)
@@ -120,7 +120,14 @@ def md_to_html(md_path: Path, out_path: Path, back_to_index=True):
 <title>{title}</title>
 <link rel="stylesheet" href="{GITHUB_CSS}">
 <style>
-body {{ max-width: 900px; margin: auto; padding: 2rem; }}
+body {{ 
+    max-width: 900px; 
+    margin: 0 auto; 
+    padding: 2rem; 
+}}
+.markdown-body {{
+    margin: 0 auto;
+}}
 a {{ color: #0969da; text-decoration: none; }}
 a:hover {{ text-decoration: underline; }}
 code {{ background: #f6f8fa; padding: 0.2em 0.4em; border-radius: 3px; }}
@@ -151,7 +158,14 @@ def create_index_html(toc_html: str):
 <title>Chicken0248 Write-Ups Collection</title>
 <link rel="stylesheet" href="{GITHUB_CSS}">
 <style>
-body {{ max-width: 1000px; margin: auto; padding: 2rem; }}
+body {{ 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 2rem; 
+}}
+.markdown-body {{
+    margin: 0 auto;
+}}
 h1 {{ border-bottom: 2px solid #d0d7de; padding-bottom: 0.5rem; margin-bottom: 1rem; }}
 h2 {{ 
     margin-top: 2.5rem; 
