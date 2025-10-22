@@ -98,6 +98,19 @@ def md_to_html(md_path: Path, out_path: Path, back_to_index=True):
         flags=re.IGNORECASE
     )
     
+    # Fix relative paths like ../../../../_resources/ to point to /resources/
+    # This handles Joplin exports that weren't fixed yet
+    html_body = re.sub(
+        r'src="(\.\./)+_resources/',
+        f'src="{root_prefix}resources/',
+        html_body
+    )
+    html_body = re.sub(
+        r'src="_resources/',
+        f'src="{root_prefix}resources/',
+        html_body
+    )
+    
     # Calculate relative path back to index
     depth = len(md_path.parent.relative_to(SRC_DIR).parts)
     back_link = "../" * depth + "index.html" if depth > 0 else "index.html"
@@ -135,8 +148,19 @@ pre {{ background: #f6f8fa; padding: 1rem; border-radius: 6px; overflow-x: auto;
 img {{ 
     max-width: 100%; 
     height: auto; 
-    display: block; 
-    margin: 1rem auto;
+    display: block !important; 
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}}
+p:has(> img:only-child) {{
+    text-align: center;
+}}
+p img {{
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }}
 table {{ border-collapse: collapse; width: 100%; margin: 1rem 0; }}
 th, td {{ border: 1px solid #d0d7de; padding: 0.5rem; text-align: left; }}
@@ -215,6 +239,16 @@ details summary:hover {{
 }}
 details[open] summary {{
     margin-bottom: 0.5rem;
+}}
+img {{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+}}
+p img {{
+    display: block;
+    margin: 1rem auto;
 }}
 footer {{
     margin-top: 3rem; 
