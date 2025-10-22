@@ -8,7 +8,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 220
+**Total Write-ups**: 246
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
@@ -226,6 +226,9 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ### 📁 Security Blue Team → Blue Team Labs Online → BTLO - Investigations
 
+<details>
+<summary>📝 10 write-ups (click to expand)</summary>
+
 - [[BTLO Write-up] Aspen](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Aspen.md)
 - [[BTLO Write-up] Deep Freeze](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Deep%20Freeze.md)
 - [[BTLO Write-up] Haunted](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Haunted.md)
@@ -237,20 +240,53 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[BTLO Write-up] Typhon](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Typhon.md)
 - [[Blue Team Labs Online Write-up] Countdown](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBlue%20Team%20Labs%20Online%20Write-up%5D%20Countdown.md)
 
-### 📁 TryHackMe → THM CTF
+</details>
 
-- [[THM Write-up] Block](TryHackMe/THM%20CTF/%5BTHM%20Write-up%5D%20Block.md)
-- [[THM Write-up] Carnage](TryHackMe/THM%20CTF/%5BTHM%20Write-up%5D%20Carnage.md)
-- [[THM Write-up] Disk Analysis & Autopsy](TryHackMe/THM%20CTF/%5BTHM%20Write-up%5D%20Disk%20Analysis%20%26%20Autopsy.md)
-- [[THM Write-up] Juicy Details](TryHackMe/THM%20CTF/%5BTHM%20Write-up%5D%20Juicy%20Details.md)
-- [[THM Write-up] Memory Forensics](TryHackMe/THM%20CTF/%5BTHM%20Write-up%5D%20Memory%20Forensics.md)
-- [[THM Write-up] REvil Corp](TryHackMe/THM%20CTF/%5BTHM%20Write-up%5D%20REvil%20Corp.md)
+### 📁 TryHackMe → THM Blue Teaming
 
-### 📁 TryHackMe → THM Walkthrough
+<details>
+<summary>📝 33 write-ups (click to expand)</summary>
 
-- [[THM Write-up] APIWizards Breach](TryHackMe/THM%20Walkthrough/%5BTHM%20Write-up%5D%20APIWizards%20Breach.md)
+- [[THM Write-up] APIWizards Breach](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20APIWizards%20Breach.md)
+- [[THM Write-up] Benign](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Benign.md)
+- [[THM Write-up] Blizzard](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Blizzard.md)
+- [[THM Write-up] Block](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Block.md)
+- [[THM Write-up] Boogeyman 1](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Boogeyman%201.md)
+- [[THM Write-up] Boogeyman 2](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Boogeyman%202.md)
+- [[THM Write-up] Boogeyman 3](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Boogeyman%203.md)
+- [[THM Write-up] Carnage](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Carnage.md)
+- [[THM Write-up] Dead End_](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Dead%20End_.md)
+- [[THM Write-up] Disgruntled](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Disgruntled.md)
+- [[THM Write-up] Disk Analysis & Autopsy](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Disk%20Analysis%20%26%20Autopsy.md)
+- [[THM Write-up] DiskFiltration](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20DiskFiltration.md)
+- [[THM Write-up] Diskrupt](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Diskrupt.md)
+- [[THM Write-up] ExfilNode](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20ExfilNode.md)
+- [[THM Write-up] Hunt Me I Payment Collectors](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Hunt%20Me%20I%20Payment%20Collectors.md)
+- [[THM Write-up] Investigating with Splunk](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Investigating%20with%20Splunk.md)
+- [[THM Write-up] IronShade](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20IronShade.md)
+- [[THM Write-up] ItsyBitsy](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20ItsyBitsy.md)
+- [[THM Write-up] Juicy Details](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Juicy%20Details.md)
+- [[THM Write-up] Memory Forensics](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Memory%20Forensics.md)
+- [[THM Write-up] New Hire Old Artifacts](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20New%20Hire%20Old%20Artifacts.md)
+- [[THM Write-up] PS Eclipse](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20PS%20Eclipse.md)
+- [[THM Write-up] ParrotPost Phishing Analysis](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20ParrotPost%20Phishing%20Analysis.md)
+- [[THM Write-up] Phishing Analysis Tools (Case 1-3)](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Phishing%20Analysis%20Tools%20%28Case%201-3%29.md)
+- [[THM Write-up] REvil Corp](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20REvil%20Corp.md)
+- [[THM Write-up] Retracted](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Retracted.md)
+- [[THM Write-up] Secret Recipe](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Secret%20Recipe.md)
+- [[THM Write-up] Slingshot](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Slingshot.md)
+- [[THM Write-up] Snapped Phish-ing Line](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Snapped%20Phish-ing%20Line.md)
+- [[THM Write-up] Tardigrade](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Tardigrade.md)
+- [[THM Write-up] Tempest](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Tempest.md)
+- [[THM Write-up] The Greenholt Phish](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20The%20Greenholt%20Phish.md)
+- [[THM Write-up] Unattended](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Unattended.md)
+
+</details>
 
 ### 📁 Unlisted Labs
+
+<details>
+<summary>📝 10 write-ups (click to expand)</summary>
 
 - [CyGenixCTF Write-up](Unlisted%20Labs/CyGenixCTF%20Write-up.md)
 - [Cyber Range Thailand 2024 (Qualifier)](Unlisted%20Labs/Cyber%20Range%20Thailand%202024%20%28Qualifier%29.md)
@@ -263,6 +299,8 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [THCTT2024 - Reverse_Crypto_Programming - MaAowHa](Unlisted%20Labs/THCTT2024%20-%20Reverse_Crypto_Programming%20-%20MaAowHa.md)
 - [n00bz CTF 2024 Write-up (ByTheW4y Team)](Unlisted%20Labs/n00bz%20CTF%202024%20Write-up%20%28ByTheW4y%20Team%29.md)
 
+</details>
+
 ### 📁 Unlisted Labs → Level Effect Cyber Defense CTF
 
 - [Level Effect Cyber Defense CTF - CTI Challenges](Unlisted%20Labs/Level%20Effect%20Cyber%20Defense%20CTF/Level%20Effect%20Cyber%20Defense%20CTF%20-%20CTI%20Challenges.md)
@@ -271,12 +309,17 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ### 📁 Unlisted Labs → MemLabs
 
+<details>
+<summary>📝 6 write-ups (click to expand)</summary>
+
 - [[MemLabs Write-up] MemLabs Lab 1 - Beginner_s Luck](Unlisted%20Labs/MemLabs/%5BMemLabs%20Write-up%5D%20MemLabs%20Lab%201%20-%20Beginner_s%20Luck.md)
 - [[MemLabs Write-up] MemLabs Lab 2 - A New World](Unlisted%20Labs/MemLabs/%5BMemLabs%20Write-up%5D%20MemLabs%20Lab%202%20-%20A%20New%20World.md)
 - [[MemLabs Write-up] MemLabs Lab 3 - The Evil_s Den](Unlisted%20Labs/MemLabs/%5BMemLabs%20Write-up%5D%20MemLabs%20Lab%203%20-%20The%20Evil_s%20Den.md)
 - [[MemLabs Write-up] MemLabs Lab 4 - Obsession](Unlisted%20Labs/MemLabs/%5BMemLabs%20Write-up%5D%20MemLabs%20Lab%204%20-%20Obsession.md)
 - [[MemLabs Write-up] MemLabs Lab 5 - Black Tuesday](Unlisted%20Labs/MemLabs/%5BMemLabs%20Write-up%5D%20MemLabs%20Lab%205%20-%20Black%20Tuesday.md)
 - [[MemLabs Write-up] MemLabs Lab 6 - The Reckoning](Unlisted%20Labs/MemLabs/%5BMemLabs%20Write-up%5D%20MemLabs%20Lab%206%20-%20The%20Reckoning.md)
+
+</details>
 
 ---
 
