@@ -41,7 +41,7 @@ def generate_main_toc(md_files):
         toc.append(f"<h2>{folder_name}</h2>")
         
         # Add collapsible section for folders with more than 10 files
-        if file_count > 10:
+        if file_count > 5:
             toc.append("<details open>")
             toc.append(f'<summary style="cursor: pointer; font-size: 1rem; color: #656d76; margin-bottom: 1rem;">📝 {file_count} write-ups (click to collapse)</summary>')
         else:
@@ -62,7 +62,7 @@ def generate_main_toc(md_files):
         toc.append("</ul>")
         
         # Close details tag if opened
-        if file_count > 10:
+        if file_count > 5:
             toc.append("</details>")
     
     return "\n".join(toc)
