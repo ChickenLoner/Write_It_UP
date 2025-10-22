@@ -1,7 +1,12 @@
 # [TryHackMe - Boogeyman 1](https://tryhackme.com/room/boogeyman1)
 ![d87e30439112b8241af6c4706df502c4.png](/resources/d87e30439112b8241af6c4706df502c4.png)
 ***
-[toc]
+## Table of Contents
+
+- [[Email Analysis] Look at that headers!](#email-analysis-look-at-that-headers)
+- [[Endpoint Security] Are you sure that’s an invoice?](#endpoint-security-are-you-sure-thats-an-invoice)
+- [[Network Traffic Analysis] They got us. Call the bank immediately!](#network-traffic-analysis-they-got-us-call-the-bank-immediately)
+
 ***
 ## [Email Analysis] Look at that headers!
 **The Boogeyman is here!**

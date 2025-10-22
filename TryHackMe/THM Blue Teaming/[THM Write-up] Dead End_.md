@@ -1,7 +1,11 @@
 # [TryHackMe - Dead End?](https://tryhackme.com/room/deadend)
 ![75158528f017d3840c84ca61a3c248ed.png](/resources/75158528f017d3840c84ca61a3c248ed.png)
 ***
-[toc]
+## Table of Contents
+
+- [Memory](#memory)
+- [Disk](#disk)
+
 ***
 ## Memory
 An in-depth analysis of specific endpoints is reserved for those you're certain to have been compromised. It is usually done to understand how specific adversary tools or malwares work on the endpoint level; the lessons learned here are applied to the rest of the incident.

@@ -1,7 +1,14 @@
 # [TryHackMe - Disgruntled](https://tryhackme.com/room/disgruntled)
 ![17bf632054e2a09eb9bca1918230589d.png](/resources/17bf632054e2a09eb9bca1918230589d.png)
 ***
-[toc]
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Nothing suspicious... So far](#nothing-suspicious-so-far)
+- [Let’s see if you did anything bad](#lets-see-if-you-did-anything-bad)
+- [Bomb has been planted. But when and where?](#bomb-has-been-planted-but-when-and-where)
+- [Following the fuse](#following-the-fuse)
+
 ***
 ## Introduction
 **Hey, kid! Good, you’re here!**

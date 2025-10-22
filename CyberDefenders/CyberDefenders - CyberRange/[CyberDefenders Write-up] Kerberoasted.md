@@ -1,5 +1,10 @@
 # [CyberDefenders - Kerberoasted](https://cyberdefenders.org/blueteam-ctf-challenges/kerberoasted/)
-[toc]
+## Table of Contents
+
+- [Scenario](#scenario)
+- [Questions](#questions)
+- [Rabbit Hole Digging (WMI Persistence Commands)](#rabbit-hole-digging-wmi-persistence-commands)
+
 * * *
 ## Scenario
 As a diligent cyber threat hunter, your investigation begins with a hypothesis: 'Recent trends suggest an upsurge in Kerberoasting attacks within the industry. Could your organization be a potential target for this attack technique?' This hypothesis lays the foundation for your comprehensive investigation, starting with an in-depth analysis of the domain controller logs to detect and mitigate any potential threats to the security landscape.

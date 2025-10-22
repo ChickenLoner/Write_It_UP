@@ -1,5 +1,10 @@
 # [CyberDefenders - GoldenSpray](https://cyberdefenders.org/blueteam-ctf-challenges/goldenspray/)
-[toc]
+## Table of Contents
+
+  - [Scenario](#scenario)
+- [Questions](#questions)
+- [Rabbit Hole digging with IOCs!](#rabbit-hole-digging-with-iocs)
+
 * * *
 ### Scenario
 As a cybersecurity analyst at SecureTech Industries, you've been alerted to unusual login attempts and unauthorized access within the company's network. Initial indicators suggest a potential brute-force attack on user accounts. Your mission is to analyze the provided log data to trace the attack's progression, determine the scope of the breach, and the attacker's TTPs.

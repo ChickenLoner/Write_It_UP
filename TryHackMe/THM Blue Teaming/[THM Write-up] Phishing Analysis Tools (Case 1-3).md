@@ -1,7 +1,12 @@
 # [TryHackMe - Phishing Analysis Tools (Phishing Case 1-3)](https://tryhackme.com/room/phishingemails3tryoe)
 ![77bebe6bbc08d4557788a76f4a5645cd.png](/resources/77bebe6bbc08d4557788a76f4a5645cd.png)
 ***
-[toc]
+## Table of Contents
+
+- [Phishing Case 1](#phishing-case-1)
+- [Phishing Case 2](#phishing-case-2)
+- [Phishing Case 3](#phishing-case-3)
+
 ***
 ## Phishing Case 1
 **Scenario**: You are a Level 1 SOC Analyst. Several suspicious emails have been forwarded to you from other coworkers. You must obtain details from each email for your team to implement the appropriate rules to prevent colleagues from receiving additional spam/phishing emails. 

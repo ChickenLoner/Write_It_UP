@@ -1,5 +1,10 @@
 # [CyberDefenders - MeteorHit](https://cyberdefenders.org/blueteam-ctf-challenges/meteorhit/)
-[toc]
+## Table of Contents
+
+- [Scenario](#scenario)
+- [Questions](#questions)
+- [Lab Inspiration](#lab-inspiration)
+
 * * *
 ## Scenario
 A critical network infrastructure has encountered significant operational disruptions, leading to system outages and compromised machines. Public message boards displayed politically charged messages, and several systems were wiped, causing widespread service failures. Initial investigations reveal that attackers compromised the Active Directory (AD) system and deployed wiper malware across multiple machines.

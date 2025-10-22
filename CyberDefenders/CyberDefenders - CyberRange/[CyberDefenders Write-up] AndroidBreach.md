@@ -1,5 +1,9 @@
 # [CyberDefenders - AndroidBreach](https://cyberdefenders.org/blueteam-ctf-challenges/androidbreach/)
-[toc]
+## Table of Contents
+
+- [Scenario](#scenario)
+- [Questions](#questions)
+
 * * *
 ## Scenario
 At BrightWave Company, a data breach occurred due to an employee's lack of security awareness, compromising his credentials. The attacker used these credentials to gain unauthorized access to the system and exfiltrate sensitive data. During the investigation, the employee revealed two critical points: first, he stores all his credentials in the notes app on his phone, and second, he frequently downloads APK files from untrusted sources. Your task is to analyze the provided Android dump, identify the malware downloaded, and determine its exact functionality.

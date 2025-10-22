@@ -1,5 +1,27 @@
 # SECPlayground Bloody Xmas2024 CTF - [Incident & Rev - Wowza]
-[toc]
+## Table of Contents
+
+- [Incident#1(All 8 solved)](#incident1all-8-solved)
+  - [Phantom of the Network#2](#phantom-of-the-network2)
+  - [Phantom of the Network#3](#phantom-of-the-network3)
+  - [Phantom of the Network#4](#phantom-of-the-network4)
+  - [Phantom of the Network#5](#phantom-of-the-network5)
+  - [Phantom of the Network#6](#phantom-of-the-network6)
+  - [Phantom of the Network#7](#phantom-of-the-network7)
+  - [Phantom of the Network#8](#phantom-of-the-network8)
+- [Reverse Engineering (All 6 solved)](#reverse-engineering-all-6-solved)
+  - [Secplaysomware#1](#secplaysomware1)
+  - [Secplaysomware#2](#secplaysomware2)
+  - [Secplaysomware#3](#secplaysomware3)
+  - [Secplaysomware#4](#secplaysomware4)
+  - [Secplaysomware#5](#secplaysomware5)
+  - [Hello World](#hello-world)
+- [Digital Forensic (10 of 11 Solved)](#digital-forensic-10-of-11-solved)
+  - [Santa_Message](#santa_message)
+  - [malware infected](#malware-infected)
+- [Log Analysis (All 3 solved)](#log-analysis-all-3-solved)
+  - [Universal Share](#universal-share)
+
 ***
 ![2849d1b54a7607881c6a9fb1bf98e0c4.png](/resources/2849d1b54a7607881c6a9fb1bf98e0c4.png)
 

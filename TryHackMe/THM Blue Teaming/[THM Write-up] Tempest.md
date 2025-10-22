@@ -1,7 +1,16 @@
 # [TryHackMe - Tempest](https://tryhackme.com/room/tempestincident)
 ![43476f53edc80d36edc93ee4d13f54a7.png](/resources/43476f53edc80d36edc93ee4d13f54a7.png)
 ***
-[toc]
+## Table of Contents
+
+- [Preparation - Tools and Artifacts](#preparation-tools-and-artifacts)
+- [Initial Access - Malicious Document](#initial-access-malicious-document)
+- [Initial Access - Stage 2 execution](#initial-access-stage-2-execution)
+- [Initial Access - Malicious Document Traffic](#initial-access-malicious-document-traffic)
+- [Discovery - Internal Reconnaissance](#discovery-internal-reconnaissance)
+- [Privilege Escalation - Exploiting Privileges](#privilege-escalation-exploiting-privileges)
+- [Actions on Objective - Fully-owned Machine](#actions-on-objective-fully-owned-machine)
+
 ***
 ## Preparation - Tools and Artifacts
 >What is the SHA256 hash of the capture.pcapng file?

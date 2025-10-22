@@ -1,6 +1,12 @@
 # [HackTheBox - Baby](https://app.hackthebox.com/machines/Baby)
 ![c6f135fd23e08499dbcf0bcab8d08564.png](/resources/c6f135fd23e08499dbcf0bcab8d08564.png)
-[toc]
+## Table of Contents
+
+- [Abstract](#abstract)
+- [Enumeration](#enumeration)
+- [Initial Foothold by Changing password of Caroline.Robinson](#initial-foothold-by-changing-password-of-carolinerobinson)
+- [Privilege Escalation with Backup Operators group](#privilege-escalation-with-backup-operators-group)
+
 ***
 ## Abstract
 Baby is a vulnlab machine imported to HackTheBox as a easy Windows Active Directory box, I started with network enumeration with nmap, revealing this machine is a domain controller and no extra service running on this machine.

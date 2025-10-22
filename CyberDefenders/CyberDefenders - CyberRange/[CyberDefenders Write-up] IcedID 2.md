@@ -1,5 +1,10 @@
 # [CyberDefenders - IcedID 2](https://cyberdefenders.org/blueteam-ctf-challenges/icedid-2/)
-[toc]
+## Table of Contents
+
+- [Scenario](#scenario)
+- [Questions](#questions)
+- [After the match](#after-the-match)
+
 * * *
 ## Scenario
 You are a forensic analyst investigating a critical ransomware attack at a major financial institution. Your job is to analyze the memory image from the affected endpoint. Trace the attack from its origin, identify lateral movements, uncover persistence methods, and analyze any control commands.

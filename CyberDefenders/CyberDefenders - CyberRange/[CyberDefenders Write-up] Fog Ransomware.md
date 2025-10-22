@@ -1,5 +1,14 @@
 # [CyberDefenders - Fog Ransomware](https://cyberdefenders.org/blueteam-ctf-challenges/fog-ransomware/)
-[toc]
+## Table of Contents
+
+- [Scenario](#scenario)
+- [Questions](#questions)
+  - [Initial Access](#initial-access)
+  - [Execution](#execution)
+  - [Persistence & Privilege Escalation](#persistence-privilege-escalation)
+  - [Collection](#collection)
+  - [Command and Control & Impact](#command-and-control-impact)
+
 * * *
 ## Scenario
 On April 30, 2025, a Finance department user received a phishing email with a RAR file. Trusting the sender, the user extracted and opened it. GOAT Capital’s SOC detected suspicious PowerShell activity from the user’s workstation. Soon after, mass file deletions and changes occurred, followed by ransom notes demanding Monero. Your task: investigate the true attack vector, identify attacker techniques, and assess the scope of the compromise.

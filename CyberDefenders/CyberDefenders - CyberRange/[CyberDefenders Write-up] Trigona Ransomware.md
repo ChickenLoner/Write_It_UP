@@ -1,5 +1,10 @@
 # [CyberDefenders - Trigona Ransomware](https://cyberdefenders.org/blueteam-ctf-challenges/trigona-ransomware/)
-[toc]
+## Table of Contents
+
+- [Scenario](#scenario)
+- [Questions](#questions)
+- [Lab Inspiration](#lab-inspiration)
+
 * * *
 ## Scenario
 As a forensic investigator at IResponseDash, you are tasked with examining a ransomware attack that has compromised multiple endpoints. Your primary objective is to determine the delivery method of the ransomware and to trace all activities of the attacker to understand the progression of the attack.

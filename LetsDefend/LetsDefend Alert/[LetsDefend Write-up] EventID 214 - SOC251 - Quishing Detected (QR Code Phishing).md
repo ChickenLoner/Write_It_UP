@@ -12,7 +12,11 @@ Last Updated: 01/06/2024 12:57
 **E-mail Subject** : New Year's Mandatory Security Update: Implementing Multi-Factor Authentication (MFA)
 **Device Action** : Allowed
 ***
-[toc]
+## Table of Contents
+
+- [Start Playbook](#start-playbook)
+- [Close Alert](#close-alert)
+
 ***
 ## Start Playbook
 >Verify

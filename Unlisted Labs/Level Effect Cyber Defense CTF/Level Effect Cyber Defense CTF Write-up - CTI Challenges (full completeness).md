@@ -1,5 +1,12 @@
 # Level Effect Cyber Defense CTF Write-up - CTI Challenges (5/5 completeness)
-[toc]
+## Table of Contents
+
+- [Pardon the intrusion (200 points)](#pardon-the-intrusion-200-points)
+- [Got my tail! (200 points)](#got-my-tail-200-points)
+- [APT jeopardy 1 (250 points)](#apt-jeopardy-1-250-points)
+- [APT jeopardy 2 (250 points)](#apt-jeopardy-2-250-points)
+- [APT jeopardy 3 (300 points)](#apt-jeopardy-3-300-points)
+
 ***
 ## Pardon the intrusion (200 points)
 ![6c485d2ff7f216833deff83f43a844a4.png](/resources/6c485d2ff7f216833deff83f43a844a4.png)

@@ -1,5 +1,21 @@
 # Thailand Cyber Top Talent 2024 OPEN [Qualifier] - Reverse/Crypto/Programming - MaAowHa (มาเอาฮา) Team
-[toc]
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Reverse Engineering/Pwnable](#reverse-engineeringpwnable)
+  - [Running Number (100)](#running-number-100)
+  - [Embedded Malware (200)](#embedded-malware-200)
+- [Cryptography](#cryptography)
+  - [Easy1 (100)](#easy1-100)
+  - [Easy2 (100)](#easy2-100)
+  - [Hard (300)](#hard-300)
+- [Programming](#programming)
+  - [Easy1 - Shift2 (100)](#easy1-shift2-100)
+  - [Easy2 - emoji funny2 (100)](#easy2-emoji-funny2-100)
+  - [Medium - emoji pattern (200)](#medium-emoji-pattern-200)
+  - [type_the_word (300)](#type_the_word-300)
+- [Conclusion](#conclusion)
+
 ***
 ## Introduction
 สวัสดีท่านผู้อ่านทุกท่าน blog นี้จะเป็น part ที่สองที่ ทีม MaAowHa (มาเอาฮา) มาแสดงถึงวิธีการ solved ของทีมที่เหลือกันครับ

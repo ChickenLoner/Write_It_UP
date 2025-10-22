@@ -1,5 +1,20 @@
 # Cyber Range Thailand 2024 (Qualifier) - Review and Write-up
-[toc]
+## Table of Contents
+
+- [Wireshark PCAP](#wireshark-pcap)
+  - [Wireshark and packet body](#wireshark-and-packet-body)
+  - [Filters in Wireshark](#filters-in-wireshark)
+  - [Compression_gzip](#compression_gzip)
+  - [DNS Tunnel](#dns-tunnel)
+  - [smb_sniff](#smb_sniff)
+  - [Wireshark and FTP](#wireshark-and-ftp)
+  - [Wireshark and MAC](#wireshark-and-mac)
+- [Attack chain in Auditd log](#attack-chain-in-auditd-log)
+- [Chain of attacks in the Suricata IDS log](#chain-of-attacks-in-the-suricata-ids-log)
+- [Attack chain in Windows event log](#attack-chain-in-windows-event-log)
+- [Attack chain in Wireshark traffic dump](#attack-chain-in-wireshark-traffic-dump)
+- [Conclusion](#conclusion)
+
 * * *
 ![7ea173ba457a91507e0fa2f9e6dbdb2a.png](/resources/7ea173ba457a91507e0fa2f9e6dbdb2a.png)
 

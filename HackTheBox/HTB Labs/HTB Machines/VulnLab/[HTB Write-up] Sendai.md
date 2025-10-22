@@ -1,6 +1,16 @@
 # [HackTheBox - Sendai](https://app.hackthebox.com/machines/Sendai)
 ![af405ee6dbf68c791b1f0bb130eaa718.png](/resources/af405ee6dbf68c791b1f0bb130eaa718.png)
-[toc]
+## Table of Contents
+
+- [Abstract](#abstract)
+- [Enumeration](#enumeration)
+  - [Discovery of accounts with STATUS_PASSWORD_MUST_CHANGE](#discovery-of-accounts-with-status_password_must_change)
+  - [Foothold path discovery via Bloodhound](#foothold-path-discovery-via-bloodhound)
+- [Initial Access - GenericAll on group and ReadGMSAPassword](#initial-access-genericall-on-group-and-readgmsapassword)
+- [Privilege Escalation - Plaintext credential in services path to ADCS ESC4](#privilege-escalation-plaintext-credential-in-services-path-to-adcs-esc4)
+  - [Discovery of Plaintext credential in services path](#discovery-of-plaintext-credential-in-services-path)
+  - [ADCS ESC4 to Administrator](#adcs-esc4-to-administrator)
+
 ***
 ## Abstract
 Sendai is a vulnlab machine imported to HackTheBox as a medium Windows Active Directory box, I started with network enumeration with nmap, revealing this machine is a domain controller and has a website running on port 80.

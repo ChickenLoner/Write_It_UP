@@ -1,6 +1,12 @@
 # [HackTheBox - BabyTwo](https://app.hackthebox.com/machines/BabyTwo)
 ![8da3981f5bc5e3d53775b749202dda51.png](/resources/8da3981f5bc5e3d53775b749202dda51.png)
-[toc]
+## Table of Contents
+
+- [Abstract](#abstract)
+- [Enumeration](#enumeration)
+- [Initial Access via logon script replacement](#initial-access-via-logon-script-replacement)
+- [Privilege Escalation via Changing User password and GPO Abuse](#privilege-escalation-via-changing-user-password-and-gpo-abuse)
+
 ***
 ## Abstract
 BabyTwo is a vulnlab machine imported to HackTheBox as a medium Windows Active Directory box, I started with network enumeration with nmap, revealing this machine is a domain controller and no extra service running on this machine.

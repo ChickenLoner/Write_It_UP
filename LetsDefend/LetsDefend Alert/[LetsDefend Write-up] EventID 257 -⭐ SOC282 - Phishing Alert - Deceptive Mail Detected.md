@@ -13,7 +13,11 @@ Last Updated: 11/07/2024 07:10
 **E-mail Subject** : Free Coffee Voucher
 **Device Action** : Allowed
 ***
-[toc]
+## Table of Contents
+
+- [Start Playbook](#start-playbook)
+- [Close Alert](#close-alert)
+
 ***
 ## Start Playbook
 >Parse Email

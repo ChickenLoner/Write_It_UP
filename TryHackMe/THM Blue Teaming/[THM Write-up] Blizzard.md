@@ -1,7 +1,12 @@
 # [TryHackMe - Blizzard](https://tryhackme.com/room/blizzard)
 ![c561f8d5ce0af0a22ad8160e7a2c62d1.png](/resources/c561f8d5ce0af0a22ad8160e7a2c62d1.png)
 ***
-[toc]
+## Table of Contents
+
+- [Introduction: Analysing the Impact](#introduction-analysing-the-impact)
+- [Lateral Movement: Backtracking the Pivot Point](#lateral-movement-backtracking-the-pivot-point)
+- [Initial Access: Discovering the Root Cause](#initial-access-discovering-the-root-cause)
+
 ***
 ## Introduction: Analysing the Impact
 Health Sphere Solutions, a healthcare systems provider on the path to expansion, is taking its first steps towards fortifying its infrastructure security. With the rise of cyber threats, particularly the emergence of Midnight Blizzard, a sophisticated threat group targeting the healthcare sector, the company recognizes the urgent need to protect sensitive customer data.

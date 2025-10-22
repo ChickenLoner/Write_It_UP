@@ -1,7 +1,11 @@
 # [TryHackMe - Secret Recipe](https://tryhackme.com/room/registry4n6)
 ![6ffd218e1b80f4ca036d54222f66e09d.png](/resources/6ffd218e1b80f4ca036d54222f66e09d.png)
 ***
-[toc]
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Windows Registry Forensics](#windows-registry-forensics)
+
 ***
 ## Introduction
 **Jasmine owns a famous New York coffee shop Coffely which is famous city-wide for its unique taste. Only Jasmine keeps the original copy of the recipe, and she only keeps it on her work laptop. Last week, James from the IT department was consulted to fix Jasmine's laptop. But it is suspected he may have copied the secret recipes from Jasmine's machine and is keeping them on his machine.**

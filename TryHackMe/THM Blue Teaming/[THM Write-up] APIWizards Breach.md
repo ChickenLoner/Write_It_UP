@@ -2,7 +2,13 @@
 ![d0381ce9b5a97d43c231a4ff4d61f4ca.png](/resources/d0381ce9b5a97d43c231a4ff4d61f4ca.png)
 Investigate a security breach at APIWizards Inc.
 ***
-[toc]
+## Table of Contents
+
+- [Initial Access](#initial-access)
+- [Further Actions](#further-actions)
+- [Even More Persistence](#even-more-persistence)
+- [Final Target](#final-target)
+
 ***
 You were hired as a dedicated external DFIR specialist to help the APIWizards Inc. company with a security incident in their production environment. APIWizards develop REST APIs on demand and hosts them on separate Ubuntu servers. The company suspects that one of its servers is compromised.
 

@@ -1,7 +1,12 @@
 # [TryHackMe - Unattended](https://tryhackme.com/r/room/unattended)
 ![15d873da8fa3dcfa082e95343b2a508b.png](/resources/15d873da8fa3dcfa082e95343b2a508b.png)
 ***
-[toc]
+## Table of Contents
+
+- [Snooping around](#snooping-around)
+- [Can't simply open it](#cant-simply-open-it)
+- [Sending it outside](#sending-it-outside)
+
 ***
 Welcome to the team, kid. I have something for you to get your feet wet.
 Our client has a newly hired employee who saw a suspicious-looking janitor exiting his office as he was about to return from lunch.

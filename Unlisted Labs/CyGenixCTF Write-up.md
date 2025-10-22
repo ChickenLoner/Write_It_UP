@@ -1,5 +1,24 @@
 # CyGenixCTF Write-up (10/24 solved)
-[toc]
+## Table of Contents
+
+  - [Forensics](#forensics)
+    - [SUS Image (50)](#sus-image-50)
+    - [Espionage (100)](#espionage-100)
+    - [Unmask (150)](#unmask-150)
+  - [Miscellaneous](#miscellaneous)
+    - [Sanity check (10)](#sanity-check-10)
+    - [Whistleblower (100)](#whistleblower-100)
+  - [Cryptography](#cryptography)
+    - [DH-900 (150)](#dh-900-150)
+- [Given values](#given-values)
+- [Find private key for Alice](#find-private-key-for-alice)
+  - [Reverse Engineering](#reverse-engineering)
+    - [Easy Peasy Apk (150)](#easy-peasy-apk-150)
+  - [Steganography](#steganography)
+    - [Valour (100)](#valour-100)
+  - [OSINT](#osint)
+    - [Cake Shop (150)](#cake-shop-150)
+
 ***
 Hello everyone, I tried to put myself out there on any CTF that I could participate and this time its is CyGenixCTF organized by Cybergenix Security partnered with YCF team
 

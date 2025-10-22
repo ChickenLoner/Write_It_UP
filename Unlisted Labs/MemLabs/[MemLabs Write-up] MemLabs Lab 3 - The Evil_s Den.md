@@ -2,7 +2,13 @@
 Created: 14/07/2024 16:20
 Last Updated: 24/08/2024 16:23
 ***
-[toc]
+## Table of Contents
+
+- [Challenge Description](#challenge-description)
+- [Getting first half of a flag](#getting-first-half-of-a-flag)
+- [Getting second half of a flag](#getting-second-half-of-a-flag)
+- [Lab 3 : Flag](#lab-3-flag)
+
 ## Challenge Description
 A malicious script encrypted a very secret piece of information I had on my system. Can you recover the information for me please?
 

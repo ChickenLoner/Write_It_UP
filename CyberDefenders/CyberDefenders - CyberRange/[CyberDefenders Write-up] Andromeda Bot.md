@@ -1,5 +1,9 @@
 # [CyberDefenders - Andromeda Bot](https://cyberdefenders.org/blueteam-ctf-challenges/andromeda-bot/)
-[toc]
+## Table of Contents
+
+- [Scenario](#scenario)
+- [Questions](#questions)
+
 * * *
 ## Scenario
 As a member of the DFIR team at SecuTech, you're tasked with investigating a security breach affecting multiple endpoints across the organization. Alerts from different systems suggest the breach may have spread via removable devices. You’ve been provided with a memory image from one of the compromised machines. Your objective is to analyze the memory for signs of malware propagation, trace the infection’s source, and identify suspicious activity to assess the full extent of the breach and inform the response strategy.

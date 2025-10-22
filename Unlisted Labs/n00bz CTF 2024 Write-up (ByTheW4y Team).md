@@ -1,5 +1,22 @@
 # n00bz CTF 2024 by ByTheW4y
-[toc]
+## Table of Contents
+
+  - [Crypto](#crypto)
+    - [Vinegar (100 points)](#vinegar-100-points)
+    - [RSA (291 points)](#rsa-291-points)
+- [Given values](#given-values)
+- [Compute cube root](#compute-cube-root)
+- [Assuming m is found and is an integer](#assuming-m-is-found-and-is-an-integer)
+    - [Vinegar 2 (360 points)](#vinegar-2-360-points)
+  - [Forensics](#forensics)
+    - [Plane (176 points)](#plane-176-points)
+  - [Web](#web)
+    - [Passwordless (100 points)](#passwordless-100-points)
+  - [OSINT](#osint)
+    - [Pastebin (347 points)](#pastebin-347-points)
+  - [Rev](#rev)
+    - [Vacation (126 points)](#vacation-126-points)
+
 * * *
 ## Crypto
 ### Vinegar (100 points)

@@ -1,6 +1,17 @@
 # [HackTheBox - Job](https://app.hackthebox.com/machines/Job)
 ![b7e7f7bd99b41a69580c344a96e11a66.png](/resources/b7e7f7bd99b41a69580c344a96e11a66.png)
-[toc]
+## Table of Contents
+
+- [Abstract](#abstract)
+- [Enumeration](#enumeration)
+- [Initial Access with ODT file to reverse shell](#initial-access-with-odt-file-to-reverse-shell)
+- [Privilege Escalation - Webroot modification to SeImpersonatePrivilege](#privilege-escalation-webroot-modification-to-seimpersonateprivilege)
+  - [Get shell as DefaultAppPool via webshell](#get-shell-as-defaultapppool-via-webshell)
+  - [Become SYSTEM with SeImpersonatePrivilege](#become-system-with-seimpersonateprivilege)
+- [Bonus - ODT attachment inspection](#bonus-odt-attachment-inspection)
+  - [NTLM Theft ODT](#ntlm-theft-odt)
+  - [Reverse Shell ODT](#reverse-shell-odt)
+
 ***
 ## Abstract
 Job is a vulnlab machine imported to HackTheBox as a medium Windows box. I started with network enumeration using nmap, which showed the host was a Windows server running SMTP, HTTP, SMB, RDP, and WinRM.

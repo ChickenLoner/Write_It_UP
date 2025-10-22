@@ -1,5 +1,11 @@
 # Level Effect Cyber Defense CTF Write-up - Email Security Challenges (4/4 completeness)
-[toc]
+## Table of Contents
+
+- [Identity crisis (100 points)](#identity-crisis-100-points)
+- [Safe for skin safe for emails... (100 points)](#safe-for-skin-safe-for-emails-100-points)
+- [Out phishing (150 points)](#out-phishing-150-points)
+- [2045th trick in the book (200 points)](#2045th-trick-in-the-book-200-points)
+
 ***
 ## Identity crisis (100 points)
 ![1e4f2c69744d83c6c73ac5325e0a1392.png](/resources/1e4f2c69744d83c6c73ac5325e0a1392.png)

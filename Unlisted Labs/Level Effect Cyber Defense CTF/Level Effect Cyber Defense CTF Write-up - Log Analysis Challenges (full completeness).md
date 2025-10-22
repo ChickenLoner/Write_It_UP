@@ -1,5 +1,13 @@
 # Level Effect Cyber Defense CTF Write-up - Log Analysis Challenges (6/6 completeness)
-[toc]
+## Table of Contents
+
+- [Name that event 1 (100 points)](#name-that-event-1-100-points)
+- [Name that event 2 (100 points)](#name-that-event-2-100-points)
+- [Name that event 3 (100 points)](#name-that-event-3-100-points)
+- [Name that event 4 (100 points)](#name-that-event-4-100-points)
+- [whoami (100 points)](#whoami-100-points)
+- [In the system (150 points)](#in-the-system-150-points)
+
 ***
 *NOTE*: This challenge I heavily relied on [Ultimate IT Security Windows Security Log Events Encyclopedia](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/) so I would love to share this wonderful resource to my readers here!
 ***

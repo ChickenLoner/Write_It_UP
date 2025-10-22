@@ -2,7 +2,11 @@
 Created: 14/07/2024 16:48
 Last Updated: 24/08/2024 17:46
 ***
-[toc]
+## Table of Contents
+
+- [Challenge Description](#challenge-description)
+- [Lab 4 : Flag](#lab-4-flag)
+
 ## Challenge Description
 My system was recently compromised. The Hacker stole a lot of information but he also deleted a very important file of mine. I have no idea on how to recover it. The only evidence we have, at this point of time is this memory dump. Please help me.
 

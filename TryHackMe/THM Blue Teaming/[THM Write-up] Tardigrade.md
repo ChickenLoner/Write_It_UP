@@ -1,7 +1,14 @@
 # [TryHackMe - Tardigrade](https://tryhackme.com/room/tardigrade)
 ![e3c209fe00d6503716cccae1db4969f3.png](/resources/e3c209fe00d6503716cccae1db4969f3.png)
 ***
-[toc]
+## Table of Contents
+
+- [Connect to the machine via SSH](#connect-to-the-machine-via-ssh)
+- [Investigating the giorgio account](#investigating-the-giorgio-account)
+- [Investigating the root account](#investigating-the-root-account)
+- [Investigating the system](#investigating-the-system)
+- [Final Thoughts](#final-thoughts)
+
 ***
 ## Connect to the machine via SSH
 **A server has been compromised, and the security team has decided to isolate the machine until it's been thoroughly cleaned up. Initial checks by the Incident Response team revealed that there are five different backdoors. It's your job to find and remediate them before giving the signal to bring the server back to production.**

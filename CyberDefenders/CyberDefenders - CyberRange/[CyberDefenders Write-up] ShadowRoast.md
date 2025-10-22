@@ -1,5 +1,9 @@
 # [CyberDefenders - ShadowRoast](https://cyberdefenders.org/blueteam-ctf-challenges/shadowroast/)
-[toc]
+## Table of Contents
+
+- [Questions](#questions)
+- [Persistence execution (bonus)](#persistence-execution-bonus)
+
 * * *
 **Scenario:**
 As a cybersecurity analyst at TechSecure Corp, you have been alerted to unusual activities within the company's Active Directory environment. Initial reports suggest unauthorized access and possible privilege escalation attempts.
