@@ -121,12 +121,12 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[HTB Sherlocks Write-up] Noxious](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20Noxious.md)
 - [[HTB Sherlocks Write-up] Nubilum-2](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20Nubilum-2.md)
 - [[HTB Sherlocks Write-up] Nuts](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20Nuts.md)
-- [[HTB Sherlocks Write-up] OPTinselTrace24-3_ Blizza](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OPTinselTrace24-3_%20Blizza.md)
-- [[HTB Sherlocks Write-up] OPTinselTrace24-4_ Neural](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OPTinselTrace24-4_%20Neural.md)
-- [[HTB Sherlocks Write-up] OpSalwarKameez24-1_ Super](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OpSalwarKameez24-1_%20Super.md)
-- [[HTB Sherlocks Write-up] OpSalwarKameez24-2_ Magic](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OpSalwarKameez24-2_%20Magic.md)
-- [[HTB Sherlocks Write-up] OpSalwarKameez24-4_ Salsa](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OpSalwarKameez24-4_%20Salsa.md)
-- [[HTB Sherlocks Write-up] OpTinselTrace24-1_ Sneaky](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OpTinselTrace24-1_%20Sneaky.md)
+- [[HTB Sherlocks Write-up] OPTinselTrace24-3 Blizzard Breakdown](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OPTinselTrace24-3%20Blizzard%20Breakdown.md)
+- [[HTB Sherlocks Write-up] OPTinselTrace24-4 Neural Noel](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OPTinselTrace24-4%20Neural%20Noel.md)
+- [[HTB Sherlocks Write-up] OpSalwarKameez24-1 Super-Star](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OpSalwarKameez24-1%20Super-Star.md)
+- [[HTB Sherlocks Write-up] OpSalwarKameez24-2 Magic-Show](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OpSalwarKameez24-2%20Magic-Show.md)
+- [[HTB Sherlocks Write-up] OpSalwarKameez24-4 Salsa-Dance](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OpSalwarKameez24-4%20Salsa-Dance.md)
+- [[HTB Sherlocks Write-up] OpTinselTrace24-1 Sneaky Cookies](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OpTinselTrace24-1%20Sneaky%20Cookies.md)
 - [[HTB Sherlocks Write-up] Pikaptcha](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20Pikaptcha.md)
 - [[HTB Sherlocks Write-up] Psittaciformes](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20Psittaciformes.md)
 - [[HTB Sherlocks Write-up] Reaper](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20Reaper.md)
@@ -144,10 +144,10 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ### 📁 LetsDefend → LetsDefend Alert
 
-- [[LetsDefend Write-up] EventID 125 - ⭐ SOC175 - Pow](LetsDefend/LetsDefend%20Alert/%5BLetsDefend%20Write-up%5D%20EventID%20125%20-%20%E2%AD%90%20SOC175%20-%20Pow.md)
-- [[LetsDefend Write-up] EventID 214 - SOC251 - Quish](LetsDefend/LetsDefend%20Alert/%5BLetsDefend%20Write-up%5D%20EventID%20214%20-%20SOC251%20-%20Quish.md)
-- [[LetsDefend Write-up] EventID 257 -⭐ SOC282 - Phis](LetsDefend/LetsDefend%20Alert/%5BLetsDefend%20Write-up%5D%20EventID%20257%20-%E2%AD%90%20SOC282%20-%20Phis.md)
-- [[LetsDefend Write-up] EventID 36 - SOC104 - Malwar](LetsDefend/LetsDefend%20Alert/%5BLetsDefend%20Write-up%5D%20EventID%2036%20-%20SOC104%20-%20Malwar.md)
+- [[LetsDefend Write-up] EventID 125 - ⭐ SOC175 - PowerShell Found in Requested URL - Possible CVE-2022-41082 Exploitation](LetsDefend/LetsDefend%20Alert/%5BLetsDefend%20Write-up%5D%20EventID%20125%20-%20%E2%AD%90%20SOC175%20-%20PowerShell%20Found%20in%20Requested%20URL%20-%20Possible%20CVE-2022-41082%20Exploitation.md)
+- [[LetsDefend Write-up] EventID 214 - SOC251 - Quishing Detected (QR Code Phishing)](LetsDefend/LetsDefend%20Alert/%5BLetsDefend%20Write-up%5D%20EventID%20214%20-%20SOC251%20-%20Quishing%20Detected%20%28QR%20Code%20Phishing%29.md)
+- [[LetsDefend Write-up] EventID 257 -⭐ SOC282 - Phishing Alert - Deceptive Mail Detected](LetsDefend/LetsDefend%20Alert/%5BLetsDefend%20Write-up%5D%20EventID%20257%20-%E2%AD%90%20SOC282%20-%20Phishing%20Alert%20-%20Deceptive%20Mail%20Detected.md)
+- [[LetsDefend Write-up] EventID 36 - SOC 104 - Malware Detected](LetsDefend/LetsDefend%20Alert/%5BLetsDefend%20Write-up%5D%20EventID%2036%20-%20SOC%20104%20-%20Malware%20Detected.md)
 
 ### 📁 LetsDefend → LetsDefend Challenge
 
@@ -230,6 +230,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 <summary>📝 10 write-ups (click to expand)</summary>
 
 - [[BTLO Write-up] Aspen](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Aspen.md)
+- [[BTLO Write-up] Countdown](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Countdown.md)
 - [[BTLO Write-up] Deep Freeze](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Deep%20Freeze.md)
 - [[BTLO Write-up] Haunted](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Haunted.md)
 - [[BTLO Write-up] Krampus](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Krampus.md)
@@ -238,7 +239,6 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[BTLO Write-up] Ozarks](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Ozarks.md)
 - [[BTLO Write-up] PikaBoo](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20PikaBoo.md)
 - [[BTLO Write-up] Typhon](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Typhon.md)
-- [[Blue Team Labs Online Write-up] Countdown](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBlue%20Team%20Labs%20Online%20Write-up%5D%20Countdown.md)
 
 </details>
 
@@ -290,11 +290,11 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 - [CyGenixCTF Write-up](Unlisted%20Labs/CyGenixCTF%20Write-up.md)
 - [Cyber Range Thailand 2024 (Qualifier)](Unlisted%20Labs/Cyber%20Range%20Thailand%202024%20%28Qualifier%29.md)
-- [Cyber Range Thailand 2024 [Final] - Review - No wr](Unlisted%20Labs/Cyber%20Range%20Thailand%202024%20%5BFinal%5D%20-%20Review%20-%20No%20wr.md)
+- [Cyber Range Thailand 2024 [Final] - Review](Unlisted%20Labs/Cyber%20Range%20Thailand%202024%20%5BFinal%5D%20-%20Review.md)
 - [CyberSpaceCTF 2024 - Memory (Forensic Challenge) -](Unlisted%20Labs/CyberSpaceCTF%202024%20-%20Memory%20%28Forensic%20Challenge%29%20-.md)
-- [CyberSpaceCTF 2024 - Social Distancing (Forensic C](Unlisted%20Labs/CyberSpaceCTF%202024%20-%20Social%20Distancing%20%28Forensic%20C.md)
-- [SPG Bloody Xmas CTF 2024 Incident & Rev](Unlisted%20Labs/SPG%20Bloody%20Xmas%20CTF%202024%20Incident%20%26%20Rev.md)
-- [SPG Hackloween CTF 2024 Log and Incident](Unlisted%20Labs/SPG%20Hackloween%20CTF%202024%20Log%20and%20Incident.md)
+- [CyberSpaceCTF 2024 - Social Distancing (Forensic)](Unlisted%20Labs/CyberSpaceCTF%202024%20-%20Social%20Distancing%20%28Forensic%29.md)
+- [SECPlayground Bloody Xmas2024 CTF - [Incident & Rev - Wowza]](Unlisted%20Labs/SECPlayground%20Bloody%20Xmas2024%20CTF%20-%20%5BIncident%20%26%20Rev%20-%20Wowza%5D.md)
+- [SECPlayground Hackloween CTF 2024  [Log Analysis & Incident write-up - R@b!T_T]](Unlisted%20Labs/SECPlayground%20Hackloween%20CTF%202024%20%20%5BLog%20Analysis%20%26%20Incident%20write-up%20-%20R%40b%21T_T%5D.md)
 - [THCTT2024 - Network_Forensic_Mobile - MaAowHa](Unlisted%20Labs/THCTT2024%20-%20Network_Forensic_Mobile%20-%20MaAowHa.md)
 - [THCTT2024 - Reverse_Crypto_Programming - MaAowHa](Unlisted%20Labs/THCTT2024%20-%20Reverse_Crypto_Programming%20-%20MaAowHa.md)
 - [n00bz CTF 2024 Write-up (ByTheW4y Team)](Unlisted%20Labs/n00bz%20CTF%202024%20Write-up%20%28ByTheW4y%20Team%29.md)
@@ -303,9 +303,9 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ### 📁 Unlisted Labs → Level Effect Cyber Defense CTF
 
-- [Level Effect Cyber Defense CTF - CTI Challenges](Unlisted%20Labs/Level%20Effect%20Cyber%20Defense%20CTF/Level%20Effect%20Cyber%20Defense%20CTF%20-%20CTI%20Challenges.md)
-- [Level Effect Cyber Defense CTF - Email Security Ch](Unlisted%20Labs/Level%20Effect%20Cyber%20Defense%20CTF/Level%20Effect%20Cyber%20Defense%20CTF%20-%20Email%20Security%20Ch.md)
-- [Level Effect Cyber Defense CTF - Log Analysis Chal](Unlisted%20Labs/Level%20Effect%20Cyber%20Defense%20CTF/Level%20Effect%20Cyber%20Defense%20CTF%20-%20Log%20Analysis%20Chal.md)
+- [Level Effect Cyber Defense CTF Write-up - CTI Challenges (full completeness)](Unlisted%20Labs/Level%20Effect%20Cyber%20Defense%20CTF/Level%20Effect%20Cyber%20Defense%20CTF%20Write-up%20-%20CTI%20Challenges%20%28full%20completeness%29.md)
+- [Level Effect Cyber Defense CTF Write-up - Email Security Challenges (full completeness)](Unlisted%20Labs/Level%20Effect%20Cyber%20Defense%20CTF/Level%20Effect%20Cyber%20Defense%20CTF%20Write-up%20-%20Email%20Security%20Challenges%20%28full%20completeness%29.md)
+- [Level Effect Cyber Defense CTF Write-up - Log Analysis Challenges (full completeness)](Unlisted%20Labs/Level%20Effect%20Cyber%20Defense%20CTF/Level%20Effect%20Cyber%20Defense%20CTF%20Write-up%20-%20Log%20Analysis%20Challenges%20%28full%20completeness%29.md)
 
 ### 📁 Unlisted Labs → MemLabs
 
