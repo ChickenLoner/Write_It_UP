@@ -8,7 +8,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 250
+**Total Write-ups**: 252
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
@@ -83,12 +83,14 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 HackTheBox → HTB Labs → HTB Machines → VulnLab
 
 <details>
-<summary>📝 8 write-ups (click to expand)</summary>
+<summary>📝 10 write-ups (click to expand)</summary>
 
 - [[HTB Write-up] Baby](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Baby.md)
 - [[HTB Write-up] BabyTwo](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20BabyTwo.md)
 - [[HTB Write-up] Breach](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Breach.md)
+- [[HTB Write-up] Data](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Data.md)
 - [[HTB Write-up] Job](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Job.md)
+- [[HTB Write-up] Manage](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Manage.md)
 - [[HTB Write-up] Media](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Media.md)
 - [[HTB Write-up] Retro](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Retro.md)
 - [[HTB Write-up] Sendai](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Sendai.md)
@@ -153,10 +155,15 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ### 📁 LetsDefend → LetsDefend Alert
 
+<details>
+<summary>📝 4 write-ups (click to expand)</summary>
+
 - [[LetsDefend Write-up] EventID 125 - ⭐ SOC175 - PowerShell Found in Requested URL - Possible CVE-2022-41082 Exploitation](LetsDefend/LetsDefend%20Alert/%5BLetsDefend%20Write-up%5D%20EventID%20125%20-%20%E2%AD%90%20SOC175%20-%20PowerShell%20Found%20in%20Requested%20URL%20-%20Possible%20CVE-2022-41082%20Exploitation.md)
 - [[LetsDefend Write-up] EventID 214 - SOC251 - Quishing Detected (QR Code Phishing)](LetsDefend/LetsDefend%20Alert/%5BLetsDefend%20Write-up%5D%20EventID%20214%20-%20SOC251%20-%20Quishing%20Detected%20%28QR%20Code%20Phishing%29.md)
 - [[LetsDefend Write-up] EventID 257 -⭐ SOC282 - Phishing Alert - Deceptive Mail Detected](LetsDefend/LetsDefend%20Alert/%5BLetsDefend%20Write-up%5D%20EventID%20257%20-%E2%AD%90%20SOC282%20-%20Phishing%20Alert%20-%20Deceptive%20Mail%20Detected.md)
 - [[LetsDefend Write-up] EventID 36 - SOC 104 - Malware Detected](LetsDefend/LetsDefend%20Alert/%5BLetsDefend%20Write-up%5D%20EventID%2036%20-%20SOC%20104%20-%20Malware%20Detected.md)
+
+</details>
 
 ### 📁 LetsDefend → LetsDefend Challenge
 
@@ -312,9 +319,14 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ### 📁 Unlisted Labs → Level Effect Cyber Defense CTF
 
+<details>
+<summary>📝 3 write-ups (click to expand)</summary>
+
 - [Level Effect Cyber Defense CTF Write-up - CTI Challenges (full completeness)](Unlisted%20Labs/Level%20Effect%20Cyber%20Defense%20CTF/Level%20Effect%20Cyber%20Defense%20CTF%20Write-up%20-%20CTI%20Challenges%20%28full%20completeness%29.md)
 - [Level Effect Cyber Defense CTF Write-up - Email Security Challenges (full completeness)](Unlisted%20Labs/Level%20Effect%20Cyber%20Defense%20CTF/Level%20Effect%20Cyber%20Defense%20CTF%20Write-up%20-%20Email%20Security%20Challenges%20%28full%20completeness%29.md)
 - [Level Effect Cyber Defense CTF Write-up - Log Analysis Challenges (full completeness)](Unlisted%20Labs/Level%20Effect%20Cyber%20Defense%20CTF/Level%20Effect%20Cyber%20Defense%20CTF%20Write-up%20-%20Log%20Analysis%20Challenges%20%28full%20completeness%29.md)
+
+</details>
 
 ### 📁 Unlisted Labs → MemLabs
 
