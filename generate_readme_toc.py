@@ -58,7 +58,7 @@ def generate_toc_markdown(folders):
         lines.append("")
         
         # Create a collapsible section for folders with many files
-        if len(files) > 5:
+        if len(files) > 2:
             lines.append("<details>")
             lines.append(f"<summary>📝 {len(files)} write-ups (click to expand)</summary>")
             lines.append("")
@@ -74,7 +74,7 @@ def generate_toc_markdown(folders):
             lines.append(f"- [{name}]({encoded_path})")
         
         # Close collapsible section if it was opened
-        if len(files) > 5:
+        if len(files) > 2:
             lines.append("")
             lines.append("</details>")
         
