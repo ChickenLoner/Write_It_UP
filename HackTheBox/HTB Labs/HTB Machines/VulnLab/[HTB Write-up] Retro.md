@@ -1,5 +1,7 @@
 # [HackTheBox - Retro](https://app.hackthebox.com/machines/Retro)
+
 ![8c137bf429e00361974c2bae911f72fb.png](/resources/8c137bf429e00361974c2bae911f72fb.png)
+
 ## Table of Contents
 
 - [Abstract](#abstract)
@@ -21,9 +23,11 @@ Leveraging ADCS ESC1,I obtained NTLM of Administrator account and finally root t
 
 ## Enumeration
 I start with nmap scan without any flag to quickly scan for well-known port which reveals that this machine is a domain controller and does not have any services beside required services for active directory running on this machine and one more thing to notice here is no port 5985 which mean we can not use WinRM to get access to this machine.
+
 ![a69c5ccd908178c5dbea1aab27096649.png](/resources/a69c5ccd908178c5dbea1aab27096649.png)
 
 I rerun my scan again with `-sCV` just to find the hostname which I'll add to my `/etc/hosts` file so I won't need to specify IP address if I did not need to.
+
 ![21c26216b7e1d024875bce751036852e.png](/resources/21c26216b7e1d024875bce751036852e.png)
 
 Since there is no other service that I could dig it, I start with null session enumeration on SMB and LDAP protocol which I can see that null session could not be used to pull user list or access file share.
@@ -147,5 +151,6 @@ Now I will loot root flag and root the box :D
 ![0ddbe6ded024cab64cdd30d110f88152.png](/resources/0ddbe6ded024cab64cdd30d110f88152.png)
 
 ![31d3b66c57999b2b03986cf102553004.png](/resources/31d3b66c57999b2b03986cf102553004.png)
+
 https://labs.hackthebox.com/achievement/machine/1438364/671
 ***

