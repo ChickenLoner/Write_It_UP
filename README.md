@@ -8,7 +8,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 252
+**Total Write-ups**: 255
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
@@ -83,16 +83,19 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 HackTheBox → HTB Labs → HTB Machines → VulnLab
 
 <details>
-<summary>📝 10 write-ups (click to expand)</summary>
+<summary>📝 13 write-ups (click to expand)</summary>
 
 - [[HTB Write-up] Baby](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Baby.md)
 - [[HTB Write-up] BabyTwo](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20BabyTwo.md)
 - [[HTB Write-up] Breach](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Breach.md)
 - [[HTB Write-up] Data](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Data.md)
 - [[HTB Write-up] Job](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Job.md)
+- [[HTB Write-up] Lock](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Lock.md)
 - [[HTB Write-up] Manage](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Manage.md)
 - [[HTB Write-up] Media](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Media.md)
+- [[HTB Write-up] Reset](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Reset.md)
 - [[HTB Write-up] Retro](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Retro.md)
+- [[HTB Write-up] RetroTwo](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20RetroTwo.md)
 - [[HTB Write-up] Sendai](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Sendai.md)
 - [[HTB Write-up] Sweep](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Sweep.md)
 
