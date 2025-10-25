@@ -12,7 +12,7 @@
 
 ***
 ## Abstract
-Data is a vulnlab machine imported to HackTheBox as an Easy Linux box, I started with network enumeration with nmap, revealing this machine is a running SSH, website and several exposed port for rexec,rlogin and rshell.
+Reset is a vulnlab machine imported to HackTheBox as an Easy Linux box, I started with network enumeration with nmap, revealing this machine is a running SSH, website and several exposed port for rexec,rlogin and rshell.
 
 I started with web exploitation on port 80 by leveraging forgot password funtionality to find valid user and obtain new password from the website to get access to the dashboard as admin user.
 
