@@ -40,12 +40,9 @@ def generate_main_toc(md_files):
         
         toc.append(f"<h2>{folder_name}</h2>")
         
-        # Add collapsible section for folders with more than 2 files
-        if file_count > 2:
-            toc.append("<details open>")
-            toc.append(f'<summary style="cursor: pointer; font-size: 1rem; color: #656d76; margin-bottom: 1rem;">📝 {file_count} write-ups (click to collapse)</summary>')
-        else:
-            toc.append(f'<p style="color: #656d76; margin-bottom: 0.5rem;">📝 {file_count} write-ups</p>')
+        # Add collapsible section for ALL folders (starts closed)
+        toc.append("<details>")
+        toc.append(f'<summary style="cursor: pointer; font-size: 1rem; color: #656d76; margin-bottom: 1rem;">📝 {file_count} write-ups (click to expand)</summary>')
         
         toc.append("<ul>")
         
@@ -61,9 +58,8 @@ def generate_main_toc(md_files):
         
         toc.append("</ul>")
         
-        # Close details tag if opened
-        if file_count > 2:
-            toc.append("</details>")
+        # Close details tag
+        toc.append("</details>")
     
     return "\n".join(toc)
 
@@ -225,6 +221,9 @@ a:hover {{
 }}
 details {{
     margin: 1rem 0;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    padding: 0.5rem;
 }}
 details summary {{
     cursor: pointer;
@@ -233,12 +232,14 @@ details summary {{
     border-radius: 6px;
     user-select: none;
     font-weight: 500;
+    transition: background-color 0.2s;
 }}
 details summary:hover {{
     background: #eaeef2;
 }}
 details[open] summary {{
     margin-bottom: 0.5rem;
+    border-bottom: 1px solid #d0d7de;
 }}
 img {{
     max-width: 100%;

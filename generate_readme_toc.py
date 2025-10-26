@@ -25,7 +25,7 @@ def find_all_writeups():
 def generate_toc_markdown(folders):
     """Generate markdown TOC from folders and files."""
     lines = [
-        "# 🔐 Chicken0248's Write-Ups Collection",
+        "# 🔐 Chicken0248 Write-Ups Collection",
         "",
         "Welcome to my collection of CTF (Capture The Flag) write-ups! This repository contains detailed solutions and analysis for various cybersecurity challenges.",
         "",
@@ -57,11 +57,10 @@ def generate_toc_markdown(folders):
         lines.append(f"### {folder_name}")
         lines.append("")
         
-        # Create a collapsible section for folders with many files
-        if len(files) > 2:
-            lines.append("<details>")
-            lines.append(f"<summary>📝 {len(files)} write-ups (click to expand)</summary>")
-            lines.append("")
+        # Create a collapsible section for ALL folders
+        lines.append("<details>")
+        lines.append(f"<summary>📝 {len(files)} write-up(s) (click to expand)</summary>")
+        lines.append("")
         
         # List files
         for file in files:
@@ -73,10 +72,9 @@ def generate_toc_markdown(folders):
             name = file.stem
             lines.append(f"- [{name}]({encoded_path})")
         
-        # Close collapsible section if it was opened
-        if len(files) > 2:
-            lines.append("")
-            lines.append("</details>")
+        # Close collapsible section
+        lines.append("")
+        lines.append("</details>")
         
         lines.append("")
     
