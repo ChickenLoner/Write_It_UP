@@ -1,9 +1,7 @@
 # [Blue Team Labs Online - Aspen](https://blueteamlabs.online/home/investigation/aspen-fa1048174e)
-<div align=center>
 
 ![50ff2a5bb6449eb0026b6d6aa3e95555.png](/resources/50ff2a5bb6449eb0026b6d6aa3e95555.png)
 
-</div>
 FrostGuard sent some thieves to Dr. Lovelace's residence. What exactly is it after?
 
 >**Digital Forensics**

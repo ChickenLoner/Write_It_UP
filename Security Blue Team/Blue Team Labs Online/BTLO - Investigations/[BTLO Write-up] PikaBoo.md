@@ -1,9 +1,7 @@
 # [Blue Team Labs Online - PikaBoo](https://blueteamlabs.online/home/investigation/pikaboo-6bcb02f1a9)
-<div align=center>
 
 ![8d5062ade7bce839a279168f4f46eead.png](/resources/8d5062ade7bce839a279168f4f46eead.png)
 
-</div>
 Will's in hot water for sharing his credentials—never share yours! Can you uncover how the environment got AWSaultAD?
 
 >Incident Response

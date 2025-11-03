@@ -1,9 +1,7 @@
 # [Blue Team Labs Online - Nonyx](https://blueteamlabs.online/home/investigation/nonyx-63b4769449)
-<div align=center>
 
 ![81155214d4921ba1c8014f030140fa8d.png](/resources/81155214d4921ba1c8014f030140fa8d.png)
 
-</div>
 Purify Black Energy 2 from Shadowbrook’s digital infrastructure by reverse-engineering the malware’s code.
 
 >Reverse Engineering

@@ -1,12 +1,7 @@
 # [Blue Team Labs Online - Countdown](https://blueteamlabs.online/home/investigation/countdown-2c3cc56daf)
-Created: 15/05/2024 08:53  
-Last Updated: 15/05/2024 11:57
-* * *
-<div align="center">
 
 ![b0bcd731255ee9356a4aabc687cc2de1.png](/resources/b0bcd731255ee9356a4aabc687cc2de1-1.png)
 
-</div>
 
 > In a race against time, can you investigate a laptop seized by law enforcement to identify if a bomb threat is real or a hoax?
 > **Tags**: Autopsy, Window File Analyzer, WinPrefetchView, Jumplist Explorer, SQLite DB Browser, T1573

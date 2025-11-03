@@ -1,9 +1,7 @@
 # [Blue Team Labs Online - Deep Freeze](https://blueteamlabs.online/home/investigation/deep-freeze-fc58456bb2)
-<div align=center>
 
 ![42dee1a3ad5fe8795d5055b9c89ceae5.png](/resources/42dee1a3ad5fe8795d5055b9c89ceae5.png)
 
-</div>
 FrostGuard is freezing us out with its hacks...
 
 >**Incident Response**

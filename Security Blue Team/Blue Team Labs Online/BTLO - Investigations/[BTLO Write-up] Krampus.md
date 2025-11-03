@@ -1,9 +1,7 @@
 # [Blue Team Labs Online - Krampus](https://blueteamlabs.online/home/investigation/krampus-79226a7f4f)
-<div align=center>
 
 ![0e56557eacd2950976c340843e705796.png](/resources/0e56557eacd2950976c340843e705796.png)
 
-</div>
 FrostGuard is sendings its troops to the North Pole! Can you stop its advances?
 
 >**Incident Response**
