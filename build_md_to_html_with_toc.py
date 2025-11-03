@@ -9,7 +9,7 @@ SRC_DIR = Path(".")
 BUILD_DIR = Path("build")
 
 # GitHub Markdown CSS - Using dark theme
-GITHUB_CSS = "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-dark.min.css"
+GITHUB_CSS_DARK = "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-dark.min.css"
 
 def ensure_build_path(path: Path):
     """Ensure the build folder exists."""
