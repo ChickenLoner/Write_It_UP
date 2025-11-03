@@ -2,6 +2,7 @@
 <div align=center>
 
 ![0e56557eacd2950976c340843e705796.png](/resources/0e56557eacd2950976c340843e705796.png)
+
 </div>
 FrostGuard is sendings its troops to the North Pole! Can you stop its advances?
 

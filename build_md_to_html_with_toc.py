@@ -8,8 +8,8 @@ SRC_DIR = Path(".")
 # Output folder
 BUILD_DIR = Path("build")
 
-# GitHub Markdown CSS
-GITHUB_CSS = "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-light.min.css"
+# GitHub Markdown CSS - Using dark theme
+GITHUB_CSS = "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-dark.min.css"
 
 def ensure_build_path(path: Path):
     """Ensure the build folder exists."""
@@ -122,25 +122,29 @@ def md_to_html(md_path: Path, out_path: Path, back_to_index=True):
             break
     
     full_html = f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-color-mode="dark" data-dark-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
-<link rel="stylesheet" href="{GITHUB_CSS}">
+<link rel="stylesheet" href="{GITHUB_CSS_DARK}">
 <style>
 body {{ 
     max-width: 900px; 
     margin: 0 auto; 
     padding: 2rem; 
+    background-color: #0d1117;
+    color: #c9d1d9;
 }}
 .markdown-body {{
     margin: 0 auto;
+    background-color: #0d1117;
+    color: #c9d1d9;
 }}
-a {{ color: #0969da; text-decoration: none; }}
-a:hover {{ text-decoration: underline; }}
-code {{ background: #f6f8fa; padding: 0.2em 0.4em; border-radius: 3px; }}
-pre {{ background: #f6f8fa; padding: 1rem; border-radius: 6px; overflow-x: auto; }}
+a {{ color: #58a6ff; text-decoration: none; }}
+a:hover {{ text-decoration: underline; color: #79c0ff; }}
+code {{ background: #161b22; padding: 0.2em 0.4em; border-radius: 3px; color: #e6edf3; }}
+pre {{ background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }}
 img {{ 
     max-width: 100%; 
     height: auto; 
@@ -159,8 +163,8 @@ p img {{
     margin-right: auto !important;
 }}
 table {{ border-collapse: collapse; width: 100%; margin: 1rem 0; }}
-th, td {{ border: 1px solid #d0d7de; padding: 0.5rem; text-align: left; }}
-th {{ background: #f6f8fa; }}
+th, td {{ border: 1px solid #30363d; padding: 0.5rem; text-align: left; }}
+th {{ background: #161b22; }}
 </style>
 </head>
 <body class="markdown-body">

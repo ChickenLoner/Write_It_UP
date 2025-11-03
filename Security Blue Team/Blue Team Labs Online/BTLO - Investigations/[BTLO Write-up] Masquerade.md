@@ -2,6 +2,7 @@
 <div align=center>
 
 ![25dd1c8d2ec779d65c6945e3aa0dbcac.png](/resources/25dd1c8d2ec779d65c6945e3aa0dbcac.png)
+
 </div>
 Omar's USB drive might be the cause of the breach; Your task is to analyze these artifacts and determine exactly what happened.
 

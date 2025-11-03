@@ -2,6 +2,7 @@
 <div align=center>
 
 ![40eb42e811bd0cf1e6a68d4efa28d2fc.png](/resources/40eb42e811bd0cf1e6a68d4efa28d2fc.png)
+
 </div>
 The threat actors are exploiting the digital infrastructure, attempting to disrupt the festival and steal sensitive information. Can Ozark's SOC Analysts stop it?
 

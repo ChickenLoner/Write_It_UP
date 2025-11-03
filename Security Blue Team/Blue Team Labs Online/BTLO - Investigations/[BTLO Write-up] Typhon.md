@@ -2,6 +2,7 @@
 <div align=center>
 
 ![fbaef5242263e9ddc5c063928582673d.png](/resources/fbaef5242263e9ddc5c063928582673d.png)
+
 </div>
 A few nights ago, I downloaded a program called NG-IA.exe from a sketchy forum. If anyone knows how to stop the pop-ups, please help me. I’m running out of options.
 

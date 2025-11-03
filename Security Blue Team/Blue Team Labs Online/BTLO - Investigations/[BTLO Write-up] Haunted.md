@@ -2,6 +2,7 @@
 <div align=center>
 
 ![afd61e4ac70179815c6d90bc7430fe19.png](/resources/afd61e4ac70179815c6d90bc7430fe19.png)
+
 </div>
 One of the company's websites has been defaced, raising alarms. Collaborate with other analysts to uncover the identity of the adversary and assess the situation.
 
