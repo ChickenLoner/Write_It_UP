@@ -1,4 +1,4 @@
-# 🔐 Chicken0248's Write-Ups Collection
+# 🔐 Chicken0248 Write-Ups Collection
 
 Welcome to my collection of CTF (Capture The Flag) write-ups! This repository contains detailed solutions and analysis for various cybersecurity challenges.
 
@@ -13,7 +13,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
 <details>
-<summary>📝 62 write-ups (click to expand)</summary>
+<summary>📝 62 write-up(s) (click to expand)</summary>
 
 - [[CyberDefenders Write-up] 3CX Supply Chain](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%203CX%20Supply%20Chain.md)
 - [[CyberDefenders Write-up] Acoustic](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Acoustic.md)
@@ -83,7 +83,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 HackTheBox → HTB Labs → HTB Machines → VulnLab
 
 <details>
-<summary>📝 16 write-ups (click to expand)</summary>
+<summary>📝 16 write-up(s) (click to expand)</summary>
 
 - [[HTB Write-up] Baby](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20Baby.md)
 - [[HTB Write-up] BabyTwo](HackTheBox/HTB%20Labs/HTB%20Machines/VulnLab/%5BHTB%20Write-up%5D%20BabyTwo.md)
@@ -107,7 +107,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 HackTheBox → HTB Labs → HTB Sherlocks
 
 <details>
-<summary>📝 47 write-ups (click to expand)</summary>
+<summary>📝 47 write-up(s) (click to expand)</summary>
 
 - [[HTB Sherlocks Write-up] APTNightmare](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20APTNightmare.md)
 - [[HTB Sherlocks Write-up] APTNightmare-2](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20APTNightmare-2.md)
@@ -162,7 +162,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 LetsDefend → LetsDefend Alert
 
 <details>
-<summary>📝 4 write-ups (click to expand)</summary>
+<summary>📝 4 write-up(s) (click to expand)</summary>
 
 - [[LetsDefend Write-up] EventID 125 - ⭐ SOC175 - PowerShell Found in Requested URL - Possible CVE-2022-41082 Exploitation](LetsDefend/LetsDefend%20Alert/%5BLetsDefend%20Write-up%5D%20EventID%20125%20-%20%E2%AD%90%20SOC175%20-%20PowerShell%20Found%20in%20Requested%20URL%20-%20Possible%20CVE-2022-41082%20Exploitation.md)
 - [[LetsDefend Write-up] EventID 214 - SOC251 - Quishing Detected (QR Code Phishing)](LetsDefend/LetsDefend%20Alert/%5BLetsDefend%20Write-up%5D%20EventID%20214%20-%20SOC251%20-%20Quishing%20Detected%20%28QR%20Code%20Phishing%29.md)
@@ -174,7 +174,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 LetsDefend → LetsDefend Challenge
 
 <details>
-<summary>📝 67 write-ups (click to expand)</summary>
+<summary>📝 67 write-up(s) (click to expand)</summary>
 
 - [[LetsDefend Write-up] Agniane Stealer](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20Agniane%20Stealer.md)
 - [[LetsDefend Write-up] AstasiaLoader](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20AstasiaLoader.md)
@@ -249,7 +249,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 Security Blue Team → Blue Team Labs Online → BTLO - Investigations
 
 <details>
-<summary>📝 10 write-ups (click to expand)</summary>
+<summary>📝 10 write-up(s) (click to expand)</summary>
 
 - [[BTLO Write-up] Aspen](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Aspen.md)
 - [[BTLO Write-up] Countdown](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Countdown.md)
@@ -267,7 +267,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 TryHackMe → THM Blue Teaming
 
 <details>
-<summary>📝 33 write-ups (click to expand)</summary>
+<summary>📝 33 write-up(s) (click to expand)</summary>
 
 - [[THM Write-up] APIWizards Breach](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20APIWizards%20Breach.md)
 - [[THM Write-up] Benign](TryHackMe/THM%20Blue%20Teaming/%5BTHM%20Write-up%5D%20Benign.md)
@@ -308,7 +308,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 Unlisted Labs
 
 <details>
-<summary>📝 10 write-ups (click to expand)</summary>
+<summary>📝 10 write-up(s) (click to expand)</summary>
 
 - [CyGenixCTF Write-up](Unlisted%20Labs/CyGenixCTF%20Write-up.md)
 - [Cyber Range Thailand 2024 (Qualifier)](Unlisted%20Labs/Cyber%20Range%20Thailand%202024%20%28Qualifier%29.md)
@@ -326,7 +326,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 Unlisted Labs → Level Effect Cyber Defense CTF
 
 <details>
-<summary>📝 3 write-ups (click to expand)</summary>
+<summary>📝 3 write-up(s) (click to expand)</summary>
 
 - [Level Effect Cyber Defense CTF Write-up - CTI Challenges (full completeness)](Unlisted%20Labs/Level%20Effect%20Cyber%20Defense%20CTF/Level%20Effect%20Cyber%20Defense%20CTF%20Write-up%20-%20CTI%20Challenges%20%28full%20completeness%29.md)
 - [Level Effect Cyber Defense CTF Write-up - Email Security Challenges (full completeness)](Unlisted%20Labs/Level%20Effect%20Cyber%20Defense%20CTF/Level%20Effect%20Cyber%20Defense%20CTF%20Write-up%20-%20Email%20Security%20Challenges%20%28full%20completeness%29.md)
@@ -337,7 +337,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 Unlisted Labs → MemLabs
 
 <details>
-<summary>📝 6 write-ups (click to expand)</summary>
+<summary>📝 6 write-up(s) (click to expand)</summary>
 
 - [[MemLabs Write-up] MemLabs Lab 1 - Beginner_s Luck](Unlisted%20Labs/MemLabs/%5BMemLabs%20Write-up%5D%20MemLabs%20Lab%201%20-%20Beginner_s%20Luck.md)
 - [[MemLabs Write-up] MemLabs Lab 2 - A New World](Unlisted%20Labs/MemLabs/%5BMemLabs%20Write-up%5D%20MemLabs%20Lab%202%20-%20A%20New%20World.md)
