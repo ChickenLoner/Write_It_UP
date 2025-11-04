@@ -8,7 +8,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 258
+**Total Write-ups**: 259
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
@@ -308,7 +308,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 Unlisted Labs
 
 <details>
-<summary>📝 10 write-up(s) (click to expand)</summary>
+<summary>📝 11 write-up(s) (click to expand)</summary>
 
 - [CyGenixCTF Write-up](Unlisted%20Labs/CyGenixCTF%20Write-up.md)
 - [Cyber Range Thailand 2024 (Qualifier)](Unlisted%20Labs/Cyber%20Range%20Thailand%202024%20%28Qualifier%29.md)
@@ -317,6 +317,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [CyberSpaceCTF 2024 - Social Distancing (Forensic)](Unlisted%20Labs/CyberSpaceCTF%202024%20-%20Social%20Distancing%20%28Forensic%29.md)
 - [SECPlayground Bloody Xmas2024 CTF - [Incident & Rev - Wowza]](Unlisted%20Labs/SECPlayground%20Bloody%20Xmas2024%20CTF%20-%20%5BIncident%20%26%20Rev%20-%20Wowza%5D.md)
 - [SECPlayground Hackloween CTF 2024  [Log Analysis & Incident write-up - R@b!T_T]](Unlisted%20Labs/SECPlayground%20Hackloween%20CTF%202024%20%20%5BLog%20Analysis%20%26%20Incident%20write-up%20-%20R%40b%21T_T%5D.md)
+- [SECPlayground Hackloween CTF 2025 Digital Forensics](Unlisted%20Labs/SECPlayground%20Hackloween%20CTF%202025%20Digital%20Forensics.md)
 - [THCTT2024 - Network_Forensic_Mobile - MaAowHa](Unlisted%20Labs/THCTT2024%20-%20Network_Forensic_Mobile%20-%20MaAowHa.md)
 - [THCTT2024 - Reverse_Crypto_Programming - MaAowHa](Unlisted%20Labs/THCTT2024%20-%20Reverse_Crypto_Programming%20-%20MaAowHa.md)
 - [n00bz CTF 2024 Write-up (ByTheW4y Team)](Unlisted%20Labs/n00bz%20CTF%202024%20Write-up%20%28ByTheW4y%20Team%29.md)
