@@ -2,11 +2,9 @@
 Created: 29/08/2024 22:23
 Last Updated: 29/08/2024 23:43
 * * *
-<div align=center>
 
-**Compromised Network Printer**
 ![ea2bfca48180d85851b363630c2c63ef.png](/resources/ea2bfca48180d85851b363630c2c63ef.png)
-</div>
+
 You are a DFIR Analyst for a corporation. A network printer running in the internal network has been compromised as it was alerted by our IDS. You have been provided a packet capture to trace the attacker’s action and what data was stolen from the printer server.
 
 * * *
@@ -110,9 +108,6 @@ remote-service.ps1
 ## Summary
 On this challenge, we learned about Printer network traffic analysis and PJL which can be used to retrieve content of files store on printer. 
 
-<div align=center>
-
 ![1c92e539ed6597a795cac1397ae09d30.png](/resources/1c92e539ed6597a795cac1397ae09d30.png)
-</div>
 
 * * *

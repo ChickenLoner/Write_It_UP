@@ -2,11 +2,9 @@
 Created: 07/09/2024 11:50
 Last Updated: 07/09/2024 17:43
 * * *
-<div align=center>
 
-**Golang Ransomware**
 ![b90acf1821b2069e9d6968fa451ddc16.png](/resources/b90acf1821b2069e9d6968fa451ddc16.png)
-</div>
+
 Over the past few years, malware researchers have noticed a worrying trend: malicious groups are increasingly using Go, a powerful, easy-to-use, and platform-independent programming language, to create stealthy and resilient malware.
 
 Unfortunately, a new strain of Golang malware has been detected on your organization's network. Initial reports indicate that traditional antivirus solutions are struggling to detect this malware, which uses sophisticated evasion techniques. Upon further investigation, it becomes clear that you need to understand Golang's subtleties.
@@ -120,9 +118,7 @@ wbadmin DELETE SYSTEMSTATEBACKUP
 On this challenge, we investigated a Kulper ransomware which is written in golang and uncovered capabilities of this ransomware by go through some functions and take note of each commands, configurations and so on.
 
 Read more about this ransomware here -> https://infosecwriteups.com/unfolding-kuiper-ransomware-07b88087caab
-<div align=center>
 
 ![51f968e75e4f12daeddfca7c56be4602.png](/resources/51f968e75e4f12daeddfca7c56be4602.png)
-</div>
 
 * * *

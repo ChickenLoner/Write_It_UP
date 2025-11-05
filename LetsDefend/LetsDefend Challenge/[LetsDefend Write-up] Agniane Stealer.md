@@ -2,11 +2,9 @@
 Created: 19/06/2024 12:04
 Last Updated: 19/06/2024 15:16
 * * *
-<div align=center>
 
-**Agniane Stealer**
 ![236cc9a939177905ede5b6d1bbd58646.png](/resources/236cc9a939177905ede5b6d1bbd58646.png)
-</div>
+
 SecureTech Solutions recently detected unusual activity on its employee workstations. Upon investigation, they found that sensitive customer information, including email addresses and passwords, has been compromised. The company suspects that a stealer malware might be responsible for the breach.
 
 **File location**: /Desktop/ChallengeFile/stealer.7z/
@@ -176,9 +174,6 @@ On this challenge, we analyzed Agniane stealer which is an .NET infostealer malw
 
 Zscaler made very information blog about this malware [here](https://www.zscaler.com/blogs/security-research/agniane-stealer-dark-web-s-crypto-threat) 
 
-<div align=center>
-
 ![9ed6a3015a9e06ef790c223b37dd5a21.png](/resources/9ed6a3015a9e06ef790c223b37dd5a21.png)
-</div>
 
 * * *

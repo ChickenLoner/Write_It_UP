@@ -2,11 +2,9 @@
 Created: 16/07/2024 08:00
 Last Updated: 26/07/2024 07:20
 * * *
-<div align=center>
 
-**Batch Downloader**
 ![b4b7d7b12eed45db4de22cf920c819aa.png](/resources/b4b7d7b12eed45db4de22cf920c819aa.png)
-</div>
+
 A malicious batch file has been discovered that downloads and executes files associated with the Laplas Clipper malware. Analyze this batch file to understand its behavior and help us investigate its activities.
 
 * * *
@@ -64,9 +62,6 @@ VBScript
 ## Summary
 On this challenge, we got a malicious Windows batch script to analyze and when it got executed then it will use LOLBIN to download a file from C2 server, unzip it and execute extracted file.
 
-<div align=center>
-
 ![25af82fbdd094e8393f7e31f3e416070.png](/resources/25af82fbdd094e8393f7e31f3e416070.png)
-</div>
 
 * * *

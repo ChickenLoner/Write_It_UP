@@ -62,10 +62,7 @@ mistersecretx@aol.com
 
 > What is Ann's email password?
 
-<div align=center>
-
 ![1c1864692c4ff2c5fcff820036c40c39.png](/resources/1c1864692c4ff2c5fcff820036c40c39.png)
-</div>
 
 ```
 558r00lz
@@ -86,10 +83,8 @@ Mexico
 ```
 9e423e11db88f01bbff81172839e1923
 ```
-<div align=center>
 
 ![6746acb89959d9efd9676755554f8aed.png](/resources/6746acb89959d9efd9676755554f8aed.png)
-</div>
 
 * * *
 ## Summary

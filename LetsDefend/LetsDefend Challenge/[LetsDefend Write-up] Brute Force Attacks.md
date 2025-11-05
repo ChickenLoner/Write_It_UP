@@ -2,11 +2,9 @@
 Created: 24/07/2024 09:11
 Last Updated: 24/07/2024 11:11
 * * *
-<div align=center>
 
-**Brute Force Attacks**
 ![63ce7e34f3103bd3451076f47278f655.png](/resources/63ce7e34f3103bd3451076f47278f655.png)
-</div>
+
 Our web server has been compromised, and it's up to you to investigate the breach. Dive into the system, analyze logs, dissect network traffic, and uncover clues to identify the attacker and determine the extent of the damage. Are you up for the challenge?
 
 **File Location**: /root/Desktop/ChallengeFile/BruteForce.7z
@@ -125,9 +123,7 @@ T1110
 On this challenge, we investigated network traffic with wireshark to determine Threat Actor IP address and detect bruteforce attack to webserver and RDP
 
 Lastly, we also investigated authentication log to determine threat actor last successful logged in attempts along with how many failed login attempt it took before gaining foothold on webserver
-<div align=center>
 
 ![22f233056b7c85815c5a931430ad0709.png](/resources/22f233056b7c85815c5a931430ad0709.png)
-</div>
 
 * * *

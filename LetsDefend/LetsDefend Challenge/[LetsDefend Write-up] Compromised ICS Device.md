@@ -2,11 +2,9 @@
 Created: 06/09/2024 18:11
 Last Updated: 06/09/2024 22:49
 * * *
-<div align=center>
 
-**Compromised ICS Device**
 ![609206ed35240f7240922bd2805ab0d1.png](/resources/609206ed35240f7240922bd2805ab0d1.png)
-</div>
+
 A critical water treatment plant has recently experienced unusual behavior in its control systems. The plant’s PLC, responsible for managing the water pumps and filtration systems, is suspected of being compromised. Your team has been called in to investigate and identify the root cause of the anomaly. Investigate the logs and identify the sequence of events that led to the system's compromise. Determine the type of attack and the attacker's actions.
 
 **File Location**: /root/Desktop/ChallangeFile/ICS-Artifacts.7z
@@ -145,9 +143,6 @@ As we can see that `PumpSwitch` was set to `FALSE` and `WaterPump` was set to `T
 ## Summary
 On this challenge, we used log file and pcap file to investigate compromised ICS devide that started with the attacker gained access to PCL via bruteforcing then messing with PLC control variables which leaves WaterPump on and PumpSwitch off (which might not end well in the real world scenario).
 
-<div align=center>
-
 ![c07539f69056e8413145a3664d14dcf5.png](/resources/c07539f69056e8413145a3664d14dcf5.png)
-</div>
 
 * * *

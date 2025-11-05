@@ -2,11 +2,8 @@
 Created: 19/06/2024 10:45
 Last Updated: 19/06/2024 11:46
 * * *
-<div align=center>
 
-**AstasiaLoader**
 ![4ed4c2a341e9e176da529717d02eef5c.png](/resources/4ed4c2a341e9e176da529717d02eef5c-1.png)
-</div>
 
 In this challenge, participants will play the role of security analysts tasked with investigating a potential malware incident involving an employee who has encountered suspicious activity. The challenge focuses on analyzing the suspected malware and identifying its behavior, potential payload, and mitigation strategies.
 
@@ -82,6 +79,7 @@ There is a `Lg4dXD` function inside `VcSR9o` class that will send information co
 >What is the name of the malware?
 
 ![2926014d1cbe5aaf197bbdb9ec89151b.png](/resources/2926014d1cbe5aaf197bbdb9ec89151b.png)
+
 ```
 AstasiaLoader
 ```
@@ -89,6 +87,7 @@ AstasiaLoader
 >What is the username of the attacker on Telegram?
 
 ![d93cc7c57c7e70b52c0fa0b62f320f6f.png](/resources/d93cc7c57c7e70b52c0fa0b62f320f6f.png)
+
 ```
 @SkalaMmmvkusno
 ```
@@ -96,7 +95,9 @@ AstasiaLoader
 >What is the name of the file that is deleted by the malware?
 
 ![c09f014cd916915cf9ba11d3f747e3ec.png](/resources/c09f014cd916915cf9ba11d3f747e3ec.png)
+
 ![dc2274a5b5ff45a56bfed778546a9dcc.png](/resources/dc2274a5b5ff45a56bfed778546a9dcc.png)
+
 ```
 infected.exe
 ```
@@ -104,6 +105,7 @@ infected.exe
 >What is the name of the file that was checked by malware or not?
 
 ![e34c84bbe7525a7ebce09a69cab9bb30.png](/resources/e34c84bbe7525a7ebce09a69cab9bb30.png)
+
 ```
 currentscript.txt
 ```
@@ -113,9 +115,6 @@ currentscript.txt
 
 On this challenge, We analyzed AstasiaLoader which is .NET based malware that will read URL from `README.md` hosted on github and will download redline stealer to exfiltrate sensitive data and send them to Telegram bot then it also will also delete redline stealer from your system after data exfiltration process is completed 
 
-<div align=center>
-
 ![e7d4c55e70938dee94efc4971e08e3f3.png](/resources/e7d4c55e70938dee94efc4971e08e3f3.png)
-</div>
 
 * * *

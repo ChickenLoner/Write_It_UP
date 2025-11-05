@@ -2,11 +2,8 @@
 Created: 19/08/2024 23:21
 Last Updated: 20/08/2024 01:23
 * * *
-<div align=center>
 
-**Downloader**
 ![d64408f79d46b3df524e523db676c201.png](/resources/d64408f79d46b3df524e523db676c201.png)
-</div>
 
 Our organization's Security Operations Center (SOC) has detected suspicious activity related to downloader malware. The malware is designed to retrieve and execute additional payloads from remote servers, potentially leading to further compromise of the network. Please help us answer these questions.
 
@@ -101,9 +98,6 @@ sub_140001000
 ## Summary
 On this challenge, we investigated windows binary file with IDA freeware to uncover C2 server and a payload that will be downloaded to infected system.
 
-<div align=center>
-
 ![41baad5d10b33ed18a60c826c0afb8d5.png](/resources/41baad5d10b33ed18a60c826c0afb8d5.png)
-</div>
 
 * * *

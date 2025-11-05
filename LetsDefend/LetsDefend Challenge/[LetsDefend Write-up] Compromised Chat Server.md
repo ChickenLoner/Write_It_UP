@@ -2,7 +2,9 @@
 Created: 17/09/2024 11:02
 Last Updated: 17/09/2024 14:02
 * * *
+
 ![a8fa28b0b454b62885422a01efcf7863.png](/resources/a8fa28b0b454b62885422a01efcf7863.png)
+
 In the company, one of our teams uses Openfire, an XMPP-based chat server for their communications. Recently, the L1 analyst detected suspicious activity on the server, including abnormal login attempts and traffic spikes. Further investigation suggests a potential exploitation of CVE-2023-32315, a critical vulnerability in Openfire allowing remote code execution. To confirm this, the L1 analyst captured a packet capture (PCAP) of the server's network traffic. As an investigator, your task is to analyze the PCAP, identify any signs of compromise, and trace the attacker's actions.
 
 File location: /root/Desktop/ChallengeFile/Challenge-File.zip
@@ -10,10 +12,13 @@ File Password: infected
 
 * * *
 ## Understand the exploit
+
 ![f0075c6670a564e8321c0d42b04a9b3a.png](/resources/f0075c6670a564e8321c0d42b04a9b3a.png)
+
 Before we start investigate this case, we might need to understand what CVE-2023-32315 really is so here is a [blog wrote by Jacob Baines](https://vulncheck.com/blog/openfire-cve-2023-32315) that would help us learn what happened when we exploited this CVE.
 
 ![07433fe1db08d094a5f803703045732c.png](/resources/07433fe1db08d094a5f803703045732c.png)
+
 To put it simply, it start from a path traversal that will access `user-create.jsp` endpoint which responsible for user creation then create admin user and login as admin user to upload openfire plugin file (.jar file) that is actually a webshell which will allow threat actor to execute any arbitrary commands as desired.
 
 Now we know what to look for then we can start our investigation.
@@ -133,9 +138,6 @@ uname -a
 ## Summary
 On this challenge, we learned about CVE-2023-32315 which is Openfire Path Traversal that can be escalated to RCE and by analyzing provided pcap file, we can see how it worked in practical.
 
-<div align=center>
-
 ![65e564f08e8bf7a4537fc3f95b39291d.png](/resources/65e564f08e8bf7a4537fc3f95b39291d.png)
-</div>
 
 * * *

@@ -2,11 +2,9 @@
 Created: 07/06/2024 11:47
 Last Updated: 20/07/2024 12:43
 * * *
-<div align=center>
 
-**Discord Forensics**
 ![d127f0583e384c66b9e3965330c62eb3.png](/resources/d127f0583e384c66b9e3965330c62eb3.png)
-</div>
+
 Our SIEM alerted that AV blocked malware from running on an employee's machine. For further investigation, the incident response team quickly acquired an image of that machine. To find out how this malware got on the machine, their task is to find the entry point of the attack and trace the attacker.
 
 **File Location:** C:\Users\LetsDefend\Desktop\ChallengeFile\Discord.7z
@@ -137,9 +135,6 @@ On this challenge, we will use Thunderbird or Outlook to investigate an eml file
 - employee uploaded a research details in 7z file from discord server
 - an attacker blackmailing employee via an email to download a malware and execute
 
-<div align=center>
-
 ![5e111a2e659a2b2f1827f058043e5337.png](/resources/5e111a2e659a2b2f1827f058043e5337.png)
-</div>
 
 * * *
