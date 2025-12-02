@@ -8,7 +8,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 261
+**Total Write-ups**: 262
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
@@ -249,7 +249,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 Security Blue Team → Blue Team Labs Online → BTLO - Investigations
 
 <details>
-<summary>📝 12 write-up(s) (click to expand)</summary>
+<summary>📝 13 write-up(s) (click to expand)</summary>
 
 - [[BTLO Write-up] Aspen](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Aspen.md)
 - [[BTLO Write-up] Countdown](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Countdown.md)
@@ -261,6 +261,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[BTLO Write-up] Ozarks](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Ozarks.md)
 - [[BTLO Write-up] PikaBoo](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20PikaBoo.md)
 - [[BTLO Write-up] Rotten Cloud](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Rotten%20Cloud.md)
+- [[BTLO Write-up] The Walking Packets](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20The%20Walking%20Packets.md)
 - [[BTLO Write-up] Typhon](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Typhon.md)
 - [[BTLO Write-up] Zeta End](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Zeta%20End.md)
 
