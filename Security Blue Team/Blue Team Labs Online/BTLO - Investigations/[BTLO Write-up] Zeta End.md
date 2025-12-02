@@ -1,9 +1,7 @@
 # [Blue Team Labs Online - Zeta End](https://blueteamlabs.online/home/investigation/zeta-end-2a5b4e8c18)
-<div align=center>
 
 ![fed2cf400076028b38af448fc011abe1.png](/resources/fed2cf400076028b38af448fc011abe1.png)
 
-</div>
 
 The situation has Escalated! Continue your investigation as part of Zeta-9’s Cyber Response & Incident Security Investigation Services (CRISIS) . A full triage image has been taken from a machine within Zeta-9's Secret LAN Perform a full DFIR analysis To uncover the Threat Actors Final Objectives...
 

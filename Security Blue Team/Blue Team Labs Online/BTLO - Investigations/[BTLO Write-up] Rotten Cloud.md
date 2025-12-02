@@ -1,9 +1,6 @@
 # [Blue Team Labs Online - Rottencloud](https://blueteamlabs.online/home/investigation/rotten-cloud-dcf4ab87e0)
-<div align=center>
 
 ![e3efe79da6e0bffc8111276c46d3fed1.png](/resources/e3efe79da6e0bffc8111276c46d3fed1.png)
-
-</div>
 
 As part of the C.R.I.S.I.S. response team, you’ve been assigned to investigate Zeta-9’s hybrid cloud environment supporting its quantum research division. Using Splunk, you must analyze cloud-based logs to determine whether the threat actor has pivoted into Zeta-9’s cloud infrastructure — and act quickly to prevent them from moving deeper into the network.
 
