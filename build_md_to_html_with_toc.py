@@ -127,6 +127,7 @@ def md_to_html(md_path: Path, out_path: Path, back_to_index=True):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
+<link rel="icon" href="https://chickenloner.github.io/chicken0248.png" type="image/png">
 <link rel="stylesheet" href="{GITHUB_CSS_DARK}">
 <style>
 body {{ 
