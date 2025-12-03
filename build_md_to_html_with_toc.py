@@ -186,6 +186,7 @@ def create_index_html(toc_html: str):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chicken0248 Write-Ups Collection</title>
+<link rel="icon" href="https://chickenloner.github.io/chicken0248.png" type="image/png">
 <link rel="stylesheet" href="{GITHUB_CSS_DARK}">
 <style>
 body {{ 
