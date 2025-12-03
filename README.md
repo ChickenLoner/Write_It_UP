@@ -8,14 +8,15 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 262
+**Total Write-ups**: 264
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
 <details>
-<summary>📝 62 write-up(s) (click to expand)</summary>
+<summary>📝 64 write-up(s) (click to expand)</summary>
 
 - [[CyberDefenders Write-up] 3CX Supply Chain](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%203CX%20Supply%20Chain.md)
+- [[CyberDefenders Write-up] APT35](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20APT35.md)
 - [[CyberDefenders Write-up] Acoustic](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Acoustic.md)
 - [[CyberDefenders Write-up] AfricanFalls](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20AfricanFalls.md)
 - [[CyberDefenders Write-up] AndroidBreach](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20AndroidBreach.md)
@@ -45,6 +46,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[CyberDefenders Write-up] Lespion](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Lespion.md)
 - [[CyberDefenders Write-up] MSIXPhish](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20MSIXPhish.md)
 - [[CyberDefenders Write-up] MalDoc101](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20MalDoc101.md)
+- [[CyberDefenders Write-up] Malicious PyPi](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Malicious%20PyPi.md)
 - [[CyberDefenders Write-up] MeteorHit](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20MeteorHit.md)
 - [[CyberDefenders Write-up] MrGamer](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20MrGamer.md)
 - [[CyberDefenders Write-up] MrRobot](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20MrRobot.md)
