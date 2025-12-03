@@ -1,4 +1,4 @@
-# [CyberDefenders - Malicious PyPi](https://www.youtube.com/watch?v=WAqw6v4BAGk)
+# [CyberDefenders - Malicious PyPi](https://cyberdefenders.org/blueteam-ctf-challenges/malicious-pypi/)
 ## Table of Contents
 
 - [Scenario](#scenario)
