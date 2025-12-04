@@ -8,12 +8,12 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 275
+**Total Write-ups**: 278
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
 <details>
-<summary>📝 75 write-up(s) (click to expand)</summary>
+<summary>📝 78 write-up(s) (click to expand)</summary>
 
 - [[CyberDefenders Write-up] 3CX Supply Chain](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%203CX%20Supply%20Chain.md)
 - [[CyberDefenders Write-up] APT35](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20APT35.md)
@@ -34,6 +34,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[CyberDefenders Write-up] FakeGPT](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20FakeGPT.md)
 - [[CyberDefenders Write-up] Fog Ransomware](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Fog%20Ransomware.md)
 - [[CyberDefenders Write-up] GetPDF](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20GetPDF.md)
+- [[CyberDefenders Write-up] GhostDetect](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20GhostDetect.md)
 - [[CyberDefenders Write-up] GoldenSpray](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20GoldenSpray.md)
 - [[CyberDefenders Write-up] GrabThePhisher](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20GrabThePhisher.md)
 - [[CyberDefenders Write-up] Hacked](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Hacked.md)
@@ -64,8 +65,10 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[CyberDefenders Write-up] Phishy](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Phishy.md)
 - [[CyberDefenders Write-up] Phobos](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Phobos.md)
 - [[CyberDefenders Write-up] PoisonedCredentials](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20PoisonedCredentials.md)
+- [[CyberDefenders Write-up] ProPDF](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20ProPDF.md)
 - [[CyberDefenders Write-up] PsExec Hunt](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20PsExec%20Hunt.md)
 - [[CyberDefenders Write-up] QBot](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20QBot.md)
+- [[CyberDefenders Write-up] RARCVE](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20RARCVE.md)
 - [[CyberDefenders Write-up] RE101](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20RE101.md)
 - [[CyberDefenders Write-up] Ramnit](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Ramnit.md)
 - [[CyberDefenders Write-up] Red Stealer](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Red%20Stealer.md)
