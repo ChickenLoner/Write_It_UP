@@ -8,12 +8,12 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 269
+**Total Write-ups**: 275
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
 <details>
-<summary>📝 69 write-up(s) (click to expand)</summary>
+<summary>📝 75 write-up(s) (click to expand)</summary>
 
 - [[CyberDefenders Write-up] 3CX Supply Chain](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%203CX%20Supply%20Chain.md)
 - [[CyberDefenders Write-up] APT35](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20APT35.md)
@@ -28,6 +28,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[CyberDefenders Write-up] CorporateSecrets](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20CorporateSecrets.md)
 - [[CyberDefenders Write-up] DeepDive](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20DeepDive.md)
 - [[CyberDefenders Write-up] DumpMe](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20DumpMe.md)
+- [[CyberDefenders Write-up] Eli](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Eli.md)
 - [[CyberDefenders Write-up] Emprisa Maldoc](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Emprisa%20Maldoc.md)
 - [[CyberDefenders Write-up] EscapeRoom](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20EscapeRoom.md)
 - [[CyberDefenders Write-up] FakeGPT](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20FakeGPT.md)
@@ -39,11 +40,13 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[CyberDefenders Write-up] Hammered](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Hammered.md)
 - [[CyberDefenders Write-up] HawkEye](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20HawkEye.md)
 - [[CyberDefenders Write-up] HireMe](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20HireMe.md)
+- [[CyberDefenders Write-up] HoneyBOT](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20HoneyBOT.md)
 - [[CyberDefenders Write-up] Hunter](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Hunter.md)
 - [[CyberDefenders Write-up] IcedID](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20IcedID.md)
 - [[CyberDefenders Write-up] IcedID 2](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20IcedID%202.md)
 - [[CyberDefenders Write-up] Injector](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Injector.md)
 - [[CyberDefenders Write-up] Insider](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Insider.md)
+- [[CyberDefenders Write-up] Jailbroken](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Jailbroken.md)
 - [[CyberDefenders Write-up] Kerberoasted](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Kerberoasted.md)
 - [[CyberDefenders Write-up] Lespion](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Lespion.md)
 - [[CyberDefenders Write-up] MSIXPhish](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20MSIXPhish.md)
@@ -58,6 +61,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[CyberDefenders Write-up] Oski](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Oski.md)
 - [[CyberDefenders Write-up] PacketMaze](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20PacketMaze.md)
 - [[CyberDefenders Write-up] PhishStrike](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20PhishStrike.md)
+- [[CyberDefenders Write-up] Phishy](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Phishy.md)
 - [[CyberDefenders Write-up] Phobos](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Phobos.md)
 - [[CyberDefenders Write-up] PoisonedCredentials](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20PoisonedCredentials.md)
 - [[CyberDefenders Write-up] PsExec Hunt](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20PsExec%20Hunt.md)
@@ -74,6 +78,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[CyberDefenders Write-up] Sysinternals](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Sysinternals.md)
 - [[CyberDefenders Write-up] Szechuan Sauce](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Szechuan%20Sauce.md)
 - [[CyberDefenders Write-up] T1197](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20T1197.md)
+- [[CyberDefenders Write-up] TeamSpy](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20TeamSpy.md)
 - [[CyberDefenders Write-up] The Crime](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20The%20Crime.md)
 - [[CyberDefenders Write-up] Tomcat Takeover](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Tomcat%20Takeover.md)
 - [[CyberDefenders Write-up] Trigona Ransomware](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Trigona%20Ransomware.md)
@@ -84,6 +89,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[CyberDefenders Write-up] WireDive](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20WireDive.md)
 - [[CyberDefenders Write-up] XLM Macros](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20XLM%20Macros.md)
 - [[CyberDefenders Write-up] Yellow RAT](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Yellow%20RAT.md)
+- [[CyberDefenders Write-up] l337 S4uc3](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20l337%20S4uc3.md)
 
 </details>
 
