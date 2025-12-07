@@ -8,12 +8,12 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 278
+**Total Write-ups**: 279
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
 <details>
-<summary>📝 78 write-up(s) (click to expand)</summary>
+<summary>📝 79 write-up(s) (click to expand)</summary>
 
 - [[CyberDefenders Write-up] 3CX Supply Chain](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%203CX%20Supply%20Chain.md)
 - [[CyberDefenders Write-up] APT35](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20APT35.md)
@@ -25,6 +25,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[CyberDefenders Write-up] BlackEnergy](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20BlackEnergy.md)
 - [[CyberDefenders Write-up] BlueSky Ransomware](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20BlueSky%20Ransomware.md)
 - [[CyberDefenders Write-up] Brave](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Brave.md)
+- [[CyberDefenders Write-up] BumbleSting](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20BumbleSting.md)
 - [[CyberDefenders Write-up] CorporateSecrets](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20CorporateSecrets.md)
 - [[CyberDefenders Write-up] DeepDive](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20DeepDive.md)
 - [[CyberDefenders Write-up] DumpMe](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20DumpMe.md)
