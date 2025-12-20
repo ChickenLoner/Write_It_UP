@@ -8,7 +8,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 281
+**Total Write-ups**: 285
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
@@ -96,6 +96,18 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[CyberDefenders Write-up] XLM Macros](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20XLM%20Macros.md)
 - [[CyberDefenders Write-up] Yellow RAT](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20Yellow%20RAT.md)
 - [[CyberDefenders Write-up] l337 S4uc3](CyberDefenders/CyberDefenders%20-%20CyberRange/%5BCyberDefenders%20Write-up%5D%20l337%20S4uc3.md)
+
+</details>
+
+### 📁 HackSmarter.org
+
+<details>
+<summary>📝 4 write-up(s) (click to expand)</summary>
+
+- [[HackSmarter.org Write-up] Arasaka](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20Arasaka.md)
+- [[HackSmarter.org Write-up] BuildingMagic](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20BuildingMagic.md)
+- [[HackSmarter.org Write-up] MidGarden2](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20MidGarden2.md)
+- [[HackSmarter.org Write-up] Welcome](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20Welcome.md)
 
 </details>
 
