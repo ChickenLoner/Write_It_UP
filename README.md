@@ -8,7 +8,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 288
+**Total Write-ups**: 289
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
@@ -102,8 +102,9 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 HackSmarter.org
 
 <details>
-<summary>📝 7 write-up(s) (click to expand)</summary>
+<summary>📝 8 write-up(s) (click to expand)</summary>
 
+- [[HackSmarter.org Write-up] Anomaly](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20Anomaly.md)
 - [[HackSmarter.org Write-up] Arasaka](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20Arasaka.md)
 - [[HackSmarter.org Write-up] BuildingMagic](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20BuildingMagic.md)
 - [[HackSmarter.org Write-up] MidGarden2](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20MidGarden2.md)
