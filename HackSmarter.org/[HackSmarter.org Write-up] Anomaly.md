@@ -36,7 +36,7 @@ It is a critical finding that the Domain Controller is running active Antivirus 
 
 ## Enumeration
 
-I will start with rustscan to NORTHJMP01 host first since it is faster than nmap and VPN connection can tolerate this much of traffic unlike HTB. (I could not use rustscan could not be used on HTB) and we can see that there are only 2 ports opened on the Ubuntu server which are SSH and website running on 8080
+I will start with rustscan on ubuntu server first since it is faster than nmap and VPN connection can tolerate this much of traffic unlike HTB. (I could not use rustscan could not be used on HTB) and we can see that there are only 2 ports opened on the Ubuntu server which are SSH and website running on 8080
 
 ```
 rustscan -a Anomaly-Web -- -A
