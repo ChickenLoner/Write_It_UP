@@ -8,7 +8,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 289
+**Total Write-ups**: 291
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
@@ -102,14 +102,16 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 HackSmarter.org
 
 <details>
-<summary>📝 8 write-up(s) (click to expand)</summary>
+<summary>📝 10 write-up(s) (click to expand)</summary>
 
 - [[HackSmarter.org Write-up] Anomaly](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20Anomaly.md)
 - [[HackSmarter.org Write-up] Arasaka](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20Arasaka.md)
 - [[HackSmarter.org Write-up] BuildingMagic](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20BuildingMagic.md)
 - [[HackSmarter.org Write-up] MidGarden2](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20MidGarden2.md)
 - [[HackSmarter.org Write-up] NorthBridge Systems](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20NorthBridge%20Systems.md)
+- [[HackSmarter.org Write-up] Odyssey](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20Odyssey.md)
 - [[HackSmarter.org Write-up] ShareThePain](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20ShareThePain.md)
+- [[HackSmarter.org Write-up] Staged](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20Staged.md)
 - [[HackSmarter.org Write-up] Sysco](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20Sysco.md)
 - [[HackSmarter.org Write-up] Welcome](HackSmarter.org/%5BHackSmarter.org%20Write-up%5D%20Welcome.md)
 
