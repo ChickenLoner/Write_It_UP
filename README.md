@@ -8,7 +8,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 293
+**Total Write-ups**: 295
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
@@ -213,8 +213,9 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 LetsDefend → LetsDefend Challenge
 
 <details>
-<summary>📝 67 write-up(s) (click to expand)</summary>
+<summary>📝 69 write-up(s) (click to expand)</summary>
 
+- [[LetsDefend Write-up] AS-REP Challenge](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20AS-REP%20Challenge.md)
 - [[LetsDefend Write-up] Agniane Stealer](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20Agniane%20Stealer.md)
 - [[LetsDefend Write-up] AstasiaLoader](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20AstasiaLoader.md)
 - [[LetsDefend Write-up] Batch Downloader](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20Batch%20Downloader.md)
@@ -230,6 +231,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[LetsDefend Write-up] Email Analysis](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20Email%20Analysis.md)
 - [[LetsDefend Write-up] Excel 4.0 Macros](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20Excel%204.0%20Macros.md)
 - [[LetsDefend Write-up] Golang Ransomware](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20Golang%20Ransomware.md)
+- [[LetsDefend Write-up] Golden Ticket](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20Golden%20Ticket.md)
 - [[LetsDefend Write-up] Http Basic Auth](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20Http%20Basic%20Auth.md)
 - [[LetsDefend Write-up] IcedID Malware Family](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20IcedID%20Malware%20Family.md)
 - [[LetsDefend Write-up] ImageStegano](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20ImageStegano.md)
