@@ -8,7 +8,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 295
+**Total Write-ups**: 297
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
@@ -213,7 +213,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 LetsDefend → LetsDefend Challenge
 
 <details>
-<summary>📝 69 write-up(s) (click to expand)</summary>
+<summary>📝 71 write-up(s) (click to expand)</summary>
 
 - [[LetsDefend Write-up] AS-REP Challenge](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20AS-REP%20Challenge.md)
 - [[LetsDefend Write-up] Agniane Stealer](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20Agniane%20Stealer.md)
@@ -262,6 +262,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[LetsDefend Write-up] PHP-CGI (CVE-2024-4577)](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20PHP-CGI%20%28CVE-2024-4577%29.md)
 - [[LetsDefend Write-up] Phishing Email](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20Phishing%20Email.md)
 - [[LetsDefend Write-up] Port Scan Activity](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20Port%20Scan%20Activity.md)
+- [[LetsDefend Write-up] PowerShell Keylogger](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20PowerShell%20Keylogger.md)
 - [[LetsDefend Write-up] PowerShell Script](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20PowerShell%20Script.md)
 - [[LetsDefend Write-up] Presentation As a Malware](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20Presentation%20As%20a%20Malware.md)
 - [[LetsDefend Write-up] PrintNightmare](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20PrintNightmare.md)
@@ -275,6 +276,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[LetsDefend Write-up] Suspicious Browser Extension](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20Suspicious%20Browser%20Extension.md)
 - [[LetsDefend Write-up] Suspicious Python Package](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20Suspicious%20Python%20Package.md)
 - [[LetsDefend Write-up] TeamViewer Forensics](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20TeamViewer%20Forensics.md)
+- [[LetsDefend Write-up] TinyTurla Backdoor](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20TinyTurla%20Backdoor.md)
 - [[LetsDefend Write-up] Upstyle Backdoor](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20Upstyle%20Backdoor.md)
 - [[LetsDefend Write-up] WannaCry Ransomware](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20WannaCry%20Ransomware.md)
 - [[LetsDefend Write-up] WinRAR 0-Day](LetsDefend/LetsDefend%20Challenge/%5BLetsDefend%20Write-up%5D%20WinRAR%200-Day.md)
