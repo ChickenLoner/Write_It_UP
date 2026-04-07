@@ -8,7 +8,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 301
+**Total Write-ups**: 302
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
@@ -146,7 +146,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 HackTheBox → HTB Labs → HTB Sherlocks
 
 <details>
-<summary>📝 51 write-up(s) (click to expand)</summary>
+<summary>📝 52 write-up(s) (click to expand)</summary>
 
 - [[HTB Sherlocks Write-up] APTNightmare](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20APTNightmare.md)
 - [[HTB Sherlocks Write-up] APTNightmare-2](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20APTNightmare-2.md)
@@ -186,6 +186,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[HTB Sherlocks Write-up] OpTinselTrace-2](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OpTinselTrace-2.md)
 - [[HTB Sherlocks Write-up] OpTinselTrace-3](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OpTinselTrace-3.md)
 - [[HTB Sherlocks Write-up] OpTinselTrace-4](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OpTinselTrace-4.md)
+- [[HTB Sherlocks Write-up] OpTinselTrace-5](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OpTinselTrace-5.md)
 - [[HTB Sherlocks Write-up] OpTinselTrace24-1 Sneaky Cookies](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20OpTinselTrace24-1%20Sneaky%20Cookies.md)
 - [[HTB Sherlocks Write-up] Pikaptcha](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20Pikaptcha.md)
 - [[HTB Sherlocks Write-up] Psittaciformes](HackTheBox/HTB%20Labs/HTB%20Sherlocks/%5BHTB%20Sherlocks%20Write-up%5D%20Psittaciformes.md)
