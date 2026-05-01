@@ -1,0 +1,126 @@
+# [Blue Team Labs Online - Blocker](https://blueteamlabs.online/home/investigation/blocker-d8bd4d4a1a)
+
+![7f5fa9023c329f77ff1d9105d2ada3f3.png](/resources/7f5fa9023c329f77ff1d9105d2ada3f3.png)
+
+>Security Operations
+
+>**Tags**: Sysmon Event Viewer OSINT BTL1
+* * *
+**Scenario**
+Learn more about Sysmon 14's File Block Executable functionality to prevent files being written to disk!
+
+**Reading Material:**
+https://medium.com/@olafhartong/sysmon-14-0-fileblockexecutable-13d7ba3dff3e
+* * *
+## Investigation Submission
+>Q1) In Sysmon 14, we can now use Sysmon configuration files to take preventative actions using the new feature, FileBlockExecutable. This allows us to prevent files from being written to specific locations! Open Event Viewer as an administrator (select the BTLO user if you receive a popup), and navigate to Microsoft > Windows > Sysmon > Operational. Filter on Event ID 27 to only see File Block Executable events. What is the timestamp of the first observed 27 event?
+
+![d67ac9066163abdfb5b36de4ae37b199.png](/resources/d67ac9066163abdfb5b36de4ae37b199.png)
+
+After deployed investigation machine, open Event Viewer and find Sysmon log then filter Event ID 27 like this.
+
+![178fa91c5add8f19db15e24eea140e78.png](/resources/178fa91c5add8f19db15e24eea140e78.png)
+
+We only have 4 events for Event ID 27 and the first event is right here.
+
+<details>
+  <summary>Answer</summary>
+<pre><code>8/22/2022 3:55:16 PM</code></pre>
+</details>
+
+>Q2) In the first 27 event, what is the Image that initiated the file download? 
+
+![f7bf4fd094fa3db4cc8dce36457e2949.png](/resources/f7bf4fd094fa3db4cc8dce36457e2949.png)
+
+We can see that on this first event, a file was downloaded with Google Chrome.
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Program Files\Google\Chrome\Application\chrome.exe</code></pre>
+</details>
+
+>Q3) In the first 27 event, retrieve the SHA256 hash of the file that was blocked and search for it on URLHaus. Based on the tags, what is the name of this malware?
+
+![00a10359c32a302de357dcf4696e70ba.png](/resources/00a10359c32a302de357dcf4696e70ba.png)
+
+Here is SHA256 hash of downloaded file that was blocked
+
+![a11db18a9990ecbdda7d0c03faaa58c3.png](/resources/a11db18a9990ecbdda7d0c03faaa58c3.png)
+
+Search it on URLHaus then we will have the name of this malware right here.
+
+<details>
+  <summary>Answer</summary>
+<pre><code>a310Logger</code></pre>
+</details>
+
+>Q4) If we wanted to create a new Sysmon configuration file that would prevent Microsoft Word from creating executable files (dropped from weaponized macros), what line would we use? (You do not need to include a Image 'name' property) 
+
+![48074e076dc8026ea90186eee6e10aff.png](/resources/48074e076dc8026ea90186eee6e10aff.png)
+
+I searched for the most popular sysmon config made by [Swift On Security](https://github.com/SwiftOnSecurity/sysmon-config/blob/master/sysmonconfig-export.xml) then we can see how we can write this config but change the content inside image tag to `WINWORD.EXE` for Microsoft Word process.
+
+```
+<Image condition="is">WINWORD.EXE</Image>
+```
+
+>Q5) View the block-downloads-config.xml in the /Downloads/Sysmon/ folder. Review the logic to block all executables within the Downloads folder. What would be the re-written line to block files being written to the OS-level Temp directory?
+
+![d083225b192dc38c5013cc751417c5b0.png](/resources/d083225b192dc38c5013cc751417c5b0.png)
+
+We have example sysmon config right here so lets open it
+
+![ebe7bb2737865a6437d6eec6b3863883.png](/resources/ebe7bb2737865a6437d6eec6b3863883.png)
+
+Then we can see that we can replaced content inside TargetFileName tag to `C:\Windows\Temp` to block all files that will be downloaded to OS-level Temp directory.
+
+```
+<TargetFilename condition="contains all">C:\Windows\Temp</TargetFilename>
+```
+
+>Q6) Find the 27 event with the hash ending in B4A2. What is the TargetFilename (filename only, not path) 
+
+![9b5a00b7863ea77dba0970c590d351a4.png](/resources/9b5a00b7863ea77dba0970c590d351a4.png)
+
+The third event is the one we are looking for with SHA256 end with B4A2
+<details>
+  <summary>Answer</summary>
+<pre><code>freeb13.dll</code></pre>
+</details>
+
+>Q7) Search the hash on VirusTotal and look at the Community tab. What is the source URL? 
+
+![05bc5c412424b86ded107217e11b772c.png](/resources/05bc5c412424b86ded107217e11b772c.png)
+
+Search hash we obtained from previous question on VirusTotal which we can file source URL of this file on Community tab but there so are many URL associated with this file so which one is correct?
+
+![ce524a605625cb25a7ddd6bf35d3ad51.png](/resources/ce524a605625cb25a7ddd6bf35d3ad51.png)
+
+This is the one I submitted which got accepted so It has to be this one.
+<details>
+  <summary>Answer</summary>
+<pre><code>http://safe-car.ru/lib/freebl3.dll</code></pre>
+</details>
+
+>Q8) One limitation of Sysmon 14's new blocking feature (as of 22/08/2022) is that files downloaded from a browser show the TargetFilename as the temporary file name, randomly generated by Windows. What is the name of the property that we hope to see in the near future, giving us better visibility over the file that was actually blocked?
+
+![46f727a7cd2b052aa9867ed23eb5879b.png](/resources/46f727a7cd2b052aa9867ed23eb5879b.png)
+Go to Reading Material provided for this investigation then we can see that the author of this blog says what he want which is "OriginalFileName"
+<details>
+  <summary>Answer</summary>
+<pre><code>OriginalFileName</code></pre>
+</details>
+ 
+>Q9) File Block Executable doesn't just work on .exe files - what are the other filetypes that are affected by this functionality?
+
+![7fc3e0cc16897f483a31e2461c64d024.png](/resources/7fc3e0cc16897f483a31e2461c64d024.png)
+
+Still on the same blog, we can see that the other 3 filetypes that will be logged with Sysmon Event ID 27 are these since it shares MZ header with PE executable.
+<details>
+  <summary>Answer</summary>
+<pre><code>DLL, XLL, WLL</code></pre>
+</details>
+
+![250c3354f88bc7994d3c379d8db94790.png](/resources/250c3354f88bc7994d3c379d8db94790.png)
+https://blueteamlabs.online/achievement/share/52929/112
+* * *
