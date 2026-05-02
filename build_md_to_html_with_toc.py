@@ -114,10 +114,24 @@ footer a:hover { color: var(--accent-l); text-decoration: none; }
 
 # ─── Shared HTML helpers ─────────────────────────────────────────────────────
 
-def common_head(title, depth=0):
+KEYWORDS = "CTF, write-up, cybersecurity, HackTheBox, TryHackMe, CyberDefenders, LetsDefend, Security Blue Team, DFIR, blue team, digital forensics, incident response"
+
+def common_head(title, depth=0, description=""):
+    full_title = f"{title} · Chicken0248"
+    og_image = "https://chickenloner.github.io/chicken0248.png"
     return f"""<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{title} · Chicken0248</title>
+<meta name="description" content="{description}">
+<meta name="keywords" content="{KEYWORDS}">
+<meta name="author" content="Chicken0248">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{full_title}">
+<meta property="og:description" content="{description}">
+<meta property="og:image" content="{og_image}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{full_title}">
+<meta name="twitter:description" content="{description}">
+<title>{full_title}</title>
 <link rel="icon" href="https://chickenloner.github.io/chicken0248.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -357,6 +371,11 @@ def generate_sections(md_files):
 def create_index_html(md_files):
     sections_data, total = generate_sections(md_files)
     platform_count = len(sections_data)
+    index_description = (
+        f"CTF challenges & cybersecurity lab solutions by Chicken0248. "
+        f"Browse {total} write-ups across HackTheBox, TryHackMe, CyberDefenders, "
+        f"LetsDefend, Security Blue Team, and more."
+    )
 
     cards_html = []
     for s in sections_data:
@@ -383,7 +402,7 @@ def create_index_html(md_files):
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
-{common_head("Write-Ups Collection")}
+{common_head("Write-Ups Collection", description=index_description)}
 <style>
 {COMMON_CSS}
 {INDEX_CSS}
@@ -640,10 +659,14 @@ def md_to_html(md_path, out_path, back_to_index=True):
             title = line[2:].strip()
             break
 
+    platform_parts = md_path.parent.relative_to(SRC_DIR).parts
+    platform_label = platform_parts[0] if platform_parts else "CTF"
+    article_description = f"Write-up for {title} — a {platform_label} challenge solution by Chicken0248."
+
     full_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
-{common_head(title, depth)}
+{common_head(title, depth, description=article_description)}
 <style>
 {COMMON_CSS}
 {ARTICLE_CSS}
