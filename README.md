@@ -8,7 +8,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 352
+**Total Write-ups**: 361
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
@@ -297,7 +297,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 ### 📁 Security Blue Team → Blue Team Labs Online → BTLO - Investigations
 
 <details>
-<summary>📝 63 write-up(s) (click to expand)</summary>
+<summary>📝 72 write-up(s) (click to expand)</summary>
 
 - [[BTLO Write-up] 1down](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%201down.md)
 - [[BTLO Write-up] Aspen](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Aspen.md)
@@ -307,6 +307,7 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[BTLO Write-up] Beacon](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Beacon.md)
 - [[BTLO Write-up] Ben](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Ben.md)
 - [[BTLO Write-up] Blocker](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Blocker.md)
+- [[BTLO Write-up] Breach](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Breach.md)
 - [[BTLO Write-up] Brute](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Brute.md)
 - [[BTLO Write-up] Countdown](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Countdown.md)
 - [[BTLO Write-up] Cov](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Cov.md)
@@ -320,14 +321,17 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[BTLO Write-up] First Day](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20First%20Day.md)
 - [[BTLO Write-up] First Week](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20First%20Week.md)
 - [[BTLO Write-up] Frontier](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Frontier.md)
+- [[BTLO Write-up] Fungames](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Fungames.md)
 - [[BTLO Write-up] Grab](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Grab.md)
 - [[BTLO Write-up] HUNT3R](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20HUNT3R.md)
 - [[BTLO Write-up] Haunted](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Haunted.md)
 - [[BTLO Write-up] Heaven](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Heaven.md)
+- [[BTLO Write-up] Hexclave](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Hexclave.md)
 - [[BTLO Write-up] ImpairDefense - Part 1](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20ImpairDefense%20-%20Part%201.md)
 - [[BTLO Write-up] Indicators](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Indicators.md)
 - [[BTLO Write-up] Insider Brett](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Insider%20Brett.md)
 - [[BTLO Write-up] Insider Threat](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Insider%20Threat.md)
+- [[BTLO Write-up] Insidious](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Insidious.md)
 - [[BTLO Write-up] JOPPERS](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20JOPPERS.md)
 - [[BTLO Write-up] Just a Viewer](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Just%20a%20Viewer.md)
 - [[BTLO Write-up] KikiPass](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20KikiPass.md)
@@ -336,8 +340,10 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[BTLO Write-up] Link](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Link.md)
 - [[BTLO Write-up] Marionette](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Marionette.md)
 - [[BTLO Write-up] Masquerade](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Masquerade.md)
+- [[BTLO Write-up] MiddleMayhem](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20MiddleMayhem.md)
 - [[BTLO Write-up] Mon](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Mon.md)
 - [[BTLO Write-up] Monitor](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Monitor.md)
+- [[BTLO Write-up] Nano](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Nano.md)
 - [[BTLO Write-up] Neem](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Neem.md)
 - [[BTLO Write-up] Nonyx](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Nonyx.md)
 - [[BTLO Write-up] Noted](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Noted.md)
@@ -356,8 +362,11 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 - [[BTLO Write-up] Take a LAP](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Take%20a%20LAP.md)
 - [[BTLO Write-up] The Walking Packets](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20The%20Walking%20Packets.md)
 - [[BTLO Write-up] Thumbs Up](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Thumbs%20Up.md)
+- [[BTLO Write-up] Trend](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Trend.md)
 - [[BTLO Write-up] Tux One](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Tux%20One.md)
 - [[BTLO Write-up] Typhon](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Typhon.md)
+- [[BTLO Write-up] UNDRGRND-N3RD](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20UNDRGRND-N3RD.md)
+- [[BTLO Write-up] Vortex](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20Vortex.md)
 - [[BTLO Write-up] WikiLeaked](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20WikiLeaked.md)
 - [[BTLO Write-up] XHELL](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20XHELL.md)
 - [[BTLO Write-up] You_re Hired!](Security%20Blue%20Team/Blue%20Team%20Labs%20Online/BTLO%20-%20Investigations/%5BBTLO%20Write-up%5D%20You_re%20Hired%21.md)
