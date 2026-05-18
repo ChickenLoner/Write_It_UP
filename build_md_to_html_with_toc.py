@@ -854,7 +854,7 @@ def _panel_breadcrumb(folder_str: str) -> str:
     return folder_str.replace("/", " → ")
 
 
-def _panel_html(group_folder: str, md_files: list, write_ups: list) -> str:
+def _panel_html(group_folder: str, md_files: list) -> str:
     plat = detect_platform(group_folder)
     klass = plat["class"]
     icon = plat["icon"]
@@ -959,7 +959,7 @@ def create_index_html(md_files: list):
     # ── platform panels, sorted by count desc
     panel_blocks = []
     for folder, files in sorted(groups.items(), key=lambda kv: -len(kv[1])):
-        panel_blocks.append(_panel_html(folder, files, write_ups))
+        panel_blocks.append(_panel_html(folder, files))
     panels_html = "\n\n    ".join(panel_blocks)
 
     # ── topbar
