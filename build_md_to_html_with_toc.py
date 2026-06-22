@@ -34,12 +34,12 @@ from pathlib import Path
 
 SRC_DIR        = Path(".")
 BUILD_DIR      = Path("build")
-PORTFOLIO_URL  = "https://chickenloner.github.io/"
+PORTFOLIO_URL  = "https://chicken0248.fyi/"
 REPO_URL       = "https://github.com/ChickenLoner/Write_It_UP"
-AVATAR_URL     = "https://chickenloner.github.io/chicken0248.png"
+AVATAR_URL     = "https://chicken0248.fyi/chicken0248.png"
 AUTHOR         = "Chicken0248"
 KEYWORDS = ("CTF, write-up, cybersecurity, HackTheBox, TryHackMe, "
-            "CyberDefenders, LetsDefend, Security Blue Team, DFIR, "
+            "CyberDefenders, LetsDefend, Centri, BTLO, DFIR, "
             "blue team, digital forensics, incident response")
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -78,11 +78,11 @@ PLATFORMS = [
         "kicker": "// HACKTHEBOX",
         "sev":   "am",
     }),
-    (("blue team",), {
+    (("btlo",), {
         "class": "p-btlo",
         "icon":  "⬤",
         "short": "BTLO",
-        "long":  "Blue Team Labs Online · Investigations",
+        "long":  "Centri · Blue Team Labs Online",
         "kicker": "// BTLO · DFIR INVESTIGATION",
         "sev":   "rd",
     }),
@@ -772,7 +772,7 @@ def md_to_html(md_path: Path, out_path: Path):
     index_href = root_prefix + "index.html"
 
     # 4. Title from first H1 in markdown
-    title = md_path.stem
+    title = _strip_platform_prefix(md_path.stem)
     for line in md_content.splitlines():
         if line.startswith("# "):
             title = line[2:].strip()
@@ -780,6 +780,8 @@ def md_to_html(md_path: Path, out_path: Path):
             link_match = re.match(r"\[([^\]]+)\]\([^)]+\)\s*$", title)
             if link_match:
                 title = link_match.group(1)
+            # strip [Platform Write-up] prefix if present in H1
+            title = _strip_platform_prefix(title)
             break
 
     # 5. Detect platform from folder
@@ -837,6 +839,11 @@ def md_to_html(md_path: Path, out_path: Path):
 def _escape_attr(s: str) -> str:
     return s.replace('"', '&quot;').replace('<', '&lt;').replace('>', '&gt;')
 
+
+def _strip_platform_prefix(name: str) -> str:
+    """Remove leading [Platform Write-up] bracket from display names."""
+    return re.sub(r'^\[[^\]]*\]\s*', '', name)
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Index page generation
 # ─────────────────────────────────────────────────────────────────────────────
@@ -867,7 +874,7 @@ def _panel_html(group_folder: str, md_files: list) -> str:
 
     rows_html = []
     for i, md_path in enumerate(sorted(md_files, key=lambda p: p.stem), start=1):
-        name = md_path.stem
+        name = _strip_platform_prefix(md_path.stem)
         href = str(md_path.relative_to(SRC_DIR).with_suffix(".html")).replace("\\", "/")
         # encode spaces and # in href so browsers don't choke
         href_safe = href.replace(" ", "%20").replace("#", "%23").replace("[", "%5B").replace("]", "%5D")

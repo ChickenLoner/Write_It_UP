@@ -2,7 +2,7 @@
 
 Welcome to my collection of CTF (Capture The Flag) write-ups! This repository contains detailed solutions and analysis for various cybersecurity challenges.
 
-🌐 **Live Site**: [https://chickenloner.github.io/Write_It_UP/](https://chickenloner.github.io/Write_It_UP/)
+🌐 **Live Site**: [https://writeups.chicken0248.fyi/](https://writeups.chicken0248.fyi/)
 
 ---
 
@@ -474,7 +474,7 @@ This repository contains my personal write-ups for various CTF challenges and cy
 
 ## 📝 Usage
 
-- Browse the [live site](https://chickenloner.github.io/Write_It_UP/) for a better reading experience
+- Browse the [live site](https://writeups.chicken0248.fyi/) for a better reading experience
 - Or navigate through the folders above to read the markdown files directly on GitHub
 
 ## ⚠️ Disclaimer
