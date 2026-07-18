@@ -23,6 +23,8 @@ Theme:
 
 import os
 import re
+import json
+import html
 import shutil
 import markdown2
 from datetime import datetime
@@ -491,14 +493,32 @@ INDEX_CSS = """
 .fchip .cnt{padding:1px 6px;border-radius:3px;background:var(--soc-bg-2);color:var(--soc-ink4);font-size:9.5px}
 .fchip.active .cnt{background:rgba(34,225,255,.15);color:var(--soc-cy)}
 .fchip-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--soc-ink4);letter-spacing:.12em;text-transform:uppercase;padding:0 6px}
-.tweak-toggle{
+.dfilters{margin-left:0;margin-top:2px}
+.dchip{
   display:inline-flex;align-items:center;gap:6px;padding:5px 11px;
   border:1px solid var(--soc-line);background:var(--soc-bg-1);border-radius:4px;
   font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--soc-ink3);
   letter-spacing:.06em;font-weight:600;cursor:pointer;text-transform:uppercase;transition:.15s
 }
-.tweak-toggle:hover{color:var(--soc-cy);border-color:rgba(34,225,255,.35);background:rgba(34,225,255,.06)}
-.tweak-toggle.active{color:var(--soc-cy);border-color:rgba(34,225,255,.5);background:rgba(34,225,255,.1)}
+.dchip:hover{color:var(--soc-ink2);border-color:var(--soc-line2)}
+.dchip .cnt{padding:1px 6px;border-radius:3px;background:var(--soc-bg-2);color:var(--soc-ink4);font-size:9.5px}
+.dchip.active{color:var(--soc-cy);border-color:rgba(34,225,255,.4);background:rgba(34,225,255,.06)}
+.dchip.active .cnt{background:rgba(34,225,255,.15);color:var(--soc-cy)}
+.dchip.d-very-easy.active,.dchip.d-easy.active{color:var(--soc-gn);border-color:rgba(61,220,132,.45);background:rgba(61,220,132,.08)}
+.dchip.d-medium.active{color:var(--soc-am);border-color:rgba(255,181,71,.45);background:rgba(255,181,71,.08)}
+.dchip.d-hard.active{color:var(--soc-rd);border-color:rgba(255,85,119,.45);background:rgba(255,85,119,.08)}
+.dchip.d-insane.active{color:var(--soc-vi);border-color:rgba(167,139,250,.45);background:rgba(167,139,250,.08)}
+.tweak-toggle{
+  position:fixed;bottom:18px;right:18px;z-index:150;
+  display:inline-flex;align-items:center;gap:7px;padding:10px 16px;
+  border:1px solid rgba(34,225,255,.45);background:rgba(34,225,255,.12);border-radius:99px;
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--soc-cy);
+  letter-spacing:.08em;font-weight:700;cursor:pointer;text-transform:uppercase;transition:.15s;
+  box-shadow:0 6px 20px rgba(0,0,0,.4),0 0 0 1px rgba(34,225,255,.08);backdrop-filter:blur(6px)
+}
+.tweak-toggle:hover{color:#fff;border-color:var(--soc-cy);background:rgba(34,225,255,.2);transform:translateY(-1px)}
+.tweak-toggle.active{color:#fff;border-color:var(--soc-cy);background:rgba(34,225,255,.28)}
+.tweak-toggle.hidden-by-panel{opacity:0;pointer-events:none}
 
 /* ─── PLATFORM PANELS ─── */
 .platform-stack{display:flex;flex-direction:column;gap:12px}
@@ -541,25 +561,31 @@ INDEX_CSS = """
 .pcard.p-unlisted          .ph-icon{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.35);color:var(--soc-vi)}
 .pcard.p-unlisted[open]    {border-color:rgba(167,139,250,.35)}
 
-/* ─── WRITE-UP CARD GRID ─── */
+/* ─── WRITE-UP CARD LIST (1 per row · banner + body) ─── */
 .wlist{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(var(--tw-card-min,260px),1fr));
+  display:grid;grid-template-columns:1fr;
   gap:10px;padding:14px;background:rgba(0,0,0,.18)
 }
 .wrow{
-  position:relative;display:grid;grid-template-rows:auto auto;gap:6px;
-  padding:12px 14px;
-  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008));
-  border:1px solid var(--soc-line);border-radius:5px;
-  text-decoration:none;color:inherit;transition:.15s;overflow:hidden;min-height:84px
+  position:relative;display:block;
+  background:var(--soc-bg-1);
+  border:1px solid var(--soc-line);border-radius:6px;
+  text-decoration:none;color:inherit;transition:.15s;overflow:hidden
 }
-.wrow::before{content:"";position:absolute;top:0;left:0;bottom:0;width:2px;background:var(--soc-line2);transition:.15s}
+.wrow::before{content:"";position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--soc-line2);transition:.15s;z-index:1}
 .wrow:hover{
-  background:linear-gradient(180deg,rgba(34,225,255,.07),rgba(34,225,255,.02));
   border-color:rgba(34,225,255,.3);text-decoration:none;transform:translateY(-1px);
-  box-shadow:0 6px 18px rgba(0,0,0,.25)
+  box-shadow:0 6px 18px rgba(0,0,0,.28)
 }
 .wrow:hover::before{background:var(--soc-cy);box-shadow:0 0 8px rgba(34,225,255,.5)}
+.pcard.p-htb-sherlock .wrow::before{background:rgba(255,181,71,.55)}
+.pcard.p-htb-machine  .wrow::before{background:rgba(217,119,87,.55)}
+.pcard.p-btlo         .wrow::before{background:rgba(255,85,119,.55)}
+.pcard.p-cd           .wrow::before{background:rgba(34,225,255,.5)}
+.pcard.p-ld           .wrow::before{background:rgba(61,220,132,.5)}
+.pcard.p-thm          .wrow::before{background:rgba(255,85,119,.55)}
+.pcard.p-hacksmarter  .wrow::before{background:rgba(255,181,71,.55)}
+.pcard.p-unlisted     .wrow::before{background:rgba(167,139,250,.55)}
 .pcard.p-htb-sherlock .wrow:hover::before{background:var(--soc-am);box-shadow:0 0 8px rgba(255,181,71,.5)}
 .pcard.p-htb-machine  .wrow:hover::before{background:#d97757;box-shadow:0 0 8px rgba(217,119,87,.5)}
 .pcard.p-btlo         .wrow:hover::before{background:var(--soc-rd);box-shadow:0 0 8px rgba(255,85,119,.5)}
@@ -569,23 +595,48 @@ INDEX_CSS = """
 .pcard.p-hacksmarter  .wrow:hover::before{background:var(--soc-am);box-shadow:0 0 8px rgba(255,181,71,.5)}
 .pcard.p-unlisted     .wrow:hover::before{background:var(--soc-vi);box-shadow:0 0 8px rgba(167,139,250,.5)}
 
-.wrow .top{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace}
+/* banner = cover strip: index · platform · difficulty + big name */
+.wrow .banner{padding:12px 16px 13px;border-bottom:1px solid var(--soc-line);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.006))}
+.pcard.p-htb-sherlock .wrow .banner{background:linear-gradient(180deg,rgba(255,181,71,.09),transparent 90%)}
+.pcard.p-htb-machine  .wrow .banner{background:linear-gradient(180deg,rgba(217,119,87,.09),transparent 90%)}
+.pcard.p-btlo         .wrow .banner{background:linear-gradient(180deg,rgba(255,85,119,.09),transparent 90%)}
+.pcard.p-cd           .wrow .banner{background:linear-gradient(180deg,rgba(34,225,255,.08),transparent 90%)}
+.pcard.p-ld           .wrow .banner{background:linear-gradient(180deg,rgba(61,220,132,.08),transparent 90%)}
+.pcard.p-thm          .wrow .banner{background:linear-gradient(180deg,rgba(255,85,119,.09),transparent 90%)}
+.pcard.p-hacksmarter  .wrow .banner{background:linear-gradient(180deg,rgba(255,181,71,.09),transparent 90%)}
+.pcard.p-unlisted     .wrow .banner{background:linear-gradient(180deg,rgba(167,139,250,.09),transparent 90%)}
+.wrow .bhead{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace}
+.wrow .bright{margin-left:auto;display:inline-flex;align-items:center;gap:8px;flex-shrink:0}
 .wrow .ix{font-size:9.5px;font-weight:700;letter-spacing:.08em;color:var(--soc-ink4);padding:3px 7px;border:1px solid var(--soc-line);border-radius:3px;background:rgba(0,0,0,.35)}
 .wrow:hover .ix{color:var(--soc-cy);border-color:rgba(34,225,255,.35);background:rgba(34,225,255,.06)}
 .wrow .meta{font-size:9.5px;color:var(--soc-ink4);letter-spacing:.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:5px}
 .wrow .meta .dot{width:4px;height:4px;border-radius:50%;background:var(--soc-ink4)}
 .wrow .open-ic{
-  margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
   color:var(--soc-ink4);width:22px;height:22px;border-radius:3px;display:grid;place-items:center;
   border:1px solid var(--soc-line);background:rgba(0,0,0,.2);transition:.15s
 }
 .wrow:hover .open-ic{color:var(--soc-cy);border-color:var(--soc-cy);background:rgba(34,225,255,.1);transform:translate(2px,-2px)}
 .wrow .nm{
-  font-size:13.5px;font-weight:600;color:var(--soc-ink);line-height:1.35;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
-  overflow:hidden;text-overflow:ellipsis;letter-spacing:-.005em
+  font-size:17px;font-weight:700;color:var(--soc-ink);line-height:1.25;margin-top:8px;
+  letter-spacing:-.01em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap
 }
 .wrow:hover .nm{color:#fff}
+.wrow .body{padding:11px 16px 13px;display:flex;flex-direction:column;gap:7px}
+.wrow .body:empty{display:none}
+.wrow:hover .nm{color:#fff}
+.wrow .diff{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:3px;border:1px solid var(--soc-line);color:var(--soc-ink3);line-height:1;white-space:nowrap}
+.wrow .diff.d-very-easy,.wrow .diff.d-easy{color:var(--soc-gn);border-color:rgba(61,220,132,.4);background:rgba(61,220,132,.08)}
+.wrow .diff.d-medium{color:var(--soc-am);border-color:rgba(255,181,71,.4);background:rgba(255,181,71,.08)}
+.wrow .diff.d-hard{color:var(--soc-rd);border-color:rgba(255,85,119,.4);background:rgba(255,85,119,.08)}
+.wrow .diff.d-insane{color:var(--soc-vi);border-color:rgba(167,139,250,.4);background:rgba(167,139,250,.08)}
+.wrow .cat{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--soc-ink3)}
+.wrow:hover .cat{color:var(--soc-cy)}
+.wrow .sum{font-size:11.5px;line-height:1.45;color:var(--soc-ink3);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wrow:hover .sum{color:var(--soc-ink2)}
+.wrow .tags{display:flex;flex-wrap:wrap;gap:4px;padding-top:1px}
+.wrow .tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.02em;color:var(--soc-ink4);padding:2px 6px;border:1px solid var(--soc-line);border-radius:3px;background:rgba(0,0,0,.25);white-space:nowrap}
+.wrow:hover .tag{border-color:var(--soc-line2);color:var(--soc-ink3)}
 .wrow.hidden,.pcard.all-hidden{display:none}
 
 /* ─── No results ─── */
@@ -604,14 +655,27 @@ INDEX_CSS = """
 /* ─── TWEAKABLE VARIANTS ─── */
 body.tw-hide-meta  .wrow .meta{display:none}
 body.tw-hide-index .wrow .ix{display:none}
-body.tw-hide-index.tw-hide-meta .wrow .top{justify-content:flex-end}
-body.tw-compact .wlist{grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:4px;padding:8px}
-body.tw-compact .wrow{grid-template-rows:none;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:8px 12px;min-height:0}
-body.tw-compact .wrow .top{display:contents}
-body.tw-compact .wrow .meta{display:none}
-body.tw-compact .wrow .nm{font-size:12.5px;font-weight:500;color:var(--soc-ink2);-webkit-line-clamp:1;line-clamp:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-body.tw-compact .wrow:hover .nm{color:var(--soc-ink)}
-body.tw-compact .wrow .open-ic{margin-left:0;width:20px;height:20px;font-size:10px}
+/* compact = collapse each card to a single line: index · name · open */
+/* ── ROWS: one dense line per write-up (index · name · diff · category · tags) ── */
+body.tw-rows .wlist{grid-template-columns:1fr;gap:0;padding:0;background:transparent}
+body.tw-rows .wrow{display:flex;align-items:center;gap:12px;padding:7px 14px 7px 16px;border:none;border-bottom:1px solid var(--soc-line);border-radius:0}
+body.tw-rows .wrow:hover{transform:none;box-shadow:none;background:rgba(34,225,255,.05)}
+body.tw-rows .wrow .banner,body.tw-rows .wrow .bhead,body.tw-rows .wrow .bright,body.tw-rows .wrow .body{display:contents}
+body.tw-rows .wrow .meta,body.tw-rows .wrow .sum{display:none}
+body.tw-rows .wrow .ix{order:1;flex:0 0 auto}
+body.tw-rows .wrow .diff{order:2;flex:0 0 auto;min-width:74px;text-align:center;font-size:9px;padding:3px 6px}
+body.tw-rows .wrow .nm{order:3;margin-top:0;font-size:13px;font-weight:600;line-height:1.2;flex:0 1 auto;min-width:0;max-width:min(46vw,440px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.tw-rows .wrow .cat{order:4;flex:0 1 auto;max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:9px}
+body.tw-rows .wrow .tags{order:5;flex:0 1 auto;max-width:min(30vw,340px);flex-wrap:nowrap;overflow:hidden;padding-top:0;-webkit-mask-image:linear-gradient(90deg,#000 86%,transparent);mask-image:linear-gradient(90deg,#000 86%,transparent)}
+body.tw-rows .wrow .body{padding:0}
+body.tw-rows .wrow .open-ic{order:6;flex:0 0 auto;margin-left:auto;width:20px;height:20px;font-size:10px}
+
+/* ── GRID: 3-up mini cards (banner + category + tags, no summary) ── */
+body.tw-grid .wlist{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
+body.tw-grid .wrow .banner{padding:10px 12px 11px}
+body.tw-grid .wrow .nm{font-size:14px;margin-top:6px;white-space:normal;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+body.tw-grid .wrow .body{padding:9px 12px 11px}
+body.tw-grid .wrow .sum{display:none}
 body.tw-accent-bold .wrow::before{background:var(--soc-line2);width:3px}
 body.tw-accent-bold .pcard.p-htb-sherlock .wrow::before{background:rgba(255,181,71,.5)}
 body.tw-accent-bold .pcard.p-htb-machine  .wrow::before{background:rgba(217,119,87,.5)}
@@ -844,6 +908,29 @@ def _strip_platform_prefix(name: str) -> str:
     """Remove leading [Platform Write-up] bracket from display names."""
     return re.sub(r'^\[[^\]]*\]\s*', '', name)
 
+
+# ── Sidecar metadata (difficulty / category / tags / summary) ────────────────
+# writeups_meta.json is keyed by each md file's posix path relative to SRC_DIR.
+# Generated once and curated by hand; missing entries degrade gracefully.
+_META_CACHE = None
+
+def _load_meta() -> dict:
+    global _META_CACHE
+    if _META_CACHE is None:
+        p = SRC_DIR / "writeups_meta.json"
+        try:
+            _META_CACHE = json.loads(p.read_text(encoding="utf-8"))
+        except Exception:
+            _META_CACHE = {}
+    return _META_CACHE
+
+def _meta_for(md_path: Path) -> dict:
+    key = md_path.relative_to(SRC_DIR).as_posix()
+    return _load_meta().get(key, {})
+
+def _diff_slug(diff: str) -> str:
+    return re.sub(r'[^a-z]+', '-', (diff or '').lower()).strip('-')
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Index page generation
 # ─────────────────────────────────────────────────────────────────────────────
@@ -878,14 +965,43 @@ def _panel_html(group_folder: str, md_files: list) -> str:
         href = str(md_path.relative_to(SRC_DIR).with_suffix(".html")).replace("\\", "/")
         # encode spaces and # in href so browsers don't choke
         href_safe = href.replace(" ", "%20").replace("#", "%23").replace("[", "%5B").replace("]", "%5D")
+
+        meta = _meta_for(md_path)
+        difficulty = (meta.get("difficulty") or "").strip()
+        category   = (meta.get("category") or "").strip()
+        summary    = (meta.get("summary") or "").strip()
+        tags       = [t for t in (meta.get("tags") or []) if t][:5]
+        dslug      = _diff_slug(difficulty)
+
+        diff_pill = ""
+        if difficulty and difficulty.lower() != "unknown":
+            diff_pill = f'<span class="diff d-{dslug}">{html.escape(difficulty)}</span>'
+        cat_html  = f'<div class="cat">{html.escape(category)}</div>' if category else ""
+        sum_html  = f'<div class="sum">{html.escape(summary)}</div>' if summary else ""
+        tags_html = ""
+        if tags:
+            chips = "".join(f'<span class="tag">{html.escape(t)}</span>' for t in tags)
+            tags_html = f'<div class="tags">{chips}</div>'
+
+        # searchable blob: name + category + tags + summary + difficulty
+        blob = " ".join([name, category, " ".join(tags), summary, difficulty]).lower()
+        blob_attr = html.escape(blob, quote=True)
+
         rows_html.append(f"""
-        <a class="wrow" href="{href_safe}" data-name="{name.lower()}">
-          <div class="top">
-            <span class="ix">#{i:03d}</span>
-            <span class="meta"><span class="dot"></span>{short_label}</span>
-            <span class="open-ic">↗</span>
+        <a class="wrow" href="{href_safe}" data-name="{html.escape(name.lower(), quote=True)}" data-search="{blob_attr}" data-diff="{dslug}">
+          <div class="banner">
+            <div class="bhead">
+              <span class="ix">#{i:03d}</span>
+              <span class="meta"><span class="dot"></span>{short_label}</span>
+              <span class="bright">{diff_pill}<span class="open-ic">↗</span></span>
+            </div>
+            <div class="nm" title="{html.escape(name, quote=True)}">{html.escape(name)}</div>
           </div>
-          <div class="nm">{name}</div>
+          <div class="body">
+            {cat_html}
+            {sum_html}
+            {tags_html}
+          </div>
         </a>""")
 
     return f"""<details class="pcard {klass}" data-platform="{klass}">
@@ -928,6 +1044,21 @@ def create_index_html(md_files: list):
     for c, n in sorted(class_counts.items(), key=lambda kv: -kv[1]):
         chips.append(f'<button class="fchip" data-filter="{c}">{class_label[c]} <span class="cnt">{n}</span></button>')
     chips_html = "\n      ".join(chips)
+
+    # ── difficulty chips (only levels present, canonical order) ────────────────
+    DIFF_ORDER = ["Very Easy", "Easy", "Medium", "Hard", "Insane"]
+    diff_counts: dict[str, int] = {}
+    for f in md_files:
+        d = (_meta_for(f).get("difficulty") or "").strip()
+        if d and d.lower() != "unknown":
+            diff_counts[d] = diff_counts.get(d, 0) + 1
+    graded = sum(diff_counts.values())
+    dchips = ['<button class="dchip active" data-diff="all">All <span class="cnt">' + str(graded) + '</span></button>']
+    for d in DIFF_ORDER:
+        n = diff_counts.get(d)
+        if n:
+            dchips.append(f'<button class="dchip d-{_diff_slug(d)}" data-diff="{_diff_slug(d)}">{d} <span class="cnt">{n}</span></button>')
+    dchips_html = "\n      ".join(dchips)
 
     # ── stat grid (Total + top 3 biggest platforms + platform count) = 5 cells
     sorted_classes = sorted(class_counts.items(), key=lambda kv: -kv[1])
@@ -1029,6 +1160,10 @@ def create_index_html(md_files: list):
       {chips_html}
       <button class="tweak-toggle" id="tw-open">⚙ Tweaks</button>
     </div>
+    <div class="filters dfilters" id="dfilters">
+      <span class="fchip-label">Difficulty</span>
+      {dchips_html}
+    </div>
   </div>
 
   <div class="platform-stack" id="stack">
@@ -1075,13 +1210,10 @@ def _index_scripts() -> str:
     <div class="tw-row">
       <div class="lbl"><span>Layout</span><span class="val" data-bind="view">Cards</span></div>
       <div class="tw-seg" data-tw="view">
+        <button data-val="rows">Rows</button>
         <button data-val="cards">Cards</button>
-        <button data-val="compact">Compact</button>
+        <button data-val="grid">Grid</button>
       </div>
-    </div>
-    <div class="tw-row">
-      <div class="lbl"><span>Card width</span><span class="val" data-bind="cardMin">260 px</span></div>
-      <input type="range" class="tw-slider" data-tw="cardMin" min="200" max="400" step="10">
     </div>
     <div class="tw-row">
       <div class="lbl"><span>Show platform meta</span></div>
@@ -1111,6 +1243,7 @@ def _index_scripts() -> str:
       <div class="tw-seg" data-tw="sort">
         <button data-val="az">A → Z</button>
         <button data-val="za">Z → A</button>
+        <button data-val="diff">Difficulty</button>
         <button data-val="orig">Original</button>
       </div>
     </div>
@@ -1129,7 +1262,9 @@ def _index_scripts() -> str:
   const noRes  = document.getElementById('no-results');
   const nrq    = document.getElementById('nrq');
   const fchips = document.querySelectorAll('.fchip');
+  const dchips = document.querySelectorAll('.dchip');
   let activeFilter = 'all';
+  let activeDiff = 'all';
 
   function applyFilter(){
     const q = input.value.toLowerCase().trim();
@@ -1140,17 +1275,21 @@ def _index_scripts() -> str:
       const rows = card.querySelectorAll('.wrow');
       let cardHasMatch = false;
       rows.forEach(r => {
-        const name = (r.dataset.name || '').toLowerCase();
-        const show = !q || name.includes(q);
+        const blob = (r.dataset.search || r.dataset.name || '').toLowerCase();
+        const diffOk = (activeDiff === 'all') || (r.dataset.diff === activeDiff);
+        const show = diffOk && (!q || blob.includes(q));
         r.classList.toggle('hidden', !show);
         if(show) cardHasMatch = true;
       });
       card.classList.toggle('all-hidden', !cardHasMatch);
       if(cardHasMatch) anyVisible = true;
-      if(q && cardHasMatch) card.open = true;
+      if((q || activeDiff !== 'all') && cardHasMatch) card.open = true;
     });
-    noRes.classList.toggle('show', !anyVisible && (!!q || activeFilter !== 'all'));
-    nrq.textContent = q ? ('"' + input.value.trim() + '"') : (activeFilter !== 'all' ? ('filter: ' + activeFilter) : '');
+    const filtering = !!q || activeFilter !== 'all' || activeDiff !== 'all';
+    noRes.classList.toggle('show', !anyVisible && filtering);
+    nrq.textContent = q ? ('"' + input.value.trim() + '"')
+                        : (activeDiff !== 'all' ? ('difficulty: ' + activeDiff)
+                        : (activeFilter !== 'all' ? ('filter: ' + activeFilter) : ''));
   }
   input.addEventListener('input', applyFilter);
   fchips.forEach(c => c.addEventListener('click', () => {
@@ -1159,10 +1298,16 @@ def _index_scripts() -> str:
     activeFilter = c.dataset.filter;
     applyFilter();
   }));
+  dchips.forEach(c => c.addEventListener('click', () => {
+    dchips.forEach(x => x.classList.remove('active'));
+    c.classList.add('active');
+    activeDiff = c.dataset.diff;
+    applyFilter();
+  }));
 
   /* ─── Tweaks ─── */
   const DEFAULTS = {
-    "view":"cards","cardMin":260,"showMeta":true,"showIndex":true,
+    "view":"rows","cardMin":320,"showMeta":true,"showIndex":true,
     "accent":"subtle","startOpen":"first","sort":"az"
   };
   const LS = 'writeup-index-tweaks';
@@ -1170,10 +1315,11 @@ def _index_scripts() -> str:
   try{ const saved = JSON.parse(localStorage.getItem(LS)||'null'); if(saved) state = Object.assign(state, saved); }catch(e){}
 
   const panel = document.getElementById('tw-panel');
-  const VIEW_LABELS = {cards:'Cards', compact:'Compact'};
+  const VIEW_LABELS = {rows:'Rows', cards:'Cards', grid:'Grid'};
   const ACCENT_LABELS = {subtle:'Subtle', bold:'Bold'};
   const START_LABELS = {first:'First only', all:'All', none:'Collapsed'};
-  const SORT_LABELS = {az:'A → Z', za:'Z → A', orig:'Original'};
+  const SORT_LABELS = {az:'A → Z', za:'Z → A', diff:'Difficulty ↑', orig:'Original'};
+  const DIFF_RANK = {'very-easy':0, 'easy':1, 'medium':2, 'hard':3, 'insane':4};
 
   document.querySelectorAll('.wlist').forEach(list => { list._origOrder = Array.from(list.children); });
 
@@ -1183,6 +1329,11 @@ def _index_scripts() -> str:
       let sorted;
       if(mode === 'az')      sorted = items.slice().sort((a,b)=>(a.dataset.name||'').localeCompare(b.dataset.name||''));
       else if(mode === 'za') sorted = items.slice().sort((a,b)=>(b.dataset.name||'').localeCompare(a.dataset.name||''));
+      else if(mode === 'diff') sorted = items.slice().sort((a,b)=>{
+        const ra = (a.dataset.diff in DIFF_RANK) ? DIFF_RANK[a.dataset.diff] : 9;
+        const rb = (b.dataset.diff in DIFF_RANK) ? DIFF_RANK[b.dataset.diff] : 9;
+        return ra - rb || (a.dataset.name||'').localeCompare(b.dataset.name||'');
+      });
       else                   sorted = list._origOrder.filter(n=>items.indexOf(n) !== -1);
       sorted.forEach(n => list.appendChild(n));
     });
@@ -1190,7 +1341,8 @@ def _index_scripts() -> str:
 
   function applyTweaks(){
     const body = document.body;
-    body.classList.toggle('tw-compact',     state.view === 'compact');
+    body.classList.toggle('tw-rows',        state.view === 'rows');
+    body.classList.toggle('tw-grid',        state.view === 'grid');
     body.classList.toggle('tw-hide-meta',  !state.showMeta);
     body.classList.toggle('tw-hide-index', !state.showIndex);
     body.classList.toggle('tw-accent-bold', state.accent === 'bold');
@@ -1244,7 +1396,7 @@ def _index_scripts() -> str:
     t.addEventListener('click', fire);
     t.addEventListener('keydown', e => { if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); fire(); }});
   });
-  panel.querySelector('[data-tw="cardMin"]').addEventListener('input', e => persist('cardMin', parseInt(e.target.value,10)));
+  panel.querySelector('[data-tw="cardMin"]')?.addEventListener('input', e => persist('cardMin', parseInt(e.target.value,10)));
   document.getElementById('tw-reset').addEventListener('click', () => {
     state = Object.assign({}, DEFAULTS);
     try{ localStorage.removeItem(LS); }catch(e){}
@@ -1252,8 +1404,9 @@ def _index_scripts() -> str:
   });
   const twOpen = document.getElementById('tw-open');
   const twClose = document.getElementById('tw-close');
-  twOpen.addEventListener('click', () => { panel.classList.toggle('show'); twOpen.classList.toggle('active'); });
-  twClose.addEventListener('click', () => { panel.classList.remove('show'); twOpen.classList.remove('active'); });
+  const syncTw = () => { const on = panel.classList.contains('show'); twOpen.classList.toggle('active', on); twOpen.classList.toggle('hidden-by-panel', on); };
+  twOpen.addEventListener('click', () => { panel.classList.toggle('show'); syncTw(); });
+  twClose.addEventListener('click', () => { panel.classList.remove('show'); syncTw(); });
 
   applyTweaks();
 })();

@@ -1,0 +1,4640 @@
+{
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] 3CX Supply Chain.md": {
+  "category": "Threat Intel",
+  "difficulty": "Hard",
+  "summary": "Trace the 3CX supply chain compromise using VirusTotal to identify malicious DLLs, evasion TTPs, malware family, and the responsible APT group",
+  "tags": [
+   "virustotal",
+   "apt",
+   "supply-chain",
+   "malware",
+   "t1574",
+   "dll"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] APT35.md": {
+  "category": "Mobile Forensics",
+  "difficulty": "Medium",
+  "summary": "Examine an Android image to confirm APT35 spyware disguised as a VPN, recovering its C2 domain, SMS-stealing functions, and permissions",
+  "tags": [
+   "jadx",
+   "apk",
+   "sqlite",
+   "spyware",
+   "c2",
+   "android"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Acoustic.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a VoIP honeypot pcap and log to uncover SIP scanning tools, dialed numbers, credentials, and RTP codec details",
+  "tags": [
+   "wireshark",
+   "sip",
+   "rtp",
+   "voip",
+   "sipvicious",
+   "pcap"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] AfricanFalls.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Examine a suspect's Windows disk image to recover browser searches, FTP servers, deleted files, Tor usage, and cracked login passwords",
+  "tags": [
+   "autopsy",
+   "ftk-imager",
+   "mimikatz",
+   "shellbags",
+   "rifiuti2",
+   "t1005"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] AndroidBreach.md": {
+  "category": "Mobile Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze an Android dump to trace a malicious APK download, decompile it, and recover exfiltration channels, encryption keys, and leaked credentials",
+  "tags": [
+   "aleapp",
+   "jadx",
+   "apk",
+   "cyberchef",
+   "sqlite",
+   "exfiltration"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Andromeda Bot.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Investigate a memory image to trace USB-borne Andromeda bot propagation, dropped payloads, C2 infrastructure, and the reactivating APT group",
+  "tags": [
+   "memprocfs",
+   "volatility",
+   "usbstor",
+   "virustotal",
+   "evtxcmd",
+   "c2"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] BankingTroubles.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Hard",
+  "summary": "Analyze a memory image of a banking-malware infection to trace a malicious PDF exploit, embedded JavaScript, shellcode, and C2 connections",
+  "tags": [
+   "volatility",
+   "pdf-tools",
+   "shellcode",
+   "malfind",
+   "t1203",
+   "javascript"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] BlackEnergy.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a memory dump infected with BlackEnergy v2 to identify the suspicious process, code injection, and the injected DLL's base address",
+  "tags": [
+   "volatility",
+   "malfind",
+   "dll-injection",
+   "t1055.001",
+   "virustotal",
+   "psscan"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] BlueSky Ransomware.md": {
+  "category": "Network Forensics",
+  "difficulty": "Hard",
+  "summary": "Correlate pcap and event logs to reconstruct a BlueSky ransomware attack from SQL brute force through privilege escalation, persistence, and credential dumping",
+  "tags": [
+   "wireshark",
+   "networkminer",
+   "ransomware",
+   "pcap",
+   "event-logs",
+   "mssql"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Brave.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a Windows memory image to enumerate browser processes, network connections, executable hashes, and PowerShell parent activity",
+  "tags": [
+   "volatility",
+   "netscan",
+   "hxd",
+   "certutil",
+   "t1071.001",
+   "pstree"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] BumbleSting.md": {
+  "category": "Threat Hunting",
+  "difficulty": "Hard",
+  "summary": "Hunt across SIEM logs to trace a phishing-driven intrusion through execution, defense evasion, lateral movement, credential dumping, and persistence",
+  "tags": [
+   "splunk",
+   "elk",
+   "siem",
+   "process-injection",
+   "kerberos",
+   "mimikatz"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] CorporateSecrets.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Easy",
+  "summary": "Examine a Windows disk image to recover system build, users, file metadata, recycle bin contents, and installed browsers",
+  "tags": [
+   "ftk-imager",
+   "registry-explorer",
+   "regripper",
+   "hindsight",
+   "sqlite",
+   "mft"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] DeepDive.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Hard",
+  "summary": "Analyze a memory image to uncover a hidden unlinked process, its injected PEs, pool tags, and full path using Volatility and volshell",
+  "tags": [
+   "volatility",
+   "psxview",
+   "process-injection",
+   "volshell",
+   "t1055",
+   "pooltag"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] DumpMe.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a memory dump of a Meterpreter infection to extract the infected PID, attacker IP, VBS script, hashes, and VAD protections",
+  "tags": [
+   "volatility",
+   "meterpreter",
+   "netscan",
+   "hashdump",
+   "vad",
+   "t1059"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Eli.md": {
+  "category": "Endpoint Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze Chromebook and Google Takeout artifacts to reconstruct downloads, browser activity, and user location history",
+  "tags": [
+   "chromebook",
+   "google-takeout",
+   "sqlite",
+   "cyberchef",
+   "cleapp"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Emprisa Maldoc.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Dissect a malicious RTF exploiting CVE-2017-11882 to extract its obfuscated shellcode, payload URL, and download-and-execute functions",
+  "tags": [
+   "rtfdump",
+   "scdbg",
+   "shellcode",
+   "cve-2017-11882",
+   "t1140",
+   "maldoc"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] EscapeRoom.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Trace an SSH brute-force intrusion through PCAP and Linux logs to recover credentials and reconstruct malware installation and persistence",
+  "tags": [
+   "pcap",
+   "wireshark",
+   "ssh",
+   "bruteforce",
+   "linux",
+   "t1110"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] FakeGPT.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Reverse a malicious fake ChatGPT browser extension to expose its keylogging, cookie theft, encryption, and C2 exfiltration behavior",
+  "tags": [
+   "browser-ext",
+   "javascript",
+   "base64",
+   "c2",
+   "keylogger",
+   "manifest"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Fog Ransomware.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Hard",
+  "summary": "Investigate a Fog Ransomware infection from a phishing RAR through PowerShell execution, BYOVD privilege escalation, persistence, and encryption impact",
+  "tags": [
+   "ransomware",
+   "kape",
+   "powershell",
+   "evtx",
+   "eztools",
+   "byovd"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] GetPDF.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Dissect a malicious PDF captured in PCAP to extract obfuscated JS object streams, shellcode, and CVE exploits that drop executables",
+  "tags": [
+   "pdf",
+   "javascript",
+   "shellcode",
+   "scdbg",
+   "wireshark",
+   "cve"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] GhostDetect.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Hard",
+  "summary": "Analyze a malicious LNK dropper that launches mshta-driven HTA/JS payloads, decrypt its stages, and attribute the campaign to an APT group",
+  "tags": [
+   "lnk",
+   "mshta",
+   "hta",
+   "procmon",
+   "cyberchef",
+   "apt"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] GoldenSpray.md": {
+  "category": "Threat Hunting",
+  "difficulty": "Hard",
+  "summary": "Hunt a password-spray-to-domain-compromise attack in Splunk, tracing RDP lateral movement, credential dumping, and Kerberos ticket abuse",
+  "tags": [
+   "splunk",
+   "sysmon",
+   "kerberos",
+   "lateral-movement",
+   "password-spray",
+   "persistence"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] GrabThePhisher.md": {
+  "category": "Threat Intel",
+  "difficulty": "Easy",
+  "summary": "Analyze a MetaMask phishing kit to recover stolen seed phrases and pivot through its Telegram bot to unmask the phishing actor",
+  "tags": [
+   "phishing",
+   "osint",
+   "php",
+   "telegram",
+   "metamask",
+   "t1566.003"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Hacked.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Medium",
+  "summary": "Examine a compromised Linux web server disk image to determine SSH brute-force access, crack credentials, and identify attacker-created accounts",
+  "tags": [
+   "disk-forensic",
+   "ftk-imager",
+   "auth.log",
+   "johntheripper",
+   "ssh",
+   "t1136"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Hammered.md": {
+  "category": "Log Analysis",
+  "difficulty": "Medium",
+  "summary": "Correlate honeypot auth, kernel, and Apache logs to profile SSH brute-force attackers, firewall changes, and dropped scanning tools",
+  "tags": [
+   "auth.log",
+   "apache2",
+   "honeypot",
+   "ssh",
+   "grep",
+   "t1110.001"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] HawkEye.md": {
+  "category": "Network Forensics",
+  "difficulty": "Easy",
+  "summary": "Profile capture endpoints, DNS queries, and hosts in a PCAP to trace malware delivered via a malicious invoice email and its exfiltration",
+  "tags": [
+   "pcap",
+   "wireshark",
+   "networkminer",
+   "dns",
+   "geoip",
+   "exfiltration"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] HireMe.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Analyze a Windows disk image via registry hives and browser artifacts to answer OS, user, and case-related questions about the suspect",
+  "tags": [
+   "disk-forensic",
+   "registry",
+   "ftk-imager",
+   "autopsy",
+   "eztools",
+   "chrome-artifacts"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] HoneyBOT.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze honeypot PCAP traffic to identify an SMB buffer-overflow exploit, decode its shellcode, and track downloaded malware",
+  "tags": [
+   "pcap",
+   "wireshark",
+   "smb",
+   "shellcode",
+   "scdbg",
+   "cve"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Hunter.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Examine a suspect Windows forensic image to confirm illegal port-scanning activity, identifying the scanner tool, timing, and open ports",
+  "tags": [
+   "disk-forensic",
+   "registry",
+   "prefetch",
+   "ftk-imager",
+   "eztools",
+   "port-scan"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] IMDSv1.md": {
+  "category": "Cloud Security",
+  "difficulty": "Hard",
+  "summary": "Investigate an AWS SSRF-to-IMDS attack via PCAP and CloudTrail logs to trace IAM credential theft, S3 exfiltration, and bucket deletion",
+  "tags": [
+   "aws",
+   "ssrf",
+   "cloudtrail",
+   "imds",
+   "s3",
+   "wireshark"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] IcedID 2.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Hard",
+  "summary": "Analyze a memory image of an IcedID-compromised endpoint to trace ISO delivery, malicious execution, persistence, and the payload DLL",
+  "tags": [
+   "volatility",
+   "memprocfs",
+   "iso",
+   "icedid",
+   "evtx",
+   "ransomware"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] IcedID.md": {
+  "category": "Threat Intel",
+  "difficulty": "Easy",
+  "summary": "Pivot from an IcedID sample hash through VirusTotal and OSINT to map dropped payloads, hosting domains, and the responsible threat actor",
+  "tags": [
+   "icedid",
+   "virustotal",
+   "malpedia",
+   "xlsm",
+   "ioc",
+   "apt"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Injector.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Hard",
+  "summary": "Mount a breached web server's disk and memory image to trace SQL injection and LFI exploitation of DVWA and the attacker's rogue user creation",
+  "tags": [
+   "volatility",
+   "ftk-imager",
+   "regripper",
+   "sql-injection",
+   "t1190",
+   "lfi"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Insider.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Easy",
+  "summary": "Examine a Kali Linux disk image to trace an insider's credential-dumping downloads, bash history, and hidden files proving lateral attacks",
+  "tags": [
+   "ftk-imager",
+   "bash_history",
+   "kali",
+   "apache",
+   "t1003",
+   "binwalk"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Jailbroken.md": {
+  "category": "Mobile Forensics",
+  "difficulty": "Medium",
+  "summary": "Parse an iPad iOS filesystem with iLEAPP and SQLite to recover device details, browsing history, jailbreak app, and installed applications",
+  "tags": [
+   "ileapp",
+   "ios",
+   "sqlite",
+   "mac_apt",
+   "autopsy",
+   "plist"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Kerberoasted.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Medium",
+  "summary": "Hunt domain controller logs in Splunk to detect RC4 Kerberoasting, identify the compromised service account, RDP logins, and WMI persistence",
+  "tags": [
+   "kerberoasting",
+   "splunk",
+   "event-4769",
+   "rc4-hmac",
+   "sysmon",
+   "wmi"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Lespion.md": {
+  "category": "OSINT",
+  "difficulty": "Medium",
+  "summary": "Use OSINT, GitHub leaks, and image geolocation to unmask an insider attacker's identity, leaked credentials, and physical whereabouts",
+  "tags": [
+   "osint",
+   "sherlock",
+   "github",
+   "google-maps",
+   "t1078",
+   "geolocation"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] MSIXPhish.md": {
+  "category": "Threat Intel",
+  "difficulty": "Easy",
+  "summary": "Pivot on a malicious MSIX installer hash in VirusTotal to profile the batloader family, dropped executables, C2 domains, and threat actor",
+  "tags": [
+   "virustotal",
+   "batloader",
+   "msix",
+   "mitre",
+   "c2",
+   "t1056"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] MalDoc101.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Easy",
+  "summary": "Statically analyze a macro-laden malicious Office document with oledump and olevba to extract the base64 PowerShell dropper and its IOCs",
+  "tags": [
+   "oledump",
+   "olevba",
+   "macro",
+   "base64",
+   "wmi",
+   "t1059"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Malicious PyPi.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Investigate KAPE-collected Windows artifacts to trace a malicious PyPi package install, Defender disabling, C2 traffic, and persistence",
+  "tags": [
+   "ez-tools",
+   "prefetch",
+   "pecmd",
+   "powershell",
+   "c2",
+   "persistence"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] MeteorHit.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Hard",
+  "summary": "Analyze KAPE triage artifacts to reconstruct a GPO-delivered wiper attack, its staging, Defender exclusions, and boot manager destruction",
+  "tags": [
+   "wiper",
+   "mftecmd",
+   "sysmon",
+   "gpo",
+   "usn",
+   "scheduled-task"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Midnight RDP.md": {
+  "category": "Incident Response",
+  "difficulty": "Hard",
+  "summary": "Trace an APT29-style .rdp spear-phishing campaign through SIEM logs, covering initial access, DLL beacon, persistence, and privilege escalation",
+  "tags": [
+   "apt29",
+   "splunk",
+   "elk",
+   "rdp",
+   "phishing",
+   "scheduled-task"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] MrGamer.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Medium",
+  "summary": "Explore a Linux gamer's disk image using bash history and SQLite artifacts to uncover Log4j exploit attempts and user activity anomalies",
+  "tags": [
+   "ftk-imager",
+   "sqlite",
+   "bash_history",
+   "log4j",
+   "firefox",
+   "cyberchef"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] MrRobot.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Hard",
+  "summary": "Analyze memory dumps with Volatility to identify a phishing-delivered RAT, its process injection, persistence, and stolen credential hashes",
+  "tags": [
+   "volatility",
+   "rat",
+   "phishing",
+   "process-injection",
+   "ntlm",
+   "t1055"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] NintendoHunt.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Use Volatility to spot a masquerading svchost process injected under explorer, extract its hidden hash, and recover alternate data stream artifacts",
+  "tags": [
+   "volatility",
+   "process-injection",
+   "ads",
+   "t1055.012",
+   "base64",
+   "registry"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] NukeTheBrowser.md": {
+  "category": "Network Forensics",
+  "difficulty": "Hard",
+  "summary": "Dissect a drive-by exploit-kit PCAP, deobfuscating malicious JavaScript to identify served CVEs, executables, and geo-targeted redirects",
+  "tags": [
+   "pcap",
+   "wireshark",
+   "spidermonkey",
+   "javascript",
+   "exploit-kit",
+   "t1189"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Obfuscated.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Deobfuscate a malicious document's macros and dropped JavaScript backdoor using oledump and olevba to reveal its decryption key and staging logic",
+  "tags": [
+   "oledump",
+   "olevba",
+   "javascript",
+   "wscript",
+   "t1140",
+   "backdoor"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Oski.md": {
+  "category": "Threat Intel",
+  "difficulty": "Medium",
+  "summary": "Analyze a malicious PPT dropper to identify the Stealc family, its C2 server, RC4 key, and credential-theft behavior via VirusTotal and Any.Run",
+  "tags": [
+   "virustotal",
+   "any.run",
+   "stealc",
+   "ppt",
+   "rc4",
+   "c2"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] PacketMaze.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Investigate an insider's PCAP to recover FTP creds, DNS lookups, TLS session keys, and image EXIF metadata using Wireshark and NetworkMiner",
+  "tags": [
+   "pcap",
+   "wireshark",
+   "ftp",
+   "tls",
+   "dns",
+   "networkminer"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] PhishStrike.md": {
+  "category": "Email / Phishing",
+  "difficulty": "Medium",
+  "summary": "Investigate a phishing email and its malicious URL distributing BitRAT, AsyncRAT, and CoinMiner using threat intel tools to extract IOCs",
+  "tags": [
+   "eml",
+   "bitrat",
+   "asyncrat",
+   "coinminer",
+   "urlhaus",
+   "c2"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Phishy.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Examine a disk image to trace a fake-giveaway phishing compromise through WhatsApp artifacts, a macro-laden doc, and dropped malware",
+  "tags": [
+   "autopsy",
+   "ftk-imager",
+   "oledump",
+   "whatsapp",
+   "macros",
+   "registry"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Phobos.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Hard",
+  "summary": "Reverse engineer the Phobos ransomware to uncover its hashing, encryption logic, C2 protocol, and process-termination and persistence functions",
+  "tags": [
+   "ida",
+   "ghidra",
+   "x64dbg",
+   "ransomware",
+   "phobos",
+   "pestudio"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] PoisonedCredentials.md": {
+  "category": "Network Forensics",
+  "difficulty": "Easy",
+  "summary": "Trace an LLMNR/NBT-NS poisoning attack in a PCAP to identify the rogue machine, compromised account, and SMB host accessed",
+  "tags": [
+   "pcap",
+   "wireshark",
+   "llmnr",
+   "nbt-ns",
+   "smb",
+   "credentials"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] ProPDF.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Hard",
+  "summary": "Analyze a Kimsuky APT malicious PDF to trace embedded JavaScript, memory-permission APIs, and a multi-stage PE32 payload downloaded from C2",
+  "tags": [
+   "pdf",
+   "javascript",
+   "ghidra",
+   "kimsuky",
+   "shellcode",
+   "c2"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] PsExec Hunt.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze PCAP traffic to reconstruct PsExec lateral movement, identifying the pivot hosts, auth account, service executable, and network shares used",
+  "tags": [
+   "pcap",
+   "wireshark",
+   "psexec",
+   "smb",
+   "dcerpc",
+   "lateral-movement"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] QBot.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a memory dump with Volatility 3 to identify the QBot-infected Excel process, extract the malware, and uncover its C2 communications",
+  "tags": [
+   "volatility3",
+   "qbot",
+   "netscan",
+   "pstree",
+   "dumpfiles",
+   "c2"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] RARCVE.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Hard",
+  "summary": "Dissect a weaponized WinRAR ZIP exploiting CVE-2023-38831 to decrypt multi-stage payloads, identify injected shellcode, and its download C2",
+  "tags": [
+   "cve-2023-38831",
+   "winrar",
+   "cyberchef",
+   "shellcode",
+   "scdbg",
+   "xor"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] RE101.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Easy",
+  "summary": "Work through binary analysis exercises extracting flags from ELF files, obfuscated JavaScript, Brainfuck, and a corrupted encrypted ZIP",
+  "tags": [
+   "ghidra",
+   "ida",
+   "strings",
+   "base64",
+   "brainfuck",
+   "pkzip"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Ramnit.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a memory dump with Volatility to trace the Ramnit malware process, its executable path, C2 IP, and compilation timestamp",
+  "tags": [
+   "volatility",
+   "memory",
+   "netscan",
+   "filescan",
+   "ramnit",
+   "dumpfiles"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Red Stealer.md": {
+  "category": "Threat Intel",
+  "difficulty": "Medium",
+  "summary": "Investigate a RedLine Stealer sample by hash using VirusTotal and ThreatFox to map its MITRE techniques, C2 IPs, YARA rule, and DLLs",
+  "tags": [
+   "virustotal",
+   "redline",
+   "malwarebazaar",
+   "threatfox",
+   "yara",
+   "mitre"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] RedLine.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a memory dump with Volatility and Redline to identify the oneetx.exe process, its injection, VPN connection, and malware family",
+  "tags": [
+   "volatility",
+   "malfind",
+   "redline",
+   "t1055",
+   "pstree",
+   "oneetx"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Reveal.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a Windows memory dump with Volatility 3 to trace a PowerShell-launched stealer, its second-stage payload, remote share, and family",
+  "tags": [
+   "volatility3",
+   "pstree",
+   "cmdline",
+   "rundll32",
+   "stealer",
+   "mitre"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Seized.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Hard",
+  "summary": "Investigate a Linux CentOS memory dump with Volatility to uncover a reverse shell, persistence backdoor, and the attacker's rootkit and key",
+  "tags": [
+   "volatility",
+   "linux",
+   "rootkit",
+   "centos",
+   "cyberchef",
+   "netcat"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] ShadowRoast.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Hard",
+  "summary": "Hunt an Active Directory intrusion in Splunk, tracing reverse-shell initial access, run-key persistence, AS-REP roasting, rogue DC creation, and data staging",
+  "tags": [
+   "splunk",
+   "sysmon",
+   "as-rep-roast",
+   "active-directory",
+   "persistence",
+   "ez-tools"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Spotlight.md": {
+  "category": "Mobile Forensics",
+  "difficulty": "Medium",
+  "summary": "Examine a macOS Catalina disk image with mac_apt to recover Safari bookmarks, Notes, iMessage permissions, quarantine records, and steganographic secrets",
+  "tags": [
+   "mac_apt",
+   "macos",
+   "autopsy",
+   "sqlite",
+   "steghide",
+   "plist"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] SpottedInTheWild.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Investigate a compromised bank workstation to trace a WinRAR CVE-2023-38831 exploit, second-stage payload, event-log tampering, persistence, and data staging",
+  "tags": [
+   "winrar",
+   "cve-2023-38831",
+   "mftecmd",
+   "prefetch",
+   "jumplist",
+   "event-logs"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Sysinternals.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Analyze a disk image of a fake SysInternals download using AmCache and registry artifacts to identify the malware, its C2 domain, dropped payload, and service",
+  "tags": [
+   "amcache",
+   "ftk-imager",
+   "virustotal",
+   "appcompatcache",
+   "t1071",
+   "t1059.001"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Szechuan Sauce.md": {
+  "category": "Incident Response",
+  "difficulty": "Hard",
+  "summary": "Correlate disk images, memory dumps, and a pcap to reconstruct an RDP-borne intrusion, identify the malicious process migration, C2 IPs, and attack toolkit",
+  "tags": [
+   "volatility",
+   "pcap",
+   "e01",
+   "registry",
+   "memory-forensics",
+   "cobaltstrike"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] T1197.md": {
+  "category": "Threat Hunting",
+  "difficulty": "Medium",
+  "summary": "Hunt BITS-job persistence in Splunk using Security and Defender logs to identify the backdoor framework, scheduled task, LOLBAS, and attacker IP",
+  "tags": [
+   "bitsadmin",
+   "t1197",
+   "splunk",
+   "defender",
+   "schtasks",
+   "event-4688"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] TeamSpy.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Hard",
+  "summary": "Analyze memory dumps with Volatility to uncover a TeamViewer-abusing RAT delivered via a malicious Office document, tracing C2, remote-access ID, and phishing",
+  "tags": [
+   "volatility",
+   "malfind",
+   "teamviewer",
+   "officemalscanner",
+   "netscan",
+   "phishing"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] The Crime.md": {
+  "category": "Mobile Forensics",
+  "difficulty": "Easy",
+  "summary": "Parse an Android image with ALEAPP to reconstruct a murder victim's trading app, debts, SMS, location history, and Discord meeting arrangements",
+  "tags": [
+   "android",
+   "aleapp",
+   "sqlitebrowser",
+   "sms",
+   "discord",
+   "google-maps"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Tomcat Takeover.md": {
+  "category": "Network Forensics",
+  "difficulty": "Easy",
+  "summary": "Analyze a pcap to trace a Tomcat compromise from port scanning and Gobuster enumeration through admin-panel brute force, reverse-shell upload, and persistence",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "tomcat",
+   "gobuster",
+   "networkminer",
+   "t1110"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Trigona Ransomware.md": {
+  "category": "Incident Response",
+  "difficulty": "Hard",
+  "summary": "Investigate a Trigona ransomware attack across file server and IT machine to trace RDP initial access, enumeration, exfiltration, lateral movement, and encryption",
+  "tags": [
+   "trigona",
+   "ransomware",
+   "evtxecmd",
+   "kape",
+   "rdp",
+   "lateral-movement"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Ulysses.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Hard",
+  "summary": "Investigate a compromised Linux server with Volatility and disk analysis to trace SSH brute force, an exploited service, downloaded files, and data exfiltration",
+  "tags": [
+   "volatility",
+   "auth.log",
+   "linux",
+   "memory-forensics",
+   "autopsy",
+   "cve"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] UnPackMe.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Hard",
+  "summary": "Reverse the packed ShadowSteal stealer in IDA and Ghidra to recover its mutex string, RC4 key, version, screenshot routine, and self-delete command",
+  "tags": [
+   "ida",
+   "ghidra",
+   "x64dbg",
+   "stealer",
+   "rc4",
+   "packed"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Web Investigation.md": {
+  "category": "Network Forensics",
+  "difficulty": "Easy",
+  "summary": "Analyze web-server traffic to trace a SQL injection attack, identify the vulnerable script, dumped databases, discovered directory, credentials, and uploaded shell",
+  "tags": [
+   "pcap",
+   "wireshark",
+   "sqli",
+   "networkminer",
+   "webshell",
+   "sql"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] WebStrike.md": {
+  "category": "Network Forensics",
+  "difficulty": "Easy",
+  "summary": "Examine a pcap to trace a PHP web-shell upload, identify the attacker's origin and user agent, the upload directory, shell port, and exfiltrated file",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "webshell",
+   "exfiltration",
+   "php",
+   "user-agent"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] WireDive.md": {
+  "category": "Network Forensics",
+  "difficulty": "Easy",
+  "summary": "Dissect multiple packet captures to analyze DHCP, DNS, SMB, and reverse-shell traffic, extracting flags, transaction IDs, file paths, and netcat details",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "smb",
+   "dhcp",
+   "dns",
+   "netcat"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] XLM Macros.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Analyze two Excel 4.0 macro documents on REMnux to crack encryption, reveal hidden sheets, decode anti-analysis checks, and extract payload URLs and families",
+  "tags": [
+   "xlm-macros",
+   "oledump",
+   "xlmdeobfuscator",
+   "remnux",
+   "olevba",
+   "t1059.003"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Yellow RAT.md": {
+  "category": "Threat Intel",
+  "difficulty": "Easy",
+  "summary": "Pivot a malware hash through VirusTotal to identify the Yellow Cockatoo RAT family, its dropped files, compile timestamp, and C2 server",
+  "tags": [
+   "virustotal",
+   "malware",
+   "pe-header",
+   "c2",
+   "infostealer",
+   "iocs"
+  ]
+ },
+ "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] l337 S4uc3.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Correlate PCAP and IDS alerts with NetworkMiner and Wireshark to map a Zeus bot infection, its C2 server, and WordPress compromise",
+  "tags": [
+   "pcap",
+   "wireshark",
+   "networkminer",
+   "zeus",
+   "volatility",
+   "ids"
+  ]
+ },
+ "HackSmarter.org/[HackSmarter.org Write-up] Anomaly.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Hard",
+  "summary": "Chain a Jenkins foothold and sudo binary abuse on Ubuntu into Kerberos keytab theft and ADCS ESC1 to seize Domain Admin",
+  "tags": [
+   "jenkins",
+   "sudo",
+   "keytab",
+   "adcs",
+   "esc1",
+   "bloodhound"
+  ]
+ },
+ "HackSmarter.org/[HackSmarter.org Write-up] Arasaka.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Easy",
+  "summary": "Chain Kerberoasting, shadow credential attacks, and ADCS ESC1 across service accounts to escalate a standard user to Domain Admin",
+  "tags": [
+   "kerberoasting",
+   "shadow-creds",
+   "adcs",
+   "esc1",
+   "genericall",
+   "pass-the-hash"
+  ]
+ },
+ "HackSmarter.org/[HackSmarter.org Write-up] BankSmarter.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Medium",
+  "summary": "Leak credentials over SNMP then chain cronjob replacement, Unix socket hijacking, and SUID PATH hijacking to reach root on a Linux server",
+  "tags": [
+   "snmp",
+   "cronjob",
+   "unix-socket",
+   "socat",
+   "suid",
+   "path-hijack"
+  ]
+ },
+ "HackSmarter.org/[HackSmarter.org Write-up] BuildingMagic.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Easy",
+  "summary": "Crack leaked MD5 hashes then chain password spraying, Kerberoasting, NTLM theft, and SeBackupPrivilege to compromise the AD domain",
+  "tags": [
+   "kerberoasting",
+   "password-spray",
+   "ntlm_theft",
+   "sebackup",
+   "pass-the-hash",
+   "winrm"
+  ]
+ },
+ "HackSmarter.org/[HackSmarter.org Write-up] MidGarden2.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Medium",
+  "summary": "Abuse a description-field password and ForceChangePassword, then leverage the BadSuccessor dMSA attack to reach Enterprise Admin on Server 2025",
+  "tags": [
+   "badsuccessor",
+   "forcechangepassword",
+   "winrm",
+   "dmsa",
+   "s4u2self",
+   "bloodhound"
+  ]
+ },
+ "HackSmarter.org/[HackSmarter.org Write-up] NorthBridge Systems.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Hard",
+  "summary": "Pivot from an RDP jump box through RBCD, DPAPI secrets, and Backup Operators to a DCSync that fully compromises the domain",
+  "tags": [
+   "rbcd",
+   "dpapi",
+   "backup-operators",
+   "dcsync",
+   "rdp",
+   "writeaccountrestrictions"
+  ]
+ },
+ "HackSmarter.org/[HackSmarter.org Write-up] Odyssey.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Hard",
+  "summary": "Exploit Jinja2 SSTI on a Linux web server, reuse keys and cracked hashes to pivot across Windows hosts, and abuse GPO to own the domain",
+  "tags": [
+   "ssti",
+   "ssh-key",
+   "backup-operators",
+   "gpo-abuse",
+   "bloodhound",
+   "rdp"
+  ]
+ },
+ "HackSmarter.org/[HackSmarter.org Write-up] ShareThePain.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Medium",
+  "summary": "Steal a hash via NTLM theft, abuse GenericAll, then pivot with ligolo-ng into MSSQL and SeImpersonate to reach SYSTEM",
+  "tags": [
+   "ntlm_theft",
+   "genericall",
+   "ligolo-ng",
+   "mssql",
+   "xp_cmdshell",
+   "seimpersonate"
+  ]
+ },
+ "HackSmarter.org/[HackSmarter.org Write-up] Staged.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Medium",
+  "summary": "Run a Sliver C2 stager past Defender, loot Edge and autologon credentials, then tunnel to a MySQL server to exfiltrate the flag",
+  "tags": [
+   "sliver",
+   "c2",
+   "seimpersonate",
+   "autologon",
+   "mysql",
+   "socks5"
+  ]
+ },
+ "HackSmarter.org/[HackSmarter.org Write-up] Sysco.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Easy",
+  "summary": "Enumerate usernames from a website, AS-REP roast, crack a Cisco router config, then abuse GPO Creator Owners to compromise the domain",
+  "tags": [
+   "asreproast",
+   "roundcube",
+   "cisco-config",
+   "gpo-abuse",
+   "netexec",
+   "winrm"
+  ]
+ },
+ "HackSmarter.org/[HackSmarter.org Write-up] Talisman.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Easy",
+  "summary": "Abuse Oracle CREATE ANY DIRECTORY via CloudBeaver to read an SSH key, then replace a root-run script to fully compromise the Linux server",
+  "tags": [
+   "oracle",
+   "plsql",
+   "cloudbeaver",
+   "ssh-key",
+   "sudo",
+   "script-hijack"
+  ]
+ },
+ "HackSmarter.org/[HackSmarter.org Write-up] Welcome.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Easy",
+  "summary": "Crack a share document password, spray it, then chain shadow credentials and ADCS ESC1 to escalate to Domain Admin",
+  "tags": [
+   "password-spray",
+   "shadow-creds",
+   "forcechangepassword",
+   "adcs",
+   "esc1",
+   "smb"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] Baby.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Easy",
+  "summary": "Pull passwords from LDAP descriptions via null session, reset a hidden user, then use Backup Operators to dump NTDS and root the DC",
+  "tags": [
+   "ldap",
+   "null-session",
+   "backup-operators",
+   "ntds.dit",
+   "secretsdump",
+   "netexec"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] BabyTwo.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Medium",
+  "summary": "Abuse a guest account and SYSVOL logon script for a foothold, then chain WriteOwner and GPO abuse to root the domain controller",
+  "tags": [
+   "guest-account",
+   "logon-script",
+   "sysvol",
+   "gpo-abuse",
+   "bloodhound",
+   "writeowner"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] Breach.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Medium",
+  "summary": "Steal a hash with a guest-writable share, Kerberoast svc_mssql, forge a silver ticket for xp_cmdshell, then abuse SeImpersonate for SYSTEM",
+  "tags": [
+   "ntlm_theft",
+   "kerberoasting",
+   "silver-ticket",
+   "xp_cmdshell",
+   "seimpersonate",
+   "mssql"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] Data.md": {
+  "category": "Web Exploitation",
+  "difficulty": "Easy",
+  "summary": "Exploit Grafana directory traversal (CVE-2021-43798) to steal and crack DB hashes, then abuse sudo docker exec privileged mode to reach root",
+  "tags": [
+   "grafana",
+   "cve-2021-43798",
+   "docker",
+   "hashcat",
+   "lfi",
+   "privesc"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] Forgotten.md": {
+  "category": "Web Exploitation",
+  "difficulty": "Easy",
+  "summary": "Deploy a malicious LimeSurvey plugin for a Docker foothold, harvest an env-var password, and abuse a shared host directory with SUID bash to root the box",
+  "tags": [
+   "limesurvey",
+   "php-shell",
+   "docker",
+   "mysql",
+   "suid",
+   "privesc"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] Job.md": {
+  "category": "Windows Privesc",
+  "difficulty": "Medium",
+  "summary": "Phish a malicious macro ODT over SMTP for a shell, abuse developer webroot control for a webshell, then leverage SeImpersonatePrivilege to reach SYSTEM",
+  "tags": [
+   "odt",
+   "phishing",
+   "smtp",
+   "webshell",
+   "seimpersonate",
+   "iis"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] Lock.md": {
+  "category": "Windows Privesc",
+  "difficulty": "Easy",
+  "summary": "Recover a Gitea PAT to deploy an ASPX webshell, decrypt mRemoteNG credentials for RDP, then exploit PDF24 Creator CVE-2023-49147 via oplock to reach SYSTEM",
+  "tags": [
+   "gitea",
+   "aspx-shell",
+   "mremoteng",
+   "cve-2023-49147",
+   "rdp",
+   "oplock"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] Manage.md": {
+  "category": "Web Exploitation",
+  "difficulty": "Easy",
+  "summary": "Abuse an unauthenticated JMX MBean server for a Tomcat foothold, loot a backup with SSH keys, then create an admin user via sudo to become root",
+  "tags": [
+   "jmx",
+   "mbean",
+   "tomcat",
+   "beanshooter",
+   "metasploit",
+   "sudo"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] Media.md": {
+  "category": "Windows Privesc",
+  "difficulty": "Medium",
+  "summary": "Force NTLM auth with an ntlm_theft WAX file for SSH access, abuse a symlink upload for a webshell, then use FullPowers and SeImpersonate to reach SYSTEM",
+  "tags": [
+   "ntlm_theft",
+   "wax",
+   "aspx-shell",
+   "symlink",
+   "fullpowers",
+   "seimpersonate"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] Reset.md": {
+  "category": "Web Exploitation",
+  "difficulty": "Easy",
+  "summary": "Abuse forgot-password to log in, poison access logs for LFI RCE, exploit trusted-host rlogin, then escape sudo nano to root the box",
+  "tags": [
+   "lfi",
+   "log-poisoning",
+   "rlogin",
+   "hosts.equiv",
+   "sudo",
+   "tmux"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] Retro.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Easy",
+  "summary": "Guess a weak trainee password, reset a Pre2K computer account, then abuse ADCS ESC1 to obtain the Administrator hash and take over the domain controller",
+  "tags": [
+   "smb",
+   "rid-cycling",
+   "pre2k",
+   "adcs",
+   "esc1",
+   "psexec"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] RetroTwo.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Easy",
+  "summary": "Crack an MS Access DB for domain creds, abuse Pre2K GenericWrite for RDP, then exploit ZeroLogon and DCSync to dump all hashes and root the DC",
+  "tags": [
+   "msaccess",
+   "john",
+   "pre2k",
+   "genericwrite",
+   "zerologon",
+   "dcsync"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] Sendai.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Medium",
+  "summary": "Spray for accounts pending password change, chain GenericAll and ReadGMSAPassword via BloodHound, then abuse ADCS ESC4 to impersonate Administrator",
+  "tags": [
+   "bloodhound",
+   "genericall",
+   "gmsa",
+   "adcs",
+   "esc4",
+   "password-spray"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] Slonik.md": {
+  "category": "Linux Privesc",
+  "difficulty": "Medium",
+  "summary": "Abuse an NFS export to impersonate a user, crack a PostgreSQL hash from psql history, then hijack a root backup cron with SUID bash to root the box",
+  "tags": [
+   "nfs",
+   "postgresql",
+   "ssh-socket",
+   "bash_history",
+   "suid",
+   "cron"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] Sweep.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Medium",
+  "summary": "Spray to enter Lansweeper, capture scan creds with an SSH honeypot, abuse GenericAll for a foothold, then deploy or decrypt Lansweeper creds to reach SYSTEM",
+  "tags": [
+   "lansweeper",
+   "sshesame",
+   "bloodhound",
+   "genericall",
+   "password-spray",
+   "metasploit"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Machines/VulnLab/[HTB Write-up] VulnEscape.md": {
+  "category": "Windows Privesc",
+  "difficulty": "Easy",
+  "summary": "Break out of a passwordless RDP kiosk via a second Edge instance, unmask a Remote Desktop Plus admin password, then bypass UAC to root the box",
+  "tags": [
+   "kiosk-escape",
+   "rdp",
+   "msedge",
+   "remote-desktop-plus",
+   "uac",
+   "password-unmask"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] APTNightmare-2.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Hard",
+  "summary": "Analyze a Linux memory dump with Volatility to uncover a hidden malicious kernel module masquerading as nfnetlink that hooks syscalls and hides processes",
+  "tags": [
+   "volatility",
+   "linux",
+   "rootkit",
+   "kernel-module",
+   "syscall-hook",
+   "reverse-shell"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] APTNightmare.md": {
+  "category": "Network Forensics",
+  "difficulty": "Hard",
+  "summary": "Reconstruct an APT intrusion from PCAP in Wireshark, tracing port scanning, DNS zone transfer, credential brute force, initial access, privesc, and persistence",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "dns-zone-transfer",
+   "port-scan",
+   "reverse-shell",
+   "mitre"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] BFT.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Easy",
+  "summary": "Parse the NTFS MFT with MFTECmd and Timeline Explorer to trace a downloaded ZIP, identify a resident invoice.bat stager, and recover its C2 IP and port",
+  "tags": [
+   "mftecmd",
+   "mft",
+   "timeline-explorer",
+   "zone-identifier",
+   "hex-editor",
+   "c2"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] BOughT.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Hard",
+  "summary": "Analyze a memory image with Volatility to find a malicious startup process, then reverse the malware's mutex, anti-debug tricks, and DGA C2 domains",
+  "tags": [
+   "volatility",
+   "malware",
+   "dga",
+   "anti-debug",
+   "virustotal",
+   "mutex"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Brutus.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Very Easy",
+  "summary": "Investigate Unix auth.log and wtmp to trace an SSH brute-force, identify the compromised account, backdoor user, and privilege escalation",
+  "tags": [
+   "auth.log",
+   "wtmp",
+   "ssh",
+   "utmpdump",
+   "brute-force",
+   "t1136"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Bumblebee.md": {
+  "category": "Log Analysis",
+  "difficulty": "Easy",
+  "summary": "Trace an insider contractor through phpBB SQLite tables and access.log to uncover a credential-stealing XSS post and stolen database backup",
+  "tags": [
+   "access.log",
+   "sqlite",
+   "phpbb",
+   "xss",
+   "ldap",
+   "credential-theft"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Campfire-1.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Medium",
+  "summary": "Correlate DC security logs, PowerShell logs, and Prefetch to detect a kerberoasting attack executed via PowerView and Rubeus",
+  "tags": [
+   "kerberoasting",
+   "rubeus",
+   "powerview",
+   "prefetch",
+   "pecmd",
+   "t1558"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Campfire-2.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Medium",
+  "summary": "Examine domain controller security logs to detect an AS-REP roasting attack, identifying the targeted account, its SID, and the compromised asset",
+  "tags": [
+   "asrep-roasting",
+   "kerberos",
+   "event-4768",
+   "t1558.004",
+   "sid",
+   "dc-logs"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Compromised.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Examine a pcap in Wireshark to trace a Pikabot infection, extract the PE payload, and analyze self-signed TLS certs and tunneling domains",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "pikabot",
+   "tls",
+   "self-signed",
+   "dns-tunnel"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Constellation.md": {
+  "category": "OSINT",
+  "difficulty": "Medium",
+  "summary": "Extract timestamps from memory-recovered URLs with unfurl and use OSINT to expose an insider threat and the threat actor handler behind data exfiltration",
+  "tags": [
+   "unfurl",
+   "exiftool",
+   "url-analysis",
+   "insider-threat",
+   "pdf",
+   "timeline"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] CrewCrow.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Hard",
+  "summary": "Analyze a suspect's disk image to recover Zoom conferencing artifacts, DPAPI-protected credentials, and encrypted meeting data revealing a planned attack",
+  "tags": [
+   "registry",
+   "userassist",
+   "prefetch",
+   "zoom",
+   "dpapi",
+   "sqlcipher"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] CrownJewel-1.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Medium",
+  "summary": "Analyze DC system and security logs to detect vssadmin abuse creating a volume shadow copy and dumping NTDS.dit with a registry hive",
+  "tags": [
+   "ntds.dit",
+   "vssadmin",
+   "event-7036",
+   "event-4799",
+   "esent",
+   "shadow-copy"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] CrownJewel-2.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Medium",
+  "summary": "Trace ntdsutil.exe abuse through DC event logs to identify the dumped NTDS database path, enumerated privilege groups, and the malicious logon session",
+  "tags": [
+   "ntds.dit",
+   "ntdsutil",
+   "event-325",
+   "event-327",
+   "esent",
+   "logon-id"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Detroit becomes Human.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Analyze Edge history and MFT to trace a fake AI-tool malvertising install, uncovering the staging directory and recovering the malicious JS payload",
+  "tags": [
+   "edge-history",
+   "mftecmd",
+   "timeline-explorer",
+   "registry",
+   "malvertising",
+   "msi"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Heartbreaker-Continuum.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Reverse a PowerShell-to-PE binary with pestudio and strings to recover the reversed-base64 script, network IOCs, and exfiltration password",
+  "tags": [
+   "pestudio",
+   "ps2exe",
+   "base64",
+   "strings",
+   "exfiltration",
+   "t1119"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Heartbreaker-Denouement.md": {
+  "category": "Cloud Security",
+  "difficulty": "Hard",
+  "summary": "Correlate web access logs and AWS CloudTrail to trace an SSRF-driven metadata compromise, stolen IAM credentials, and database snapshot exfiltration",
+  "tags": [
+   "cloudtrail",
+   "ssrf",
+   "aws",
+   "iam",
+   "access.log",
+   "t1595.003"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Hyperfiletable.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Easy",
+  "summary": "Triage a single MFT record with MFTECmd and MFTExplorer to identify a phished user's malicious HTA download, its ADS ZoneId, and file sizes",
+  "tags": [
+   "mft",
+   "mftecmd",
+   "mftexplorer",
+   "zone-identifier",
+   "hta",
+   "timeline-explorer"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Jingle Bell.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Parse the Windows Notifications database in DB Browser to reconstruct an insider's Slack chat revealing data leaked to a rival company for money",
+  "tags": [
+   "notifications-db",
+   "sqlite",
+   "slack",
+   "insider-threat",
+   "unix-time",
+   "exfiltration"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Jugglin.md": {
+  "category": "Incident Response",
+  "difficulty": "Hard",
+  "summary": "Analyze API Monitor apmx64 logs to track WSL2 activity, uncovering intercepted string functions, exfiltrated files, and lsassy credential theft",
+  "tags": [
+   "wsl2",
+   "api-monitor",
+   "apmx64",
+   "api-hooking",
+   "lsassy",
+   "keylogging"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Knock Knock.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a packet capture to trace how an attacker port-scanned, brute-forced FTP, and used port knocking to reach a critical Forela dev service",
+  "tags": [
+   "pcap",
+   "wireshark",
+   "port-scan",
+   "ftp",
+   "port-knocking",
+   "osint"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Litter.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Investigate a PCAP of DNS-tunneled C2 traffic, decoding queries to recover attacker commands and quantify stolen customer PII records",
+  "tags": [
+   "pcap",
+   "dns-tunneling",
+   "wireshark",
+   "tshark",
+   "cyberchef",
+   "exfiltration"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Lockpick.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Hard",
+  "summary": "Reverse-engineer a Linux ransomware binary in Ghidra to recover the encryption key and decrypt Forela's ransomed UNIX server files",
+  "tags": [
+   "ransomware",
+   "ghidra",
+   "reverse-eng",
+   "decryption",
+   "linux",
+   "md5"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Logjammer.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Easy",
+  "summary": "Analyze Windows event logs to track a user's malicious logon, firewall tampering, scheduled task, PowerShell activity, and log clearing",
+  "tags": [
+   "evtx",
+   "event-logs",
+   "4624",
+   "4698",
+   "defender",
+   "scheduled-task"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Meerkat.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Examine PCAP and logs to confirm a Bonitasoft auth-bypass RCE (CVE-2022-25237) via credential stuffing and SSH key persistence",
+  "tags": [
+   "pcap",
+   "bonita",
+   "cve-2022-25237",
+   "credential-stuffing",
+   "rce",
+   "persistence"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] NeuroSync-D.md": {
+  "category": "Web Exploitation",
+  "difficulty": "Hard",
+  "summary": "Trace log evidence of a Next.js middleware bypass (CVE-2025-29927) chained with SSRF and Redis exploitation against BCI infrastructure",
+  "tags": [
+   "nextjs",
+   "cve-2025-29927",
+   "middleware-bypass",
+   "ssrf",
+   "redis",
+   "access.log"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Noted.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Reconstruct a data-extortion attack from Notepad++ artifacts to recover the attacker's exfil archive, crypto wallet, and contact details",
+  "tags": [
+   "notepad++",
+   "config.xml",
+   "sessions.xml",
+   "extortion",
+   "exfiltration",
+   "artifacts"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Noxious.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Hunt an LLMNR poisoning attack in a PCAP, identifying the rogue Responder host and stitching NTLM values to crack the victim's password",
+  "tags": [
+   "llmnr",
+   "ntlm",
+   "responder",
+   "wireshark",
+   "ntproofstr",
+   "hashcat"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Nubilum-2.md": {
+  "category": "Cloud Security",
+  "difficulty": "Hard",
+  "summary": "Investigate AWS CloudTrail logs in Splunk to track compromised access keys, IAM privilege escalation, and S3 data encryption by a threat actor",
+  "tags": [
+   "aws",
+   "cloudtrail",
+   "splunk",
+   "s3",
+   "iam",
+   "privesc"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Nuts.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Hard",
+  "summary": "Trace a malicious NuGet supply-chain package across PowerShell history, browser, and MFT artifacts to its Defender-disabling C2 payload",
+  "tags": [
+   "nuget",
+   "mftecmd",
+   "psreadline",
+   "supply-chain",
+   "defender",
+   "c2"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OPTinselTrace24-3 Blizzard Breakdown.md": {
+  "category": "Cloud Security",
+  "difficulty": "Medium",
+  "summary": "Correlate Windows artifacts and AWS CloudTrail logs to track a rogue insider abusing Ammyy Admin and tampering with an S3 archive",
+  "tags": [
+   "cloudtrail",
+   "s3",
+   "aws",
+   "ammyy",
+   "amcache",
+   "prefetch"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OPTinselTrace24-4 Neural Noel.md": {
+  "category": "Web Exploitation",
+  "difficulty": "Medium",
+  "summary": "Investigate pcap, auth.log, and bash history to trace an AI chatbot prompt-injection leading to credential leak and root privilege escalation",
+  "tags": [
+   "pcap",
+   "wireshark",
+   "auth.log",
+   "prompt-injection",
+   "cve",
+   "privesc"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OpSalwarKameez24-1 Super-Star.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Hard",
+  "summary": "Reverse a malicious NSIS/Electron Node.js keylogger, decoding XOR shellcode and V8 bytecode to recover its exfil channel and fake coupon",
+  "tags": [
+   "nodejs",
+   "electron",
+   "asar",
+   "shellcode",
+   "xor",
+   "bytecode"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OpSalwarKameez24-2 Magic-Show.md": {
+  "category": "Incident Response",
+  "difficulty": "Hard",
+  "summary": "Correlate KAPE logs and a memory dump to track RDP access, Defender bypass, privilege escalation, and exploit use on a Windows 11 host",
+  "tags": [
+   "kape",
+   "memory-dump",
+   "rdp",
+   "amsi-bypass",
+   "privesc",
+   "event-logs"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OpSalwarKameez24-4 Salsa-Dance.md": {
+  "category": "Incident Response",
+  "difficulty": "Hard",
+  "summary": "Follow prefetch and event-log evidence to trace BITS downloads, credential dumping, and database exfiltration during lateral movement",
+  "tags": [
+   "kape",
+   "prefetch",
+   "bitsadmin",
+   "t1197",
+   "mimikatz",
+   "database"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OpTinselTrace-1.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Audit an insider elf's workstation and eM Client emails to reconstruct threat-actor contact and locate Santa's exfiltrated secret file",
+  "tags": [
+   "kape",
+   "emclient",
+   "mft",
+   "usn-journal",
+   "email",
+   "insider-threat"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OpTinselTrace-2.md": {
+  "category": "Cloud Security",
+  "difficulty": "Medium",
+  "summary": "Audit AWS CloudTrail logs to confirm automated S3 bucket theft, identify malicious IPs, and pinpoint the leaked VPN file and compromised account",
+  "tags": [
+   "aws",
+   "cloudtrail",
+   "s3",
+   "splunk",
+   "user-agent",
+   "credentials"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OpTinselTrace-3.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Hard",
+  "summary": "Analyze a memory dump with Volatility to trace an LNK/VBS infection chain, process injection, and procdump credential theft on a workstation",
+  "tags": [
+   "volatility",
+   "memory-dump",
+   "lnk",
+   "vbs",
+   "shellcode",
+   "procdump"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OpTinselTrace-4.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a printer-server pcap in Wireshark to trace port scanning, PJL print jobs, and lateral movement to a critical SSH server",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "pjl",
+   "printer",
+   "ssh",
+   "lateral-movement"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OpTinselTrace-5.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Hard",
+  "summary": "Investigate a KAPE triage of a compromised domain controller to trace CVE exploitation, a malicious service, and file-encrypting ransomware",
+  "tags": [
+   "kape",
+   "mftecmd",
+   "usn-journal",
+   "ransomware",
+   "rbcmd",
+   "event-log"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OpTinselTrace24-1 Sneaky Cookies.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Trace a phishing LNK that abuses LOLBins to stage C2, then reconstruct the attacker's VPN and RDP access from Windows artifacts",
+  "tags": [
+   "lnk",
+   "prefetch",
+   "pecmd",
+   "rdp-cache",
+   "lolbin",
+   "phishing"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Pikaptcha.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Reconstruct a fake-captcha ClickFix attack from RunMRU, PowerShell history, and network traffic to recover the downloaded stager and reverse shell",
+  "tags": [
+   "runmru",
+   "registry",
+   "powershell",
+   "fake-captcha",
+   "c2",
+   "pcap"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Psittaciformes.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Medium",
+  "summary": "Examine CatScale Linux artifacts and bash history to trace a trojanized enum script that downloads a password-protected payload and sets cron persistence",
+  "tags": [
+   "catscale",
+   "bash-history",
+   "cron",
+   "wget",
+   "persistence",
+   "t1053"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Reaper.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Medium",
+  "summary": "Correlate a network capture with logon audit logs to detect an NTLM relay attack from a rogue device authenticating as a stolen account",
+  "tags": [
+   "ntlm-relay",
+   "wireshark",
+   "smb",
+   "nbns",
+   "event-log",
+   "logon"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] ReliableThreat.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Hard",
+  "summary": "Analyze a memory dump and disk image to trace a malicious VSCode extension spawning a NjRAT reverse shell and modifying the registry for persistence",
+  "tags": [
+   "volatility",
+   "pstree",
+   "netstat",
+   "ftk-imager",
+   "vscode",
+   "njrat"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] RogueOne.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a memory dump with Volatility malfind and dumpfiles to identify a process-hollowing C2 implant and build the incident timeline",
+  "tags": [
+   "volatility",
+   "malfind",
+   "pstree",
+   "dumpfiles",
+   "c2",
+   "virustotal"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Takedown.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Trace a pcap from a malicious VBS download through PowerShell and AutoHotkey staging to identify the delivered RAT and its C2",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "vbs",
+   "smb",
+   "autohotkey",
+   "rat"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] TickTock.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Investigate KAPE artifacts and Sysmon to trace a TeamViewer social-engineering intrusion deploying Merlin C2 and time-tampering PowerShell scripts",
+  "tags": [
+   "sysmon",
+   "kape",
+   "teamviewer",
+   "powershell",
+   "bitlocker",
+   "merlin"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Tracer.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Easy",
+  "summary": "Parse prefetch and USN journal artifacts to count PsExec executions and identify the service binary, key file, and named pipe from lateral movement",
+  "tags": [
+   "psexec",
+   "prefetch",
+   "pecmd",
+   "usn-journal",
+   "mftecmd",
+   "named-pipe"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Trent.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze HTTP POST traffic to reconstruct a router web-admin brute force and command-injection CVE exploit leading to a reverse shell C2",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "command-injection",
+   "router",
+   "cve",
+   "reverse-shell"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Ultimatum.md": {
+  "category": "Web Exploitation",
+  "difficulty": "Medium",
+  "summary": "Investigate CatScale logs from a WordPress server to trace a WPScan fingerprint, Ultimate Member CVE exploit, backdoor user, and web shell RCE",
+  "tags": [
+   "wordpress",
+   "catscale",
+   "access.log",
+   "wpscan",
+   "webshell",
+   "cve"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Unit42.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Easy",
+  "summary": "Examine Sysmon logs to identify an msiexec-delivered backdoored UltraVNC installer, its timestomping, dropped files, and C2 connections",
+  "tags": [
+   "sysmon",
+   "event-id-1",
+   "msiexec",
+   "timestomping",
+   "ultravnc",
+   "malware"
+  ]
+ },
+ "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Unsupervised.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Easy",
+  "summary": "Trace an insider's USB data theft from an FTK disk image using SYSTEM/SOFTWARE hives to recover device, timestamps, and copied files",
+  "tags": [
+   "usb",
+   "registry",
+   "ftk-imager",
+   "regexplorer",
+   "system-hive",
+   "insider"
+  ]
+ },
+ "LetsDefend/LetsDefend Alert/[LetsDefend Write-up] EventID 125 - ⭐ SOC175 - PowerShell Found in Requested URL - Possible CVE-2022-41082 Exploitation.md": {
+  "category": "Incident Response",
+  "difficulty": "Medium",
+  "summary": "Investigate a SOC alert for ProxyNotShell (CVE-2022-41082) exploitation attempts against an Exchange server via malicious autodiscover URLs in IIS logs",
+  "tags": [
+   "cve-2022-41082",
+   "proxynotshell",
+   "exchange",
+   "iis",
+   "owa",
+   "webshell"
+  ]
+ },
+ "LetsDefend/LetsDefend Alert/[LetsDefend Write-up] EventID 214 - SOC251 - Quishing Detected (QR Code Phishing).md": {
+  "category": "Email / Phishing",
+  "difficulty": "Easy",
+  "summary": "Analyze a quishing email by decoding its QR code to confirm a Microsoft-login phishing site and scope endpoint exposure",
+  "tags": [
+   "quishing",
+   "qr-code",
+   "cyberchef",
+   "virustotal",
+   "abuseipdb",
+   "mfa"
+  ]
+ },
+ "LetsDefend/LetsDefend Alert/[LetsDefend Write-up] EventID 257 -⭐ SOC282 - Phishing Alert - Deceptive Mail Detected.md": {
+  "category": "Email / Phishing",
+  "difficulty": "Easy",
+  "summary": "Triage a deceptive phishing email delivering AsyncRAT, confirming delivery, execution via explorer.exe, and C2 communication on the endpoint",
+  "tags": [
+   "asyncrat",
+   "phishing",
+   "virustotal",
+   "c2",
+   "attachment",
+   "explorer"
+  ]
+ },
+ "LetsDefend/LetsDefend Alert/[LetsDefend Write-up] EventID 36 - SOC 104 - Malware Detected.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Easy",
+  "summary": "Analyze an allowed Invoice.exe flagged as Maze ransomware, mapping its behavior and hunting endpoint C2 callbacks",
+  "tags": [
+   "maze",
+   "ransomware",
+   "virustotal",
+   "c2",
+   "mitre",
+   "invoice.exe"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] AS-REP Challenge.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Medium",
+  "summary": "Parse DC and workstation Security logs and prefetch to trace an AS-REP roasting attack and the compromised account's subsequent activity",
+  "tags": [
+   "as-rep",
+   "kerberos",
+   "evtxecmd",
+   "pecmd",
+   "prefetch",
+   "t1558"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Agniane Stealer.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Medium",
+  "summary": "Reverse engineer the .NET Agniane infostealer with ILSpy/dotPeek to recover its decoded hostname, anti-debug APIs, and Telegram exfil bot",
+  "tags": [
+   "agniane",
+   "stealer",
+   ".net",
+   "ilspy",
+   "anti-analysis",
+   "telegram"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] AstasiaLoader.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Medium",
+  "summary": "Reverse engineer the .NET AstasiaLoader that fetches a URL from a GitHub README to drop RedLine stealer and exfiltrate data to Telegram",
+  "tags": [
+   "astasialoader",
+   ".net",
+   "redline",
+   "dotpeek",
+   "detect-it-easy",
+   "telegram"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Batch Downloader.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Easy",
+  "summary": "Analyze a Windows batch script that uses bitsadmin LOLBIN to download, unzip, and execute Laplas Clipper malware from a C2 server",
+  "tags": [
+   "batch",
+   "bitsadmin",
+   "lolbin",
+   "laplas-clipper",
+   "vbscript",
+   "c2"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Brute Force Attacks.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Investigate a compromised web server by correlating pcap and auth logs to uncover HTTP, RDP, and SSH brute-force attacks and valid credentials",
+  "tags": [
+   "wireshark",
+   "rdp",
+   "brute-force",
+   "auth.log",
+   "pcap",
+   "ssh"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Compromised Chat Server.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a pcap of an Openfire chat server exploited via CVE-2023-32315 path traversal to trace admin creation and webshell plugin upload",
+  "tags": [
+   "cve-2023-32315",
+   "openfire",
+   "wireshark",
+   "webshell",
+   "path-traversal",
+   "pcap"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Compromised ICS Device.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Investigate pcap and logs from a compromised water-treatment PLC to identify the exposed service, brute-force entry point, and attacker actions",
+  "tags": [
+   "ics",
+   "plc",
+   "wireshark",
+   "brute-force",
+   "pcap",
+   "scada"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Compromised Network Printer.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Trace an attacker's port scan and PJL abuse of an HP network printer in a pcap to determine exploited ports and stolen print jobs",
+  "tags": [
+   "wireshark",
+   "pjl",
+   "port-scan",
+   "printer",
+   "pcap",
+   "exfiltration"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Confluence CVE-2023-22527.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Medium",
+  "summary": "Investigate a UAC triage image of a Confluence server exploited via CVE-2023-22527 SSTI, using access and Sysmon logs to reconstruct attacker commands",
+  "tags": [
+   "cve-2023-22527",
+   "confluence",
+   "uac",
+   "sysmon",
+   "ssti",
+   "cryptominer"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] DLL Stealer.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Decompile a .NET PE64 infostealer with dotPeek to uncover its anti-analysis VirusTotal checks, data-gathering commands, and Discord webhook C2",
+  "tags": [
+   "dotpeek",
+   "detect-it-easy",
+   "infostealer",
+   "wmic",
+   "discord-webhook"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Disclose The Agent.md": {
+  "category": "Network Forensics",
+  "difficulty": "Easy",
+  "summary": "Reconstruct SMTP email conversations from a pcap and extract an attachment with NetworkMiner to disclose a leaking agent's identity and meetup",
+  "tags": [
+   "smtp",
+   "wireshark",
+   "networkminer",
+   "pcap",
+   "email",
+   "md5"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Discord Forensics.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Trace a malware entry point on a KAPE-acquired image by parsing Windows Live Mail and Discord cache to identify the attacker and first contact",
+  "tags": [
+   "kape",
+   "discord",
+   "chromecacheview",
+   "windows-live-mail",
+   "cache"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Downloader.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Medium",
+  "summary": "Reverse a Visual C++ downloader binary in IDA to recover the C2 IP, user-agent, downloaded payload, and WinHTTP request functions",
+  "tags": [
+   "ida",
+   "detect-it-easy",
+   "winhttp",
+   "c2",
+   "payload"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Email Analysis.md": {
+  "category": "Email / Phishing",
+  "difficulty": "Easy",
+  "summary": "Analyze a phishing email header and its EXE attachment with pestudio and VirusTotal to confirm a malicious Loki infostealer payload",
+  "tags": [
+   "eml",
+   "pestudio",
+   "virustotal",
+   "loki",
+   "phishing"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Excel 4.0 Macros.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Analyze a malicious Excel 4.0 XLM macro document that abuses Auto_Open and regsvr32 to fetch and execute a second-stage DLL payload",
+  "tags": [
+   "xlm-macros",
+   "regsvr32",
+   "xlmmacrodeobfuscator",
+   "auto-open",
+   "c2"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Golang Ransomware.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Hard",
+  "summary": "Dissect a Go-based Kuiper ransomware sample in Ghidra and IDA to recover its base64-encoded PowerShell process-killer and evasion techniques",
+  "tags": [
+   "golang",
+   "ransomware",
+   "ghidra",
+   "ida",
+   "powershell"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Golden Ticket.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Hard",
+  "summary": "Trace a Golden Ticket attack against a Domain Controller by parsing Security.evtx with EvtxECmd to identify the compromised service account and lateral movement",
+  "tags": [
+   "golden-ticket",
+   "evtxecmd",
+   "kerberos",
+   "event-4624",
+   "pass-the-hash"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Http Basic Auth.md": {
+  "category": "Network Forensics",
+  "difficulty": "Easy",
+  "summary": "Examine a pcap to enumerate HTTP GET requests and recover the server software, OpenSSL version, and Basic Authentication credentials",
+  "tags": [
+   "pcap",
+   "wireshark",
+   "http",
+   "basic-auth",
+   "credentials"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] IcedID Malware Family.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Follow an IcedID infection chain from a macro-laden Word dropper through mshta and rundll32 to the installer DLL and its C2 host",
+  "tags": [
+   "icedid",
+   "olevba",
+   "mshta",
+   "rundll32",
+   "hta"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] ImageStegano.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Extract a PowerShell payload hidden in a PNG via Invoke-PSImage steganography, revealing embedded Mimikatz executables and their hashes",
+  "tags": [
+   "steganography",
+   "invoke-psimage",
+   "exiftool",
+   "mimikatz",
+   "powershell"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Infection with Cobalt Strike.md": {
+  "category": "Network Forensics",
+  "difficulty": "Hard",
+  "summary": "Perform root-cause analysis on a Cobalt Strike infection pcap using Wireshark and NetworkMiner to trace DocuSign phishing delivery and C2 traffic",
+  "tags": [
+   "cobalt-strike",
+   "wireshark",
+   "networkminer",
+   "pcap",
+   "c2"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Investigate Web Attack.md": {
+  "category": "Log Analysis",
+  "difficulty": "Easy",
+  "summary": "Investigate web server logs to reconstruct a Nikto scan, login brute force, code injection via whoami, and attacker persistence",
+  "tags": [
+   "nikto",
+   "web-logs",
+   "brute-force",
+   "code-injection",
+   "persistence"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Java Shellcode.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Medium",
+  "summary": "Decompile a malicious Java archive with JD-GUI to analyze JNA-based shellcode injection targeting native Windows processes via kernel32",
+  "tags": [
+   "java",
+   "jd-gui",
+   "jna",
+   "shellcode",
+   "process-injection"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Kernel Exploit.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Hard",
+  "summary": "Investigate a UAC-collected Linux forensic image to identify a kernel privilege-escalation exploit run from /tmp and trace the attacker's process",
+  "tags": [
+   "uac",
+   "privilege-escalation",
+   "kernel-exploit",
+   "virustotal",
+   "process"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Kimsuky APT Group.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Analyze a Kimsuky APT VBScript sample to map its WMI reconnaissance, antivirus enumeration, registry tampering, and C2 exfiltration functions",
+  "tags": [
+   "kimsuky",
+   "vbscript",
+   "wmi",
+   "registry",
+   "apt"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Linux Disk Forensics.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Easy",
+  "summary": "Examine a Linux disk image to identify a cracked-software ELF malware that uses strings and netcat to exfiltrate Chrome data to an attacker IP",
+  "tags": [
+   "strings",
+   "elf",
+   "netcat",
+   "auth.log",
+   "exfiltration"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Linux Forensics.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Easy",
+  "summary": "Mount a Linux disk image and trace a disgruntled ex-employee's activity through bash_history, apt logs, auth.log and a hidden secret file",
+  "tags": [
+   "bash_history",
+   "auth.log",
+   "apt",
+   "fstab",
+   "md5sum",
+   "disk-image"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Linux Memory Forensics.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Examine a Linux memory dump with Volatility to recover the kernel version, a dropped PHP web shell, and the attacker's reverse-shell IP and port",
+  "tags": [
+   "volatility",
+   "linux_bash",
+   "banners",
+   "reverse-shell",
+   "docker",
+   "php"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] LockBit.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a memory dump of a LockBit ransomware infection to pinpoint the malicious process, encryption extension, ransom note and registry persistence",
+  "tags": [
+   "volatility",
+   "lockbit",
+   "ransomware",
+   "pstree",
+   "virustotal",
+   "persistence"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Log Analysis With Sysmon.md": {
+  "category": "Log Analysis",
+  "difficulty": "Medium",
+  "summary": "Investigate an endpoint breach through Sysmon logs in Splunk to reconstruct the reverse shell, fodhelper UAC bypass and dropped Mimikatz",
+  "tags": [
+   "sysmon",
+   "splunk",
+   "fodhelper",
+   "uac-bypass",
+   "mimikatz",
+   "t1548"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] MSHTML.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Easy",
+  "summary": "Use Oletools oleobj on malicious Office documents to extract embedded C2 indicators and confirm exploitation of the CVE-2021-40444 MSHTML flaw",
+  "tags": [
+   "cve-2021-40444",
+   "mshtml",
+   "oletools",
+   "oleobj",
+   "docx",
+   "virustotal"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Malicious AutoIT.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Analyze a packed AutoIt executable with Detect It Easy and AutoIt-Ripper to unpack the script and reveal its payload-download domain",
+  "tags": [
+   "autoit",
+   "detect-it-easy",
+   "entropy",
+   "autoit-ripper",
+   "virustotal",
+   "unpacking"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Malicious Chrome Extension.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Examine a Windows disk image to identify a malicious cookie-stuffing Chrome extension by its ID, name and attacker domain",
+  "tags": [
+   "chrome-extension",
+   "manifest.json",
+   "cookie-stuffing",
+   "chrome-stats",
+   "osint"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Malicious Doc.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Easy",
+  "summary": "Analyze a weaponized RTF document exploiting CVE-2017-11882 to identify the C2 server, downloaded payload and dropped aro.exe",
+  "tags": [
+   "cve-2017-11882",
+   "rtf",
+   "virustotal",
+   "anyrun",
+   "c2",
+   "dropper"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Malicious VBA.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Easy",
+  "summary": "Decode obfuscated VBA macro strings with CyberChef to reveal the payload download URL, HTTP method, user-agent and WMI persistence object",
+  "tags": [
+   "vba",
+   "macro",
+   "cyberchef",
+   "obfuscation",
+   "wmi",
+   "user-agent"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Malicious Web Traffic Analys.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Trace a web attack in a pcap through brute-force, an XXE source-code leak and LFI reading /etc/passwd to reconstruct the intrusion chain",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "xxe",
+   "lfi",
+   "brute-force",
+   "http"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Malicious WordPress Plugin.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze pcap traffic of a WordPress compromise to track wpscan enumeration, credential brute-forcing and RCE via a vulnerable plugin",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "wpscan",
+   "wordpress",
+   "brute-force",
+   "rce"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Memory Analysis.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Use Volatility 3 on a Windows memory dump to spot a masquerading lsass, identify winPEAS and crack the compromised user's NT hash with John",
+  "tags": [
+   "volatility3",
+   "pstree",
+   "winpeas",
+   "hashdump",
+   "john",
+   "rockyou"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] NTFS Forensics.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Parse a jump server's $MFT with MFTECmd and MFTExplorer to recover a downloaded file, its source URL via Zone Identifier and creation timestamps",
+  "tags": [
+   "mftecmd",
+   "mftexplorer",
+   "mft",
+   "zone-identifier",
+   "ntfs",
+   "powershell"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Obfuscated JavaScript.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Deobfuscate a comment-bloated JavaScript dropper to reconstruct its real logic and expose the WScript network and WMI objects it abuses",
+  "tags": [
+   "javascript",
+   "deobfuscation",
+   "wscript",
+   "wmi",
+   "scripting"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Obfuscated RAT.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Medium",
+  "summary": "Decompile a .NET DarkCrystal RAT with dotPeek and ILSpy and script TripleDES decryption to recover its C2 server URL and port",
+  "tags": [
+   "dnspy",
+   "ilspy",
+   "dotpeek",
+   "tripledes",
+   "darkcrystal",
+   "c2"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] PCAP Analysis.md": {
+  "category": "Network Forensics",
+  "difficulty": "Easy",
+  "summary": "Filters a pcapng capture in Wireshark to trace an HTTP file upload between two hosts and recover an exfiltrated encryption script.",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "tcp-stream",
+   "http",
+   "file-extraction"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] PDF Analysis.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Uses the Didier Stevens PDF suite and peepdf to unpack a malicious PDF's OpenAction, embedded JavaScript, and base64 PowerShell payload.",
+  "tags": [
+   "pdfid",
+   "pdf-parser",
+   "peepdf",
+   "powershell",
+   "base64"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] PDFURI.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Images a compromised disk with FTK Imager and mines Edge browser databases and registry hives to trace a malicious PDF's PowerShell execution.",
+  "tags": [
+   "ftk imager",
+   "pdfstreamdumper",
+   "registry",
+   "edge artifacts",
+   "powershell"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] PHP-CGI (CVE-2024-4577).md": {
+  "category": "Web Exploitation",
+  "difficulty": "Medium",
+  "summary": "Reviews Apache configuration and access logs to confirm exploitation of the PHP-CGI argument injection RCE against a web server.",
+  "tags": [
+   "cve-2024-4577",
+   "php-cgi",
+   "apache",
+   "access.log",
+   "rce"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Phishing Email.md": {
+  "category": "Email / Phishing",
+  "difficulty": "Very Easy",
+  "summary": "Parses a German PayPal-themed phishing email's headers and embedded links, confirming the malicious URL via VirusTotal.",
+  "tags": [
+   "eml",
+   "phishing",
+   "virustotal",
+   "email-header",
+   "url-analysis"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Port Scan Activity.md": {
+  "category": "Network Forensics",
+  "difficulty": "Very Easy",
+  "summary": "Applies Wireshark TCP flag filters and passive OS fingerprinting to identify a scanning host and the systems it discovered on the network.",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "port-scan",
+   "tcp-flags",
+   "os-fingerprinting"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] PowerShell Keylogger.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Statically reverses a PowerShell keylogger's functions to map its Tor-based C2 channel, screenshot capture, and keystroke logging.",
+  "tags": [
+   "powershell",
+   "keylogger",
+   "tor",
+   "socks5",
+   "c2"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] PowerShell Script.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Easy",
+  "summary": "Decodes a base64-obfuscated PowerShell one-liner in CyberChef to expose its malicious download-and-execute behavior.",
+  "tags": [
+   "cyberchef",
+   "base64",
+   "powershell",
+   "obfuscation"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Presentation As a Malware.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Easy",
+  "summary": "Leverages VirusTotal's behavior and relations tabs to profile a malicious PowerPoint file's dropped HTML file and mshta persistence chain.",
+  "tags": [
+   "virustotal",
+   "ppt",
+   "mshta",
+   "dropped-files",
+   "sandbox"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] PrintNightmare.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Hard",
+  "summary": "Correlates Suricata alerts in Brim with a Redline memory dump to trace a PrintNightmare privilege-escalation exploit to the attacker's SMB share and DLL.",
+  "tags": [
+   "cve-2021-34527",
+   "redline",
+   "brim",
+   "suricata",
+   "memory-forensics"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] QakBot Malware.md": {
+  "category": "Email / Phishing",
+  "difficulty": "Medium",
+  "summary": "Dissects a phishing email's malicious OneNote attachment to trace its embedded HTA lure and registry-key creation used to deliver QakBot.",
+  "tags": [
+   "onenote",
+   "hta",
+   "phishing",
+   "qakbot",
+   "registry"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Ransomware Attack.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Mines a Redline memory dump for a sideloaded malicious DLL masquerading inside a Windows process to uncover a ransomware infection chain.",
+  "tags": [
+   "redline",
+   "memory-dump",
+   "dll-sideloading",
+   "ransomware",
+   "virustotal"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] RegistryHive.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Easy",
+  "summary": "Parses SYSTEM, SAM, SOFTWARE, and SECURITY registry hives with RegRipper and Registry Explorer to reconstruct host and user configuration details.",
+  "tags": [
+   "regripper",
+   "registry explorer",
+   "sam",
+   "system hive"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Remote Working.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Easy",
+  "summary": "Sandboxes a macro-laden Excel stager in VirusTotal and Triage to trace its dropped files and second-stage payload download URL.",
+  "tags": [
+   "virustotal",
+   "triage",
+   "vba-macro",
+   "xlsm",
+   "stager"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Revenge RAT.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Medium",
+  "summary": "Decompiles a .NET Revenge RAT sample with dotPeek to extract its mutex, C2 configuration, host fingerprinting, and anti-sleep routines.",
+  "tags": [
+   "dotpeek",
+   ".net",
+   "mutex",
+   "c2",
+   "rat"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Serpent Stealer.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Medium",
+  "summary": "Decompiles a .NET information stealer to map its VirusTotal-evasion checks, UAC bypass commands, and targeted wallet and file-extension lists.",
+  "tags": [
+   "dotpeek",
+   ".net",
+   "uac-bypass",
+   "infostealer",
+   "anti-vm"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Shellshock Attack.md": {
+  "category": "Network Forensics",
+  "difficulty": "Easy",
+  "summary": "Analyze a pcap in Wireshark to trace a Shellshock exploit against an Apache/Ubuntu server and recover the attacker's command",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "shellshock",
+   "apache",
+   "http",
+   "rce"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Suspicious Browser Extension.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Easy",
+  "summary": "Unpack and inspect a malicious Chrome CRX extension with ExtAnalysis and crxcavator to identify its metadata and scripts",
+  "tags": [
+   "crx",
+   "manifest.json",
+   "extanalysis",
+   "chrome",
+   "crxcavator"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Suspicious Python Package.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Investigate a malicious PyPI-style package by parsing MFT, UsnJournal, and browser artifacts to trace credential exfiltration to a C2",
+  "tags": [
+   "mftecmd",
+   "usnjournal",
+   "cyberchef",
+   "setup.py",
+   "chrome",
+   "exfiltration"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] TeamViewer Forensics.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Easy",
+  "summary": "Reconstruct an unauthorized TeamViewer remote session from connection logs to identify the intruder, session IDs, and durations",
+  "tags": [
+   "teamviewer",
+   "log-analysis",
+   "remote-access",
+   "connections",
+   "triage"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] TinyTurla Backdoor.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Hard",
+  "summary": "Reverse the .NET TinyTurla backdoor to map its RunShell, command polling, and MSBuild in-memory execution capabilities",
+  "tags": [
+   "tinyturla",
+   ".net",
+   "msbuild",
+   "c2",
+   "s0668",
+   "reverse-eng"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Upstyle Backdoor.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Hard",
+  "summary": "Analyze the UPSTYLE Python backdoor exploiting CVE-2024-3400 to reveal its log-monitoring command execution and self-restoring persistence",
+  "tags": [
+   "upstyle",
+   "cve-2024-3400",
+   "globalprotect",
+   "python",
+   "backdoor",
+   "persistence"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] WannaCry Ransomware.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Hard",
+  "summary": "Combine memory and disk forensics with Volatility, oledump, and Outlook OST analysis to trace a WannaCry infection back to a phishing email",
+  "tags": [
+   "volatility",
+   "wannacry",
+   "oledump",
+   "ftk-imager",
+   "phishing",
+   "ost"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] WinRAR 0-Day.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Use Volatility 3 and CyberChef to analyze a WinRAR CVE-2023-38831 exploit in a memory dump and decode its PowerShell download chain",
+  "tags": [
+   "volatility",
+   "cve-2023-38831",
+   "winrar",
+   "cyberchef",
+   "powershell",
+   "ransomware"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Windows Memory Dump.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Use Volatility 3 and IDA to trace a fake crack tool that drops BlackCat ransomware and modifies registry keys in a memory image",
+  "tags": [
+   "volatility",
+   "filescan",
+   "ida",
+   "blackcat",
+   "ransomware",
+   "virustotal"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Windows Registry.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Examine SAM, SOFTWARE, SYSTEM, and NTUSER registry hives in Registry Explorer to profile added users, OS build, network config, and executed files",
+  "tags": [
+   "registry",
+   "sam",
+   "ntuser.dat",
+   "amcache",
+   "registry-explorer"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Windows Theme Spoofing.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Investigate CVE-2024-21320 theme spoofing by analyzing SMB and NTLMSSP traffic to recover the attacker share and relayed NTLM hashes",
+  "tags": [
+   "cve-2024-21320",
+   "ntlm",
+   "smb",
+   "wireshark",
+   "kape",
+   "ntlmssp"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] YARA Rule.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Dissect a YARA rule detecting the GwisinLocker Linux ransomware using IDA disassembly and hunt matching samples on Hybrid Analysis",
+  "tags": [
+   "yara",
+   "gwisinlocker",
+   "ida",
+   "hybrid-analysis",
+   "elf",
+   "opcode"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] cl0p Malware.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Medium",
+  "summary": "Reverse engineer a Linux ELF cl0p ransomware sample in IDA to extract its encryption key, target directories, extension, and ransom note",
+  "tags": [
+   "cl0p",
+   "ransomware",
+   "elf",
+   "ida",
+   "detect-it-easy",
+   "linux"
+  ]
+ },
+ "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] macOS Malware.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Hard",
+  "summary": "Reverse engineer a macOS infostealer in Ghidra and IDA to map its targeted browsers, crypto wallets, Telegram exfil channel and HTTP C2",
+  "tags": [
+   "ghidra",
+   "ida",
+   "macos",
+   "infostealer",
+   "crypto-wallet",
+   "telegram"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] 1down.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Analyze two OneNote malware samples with OneNoteAnalyzer and CyberChef to extract embedded HTA scripts and download URLs for an IOC report",
+  "tags": [
+   "onenote",
+   "onenoteanalyzer",
+   "cyberchef",
+   "hta",
+   "t1587.001",
+   "ioc"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Aspen.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Hard",
+  "summary": "Mount a VHDX and build a timeline with MFTECmd and Registry Explorer to reconstruct a break-in involving anti-forensic tooling and data theft",
+  "tags": [
+   "kape",
+   "mftecmd",
+   "registry-explorer",
+   "timeline",
+   "af015",
+   "anti-forensics"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] BITS.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Parse BITS jobs with BitsParser to uncover attacker persistence and file downloads such as winPEAS on a compromised Windows host",
+  "tags": [
+   "bitsparser",
+   "t1197",
+   "winpeas",
+   "persistence",
+   "json"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Banker.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Easy",
+  "summary": "Run a Volatility 2 investigation on a Cridex-infected memory dump to find the malicious process, C2 connection, and targeted banking domains",
+  "tags": [
+   "volatility",
+   "cridex",
+   "pslist",
+   "banking-trojan",
+   "t1566.002",
+   "strings"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Basilisk PT 1.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Medium",
+  "summary": "Perform static PE analysis of the Basilisk malware with CFFExplorer, PEiD, and BinText to enumerate imports, entry point, packing, and build time",
+  "tags": [
+   "cffexplorer",
+   "peid",
+   "bintext",
+   "exeinfo",
+   "pe-analysis",
+   "imports"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Beacon.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Analyze a malicious Excel document to extract VBA-macro shellcode and parse the embedded Cobalt Strike beacon configuration and IOCs",
+  "tags": [
+   "oledump",
+   "cyberchef",
+   "cobalt-strike",
+   "vba-macro",
+   "xlsm",
+   "shellcode"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Ben.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Hard",
+  "summary": "Investigate a phishing email and its dropped keylogger malware, tracing mutex, persistence locations, and C2 communication",
+  "tags": [
+   "noriben",
+   "eml",
+   "ftk-imager",
+   "t1566.002",
+   "t1056.001",
+   "keylogger"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Blocker.md": {
+  "category": "Security Operations",
+  "difficulty": "Easy",
+  "summary": "Explore Sysmon 14 FileBlockExecutable events to identify blocked malware downloads and craft configs to prevent executable drops",
+  "tags": [
+   "sysmon",
+   "event-viewer",
+   "eventid-27",
+   "urlhaus",
+   "osint"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Breach.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze packet captures to detect exploitation of Openfire CVE-2023-32315, tracking admin account creation, plugin upload, and reverse shell",
+  "tags": [
+   "wireshark",
+   "openfire",
+   "cve-2023-32315",
+   "t1190",
+   "webshell",
+   "pcap"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Brute.md": {
+  "category": "Incident Response",
+  "difficulty": "Medium",
+  "summary": "Investigate web server logs and a MySQL database to trace brute-force compromise, defacement, backdoor creation, and SQL data theft",
+  "tags": [
+   "access.log",
+   "mysql",
+   "feroxbuster",
+   "t1110.003",
+   "t1136.001",
+   "webshell"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Countdown.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Examine a seized laptop with Autopsy and Signal decryption to determine whether a bomb threat is real, recovering encrypted messenger data",
+  "tags": [
+   "autopsy",
+   "prefetch",
+   "jumplist",
+   "sqlite",
+   "signal",
+   "t1573"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Cov.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Medium",
+  "summary": "Reverse three .NET malware samples with dnSpy and CyberChef to extract C2 addresses and identify the covenant framework behind them",
+  "tags": [
+   "dnspy",
+   "cyberchef",
+   ".net",
+   "t1219",
+   "t1562",
+   "c2"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Covert.md": {
+  "category": "Network Forensics",
+  "difficulty": "Hard",
+  "summary": "Analyze a PCAP to uncover DNS exfiltration and encrypted covert HTTP C2, decrypting attacker commands and identifying the C2 framework",
+  "tags": [
+   "wireshark",
+   "dns-exfil",
+   "powershell",
+   "t1048.003",
+   "t1071.001",
+   "pcap"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Crypto.md": {
+  "category": "Incident Response",
+  "difficulty": "Hard",
+  "summary": "Correlate a PowerShell script, PCAP, and memory dump to trace an XMRig cryptominer infection, its persistence, and cryptomining IOCs",
+  "tags": [
+   "wireshark",
+   "volatility",
+   "powershell",
+   "xmrig",
+   "t1496",
+   "t1053.005"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Deep Freeze.md": {
+  "category": "Cloud Security",
+  "difficulty": "Medium",
+  "summary": "Query AWS CloudTrail and S3 access logs to reconstruct an insider's over-permissive policy abuse and bucket data retrieval",
+  "tags": [
+   "cloudtrail",
+   "s3",
+   "splunk",
+   "jq",
+   "insider-threat"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Dissect.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Use the dissect framework on a disk image to trace confidential data theft, USB exfiltration, and a reverse shell persistence chain",
+  "tags": [
+   "dissect",
+   "e01",
+   "usb",
+   "registry",
+   "recyclebin",
+   "t1059"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] DomainNance.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Hard",
+  "summary": "Trace an attacker from DVWA web compromise through AD lateral movement using Splunk and PCAP, uncovering credential dumping and pass-the-ticket",
+  "tags": [
+   "wireshark",
+   "splunk",
+   "sysmon",
+   "dvwa",
+   "pass-the-ticket",
+   "mimikatz"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Enter The Dragon.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Hard",
+  "summary": "Perform static disassembly of a malicious PE in Ghidra to map entry point, imports, anti-debug checks, mutex, and the decoded payload URL",
+  "tags": [
+   "ghidra",
+   "pe32",
+   "isdebuggerpresent",
+   "wininet",
+   "t1547.001",
+   "mutex"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Fingerprint.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze network traffic to trace a webshell reverse shell and generate a JA3 fingerprint of the malware's C2 communication",
+  "tags": [
+   "wireshark",
+   "ja3",
+   "webshell",
+   "t1046",
+   "t1041",
+   "pcap"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] First Day.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Research and analyze an Oski stealer sample with PEstudio and IDA to identify its C2, downloaded files, string cipher, and exfil config",
+  "tags": [
+   "pestudio",
+   "ida",
+   "procmon",
+   "virustotal",
+   "oski-stealer",
+   "t1041"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] First Week.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Hard",
+  "summary": "Crack a builder archive and reverse a .NET ransomware sample, mapping its encryption, persistence, YARA detection, and leak-site IOCs",
+  "tags": [
+   "yara",
+   "john",
+   "cyberchef",
+   "die",
+   "pestudio",
+   "t1486"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Frontier.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Identify a spoofed PDF image, extract defanged URL IOCs, and hunt HTTP beacons in access logs to map compromised network hosts",
+  "tags": [
+   "access.log",
+   "cyberchef",
+   "pdf",
+   "beacon",
+   "ioc",
+   "strings"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Fungames.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a pcap to trace an sqlmap SQL injection, credential theft, SSH privilege escalation, and encoded data exfiltration",
+  "tags": [
+   "wireshark",
+   "sqlmap",
+   "pcap",
+   "sqli",
+   "ssh",
+   "cyberchef"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Grab.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Perform dynamic analysis of a UPX-packed Discord token stealer to recover its PowerShell dropper, webhook URL, and exfil IOCs",
+  "tags": [
+   "sysinternals",
+   "upx",
+   "procmon",
+   "powershell",
+   "discord",
+   "webhook"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] HUNT3R.md": {
+  "category": "Log Analysis",
+  "difficulty": "Easy",
+  "summary": "Parse IIS web logs from the command line to isolate a malicious IP, geolocate it, and quantify its scanning and access activity",
+  "tags": [
+   "iis-log",
+   "cli",
+   "osint",
+   "user-agent",
+   "t1584.006",
+   "cyberchef"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Haunted.md": {
+  "category": "Threat Intel",
+  "difficulty": "Hard",
+  "summary": "Correlate breach reports, adversary profiles, and malicious document IOCs to attribute a defacement and server attack to APT groups",
+  "tags": [
+   "exiftool",
+   "officemalscanner",
+   "cyberchef",
+   "osint",
+   "shellcode",
+   "apt"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Heaven.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Analyze an RTF dropper and its .NET payload heaven.exe to recover the download URL, PE metadata, and C2 IP address",
+  "tags": [
+   "rtfdump",
+   "dnspy",
+   "die",
+   "hxd",
+   "x64dbg",
+   "t1071.001"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Hexclave.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Hard",
+  "summary": "Unpack and disassemble a UPX-packed sample to uncover its anti-analysis checks, dropped payload, persistence keys, and YARA hits",
+  "tags": [
+   "ida",
+   "x64dbg",
+   "yara",
+   "upx",
+   "t1497.001",
+   "pestudio"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] ImpairDefense - Part 1.md": {
+  "category": "Incident Response",
+  "difficulty": "Easy",
+  "summary": "Trace ProcMon events to enumerate the commands malware used to disable Defender, clear audit policies, and wipe logs",
+  "tags": [
+   "procmon",
+   "auditpol",
+   "netsh",
+   "set-mppreference",
+   "t1562",
+   "t1070"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Indicators.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Easy",
+  "summary": "Extract IOCs from an ELF sample using exiftool, Zone.Identifier, and hash lookups to trace its download source and botnet family",
+  "tags": [
+   "exiftool",
+   "powershell",
+   "malwarebazaar",
+   "virustotal",
+   "zone.identifier",
+   "t1105"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Insider Brett.md": {
+  "category": "Incident Response",
+  "difficulty": "Medium",
+  "summary": "Review a rogue contractor's nmap and Metasploit artifacts to reconstruct scanning, exploitation, and blackmail payload delivery",
+  "tags": [
+   "nmap",
+   "metasploit",
+   "smb",
+   "ldap",
+   "cyberchef",
+   "screenshots"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Insider Threat.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Hard",
+  "summary": "Combine a memory image, security logs, and registry hive to prove an insider accessed, compressed, and exfiltrated sensitive files",
+  "tags": [
+   "volatility2",
+   "evtxtract",
+   "usrclass.dat",
+   "registry",
+   "t1098",
+   "wrr"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Insidious.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Hard",
+  "summary": "Analyze a memory dump to trace a malicious package download, masqueraded executable, stolen credentials, and data exfiltration",
+  "tags": [
+   "volatility3",
+   "volatility2",
+   "chromehistory",
+   "t1555.003",
+   "t1567.004",
+   "t1140"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] JOPPERS.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Deobfuscate two malicious JavaScript droppers to reveal the Microsoft components, download URLs, and payloads they fetch",
+  "tags": [
+   "javascript",
+   "x64dbg",
+   "cyberchef",
+   "msxml2",
+   "base64",
+   "t1105"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Just a Viewer.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Hard",
+  "summary": "Timeline Windows event and Sysmon logs to reconstruct a DLL-hijack reverse shell, process injection, UAC bypass, and persistence",
+  "tags": [
+   "evtxecmd",
+   "timelineexplorer",
+   "sysmon",
+   "t1055",
+   "t1134",
+   "t1547"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] KikiPass.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a memory dump to find a vulnerable KeePass version and its CVE, then recover the malicious trigger that stole credentials",
+  "tags": [
+   "volatility3",
+   "keepass",
+   "sysinternals",
+   "notepad++",
+   "cve",
+   "trigger"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Killer.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Extract the viruskiller executable from a memory dump and analyze it to recover C2, hashes, PE details and registry persistence IoCs",
+  "tags": [
+   "volatility",
+   "pestudio",
+   "resourcehacker",
+   "autoruns",
+   "t1547.001",
+   "malware"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Krampus.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Recover a forum password from a RAM dump, download the insider's tool, decode obfuscated PowerShell shellcode and emulate it to find the C2 IP",
+  "tags": [
+   "volatility",
+   "speakeasy",
+   "cyberchef",
+   "shellcode",
+   "powershell",
+   "t1105"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Link.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Easy",
+  "summary": "Trace a DLL injection into notepad.exe with Process Explorer and decode a base64 PowerShell reverse shell to identify the attacker's server IP",
+  "tags": [
+   "process explorer",
+   "certutil",
+   "dll injection",
+   "cyberchef",
+   "t1059",
+   "t1036"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Marionette.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Hunt timestomping anti-forensics in MFT output to expose masqueraded files, post-exploitation tooling and LSASS-dumping utilities on David's imaged machine",
+  "tags": [
+   "mft",
+   "timestomp",
+   "csv",
+   "cyberchef",
+   "t1070.006",
+   "anti-forensics"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Masquerade.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Hard",
+  "summary": "Reconstruct a USB-borne ransomware breach using registry, shellbags and MFT artifacts to trace the disguised file, download URL and CVE exploited",
+  "tags": [
+   "registry",
+   "usbstor",
+   "mftecmd",
+   "shellbags",
+   "t1486",
+   "t1036.003"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] MiddleMayhem.md": {
+  "category": "Web Exploitation",
+  "difficulty": "Medium",
+  "summary": "Analyze Splunk SIEM logs to trace a Next.js middleware auth bypass, uploaded reverse shell and SSH lateral movement across the network",
+  "tags": [
+   "splunk",
+   "nextjs",
+   "middleware-bypass",
+   "auth.log",
+   "cve",
+   "siem"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Mon.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Detonate a PE32 sample under Sysmon and build detection logic by tracing its C2 domain, scheduled task, dropped bat file and persistence path",
+  "tags": [
+   "sysmon",
+   "dnsevent",
+   "scheduled-task",
+   "t1071.001",
+   "t1053.005",
+   "persistence"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Monitor.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Sift a large ProcMon capture to reconstruct a ransomware incident covering fileless PowerShell, service impact, Defender tampering and encryption",
+  "tags": [
+   "procmon",
+   "ransomware",
+   "powerview",
+   "cyberchef",
+   "t1489",
+   "t1518.001"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Nano.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Investigate RITA reports and Zeek logs to expose Nano's beaconing C2, cloud infrastructure and DNS TXT tunneling used to evade detection",
+  "tags": [
+   "rita",
+   "zeek",
+   "dns-tunneling",
+   "beaconing",
+   "ta0011",
+   "c2"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Neem.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Analyze an LNK dropper and cracked-software binary to uncover the certutil download, sandbox-evasion imports, user-agent and C2 endpoint",
+  "tags": [
+   "pestudio",
+   "detect-it-easy",
+   "api-monitor",
+   "lnk",
+   "certutil",
+   "sandbox-evasion"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Nonyx.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Hard",
+  "summary": "Reverse-engineer BlackEnergy 2 from a memory image using malfind and ssdt to find injected code, hooked SSDT functions and the malicious rootkit driver",
+  "tags": [
+   "volatility",
+   "malfind",
+   "ssdt",
+   "blackenergy",
+   "rootkit",
+   "t1014"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Noted.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Easy",
+  "summary": "Dissect a malicious OneNote attachment hiding an RTLO-disguised HTA to recover the embedded payload and files it downloads to disk",
+  "tags": [
+   "onenote",
+   "rtlo",
+   "hta",
+   "cyberchef",
+   "powershell",
+   "t1566.001"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Ozarks.md": {
+  "category": "Incident Response",
+  "difficulty": "Hard",
+  "summary": "Trace a Kimsuky-style intrusion across DC and workstation artifacts covering Sliver C2, LSASS dumping, process injection and DC lateral movement",
+  "tags": [
+   "hayabusa",
+   "sysmon",
+   "sliver",
+   "lsass",
+   "t1566.001",
+   "t1055"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Parcel.md": {
+  "category": "Mobile Forensics",
+  "difficulty": "Medium",
+  "summary": "Unpack a malicious macOS .pkg to expose its curl download, credential and PEM-file theft, exfiltration URL and installer persistence mechanism",
+  "tags": [
+   "macos",
+   "pkg",
+   "unar",
+   "cpio",
+   "t1552.004",
+   "exfiltration"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Photo.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Carve hidden streams from two JPEG samples with jpegdump to identify an embedded c99 PHP webshell and a malware payload's C2 endpoint",
+  "tags": [
+   "jpegdump",
+   "cyberchef",
+   "webshell",
+   "php",
+   "c99",
+   "t1505"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] PikaBoo.md": {
+  "category": "Cloud Security",
+  "difficulty": "Hard",
+  "summary": "Investigate an AWS and AD breach by dumping leaked git keys and pivoting through Splunk to trace ASREPRoast, obfuscated commands and lateral movement",
+  "tags": [
+   "splunk",
+   "aws",
+   "gitdumper",
+   "asreproast",
+   "t1566",
+   "t1567"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Plugout.md": {
+  "category": "Web Exploitation",
+  "difficulty": "Medium",
+  "summary": "Trace a WordPress defacement through access and MySQL logs, tracking WPScan enumeration, sqlmap injection, and a malicious plugin web shell",
+  "tags": [
+   "wpscan",
+   "sqlmap",
+   "access.log",
+   "wordpress",
+   "cve-2024-2879",
+   "t1190"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Print.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Analyze Sysmon events and a pcap to reconstruct a PrintNightmare exploit that transfers a malicious DLL over SMB and spawns a reverse shell",
+  "tags": [
+   "printnightmare",
+   "wireshark",
+   "sysmon",
+   "smb",
+   "rundll32",
+   "t1210"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] ProcessWin.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Easy",
+  "summary": "Examine process-tree snapshots to spot masquerading and anomalously located system processes using Windows process genealogy",
+  "tags": [
+   "pslist",
+   "process-tree",
+   "lsass",
+   "svchost",
+   "t1055"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Replaced.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Deobfuscate a VBScript dropper to reveal its WebClient staging call, C2 URL, and PowerShell download-and-execute payload path",
+  "tags": [
+   "vbscript",
+   "deobfuscation",
+   "powershell",
+   "webclient",
+   "t1027",
+   "t1105"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Rotten Cloud.md": {
+  "category": "Cloud Security",
+  "difficulty": "Hard",
+  "summary": "Query CloudTrail and Azure logs in Splunk to trace a threat actor pivoting across a hybrid AWS/Azure environment to exfiltrate and deface data",
+  "tags": [
+   "splunk",
+   "cloudtrail",
+   "aws",
+   "azure",
+   "s3",
+   "lateral-movement"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Sandbox.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Automate sample triage with the LiSa sandbox to profile an ELF binary's C2 and analyze a PCAP revealing scans and a 2021 exploit attempt",
+  "tags": [
+   "lisa",
+   "sandbox",
+   "urlhaus",
+   "virustotal",
+   "pcap",
+   "c2"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Splunk IT.md": {
+  "category": "Incident Response",
+  "difficulty": "Medium",
+  "summary": "Use Splunk over Sysmon logs to follow a phishing-borne compromise from a malicious document through persistence to AD credential dumping",
+  "tags": [
+   "splunk",
+   "sysmon",
+   "certutil",
+   "mimikatz",
+   "dcsync",
+   "t1566"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Suspended.md": {
+  "category": "Email / Phishing",
+  "difficulty": "Easy",
+  "summary": "Triage a phishing email in Thunderbird and CyberChef to extract sender, attachment, embedded URL, and MITRE phishing sub-techniques",
+  "tags": [
+   "eml",
+   "thunderbird",
+   "cyberchef",
+   "base64",
+   "t1566.001",
+   "t1566.002"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Take a LAP.md": {
+  "category": "AD / Kerberos",
+  "difficulty": "Medium",
+  "summary": "Carve an AD snapshot from a disk image with FTK Imager and AD Explorer to enumerate OUs, user attributes, GPO policies, and LAPS settings",
+  "tags": [
+   "ftk-imager",
+   "ad-explorer",
+   "laps",
+   "ntds",
+   "gpo",
+   "useraccountcontrol"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] The Walking Packets.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Reconstruct an attacker's chain in Arkime as they SQL-inject a surveillance console and pull a CCTV clip from S3 via a presigned URL",
+  "tags": [
+   "arkime",
+   "pcap",
+   "sql-injection",
+   "s3",
+   "presigned-url",
+   "http"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Thumbs Up.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Easy",
+  "summary": "Recover deleted concept-art evidence from thumbcache and iconcache databases to prove leaked plans once resided on the suspect's laptop",
+  "tags": [
+   "thumbcache",
+   "iconcache",
+   "thumbcache-viewer",
+   "md5",
+   "reverse-image"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Trend.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a PCAP in Wireshark to trace router firmware exploitation, identifying the CVE, injected parameter, and reverse-shell commands",
+  "tags": [
+   "wireshark",
+   "tshark",
+   "pcap",
+   "router",
+   "reverse-shell",
+   "cve"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Tux One.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Perform Linux memory analysis with Volatility 3 to recover the victim's bash history, payloads, and SCP transfers from the attack",
+  "tags": [
+   "volatility3",
+   "linux",
+   "bash-history",
+   "scp",
+   "t1059.006",
+   "t1105"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Typhon.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Hard",
+  "summary": "Dynamically analyze NG-IA.exe by emulating its C2 to extract dropped DLLs, LOLBAS execution, scheduled-task persistence, and registry keys",
+  "tags": [
+   "procmon",
+   "wireshark",
+   "lolbas",
+   "c2-emulation",
+   "scheduled-task",
+   "t1569.002"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] UNDRGRND-N3RD.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Investigate a disk image in Autopsy and PeStudio to trace a downloaded malicious file, its C2 protocol, persistence, and originating email",
+  "tags": [
+   "autopsy",
+   "pestudio",
+   "cyberchef",
+   "entropy",
+   "persistence",
+   "t1204.002"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Vortex.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Dissect a PCAP in Wireshark to collect IOCs from a trojan download, profiling the victim host and decoding stolen credentials exfiltrated over SMTP",
+  "tags": [
+   "wireshark",
+   "tcpdump",
+   "cyberchef",
+   "smtp",
+   "t1566",
+   "t1204"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] WikiLeaked.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Hard",
+  "summary": "Investigate a compromised Ubuntu corporate wiki using memory, disk, and pcap to trace a CVE exploit, webshell, and database exfiltration",
+  "tags": [
+   "volatility",
+   "autopsy",
+   "webshell",
+   "pcap",
+   "jd-gui",
+   "cve"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] XHELL.md": {
+  "category": "Malware Analysis",
+  "difficulty": "Medium",
+  "summary": "Analyze malicious Excel XLM macros with oletools and LibreOffice to reveal obfuscated payload download URLs and rundll32 execution",
+  "tags": [
+   "olevba",
+   "oletools",
+   "xlm-macro",
+   "rundll32",
+   "libreoffice",
+   "t1564"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] You_re Hired!.md": {
+  "category": "Incident Response",
+  "difficulty": "Hard",
+  "summary": "Trace an ISO-delivered in-memory loader from execution artifacts through C2 beaconing, process injection, and Active Directory enumeration",
+  "tags": [
+   "shellbag",
+   "userassist",
+   "pestudio",
+   "c2",
+   "process-injection",
+   "t1041"
+  ]
+ },
+ "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Zeta End.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Hard",
+  "summary": "Perform full triage-image DFIR to trace a drive-by PowerShell payload, shellcode C2 callback, and persistence executable",
+  "tags": [
+   "ez-tools",
+   "ida",
+   "shellcode",
+   "c2",
+   "persistence",
+   "powershell"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] APIWizards Breach.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Medium",
+  "summary": "Investigate an Ubuntu API server breach where command injection in an Nginx-served Python app led to SSH access and data exfiltration",
+  "tags": [
+   "nginx",
+   "command-injection",
+   "ssh",
+   "access.log",
+   "telegram",
+   "privesc"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Benign.md": {
+  "category": "Log Analysis",
+  "difficulty": "Medium",
+  "summary": "Hunt through Splunk process-execution (4688) logs to spot an imposter account, malicious scheduled tasks, and LOLBIN payload downloads",
+  "tags": [
+   "splunk",
+   "event-4688",
+   "schtasks",
+   "certutil",
+   "lolbin",
+   "spl"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Blizzard.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Analyze three compromised servers using EvtxECmd and RDP logs to backtrack lateral movement and persistence from the Midnight Blizzard group",
+  "tags": [
+   "evtxecmd",
+   "rdp",
+   "event-1149",
+   "timeline-explorer",
+   "persistence",
+   "midnight-blizzard"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Block.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Decrypt SMB3 traffic in a pcap using NT hashes recovered from an LSASS dump to prove which fired employees accessed private files",
+  "tags": [
+   "wireshark",
+   "pypykatz",
+   "lsass",
+   "smb3",
+   "ntlm",
+   "hashcat"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Boogeyman 1.md": {
+  "category": "Incident Response",
+  "difficulty": "Medium",
+  "summary": "Assess a phishing compromise across email headers, endpoint execution, and network traffic to trace the Boogeyman actor's malicious attachment",
+  "tags": [
+   "email-header",
+   "dkim",
+   "phishing",
+   "wireshark",
+   "powershell",
+   "pcap"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Boogeyman 2.md": {
+  "category": "Email / Phishing",
+  "difficulty": "Medium",
+  "summary": "Decode a base64 email attachment and analyze headers to assess a spear-phishing resume that compromised an HR specialist's workstation",
+  "tags": [
+   "eml",
+   "email-header",
+   "base64",
+   "cyberchef",
+   "malicious-doc",
+   "phishing"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Boogeyman 3.md": {
+  "category": "Incident Response",
+  "difficulty": "Hard",
+  "summary": "Reconstruct a multi-stage ISO/HTA intrusion in Kibana and Sysmon logs, tracing DLL execution, persistence, and threat-actor activity",
+  "tags": [
+   "kibana",
+   "sysmon",
+   "hta",
+   "rundll32",
+   "iso",
+   "scheduled-task"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Carnage.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze a pcap in Wireshark to trace a malicious Word document download, C2 domains, and outbound connections from an infected workstation",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "http",
+   "dns",
+   "c2",
+   "virustotal"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Dead End_.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Follow an artefact trail across a memory dump and disk image with Volatility and FTK Imager to uncover a netcat reverse shell",
+  "tags": [
+   "volatility",
+   "pstree",
+   "netcat",
+   "ftk-imager",
+   "reverse-shell",
+   "disk-image"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Disgruntled.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Easy",
+  "summary": "Review auth.log and bash history to trace a disgruntled IT employee's privileged commands, rogue user creation, and sudo changes",
+  "tags": [
+   "auth.log",
+   "bash_history",
+   "sudo",
+   "visudo",
+   "cron",
+   "dokuwiki"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Disk Analysis & Autopsy.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Easy",
+  "summary": "Use Autopsy to extract host details, user accounts, network config, and IP/MAC from an E01 disk image and its registry hives",
+  "tags": [
+   "autopsy",
+   "e01",
+   "registry",
+   "ftk-imager",
+   "disk-image"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] DiskFiltration.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Use Autopsy and registry artifacts to trace a terminated engineer's USB exfiltration, hotspot evasion, and accessed sensitive files",
+  "tags": [
+   "autopsy",
+   "usbstor",
+   "registry",
+   "ueba",
+   "exfiltration",
+   "recent-docs"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Diskrupt.md": {
+  "category": "Disk Forensics",
+  "difficulty": "Medium",
+  "summary": "Repair a corrupted MBR boot signature, examine partitions, and carve deleted files to prove an insider stole quantum-crypto research",
+  "tags": [
+   "ftk-imager",
+   "autopsy",
+   "hxd",
+   "mbr",
+   "file-carving",
+   "ez-tools"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] ExfilNode.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Medium",
+  "summary": "Examine a suspect's Linux workstation using wtmp, auth.log, and syslog to trace logins, USB insertion, and data exfiltration activity",
+  "tags": [
+   "wtmp",
+   "auth.log",
+   "syslog",
+   "usb",
+   "last",
+   "exfiltration"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Hunt Me I Payment Collectors.md": {
+  "category": "Threat Hunting",
+  "difficulty": "Medium",
+  "summary": "Hunt through Elastic and Sysmon logs to trace a malicious ZIP attachment from download to data exfiltration on a finance workstation",
+  "tags": [
+   "elastic",
+   "sysmon",
+   "kibana",
+   "phishing",
+   "exfiltration",
+   "powershell"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Investigating with Splunk.md": {
+  "category": "Log Analysis",
+  "difficulty": "Easy",
+  "summary": "Query Splunk Windows event logs to detect a masqueraded backdoor user, registry changes, and remote WMI account creation",
+  "tags": [
+   "splunk",
+   "sysmon",
+   "wmi",
+   "4720",
+   "powershell",
+   "t1136"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] IronShade.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Medium",
+  "summary": "Perform a compromise assessment on a Linux honeypot to uncover a backdoor account, cron persistence, and hidden malicious processes",
+  "tags": [
+   "passwd",
+   "cron",
+   "persistence",
+   "keylogger",
+   "elf",
+   "ps"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] ItsyBitsy.md": {
+  "category": "Network Forensics",
+  "difficulty": "Easy",
+  "summary": "Analyze HTTP connection logs in Kibana to trace bitsadmin LOLBin C2 activity and recover a malicious file from a filesharing site",
+  "tags": [
+   "kibana",
+   "elastic",
+   "bitsadmin",
+   "lolbin",
+   "c2",
+   "pastebin"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Juicy Details.md": {
+  "category": "Log Analysis",
+  "difficulty": "Easy",
+  "summary": "Analyze web server logs to reconstruct an attacker's toolchain, vulnerable endpoints, and stolen data from a breached juice shop",
+  "tags": [
+   "access.log",
+   "nmap",
+   "hydra",
+   "sqlmap",
+   "sql-injection",
+   "curl"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Memory Forensics.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Use Volatility across multiple memory dumps to recover a password, console history, shutdown time, and a TrueCrypt passphrase",
+  "tags": [
+   "volatility",
+   "hashdump",
+   "consoles",
+   "truecrypt",
+   "vmem",
+   "imageinfo"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] New Hire Old Artifacts.md": {
+  "category": "Threat Hunting",
+  "difficulty": "Medium",
+  "summary": "Sift Splunk Sysmon events to find NirSoft credential-viewer binaries and activity while endpoint security was disabled",
+  "tags": [
+   "splunk",
+   "sysmon",
+   "nirsoft",
+   "eventcode-1",
+   "credential-theft",
+   "t1555"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] PS Eclipse.md": {
+  "category": "Log Analysis",
+  "difficulty": "Medium",
+  "summary": "Investigate Splunk Sysmon logs to trace a base64 PowerShell dropper, Defender tampering, and scheduled-task persistence in a ransomware case",
+  "tags": [
+   "splunk",
+   "sysmon",
+   "powershell",
+   "base64",
+   "scheduled-task",
+   "ransomware"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] ParrotPost Phishing Analysis.md": {
+  "category": "Email / Phishing",
+  "difficulty": "Easy",
+  "summary": "Investigate an .eml file's headers and client-side body to determine whether a ParrotPost login request is a credential-stealing phish",
+  "tags": [
+   "eml",
+   "email-headers",
+   "mime",
+   "spf",
+   "credential-theft",
+   "rfc5322"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Phishing Analysis Tools (Case 1-3).md": {
+  "category": "Email / Phishing",
+  "difficulty": "Easy",
+  "summary": "Use Thunderbird and CyberChef to dissect phishing email headers and bodies, extracting spoofed senders, origin IPs, and malicious URLs",
+  "tags": [
+   "eml",
+   "thunderbird",
+   "cyberchef",
+   "email-headers",
+   "defang",
+   "spf"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] REvil Corp.md": {
+  "category": "Incident Response",
+  "difficulty": "Medium",
+  "summary": "Use Redline to analyze an infected host and identify the REvil ransomware binary, its download URL, hash, and files it encrypted",
+  "tags": [
+   "redline",
+   "revil",
+   "ransomware",
+   "md5",
+   "virustotal",
+   "timeline"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Retracted.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Investigate a live Windows host with Sysmon and Event Viewer to reconstruct a fake-antivirus ransomware execution and its aftermath",
+  "tags": [
+   "sysmon",
+   "event-viewer",
+   "ransomware",
+   "fake-av",
+   "timeline",
+   "notepad"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Secret Recipe.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Examine registry hives with Registry Explorer and RegRipper to prove secret recipe files were copied onto a suspect's machine",
+  "tags": [
+   "registry",
+   "registryexplorer",
+   "regripper",
+   "sam",
+   "ez-tools",
+   "shellbags"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Slingshot.md": {
+  "category": "Log Analysis",
+  "difficulty": "Medium",
+  "summary": "Investigate ModSecurity WAF logs in Kibana to build a timeline of scanning, brute-force, and data exfiltration against an e-commerce server",
+  "tags": [
+   "elastic",
+   "kibana",
+   "modsecurity",
+   "gobuster",
+   "hydra",
+   "sql-injection"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Snapped Phish-ing Line.md": {
+  "category": "Email / Phishing",
+  "difficulty": "Medium",
+  "summary": "Analyze phishing emails and a recovered phishing kit to trace the adversary's redirect URLs, .zip archive, and threat intel",
+  "tags": [
+   "phishing",
+   "cyberchef",
+   "thunderbird",
+   "phishing-kit",
+   "cti",
+   "defang"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Tardigrade.md": {
+  "category": "Linux DFIR",
+  "difficulty": "Medium",
+  "summary": "Hunt and remediate five backdoors on a compromised Linux server, uncovering malicious binaries and .bashrc persistence",
+  "tags": [
+   "linux",
+   "ssh",
+   "backdoor",
+   "bashrc",
+   "persistence",
+   "reverse-shell"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Tempest.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Hard",
+  "summary": "Reconstruct a full intrusion from a malicious document through privilege escalation using Sysmon, event logs, and packet captures",
+  "tags": [
+   "sysmon",
+   "evtx",
+   "pcap",
+   "timeline-explorer",
+   "maldoc",
+   "wireshark"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] The Greenholt Phish.md": {
+  "category": "Email / Phishing",
+  "difficulty": "Easy",
+  "summary": "Inspect a suspicious business email's headers, SPF/DMARC records, and originating IP to determine if it is a phishing attempt",
+  "tags": [
+   "phishing",
+   "email-headers",
+   "spf",
+   "dmarc",
+   "mxtoolbox",
+   "whois"
+  ]
+ },
+ "TryHackMe/THM Blue Teaming/[THM Write-up] Unattended.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Investigate insider activity on a live Windows system to identify searched, accessed, and exfiltrated files during an absence window",
+  "tags": [
+   "registry",
+   "wordwheelquery",
+   "autopsy",
+   "kape",
+   "exfiltration",
+   "regripper"
+  ]
+ },
+ "Unlisted Labs/CyGenixCTF Write-up.md": {
+  "category": "Digital Forensics",
+  "difficulty": "Easy",
+  "summary": "Solve ten CTF challenges across forensics, crypto, reversing, stego, and OSINT using strings, ROT decoding, and packet analysis",
+  "tags": [
+   "exiftool",
+   "strings",
+   "pcap",
+   "wireshark",
+   "steganography",
+   "rot13"
+  ]
+ },
+ "Unlisted Labs/Cyber Range Thailand 2024 (Qualifier).md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Work through blue-team CTF challenges spanning packet analysis, DNS tunneling, auditd, Suricata IDS, and Windows event logs",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "dns-tunnel",
+   "suricata",
+   "auditd",
+   "smb"
+  ]
+ },
+ "Unlisted Labs/Cyber Range Thailand 2024 [Final] - Review.md": {
+  "category": "Incident Response",
+  "difficulty": "Unknown",
+  "summary": "Recap the Cyber Range Thailand 2024 final round experience without a technical write-up of the challenges",
+  "tags": [
+   "ctf",
+   "blue-team",
+   "dfir",
+   "review"
+  ]
+ },
+ "Unlisted Labs/CyberSpaceCTF 2024 - Memory (Forensic Challenge) -.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Recover an encrypted flag image from a Windows memory dump by extracting the AES key and IV from a PowerShell script and env vars",
+  "tags": [
+   "volatility",
+   "mftparser",
+   "filescan",
+   "aes",
+   "powershell",
+   "envars"
+  ]
+ },
+ "Unlisted Labs/CyberSpaceCTF 2024 - Social Distancing (Forensic).md": {
+  "category": "Malware Analysis",
+  "difficulty": "Easy",
+  "summary": "Recover a Windows Defender quarantined malware with dexray to extract the base64-encoded flag from its PowerShell payload",
+  "tags": [
+   "defender",
+   "quarantine",
+   "dexray",
+   "remnux",
+   "powershell",
+   "base64"
+  ]
+ },
+ "Unlisted Labs/Level Effect Cyber Defense CTF/Level Effect Cyber Defense CTF Write-up - CTI Challenges (full completeness).md": {
+  "category": "Threat Intel",
+  "difficulty": "Medium",
+  "summary": "Answer threat-intel challenges identifying CVEs, FSB malware lineage, and APT groups like Volt Typhoon from TTPs",
+  "tags": [
+   "cti",
+   "cve",
+   "mitre",
+   "apt",
+   "volt-typhoon",
+   "osint"
+  ]
+ },
+ "Unlisted Labs/Level Effect Cyber Defense CTF/Level Effect Cyber Defense CTF Write-up - Email Security Challenges (full completeness).md": {
+  "category": "Email / Phishing",
+  "difficulty": "Easy",
+  "summary": "Work email-security challenges parsing disguised eml headers, tracing sender IPs, and decoding quoted-printable evasion",
+  "tags": [
+   "eml",
+   "email-headers",
+   "return-path",
+   "quoted-printable",
+   "cyberchef",
+   "iplocation"
+  ]
+ },
+ "Unlisted Labs/Level Effect Cyber Defense CTF/Level Effect Cyber Defense CTF Write-up - Log Analysis Challenges (full completeness).md": {
+  "category": "Log Analysis",
+  "difficulty": "Easy",
+  "summary": "Identify Windows Security event IDs and spot suspicious logon activity in an evtx log to recover the flag",
+  "tags": [
+   "evtx",
+   "event-id",
+   "4624",
+   "4625",
+   "mitre",
+   "windows-logs"
+  ]
+ },
+ "Unlisted Labs/MemLabs/[MemLabs Write-up] MemLabs Lab 1 - Beginner_s Luck.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Recover important files from a crashed Windows memory dump using Volatility to locate and dump a WinRAR archive across three flags",
+  "tags": [
+   "volatility",
+   "pstree",
+   "cmdline",
+   "filescan",
+   "dumpfiles",
+   "winrar"
+  ]
+ },
+ "Unlisted Labs/MemLabs/[MemLabs Write-up] MemLabs Lab 2 - A New World.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Dig through a Windows memory dump with Volatility to recover env vars, browser history, and a KeePass database for three flags",
+  "tags": [
+   "volatility",
+   "envars",
+   "keepass",
+   "chromehistory",
+   "filescan",
+   "base64"
+  ]
+ },
+ "Unlisted Labs/MemLabs/[MemLabs Write-up] MemLabs Lab 3 - The Evil_s Den.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Recover a secret encrypted by a malicious script from a memory dump, brute-forcing the XOR key to rebuild the split flag",
+  "tags": [
+   "volatility",
+   "pstree",
+   "cmdline",
+   "dumpfiles",
+   "xor",
+   "cyberchef"
+  ]
+ },
+ "Unlisted Labs/MemLabs/[MemLabs Write-up] MemLabs Lab 4 - Obsession.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Recover a deleted flag-bearing text file from a Windows memory dump by scanning files and parsing the MFT with Volatility",
+  "tags": [
+   "volatility",
+   "mftparser",
+   "filescan",
+   "hashdump",
+   "recyclebin"
+  ]
+ },
+ "Unlisted Labs/MemLabs/[MemLabs Write-up] MemLabs Lab 5 - Black Tuesday.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Hunt multi-stage flags in a Windows memory dump by tracing Notepad and WinRAR processes, IE history, and a password-protected archive",
+  "tags": [
+   "volatility",
+   "pstree",
+   "cmdline",
+   "iehistory",
+   "dumpfiles"
+  ]
+ },
+ "Unlisted Labs/MemLabs/[MemLabs Write-up] MemLabs Lab 6 - The Reckoning.md": {
+  "category": "Memory Forensics",
+  "difficulty": "Medium",
+  "summary": "Reconstruct a split flag from a memory dump by recovering a RAR password from console history and environment variables",
+  "tags": [
+   "volatility",
+   "consoles",
+   "envars",
+   "cmdline",
+   "dumpfiles"
+  ]
+ },
+ "Unlisted Labs/SECPlayground Bloody Xmas2024 CTF - [Incident & Rev - Wowza].md": {
+  "category": "Incident Response",
+  "difficulty": "Medium",
+  "summary": "Work through incident-response and reverse-engineering challenges chaining web recon, hashes, and a password-protected evidence file",
+  "tags": [
+   "incident",
+   "reversing",
+   "ransomware",
+   "sha256",
+   "web"
+  ]
+ },
+ "Unlisted Labs/SECPlayground Hackloween CTF 2024  [Log Analysis & Incident write-up - R@b!T_T].md": {
+  "category": "Log Analysis",
+  "difficulty": "Medium",
+  "summary": "Trace an attacker through Windows Security event logs via process-creation 4688 events, rundll32 payloads, and AES-decrypted clues",
+  "tags": [
+   "event-4688",
+   "security-log",
+   "rundll32",
+   "aes",
+   "hta"
+  ]
+ },
+ "Unlisted Labs/SECPlayground Hackloween CTF 2025 Digital Forensics.md": {
+  "category": "Windows DFIR",
+  "difficulty": "Medium",
+  "summary": "Investigate malicious PDFs, stealers and ransomware using exiftool metadata, VirusTotal behavior, and email analysis",
+  "tags": [
+   "exiftool",
+   "pdf",
+   "virustotal",
+   "malware",
+   "ransomware",
+   "email"
+  ]
+ },
+ "Unlisted Labs/THCTT2024 - Network_Forensic_Mobile - MaAowHa.md": {
+  "category": "Network Forensics",
+  "difficulty": "Medium",
+  "summary": "Analyze PCAPs to recover LSB-hidden flags, brute FTP logins, and decrypt C2 traffic alongside mobile forensics tasks",
+  "tags": [
+   "wireshark",
+   "pcap",
+   "lsb-stego",
+   "ftp",
+   "mobile"
+  ]
+ },
+ "Unlisted Labs/THCTT2024 - Reverse_Crypto_Programming - MaAowHa.md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Medium",
+  "summary": "Reverse ELF binaries in Ghidra to brute-force seeds and generate flags, plus crypto and programming challenge solutions",
+  "tags": [
+   "ghidra",
+   "elf",
+   "bruteforce",
+   "crypto",
+   "programming"
+  ]
+ },
+ "Unlisted Labs/n00bz CTF 2024 Write-up (ByTheW4y Team).md": {
+  "category": "Reverse Engineering",
+  "difficulty": "Easy",
+  "summary": "Solve mixed crypto, forensics, web and OSINT challenges including Vigenere, low-exponent RSA cube root, and EXIF GPS extraction",
+  "tags": [
+   "vigenere",
+   "rsa",
+   "exiftool",
+   "gps",
+   "osint",
+   "crypto"
+  ]
+ }
+}
