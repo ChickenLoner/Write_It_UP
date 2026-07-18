@@ -8,7 +8,16 @@ Welcome to my collection of CTF (Capture The Flag) write-ups! This repository co
 
 ## 📚 Table of Contents
 
-**Total Write-ups**: 361
+**Total Write-ups**: 362
+
+### 📁 Root
+
+<details>
+<summary>📝 1 write-up(s) (click to expand)</summary>
+
+- [CLAUDE](CLAUDE.md)
+
+</details>
 
 ### 📁 CyberDefenders → CyberDefenders - CyberRange
 
