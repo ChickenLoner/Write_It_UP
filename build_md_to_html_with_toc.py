@@ -868,6 +868,27 @@ def collect_resource_refs(html_body: str, sink: set):
         sink.add(m.group(1))
 
 
+# Block-level tags the write-ups wrap content in. Inline tags (<b>, <span>…)
+# are left alone — markdown already processes their contents.
+_BLOCK_TAG_RE = re.compile(
+    r'<(div|center|details|summary|blockquote|td|th)\b(?![^>]*\bmarkdown\s*=)([^>]*?)(/?)>',
+    re.IGNORECASE)
+
+def _enable_markdown_in_blocks(md: str) -> str:
+    """Tag raw block-level HTML so markdown2 processes the markdown inside it.
+
+       Code fences are left untouched — a <div> shown as example code must stay
+       literal."""
+    parts = re.split(r'(^```.*?^```)', md, flags=re.MULTILINE | re.DOTALL)
+    out = []
+    for i, part in enumerate(parts):
+        if i % 2 == 1:                       # inside a fenced block
+            out.append(part)
+        else:
+            out.append(_BLOCK_TAG_RE.sub(r'<\1\2 markdown="1"\3>', part))
+    return "".join(out)
+
+
 def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
     """Render one markdown write-up to a styled HTML file."""
     # 1. Read markdown
@@ -877,9 +898,19 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
         md_content = md_path.read_text(encoding="latin-1")
 
     # 2. Convert to HTML body
+    #
+    # Joplin exports centre screenshots by wrapping them in raw HTML, e.g.
+    #     <div align=center>
+    #     ![shot.png](/resources/shot.png)
+    #     </div>
+    # Markdown leaves the contents of a block-level HTML tag alone, so those
+    # images were emitted as literal "![shot.png](...)" text on the page — 205
+    # of them across 56 write-ups. markdown2 will process the contents when the
+    # tag carries markdown="1", so inject that and enable the extra.
     html_body = markdown2.markdown(
-        md_content,
-        extras=["fenced-code-blocks", "tables", "header-ids", "strike"]
+        _enable_markdown_in_blocks(md_content),
+        extras=["fenced-code-blocks", "tables", "header-ids", "strike",
+                "markdown-in-html"]
     )
 
     # 3. Path fix-ups
