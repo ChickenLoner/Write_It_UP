@@ -23,6 +23,7 @@ Theme:
 
 import os
 import re
+import sys
 import json
 import html
 import shutil
@@ -1790,14 +1791,20 @@ def write_404_page() -> None:
     print("✅ Wrote 404.html")
 
 
-def main():
+def main() -> int:
+    """Returns a process exit code. Non-zero must abort the deploy.
+
+       This matters more than it looks: the deploy uploads whatever is in
+       build/. A build that fails halfway but exits 0 publishes a partial site
+       over a working one, and a build that finds no markdown at all would
+       publish an empty one."""
     ensure_build_path(BUILD_DIR)
     write_assets()
 
     md_files = collect_md_files()
     if not md_files:
-        print("❌ No markdown files found!")
-        return
+        print("❌ No markdown files found — refusing to publish an empty site")
+        return 1
     print(f"Found {len(md_files)} markdown files")
 
     # Index
@@ -1805,6 +1812,7 @@ def main():
 
     # Per-write-up pages
     needed_resources: set = set()
+    failed: list = []
     for md_file in md_files:
         rel_folder = md_file.parent.relative_to(SRC_DIR)
         out_file = BUILD_DIR / rel_folder / f"{md_file.stem}.html"
@@ -1813,13 +1821,29 @@ def main():
             print(f"✅ {md_file.relative_to(SRC_DIR)}")
         except Exception as e:
             print(f"❌ {md_file}: {e}")
+            failed.append((md_file, e))
 
     apply_image_mapping(copy_resources(needed_resources))
     write_404_page()
     write_seo_files(md_files)
 
-    print(f"\n✅ Done — {len(md_files)} files written to {BUILD_DIR}/")
+    built = sum(1 for _ in BUILD_DIR.rglob("*.html"))
+    if failed:
+        print(f"\n❌ {len(failed)} page(s) failed to render — refusing to publish "
+              f"a site that is missing them:")
+        for md_file, e in failed:
+            print(f"   {md_file.relative_to(SRC_DIR)}: {e}")
+        return 1
+
+    # index.html + 404.html + one page per write-up.
+    expected = len(md_files) + 2
+    if built != expected:
+        print(f"\n❌ built {built} HTML pages, expected {expected} — aborting")
+        return 1
+
+    print(f"\n✅ Done — {len(md_files)} write-ups ({built} pages) written to {BUILD_DIR}/")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

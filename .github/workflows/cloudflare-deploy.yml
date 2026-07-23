@@ -65,6 +65,28 @@ jobs:
 
       # Cloudflare's free plan allows 20,000 files per deployment. Fail loudly
       # here rather than partway through an upload.
+      # The deploy replaces the live site with whatever is in build/. Refuse to
+      # upload something obviously wrong rather than publish it over a working
+      # site. The build already fails on render errors; this catches a build
+      # that "succeeded" but produced a structurally broken tree.
+      - name: Sanity-check the built site
+        run: |
+          test -s build/index.html || { echo "::error::build/index.html missing or empty"; exit 1; }
+          test -s build/404.html   || { echo "::error::build/404.html missing or empty"; exit 1; }
+          pages=$(find build -name '*.html' | wc -l)
+          echo "built $pages HTML pages"
+          if [ "$pages" -lt 100 ]; then
+            echo "::error::only $pages HTML pages — expected hundreds. Refusing to publish."
+            exit 1
+          fi
+          index_bytes=$(wc -c < build/index.html)
+          if [ "$index_bytes" -lt 50000 ]; then
+            echo "::error::index.html is only $index_bytes bytes — the card list is probably empty"
+            exit 1
+          fi
+          grep -q 'class="wrow"' build/index.html || {
+            echo "::error::index.html contains no write-up cards"; exit 1; }
+
       - name: Check deployment fits Cloudflare limits
         run: |
           files=$(find build -type f | wc -l)
