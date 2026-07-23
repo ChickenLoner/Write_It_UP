@@ -1703,6 +1703,56 @@ def write_seo_files(md_files: list[Path]) -> None:
     print("✅ Wrote sitemap.xml + robots.txt + _headers")
 
 
+def write_404_page() -> None:
+    """A real 404 document.
+
+       Cloudflare Pages falls back to index.html with HTTP 200 for every
+       unmatched path when no 404.html exists — so deleted or mistyped URLs
+       look like real pages to both readers and crawlers. Shipping this file
+       makes Pages answer with a genuine 404, and replaces GitHub Pages'
+       generic one. Asset links are absolute because this page is served for
+       paths at any depth."""
+    page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+{common_head("404 · Case Not Found", description="No write-up exists at this address.")}
+{css_links("/", "base", "article")}
+<style>
+.nf-wrap{{max-width:640px;margin:0 auto;padding:80px 22px;text-align:center}}
+.nf-code{{font-family:'JetBrains Mono',monospace;font-size:64px;font-weight:700;
+  color:var(--soc-rd);letter-spacing:-.02em;line-height:1}}
+.nf-msg{{font-size:15px;color:var(--soc-ink2);margin:14px 0 6px}}
+.nf-sub{{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--soc-ink3);
+  margin-bottom:28px}}
+.nf-back{{display:inline-block;padding:9px 18px;border:1px solid var(--soc-line2);
+  border-radius:5px;color:var(--soc-cy);text-decoration:none;font-family:'JetBrains Mono',monospace;
+  font-size:13px}}
+.nf-back:hover{{border-color:var(--soc-cy)}}
+</style>
+</head>
+<body>
+
+{topbar('<a href="' + PORTFOLIO_URL + '">SOC</a> <span class="sep">/</span> '
+        '<a href="/index.html"><b>WRITE-UPS</b></a> <span class="sep">/</span> '
+        '<b class="here">404</b>',
+        '<span class="sev rd"><span class="dot"></span>NOT FOUND</span>')}
+
+<div class="nf-wrap">
+  <div class="nf-code">404</div>
+  <p class="nf-msg">No write-up exists at this address.</p>
+  <p class="nf-sub">// the case file may have been renamed, moved, or never existed</p>
+  <a class="nf-back" href="/index.html">← Back to all write-ups</a>
+</div>
+
+{article_footer("/index.html")}
+
+</body>
+</html>
+"""
+    (BUILD_DIR / "404.html").write_text(page, encoding="utf-8")
+    print("✅ Wrote 404.html")
+
+
 def main():
     ensure_build_path(BUILD_DIR)
     write_assets()
@@ -1728,6 +1778,7 @@ def main():
             print(f"❌ {md_file}: {e}")
 
     apply_image_mapping(copy_resources(needed_resources))
+    write_404_page()
     write_seo_files(md_files)
 
     print(f"\n✅ Done — {len(md_files)} files written to {BUILD_DIR}/")
