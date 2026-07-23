@@ -7,7 +7,24 @@ from pathlib import Path
 OLD_FOLDER_NAME = "_resources"
 NEW_FOLDER_NAME = "resources"
 FILE_EXTENSION = ".md"
-SKIP_FOLDERS = {'.git', '.github', '.venv', '__pycache__', 'build', 'node_modules'}
+SKIP_FOLDERS = {'.git', '.github', '.venv', '__pycache__', 'build', 'node_modules',
+                're-design', 'tools', '.imgcache', '.wrangler'}
+
+# Repo documentation, not write-ups. These must never be rewritten: CLAUDE.md
+# documents the _resources/ -> resources/ rename, and rewriting that literal
+# string silently corrupts the docs. Markdown at the repo root is skipped for
+# the same reason (and the build never publishes it either).
+SKIP_NAMES = {'readme.md', 'claude.md', 'license.md', 'licence.md',
+              'contributing.md', 'changelog.md', 'code_of_conduct.md',
+              'security.md', 'agents.md'}
+
+
+def is_writeup(file_path: Path) -> bool:
+    """Only write-up markdown gets rewritten — never repo docs."""
+    if file_path.name.lower() in SKIP_NAMES:
+        return False
+    # Markdown sitting at the repo root is documentation, not a write-up.
+    return file_path.parent != Path('.')
 
 # Image extensions to look for
 IMAGE_EXTENSIONS = {'.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.bmp'}
@@ -82,9 +99,11 @@ def update_markdown_files():
         for file_name in files:
             if not file_name.endswith(FILE_EXTENSION):
                 continue
-            
+
             file_path = Path(root) / file_name
-            
+            if not is_writeup(file_path):
+                continue
+
             try:
                 with open(file_path, 'r', encoding='utf-8') as f:
                     content = f.read()

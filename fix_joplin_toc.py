@@ -4,7 +4,21 @@ from pathlib import Path
 
 # --- Configuration ---
 FILE_EXTENSION = ".md"
-SKIP_FOLDERS = {'.git', '.github', '.venv', '__pycache__', 'build', 'node_modules'}
+SKIP_FOLDERS = {'.git', '.github', '.venv', '__pycache__', 'build', 'node_modules',
+                're-design', 'tools', '.imgcache', '.wrangler'}
+
+# Repo documentation, not write-ups — same policy as the build script, which
+# never publishes these. Keeps the tooling from editing files it does not own.
+SKIP_NAMES = {'readme.md', 'claude.md', 'license.md', 'licence.md',
+              'contributing.md', 'changelog.md', 'code_of_conduct.md',
+              'security.md', 'agents.md'}
+
+
+def is_writeup(file_path: Path) -> bool:
+    """Only write-up markdown gets rewritten — never repo docs."""
+    if file_path.name.lower() in SKIP_NAMES:
+        return False
+    return file_path.parent != Path('.')
 
 # Options
 GENERATE_TOC = True  # Set to False if you just want to remove [toc]
@@ -132,9 +146,12 @@ def main():
             if not file_name.endswith(FILE_EXTENSION):
                 continue
             
-            total_files += 1
             file_path = Path(root) / file_name
-            
+            if not is_writeup(file_path):
+                continue
+
+            total_files += 1
+
             if process_markdown_file(file_path):
                 updated_files.append(file_path)
                 status = "Generated TOC" if GENERATE_TOC else "Removed [toc]"
