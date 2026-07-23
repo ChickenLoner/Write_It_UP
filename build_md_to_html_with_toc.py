@@ -26,9 +26,12 @@ import re
 import json
 import html
 import shutil
+import hashlib
 import markdown2
-from datetime import datetime
+from concurrent.futures import ProcessPoolExecutor
+from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Config
@@ -40,9 +43,18 @@ PORTFOLIO_URL  = "https://chicken0248.fyi/"
 REPO_URL       = "https://github.com/ChickenLoner/Write_It_UP"
 AVATAR_URL     = "https://chicken0248.fyi/chicken0248.png"
 AUTHOR         = "Chicken0248"
+SITE_URL       = "https://writeups.chicken0248.fyi"
 KEYWORDS = ("CTF, write-up, cybersecurity, HackTheBox, TryHackMe, "
             "CyberDefenders, LetsDefend, Centri, BTLO, DFIR, "
             "blue team, digital forensics, incident response")
+
+# Folders never walked for write-ups, and markdown filenames that are repo
+# documentation rather than write-ups (CLAUDE.md was leaking onto the site).
+SKIP_DIRS  = {"build", ".github", ".git", "node_modules", ".venv",
+              "__pycache__", "re-design", "resources", "tools"}
+SKIP_NAMES = {"readme.md", "claude.md", "license.md", "licence.md",
+              "contributing.md", "changelog.md", "code_of_conduct.md",
+              "security.md", "agents.md"}
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Platform detection
@@ -748,7 +760,40 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
 # Shared HTML pieces
 # ─────────────────────────────────────────────────────────────────────────────
 
+# ── Shared stylesheets ───────────────────────────────────────────────────────
+# The CSS used to be inlined into all ~360 pages (~13.5 KB per write-up page,
+# ~29 KB on the index). Emitting it once under build/assets/ lets the browser
+# cache it across the whole site; the ?v= hash busts the cache on change.
+_ASSET_HREFS: dict[str, str] = {}
+
+def write_assets() -> dict[str, str]:
+    """Write shared CSS bundles and return {name: 'assets/x.css?v=hash'}."""
+    global _ASSET_HREFS
+    bundles = {
+        "base":    TOKENS_CSS + TOPBAR_CSS,
+        "article": ARTICLE_CSS,
+        "index":   INDEX_CSS,
+    }
+    assets_dir = BUILD_DIR / "assets"
+    ensure_build_path(assets_dir)
+    hrefs = {}
+    for name, css in bundles.items():
+        digest = hashlib.sha1(css.encode("utf-8")).hexdigest()[:8]
+        (assets_dir / f"{name}.css").write_text(css, encoding="utf-8")
+        hrefs[name] = f"assets/{name}.css?v={digest}"
+    _ASSET_HREFS = hrefs
+    return hrefs
+
+
+def css_links(root_prefix: str, *names: str) -> str:
+    return "\n".join(
+        f'<link rel="stylesheet" href="{root_prefix}{_ASSET_HREFS[n]}">' for n in names
+    )
+
+
 def common_head(title: str, description: str = "") -> str:
+    title = html.escape(title, quote=True)
+    description = html.escape(description, quote=True)
     full_title = f"{title} · {AUTHOR}"
     og_image = f"{PORTFOLIO_URL.rstrip('/')}/chicken0248.png"
     return f"""<meta charset="UTF-8">
@@ -790,7 +835,7 @@ def article_footer(index_href: str) -> str:
   <span class="sep">·</span>
   <a href="{PORTFOLIO_URL}">Portfolio ↗</a>
   <span class="sep">·</span>
-  <a href="{REPO_URL}" target="_blank">GitHub ↗</a>
+  <a href="{REPO_URL}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
 </footer>"""
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -810,10 +855,20 @@ def rewrite_image_paths(html_body: str, root_prefix: str) -> str:
     )
     html_body = re.sub(r'src="(\.\./)+_resources/', f'src="{root_prefix}resources/', html_body)
     html_body = re.sub(r'src="_resources/', f'src="{root_prefix}resources/', html_body)
+    # Write-ups are screenshot-heavy (20-60 images each); defer offscreen loads.
+    html_body = html_body.replace('<img ', '<img loading="lazy" decoding="async" ')
     return html_body
 
 
-def md_to_html(md_path: Path, out_path: Path):
+_RES_REF_RE = re.compile(r'(?:src|href)="(?:\.{1,2}/)*resources/([^"?#]+)')
+
+def collect_resource_refs(html_body: str, sink: set):
+    """Record which files under resources/ a rendered page actually needs."""
+    for m in _RES_REF_RE.finditer(html_body):
+        sink.add(m.group(1))
+
+
+def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
     """Render one markdown write-up to a styled HTML file."""
     # 1. Read markdown
     try:
@@ -832,6 +887,8 @@ def md_to_html(md_path: Path, out_path: Path):
     depth = len(parts)
     root_prefix = "../" * depth if depth > 0 else "./"
     html_body = rewrite_image_paths(html_body, root_prefix)
+    if res_sink is not None:
+        collect_resource_refs(html_body, res_sink)
 
     index_href = root_prefix + "index.html"
 
@@ -859,17 +916,17 @@ def md_to_html(md_path: Path, out_path: Path):
                    '<span class="sep">/</span>',
                    f'<b>{plat["short"]}</b>',
                    '<span class="sep">/</span>',
-                   f'<b class="here">{_escape_attr(title).upper()}</b>']
+                   f'<b class="here">{html.escape(title.upper())}</b>']
     crumb_html = " ".join(crumb_parts)
 
     badges_html = (
         f'<span class="sev cyan"><span class="dot"></span>TLP:CLEAR</span> '
         f'<span class="sev {plat["sev"]}"><span class="dot"></span>{plat["short"]}</span> '
         f'<span class="sev green"><span class="dot"></span>SOLVED</span> '
-        f'<a class="sev-link" href="{REPO_URL}" target="_blank">GITHUB <span class="ar">↗</span></a>'
+        f'<a class="sev-link" href="{REPO_URL}" target="_blank" rel="noopener noreferrer">GITHUB <span class="ar">↗</span></a>'
     )
 
-    today = datetime.utcnow().strftime("%Y-%m-%d")
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     clock_label = f"CASE · {today}"
 
     description = f"Write-up for {title} — a {plat['long']} challenge solution by {AUTHOR}."
@@ -878,7 +935,7 @@ def md_to_html(md_path: Path, out_path: Path):
 <html lang="en">
 <head>
 {common_head(title, description=description)}
-<style>{TOKENS_CSS}{TOPBAR_CSS}{ARTICLE_CSS}</style>
+{css_links(root_prefix, "base", "article")}
 </head>
 <body class="{plat['class']}">
 
@@ -962,9 +1019,9 @@ def _panel_html(group_folder: str, md_files: list) -> str:
     rows_html = []
     for i, md_path in enumerate(sorted(md_files, key=lambda p: p.stem), start=1):
         name = _strip_platform_prefix(md_path.stem)
-        href = str(md_path.relative_to(SRC_DIR).with_suffix(".html")).replace("\\", "/")
-        # encode spaces and # in href so browsers don't choke
-        href_safe = href.replace(" ", "%20").replace("#", "%23").replace("[", "%5B").replace("]", "%5D")
+        href = md_path.relative_to(SRC_DIR).with_suffix(".html").as_posix()
+        # percent-encode everything unsafe in a URL path (spaces, #, [], &, %...)
+        href_safe = html.escape(quote(href, safe="/"), quote=True)
 
         meta = _meta_for(md_path)
         difficulty = (meta.get("difficulty") or "").strip()
@@ -1110,9 +1167,9 @@ def create_index_html(md_files: list):
         '<span class="sev cyan"><span class="dot"></span>TLP:CLEAR</span> '
         '<span class="sev green"><span class="dot"></span>OPERATIONAL</span> '
         f'<a class="sev-link" href="{PORTFOLIO_URL}">PORTFOLIO <span class="ar">↗</span></a> '
-        f'<a class="sev-link" href="{REPO_URL}" target="_blank">GITHUB <span class="ar">↗</span></a>'
+        f'<a class="sev-link" href="{REPO_URL}" target="_blank" rel="noopener noreferrer">GITHUB <span class="ar">↗</span></a>'
     )
-    today = datetime.utcnow().strftime("%Y-%m-%d")
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     clock_label = f"LAST.SYNC · {today}"
 
     description = (
@@ -1120,11 +1177,13 @@ def create_index_html(md_files: list):
         f"Browse {total} write-ups across {platform_count} platforms."
     )
 
-    html = f"""<!DOCTYPE html>
+    # NB: local name is `page`, not `html` — `html` is the stdlib module used
+    # for escaping elsewhere in this file and shadowing it breaks that.
+    page = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 {common_head("Write-Ups Collection", description=description)}
-<style>{TOKENS_CSS}{TOPBAR_CSS}{INDEX_CSS}</style>
+{css_links("", "base", "index")}
 </head>
 <body>
 
@@ -1178,8 +1237,8 @@ def create_index_html(md_files: list):
   <footer class="foot">
     <span>// chicken0248 · soc.refined · auto-generated index</span>
     <span class="right">
-      <a href="{PORTFOLIO_URL}" target="_blank">Portfolio ↗</a>
-      <a href="{REPO_URL}" target="_blank">GitHub ↗</a>
+      <a href="{PORTFOLIO_URL}" target="_blank" rel="noopener noreferrer">Portfolio ↗</a>
+      <a href="{REPO_URL}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     </span>
   </footer>
 
@@ -1191,7 +1250,7 @@ def create_index_html(md_files: list):
 </html>
 """
 
-    (BUILD_DIR / "index.html").write_text(html, encoding="utf-8")
+    (BUILD_DIR / "index.html").write_text(page, encoding="utf-8")
     print("✅ Created index.html")
 
 
@@ -1266,16 +1325,22 @@ def _index_scripts() -> str:
   let activeFilter = 'all';
   let activeDiff = 'all';
 
+  /* rows are cached once — querySelectorAll per card on every keystroke over
+     ~360 entries was the bulk of the search cost */
+  const cardRows = new Map();
+  cards.forEach(card => cardRows.set(card, Array.from(card.querySelectorAll('.wrow'))));
+
   function applyFilter(){
     const q = input.value.toLowerCase().trim();
     let anyVisible = false;
     cards.forEach(card => {
       const platOk = (activeFilter === 'all') || card.dataset.platform === activeFilter;
       if(!platOk){ card.classList.add('all-hidden'); return; }
-      const rows = card.querySelectorAll('.wrow');
+      const rows = cardRows.get(card);
       let cardHasMatch = false;
       rows.forEach(r => {
-        const blob = (r.dataset.search || r.dataset.name || '').toLowerCase();
+        /* data-search is emitted already lowercased by the build script */
+        const blob = r.dataset.search || r.dataset.name || '';
         const diffOk = (activeDiff === 'all') || (r.dataset.diff === activeDiff);
         const show = diffOk && (!q || blob.includes(q));
         r.classList.toggle('hidden', !show);
@@ -1291,7 +1356,12 @@ def _index_scripts() -> str:
                         : (activeDiff !== 'all' ? ('difficulty: ' + activeDiff)
                         : (activeFilter !== 'all' ? ('filter: ' + activeFilter) : ''));
   }
-  input.addEventListener('input', applyFilter);
+  /* coalesce keystrokes into one layout pass per frame */
+  let raf = 0;
+  input.addEventListener('input', () => {
+    if(raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => { raf = 0; applyFilter(); });
+  });
   fchips.forEach(c => c.addEventListener('click', () => {
     fchips.forEach(x => x.classList.remove('active'));
     c.classList.add('active');
@@ -1335,7 +1405,10 @@ def _index_scripts() -> str:
         return ra - rb || (a.dataset.name||'').localeCompare(b.dataset.name||'');
       });
       else                   sorted = list._origOrder.filter(n=>items.indexOf(n) !== -1);
-      sorted.forEach(n => list.appendChild(n));
+      /* one reflow instead of one per row */
+      const frag = document.createDocumentFragment();
+      sorted.forEach(n => frag.appendChild(n));
+      list.appendChild(frag);
     });
   }
 
@@ -1417,26 +1490,224 @@ def _index_scripts() -> str:
 # Main
 # ─────────────────────────────────────────────────────────────────────────────
 
-def main():
-    ensure_build_path(BUILD_DIR)
-
-    # Copy resources/ once
-    resources_src = SRC_DIR / "resources"
-    resources_dst = BUILD_DIR / "resources"
-    if resources_src.exists():
-        if resources_dst.exists():
-            shutil.rmtree(resources_dst)
-        shutil.copytree(resources_src, resources_dst)
-        print("✅ Copied resources folder")
-
-    # Collect markdown files (skip readmes + build/.git/etc.)
+def collect_md_files() -> list[Path]:
+    """Every write-up markdown file. Repo docs (README/CLAUDE/…) and any
+       markdown sitting at the repo root are not write-ups and never publish."""
     md_files: list[Path] = []
     for root, dirs, files in os.walk(SRC_DIR):
-        dirs[:] = [d for d in dirs if d not in ("build", ".github", ".git", "node_modules", ".venv", "__pycache__", "re-design")]
+        dirs[:] = [d for d in dirs if d not in SKIP_DIRS]
+        rel_root = Path(root).relative_to(SRC_DIR)
+        at_root = rel_root == Path(".")
         for fn in files:
-            if fn.endswith(".md") and fn.lower() != "readme.md":
-                md_files.append(Path(root) / fn)
+            if not fn.lower().endswith(".md"):
+                continue
+            if at_root or fn.lower() in SKIP_NAMES:
+                continue
+            md_files.append(Path(root) / fn)
+    return sorted(md_files)
 
+
+# ── Image optimisation ───────────────────────────────────────────────────────
+# resources/ is ~1 GB of PNG screenshots and GitHub Pages caps a published site
+# at 1 GB. Lossless WebP holds ~58% of the PNG bytes on this corpus with no
+# quality loss at all — which matters here, because readers zoom into hex dumps
+# and log lines. Lossy q85 only reaches ~47% and softens text, so it is not
+# worth it. method=2 is the knee of the size/time curve (method=6 is ~30x
+# slower for ~1pp).
+#
+# Encoding is content-addressed in IMG_CACHE_DIR: resource filenames are
+# already content hashes, so a cache hit means a copy instead of a re-encode.
+# Cache that directory in CI and only new screenshots ever cost time.
+IMG_CACHE_DIR = Path(os.environ.get("IMG_CACHE_DIR", ".imgcache"))
+SKIP_IMAGE_OPT = os.environ.get("SKIP_IMAGE_OPT") == "1"
+RASTER_EXTS = {".png", ".jpg", ".jpeg", ".bmp", ".tiff"}
+WEBP_OPTS = dict(lossless=True, quality=100, method=2)
+
+
+def _encode_one(args: tuple) -> tuple:
+    """Worker: (rel, src, dst_dir) -> (rel, out_name, w, h) or (rel, None, 0, 0).
+
+       Returns the original name when WebP would not actually be smaller."""
+    from PIL import Image  # imported in the worker so the parent stays importable
+
+    rel, src_str, dst_dir_str, cache_dir_str = args
+    src = Path(src_str)
+    dst_dir = Path(dst_dir_str)
+    cache = Path(cache_dir_str) / (Path(rel).stem + ".webp")
+    out_rel = str(Path(rel).with_suffix(".webp")).replace("\\", "/")
+
+    try:
+        with Image.open(src) as im:
+            im.load()
+            w, h = im.size
+            if not cache.is_file():
+                cache.parent.mkdir(parents=True, exist_ok=True)
+                tmp = cache.with_suffix(".webp.tmp")
+                if im.mode not in ("RGB", "RGBA", "L"):
+                    im = im.convert("RGBA" if "A" in im.getbands() else "RGB")
+                im.save(tmp, "WEBP", **WEBP_OPTS)
+                tmp.replace(cache)
+    except Exception:
+        return (rel, None, 0, 0)
+
+    if cache.stat().st_size >= src.stat().st_size:
+        return (rel, None, w, h)  # PNG already smaller — keep it
+
+    dst = dst_dir / out_rel
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(cache, dst)
+    return (rel, out_rel, w, h)
+
+
+def copy_resources(needed: set) -> dict:
+    """Publish only the images the generated pages reference, WebP-encoded.
+
+       resources/ holds ~8.4k files, several hundred orphaned from deleted
+       write-ups; shipping those is both slow and a real ceiling risk.
+
+       Returns {source_rel: {"out": published_rel, "w": int, "h": int}}."""
+    resources_src = SRC_DIR / "resources"
+    resources_dst = BUILD_DIR / "resources"
+    mapping: dict = {}
+    if not resources_src.exists():
+        return mapping
+    if resources_dst.exists():
+        shutil.rmtree(resources_dst)
+    ensure_build_path(resources_dst)
+
+    present, missing = [], []
+    for rel in sorted(needed):
+        (present if (resources_src / rel).is_file() else missing).append(rel)
+
+    # Non-raster (svg, gif, pdf…) and any pass-through copies happen verbatim.
+    raster = [r for r in present if Path(r).suffix.lower() in RASTER_EXTS]
+    raster_set = set(raster)
+    verbatim = [r for r in present if r not in raster_set]
+
+    if raster and not SKIP_IMAGE_OPT:
+        try:
+            import PIL  # noqa: F401
+        except ImportError:
+            print("⚠ Pillow not installed — publishing PNGs unoptimised "
+                  "(pip install pillow)")
+            verbatim += raster
+            raster = []
+
+    if raster:
+        ensure_build_path(IMG_CACHE_DIR)
+        jobs = [(r, str(resources_src / r), str(resources_dst), str(IMG_CACHE_DIR))
+                for r in raster]
+        workers = max(1, (os.cpu_count() or 2))
+        print(f"Encoding {len(jobs)} images to lossless WebP on {workers} workers…")
+        with ProcessPoolExecutor(max_workers=workers) as pool:
+            for i, (rel, out_rel, w, h) in enumerate(pool.map(_encode_one, jobs, chunksize=8), 1):
+                if out_rel is None:
+                    verbatim.append(rel)
+                else:
+                    mapping[rel] = {"out": out_rel, "w": w, "h": h}
+                if i % 500 == 0:
+                    print(f"  …{i}/{len(jobs)}")
+
+    for rel in verbatim:
+        dst = resources_dst / rel
+        ensure_build_path(dst.parent)
+        shutil.copy2(resources_src / rel, dst)
+
+    src_bytes = sum((resources_src / r).stat().st_size for r in present)
+    out_bytes = sum(p.stat().st_size for p in resources_dst.rglob("*") if p.is_file())
+    on_disk = sum(1 for p in resources_src.rglob("*") if p.is_file())
+    print(f"Published {len(present)} referenced resources: "
+          f"{src_bytes/1e6:.1f} MB → {out_bytes/1e6:.1f} MB "
+          f"({100*out_bytes/max(src_bytes,1):.0f}%); "
+          f"{on_disk - len(present)} unreferenced files skipped")
+    if missing:
+        print(f"❌ {len(missing)} referenced image(s) missing from resources/ "
+              f"— these render broken:")
+        for rel in missing[:20]:
+            print(f"   {rel}")
+    return mapping
+
+
+_IMG_TAG_RE = re.compile(r'<img\b([^>]*?)src="((?:\.{1,2}/)*resources/)([^"?#]+)"([^>]*)>')
+
+def apply_image_mapping(mapping: dict) -> None:
+    """Point built pages at the WebP files and stamp intrinsic width/height.
+
+       Runs as a post-pass because which images are needed is only known after
+       the pages are rendered. width/height kills layout shift as the lazy
+       images stream in."""
+    if not mapping:
+        return
+    rewritten = pages = 0
+
+    def sub(m):
+        nonlocal rewritten
+        pre, prefix, name, post = m.groups()
+        info = mapping.get(name)
+        if not info:
+            return m.group(0)
+        rewritten += 1
+        # markdown2 emits `<img ... />`; that trailing slash must not end up
+        # between the existing attributes and the injected ones.
+        post = post.rstrip()
+        self_closing = post.endswith("/")
+        if self_closing:
+            post = post[:-1].rstrip()
+        dims = ""
+        if info["w"] and "width=" not in pre and "width=" not in post:
+            dims = f' width="{info["w"]}" height="{info["h"]}"'
+        return f'<img{pre}src="{prefix}{info["out"]}"{post}{dims}{" /" if self_closing else ""}>'
+
+    for page in BUILD_DIR.rglob("*.html"):
+        text = page.read_text(encoding="utf-8")
+        new = _IMG_TAG_RE.sub(sub, text)
+        if new != text:
+            page.write_text(new, encoding="utf-8")
+            pages += 1
+    print(f"✅ Rewrote {rewritten} <img> tags across {pages} pages to WebP + intrinsic size")
+
+
+def write_seo_files(md_files: list[Path]) -> None:
+    urls = [f"{SITE_URL}/"]
+    for md in md_files:
+        rel = md.relative_to(SRC_DIR).with_suffix(".html").as_posix()
+        urls.append(f"{SITE_URL}/{quote(rel, safe='/')}")
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    body = "\n".join(
+        f"  <url><loc>{html.escape(u)}</loc><lastmod>{today}</lastmod></url>" for u in urls
+    )
+    (BUILD_DIR / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{body}\n</urlset>\n", encoding="utf-8")
+    (BUILD_DIR / "robots.txt").write_text(
+        f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
+
+    # Cloudflare Pages reads _headers from the output root. Harmless on GitHub
+    # Pages (served as a plain file, no directives honoured).
+    #   · resources/  — filenames are content hashes, so immutable is safe
+    #   · assets/     — cache key includes the ?v= hash, so a change is a new URL
+    #   · *.html      — must revalidate, the index changes every build
+    (BUILD_DIR / "_headers").write_text(
+        "/resources/*\n"
+        "  Cache-Control: public, max-age=31536000, immutable\n"
+        "\n"
+        "/assets/*\n"
+        "  Cache-Control: public, max-age=31536000, immutable\n"
+        "\n"
+        "/*.html\n"
+        "  Cache-Control: public, max-age=0, must-revalidate\n"
+        "  X-Content-Type-Options: nosniff\n"
+        "  Referrer-Policy: strict-origin-when-cross-origin\n",
+        encoding="utf-8")
+    print("✅ Wrote sitemap.xml + robots.txt + _headers")
+
+
+def main():
+    ensure_build_path(BUILD_DIR)
+    write_assets()
+
+    md_files = collect_md_files()
     if not md_files:
         print("❌ No markdown files found!")
         return
@@ -1446,14 +1717,18 @@ def main():
     create_index_html(md_files)
 
     # Per-write-up pages
+    needed_resources: set = set()
     for md_file in md_files:
         rel_folder = md_file.parent.relative_to(SRC_DIR)
         out_file = BUILD_DIR / rel_folder / f"{md_file.stem}.html"
         try:
-            md_to_html(md_file, out_file)
+            md_to_html(md_file, out_file, res_sink=needed_resources)
             print(f"✅ {md_file.relative_to(SRC_DIR)}")
         except Exception as e:
             print(f"❌ {md_file}: {e}")
+
+    apply_image_mapping(copy_resources(needed_resources))
+    write_seo_files(md_files)
 
     print(f"\n✅ Done — {len(md_files)} files written to {BUILD_DIR}/")
 

@@ -29,10 +29,23 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install markdown2
+        run: pip install markdown2 pillow
+
+      # Resource filenames are content hashes, so a cached WebP stays valid
+      # forever. Only newly added screenshots are ever encoded.
+      - name: Restore image encode cache
+        uses: actions/cache@v4
+        with:
+          path: .imgcache
+          key: imgcache-${{ github.sha }}
+          restore-keys: |
+            imgcache-
 
       - name: Convert Markdown to HTML
         run: python build_md_to_html_with_toc.py
+
+      - name: Report published site size
+        run: du -sh build build/resources
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
