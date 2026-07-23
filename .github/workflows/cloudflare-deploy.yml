@@ -1,23 +1,25 @@
-name: Cloudflare Pages (preview / migration test)
+name: Cloudflare Pages
 
-# Manual only. The live site is still served by GitHub Pages via deploy.yml;
-# this workflow never runs on push and never touches that path. It builds the
-# same tree and Direct-Uploads it to a Cloudflare Pages project so the result
-# can be checked on *.pages.dev before any DNS cutover.
+# Publishes to the Cloudflare Pages PRODUCTION deployment on every push to
+# main, alongside deploy.yml which still publishes to GitHub Pages. Running
+# both during the transition is deliberate: each host holds a current copy, so
+# rolling back is a DNS change and nothing else.
+#
+# The deploy must target the production branch (main). Custom domains serve the
+# production deployment only — a preview deployment is not reachable from
+# writeups.chicken0248.fyi no matter where DNS points.
 #
 # Why Direct Upload rather than Cloudflare's git integration: Cloudflare caps
 # builds at 20 minutes on every plan, and the cold WebP encode of ~7.5k
 # screenshots takes longer than that. Building here keeps the .imgcache
 # actions/cache, so the encode is paid once and never again.
 #
-# One-time setup before this will run:
-#   1. Create a Cloudflare Pages project named CF_PROJECT below, choosing
-#      "Direct Upload". Note: a Direct Upload project can never be switched to
-#      git integration later — it would have to be recreated.
-#   2. Repo secrets: CLOUDFLARE_API_TOKEN (Account → Cloudflare Pages → Edit)
-#      and CLOUDFLARE_ACCOUNT_ID.
+# Requires repo secrets CLOUDFLARE_API_TOKEN (Account → Cloudflare Pages →
+# Edit) and CLOUDFLARE_ACCOUNT_ID.
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -87,4 +89,4 @@ jobs:
           fi
           npx --yes wrangler@4 pages deploy build \
             --project-name="$CF_PROJECT" \
-            --branch=preview
+            --branch=main
