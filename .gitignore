@@ -4,6 +4,9 @@ build/
 # WebP encode cache (content-addressed; restored from the Actions cache in CI)
 .imgcache/
 
+# Wrangler local state (created by `wrangler pages deploy` / `login`)
+.wrangler/
+
 # Python
 __pycache__/
 *.pyc
