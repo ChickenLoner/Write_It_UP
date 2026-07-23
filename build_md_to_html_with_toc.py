@@ -890,7 +890,10 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
     if res_sink is not None:
         collect_resource_refs(html_body, res_sink)
 
-    index_href = root_prefix + "index.html"
+    # Cloudflare Pages serves foo.html at /foo and 308-redirects /foo.html to
+    # it, so linking with the extension costs a redirect on every click. Link
+    # to the canonical extension-less form instead. "/" is the index.
+    index_href = "/"
 
     # 4. Title from first H1 in markdown
     title = _strip_platform_prefix(md_path.stem)
@@ -1019,7 +1022,10 @@ def _panel_html(group_folder: str, md_files: list) -> str:
     rows_html = []
     for i, md_path in enumerate(sorted(md_files, key=lambda p: p.stem), start=1):
         name = _strip_platform_prefix(md_path.stem)
-        href = md_path.relative_to(SRC_DIR).with_suffix(".html").as_posix()
+        # Extension-less: Cloudflare Pages serves foo.html at /foo and
+        # 308-redirects /foo.html, so keeping .html here would cost a redirect
+        # on every card click.
+        href = md_path.relative_to(SRC_DIR).with_suffix("").as_posix()
         # percent-encode everything unsafe in a URL path (spaces, #, [], &, %...)
         href_safe = html.escape(quote(href, safe="/"), quote=True)
 
@@ -1670,7 +1676,7 @@ def apply_image_mapping(mapping: dict) -> None:
 def write_seo_files(md_files: list[Path]) -> None:
     urls = [f"{SITE_URL}/"]
     for md in md_files:
-        rel = md.relative_to(SRC_DIR).with_suffix(".html").as_posix()
+        rel = md.relative_to(SRC_DIR).with_suffix("").as_posix()
         urls.append(f"{SITE_URL}/{quote(rel, safe='/')}")
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     body = "\n".join(
@@ -1733,7 +1739,7 @@ def write_404_page() -> None:
 <body>
 
 {topbar('<a href="' + PORTFOLIO_URL + '">SOC</a> <span class="sep">/</span> '
-        '<a href="/index.html"><b>WRITE-UPS</b></a> <span class="sep">/</span> '
+        '<a href="/"><b>WRITE-UPS</b></a> <span class="sep">/</span> '
         '<b class="here">404</b>',
         '<span class="sev rd"><span class="dot"></span>NOT FOUND</span>')}
 
@@ -1741,10 +1747,10 @@ def write_404_page() -> None:
   <div class="nf-code">404</div>
   <p class="nf-msg">No write-up exists at this address.</p>
   <p class="nf-sub">// the case file may have been renamed, moved, or never existed</p>
-  <a class="nf-back" href="/index.html">← Back to all write-ups</a>
+  <a class="nf-back" href="/">← Back to all write-ups</a>
 </div>
 
-{article_footer("/index.html")}
+{article_footer("/")}
 
 </body>
 </html>

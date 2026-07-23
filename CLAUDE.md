@@ -59,8 +59,25 @@ What the build does and does not publish:
 
 ## Hosting
 
-Live at <https://writeups.chicken0248.fyi> on GitHub Pages (`deploy.yml`, push
-to `main`). Custom domain pinned by the root `CNAME`.
+Live at <https://writeups.chicken0248.fyi> on **Cloudflare Pages**
+(`cloudflare-deploy.yml`, push to `main`). Migrated from GitHub Pages on
+2026-07-23. DNS is at Porkbun — `writeups` is a CNAME to `write-it-up.pages.dev`.
+The zone stays on Porkbun; Cloudflare only needs to own the zone for apex
+domains, not subdomains.
+
+Deployment is Direct Upload from Actions, not Cloudflare's git integration,
+because Cloudflare caps builds at 20 minutes on every plan and the cold WebP
+encode exceeds that. Note a Direct Upload project cannot be converted to git
+integration later.
+
+Cloudflare serves `foo.html` at `/foo` and 308-redirects the `.html` form, so
+the index and sitemap emit **extension-less** URLs. That is Cloudflare-specific:
+GitHub Pages 404s those paths.
+
+`deploy.yml` is kept as a manual-only rollback. Reverting means re-enabling
+GitHub Pages, re-adding the custom domain in repo settings, running that
+workflow, pointing the Porkbun CNAME back to `chickenloner.github.io`, and
+reverting the extension-less URL commit.
 
 Capacity, as of the WebP change: **0.495 GiB across 7,868 files**, averaging
 ~1.4 MiB and ~21 images per write-up.

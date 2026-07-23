@@ -1,8 +1,15 @@
 name: Build and Deploy GitHub Pages
 
+# Manual only. The site moved to Cloudflare Pages (cloudflare-deploy.yml) on
+# 2026-07-23; writeups.chicken0248.fyi now CNAMEs to write-it-up.pages.dev.
+# Kept as an emergency path: re-enable GitHub Pages for the repo, re-add the
+# custom domain in repo settings, run this workflow, then point the Porkbun
+# CNAME back to chickenloner.github.io.
+#
+# Note the index and sitemap now emit extension-less URLs, which Cloudflare
+# serves natively but GitHub Pages does not — a rollback also means reverting
+# the commit that made that change.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
