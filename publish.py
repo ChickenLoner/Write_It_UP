@@ -177,7 +177,8 @@ def main() -> int:
         print(f"   ❌ {len(broken)} missing image(s) — fix before publishing")
     if needs_meta:
         print(f"   ⚠  {len(needs_meta)} write-up(s) need difficulty/category/tags/summary")
-        print("      ask Claude to fill them in, or edit writeups_meta.json by hand")
+        print("      → ask Claude Code: \"fill in the metadata for the new write-ups\"")
+        print("        (it reads the labs and writes the entries; see CLAUDE.md)")
     if not blocked and not needs_meta:
         print("   ✅ ready to publish")
 

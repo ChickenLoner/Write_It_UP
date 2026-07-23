@@ -28,11 +28,17 @@ never published — it is treated as repo documentation.
 `fix_paths.py` and `fix_joplin_toc.py` still exist and still work (that is what
 `automated_fix.bat` runs); `publish.py` calls into them and adds the validation.
 
-### Metadata
+### Metadata — Claude fills this in
 
-`writeups_meta.json` drives the index card — difficulty pill, category, tags,
-summary. `publish.py` scaffolds a blank entry; the values need a human (or
-Claude) to read the lab. Without a summary the card renders bare.
+`writeups_meta.json` drives the index card: difficulty pill, category, tags,
+summary. `publish.py` scaffolds a blank entry but cannot fill it, because the
+values require reading the lab. Without a summary the card renders bare.
+
+**This is a job for Claude, not the user.** Whenever `publish.py` reports
+scaffolded or blank entries — or the user adds a write-up and asks to publish —
+read each new write-up and write the entry directly into `writeups_meta.json`.
+Do not hand the blank JSON back and ask the user to complete it. Ask only when
+the lab genuinely gives no signal for a field.
 
 ```json
 "<Folder>/<[Platform Write-up] Name>.md": {
@@ -43,8 +49,34 @@ Claude) to read the lab. Without a summary the card renders bare.
 }
 ```
 
-Labelling rules and the bulk regeneration pipeline are in `tools/README.md`.
-For a single lab, edit the JSON directly — do not re-run the batch generator.
+How to derive each field — read the write-up's scenario block, its questions,
+and the tools that actually appear in the commands and screenshots:
+
+- **difficulty** — use the platform's own label when the write-up states one
+  (HTB, THM and CyberDefenders normally do). Never invent one to avoid
+  `Unknown`; `Unknown` is the correct answer when there is no signal.
+- **category** — the investigative domain, not the platform. **Reuse an
+  existing category** unless nothing fits; there are 22 in use and the index
+  should not sprout near-duplicates. Most common, by entry count:
+
+  `Windows DFIR` (59) · `Malware Analysis` (54) · `Network Forensics` (50) ·
+  `Memory Forensics` (43) · `AD / Kerberos` (27) · `Incident Response` (19) ·
+  `Linux DFIR` (18) · `Reverse Engineering` (17) · `Email / Phishing` (13) ·
+  `Log Analysis` (12) · `Web Exploitation` (10) · `Threat Intel` (9)
+- **tags** — concrete tools, artifacts, techniques, MITRE IDs. Lowercase, no
+  `#`. 875 tags are in use; the most common are `wireshark`, `pcap`,
+  `volatility`, `cyberchef`, `c2`, `virustotal`, `powershell`, `sysmon` — reuse
+  those spellings rather than inventing variants. Skip generic filler like
+  `forensics` or `ctf` that every entry would carry.
+- **summary** — what the reader *does* in this lab, active voice. Target ≤155
+  characters; existing entries run 105-163 with a median of 135, so aim for
+  ~135 and treat 155 as the ceiling. Never open with "This lab" / "This
+  write-up" — no existing entry does. Be specific enough to distinguish it from
+  the other 360 entries.
+
+Match the surrounding entries' voice — read a few neighbours in the same
+platform folder before writing. Keep it a single-lab edit; the batch pipeline
+in `tools/README.md` is only for regenerating everything at once.
 
 ## Build
 
