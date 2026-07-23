@@ -26,6 +26,14 @@ permissions:
   contents: read
   deployments: write
 
+# Two pushes in quick succession would otherwise race, and whichever upload
+# finished last would win — potentially publishing the older build. Superseded
+# runs are cancelled; a cancelled wrangler upload never completes its
+# deployment, so the currently live one stays untouched.
+concurrency:
+  group: cloudflare-pages
+  cancel-in-progress: true
+
 env:
   CF_PROJECT: write-it-up
 
