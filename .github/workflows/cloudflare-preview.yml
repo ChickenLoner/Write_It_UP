@@ -1,0 +1,80 @@
+name: Cloudflare Pages (preview / migration test)
+
+# Manual only. The live site is still served by GitHub Pages via deploy.yml;
+# this workflow never runs on push and never touches that path. It builds the
+# same tree and Direct-Uploads it to a Cloudflare Pages project so the result
+# can be checked on *.pages.dev before any DNS cutover.
+#
+# Why Direct Upload rather than Cloudflare's git integration: Cloudflare caps
+# builds at 20 minutes on every plan, and the cold WebP encode of ~7.5k
+# screenshots takes longer than that. Building here keeps the .imgcache
+# actions/cache, so the encode is paid once and never again.
+#
+# One-time setup before this will run:
+#   1. Create a Cloudflare Pages project named CF_PROJECT below, choosing
+#      "Direct Upload". Note: a Direct Upload project can never be switched to
+#      git integration later — it would have to be recreated.
+#   2. Repo secrets: CLOUDFLARE_API_TOKEN (Account → Cloudflare Pages → Edit)
+#      and CLOUDFLARE_ACCOUNT_ID.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+env:
+  CF_PROJECT: write-it-up
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install markdown2 pillow
+
+      - name: Restore image encode cache
+        uses: actions/cache@v4
+        with:
+          path: .imgcache
+          key: imgcache-${{ github.sha }}
+          restore-keys: |
+            imgcache-
+
+      - name: Convert Markdown to HTML
+        run: python build_md_to_html_with_toc.py
+
+      # Cloudflare's free plan allows 20,000 files per deployment. Fail loudly
+      # here rather than partway through an upload.
+      - name: Check deployment fits Cloudflare limits
+        run: |
+          files=$(find build -type f | wc -l)
+          echo "build/ contains $files files ($(du -sh build | cut -f1))"
+          if [ "$files" -gt 19000 ]; then
+            echo "::error::$files files — approaching the 20,000/deployment free-plan limit"
+            exit 1
+          fi
+          if [ "$files" -gt 15000 ]; then
+            echo "::warning::$files files — over 75% of the 20,000 free-plan limit"
+          fi
+          big=$(find build -type f -size +25M | head -5)
+          if [ -n "$big" ]; then
+            echo "::error::files over the 25 MiB per-asset limit:"; echo "$big"; exit 1
+          fi
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy build --project-name=${{ env.CF_PROJECT }} --branch=preview
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
