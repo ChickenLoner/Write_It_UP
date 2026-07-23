@@ -1377,7 +1377,7 @@ def _index_scripts() -> str:
 
   /* ─── Tweaks ─── */
   const DEFAULTS = {
-    "view":"rows","cardMin":320,"showMeta":true,"showIndex":true,
+    "view":"cards","cardMin":320,"showMeta":true,"showIndex":true,
     "accent":"subtle","startOpen":"first","sort":"az"
   };
   const LS = 'writeup-index-tweaks';
