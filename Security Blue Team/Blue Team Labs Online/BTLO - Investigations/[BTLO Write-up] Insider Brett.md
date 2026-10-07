@@ -39,18 +39,21 @@ And without scrolling, we already obtained answers from Q1 to Q4.
 </details>
 
 >Q2) What is the full nmap command that ran? (Format: nmap command here)
+
 <details>
   <summary>Answer</summary>
 <pre><code>nmap -sS --script *smb*,*ldap* -sV --version-all -T5 -oN scan.txt 192.168.25.0/24</code></pre>
 </details>
 
 >Q3) What is the MAC address of the first responding IP? (Format: xx:xx:xx:xx:xx:xx)
+
 <details>
   <summary>Answer</summary>
 <pre><code>00:50:56:F4:3C:76</code></pre>
 </details>
 
 >Q4) What is the domain as determined by the LDAP scripts? (Format: string.tld)
+
 <details>
   <summary>Answer</summary>
 <pre><code>initech.local</code></pre>
@@ -75,6 +78,7 @@ Scroll down until we found `smb-brute` script then we should see 2 enabled accou
 </details>
 
 >Q7) What is the IP of the connecting machine in the active SMB session, and when did they log in? (Format: xx.xx.xx.xx, YYYY-MM-DDTHH:MM:SS)
+
 <details>
   <summary>Answer</summary>
 <pre><code>192.168.25.130, 2024-04-11T10:47:17</code></pre>
@@ -95,6 +99,7 @@ After select modules and setting required options then he executed it then metas
 </details>
 
 >Q9) What was the name of the uploaded payload? (Format: name.extension)
+
 <details>
   <summary>Answer</summary>
 <pre><code>VdMXyqeN.exe</code></pre>
@@ -146,6 +151,7 @@ But if you didn't know then you could search for the first line on the internet 
 </details>
 
 >Q14) What is the password for Brett? (Format: password)
+
 <details>
   <summary>Answer</summary>
 <pre><code>VERYSECURE!</code></pre>

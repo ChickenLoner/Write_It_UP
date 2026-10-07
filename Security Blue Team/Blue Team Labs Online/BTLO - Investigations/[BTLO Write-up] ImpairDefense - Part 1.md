@@ -26,6 +26,7 @@ Open process tree window by go to "Tools" -> "process tree" then we could see ma
 </details>
 
 >Q2) What is the first child process invoked by the malware?
+
 <details>
   <summary>Answer</summary>
 <pre><code>cmd.exe</code></pre>

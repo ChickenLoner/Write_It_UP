@@ -77,6 +77,7 @@ Then we could see that ftp username was exposed from here so it also confirmed t
 </details>
 
 >Q3) What was the username of the account used to compromise the service? (Format: Username)
+
 <details>
   <summary>Answer</summary>
 <pre><code>ptfftp1010</code></pre>

@@ -37,6 +37,7 @@ but in this case, Q1 accepted timestamp of the SYN packet.
 </details>
 
 >Q2) What is Briana’s IP address? (Format: IP Address)
+
 <details>
   <summary>Answer</summary>
 <pre><code>192.168.1.27</code></pre>
@@ -78,6 +79,7 @@ I putted it to CyberChef and make it look a little less confusing but we will ev
 </details>
 
 >Q6) What email address was the attacker sending data to? (Format: name@domain.tld)
+
 <details>
   <summary>Answer</summary>
 <pre><code>zaritkt@arhitektondizajn.com</code></pre>
@@ -94,12 +96,14 @@ System information is the first on this mail which also included CPU and RAM (Q8
 </details>
 
 >Q8) How much RAM does Briana’s computer have—in GBs? (Format: XXGB)
+
 <details>
   <summary>Answer</summary>
 <pre><code>32GB</code></pre>
 </details>
 
 >Q9) What type of account login data was stolen by the attacker? (Format: Data1, Data2)
+
 <details>
   <summary>Answer</summary>
 <pre><code>Passwords, Usernames</code></pre>
@@ -128,6 +132,7 @@ Alright we got the right one, along with password that used to authenticate.
 </details>
 
 >Q12) What password did Briana use to authenticate to webhostbox[.]net? Can you decode it? (Format: Password)
+
 <details>
   <summary>Answer</summary>
 <pre><code>M@ssw0rd#621</code></pre>

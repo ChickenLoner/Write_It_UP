@@ -28,6 +28,7 @@ We can use `Get-FileHash` cmdlet or `certutil` (which effectively relies on the 
 </details>
 
 >Q2) What is the name of the packer used? (Format: Packer)
+
 <details>
   <summary>Answer</summary>
 <pre><code>UPX</code></pre>
@@ -45,6 +46,7 @@ We can use `upx` with `-d` to unpack any file packed with UPX then we will have 
 </details>
 
 >Q4) When was the Malware File compiled? (In UTC) (Format: DDMMYYYY HH:MM:SS)
+
 <details>
   <summary>Answer</summary>
 <pre><code>02012024 13:16:57</code></pre>
@@ -83,6 +85,7 @@ Next, it uses `GetSystemInfo` to get number of processors compare to number 4 (j
 </details>
 
 >Q7) What anti-analysis technique is used by the binary? (Format: Anti Analysis Name)
+
 <details>
   <summary>Answer</summary>
 <pre><code>anti-vm</code></pre>
@@ -156,6 +159,7 @@ Go to `C:\Windows\Temp\` to get a keylogger to put into PEStudio.
 </details>
 
 >Q11) Which type of malware is the newly dropped file? (Single word, Lowercase) (Format: Malware Type)
+
 <details>
   <summary>Answer</summary>
 <pre><code>keylogger</code></pre>

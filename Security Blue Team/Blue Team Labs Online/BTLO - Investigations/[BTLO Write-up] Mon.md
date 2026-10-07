@@ -70,6 +70,7 @@ Then we will see what we are looking for on EventID 22 - DNSEvent (Q3) which was
 </details>
 
 >Q3) What is the number of the Sysmon Event ID that helped to find the C2 domain? (Format: SysmonEventID)
+
 <details>
   <summary>Answer</summary>
 <pre><code>22</code></pre>

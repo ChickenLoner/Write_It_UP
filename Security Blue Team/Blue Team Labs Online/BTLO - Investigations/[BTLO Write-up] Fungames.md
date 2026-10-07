@@ -24,6 +24,7 @@ After opened pcap file in Wireshark and filtered for HTTP then we could see that
 </details>
 
 >Q2) What is the IP address of the victim? (Format: X.X.X.X)
+
 <details>
   <summary>Answer</summary>
 <pre><code>192.168.8.142</code></pre>
@@ -39,6 +40,7 @@ After NSE script enumerate then we could see SQL injection attempt on `id` param
 </details>
 
 >Q4) It seems the attacker used a famous tool to perform the attack (Format: Tool)
+
 <details>
   <summary>Answer</summary>
 <pre><code>sqlmap</code></pre>
@@ -92,6 +94,7 @@ Then calculate SHA256 sum (Q7) then we could search on VirusTotal to identify wh
 </details>
 
 >Q7) What is the sha256 hash of the file above? (Format: SHA256)
+
 <details>
   <summary>Answer</summary>
 <pre><code>d8dd09b01eb4e363d88ff53c0aace04c39dbea822b7adba7a883970abbf72a77</code></pre>

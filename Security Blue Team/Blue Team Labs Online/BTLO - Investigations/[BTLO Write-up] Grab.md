@@ -112,6 +112,7 @@ Use the same method from Q2 then we will have file size of this bat script
 </details>
 
 >Q7) Submit the regex pattern found in the sample which is used to look for Discord tokens (Format: RegexPattern) 
+
 <details>
   <summary>Answer</summary>
 <pre><code>[\w-]{24}\.[\w-]{6}\.[\w-]{27}|mfa\.[\w-]{84}</code></pre>

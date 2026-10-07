@@ -122,6 +122,7 @@ After convert it to ASCII, we can see that it will use PowerShell to download ad
 </details>
 
 >Q9) S2: Submit the filename of the file after downloading onto the PC from above URI (Format: filename.ext)
+
 <details>
   <summary>Answer</summary>
 <pre><code>bTFzQLdki.tmp</code></pre>

@@ -96,6 +96,7 @@ Once we followed this stream, the attacker executed several commands but ultimat
 </details>
 
 >Q7) What is the location where the command is executed? (Format: /location)
+
 <details>
   <summary>Answer</summary>
 <pre><code>/tmp</code></pre>

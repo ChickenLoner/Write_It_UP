@@ -91,6 +91,7 @@ This C2 framework is `oldcss` in the comment as default and the value assign to 
 </details>
 
 >Q6) Use some OSINT skills with these parameters and figure out the c2 framework that the attacker used.
+
 <details>
   <summary>Answer</summary>
 <pre><code>TreverC2</code></pre>

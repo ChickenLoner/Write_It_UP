@@ -60,9 +60,10 @@ Search it on URLHaus then we will have the name of this malware right here.
 
 I searched for the most popular sysmon config made by [Swift On Security](https://github.com/SwiftOnSecurity/sysmon-config/blob/master/sysmonconfig-export.xml) then we can see how we can write this config but change the content inside image tag to `WINWORD.EXE` for Microsoft Word process.
 
-```
-<Image condition="is">WINWORD.EXE</Image>
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>&lt;Image condition="is"&gt;WINWORD.EXE&lt;/Image&gt;</code></pre>
+</details>
 
 >Q5) View the block-downloads-config.xml in the /Downloads/Sysmon/ folder. Review the logic to block all executables within the Downloads folder. What would be the re-written line to block files being written to the OS-level Temp directory?
 
@@ -74,9 +75,10 @@ We have example sysmon config right here so lets open it
 
 Then we can see that we can replaced content inside TargetFileName tag to `C:\Windows\Temp` to block all files that will be downloaded to OS-level Temp directory.
 
-```
-<TargetFilename condition="contains all">C:\Windows\Temp</TargetFilename>
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>&lt;TargetFilename condition="contains all"&gt;C:\Windows\Temp&lt;/TargetFilename&gt;</code></pre>
+</details>
 
 >Q6) Find the 27 event with the hash ending in B4A2. What is the TargetFilename (filename only, not path) 
 

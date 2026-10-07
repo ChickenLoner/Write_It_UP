@@ -41,6 +41,7 @@ Pick one of them then you should be able to obtain both Q1 and Q2 answers in thi
 </details>
 
 >Q2) What is the forest root domain name? (Format: prefix.name.suffix)
+
 <details>
   <summary>Answer</summary>
 <pre><code>lab.btlo.com</code></pre>

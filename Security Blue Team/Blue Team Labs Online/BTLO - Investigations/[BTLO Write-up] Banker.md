@@ -85,6 +85,7 @@ Since we could not use `netscan` plugin then we have to go with alternative plug
 </details>
 
 >Q7) What port is being used for communication? (Format: port)
+
 <details>
   <summary>Answer</summary>
 <pre><code>8080</code></pre>
@@ -117,6 +118,7 @@ We can use `strings 1484.dmp | grep "https://" ` to find any banking domain with
 </details>
 
 >Q10) What are the two domain names of the online banking portals? (Format: https://subdomain.domain.tld, https://...) 
+
 <details>
   <summary>Answer</summary>
 <pre><code>https://chaseonline.chase.com, https://onlinebanking.tdbank.com</code></pre>
