@@ -8,18 +8,24 @@ name: Cloudflare Pages Preview
 # exact URL is in the job summary). Custom domains serve production only, so
 # writeups.chicken0248.fyi is never affected.
 #
+# When the PR closes (merged or not) a second job deletes that branch's preview
+# deployments, so stale builds do not stay publicly reachable at their hash URLs.
+#
 # Safety:
 #   * Forks are skipped — they must not run with the Cloudflare secrets.
 #   * The branch name reaches the shell through an env var, never inline.
 #   * The deploy step refuses to run when the branch resolves to the
 #     production branch (main), which would overwrite the live site.
 #   * Preview deployments get Cloudflare's default noindex header.
+#   * Cleanup only deletes deployments that are environment "preview" AND on the
+#     PR's own branch, refuses main, and aborts if the filter matches more than
+#     MAX_DELETE deployments (a filter bug must not wipe the project).
 #
 # Requires the same secrets as cloudflare-deploy.yml.
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize, reopened, closed]
 
 permissions:
   contents: read
@@ -31,10 +37,13 @@ concurrency:
 
 env:
   CF_PROJECT: write-it-up
+  MAX_DELETE: "60"
 
 jobs:
   preview:
-    if: github.event.pull_request.head.repo.full_name == github.repository
+    if: >-
+      github.event.action != 'closed' &&
+      github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -92,3 +101,67 @@ jobs:
             echo ""
             echo "${url:-see the log above}"
           } >> "$GITHUB_STEP_SUMMARY"
+
+  cleanup:
+    if: >-
+      github.event.action == 'closed' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete this branch's preview deployments
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          set -euo pipefail
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::Cloudflare secrets are empty or unset"; exit 1
+          fi
+          if [ -z "$BRANCH" ] || [ "$BRANCH" = "main" ]; then
+            echo "::error::refusing to clean up branch '$BRANCH' — that is production"; exit 1
+          fi
+
+          api="https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/pages/projects/${CF_PROJECT}/deployments"
+          auth=(-H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}")
+
+          # Collect every preview deployment built from this branch (paged).
+          ids=()
+          seen_branches=""
+          page=1
+          while :; do
+            resp=$(curl -fsS "${auth[@]}" "${api}?env=preview&per_page=25&page=${page}")
+            echo "$resp" | jq -e '.success == true' >/dev/null \
+              || { echo "::error::listing deployments failed: $resp"; exit 1; }
+            mapfile -t batch < <(echo "$resp" | jq -r --arg b "$BRANCH" '
+              .result[]
+              | select(.environment == "preview"
+                       and .deployment_trigger.metadata.branch == $b)
+              | .id')
+            ids+=("${batch[@]}")
+            seen_branches+=$(echo "$resp" | jq -r '.result[].deployment_trigger.metadata.branch // "?"')$'\n'
+            [ "$(echo "$resp" | jq '.result | length')" -lt 25 ] && break
+            page=$((page + 1))
+          done
+
+          if [ "${#ids[@]}" -eq 0 ]; then
+            echo "no preview deployments found for branch '$BRANCH'"
+            echo "preview branches that do exist:"; echo "$seen_branches" | sort -u | sed 's/^/  /'
+            exit 0
+          fi
+          if [ "${#ids[@]}" -gt "$MAX_DELETE" ]; then
+            echo "::error::${#ids[@]} deployments matched (limit $MAX_DELETE) — refusing, the filter may be wrong"
+            exit 1
+          fi
+
+          echo "deleting ${#ids[@]} preview deployment(s) for '$BRANCH':"
+          failed=0
+          for id in "${ids[@]}"; do
+            if curl -fsS -X DELETE "${auth[@]}" "${api}/${id}?force=true" \
+                 | jq -e '.success == true' >/dev/null; then
+              echo "  deleted $id"
+            else
+              echo "::warning::could not delete $id"; failed=1
+            fi
+          done
+          exit "$failed"
