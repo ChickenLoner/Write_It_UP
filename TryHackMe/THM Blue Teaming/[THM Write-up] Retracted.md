@@ -94,12 +94,14 @@ After that, several files was renamed with `.dmp` extension which indicates rans
 </details>
 
 > What is the download location of this installer?
+
 <details>
   <summary>Answer</summary>
 <pre><code>C:\Users\Sophie\Download</code></pre>
 </details>
 
 > The installer encrypts files and then adds a file extension to the end of the file name. What is this file extension?
+
 <details>
   <summary>Answer</summary>
 <pre><code>.dmp</code></pre>

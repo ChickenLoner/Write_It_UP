@@ -19,9 +19,10 @@ In Kibana, we always need to specify time range and luckily for us that the room
 
 Now we have total of 1482 events during March 2022 which is the answer of this question
 
-```
-1482
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>1482</code></pre>
+</details>
 
 >What is the IP associated with the suspected user in the logs?
 
@@ -35,9 +36,10 @@ This user-agent is associated with **Bitsadmin**, a Windows "living-off-the-land
 
 So we can query with `user-agent:bitsadmin` to get event with this user agent then we will have these 2 events sending from 192.166.65.54 to pastebin.com
 
-```
-192.166.65.54
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.166.65.54</code></pre>
+</details>
 
 >The user’s machine used a legit windows binary to download a file from the C2 server. What is the name of the binary?
 
@@ -46,23 +48,28 @@ So we can query with `user-agent:bitsadmin` to get event with this user agent th
 Bitsadmin is the powerful Windows lolbin that can be used for downloading a file and execute it, more detailed about the abuse of this binary could be found in the Lolbas project right here
 - https://lolbas-project.github.io/lolbas/Binaries/Bitsadmin/
 
-```
-bitsadmin
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>bitsadmin</code></pre>
+</details>
 
 >The infected machine connected with a famous filesharing site in this period, which also acts as a C2 server used by the malware authors to communicate. What is the name of the filesharing site?
 
 ![c7db59d2064a344a2b01e8f9d86616ed.png](/resources/c7db59d2064a344a2b01e8f9d86616ed.png)
-```
-pastebin.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>pastebin.com</code></pre>
+</details>
 
 >What is the full URL of the C2 to which the infected host is connected?
 
 ![f73e364032e9d44e4a7ca723e486793f.png](/resources/f73e364032e9d44e4a7ca723e486793f.png)
-```
-pastebin.com/yTg0Ah6a 
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>pastebin.com/yTg0Ah6a</code></pre>
+</details>
 
 >A file was accessed on the filesharing site. What is the name of the file accessed?
 
@@ -70,14 +77,17 @@ pastebin.com/yTg0Ah6a
 
 Following the full URL —https://pastebin.com/yTg0Ah6a, We can see that this pastebin is hosting a secret file containing a flag which can be submitted to complete the room.
 
-```
-secret.txt
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>secret.txt</code></pre>
+</details>
 
 >The file contains a secret code with the format THM{_____}.
-```
-THM{SECRET__CODE}
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>THM{SECRET__CODE}</code></pre>
+</details>
 
 ![61061590c92e9699c2674812f39b8b29.png](/resources/61061590c92e9699c2674812f39b8b29.png)
 

@@ -21,9 +21,10 @@ Since this room already pre-analyzed disk image for us so we can just open the c
 
 And now we can look at the "USB Device Attached" to get the serial number of the USB that already parsed out from SYSTEM registry hive (USBSTOR key) right here.
 
-```
-2651931097993496666	
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2651931097993496666</code></pre>
+</details>
 
 >What is the profile name of the personal hotspot Liam used to evade network-level detection?
 
@@ -31,9 +32,10 @@ And now we can look at the "USB Device Attached" to get the serial number of the
 
 To find the network profile, we have to dig into SOFTWARE registry hive to inspect the `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles` registry key which we can see that Liam used his iPhone for this operation as indicates by the ProfileName.
 
-```
-Liam's Iphone
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Liam's Iphone</code></pre>
+</details>
 
 >What is the name of the zip file Liam copied from the USB to the machine for exfiltration instructions?
 
@@ -45,9 +47,10 @@ Since we are dealing with User and Entity Behavior Analytics (UEBA) then I want 
 
 After navigated to Desktop of the Administrator user, we can see that this is a zip file located on this folder and it has the same name as the suspicious folder we found from "Recent Documents" so this is the file we are looking for.
 
-```
-Shadow_Plan.zip
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Shadow_Plan.zip</code></pre>
+</details>
 
 >What is the password for this zip file?
 
@@ -57,9 +60,10 @@ Shadow_Plan.zip
 
 Remember that we found `Pass.txt` from the Document folder of the Administrator so we can inspect it which I found that this password can be used to unzip the file so we got the right file!
 
-```
-Qwerty@123
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Qwerty@123</code></pre>
+</details>
 
 >Time to reveal the external entity helping Liam! Who is the author of the PDF file stored in the zip file?
 
@@ -71,9 +75,10 @@ I moved all extracted files to the folder that stores the exiftool binary then u
 
 Now we can open pdf file to see what Liam had been told which it aligns with everything we found and things we are going to find as well.
 
-```
-Henry
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Henry</code></pre>
+</details>
 
 >What is the correct extension of the file that has no extension in the zip folder?
 
@@ -81,9 +86,10 @@ Henry
 
 Upon using exiftool on `confidential` file which we can see that this file is actually an image file and we also found the hidden flag from the comment metadata as well.
 
-```
-png
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>png</code></pre>
+</details>
 
 >It looks like Liam searched for some files inside the file explorer. What are the names of these files? (alphabetical order)
 
@@ -95,9 +101,10 @@ When talking about "searching", we have 1 registry key that stores keyword that 
 
 Here is another keyword and we can determine that Henry that instructed Liam was interesting in Financial situation of the company from both keywords .
 
-```
-Financial, Revenue
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Financial, Revenue</code></pre>
+</details>
 
 >What are the names of the folders that were present on the USB device? (alphabetical order)
 
@@ -107,9 +114,10 @@ We can go back to "Recent Documents" which we can see another 2 folders that wer
 
 ShellBags also store similar info as well so we can use this artifacts as an alternative of this.
 
-```
-Critical Data TECH THM, Exfiltration Plan
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Critical Data TECH THM, Exfiltration Plan</code></pre>
+</details>
 
 >The external entity didn't fully trust Liam for the exfiltration so they asked him to execute file_uploader.exe, through the instructions in PDF. When was this file last executed and how many times was it executed? (YYYY-MM-DD HH:MM:SS, number of execution times)
 
@@ -121,16 +129,19 @@ First, I used exiftool and this file which is not reveal any useful information 
 
 There are several evidence of execution that can be used to find this answer but we can easily get it from "Run Programs" that already parsed prefetch files for us which we can see that the file was executed 2 times but somehow the 09 was accepted as an answer instead of 11.
 
-```
-2025-01-29 11:26:09, 2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2025-01-29 11:26:09, 2</code></pre>
+</details>
 
 >Liam received a hidden flag inside a file (in the zip folder) from the external entity helping him. What was that?
 
 ![745d90d4314a04c425ad109377b05aa1.png](/resources/745d90d4314a04c425ad109377b05aa1.png)
-```
-FLAGT{THM_TECH_DATA}
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>FLAGT{THM_TECH_DATA}</code></pre>
+</details>
 
 >It seems like Liam caused one last damage before leaving. When did Liam delete "Tax Records.docx"? (YYYY-MM-DD HH:MM:SS)
 
@@ -146,9 +157,10 @@ Then I used `MFTECmd.exe -f $UsnJrnl_$J --csv output` to parse the artefact.
 
 Then after filter file **docx** extension and **File Delete** Update Reasons then we will have the value inside "Update Timestamp" field as the answer of this question.
 
-```
-2025-01-29 11:26:02
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2025-01-29 11:26:02</code></pre>
+</details>
 
 >Which social media site did Liam search for using his web browser? Likely to avoid suspicion, thinking somebody was watching him. (Full URL)
 
@@ -156,9 +168,10 @@ Then after filter file **docx** extension and **File Delete** Update Reasons the
 
 We can take a look at "Web History" which reveals that Liam accessed Facebook but only default page but not browse for any extra page.
 
-```
-https://www.facebook.com/
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://www.facebook.com/</code></pre>
+</details>
 
 >What is the PowerShell command Liam executed as per the plan?
 
@@ -170,9 +183,10 @@ Lastly, we can see that the last objective is get all network shares and we know
 
 Which we can see that the last record shows the PowerShell command used to list all network shares as planned. 
 
-```
-Get-WmiObject -Class Win32_Share | Select-Object Name, Path
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Get-WmiObject -Class Win32_Share | Select-Object Name, Path</code></pre>
+</details>
 
 ![5d34a7b7ca17d1fc308f89869f318061.png](/resources/5d34a7b7ca17d1fc308f89869f318061.png)
 

@@ -23,9 +23,10 @@ We will have to start the attackbox on this one and we can see that there is an 
 
 We can double click eml file which will automatically started Thunderbird and display an email like this, we can see that the attacker was trying to imitate Netflix to get user to click a link embedded on that red button by manipulate an emotion such as panick or afraid to lose the account.
 
-```
-Netflix
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Netflix</code></pre>
+</details>
 
 >What is the From email address?
 
@@ -33,9 +34,10 @@ Netflix
 
 We have quite long email sender and look we do not have to look at the source of this email to answer this question and we can easily copy this sender email by clicking on it and select "Copy Email Address". one thing to notice here is the sender email is very suspicious and its less likely that the actual netflix will send an email without the @netflix.com domain.
 
-```
-JGQ47wazXe1xYVBrkeDg-JOg7ODDQwWdR@JOg7ODDQwWdR-yVkCaBkTNp.gogolecloud.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>JGQ47wazXe1xYVBrkeDg-JOg7ODDQwWdR@JOg7ODDQwWdR-yVkCaBkTNp.gogolecloud.com</code></pre>
+</details>
 
 >What is the originating IP? Defang the IP address. 
 
@@ -47,9 +49,10 @@ Its time to dig into the source by clicking the "More" button at top right and s
 
 Now we can see that the **X-Originating-Ip** header is the header that stores the actual sender IP of this email.
 
-```
-209[.]85[.]167[.]226
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>209[.]85[.]167[.]226</code></pre>
+</details>
 
 >From what you can gather, what do you think will be a domain of interest? Defang the domain.
 
@@ -57,9 +60,10 @@ Now we can see that the **X-Originating-Ip** header is the header that stores th
 
 Then we can see that **Return-Path** header and SPF header has specific domain that is not associated with netflix at all and this is likely to be the actual email that was sent by the phisher.
 
-```
-etekno[.]xyz
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>etekno[.]xyz</code></pre>
+</details>
 
 >What is the shortened URL? Defang the URL.
 
@@ -71,9 +75,11 @@ There are so many HTML code on the source so we can come back to rendered email,
 
 Now we paste it in CyberChef to defang and now we get the answer.
 
-```
-hxxps[://]t[.]co/yuxfZm8KPg?amp=1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>hxxps[://]t[.]co/yuxfZm8KPg?amp=1</code></pre>
+</details>
+
 ***
 ## Phishing Case 2
 **Scenario**: You are a Level 1 SOC Analyst. Several suspicious emails have been forwarded to you from other coworkers. You must obtain details from each email for your team to implement the appropriate rules to prevent colleagues from receiving additional spam/phishing emails. 
@@ -90,14 +96,17 @@ A malicious attachment from a phishing email inspected in the previous Phishing 
 
 Alright first thing we noticed after opened any.run report is the filename and classification that was marked by any.run itself which is Suspicious Activity.
 
-```
-Suspicious Activity
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Suspicious Activity</code></pre>
+</details>
 
 >What is the name of the PDF file?
-```
-Payment-updateid.pdf
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Payment-updateid.pdf</code></pre>
+</details>
 
 >What is the SHA 256 hash for the PDF file?
 
@@ -109,9 +118,10 @@ First way we can get file hashes is by clicking the filename right here.
 
 Which will display another window that we can look up the result on VirusTotal, look at the metadata of the file and also 4 different types of hash including the fuzzing hash (SSDEEP)
 
-```
-cc6f1a04b10bcb168aeec8d870b97bd7c20fc161e8310b5bce1af8ed420e2c24
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>cc6f1a04b10bcb168aeec8d870b97bd7c20fc161e8310b5bce1af8ed420e2c24</code></pre>
+</details>
 
 >What two IP addresses are classified as malicious? Defang the IP addresses. (answer: **IP_ADDR**,**IP_ADDR**)
 
@@ -125,9 +135,10 @@ I could not find any IP address flagged as malicious on any.run interactive repo
 
 Defang it real quick to get the answer.
 
-```
-2[.]16[.]107[.]24,2[.]16[.]107[.]49
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2[.]16[.]107[.]24,2[.]16[.]107[.]49</code></pre>
+</details>
 
 >What Windows process was flagged as **Potentially Bad Traffic**?
 
@@ -135,9 +146,11 @@ Defang it real quick to get the answer.
 
 We can go back to interactive report to find the which process was flagged as **Potentially Bad Traffic** from the "Threats" section right there.
 
-```
-svchost.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>svchost.exe</code></pre>
+</details>
+
 ***
 ## Phishing Case 3
 **Scenario**: You are a Level 1 SOC Analyst. Several suspicious emails have been forwarded to you from other coworkers. You must obtain details from each email for your team to implement the appropriate rules to prevent colleagues from receiving additional spam/phishing emails. 
@@ -158,14 +171,17 @@ Upon opening this report, I noticed several things from the classification as Ma
 
 And It really is!, this is well-known vulnerable to get remote code execution on the vulnerable Microsoft Office application. 
 
-```
-Malicious activity
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Malicious activity</code></pre>
+</details>
 
 >What is the name of the Excel file?
-```
-CBJ200620039539.xlsx
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>CBJ200620039539.xlsx</code></pre>
+</details>
 
 >What is the SHA 256 hash for the file?
 
@@ -173,9 +189,10 @@ CBJ200620039539.xlsx
 
 We can also get file hash from the [Text report](https://any.run/report/5f94a66e0ce78d17afc2dd27fc17b44b3ffc13ac5f42d3ad6a5dcfb36715f3eb/82d8adc9-38a0-4f0e-a160-48a5e09a6e83) as well
 
-```
-5F94A66E0CE78D17AFC2DD27FC17B44B3FFC13AC5F42D3AD6A5DCFB36715F3EB
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5F94A66E0CE78D17AFC2DD27FC17B44B3FFC13AC5F42D3AD6A5DCFB36715F3EB</code></pre>
+</details>
 
 >What domains are listed as malicious? Defang the URLs & submit answers in alphabetical order. (answer: **URL1**,**URL2**,**URL3**)
 
@@ -187,14 +204,17 @@ On the text report, we can see that 3 different domain/url were contacted and al
 
 Defang them with CyberChef and we can copy this to answer the question and we will do the same for the next question as well.
 
-```
-biz9holdings[.]com,findresults[.]site,ww38[.]findresults[.]site
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>biz9holdings[.]com,findresults[.]site,ww38[.]findresults[.]site</code></pre>
+</details>
 
 >What IP addresses are listed as malicious? Defang the IP addresses & submit answers from lowest to highest. (answer: **IP1**,**IP2**,**IP3**)
-```
-75[.]2[.]11[.]242,103[.]224[.]182[.]251,204[.]11[.]56[.]48
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>75[.]2[.]11[.]242,103[.]224[.]182[.]251,204[.]11[.]56[.]48</code></pre>
+</details>
 
 >What vulnerability does this malicious attachment attempt to exploit?
 
@@ -207,9 +227,10 @@ We already know that this file aims to exploit CVE-2017-11882.
 Which is the Buffer Overflow RCE on Microsoft Equation Editor of Microsoft Office which will serve as an initial point of compromised upon opening the file just like malicious macro but this time it has no macro, just buffer overflow code
 - https://unit42.paloaltonetworks.com/unit42-analysis-of-cve-2017-11882-exploit-in-the-wild/
 
-```
-CVE-2017-11882
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2017-11882</code></pre>
+</details>
 
 ![af0423e22f535f707bbb13a011510511.png](/resources/af0423e22f535f707bbb13a011510511.png)
 ***

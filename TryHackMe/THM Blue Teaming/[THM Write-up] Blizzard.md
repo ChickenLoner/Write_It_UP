@@ -45,9 +45,10 @@ To make life easier, I used EvtxECmd with ` .\EvtxECmd.exe -f .\Microsoft-Window
 
 Then I filtered for Event ID 1149 for RDP connection establishment events which we can see that there is only 1 event associated with "dbadmin" user which was connected from 10.10.192.101 and it just happened to be around the time that the alert was triggered as well.
 
-```
-03/24/2024 19:38:48
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>03/24/2024 19:38:48</code></pre>
+</details>
 
 > What is the full file path of the binary used by the attacker to exfiltrate data?
 
@@ -65,9 +66,10 @@ Then we will see that `rclone` was once executed and it could be used to manage 
 
 We can see that rclone binary is located inside `.rclone` folder which mimic the hidden directory on Linux and we can also see the archive file of rclone and postgres data dump as well so the data that were exfiltrated are probably these 2 files.
 
-```
-C:\Users\dbadmin\.rclone\rclone-v1.66.0-windows-amd64\rclone.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\dbadmin\.rclone\rclone-v1.66.0-windows-amd64\rclone.exe</code></pre>
+</details>
 
 > What email is used by the attacker to exfiltrate sensitive data?
 
@@ -75,9 +77,10 @@ C:\Users\dbadmin\.rclone\rclone-v1.66.0-windows-amd64\rclone.exe
 
 When upload/cloning file to cloud storage, the configuration has to be done first and we could find the configuration file on the path shown in the image above which we can also see that the storage used for data exfiltration is Mega and we also got pair of credential used from this file as well.
 
-```
-annajones291@hotmail.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>annajones291@hotmail.com</code></pre>
+</details>
 
 > Where did the attacker store a persistent implant in the registry? Provide the registry value name.
 
@@ -93,9 +96,10 @@ I do not find any persistence from user's registry hive but I found the run pers
 
 When we decoded base64 string, we can see that it will download binary from C2 to AppData folder, execute it and remove the file afterward.
 
-```
-SecureUpdate
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SecureUpdate</code></pre>
+</details>
 
 > Aside from the registry implant, another persistent implant is stored within the machine. When did the attacker implant the alternative backdoor? (format: MM/DD/YYYY HH:MM:SS)
 
@@ -107,9 +111,10 @@ I do not find any other persistence on schedule task, run registry and start up 
 
 We can easily read the full command here.
 
-```
-03/24/2024 20:04:05
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>03/24/2024 20:04:05</code></pre>
+</details>
 
 So we are done with the first machine, lets shutdown and start second machine.
 
@@ -153,9 +158,10 @@ To get the answer of this question, we have to export the property of this email
 
 Then we will have the Client Submit Time as the answer of this question right here.
 
-```
-03/24/2024 19:06:27
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>03/24/2024 19:06:27</code></pre>
+</details>
 
 ![29a169323957275494ee82d988d458b2.png](/resources/29a169323957275494ee82d988d458b2.png)
 
@@ -175,9 +181,10 @@ And we can see that this phishing will do the same thing as we found from the pe
 
 I utilized UserAssist registry key of the victim to find the execution time of shortcut file which we can see that user opened the malicious attachment just 1 minute after the malicious email was sent to user by the attacker.
 
-```
-03/24/2024 19:07:46
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>03/24/2024 19:07:46</code></pre>
+</details>
 
 ![32d2c8e1083fe0d55d29367ce04cc59a.png](/resources/32d2c8e1083fe0d55d29367ce04cc59a.png)
 
@@ -201,9 +208,10 @@ So we can follow the path on Task Scheduler to find the command that was going t
 
 After decoding the base64 string, we can see that this command will check for `scvhost` (mimicking the legitimate `svchost` process) if its running then it will do nothing but if not then it will execute `scvhost.exe` located on the System32 folder of this system.
 
-```
-03/24/2024 19:16:23
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>03/24/2024 19:16:23</code></pre>
+</details>
 
 >What is the domain accessed by the malicious implant? (format: defanged)
 
@@ -215,9 +223,10 @@ Since there is no sysmon and dns log, I used `Get-DnsClientCache` command to dis
 
 The same could be found with `ipconfig /displaydns` command as well.
 
-```
-advancedsolutions[.]net
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>advancedsolutions[.]net</code></pre>
+</details>
 
 >What file did the attacker leverage to gain access to the database server? Provide the password found in the file.
 
@@ -225,9 +234,10 @@ advancedsolutions[.]net
 
 After exploring victim user folders, I found the `demo_automation.ps1` script contains credential of "dbadmin" user so the attacker gained access to this file that hard-coding user credential of dbadmin user which attacker then use it to connect to database server via RDP later on!
 
-```
-db@dm1nS3cur3Pass!
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>db@dm1nS3cur3Pass!</code></pre>
+</details>
 
 2 machines done! Lets fire up the last one!
 
@@ -256,19 +266,24 @@ Now we can proceed to use `ms_teams_parser.exe -f C:\Users\a.ramirez\AppData\Roa
 
 And then by inspecting the output json, we can see that the attacker used the one of old school tricked by faking themselves as Microsoft to send credential captured phishing url to the victim and from the message, it seems like this is the spearphishing attack targeted Alexis and if as you might remember that the sender of the previous scenario has the same name as this one so we can concluded that the attacker successfully phished this user first then managed to access Alexis's email to send malicious phishing attachment and gained access to the second host which also leaded to database server compromised as well.
 
-```
-03/24/2024 18:36:34
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>03/24/2024 18:36:34</code></pre>
+</details>
 
 >What is the display name of the attacker?
-```
-Microsoft Identity Provider
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Microsoft Identity Provider</code></pre>
+</details>
 
 >What is the URL of the malicious phishing link? (format: defanged)
-```
-https[://]login[.]sourcesecured[.]com/support/id/XkSkj321
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>https[://]login[.]sourcesecured[.]com/support/id/XkSkj321</code></pre>
+</details>
 
 >What is the title of the phishing website?
 
@@ -292,14 +307,17 @@ Now we can save output in any shape or form that the tool provides which I went 
 
 And Do not make the same mistake as me, I forgot adjust the timestamp to UTC +0 which also affected the timestamp displayed on the table like this.
 
-```
-Sign in to your account
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Sign in to your account</code></pre>
+</details>
 
 >When did the victim first access the phishing website? (format: MM/DD/YYYY HH:MM:SS in UTC)
-```
-03/24/2024 18:38:29
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>03/24/2024 18:38:29</code></pre>
+</details>
 
 ![eaa3b6cec14c668d7fa18e17094c2c0b.png](/resources/eaa3b6cec14c668d7fa18e17094c2c0b.png)
 

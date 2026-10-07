@@ -36,9 +36,10 @@ Speaking about Windows Search, we can inspect **WordWheelQuery** registry key fr
 
 Registry Explorer 1.6 is quite an old version but could still get a job done, we could see that on the first record from **WordWheelQuery** registry is ".pdf" which is the first keyword searched and the answer of this question.
 
-```
-.pdf
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>.pdf</code></pre>
+</details>
 
 > What top-secret keyword was searched for using the search bar in Windows Explorer?
 
@@ -46,9 +47,10 @@ Registry Explorer 1.6 is quite an old version but could still get a job done, we
 
 Inspecting the second record, reveal the second keyword that was searched with Windows Search. 
 
-```
-continental
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>continental</code></pre>
+</details>
 
 * * *
 ## Can't simply open it
@@ -69,14 +71,17 @@ We have to use Autopsy for this one so after create a new case, we have to speci
 
 Wait a while for the result which then we can look into "Web Downloads" to find which files were downloaded to user's download folder and we could see that user downloaded `continental.7z` which then downloaded the installer of 7zip, which mean the 7z is not installed on the system and user downloaded it to extract the file. 
 
-```
-7z2201-x64.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>7z2201-x64.exe</code></pre>
+</details>
 
 >When was the file from the previous question downloaded? (YYYY-MM-DD HH:MM:SS UTC)
-```
-2022-11-19 12:09:19 UTC
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2022-11-19 12:09:19 UTC</code></pre>
+</details>
 
 >Thanks to the previously downloaded file, a PNG file was opened. When was this file opened? (YYYY-MM-DD HH:MM:SS)
 
@@ -88,9 +93,10 @@ We have to go back to the Registry Explorer and inspect **RecentDocs** registry 
 
 We could even find the full path of this file on Autopsy like this.
 
-```
-2022-11-19 12:10:21
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2022-11-19 12:10:21</code></pre>
+</details>
 
 * * *
 ## Sending it outside
@@ -116,9 +122,10 @@ Now we should have 2 output files from **AutomaticDestinations** and **CustomDes
 
 We don't have **Timeline Explorer** but we still have **EZViewer** so we could open **AutomaticDestinations** output file with it which we will see that the text file was opened 2 times from the interaction column.
 
-```
-2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2</code></pre>
+</details>
 
 >When was the text file from the previous question last modified? (MM/DD/YYYY HH:MM)
 
@@ -126,9 +133,10 @@ We don't have **Timeline Explorer** but we still have **EZViewer** so we could o
 
 We have to get the value from LastModified column which we can see that the interaction timeline was align with the incident. 
 
-```
-11/19/2022 12:12
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>11/19/2022 12:12</code></pre>
+</details>
 
 >The contents of the file were exfiltrated to pastebin.com. What is the generated URL of the exfiltrated data?
 
@@ -136,9 +144,10 @@ We have to get the value from LastModified column which we can see that the inte
 
 We will have to go back to Autopsy again to check "Web History" which we will see the pastebin URL that was accessed by user and the timeline also align within the incident timeframe as well.
 
-```
-https://pastebin.com/1FQASAav
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://pastebin.com/1FQASAav</code></pre>
+</details>
 
 >What is the string that was copied to the pastebin URL?
 
@@ -146,9 +155,10 @@ https://pastebin.com/1FQASAav
 
 We can access this URL directly with our browser to get the content inside this URL.
 
-```
-ne7AIRhi3PdESy9RnOrN
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ne7AIRhi3PdESy9RnOrN</code></pre>
+</details>
 
 ![72fa51162058bc6ab3156e667aa31c6d.png](/resources/72fa51162058bc6ab3156e667aa31c6d.png)
 

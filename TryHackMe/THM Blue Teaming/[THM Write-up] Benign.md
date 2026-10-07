@@ -36,9 +36,10 @@ Since we only have `win_eventlogs` as log source so we can just query with `inde
 
 And turn out, all 13,959 events are happened during March 2022 
 
-```
-13959
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>13959</code></pre>
+</details>
 
 >Imposter Alert: There seems to be an imposter account observed in the logs, what is the name of that user?
 
@@ -46,9 +47,10 @@ And turn out, all 13,959 events are happened during March 2022
 
 With `index=* | stats count by UserName` that will count all **UserName** and display in the table as shown in the image above, we can see that there is Imposter account that mimick Amelia user with the name **Amel1a**
 
-```
-Amel1a
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Amel1a</code></pre>
+</details>
 
 >Which user from the HR department was observed to be running scheduled tasks?
 
@@ -60,9 +62,10 @@ With `index=* schtasks | stats count by UserName` query which reduced our scope 
 
 Using `index=* schtasks UserName=Chris.fort` query, we can see that schedule task executable was executed to create **OfficeUpdater** task which will execute `C:\Users\Chris.fort\AppData\Local\Temp\update.exe` on startup and this path is common path for malware to be dropped and executed.
 
-```
-Chris.fort
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Chris.fort</code></pre>
+</details>
 
 >Which user from the HR department executed a system process (LOLBIN) to download a payload from a file-sharing host.
 
@@ -72,19 +75,24 @@ When it comes to LOLBIN that can be used to download file on Windows, [certutil.
 
 From the event, we can see that haroon user from HR department executed certutil to download file from `https://controlc.com/e4d11035` and saved file as `benign.exe`
 
-```
-haroon
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>haroon</code></pre>
+</details>
 
 >To bypass the security controls, which system process (lolbin) was used to download a payload from the internet?
-```
-certutil.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>certutil.exe</code></pre>
+</details>
 
 >What was the date that this binary was executed by the infected host? format (YYYY-MM-DD)
-```
-2022-03-04
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2022-03-04</code></pre>
+</details>
 
 >Which third-party site was accessed to download the malicious payload?
 
@@ -92,14 +100,17 @@ certutil.exe
 
 ControlC is the website that can host text which mean whatever host on this website is not malicious binary so what being download then?
 
-```
-controlc.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>controlc.com</code></pre>
+</details>
 
 >What is the name of the file that was saved on the host machine from the C2 server during the post-exploitation phase?
-```
-benign.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>benign.exe</code></pre>
+</details>
 
 >The suspicious file downloaded from the C2 server contained malicious content with the pattern THM{..........}; what is that pattern?
 
@@ -107,14 +118,17 @@ benign.exe
 
 By accessing the [url](https://controlc.com/e4d11035) directly, we will see that this website host a flag of this room which just happened to be the answer of this question.
 
-```
-THM{KJ&*H^B0}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THM{KJ&amp;*H^B0}</code></pre>
+</details>
 
 >What is the URL that the infected host connected to?
-```
-https://controlc.com/e4d11035
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>https://controlc.com/e4d11035</code></pre>
+</details>
 
 And... we are done? no more digging? alright..
 ![6f90263ffddfb14467773e75162203ac.png](/resources/6f90263ffddfb14467773e75162203ac.png)

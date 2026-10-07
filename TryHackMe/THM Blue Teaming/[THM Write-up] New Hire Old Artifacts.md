@@ -23,14 +23,17 @@ I started off my using `index=* source="WinEventLog:Microsoft-Windows-Sysmon/Ope
 
 Then I scoped down the event with `index=* source="WinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1 OriginalFileName="ChromeCookiesView.exe"` query and inspect the first event from this query which we can see that its really ChromeCookiesView from NirSoft and it was executed from Temp directory (another red flag that malware often dropped).
 
-```
-C:\Users\FINANC~1\AppData\Local\Temp\11111.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\FINANC~1\AppData\Local\Temp\11111.exe</code></pre>
+</details>
 
 >What is listed as the company name?
-```
-NirSoft
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>NirSoft</code></pre>
+</details>
 
 >Another suspicious binary running from the same folder was executed on the workstation. What was the name of the binary? What is listed as its original filename? (**format: file.xyz,file.xyz**)
 
@@ -46,9 +49,10 @@ I copied file hash and search it on VirusTotal
 
 Then we can see that the [file](https://www.virustotal.com/gui/file/a798591090c33182526993e634f67fb09e69d243b82a042d26d63c0b9bfba47a/detection) we got is flagged as malicious by different 54 security vendors so look like we got the right file here.
 
-```
-IonicLarge.exe,PalitExplorer.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>IonicLarge.exe,PalitExplorer.exe</code></pre>
+</details>
 
 >The binary from the previous question made two outbound connections to a malicious IP address. What was the IP address? Enter the answer in a defang format.
 
@@ -60,9 +64,10 @@ Knowing the image, I used `index=* source="WinEventLog:Microsoft-Windows-Sysmon/
 
 After reviewing the result from previous query, we navigated back to the **Contacted IP addresses** section under the **Relations** tab. Here, we compared the results of our previous query to the list of IP addresses contacted by the binary flagged on VirusTotal. and then we identified two IP addresses flagged as malicious. However, the correct answer to this question is 2.56.59.42.
 
-```
-2[.]56[.]59[.]42
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2[.]56[.]59[.]42</code></pre>
+</details>
 
 >The same binary made some change to a registry key. What was the key path?
 
@@ -72,9 +77,10 @@ To identify registry changes made by this binary, I queried Splunk with `index=*
 
 This query filters for Sysmon Event ID 13, which logs registry modifications, specifically those made by IonicLarge.exe. The results revealed that most of the registry changes were related to Windows Defender settings which make it able to continue operates without being detected and quarantined .
 
-```
-HKLM\SOFTWARE\Policies\Microsoft\Windows Defender
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>HKLM\SOFTWARE\Policies\Microsoft\Windows Defender</code></pre>
+</details>
 
 >Some processes were killed and the associated binaries were deleted. What were the names of the two binaries? (**format: file.xyz,file.xyz**)
 
@@ -82,9 +88,10 @@ HKLM\SOFTWARE\Policies\Microsoft\Windows Defender
 
 When speaking about killing the process, `taskkill` is the binary that would come to mind so I queried with`index=* source="WinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1 taskkill` which returned with commands that were used to kill 2 un-readable processes and we can see that it was executed via cmd and it will not just kill both processes but also delete them from infected system as well. 
 
-```
-WvmIOrcfsuILdX6SNwIRmGOJ.exe,phcIAmLJMAIMSa9j9MpgJo1m.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>WvmIOrcfsuILdX6SNwIRmGOJ.exe,phcIAmLJMAIMSa9j9MpgJo1m.exe</code></pre>
+</details>
 
 >The attacker ran several commands within a PowerShell session to change the behaviour of Windows Defender. What was the last command executed in the series of similar commands?
 
@@ -97,9 +104,10 @@ I used `index=* source="WinEventLog:Microsoft-Windows-Sysmon/Operational" EventC
 
 If we kept scrolling up to events before this happened, we could see that there is a massive command line execution at 2021-12-29 01:07:51 UTC which responsible for those PowerShell commands we found earlier.
 
-```
-powershell  WMIC /NAMESPACE:\\root\Microsoft\Windows\Defender PATH MSFT_MpPreference call Add ThreatIDDefaultAction_Ids=2147737394 ThreatIDDefaultAction_Actions=6 Force=True
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>powershell  WMIC /NAMESPACE:\\root\Microsoft\Windows\Defender PATH MSFT_MpPreference call Add ThreatIDDefaultAction_Ids=2147737394 ThreatIDDefaultAction_Actions=6 Force=True</code></pre>
+</details>
 
 >Based on the previous answer, what were the four IDs set by the attacker? Enter the answer in order of execution. (format: 1st,2nd,3rd,4th)
 
@@ -107,9 +115,10 @@ powershell  WMIC /NAMESPACE:\\root\Microsoft\Windows\Defender PATH MSFT_MpPrefer
 
 We can copy them directly from the command since it will be executed in order.
 
-```
-2147735503,2147737010,2147737007,2147737394
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2147735503,2147737010,2147737007,2147737394</code></pre>
+</details>
 
 >Another malicious binary was executed on the infected workstation from another AppData location. What was the full path to the binary?
 
@@ -121,9 +130,10 @@ Before I resorted to do any advanced query, I started off with `index=* source="
 
 So I searched for other event ID which I found that `11111.exe` which we know that its the **ChromeCookieViewer** from **NirSoft** actually accessed this process at 2021-12-29 01:09:50 UTC, 20 seconds after the latest PowerShell to tamper with Windows Defender was executed.
 
-```
-C:\Users\Finance01\AppData\Roaming\EasyCalc\EasyCalc.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Finance01\AppData\Roaming\EasyCalc\EasyCalc.exe</code></pre>
+</details>
 
 >What were the DLLs that were loaded from the binary from the previous question? Enter the answers in alphabetical order. (format: file1.dll,file2.dll,file3.dll)
 
@@ -131,9 +141,10 @@ C:\Users\Finance01\AppData\Roaming\EasyCalc\EasyCalc.exe
 
 We can use `index=* source="WinEventLog:Microsoft-Windows-Sysmon/Operational" EasyCalc.exe EventCode=7` query to get all Loaded Library/Dll events related to this binary and despite 11 library were loaded, there are only 3 dll were loaded from the same location as the binary itself which are the correct answers of this question.
 
-```
-ffmpeg.dll,nw.dll,nw_elf.dll
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ffmpeg.dll,nw.dll,nw_elf.dll</code></pre>
+</details>
 
 ![38d18123df37ac45433dbd9925a855e4.png](/resources/38d18123df37ac45433dbd9925a855e4.png)
 

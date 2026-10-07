@@ -871,9 +871,25 @@ def collect_resource_refs(html_body: str, sink: set):
 
 # Block-level tags the write-ups wrap content in. Inline tags (<b>, <span>…)
 # are left alone — markdown already processes their contents.
+#
+# <details>/<summary> are deliberately absent: markdown2 does not treat them as
+# block tags, so the attribute was never consumed and leaked into the page as
+# literal markdown="1". Their contents are answer blocks (<pre><code>), which
+# must stay literal anyway. See _unwrap_details_paragraphs for the other half.
 _BLOCK_TAG_RE = re.compile(
-    r'<(div|center|details|summary|blockquote|td|th)\b(?![^>]*\bmarkdown\s*=)([^>]*?)(/?)>',
+    r'<(div|center|blockquote|td|th)\b(?![^>]*\bmarkdown\s*=)([^>]*?)(/?)>',
     re.IGNORECASE)
+
+_DETAILS_OPEN_P_RE  = re.compile(
+    r'<p>(<details\b[^>]*>\s*<summary\b[^>]*>.*?</summary>)</p>', re.DOTALL)
+_DETAILS_CLOSE_P_RE = re.compile(r'<p>\s*(</details>)\s*</p>')
+
+def _unwrap_details_paragraphs(html_body: str) -> str:
+    """markdown2 sees <details>/<summary> as inline HTML, so it wraps the
+       opening pair and the closing tag in stray <p>…</p>. Browsers repair it
+       silently, but it leaves an empty paragraph and invalid nesting."""
+    html_body = _DETAILS_OPEN_P_RE.sub(r'\1', html_body)
+    return _DETAILS_CLOSE_P_RE.sub(r'\1', html_body)
 
 def _enable_markdown_in_blocks(md: str) -> str:
     """Tag raw block-level HTML so markdown2 processes the markdown inside it.
@@ -913,6 +929,7 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
         extras=["fenced-code-blocks", "tables", "header-ids", "strike",
                 "markdown-in-html"]
     )
+    html_body = _unwrap_details_paragraphs(html_body)
 
     # 3. Path fix-ups
     parts = md_path.parent.relative_to(SRC_DIR).parts

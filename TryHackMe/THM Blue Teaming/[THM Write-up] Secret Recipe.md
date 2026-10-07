@@ -52,6 +52,7 @@ To find any information related to Users accounts, we need to look into SAM regi
 </details>
 
 >What is the RID associated with the Administrator account?
+
 <details>
   <summary>Answer</summary>
 <pre><code>500</code></pre>
@@ -73,6 +74,7 @@ And other 3 normal user accounts but seem like there is a backdoor user as well 
 </details>
 
 >There seems to be a suspicious account created as a backdoor with RID 1013. What is the Account Name?
+
 <details>
   <summary>Answer</summary>
 <pre><code>bdoor</code></pre>
@@ -90,6 +92,7 @@ There are several ways to get an answer on this question but the intended way is
 </details>
 
 >When was the first VPN connection observed? (Format: YYYY-MM-DD HH:MM:SS)
+
 <details>
   <summary>Answer</summary>
 <pre><code>2022-10-12 19:52:36</code></pre>

