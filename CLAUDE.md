@@ -17,8 +17,9 @@ uv run publish.py --push     # ...and commit + push
 ```
 
 `publish.py` merges `_resources/` into `resources/` and rewrites the links,
-expands Joplin's `[toc]` token, scaffolds a `writeups_meta.json` entry for any
-write-up missing one, and verifies every referenced image exists. It refuses to
+expands Joplin's `[toc]` token, turns bare ``` answers into answer blocks (see
+*Answer blocks*), scaffolds a `writeups_meta.json` entry for any write-up missing
+one, and verifies every referenced image exists. It refuses to
 push when an image is missing. Cloudflare deploys ~2 minutes after the push.
 
 The folder path drives the platform badge, colours and index grouping, so put
@@ -40,8 +41,13 @@ an answer from a command:
 </details>
 ```
 
-Exports from Joplin come in with bare ``` fences. `fix_answer_blocks.py`
-converts them (`--platform <Folder>`, dry run unless `--apply`). It decides by
+Exports from Joplin come in with bare ``` fences. `publish.py` converts them
+automatically, but only in write-ups that are **new or changed in git** — it never
+rewrites the rest — and prints what it converted, what it left alone and why, and
+a `⚠` line for every fence it was unsure about (a command or an answer? ask
+Claude Code). `--skip-answers` turns the step off. The same logic is also
+available by hand as `fix_answer_blocks.py` (`--platform <Folder>`, dry run unless
+`--apply`). It decides by
 structure, not content (`whoami` is a valid command and a valid answer): in a
 question's section, the sole — or last — untagged 1-3 line fence is the answer;
 earlier fences are code and stay. Lang-tagged or long fences, fences outside any
@@ -54,8 +60,8 @@ so it only ever runs on the platform being checked.
 SOC alert playbooks (`LetsDefend Alert`) have no questions — each `### Step`
 heading is the question — so they take `--only "LetsDefend Alert"
 --heading-sections [--max-lines 12]`, which refuses to run without `--only`
-(under a heading, a machine write-up's fence is a command). Not yet wired into
-`publish.py`.
+(under a heading, a machine write-up's fence is a command). `publish.py` does not
+use that mode: for a new alert write-up it prints the command to run instead.
 
 The build puts a blank line around every `<details>` before rendering, because
 markdown2 otherwise folds the tag into the previous paragraph or blockquote.
