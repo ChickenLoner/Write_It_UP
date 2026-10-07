@@ -14,11 +14,14 @@ What it does, in order:
      links to /resources/          (the old fix_paths.py step)
   2. Replaces Joplin's [toc] token with a real markdown TOC
                                    (the old fix_joplin_toc.py step)
-  3. Scaffolds a writeups_meta.json entry for every write-up that lacks one,
+  3. Turns bare ``` answers into click-to-reveal answer blocks, in write-ups
+     that are new or changed in git (fix_answer_blocks.py; never touches the
+     rest). Decides by structure only and lists what it is unsure about
+  4. Scaffolds a writeups_meta.json entry for every write-up that lacks one,
      so a new lab can never silently render as a bare card
-  4. Verifies every referenced image actually exists in resources/, which is
+  5. Verifies every referenced image actually exists in resources/, which is
      how five screenshots stayed broken on the live site unnoticed
-  5. Optionally commits and pushes, which triggers the Cloudflare deploy
+  6. Optionally commits and pushes, which triggers the Cloudflare deploy
 
 Deliberately does NOT run the full site build: that copies ~500 MB and CI does
 it anyway. Step 4 catches the failure the build would have reported.
@@ -32,6 +35,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+import fix_answer_blocks
 import fix_joplin_toc
 import fix_paths
 
@@ -76,9 +80,72 @@ def step_toc() -> None:
         print(f"      {p.relative_to(REPO).as_posix()}")
 
 
+def _changed_writeups() -> list:
+    """Write-ups that are new or modified in git. Falls back to none, so a
+       failed `git status` can never turn this into a rewrite of everything."""
+    try:
+        out = subprocess.run(
+            ["git", "-c", "core.quotepath=false", "status", "--porcelain", "-z",
+             "--untracked-files=all"],
+            cwd=REPO, capture_output=True, check=True).stdout.decode("utf-8")
+    except (OSError, subprocess.CalledProcessError):
+        return []
+    changed = set()
+    entries = out.split("\0")
+    i = 0
+    while i < len(entries):
+        e = entries[i]
+        i += 1
+        if len(e) < 4:
+            continue
+        status, path = e[:2], e[3:]
+        if status[0] in "RC":                  # rename/copy: next entry is the source
+            i += 1
+        changed.add(path)
+    keep = {p.relative_to(REPO).as_posix(): p for p in _iter_writeups()}
+    return [keep[c] for c in sorted(changed) if c in keep]
+
+
+def step_answers() -> list:
+    """Bare ``` answers -> <details> answer blocks, in new/changed write-ups."""
+    print("── 3. answer blocks ─────────────────────────────────────────")
+    files = _changed_writeups()
+    if not files:
+        print("   no new or changed write-ups")
+        return []
+    converted, review = 0, []
+    for p in files:
+        text = p.read_text(encoding="utf-8")
+        new, count, spaced, rv = fix_answer_blocks.convert(text)
+        if new != text:
+            p.write_text(new, encoding="utf-8", newline="\n")
+        converted += count
+        rel = p.relative_to(REPO).as_posix()
+        if count or spaced:
+            print(f"      {rel}: {count} answer(s)"
+                  + (f", {spaced} spaced" if spaced else ""))
+        review += [(rel, line, why, prev) for line, why, prev in rv]
+    print(f"   converted {converted} answer(s) in {len(files)} new/changed write-up(s)")
+
+    # "kept as code" is expected and fine; "not a Q&A write-up" is the normal
+    # result for a machine write-up. Everything else needs a human.
+    notes = [r for r in review if "kept as code" not in r[2]]
+    skipped = [r for r in notes if r[2].startswith("not a Q&A")]
+    unsure = [r for r in notes if not r[2].startswith("not a Q&A")]
+    for rel, why in sorted({(r[0], r[2]) for r in skipped}):
+        print(f"   · {rel.rsplit('/', 1)[-1]}: left alone — {why}")
+    for rel, line, why, prev in unsure:
+        print(f"   ⚠ {rel.rsplit('/', 1)[-1]}:{line}  [{why}]  {prev}")
+    if any("LetsDefend Alert" in r[0] for r in notes):
+        print('   hint: SOC alert playbooks answer each heading — run')
+        print('         python fix_answer_blocks.py --platform LetsDefend --only "LetsDefend Alert" \\')
+        print("             --heading-sections --max-lines 12 --apply")
+    return unsure
+
+
 def step_meta() -> list:
     """Scaffold entries for write-ups the sidecar does not know about."""
-    print("── 3. writeups_meta.json ────────────────────────────────────")
+    print("── 4. writeups_meta.json ────────────────────────────────────")
     meta = json.loads(META_PATH.read_text(encoding="utf-8")) if META_PATH.exists() else {}
     keys = {p.relative_to(REPO).as_posix() for p in _iter_writeups()}
 
@@ -121,7 +188,7 @@ def step_meta() -> list:
 
 def step_images() -> list:
     """Every referenced image must exist, or it renders broken on the site."""
-    print("── 4. images ────────────────────────────────────────────────")
+    print("── 5. images ────────────────────────────────────────────────")
     have = {p.name for p in RESOURCES.iterdir()} if RESOURCES.exists() else set()
     broken = []
     refs = 0
@@ -146,7 +213,7 @@ def step_images() -> list:
 
 
 def step_push(message: str) -> None:
-    print("── 5. publish ───────────────────────────────────────────────")
+    print("── 6. publish ───────────────────────────────────────────────")
     subprocess.run(["git", "add", "-A"], cwd=REPO, check=True)
     diff = subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=REPO)
     if diff.returncode == 0:
@@ -164,10 +231,13 @@ def main() -> int:
                     help="commit and push when everything checks out")
     ap.add_argument("-m", "--message", default="content: add write-up",
                     help="commit message used with --push")
+    ap.add_argument("--skip-answers", action="store_true",
+                    help="do not convert bare ``` answers to answer blocks")
     args = ap.parse_args()
 
     step_paths()
     step_toc()
+    unsure = [] if args.skip_answers else step_answers()
     needs_meta = step_meta()
     broken = step_images()
 
@@ -179,6 +249,9 @@ def main() -> int:
         print(f"   ⚠  {len(needs_meta)} write-up(s) need difficulty/category/tags/summary")
         print("      → ask Claude Code: \"fill in the metadata for the new write-ups\"")
         print("        (it reads the labs and writes the entries; see CLAUDE.md)")
+    if unsure:
+        print(f"   ⚠  {len(unsure)} fence(s) the answer-block step was unsure about (above)")
+        print("      → each is a command or an answer; ask Claude Code to look, or leave as code")
     if not blocked and not needs_meta:
         print("   ✅ ready to publish")
 
