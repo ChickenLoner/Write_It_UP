@@ -19,9 +19,10 @@ A SOC analyst took a memory dump from a machine infected with a meterpreter malw
 
 We can use `sha1sum Triage-Memory.mem` to generate sha1hash of this memory dump
 
-```
-c95e8cc8c946f95a109ea8e47a6800de10a27abd
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>c95e8cc8c946f95a109ea8e47a6800de10a27abd</code></pre>
+</details>
 
 > Q2: What volatility profile is the most appropriate for this machine? (ex: Win10x86_14393)
 
@@ -29,9 +30,10 @@ c95e8cc8c946f95a109ea8e47a6800de10a27abd
 
 To determine what the suitable profile, we need to use `vol.py -f Triage-Memory.mem imageinfo` and the first profile on the leftmost is the most appropriate one
 
-```
-Win7SP1x64
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Win7SP1x64</code></pre>
+</details>
 
 > Q3: What was the process ID of notepad.exe?
 
@@ -39,17 +41,19 @@ Win7SP1x64
 
 We can use pstree for this (`vol.py -f Triage-Memory.mem --profile=Win7SP1x64 pstree`) and we can see that aside from notepad, there are other suspicious processes on this machine when it was dumped 
 
-```
-3032
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3032</code></pre>
+</details>
 
 > Q4: Name the child process of wscript.exe.
 
 ![b041a61c158fa5bf21c8aadf417854b4.png](/resources/b041a61c158fa5bf21c8aadf417854b4.png)
 
-```
-UWkpjFjDzM.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>UWkpjFjDzM.exe</code></pre>
+</details>
 
 > Q5: What was the IP address of the machine at the time the RAM dump was created?
 
@@ -57,18 +61,20 @@ UWkpjFjDzM.exe
 
 Use netscan plugin for this (`vol.py -f Triage-Memory.mem --profile=Win7SP1x64 netscan`)
 
-```
-10.0.0.101
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10.0.0.101</code></pre>
+</details>
 
 > Q6: Based on the answer regarding the infected PID, can you determine the IP of the attacker?
 
 ![b1b87da0a851c9c6ea46e5a19c09330d.png](/resources/b1b87da0a851c9c6ea46e5a19c09330d.png)
 from netscan plugin output, we can see that the most suspicious we found on Q4 established a connection to `10.0.0.106` on port 4444 which look like a meterpreter reverse shell
 
-```
-10.0.0.106
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10.0.0.106</code></pre>
+</details>
 
 > Q7: How many processes are associated with VCRUNTIME140.dll?
 
@@ -80,9 +86,10 @@ We can use dlllist plugin and pipe to grep for this but we won't know which proc
 
 then we can use `vol.py -f Triage-Memory.mem --profile=Win7SP1x64 dlllist > dll.txt` and search for all unique pid that loaded this dll
 
-```
-5
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5</code></pre>
+</details>
 
 > Q8: After dumping the infected process, what is its md5 hash?
 
@@ -94,9 +101,10 @@ We need to dump this process using `vol.py -f Triage-Memory.mem --profile=Win7SP
 
 Searched on VirusTotal, which confirmed my hypothisis about meterpreter
 
-```
-690ea20bc3bdfb328e23005d9a80c290
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>690ea20bc3bdfb328e23005d9a80c290</code></pre>
+</details>
 
 > Q9: What is the LM hash of Bob's account?
 
@@ -104,9 +112,10 @@ Searched on VirusTotal, which confirmed my hypothisis about meterpreter
 
 We will use `vol.py -f Triage-Memory.mem --profile=Win7SP1x64 hashdump` to dump NTLM hash and the first hash (on the middle field) is the LM hash
 
-```
-aad3b435b51404eeaad3b435b51404ee
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>aad3b435b51404eeaad3b435b51404ee</code></pre>
+</details>
 
 > Q10: What memory protection constants does the VAD node at 0xfffffa800577ba10 have?
 
@@ -118,16 +127,19 @@ Then we will use `vol.py -f Triage-Memory.mem --profile=Win7SP1x64 vadinfo > vad
 
 Then we will have its memory protection
 
-```
-PAGE_READONLY
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>PAGE_READONLY</code></pre>
+</details>
 
 > Q11: What memory protection did the VAD starting at 0x00000000033c0000 and ending at 0x00000000033dffff have?
 
 ![c9e23f8299f74718d500342d1761cd38.png](/resources/c9e23f8299f74718d500342d1761cd38.png)
-```
-PAGE_NOACCESS
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>PAGE_NOACCESS</code></pre>
+</details>
 
 > Q12: There was a VBS script that ran on the machine. What is the name of the script? (submit without file extension)
 
@@ -135,9 +147,10 @@ PAGE_NOACCESS
 
 I used filescan plugin and found nothing so I used `vol.py -f Triage-Memory.mem --profile=Win7SP1x64 cmdline` then we can see that wscript was used to execute this suspicious vbs script
 
-```
-vhjReUDEuumrX
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>vhjReUDEuumrX</code></pre>
+</details>
 
 > Q13: An application was run at 2019-03-07 23:06:58 UTC. What is the name of the program? (Include extension)
 
@@ -149,9 +162,10 @@ I searched for prefetch plugin but look like we don't have that yet but we still
 
 I used `vol.py -f Triage-Memory.mem --profile=Win7SP1x64 shimcache | grep "2019-03-07 23:06:58"` to search for any executable file that was executed at this timestamp
 
-```
-Skype.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Skype.exe</code></pre>
+</details>
 
 > Q14: What was written in notepad.exe at the time when the memory dump was captured?
 
@@ -167,9 +181,10 @@ So we have to dump it using `vol.py -f Triage-Memory.mem --profile=Win7SP1x64 me
 
 Then we will have to use `strings -e l /tmp/Proc/3032.dmp | grep "flag"` to find a flag, YES I CHECKED FOR HINT BECAUSE IT WAS TOO MUCH INFORMATION OVERLOAD
 
-```
-flag<REDBULL_IS_LIFE>
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>flag&lt;REDBULL_IS_LIFE&gt;</code></pre>
+</details>
 
 > Q15: What is the short name of the file at file record 59045?
 
@@ -177,18 +192,20 @@ flag<REDBULL_IS_LIFE>
 
 We will use `vol.py -f Triage-Memory.mem --profile=Win7SP1x64 mftparser > MFT.txt` to parse all MFT entries to a file (since I didn't know how to specify just only 1 entry)
 
-```
-EMPLOY~1.XLS
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>EMPLOY~1.XLS</code></pre>
+</details>
 
 > Q16: This box was exploited and is running meterpreter. What was the infected PID?
 
 ![6e875b20835b0ad2129b694fcc573a6d.png](/resources/6e875b20835b0ad2129b694fcc573a6d.png)
 Remember which process I searched its hash on VirusTotal?
 
-```
-3496
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3496</code></pre>
+</details>
 
 ![6b3d83f33365c5cd66a6f4b3058ce57d.png](/resources/6b3d83f33365c5cd66a6f4b3058ce57d.png)
 * * *

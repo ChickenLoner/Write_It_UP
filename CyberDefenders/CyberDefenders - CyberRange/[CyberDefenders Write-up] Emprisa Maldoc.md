@@ -27,9 +27,10 @@ We can use `rtfobj` on this rtf file directly and it will give you an analysis o
 
 Which is a RCE vulnerability found in Equation Editor of Microsoft Office
 
-```
-CVE-2017-11882
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2017-11882</code></pre>
+</details>
 
 > Q2: To reproduce the exploit in a lab environment and mimic a corporate machine running Microsoft office 2007, a specific patch should not be installed. Provide the patch number.
 
@@ -37,9 +38,10 @@ CVE-2017-11882
 
 Go to https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2017-11882 then we can see that there is a patch specific for Windows Office 2007 Server Pack 2
 
-```
-KB4011604
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>KB4011604</code></pre>
+</details>
 
 > Q3: What is the magic signature in the object data?
 
@@ -47,9 +49,10 @@ KB4011604
 
 By using `rtfdump.py` then we can see that shell code that will be executed is stored inside object 7 which you can also find the file magic here
 
-```
-d0cf11e0
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>d0cf11e0</code></pre>
+</details>
 
 > Q4: What is the name of the spawned process when the document gets opened?
 
@@ -60,9 +63,10 @@ Since this CVE is exploited Equator Editor and `EQNEDT32.EXE` is the process of 
 
 And this any.run report has confirmed out expectation
 
-```
-EQNEDT32.EXE
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>EQNEDT32.EXE</code></pre>
+</details>
 
 > Q5: What is the full path of the downloaded payload?
 
@@ -108,40 +112,51 @@ Here is the summary of this shellcode
 
 The easiest way to obtain this question is also finding process tree or file dropped from VirusTotal but we couldn't get most of question if we didn't dump shellcode to debug
 
-```
-C:\o.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\o.exe</code></pre>
+</details>
 
 > Q6: Where is the URL used to fetch the payload?
-```
-https://raw.githubusercontent.com/accidentalrebel/accidentalrebel.com/gh-pages/theme/images/test.png
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>https://raw.githubusercontent.com/accidentalrebel/accidentalrebel.com/gh-pages/theme/images/test.png</code></pre>
+</details>
 
 > Q7: The document contains an obfuscated shellcode. What string was used to cut the shellcode in half? (Two words, space in between)
-```
-Equation Native
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Equation Native</code></pre>
+</details>
 
 > Q8: What function was used to download the payload file from within the shellcode?
 
 ![28114b54556a6e60fbf37b4d05674900.png](/resources/28114b54556a6e60fbf37b4d05674900.png)
-```
-URLDownloadToFileA
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>URLDownloadToFileA</code></pre>
+</details>
 
 > Q9: What function was used to execute the downloaded payload file?
 
 ![940faf69d87be349c6d98e4d5a1ce4e7.png](/resources/940faf69d87be349c6d98e4d5a1ce4e7.png)
-```
-WinExec
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>WinExec</code></pre>
+</details>
 
 > Q10: Which DLL gets loaded using the "LoadLibrayA" function?
 
 ![63b6ba5f1165a6504826ef150b4a0deb.png](/resources/63b6ba5f1165a6504826ef150b4a0deb.png)
-```
-urlmon.dll
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>urlmon.dll</code></pre>
+</details>
 
 > Q11: What is the FONT name that gets loaded by the process to trigger the buffer overflow exploit?(3 words)
 
@@ -149,9 +164,10 @@ urlmon.dll
 
 I dumpped all objects I could then we can see that object 8 contains this FONT name which should be the one that will be responsible for buffer overflow
 
-```
-Times New Roman
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Times New Roman</code></pre>
+</details>
 
 > Q12: What is the GitHub link of the tool that was likely used to make this exploit?
 
@@ -159,9 +175,10 @@ Times New Roman
 
 Search for exploitation of this CVE then we will find this github repo which we're looking for
 
-```
-https://github.com/rip1s/CVE-2017-11882
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://github.com/rip1s/CVE-2017-11882</code></pre>
+</details>
 
 > Q13: What is the memory address written by the exploit to execute the shellcode?
 
@@ -169,9 +186,10 @@ https://github.com/rip1s/CVE-2017-11882
 
 By reviewing exploitation code then we can see the payload will be added to specific memory address.
 
-```
-0x00402114
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0x00402114</code></pre>
+</details>
 
 ![97cfa776bbba0659265c8d363d30f522.png](/resources/97cfa776bbba0659265c8d363d30f522.png)
 * * *

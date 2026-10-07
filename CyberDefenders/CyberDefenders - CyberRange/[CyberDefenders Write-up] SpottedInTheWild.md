@@ -25,9 +25,11 @@ As an incident responder, your task is to investigate this compromised workstati
 
 ![41701906a7c835a0f916b160a540052d.png](/resources/41701906a7c835a0f916b160a540052d.png)
 After opened disk image with FTK Imager, I found a telegram download folder inside Administrator Download's folder which have rar file in it and inside that rar file is a fake pdf file but its actually a cmd executable file that got me thinking about Winrar RCE 0-day that was the talk of the internet year ago
-```
-telegram
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>telegram</code></pre>
+</details>
 
 > Q2: Finding out when the attack started is critical. What is the UTC timestamp for when the suspicious file was first downloaded?
 
@@ -40,24 +42,30 @@ Same with Prefetch files `PECmd.lnk -d .\166-SpottedInTheWild\prefetch --csv .\1
 But the artifact that will really help us solve this question is Jump List
 ![250ced2e583143a0a7c2c6ed30e63d56.png](/resources/250ced2e583143a0a7c2c6ed30e63d56.png)
 Using JumpList Explorer, you can see when this file was created (well we can also get the same result from MFT artifact)
-```
-2024-02-03 07:33:20
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-02-03 07:33:20</code></pre>
+</details>
 
 > Q3: Knowing which vulnerability was exploited is key to improving security. What is the CVE identifier of the vulnerability used in this attack?
 
 ![be17d642c9ba94d4b7d89c7c4187d568.png](/resources/be17d642c9ba94d4b7d89c7c4187d568.png)
 it was [Win-rar RCE 0 days](https://www.mcafee.com/blogs/other-blogs/mcafee-labs/exploring-winrar-vulnerability-cve-2023-38831/) 
-```
-CVE-2023-38831
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2023-38831</code></pre>
+</details>
 
 > Q4: In examining the downloaded archive, you noticed a file in with an odd extension indicating it might be malicious. What is the name of this file?
 
 ![e0bc6e2cb1d415641bdc06746f064a7f.png](/resources/e0bc6e2cb1d415641bdc06746f064a7f.png)
-```
-SANS SEC401.pdf .cmd
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>SANS SEC401.pdf .cmd</code></pre>
+</details>
 
 > Q5: Uncovering the methods of payload delivery helps in understanding the attack vectors used. What is the URL used by the attacker to download the second stage of the malware?
 
@@ -71,17 +79,21 @@ You can see that after cmd was executed, bitsadmin was used to download an "imag
 Then use certutil to decode it to zip file
 ![7e75e9b486ea89f31f9ba33ff0ab666d.png](/resources/7e75e9b486ea89f31f9ba33ff0ab666d.png)
 Then suddenly, a powershell script was executed so another zip file probably exploit the same vulnerability to execute malicious powershell script inside of it
-```
-http://172.18.35.10:8000/amanwhogetsnorest.jpg
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>http://172.18.35.10:8000/amanwhogetsnorest.jpg</code></pre>
+</details>
 
 > Q6: To further understand how attackers cover their tracks, identify the script they used to tamper with the event logs. What is the script name?
 
 ![d4a540e7c4ce1171b388a725efe1787e.png](/resources/d4a540e7c4ce1171b388a725efe1787e.png)
 powershell script from previous question is not the right answer so I used strings again then I can see other powershell script that look like it was designed to do something to event logs
-```
-Eventlogs.ps1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Eventlogs.ps1</code></pre>
+</details>
 
 > Q7: Knowing when unauthorized actions happened helps in understanding the attack. What is the UTC timestamp for when the script that tampered with event logs was run?
 
@@ -96,9 +108,11 @@ After digging some rabbit holes than I realized, how about Powershell event log?
 There it is!
 ![594048af1a90a29e4ef5e59a2a6f2235.png](/resources/594048af1a90a29e4ef5e59a2a6f2235.png)
 We finally got a timestamp which proved its execution time
-```
-2024-02-03 07:38:01
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-02-03 07:38:01</code></pre>
+</details>
 
 > Q8: We need to identify if the attacker maintained access to the machine. What is the command used by the attacker for persistence?
 
@@ -106,9 +120,11 @@ We finally got a timestamp which proved its execution time
 After a powershell scripts were created and executed, at the same time a schedule task was also created
 ![695fe977c952ef7fd1ee258602a9db81.png](/resources/695fe977c952ef7fd1ee258602a9db81.png)
 This task will run bat script every 3 minutes
-```
-schtasks /create /sc minute /mo 3 /tn "whoisthebaba" /tr C:\Windows\Temp\run.bat /RL HIGHEST
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>schtasks /create /sc minute /mo 3 /tn "whoisthebaba" /tr C:\Windows\Temp\run.bat /RL HIGHEST</code></pre>
+</details>
 
 > Q9: To understand the attacker's data exfiltration strategy, we need to locate where they stored their harvested data. What is the full path of the file storing the data collected by one of the attacker's tools in preparation for data exfiltration?
 
@@ -118,9 +134,11 @@ I went to where the bat script is and eventually found its ps1 version of it, th
 Reverse and decoded base64 string that we will have a powershell script that used to scan for an entire private network LAN and determines its online/offline state before send it to C2  
 ![5139f35c5dfba1112a621f6e587cc796.png](/resources/5139f35c5dfba1112a621f6e587cc796.png)
 Here is the file that was created to store scanning results
-```
-C:\Users\Administrator\AppData\Local\Temp\BL4356.txt
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Administrator\AppData\Local\Temp\BL4356.txt</code></pre>
+</details>
 
 ![7e2ab783bcfb105cd85f5fbb340d99cf.png](/resources/7e2ab783bcfb105cd85f5fbb340d99cf.png)
 * * *

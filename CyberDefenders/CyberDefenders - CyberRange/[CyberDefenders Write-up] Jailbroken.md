@@ -27,9 +27,10 @@ To make our life easier, we will have to use [iLEAPP](https://github.com/abrigno
 
 Which including Device details of this device  
 
-```
-9.3.5
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>9.3.5</code></pre>
+</details>
 
 > Q2: Who is using the iPad? Include their first and last name. (Two words)
 
@@ -41,9 +42,10 @@ On "Account Data", we can see the username that was used on this device which in
 
 Then we can confirm this by open "Calendar List"
 
-```
-Tim Apple
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Tim Apple</code></pre>
+</details>
 
 > Q3: When was the last time this device was 100% charged? Format: 01/01/2000 01:01:01 PM
 
@@ -63,9 +65,10 @@ After open this file with DB Browser for SQLite, go to `PLBatteryAgent_EventBack
 
 We can easily do this by using https://www.epochconverter.com/
 
-```
-04/15/2020 06:40:31 PM
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>04/15/2020 06:40:31 PM</code></pre>
+</details>
 
 > Q4: What is the title of the webpage that was viewed the most? (Three words)
 
@@ -81,9 +84,10 @@ First, lets find history file with `Get-ChildItem -Path "Z:\CD_35-jailbroken\Jai
 
 Using DB Browser of SQLite to open this file and open `history_visits` table which we will see that this google search was visited the most
 
-```
-kirby with legs
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>kirby with legs</code></pre>
+</details>
 
 > Q5: What is the title of the first podcast that was downloaded?
 
@@ -105,9 +109,10 @@ We will eventually see that only 2 podcasts were downloaded and here is the time
 
 Scroll right for the title of this podcast to obtain an answer
 
-```
-WHERE ARE WE?
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>WHERE ARE WE?</code></pre>
+</details>
 
 > Q6: What is the name of the WiFi network this device connected to? (Two words)
 
@@ -115,9 +120,10 @@ WHERE ARE WE?
 
 Back to iLEAPP report, go to "WIFI Connections" and here we can choose either of these reports to obtain this answer 
 
-```
-black lab
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>black lab</code></pre>
+</details>
 
 > Q7: What is the name of the skin/color scheme used for the game emulator? This should be a filename.
 
@@ -137,9 +143,10 @@ We will have to dig a little bit of GBA4iOS skin and from this [tutorials](http:
 
 We got both here but the answer of this question is the one with `.gbaskin` extension
 
-```
-Default.gbaskin
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Default.gbaskin</code></pre>
+</details>
 
 > Q8: How long did the News App run in the background?
 
@@ -147,9 +154,10 @@ Default.gbaskin
 
 We will have to go back to `CurrentPowerlog.PLSQL` file and then go to `PLAppTimeService_Aggregate_AppRunTime` which stores information about runtime of each applications including news
 
-```
-197.810275
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>197.810275</code></pre>
+</details>
 
 > Q9: What was the first app download from AppStore? (Two words)
 
@@ -157,9 +165,10 @@ We will have to go back to `CurrentPowerlog.PLSQL` file and then go to `PLAppTim
 
 Go back to "Apps - itunes Metadata" report from iLEAPP then we can see that there are 2 apps that were downloaded from AppStore, first is Cookie Run and second is Pokemon Quest
 
-```
-Cookie Run
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Cookie Run</code></pre>
+</details>
 
 > Q10: What app was used to jailbreak this device? 
 
@@ -175,16 +184,19 @@ We have 3 candidates but as soon as I decompressed zip file to investigated, Bit
 
 To solve this as it was intented, we will have to find it in "Application State DB" report in iLEAPP 
 
-```
-Phoenix
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Phoenix</code></pre>
+</details>
 
 > Q11: How many applications were installed from the app store?
 
 ![acd47ddcc3cc2935ca0aaaf90b88273e.png](/resources/acd47ddcc3cc2935ca0aaaf90b88273e.png)
-```
-2
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2</code></pre>
+</details>
 
 > Q12: How many save states were made for the emulator game that was most recently obtained?
 
@@ -204,9 +216,10 @@ Going inside this folder then we can see there is a `Save States` folder here an
 
 But each game and only 1 save state, we didn't have to account which game was installed last anymore
 
-```
-1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>1</code></pre>
+</details>
 
 > Q13: What language is the user trying to learn?
 
@@ -218,9 +231,10 @@ From the podcast artifact we investigated, we can see that user also listened to
 
 Put any of them inside language detection tool then we will come to the same conclusion
 
-```
-Spanish
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Spanish</code></pre>
+</details>
 
 > Q14: The user was reading a book in real life but used their IPad to record the page that they had left off on. What number was it?
 
@@ -236,9 +250,10 @@ Close enough, we have `100APPLE` folder that have 1 recording video inside
 
 User turned so many pages but eventually stopped at page 85 which is the answer of this question
 
-```
-85
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>85</code></pre>
+</details>
 
 > Q15: If you found me, what should I buy? 
 
@@ -256,9 +271,10 @@ For this artifact, we could not use DB Browser for SQLite to read notes but we w
 
 Go to output folder and open `Notes.csv`, then we can see that "we" should buy Crash Bandicoot game for PS4
 
-```
-Crash Bandicoot Nitro-Fueled Racing
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Crash Bandicoot Nitro-Fueled Racing</code></pre>
+</details>
 
 > Q16: There was an SMS app on this device's dock. Provide the name in bundle format: com.provider.appname
 
@@ -266,9 +282,10 @@ Crash Bandicoot Nitro-Fueled Racing
 
 Go to "Application State DB" report from iLEAPP then find for SMS app then we will eventually find the name in bundle format 
 
-```
-com.apple.MobileSMS
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>com.apple.MobileSMS</code></pre>
+</details>
 
 > Q17: A reminder was made to get something, what was it?
 
@@ -280,9 +297,10 @@ There are two main things that people use for reminders: Notes and Calendar. How
 
 We have to browse Calendar database directly which located in `\Jailbroken\private\var\mobile\Library\Calendar` and after open this database, go to `CalendarItem` then we will see 2 reminders here
 
-```
-milk
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>milk</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/jailbroken/
 

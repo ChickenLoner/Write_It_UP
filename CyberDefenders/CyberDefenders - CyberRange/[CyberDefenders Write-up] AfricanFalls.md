@@ -24,9 +24,11 @@ John Doe was accused of doing illegal activities. A disk image of his laptop was
 
 ![9c295bd43c9b138d06afd35e1411132c.png](/resources/9c295bd43c9b138d06afd35e1411132c.png)
 An evidence file was created using FTK Imager, which came with log file that also has MD5 checksum
-```
-9471e69c95d8909ae60ddff30d50ffa1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>9471e69c95d8909ae60ddff30d50ffa1</code></pre>
+</details>
 
 > Q2: What phrase did the suspect search for on 2021-04-29 18:17:38 UTC? (three words, two spaces in between)
 
@@ -37,17 +39,21 @@ But there are several browsers installed on this system, the first one we gonna 
 Using ChromeHistoryView from NirSoft to parse all data
 ![2c075df83c15d539352586c7bbc0f4c0.png](/resources/2c075df83c15d539352586c7bbc0f4c0.png)
 Go to Options then check for "Show Time In GMT" then sort by "Visited On", you will find the exact time and keyword that was used to search on Google
-```
-password cracking lists
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>password cracking lists</code></pre>
+</details>
 
 > Q3: What is the IPv4 address of the FTP server the suspect connected to?
 
 ![1448d37d68ff38eefcf17ef996209475.png](/resources/1448d37d68ff38eefcf17ef996209475.png)	
 After doing some recon on suspected disk I found that FireZilla was installed on this system so I went to `Roaming\FileZilla` to grab `recentservers.xml` which store an information about the lastest server FileZilla was connected to
-```
-192.168.1.20
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.1.20</code></pre>
+</details>
 
 > Q4: What date and time was a password list deleted in UTC? (YYYY-MM-DD HH:MM:SS UTC)
 
@@ -55,9 +61,11 @@ After doing some recon on suspected disk I found that FireZilla was installed on
 A file that was deleted supposed to be in Recycle Bin so I went to Recycle Bin then after figure it out which SID associated with John Doe, I finally found the password list that was deleted
 
 $I file is metadata of the actual file that will be created when a file is deleted so we will copy it date and change it to UTC
-```
-2021-04-29 18:22:17 UTC
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2021-04-29 18:22:17 UTC</code></pre>
+</details>
 
 > Q5: How many times was Tor Browser ran on the suspect's computer? (number only)
 
@@ -69,27 +77,33 @@ We can also export prefetch folder and use PECmd from EZ Tools Suite to parse al
 Use Timeline Explorer from EZ Tools Suite to open an output from PECmd and find for Tor executable file and There is no result
 ![9ed304d492c4310746a1b3a9a966caf0.png](/resources/9ed304d492c4310746a1b3a9a966caf0.png)
 Only TOR that was found is the installer 
-```
-0
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>0</code></pre>
+</details>
 
 > Q6: What is the suspect's email address?
 
 I did not find any outlook artifact or any ost file 
 ![ad0c1ad170af19f5ba36d544e5585509.png](/resources/ad0c1ad170af19f5ba36d544e5585509.png)
 but luckily on Chrome Browser History, user visited protonmail and it also logged an email of suspicious email 
-```
-dreammaker82@protonmail.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>dreammaker82@protonmail.com</code></pre>
+</details>
 
 > Q7: What is the FQDN did the suspect port scan?
 
 On John Doe's Desktop, I found nmap/zenmap shortcut which mean user using this tool to conduct port scan activity but sadly I do not know any artifact related to port scanning
 ![8049e6c34237ff2b2e315720d493de5d.png](/resources/8049e6c34237ff2b2e315720d493de5d.png)
 I took a hint and found that PowerShell History can be used to solve this challenge which you can see that user conducted port scanning using PowerShell and the only Domain that was scanned is `dfir.science`
-```
-dfir.science
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>dfir.science</code></pre>
+</details>
 
 > Q8: What country was picture "20210429_152043.jpg" allegedly taken in?
 
@@ -98,9 +112,11 @@ After searching through user directory, I found several images inside Contact fo
 ![0a6cd25427d3d8c8290d887496c5323d.png](/resources/0a6cd25427d3d8c8290d887496c5323d.png)
 Use Exiftool to display metadata of this image which also have GPS Coordinate when this image was taken then we can use https://www.gps-coordinates.net/ to find out where it is
 ![df947db10362722b81bcbee4889f5703.png](/resources/df947db10362722b81bcbee4889f5703.png)
-```
-Zambia
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Zambia</code></pre>
+</details>
 
 > Q9: What is the parent folder name picture "20210429_151535.jpg" was in before the suspect copy it to "contact" folder on his desktop?
 
@@ -113,17 +129,21 @@ Then use ShellBags Explorer to parse registry hive(don't forget to hold SHIFT to
 I went back to an image and using Exiftool, we can see Camera model that shooting this image
 ![95f5cdbf7a4ba198a12845d8c52f4698.png](/resources/95f5cdbf7a4ba198a12845d8c52f4698.png)
 And it's manufacture so to put it simply, user took photos using this camera and then plugged in to this system which all images was transferred to Contact folder
-```
-Camera
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Camera</code></pre>
+</details>
 
 > Q10: A Windows password hashes for an account are below. What is the user's password? Anon:1001:aad3b435b51404eeaad3b435b51404ee:3DE1A36F6DDB8E036DFD75E8E20C4AF4:::
 
 ![87010ad5bd0d4cc1aed941334cb62e50.png](/resources/87010ad5bd0d4cc1aed941334cb62e50.png)
 Using [Hashes.com](https://hashes.com/en/decrypt/hash) we got a password for this user
-```
-AFR1CA!
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>AFR1CA!</code></pre>
+</details>
 
 > Q11: What is the user "John Doe's" Windows login password?
 
@@ -136,9 +156,11 @@ Then executed mimikatz then using this command `lsadump::sam /system:SYSTEM /sam
 We got one
 ![6f2f46b24d9086e28e21aa39c2116880.png](/resources/6f2f46b24d9086e28e21aa39c2116880.png)
 Using hashes.com to de-hash
-```
-ctf2021
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>ctf2021</code></pre>
+</details>
 
 ![7805098918a5a29a0c7a4504fa5b0715.png](/resources/7805098918a5a29a0c7a4504fa5b0715.png)
 * * *

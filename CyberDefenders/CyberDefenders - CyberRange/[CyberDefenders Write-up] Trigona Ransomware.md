@@ -52,9 +52,10 @@ The LocalSession Manager log also record the same IP address connected to the IT
 
 To establish some baseline of this user, I searched for this specific user name which reveals that this user usually logged on with 192.168.19.144 so the IP address 192.168.19.100 is not normal at all and we can conclude that this IP address is belong to the threat actor's machine.
 
-```
-192.168.19.100
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.19.100</code></pre>
+</details>
 
 >Q2: Knowing the account used by the attacker helps track activities and identify compromised accounts. What is the SID of the account the attacker used to gain initial access on the victim machine?
 
@@ -62,9 +63,10 @@ To establish some baseline of this user, I searched for this specific user name 
 
 We know that the threat actor successfully logged on as "Hanii-IT" user via RDP so we can display SID of this user from its successful authentication right here.
 
-```
-S-1-5-21-1393444541-2628512620-2908104607-1112
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>S-1-5-21-1393444541-2628512620-2908104607-1112</code></pre>
+</details>
 
 >Q3: Identifying PowerShell commands reveals attackers' activities such as avoiding detection. What was the first PowerShell command the attacker used for defense evasion?
 
@@ -72,9 +74,10 @@ S-1-5-21-1393444541-2628512620-2908104607-1112
 
 This time, I filtered for Event ID 4104 for PowerShell Remote Execution from "Hanii-IT" user (filtered with SID) which reveals that at 2024-06-30 11:31:44 UTC, there is a command to disable Windows Defender Real Time Monitoring from  "Hanii-IT" user as we can see in the image above.
 
-```
-Set-MpPreference -DisableRealtimeMonitoring $true
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Set-MpPreference -DisableRealtimeMonitoring $true</code></pre>
+</details>
 
 >Q4: We need to find the enumeration output file revealing the network information gathered by the attacker. What is the TXT filename output of one of the network enumeration activities performed by the attacker?
 
@@ -94,9 +97,10 @@ We can use JumpList Explorer to parse these files from `AutomaticDestinations` a
 
 And now we can see that `ipall.txt` was located on `C:\Windows\System32` which is totally not common at all and as the name of the file indicates that this file might contains the result of pingsweep or IP discovery process of the attacker.
 
-```
-ipall.txt
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ipall.txt</code></pre>
+</details>
 
 >Q5: Identifying the tools used reveals the methods and scope of network enumeration. After gathering basic information about the network, what third-party tool did the attacker use to identify the file share and perform network enumeration?
 
@@ -112,14 +116,17 @@ Then I used Timeline Explorer to open the prefetch timeline cve file and filter 
 
 It also reveals that the threat actor utilized `netscan.exe` for network enumeration then use `rclone.exe` to exfiltrate files and lastly the `FINAL.exe` could be a Trigona ransomware as stated in the name of the lab.
 
-```
-netscan
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>netscan</code></pre>
+</details>
 
 >Q6: Knowing the tool used for data exfiltration helps in identifying the methods and channels used by the attacker to exfiltrate sensitive data. What command-line tool did the attacker use to attempt data exfiltration?
-```
-rclone
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>rclone</code></pre>
+</details>
 
 >Q7: Identifying the IP addresses of the machines involved in lateral movement helps map the attacker's path and understand the attack's scope. Can you provide the IP address of the machine to which the attacker moved laterally and the IP address of the initial access machine?
 
@@ -139,9 +146,10 @@ And then we can open `NTUSER.dat` of "Hanii-IT" user since the attacker gained a
 
 And after we open `SYSTEM` hive of the File Server then we can see that the IP address of this machine was actually 192.168.19.130 so if we parsed local session manager event log of this machine then we gonna see it was connected from 192.168.31.129.
 
-```
-192.168.31.130, 192.168.31.129
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.31.130, 192.168.31.129</code></pre>
+</details>
 
 >Q8: Knowing the path of the file share targeted by the attacker helps in identifying compromised data and understanding the attack's impact. What is the full path of the file share on the file server that was targeted by the attacker?
 
@@ -149,9 +157,10 @@ And after we open `SYSTEM` hive of the File Server then we can see that the IP a
 
 Since we already opened the `SYSTEM` hive of the File server then we can take a look at "Shares" registry key which record the file share of that particular machine and we can see that there is only 1 share from this File Server.
 
-```
-F:\Shares\BusinessMaterial
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>F:\Shares\BusinessMaterial</code></pre>
+</details>
 
 >Q9: Identifying the SHA1 file hash of the malware helps in verifying the exact malicious file and correlating it with known malware signatures. What is the SHA1 file hash of the ransomware run on the file server and IT-machine?
 
@@ -169,9 +178,10 @@ Since we already suspected the `final.exe` is the ransomware so we can grab it S
 
 The [VirusTotal](https://www.virustotal.com/gui/file/dd34bb9b403e1daaf35ad243d4e6bd73b30c6b82d6026e8e69ccf66f521882df/detection) result confirmed that this file is really a Trigona Ransomware.
 
-```
-cfaa59dd3288387f62efbf54477d531f4d3964f3
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>cfaa59dd3288387f62efbf54477d531f4d3964f3</code></pre>
+</details>
 
 >Q10: Knowing the extension of encrypted files can potentially help us with identifying the ransomware variant. What is the file extension of the encrypted files?
 
@@ -185,9 +195,10 @@ There are several ways to discover this such as MFT, UsnJournal and LogFile but 
 
 The ransomware must have renamed the file on the `Users` folder who detonated the ransomware first so we can just simply use "Hanii" to search which reveals the extension that was used to indicate the encrypted file as `._vNrFy5`
 
-```
-_vNrFy5
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>_vNrFy5</code></pre>
+</details>
 
 >Q11: Determining the registry modifications by the malware is crucial for identifying its malicious activities. What registry value did the malware add to display its ransom message?
 
@@ -195,9 +206,10 @@ _vNrFy5
 
 While I browsed the registry of "Hanii-IT" user, I discovered odd run persistence key and turned out its a key that will display the content of hta file every startup of this user.
 
-```
-c:\users\hanii_it\appdata\local\temp\how_to_decrypt.hta
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>c:\users\hanii_it\appdata\local\temp\how_to_decrypt.hta</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/trigona-ransomware/ 
 

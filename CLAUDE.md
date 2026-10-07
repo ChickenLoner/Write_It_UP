@@ -28,6 +28,30 @@ never published — it is treated as repo documentation.
 `fix_paths.py` and `fix_joplin_toc.py` still exist and still work (that is what
 `automated_fix.bat` runs); `publish.py` calls into them and adds the validation.
 
+### Answer blocks
+
+Lab answers are click-to-reveal blocks, never bare fences, so a reader can tell
+an answer from a command:
+
+```html
+<details>
+  <summary>Answer</summary>
+<pre><code>the answer, HTML-escaped</code></pre>
+</details>
+```
+
+Exports from Joplin come in with bare ``` fences. `fix_answer_blocks.py`
+converts them (`--platform <Folder>`, dry run unless `--apply`). It decides by
+structure, not content (`whoami` is a valid command and a valid answer): in a
+question's section, the sole — or last — untagged 1-3 line fence is the answer;
+earlier fences are code and stay. Lang-tagged or long fences, fences outside any
+question (machine write-ups have none), and anything ambiguous are listed for a
+human and left alone. Run it only on platforms that use `> question` blockquotes.
+Not yet wired into `publish.py`.
+
+The build puts a blank line around every `<details>` before rendering, because
+markdown2 otherwise folds the tag into the previous paragraph or blockquote.
+
 ### Metadata — Claude fills this in
 
 `writeups_meta.json` drives the index card: difficulty pill, category, tags,

@@ -34,9 +34,11 @@ I opened Protocol Statistics and found that there are a lot of UDP packets
 And after reading about SIP protocol from https://www.nextiva.com/blog/sip-protocol.html
 ![c93c966e6eff2d5a3f6f7bff82307cb7.png](/resources/c93c966e6eff2d5a3f6f7bff82307cb7.png)
 I was sure that udp is the answer of this question
-```
-udp
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>udp</code></pre>
+</details>
 
 > Q2: The attacker used a bunch of scanning tools that belong to the same suite. Provide the name of the suite.
 
@@ -47,17 +49,21 @@ There is some string that caught my eyes rightway so I went to google to find ou
 Luckily, It is a tool used to VoIP security testing
 
 Here is the github repo I found, https://github.com/EnableSecurity/sipvicious
-```
-sipvicious
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>sipvicious</code></pre>
+</details>
 
 > Q3: What is the User-Agent of the victim system? 
 
 Answer still on my first udp stream
 ![393536fc15a6512d5452d78a5c20c2eb.png](/resources/393536fc15a6512d5452d78a5c20c2eb.png)
-```
-Asterisk PBX 1.6.0.10-FONCORE-r40
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Asterisk PBX 1.6.0.10-FONCORE-r40</code></pre>
+</details>
 
 > Q4: Which tool was only used against the following extensions: 100,101,102,103, and 111?
 
@@ -71,9 +77,11 @@ And I also found that this `makeRequest` function was imported from `siphelper.p
 ![0e68d9c32a456d8ee933360d82e94c2e.png](/resources/0e68d9c32a456d8ee933360d82e94c2e.png)
 ![aaaf6faf5f978d45b5571f62c4ef9302.png](/resources/aaaf6faf5f978d45b5571f62c4ef9302.png)
 Then after compare each of different part of the request from this script and on wireshark, there are match so This is the one
-```
-svcrack.py
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>svcrack.py</code></pre>
+</details>
 
 > Q5: Which extension on the honeypot does NOT require authentication?
 
@@ -81,9 +89,10 @@ I got my answer from `sip` filter
 ![ed17d1320ad7293f534e9dd132cfc24c.png](/resources/ed17d1320ad7293f534e9dd132cfc24c.png)
 I found that other extensions got 401 Unauthorized back but the first extension got 200 OK back without using any credentials 
 
-```
-100
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>100</code></pre>
+</details>
 
 > Q6: How many extensions were scanned in total?
 
@@ -102,18 +111,22 @@ After I ran the script, I also found that there are duplicates and the first con
 And I also saw the pattern that all contacts with `@honey.pot` are the one I was looking for 
 ![1ae044cf757b86ae1cb57b3666da6fa2.png](/resources/1ae044cf757b86ae1cb57b3666da6fa2.png)
 So I did just that and got the answer
-```
-2652
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2652</code></pre>
+</details>
 
 > Q7: There is a trace for a real SIP client. What is the corresponding user-agent? (two words, once space in between)
 
 I asked ChatGPT to write me a script to read `log.txt` and put all unique `User-Agent` into a list then print the list out later
 ![f6bbbd51d68b1918799ab37cc5ac6629.png](/resources/f6bbbd51d68b1918799ab37cc5ac6629.png)
 There are 2 user-agents, the bottom one is the answer
-```
-Zoiper rev.6751
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Zoiper rev.6751</code></pre>
+</details>
 
 > Q8: Multiple real-world phone numbers were dialed. What was the most recent 11-digit number dialed from extension 101?
 
@@ -123,9 +136,11 @@ I had no clue about this question so I clicked for a hint and found that I neede
 I read the above diagram along with [Wiki](https://en.wikipedia.org/wiki/Session_Initiation_Protocol) so I finally got that the phone number will be sent with INVITE request
 ![75198e04d24535c7ab851bda12380a48.png](/resources/75198e04d24535c7ab851bda12380a48.png)
 I found 4 INVITE requests on `log.txt` and the most recent one is this
-```
-00112524021
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>00112524021</code></pre>
+</details>
 
 > Q9: What are the default credentials used in the attempted basic authentication? (format is username:password)
 
@@ -134,9 +149,11 @@ Now I went back to wireshark
 I saw that on the GET `/mint` request came with Authentication Required so I could find the answer from this kind of request 
 ![2c60277f03f6538405878d788efa6235.png](/resources/2c60277f03f6538405878d788efa6235.png)
 Which I finally got the answer, when the Status 301 was there I knew that the authentication was successful.
-```
-maint:password
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>maint:password</code></pre>
+</details>
 
 > Q11: Which codec does the RTP stream use? (3 words, 2 spaces in between)
 
@@ -145,9 +162,11 @@ I searched on google how Codec look like
 And I also found this [website](https://sonary.com/content/what-is-a-codec-and-why-is-it-important-for-voip/) explained about Codec which is very helpful
 ![5890aa14c20c71b6ee2f7b286b826856.png](/resources/5890aa14c20c71b6ee2f7b286b826856.png)
 I came back to wireshark using filter `rtp` then Payload Type is the codec i was looking for
-```
-ITU-T G.711 PCMU
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>ITU-T G.711 PCMU</code></pre>
+</details>
 
 > Q12: How long is the sampling time (in milliseconds)?
 
@@ -163,9 +182,11 @@ On this window, you can see that sampling rate of this call is 8000Hz
 
 So I did some more researched on how to calculate sampling time in milisecond which is
 `Sampling time = 1/sample rate in kHz` then `1 / 8 = 0.125`
-```
-0.125
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>0.125</code></pre>
+</details>
 
 > Q13: What was the password for the account with username 555?
 
@@ -173,27 +194,33 @@ I was too focused on SIP but couldn't find anything and used Find Packet on wire
 ![111910d2c21b138cdcead1570a1d56d1.png](/resources/111910d2c21b138cdcead1570a1d56d1.png)
 and found that there is a config file for SIP was requested and it contained credentials 
 ![f416a4bdf4e555d789037271b7fc8ed3.png](/resources/f416a4bdf4e555d789037271b7fc8ed3.png)
-```
-1234
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>1234</code></pre>
+</details>
 
 > Q14: Which RTP packet header field can be used to reorder out of sync RTP packets in the correct sequence?
 
 I read RTP wiki and found that sequence number and timestamp could be used for that 
 ![241121e7d0679b6617ba74b2b4707340.png](/resources/241121e7d0679b6617ba74b2b4707340.png)
 But the answer is timestamp
-```
-timestamp
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>timestamp</code></pre>
+</details>
 
 > Q15: The trace includes a secret hidden message. Can you hear it?
 
 on VoIP Calls, play it 
 ![70e991346c256aff48bbc88795d22da6.png](/resources/70e991346c256aff48bbc88795d22da6.png)
 When you reached there, you will hear the secret code
-```
-mexico
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>mexico</code></pre>
+</details>
 
 ![59b3446f0435347c8afee2a10dff5cdf.png](/resources/59b3446f0435347c8afee2a10dff5cdf.png)
 * * *

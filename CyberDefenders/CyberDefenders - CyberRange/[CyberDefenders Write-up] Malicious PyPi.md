@@ -31,9 +31,10 @@ When talking about python package (pypi), we might deal with `pip` and there are
 - First is the `ConsoleHost_history.txt` of this specific user, we only have Administrator user here, so I checked the console host history that stored PowerShell command line history of each user, and I found that python package installation via `pip` from a1l4m’s GitHub (creator of this lab) and the Git Repository name giving out that Dr. Alex Rivera thought that this might be legitimate [TensorFlow](https://pypi.org/project/tensorflow/) package that led to the compromise of this machine.
 - Second is command line logging if enabled but sadly, it is not enabled on this system which is expected as a1l4m is the author of this lab.
 
-```
-pip install git+https://github.com/a1l4m/TensorFlow.git#egg=TensorFlow
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>pip install git+https://github.com/a1l4m/TensorFlow.git#egg=TensorFlow</code></pre>
+</details>
 
 >Q2: During the investigation, you uncover a command that modified the system's security settings, resulting in the deactivation of Windows Defender in a manner that could assist an attacker. What was this command?
 
@@ -49,14 +50,17 @@ Now I’ll parse whole Windows event log folder (technically, we should only par
 
 Command: `EvtxECmd.exe -d "C:\Users\Administrator\Desktop\Start Here\Artifacts\C\Windows\System32\winevt\logs" --csv . --csvf log_timeline.csv`
 
-```
-Set-MpPreference -DisableRealtimeMonitoring $true
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Set-MpPreference -DisableRealtimeMonitoring $true</code></pre>
+</details>
 
 >Q3: Based on your timeline analysis, at what date and time did you first observe unauthorized changes to the security settings that led to the disabling of Windows Defender?
-```
-2024-02-26 12:22
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-02-26 12:22</code></pre>
+</details>
 
 >Q4: After the security settings were compromised, a new file appeared on the system. What is the MD5 hash of this file, indicating its unique identity?
 
@@ -68,9 +72,10 @@ From the prefetch timeline, we can see that there are 2 `setup.exe` executed fro
 
 I will also search this hash on [VirusTotal - File - 5f8212f95007a5aceb61d3be86c7d1bdb03980ae8a3bd822c847d4c83c528330](https://www.virustotal.com/gui/file/5f8212f95007a5aceb61d3be86c7d1bdb03980ae8a3bd822c847d4c83c528330), which reveal that this is the Sliver implant which should be responsible for the reverse shell connection to the threat actor once it executed.
 
-```
-23aadf3c98745cf293bff6b1b0980429
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>23aadf3c98745cf293bff6b1b0980429</code></pre>
+</details>
 
 >Q5: Investigate the origin of the malicious file detected on the server. What was the exact URL from which this file was initially downloaded before it started communicating with external C2 servers?
 
@@ -78,9 +83,10 @@ I will also search this hash on [VirusTotal - File - 5f8212f95007a5aceb61d3be86c
 
 On Windows workstation, when install package with `pip`, it will create temporary file in `C:\Users\<username>\AppData\Local\Temp\` so we can open the whole folder in VS Code and use “Find in files” feature to search for the sliver implant file name which reveal the python script that was used to download sliver implant and execute it as shown in the image above. 
 
-```
-http://3.66.85.252:8000/file.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://3.66.85.252:8000/file.exe</code></pre>
+</details>
 
 >Q6: The file in the previous question started communicating with an external C2 server. What port was used for this communication?
 
@@ -88,9 +94,10 @@ http://3.66.85.252:8000/file.exe
 
 Now we shall go back to VirusTotal and we can go to “Behavior” tab to find the port that was used for reverse shell connection as seen in the image above.
 
-```
-8888
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>8888</code></pre>
+</details>
 
 >Q7: Attackers often ensure their continued access to a compromised system through persistence mechanisms. When was such a mechanism established in Dr. Rivera's system?
 
@@ -106,9 +113,10 @@ By examining the `Windows\System32\Tasks` folder, we can see the suspicious task
 
 By inspecting the task configuration file, we can see that this scheduled task will execute sliver implant during the boot time with highest privilege available (system) and now it is confirmed that the scheduled task was created at 12:36
 
-```
-2024-02-26 12:36
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-02-26 12:36</code></pre>
+</details>
 
 >Q8: After the attacker completed their intrusion, a specific file was left behind on the host system. Based on the information you've gathered, provide the name of this file, which was created shortly after the attacker established persistence on the system.
 
@@ -124,9 +132,10 @@ We also have this executable to calculate file hash and as we can see that the d
 
 After searching this hash on VirusTotal, we can now confirm that this file is a malciious file and the threat label highlight this file as Aurora Stealer.
 
-```
-system.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>system.exe</code></pre>
+</details>
 
 >Q9: Determine the exact moment the malicious file identified in Question 8 began its operation. When was it first executed?
 
@@ -134,9 +143,10 @@ system.exe
 
 As seen in the prefetch timeline that the first execution of this file is at 12:42
 
-```
-2024-02-26 12:42
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-02-26 12:42</code></pre>
+</details>
 
 >Q10: After identifying the malicious file in Question 8, it is crucial to determine the name of the malware family. This information is vital for correlating the attack with known threats and developing appropriate defenses. What is the malware family name for the malicious file in Question 8?
 
@@ -144,9 +154,10 @@ As seen in the prefetch timeline that the first execution of this file is at 12:
 
 As we already figured it out from popular threat label, we can also check the community tab and a lot of malware sandbox also labeled this as Aurora Stealer as well.
 
-```
-Aurora
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Aurora</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/malicious-pypi/
 * * *

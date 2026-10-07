@@ -39,9 +39,11 @@ Open evidence file using FTK Imager then go to the CoreServices directory to exp
 ![aba879aa97829c2395eceb720abaef62.png](/resources/aba879aa97829c2395eceb720abaef62.png)
 
 Open this file with your preferred text editor (preferably with plist editor)
-```
-10.15
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>10.15</code></pre>
+</details>
 
 > Q2: What "competitive advantage" did Hansel lie about in the file AnotherExample.jpg? (two words)
 
@@ -60,9 +62,11 @@ Export an image and using `strings` to find out the secret, you will find that t
 ![546c28e0b4be022a8034a29e56b875e8.png](/resources/546c28e0b4be022a8034a29e56b875e8.png)
 
 Another way to obtain this answer is to go to `sneaky` home directory and read terminal history
-```
-flip phone
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>flip phone</code></pre>
+</details>
 
 > Q3: How many bookmarks are registered in safari?
 
@@ -77,9 +81,11 @@ We're interested in bookmark so we will grab `Bookmarks.plist`
 ![79e5bb5724cbba30b2988954377d5861.png](/resources/79e5bb5724cbba30b2988954377d5861.png)
 
 Filter by using `http`, there are 13 bookmarks that were saved.
-```
-13
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>13</code></pre>
+</details>
 
 > Q4: What's the content of the note titled "Passwords"?
 
@@ -98,9 +104,11 @@ Using `mac_apt_artifact_only` with NOTES plugin to parse this sqlite file (`mac_
 ![d8c8c1ff190013357e8a1d4efdb4e0ee.png](/resources/d8c8c1ff190013357e8a1d4efdb4e0ee.png)
 
 There it is 
-```
-Passwords
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Passwords</code></pre>
+</details>
 
 > Q5: Provide the MAC address of the ethernet adapter for this machine.
 
@@ -111,9 +119,11 @@ I couldn't find any useful information while researching so I clicked for hint t
 ![2128524c5a70973dd33dd188b27e69d1.png](/resources/2128524c5a70973dd33dd188b27e69d1.png)
 
 Which make sense why MAC address was also logged on this file
-```
-00:0c:29:c4:65:77
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>00:0c:29:c4:65:77</code></pre>
+</details>
 
 > Q6: Name the data URL of the quarantined item.
 
@@ -131,9 +141,11 @@ on LSQuarantineEvent table, you will find URL we're looking for
 ![286aff36ef3454c5f99d58dc4de2e6e1.png](/resources/286aff36ef3454c5f99d58dc4de2e6e1.png)
 
 Which is a script to encode secret information to an image which gave us a clue about how to solve later question related to steganography
-```
-https://futureboy.us/stegano/encode.pl
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>https://futureboy.us/stegano/encode.pl</code></pre>
+</details>
 
 > Q7: What app did the user "sneaky" try to install via a .dmg file? (one word)
 
@@ -144,9 +156,11 @@ back to terminal history, you can see that `SilentEye` was installed
 ![0056fc0f1f2c9dd52c0909e21403f942.png](/resources/0056fc0f1f2c9dd52c0909e21403f942.png)
 
 Which is another steganography tool
-```
-SilentEye
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>SilentEye</code></pre>
+</details>
 
 > Q8: What was the file 'Examplesteg.jpg' renamed to?
 
@@ -167,9 +181,11 @@ Parse those events out (`mac_apt_artifact_only.exe -i .fseventsd -o . -c FSEVENT
 ![355aa5296f3dea622ca14c9e663ad4de.png](/resources/355aa5296f3dea622ca14c9e663ad4de.png)
 
 Find for 'Examplesteg.jpg', you can see that it will be renamed to `GoodExample.jpg`
-```
-GoodExample.jpg
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>GoodExample.jpg</code></pre>
+</details>
 
 > Q9: How much time was spent on mail.zoho.com on 4/20/2020?
 
@@ -186,9 +202,11 @@ Parse the artifact with mac_apt (`mac_apt_artifact_only.exe -i RMAdminStore-Loca
 ![995a195faeae561b7d8562be6da23a01.png](/resources/995a195faeae561b7d8562be6da23a01.png)
 
 Search for "mail.zoho.com" on 4/20/2020 which you can see that there are 2 events there so lets sum up -> 04:34 + 16:24 = 20:58
-```
-20:58
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>20:58</code></pre>
+</details>
 
 > Q10: What's hansel.apricot's password hint? (two words)
 
@@ -201,9 +219,11 @@ I used this [PList Editor](https://download.cnet.com/plist-editor/3000-2141_4-10
 ![77f96e4c2498e3fca51acc03db60a122.png](/resources/77f96e4c2498e3fca51acc03db60a122.png)
 
 After scrolling for a while (or filter for "hint"), you will find password hint of this user
-```
-Family Opinion
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Family Opinion</code></pre>
+</details>
 
 > Q11: The main file that stores Hansel's iMessages had a few permissions changes. How many times did the permissions change? 
 
@@ -222,9 +242,11 @@ Find for directory that store imessage artifact, you can see the pattern to filt
 ![c913a59f2b78afe70b38d3bd61a9a1bb.png](/resources/c913a59f2b78afe70b38d3bd61a9a1bb.png)
 
 Using this filter, it narrows down to 7 permission changes to this file
-```
-7
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>7</code></pre>
+</details>
 
 > Q12: What's the UID of the user who is responsible for connecting mobile devices?
 
@@ -236,9 +258,10 @@ And the artifact that will be needed is `_usbmuxd.plist`
 
 ![07a00ebe499d58c08ecad1e9d7f4d3bb.png](/resources/07a00ebe499d58c08ecad1e9d7f4d3bb.png)
 
-```
-213
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>213</code></pre>
+</details>
 
 > Q13: Find the flag in the GoodExample.jpg image. It's hidden with better tools.
 
@@ -257,9 +280,11 @@ There it is
 ![5de4499d348337407fc453218cf952b2.png](/resources/5de4499d348337407fc453218cf952b2.png)
 
 Another way to solve this question is to use steghide (`steghide.exe extract -sf GoodExample.jpg`)
-```
-helicopter
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>helicopter</code></pre>
+</details>
 
 > Q14: What was exactly typed in the Spotlight search bar on 4/20/2020 02:09:48
 
@@ -276,18 +301,22 @@ I didn't find any artifact from `spotlight.py` so I went to `spotlightshorcuts.p
 ![bb7d953f1699e7a095ff26b5933b2936.png](/resources/bb7d953f1699e7a095ff26b5933b2936.png)
 
 Luckily, it still there and without exporting we can still see an answer
-```
-term
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>term</code></pre>
+</details>
 
 > Q15: What is hansel.apricot's Open Directory user UUID?
 
 ![c871d4e7f6cbf6a5ce6c34aaf8becc26.png](/resources/c871d4e7f6cbf6a5ce6c34aaf8becc26.png)
 
 Back to `hansel.apricot.plist`, find for generateduid 
-```
-5BB00259-4F58-4FDE-BC67-C2659BA0A5A4
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>5BB00259-4F58-4FDE-BC67-C2659BA0A5A4</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/spotlight/
 

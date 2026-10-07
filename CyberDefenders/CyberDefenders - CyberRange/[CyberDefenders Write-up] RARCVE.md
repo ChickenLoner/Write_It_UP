@@ -47,14 +47,17 @@ Which will be decoded and XOR with 0x23 (the answer to this question) before put
 
 Then we can see can CyberChef to confirm that the XOR key is really 0x23 and it is! the decrypted content is another powershell base64 command that need more decode.
 
-```
-0x23
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0x23</code></pre>
+</details>
 
 >Q2: Knowing where the malware drops its payload on a system can help trace its footprints and subsequent actions. Where is the malware dropped after execution?
-```
-C:\Users\Public\akvzmVI.cmd
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Public\akvzmVI.cmd</code></pre>
+</details>
 
 >Q3: Based on the libraries the malware is attempting to import, it appears there is a third stage to its operation. Can you identify the library name from which the malware is trying to import functions?
 
@@ -62,14 +65,17 @@ C:\Users\Public\akvzmVI.cmd
 
 Now we can decode base64 command which we can see that it will import `VirtualAlloc` function from `kernel32.dll` to allocate virtual memory and also import `CreateThread` function from the same dll to create a thread to execute shellcode that will be allocated in virtual memory.
 
-```
-kernel32.dll
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>kernel32.dll</code></pre>
+</details>
 
 >Q4: How many functions is the malware trying to import from the library you discovered in the previous question?	
-```
-2
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2</code></pre>
+</details>
 
 >Q5: From the imported functions, the malware seems to be trying to inject a shell code into the memory. To evade detection, threat actors attempt to encrypt the shellcode. Can you identify the specific algorithm for encrypting the shellcode during this stage?
 
@@ -82,9 +88,10 @@ The shellcode is encrypted and there is a function that responsible for the decr
 
 this function is resembled RC4 algorithm and it is indeed RC4 algorithm.
 
-```
-RC4
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>RC4</code></pre>
+</details>
 
 >Q6: Malware often uses a specific user agent to blend in or for specific functionality when communicating over the internet. Identifying this user agent can help detect this malware's network activity. What is the user agent used by the malware?
 
@@ -100,14 +107,17 @@ We can use scdbg (Shellcode Debugger) to debug this shell code (with Unlimited s
 
 Launch the debugger and start from the index 0, we can see that it will load `wininet` library which is API used to interact with FTP and HTTP protocols to access Internet. then it will connect to `linode.bratbg.eu` on port 8080 with pre-defined user-agent and the path that was used is quite so it could mean that it will try to get another stage into the compromised machine, looking at another `VirttualAlloc` after `HTTPSendRequestA` was called.
 
-```
-Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15</code></pre>
+</details>
 
 >Q7: This shellcode is a stageless payload waiting for the attacker server to download the final payload. What is the domain and port that the malware downloads the final stage from?
-```
-linode.bratbg.eu:8080
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>linode.bratbg.eu:8080</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/rarcve/ 
 * * *

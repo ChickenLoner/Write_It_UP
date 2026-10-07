@@ -44,14 +44,17 @@ we can clearly see that there is 1 string with `==` padding indicates that it wa
 
 So we can decode it which we can see that it is indeed base64 encoded and the site that was targeted by this extension is facebook.
 
-```
-base64
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>base64</code></pre>
+</details>
 
 >Q2: Which website does the extension monitor for data theft, targeting user accounts to steal sensitive information?
-```
-www.facebook.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>www.facebook.com</code></pre>
+</details>
 
 >Q3: Which type of HTML element is utilized by the extension to send stolen data?
 
@@ -59,9 +62,10 @@ www.facebook.com
 
 Lets take a look at `sendToServer` function that responsible for sending encrypted data pass from `exfiltrateCredentials` to C2 server, we can see that an image element and the `src` attribute is set to C2 url then an encrypted data will be append to this url before adding the image element to the webpage
 
-```
-<img>
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>&lt;img&gt;</code></pre>
+</details>
 
 >Q4: What is the first specific condition in the code that triggers the extension to deactivate itself?
 
@@ -71,9 +75,10 @@ For this one, we have to take a look at `loader.js` file which will check for in
 
 This script also loads other additional scripts and core script `app.js` that we just analyzed in previous question.
 
-```
-navigator.plugins.length === 0
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>navigator.plugins.length === 0</code></pre>
+</details>
 
 >Q5: Which event does the extension capture to track user input submitted through forms?
 
@@ -81,9 +86,10 @@ navigator.plugins.length === 0
 
 Lets go back to `app.js`, we can see that it create Event Listener on `submit` element which will get `username`, `email` and `password` from a form and if both values exists then it will encrypted both values and send it to C2.
 
-```
-submit
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>submit</code></pre>
+</details>
 
 >Q6: Which API or method does the extension use to capture and monitor user keystrokes?
 
@@ -91,23 +97,28 @@ submit
 
 `keydown` event listener will also added to capture a keystroke with which will pass to `exfiltrateData` function to construct json payload before sending to C2.
 
-```
-keydown
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>keydown</code></pre>
+</details>
 
 >Q7: What is the domain where the extension transmits the exfiltrated data?
 
 ![fae190694e284ec273d721e24d0c32e9.png](/resources/fae190694e284ec273d721e24d0c32e9.png)
-```
-Mo.Elshaheedy.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Mo.Elshaheedy.com</code></pre>
+</details>
 
 >Q8: Which function in the code is used to exfiltrate user credentials, including the username and password?
 
 ![72d860fb30c3b3c15dcef92cf93949e3.png](/resources/72d860fb30c3b3c15dcef92cf93949e3.png)
-```
-exfiltrateCredentials(username, password);
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>exfiltrateCredentials(username, password);</code></pre>
+</details>
 
 >Q9: Which encryption algorithm is applied to secure the data before sending?
 
@@ -115,17 +126,20 @@ exfiltrateCredentials(username, password);
 
 Lets take a look at `encryptPayload` function that responsible for data encryption, which we can see that its use AES with hard-coded key "SuperSecretKey123" with random IV to encrypt data then return iv and base64 encoded of encrypted data to a function that calls for this function.
 
-```
-AES
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>AES</code></pre>
+</details>
 
 >Q10: What critical browser API does the extension use to access and manipulate cookies?
 
 ![a819ab93ec8a236c720c86b79e77a3b2.png](/resources/a819ab93ec8a236c720c86b79e77a3b2.png)
 https://developer.chrome.com/docs/extensions/reference/api/cookies
-```
-chrome.cookies
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>chrome.cookies</code></pre>
+</details>
 
 ***
 This lab also retired with official write-up so if you want to learn more about this lab and how it was intended to be solved then you could go to the following url (https://cyberdefenders.org/walkthroughs/fakegpt/) or access it directly though lab page.

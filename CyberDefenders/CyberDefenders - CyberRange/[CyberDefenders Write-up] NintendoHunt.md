@@ -26,9 +26,10 @@ So we will use `vol3 -f memdump.mem pstree` to display process tree from this me
 
 To get the currently running one, we need to look for svchost process that does not have Exit Time
 
-```
-8560
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>8560</code></pre>
+</details>
 
 > Q2: What is the md5 hash hidden in the malicious process memory?
 
@@ -52,14 +53,17 @@ I tried using strings with several regex to find possible md5 inside but turns o
 
 Now we can get an answer using `echo "M2ExOTY5N2YyOTA5NWJjMjg5YTk2ZTQ1MDQ2Nzk2ODA=" | base64 -d"` command 
 
-```
-3a19697f29095bc289a96e4504679680
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3a19697f29095bc289a96e4504679680</code></pre>
+</details>
 
 > Q3: What is the process name of the malicious process parent?
-```
-explorer.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>explorer.exe</code></pre>
+</details>
 
 > Q4: What is the MAC address of this machine's default gateway?
 
@@ -73,9 +77,10 @@ First we need to get any subkey on this key by using `vol.py -f memdump.mem --pr
 
 Lets proceed with `vol.py -f memdump.mem --profile=Win10x64_17134 printkey -K "Microsoft\Windows NT\CurrentVersion\NetworkList\Signatures\Unmanaged\010103000F0000F0080000000F0000F0E3E937A4D0CD0A314266D2986CB7DED5D8B43B828FEEDCEFFD6DE7141DC1D15D"` which will print out MAC address of the default gateway here
 
-```
-00:50:56:fe:d8:07
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>00:50:56:fe:d8:07</code></pre>
+</details>
 
 > Q5: What is the name of the file that is hidden in the alternative data stream?
 
@@ -91,9 +96,10 @@ First, we will use `vol.py -f memdump.mem --profile=Win10x64_17134 mftparser > m
 
 We can use `grep -i "ads name" mft.txt` to get all ADS name from mftparser output and you can see that there is a suspicious text file there
 
-```
-yes.txt
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>yes.txt</code></pre>
+</details>
 
 > Q6: What is the full path of the browser cache created when the user visited "www.13cubed.com" ?
 
@@ -103,9 +109,10 @@ We will use `grep -i "13cubed" mft.txt` to find all files that have "13cubed" ma
 
 First one is htm file which is the file we want 
 
-```
-C:\Users\CTF\AppData\Local\Packages\MICROS~1.MIC\AC\#!001\MICROS~1\Cache\AHF2COV9\13cubed[1].htm
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\CTF\AppData\Local\Packages\MICROS~1.MIC\AC\#!001\MICROS~1\Cache\AHF2COV9\13cubed[1].htm</code></pre>
+</details>
 
 ![f30781e3a20645fc129501cd897110cf.png](/resources/f30781e3a20645fc129501cd897110cf.png)
 * * *

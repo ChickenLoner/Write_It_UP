@@ -21,9 +21,10 @@ This challenge takes you into the world of virtual systems and confusing log dat
 
 I used `grep "Invalid" auth.log` first to determine if there were brute force attempts that were logged on authentication log and look like we have the answer right away since sshd is a service than handle SSH 
 
-```
-ssh
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ssh</code></pre>
+</details>
 
 > Q2: What is the operating system version of the targeted system? (one word)
 
@@ -31,9 +32,10 @@ ssh
 
 By print out content of `dmesg` file, we can determine which version of OS that generated these logs
 
-```
-4.2.4-1ubuntu3
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4.2.4-1ubuntu3</code></pre>
+</details>
 
 > Q3: What is the name of the compromised account?
 
@@ -51,9 +53,10 @@ Which is "root"
 
 I used `grep "Accepted password for" auth.log` to confirm that the IP address that bruteforced for root user was successful.
 
-```
-root
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>root</code></pre>
+</details>
 
 > Q4: Consider that each unique IP represents a different attacker. How many attackers were able to get access to the system?
 
@@ -103,9 +106,10 @@ I asked ChatGPT to write me a bash script to count all number of authentication 
 ![e991980792a24a088b3f8ae994898191.png](/resources/e991980792a24a088b3f8ae994898191.png)
 Then we're down to 6 IP addresses
 
-```
-6
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>6</code></pre>
+</details>
 
 > Q5: Which attacker's IP address successfully logged into the system the most number of times?
 
@@ -139,9 +143,10 @@ So I told ChatGPT to write me another script to do them all at once
 
 Here is the result
 
-```
-219.150.161.20
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>219.150.161.20</code></pre>
+</details>
 
 > Q6: How many requests were sent to the Apache Server?
 
@@ -149,9 +154,10 @@ Here is the result
 
 Each line on access log mean each request so we can use `wc -l www-access.log` to count and we will have number of all requests sent to Apache Server
 
-```
-365
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>365</code></pre>
+</details>
 
 > Q7: How many rules have been added to the firewall?
 
@@ -159,9 +165,10 @@ Each line on access log mean each request so we can use `wc -l www-access.log` t
 
 iptables is the command-line tool to manage firewall rules on Linux and we can also used `grep "iptables" auth.log` to filter out all `iptables` commands there were executed  
 
-```
-6
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>6</code></pre>
+</details>
 
 > Q8: One of the downloaded files to the target system is a scanning tool. Provide the tool name.
 
@@ -171,9 +178,10 @@ dpkg log file records information about package installations, upgrades, and rem
 
 There are a lot to read so I used `grep "configure" dpkg.log` to search for something that related to scanning and I found nmap here so it has to be this one
 
-```
-nmap
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>nmap</code></pre>
+</details>
 
 > Q9: When was the last login from the attacker with IP 219.150.161.20? Format: MM/DD/YYYY HH:MM:SS AM
 
@@ -181,9 +189,10 @@ nmap
 
 Lets use `grep "Accepted password" auth.log | grep "219.150.161.20"` to find all successful logged on from this IP address and pick the latest one to answer
 
-```
-04/19/2010 05:56:05 AM
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>04/19/2010 05:56:05 AM</code></pre>
+</details>
 
 > Q10: The database displayed two warning messages, provide the most important and dangerous one.
 
@@ -197,9 +206,10 @@ So next we can use `grep "mysql" daemon.log | grep "WARNING"` to filter for all 
 
 Which you can see that 2 root accounts without password is pretty much the most dangerous one here
 
-```
-mysql.user contains 2 root accounts without password!
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>mysql.user contains 2 root accounts without password!</code></pre>
+</details>
 
 > Q11: Multiple accounts were created on the target system. Which one was created on Apr 26 04:43:15?
 
@@ -207,9 +217,10 @@ mysql.user contains 2 root accounts without password!
 
 We will use `grep -i "useradd" auth.log` to find for all `useradd` command from authentication log and look like the timestamp to find which one was created at the same time as question's timestamp
 
-```
-wind3str0y
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>wind3str0y</code></pre>
+</details>
 
 > Q12: Few attackers were using a proxy to run their scans. What is the corresponding user-agent used by this proxy?
 
@@ -217,9 +228,10 @@ wind3str0y
 
 Lets use `awk -F'"' '{print $6}' www-access.log | sort | uniq` to display all unique user-agent from `access.log` then we can see a special user-agent related to proxy scanner
 
-```
-pxyscand/2.1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>pxyscand/2.1</code></pre>
+</details>
 
 ![2371c087e9a9892ba86858d3c1d81e16.png](/resources/2371c087e9a9892ba86858d3c1d81e16.png)
 * * *

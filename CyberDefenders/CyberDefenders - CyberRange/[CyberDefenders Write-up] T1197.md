@@ -58,9 +58,10 @@ This is also because of BITS job.
 
 We can see that several of them were detected as Meterpreter payloads, which are generated using the Metasploit framework—and that’s the correct answer to this question.
 
-```
-metasploit
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>metasploit</code></pre>
+</details>
 
 >Q2: What is the name of the scheduled task that the attacker tried to create?
 
@@ -131,14 +132,17 @@ Task Information:
 </Task>
 ```
 
-```
-eviltask
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>eviltask</code></pre>
+</details>
 
 >Q3: What is the LOLBAS used by the malicious actor to move the backdoors to the targeted machine?
-```
-bitsadmin.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>bitsadmin.exe</code></pre>
+</details>
 
 >Q4: When was the first attempt made by the attacker to execute the LOLBAS?
 
@@ -146,9 +150,10 @@ bitsadmin.exe
 
 Going back to our Event ID 4688 query and get timestamp of the first `bitsadmin.exe` spawned event here as the answer of this question.
 
-```
-2023-07-31 17:39
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-07-31 17:39</code></pre>
+</details>
 
 >Q5: What is the IP address of the attacker?
 
@@ -162,9 +167,10 @@ Query : `index="mitre-t1197"  "winlog.channel"="Microsoft-Windows-Bits-Client/Op
 
 We can also retrieve the names of these BITS jobs by querying this IP address, and we can see at least 6 events associated with it.
 
-```
-192.168.190.136
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.190.136</code></pre>
+</details>
 
 >Q6: When was the most recent file downloaded by the attacker to the targeted machine?
 
@@ -172,9 +178,10 @@ We can also retrieve the names of these BITS jobs by querying this IP address, a
 
 Look at the last event from previous query or adjusted query to `sort -@timestamp` to get the answer of this question and now we are done with this lab.
 
-```
-2023-07-31 18:16
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-07-31 18:16</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/t1197/
 * * *

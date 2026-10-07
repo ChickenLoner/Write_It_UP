@@ -55,9 +55,10 @@ Which we will see that under `\2021 CTF - Chromebook\decrypted\mount\user\Downlo
 
 ![bd2b8e8c73dfaaed8cd6f0447497f6c8.png](/resources/bd2b8e8c73dfaaed8cd6f0447497f6c8.png)
 
-```
-6
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>6</code></pre>
+</details>
 
 > Q2: Smile for the camera - What is the MD5 hash of the user's profile photo?
 
@@ -65,9 +66,10 @@ Which we will see that under `\2021 CTF - Chromebook\decrypted\mount\user\Downlo
 
 After determined user, directory then I found an avatar image inside `\2021 CTF - Chromebook\decrypted\mount\user\Accounts\Avatar Images` folder
 
-```
-5ddd4fe0041839deb0a4b0252002127b
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5ddd4fe0041839deb0a4b0252002127b</code></pre>
+</details>
 
 > Q3: Road Trip! - What city was Eli's destination in?
 
@@ -79,9 +81,10 @@ Inside user's Downloads folder, we can see an image taken from google maps
 
 which indicates user was going to Chick-fill-a in Plattsburgh city
 
-```
-Plattsburgh
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Plattsburgh</code></pre>
+</details>
 
 > Q4: Promise Me - How many promises does Wickr make?
 
@@ -93,9 +96,10 @@ There is a pdf file inside user's Downloads folder that writing about Customer S
 
 Open this file and scroll down for a bit then we can see there are 9 promises 
 
-```
-9
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>9</code></pre>
+</details>
 
 > Q5: Key-ty Cat - What are the last five characters of the key for the Tabby Cat extension?
 
@@ -113,9 +117,10 @@ So I used `Get-ChildItem -Path "Z:\2021 CTF - Chromebook\decrypted\mount\user\Ex
 
 Lets open it and get the last five characters of the key to answer this question 
 
-```
-DAQAB
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>DAQAB</code></pre>
+</details>
 
 > Q6: Time to jam out - How many songs does Eli have downloaded?
 
@@ -123,9 +128,10 @@ DAQAB
 
 There is Music folder inside `\2021 CTF - Chromebook\decrypted\mount\user\MyFiles\`, which have 2 mp3 files inside of it
 
-```
-2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2</code></pre>
+</details>
 
 > Q7: Autofill, roll out - Which word was Autofilled the most?
 
@@ -139,9 +145,10 @@ Go to Chromebook Autofill then you can see that email field was filled the most
 
 Alternatively, you can use DBbrowser for SQLite to open `Web Data` sqlite database from user home folder
 
-```
-email
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>email</code></pre>
+</details>
 
 > Q8: Dress for success - What is this bird's image's logical size in bytes?
 
@@ -151,9 +158,10 @@ If you remember little linux penguin inside download folder, then you can naviga
 
 ![19c7e75321aa0f385f525ef9ccbf98ba.png](/resources/19c7e75321aa0f385f525ef9ccbf98ba.png)
 
-```
-46,791
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>46,791</code></pre>
+</details>
 
 > Q9: Repeat customer - What was Eli's top visited site?
 
@@ -161,9 +169,10 @@ If you remember little linux penguin inside download folder, then you can naviga
 
 by using [hindsight](https://github.com/obsidianforensics/hindsight), you will eventually get the answer by sorting most visit sites but  its not google doc 
 
-```
-protonmail.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>protonmail.com</code></pre>
+</details>
 
 > Q10: Vroom Vroom, What is the name of the car-related theme?
 
@@ -171,9 +180,10 @@ protonmail.com
 
 Go to Installed Extensions sheet and you will see there is only one extension that related to the car 
 
-```
-Lamborghini Cherry
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Lamborghini Cherry</code></pre>
+</details>
 
 > Q11: You got mail - How many emails were received from notification@service.tiktok.com?
 
@@ -187,9 +197,10 @@ I searched for a file that contains the string "tiktok"  inside and the file tha
 
 We can use thunderbird to open this but to make things easier, I'll just open this file using VScode and filter for "From: "Tiktok" <notification@service.tiktok.com>""
 
-```
-6
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>6</code></pre>
+</details>
 
 > Q12: Hungry for directions - Where did the user request directions to on Mar 4, 2021, at 4:15:18 AM EDT
 
@@ -201,9 +212,10 @@ We know that user was going to Chick-fill-A but time doesn't add up so I searche
 
 After researching what is Takeout folder, now it make sense why we found this information here
 
-```
-Chick-fil-A
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Chick-fil-A</code></pre>
+</details>
 
 > Q13: Who defines essential? - What was searched on Mar 4, 2021, at 4:09:35 AM EDT
 
@@ -213,9 +225,10 @@ It is in `\2021 CTF - Takeout\Takeout\My Activity\Search\MyActivity.html`
 
 ![d6961a66abc7ff18db752624d50d8011.png](/resources/d6961a66abc7ff18db752624d50d8011.png)
 
-```
-is travelling to get chicken essential travel
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>is travelling to get chicken essential travel</code></pre>
+</details>
 
 > Q14: I got three subscribers, and counting - How many YouTube channels is the user subscribed to?
 
@@ -227,9 +240,10 @@ There is a `subscriptions.json` inside `\2021 CTF - Takeout\Takeout\YouTube and 
 
 There is no data inside of it which mean this user does not subscribe to anyone on youtube
 
-```
-0
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0</code></pre>
+</details>
 
 > Q15: Time flies when you're watching YT - What date was the first YouTube video the user watched uploaded?
 
@@ -245,9 +259,10 @@ Scroll down to the last record which is the oldest one/first one that was record
 
 My timezone is UTC+7 so I have to subtract a day out of this
 
-```
-27/01/2021
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>27/01/2021</code></pre>
+</details>
 
 > Q16: How much? - What is the price of the belt?
 
@@ -275,9 +290,10 @@ So I had to read other write-up for this one and turn out that I was using the r
 
 ![87f4cba3fc70eea8a9a5d75da5561c7c.png](/resources/87f4cba3fc70eea8a9a5d75da5561c7c.png)
 
-```
-98.5
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>98.5</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/eli/
 

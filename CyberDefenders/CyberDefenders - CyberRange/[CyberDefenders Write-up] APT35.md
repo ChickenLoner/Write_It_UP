@@ -33,9 +33,10 @@ Although from the scenario, we know that Google already removed it from its play
 
 First, I navigated to ``/home/ubuntu/Desktop/Start here/Artifacts/data/data/org.mozilla.firefox/databases/`` after discovered Firefox browser on this android device and by using DB Browser for SQLite to read `mozac_downloads_database` file, it is now confirmed that the victim was downloaded `SaferVPN.apk` file from mediafile via firefox browser
 
-```
-Firefox
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Firefox</code></pre>
+</details>
 
 >Q2: When was the malware downloaded?
 
@@ -47,9 +48,10 @@ We can copy the UNIX timestamp in “created_at” field and convert it to UTC t
 
 I will use “From UNIX Timestamp” from CyberChef to convert it and we can see that this apk file was downloaded on Wed 26 July 2023 22:47:24 UTC
 
-```
-2023-07-26 22:47
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-07-26 22:47</code></pre>
+</details>
 
 >Q3: What is the package name of the malware?
 
@@ -69,9 +71,10 @@ After submitted the file hash on [VirusTotal](https://www.virustotal.com/gui/fil
 
 On the Community tab, we can see that the same sample was also see that this sample was also analyzed by Threat Analysis group of Google ([Ajax Bash Countering threats from Iran](https://blog.google/threat-analysis-group/countering-threats-iran/))
 
-```
-com.example.vpnner
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>com.example.vpnner</code></pre>
+</details>
 
 >Q4: What is the C2 domain?
 
@@ -83,9 +86,10 @@ We can take a look at the Relations tab from VirusTotal which revealed C2 site t
 
 The same C2 address also listed on the [Ajax Bash Countering threats from Iran](https://blog.google/threat-analysis-group/countering-threats-iran/) blog as well.
 
-```
-cdsa.xyz
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>cdsa.xyz</code></pre>
+</details>
 
 >Q5: What is the VPN endpoint domain?
 
@@ -97,9 +101,10 @@ On the data folder of this package, I noticed Java serialization data file → `
 
 There is also a configuration file located inside the `cache` directory, and we can see the remote connection that was configured to connect via UDP on port 1194 to the same domain we found earlier so this is the answer to this question.
 
-```
-westernrefrigerator.xyz
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>westernrefrigerator.xyz</code></pre>
+</details>
 
 >Q6: What is the VPN file password?
 
@@ -111,9 +116,10 @@ This time, we will have to decompile it with `jadx` and by inspecting `Server` c
 
 Now we need to find usage of the `Server` function which leads us to `MainActivity` to pass 4 strings to this function and we shall take the 4th argument as our answer here.
 
-```
-VpNu$3R
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>VpNu$3R</code></pre>
+</details>
 
 >Q7: What is the name of the recorded output file that the malware records?
 
@@ -121,9 +127,10 @@ VpNu$3R
 
 This spyware application has many capabilities involving recording of the phone call as well and it will save the output file to `aaaa.mp3` before sending it out to C2 server.  
 
-```
-aaaa.mp3
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>aaaa.mp3</code></pre>
+</details>
 
 >Q8: What function is responsible for sending SMS?
 
@@ -135,9 +142,10 @@ Multiple functions were defined and used in the `Functions` class, and we can se
 
 By tracing back to its source, we can see that it will use `android.permission.SEND_SMS` permission to send SMS if “SendSMSModule” were sent from the C2 server.
 
-```
-SendSMSModule
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SendSMSModule</code></pre>
+</details>
 
 >Q9: How long was the malware idle on the system? (in minutes, ignore the fractional part)
 
@@ -148,9 +156,10 @@ To find out about the Idle time of each package/application on the android devic
 
 Now we need to convert it back to minute by dividing with 60000 (1000 to convert millisecond to second and 60 to convert second to minute) and now we have 33 as the final value for this question.
 
-```
-33
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>33</code></pre>
+</details>
 
 >Q10: How many permissions were granted on request?
 
@@ -162,9 +171,10 @@ Normally we can look for the permission that each android application use from t
 
 Which is the `runtime-permissions.xml` file that located on the same location as `app_idle_stats.xml`, and we can see that there are only 5 permissions that were granted at run time for this spyware.
 
-```
-5
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/apt35/
 * * *

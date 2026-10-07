@@ -97,6 +97,7 @@ Take a look at process tree, we can see that there is CMD process spawned under 
 </details>
 
 >Q8: Understanding the malware's behavior post-data exfiltration can give insights into its evasion techniques. After successfully exfiltrating the user's data, how many seconds does it take for the malware to self-delete?
+
 <details>
   <summary>Answer</summary>
 <pre><code>5</code></pre>

@@ -17,12 +17,15 @@ How it tells answers from commands — STRUCTURE, never content (`whoami` is a
 valid command and a valid answer). A write-up is a Q&A write-up if it has
 question blockquotes ("> Q1 …", "> What is …"). Inside one question's section
 (question → next question / heading / rule), a fence is converted only when
-it is the section's ONLY fence, has no language tag, and is 1-3 lines long.
-Anything else is reported for a human and left untouched:
+it has no language tag, is 1-3 lines long, and is the section's only fence — or
+its LAST fence, in which case every earlier fence is kept as code (the usual
+shape is a query or script followed by its one-line answer). Anything else is
+reported for a human and left untouched:
 
-    several fences in one section   (a query/script followed by its answer)
     lang-tagged or long fence       (real code)
     fence outside any question      (commands in a machine write-up)
+    several fences, last not short  (nothing to pick as the answer)
+    short fence before the answer   (kept as code; listed so it can be checked)
 
 Dry run by default.   uv run fix_answer_blocks.py [--platform TryHackMe] [--apply]
 ─────────────────────────────────────────────────────────────────────────────
@@ -102,15 +105,30 @@ def convert(text: str):
         if not f["in_details"]:
             by_q.setdefault(f["q"], []).append(f)
 
+    def answer_shaped(f):
+        return (not f["lang"] and 1 <= len(f["body"]) <= MAX_ANSWER_LINES
+                and any(b.strip() for b in f["body"]))
+
     review, edits = [], []
     for q, fs in by_q.items():
+        if q is not None and len(fs) > 1:
+            # Query/script then answer: only the last fence can be the answer.
+            if answer_shaped(fs[-1]):
+                edits.append(fs[-1])
+                for f in fs[:-1]:
+                    if answer_shaped(f):       # short and untagged: worth a look
+                        review.append((f["start"] + 1, "kept as code, precedes the answer",
+                                       " | ".join(f["body"])[:70]))
+            else:
+                for f in fs:
+                    review.append((f["start"] + 1, "several fences, last is not an answer",
+                                   " | ".join(f["body"])[:70]))
+            continue
         for f in fs:
             body = [b for b in f["body"]]
             preview = " | ".join(body)[:70]
             if q is None:
                 review.append((f["start"] + 1, "outside any question", preview))
-            elif len(fs) > 1:
-                review.append((f["start"] + 1, "several fences in one question", preview))
             elif f["lang"]:
                 review.append((f["start"] + 1, f"language-tagged ({f['lang']})", preview))
             elif not (1 <= len(body) <= MAX_ANSWER_LINES) or not any(b.strip() for b in body):

@@ -56,18 +56,21 @@ Its time to use online resources as our disposal. The first resource that really
 
 To confirm that we have identical functions, I disassembled our sample using IDA Free and verified our hypothesis. The next step will be renaming these functions and variables to match those in Talos's sample.
 
-```
-CRC32
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CRC32</code></pre>
+</details>
 
 >Q2: Following up on the previous question. Could you provide the hard-coded value of the .cdata checksum?
 
 ![2f498ea342b1ce8bb65ac39af0fca101.png](/resources/2f498ea342b1ce8bb65ac39af0fca101.png)
 
 We know that `payload_hash` variable store checksum of .cdata section so we could follow it to retrieve the answer of this question right here.
-```
-0D55F8833
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>0D55F8833</code></pre>
+</details>
 
 >Q3: Different malware versions may be linked to specific cybercriminal groups or campaigns, thus providing valuable leads for your threat intel analysts. What is the malware's version?
 
@@ -83,9 +86,10 @@ Talos also made a malware configuration index of this ransomware which we can se
 
 This time I used Ghidra to decompiled and search for `mal_GetDecryptedConfigVar(0x33` (named after Talos's sample) which we can see the function responsible for debugging right here.
 
-```
-2.9.1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2.9.1</code></pre>
+</details>
 
 >Q4: Malware sometimes masquerades as legitimate DLL files to bypass standard security measures and evade detection. Identifying which legitimate DLL a malware is impersonating allows for more accurate and effective detection mechanisms. Could you provide the name of the legitimate DLL that the malware is masquerading as?
 
@@ -93,9 +97,10 @@ This time I used Ghidra to decompiled and search for `mal_GetDecryptedConfigVar(
 
 I imported the sample into pestudio and examined the imported libraries. I noticed that `ole32.dll` didn't fit the context of this ransomware at all (you can find other dlls on many pe samples), and it turned out to be the right call!
 
-```
-ole32.dll
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ole32.dll</code></pre>
+</details>
 
 >Q5: It is important to understand what this malicious DLL is used for and how it works. Could you analyze it and provide the first API function it calls?
 
@@ -110,9 +115,11 @@ So I traced back to the function responsible for this which I found out that it 
 ![287ee4c50ed3461dfca7b24d3144ea6d.png](/resources/287ee4c50ed3461dfca7b24d3144ea6d.png)
 
 Which we can see them on VirusTotal.
-```
-CreateProcessW
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>CreateProcessW</code></pre>
+</details>
 
 >Q6: In ransomware attacks, the malware often terminates any processes that might disrupt its encryption before starting. Could you provide the address at which the process list decryption function is called?
 
@@ -140,9 +147,10 @@ We can see that the value `0x0A` is associated with this list. This value will b
 
 Then we will find that this function is really called for process list decryption function right here .
 
-```
-004022fb
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>004022fb</code></pre>
+</details>
 
 >Q7: Malware often disables and turns off the security settings part of the victim's machine to avoid detection and stay under the radar. What's the first command the malware uses to turn off a critical security measure?
 
@@ -150,9 +158,10 @@ Then we will find that this function is really called for process list decryptio
 
 We can find it from threatdown blog or VirusTotal behavior tab right here.
 
-```
-netsh advfirewall set currentprofile state off
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>netsh advfirewall set currentprofile state off</code></pre>
+</details>
 
 >Q8: Malware that successfully establishes a foothold and persistence can cause long-term damage by maintaining a presence on the infected system, allowing for continuous data theft, further infections, or other malicious activities. Could you provide the address of the function used by the malware for this purpose?
 
@@ -164,9 +173,10 @@ We know that Phobos have several persistence mechanism but the one that we can u
 
 We will have to search this API on IDA since the answer format are made to match IDA function which we can see that a function that responsible for persistence is this function.
 
-```
-sub_401236
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>sub_401236</code></pre>
+</details>
 
 >Q9: Knowing how the malware communicates with its command and control (C2) server for data transmission is vital for understanding the threat's capabilities and potential reach. What protocol is used by the malware for C2 communication to transmit the data?
 
@@ -182,9 +192,10 @@ After searching for these API to find out which function utilized them which we 
 
 We can also find this information from Talos's blog as well.
 
-```
-http
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http</code></pre>
+</details>
 
 >Q10: We need to understand further how the malware interacts with system hardware, how it monitors the system environment, and how it extends its reach. Could you provide the address of the thread used to check continuously for new disk connections?
 
@@ -206,9 +217,10 @@ I did a little bit more search on this ransomware which I finally found [fortine
 
 This function is really resembled a function from fortinet blog and the address of this function is the correct answer of this question.
 
-```
-00401cc5
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>00401cc5</code></pre>
+</details>
 
 - [Here](https://cybergeeks.tech/a-technical-analysis-of-the-backmydata-ransomware-used-to-attack-hospitals-in-romania/) is another resource I recommended to read which heavily rely on debugger to conduct malware analysis on BackMyData ransomware which is a variant of Phobos ransomware 
 
@@ -222,9 +234,10 @@ We could find this answer on threatdown blog right here, take a note at the valu
 
 There you go.
 
-```
-180000
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>180000</code></pre>
+</details>
 
 ![6c0ef3efefc038c833cd8a8798eba49a.png](/resources/6c0ef3efefc038c833cd8a8798eba49a.png)
 

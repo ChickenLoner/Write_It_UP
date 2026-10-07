@@ -28,9 +28,10 @@ We got only SHA-256 to work with so we shall start this by search it on VirusTot
 
 Which landed us with RedLine Stealer and it identified as trojan
 
-```
-trojan
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>trojan</code></pre>
+</details>
 
 >Q2: Clear identification of the malware file name facilitates better communication among the SOC team. What's the file name associated with this malware?
 
@@ -38,9 +39,10 @@ trojan
 
 Go to Names section under Details tabs then we will have a name of this file
 
-```
-Wextract
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Wextract</code></pre>
+</details>
 
 >Q3: Knowing the exact time the malware was first seen can help prioritize actions. If the malware is newly detected, it may warrant more urgent containment and eradication efforts compared to older, well-known threats. Can you provide the UTC timestamp of first submission of this malware on VirusTotal?
 
@@ -48,9 +50,10 @@ Wextract
 
 Go to History section under Details tab
 
-```
-2023-10-06 04:41:50 UTC
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-10-06 04:41:50 UTC</code></pre>
+</details>
 
 >Q4: Understanding the techniques used by malware helps in strategic security planning. What is the MITRE ATT&CK technique ID for the malware's data collection from the system before exfiltration?
 
@@ -58,9 +61,10 @@ Go to History section under Details tab
 
 Go to MITRE ATT&CK Tactices and Techniques then go for Collection tactic then we will have this Data from Local System technique which is the correct answer of this question
 
-```
-T1005
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1005</code></pre>
+</details>
 
 >Q5: Following execution, what domain name resolution is performed by the malware?
 
@@ -68,9 +72,10 @@ T1005
 
 Go to DNS Resolutions under Behavior tab, we will see a lot of DNS Resolutions but the correct one is facebook.com
 
-```
-facebook.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>facebook.com</code></pre>
+</details>
 
 >Q6: Once the malicious IP addresses are identified, network security devices such as firewalls can be configured to block traffic to and from these addresses. Can you provide the IP address and destination port the malware communicates with?
 
@@ -82,9 +87,10 @@ Under IP Traffic section, we will see this weird TCP connection with not common 
 
 So I searched this IP address on VirusTotal which shows us that this IP adress is C2 address of many stealer malware including AMADEY and REDLINE
 
-```
-77.91.124.55:19071
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>77.91.124.55:19071</code></pre>
+</details>
 
 >Q7: If a hosting service is frequently used for malicious activities, security teams can implement a strict filtering rules for all traffic to and from the IPS belonging to that hosting provider. What hosting service does the identified IP belong to?
 
@@ -92,9 +98,10 @@ So I searched this IP address on VirusTotal which shows us that this IP adress i
 
 Go to Whois Lookup under Details of this C2 ip address then we will have org that owned this IP address
 
-```
-YeezyHost
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>YeezyHost</code></pre>
+</details>
 
 >Q8: YARA rules are designed to identify specific malware patterns and behaviors. What's the name of the YARA rule created by "Varp0s" that detects the identified malware?
 
@@ -102,9 +109,10 @@ YeezyHost
 
 Go to MalwareBazaar and search for SHA-256 hash then go to YARA Signatures which have several YARA rules that triggered by this malware being listed that including YARA rules created by "Varp0s"
 
-```
-detect_Redline_Stealer
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>detect_Redline_Stealer</code></pre>
+</details>
 
 >Q9: Understanding which malware families are targeting the organization helps in strategic security planning for the future and prioritizing resources based on the threat. Can you provide the different malware alias associated with the malicious IP address?
 
@@ -112,9 +120,10 @@ detect_Redline_Stealer
 
 Search for Redline stealer on ThreatFox Database then you will have Malware alias of redline stealer
 
-```
-RECORDSTEALER
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>RECORDSTEALER</code></pre>
+</details>
 
 >Q10: By identifying the malware's imported DLLs, we can configure security tools to monitor for the loading or unusual usage of these specific DLLs. Can you provide the DLL utilized by the malware for privilege escalation?
 
@@ -124,9 +133,10 @@ Back to VirusTotal of redline stealer malware, Go to Imports section under Detai
 
 Show how capable of each dll then you will have this dll have many functionality about privilege
 
-```
-ADVAPI32.dll
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ADVAPI32.dll</code></pre>
+</details>
 
 
 ![51fa1efad913cfe79a8a762a6fde4a00.png](/resources/51fa1efad913cfe79a8a762a6fde4a00.png)

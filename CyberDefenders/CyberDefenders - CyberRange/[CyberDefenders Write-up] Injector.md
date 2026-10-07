@@ -28,9 +28,10 @@ An easiest way to obtain computer name in my opinion is to use RegRipper on Soft
 
 Open an output file from RegRipper and search for "ComputerName"
 
-```
-WIN-L0ZZQ76PMUF
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>WIN-L0ZZQ76PMUF</code></pre>
+</details>
 
 > Q2: What is the Timezone of the compromised machine? Format: UTC+0 (no-space)
 
@@ -38,9 +39,10 @@ WIN-L0ZZQ76PMUF
 
 Still on result from software hive, this time search for TimeZone which you will see that this machine is using PST which can be either UTC-7 or UTC-8 but "ActiveTimeBias" telling us that it uses UTC-7 
 
-```
-UTC-7
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>UTC-7</code></pre>
+</details>
 
 > Q3: What was the first vulnerability the attacker was able to exploit?
 
@@ -52,9 +54,10 @@ I found xampp folder which mean web server was hosting by xampp then we can go t
 
 We can see that this web server was hosting dvwa (damn vulnerable web application) which is an application designed to be exploited and learn about multiple vulnerabilities and then you can see that first vulnerability that was exploited is XSS (cross-site scripting)
 
-```
-xss
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>xss</code></pre>
+</details>
 
 > Q4: What is the OS build number?
 
@@ -62,9 +65,10 @@ xss
 
 Go back to an output file from Software hive and search for "winver", you will eventually see this build version of this Windows server 
 
-```
-6001
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>6001</code></pre>
+</details>
 
 > Q5: How many users are on the compromised machine?
 
@@ -78,21 +82,26 @@ But the other 2 users were created around the same time which mean it could be c
 
 But thats 4 users in total
 
-```
-4
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4</code></pre>
+</details>
 
 > Q6: What is the webserver package installed on the machine?
 
 ![4c5f76ff9104cb56fe95f2f1d80f2bef.png](/resources/4c5f76ff9104cb56fe95f2f1d80f2bef.png)
-```
-xampp
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>xampp</code></pre>
+</details>
 
 > Q7: What is the name of the vulnerable web app installed on the webserver?
-```
-dvwa
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>dvwa</code></pre>
+</details>
 
 > Q8: What is the user agent used in the HTTP requests sent by the SQL injection attack tool?
 
@@ -100,9 +109,10 @@ dvwa
 
 Go back to `access.log` then search for `/vulnerabilities/sqli/` which we will eventually see an sqlmap was used to exploit sqli vulnerability on this website
 
-```
-sqlmap/1.0-dev-nongit-20150902
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>sqlmap/1.0-dev-nongit-20150902</code></pre>
+</details>
 
 > Q9: The attacker read multiple files through LFI vulnerability. One of them is related to network configuration. What is the filename?
 
@@ -110,9 +120,10 @@ sqlmap/1.0-dev-nongit-20150902
 
 Search for `/vulnerabilities/fi` then we will see that `hosts` file was read by exploiting local file inclusion vulnerability
 
-```
-hosts
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>hosts</code></pre>
+</details>
 
 > Q10: The attacker tried to update some firewall rules using netsh command. Provide the value of the type parameter in the executed command?
 
@@ -124,9 +135,10 @@ After determine which profile to use for a given memory dump then we can proceed
 
 So we can use `vol.py -f memdump.mem --profile=Win2008SP1x86 consoles` to display console log when cmd commands were executed which we can see that `netsh` was used to make remotedesktop available 
 
-```
-remotedesktop
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>remotedesktop</code></pre>
+</details>
 
 > Q11: How many users were added by the attacker?
 
@@ -134,14 +146,17 @@ remotedesktop
 
 Remember 2 users that we suspected to be added by threat actor? seem like that is the case here even through we didn't find second one here but timeline tells us it was 2 users
 
-```
-2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2</code></pre>
+</details>
 
 > Q12: When did the attacker create the first user?
-```
-2015-09-02 09:05:06 UTC
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2015-09-02 09:05:06 UTC</code></pre>
+</details>
 
 > Q13: What is the NThash of the user's password set by the attacker?
 
@@ -149,9 +164,10 @@ Remember 2 users that we suspected to be added by threat actor? seem like that i
 
 We can get this easiliy by using `vol.py -f memdump.mem --profile=Win2008SP1x86 hashdump` 
 
-```
-817875ce4794a9262159186413772644
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>817875ce4794a9262159186413772644</code></pre>
+</details>
 
 > Q14: What is The MITRE ID corresponding to the technique used to keep persistence?
 
@@ -159,9 +175,10 @@ We can get this easiliy by using `vol.py -f memdump.mem --profile=Win2008SP1x86 
 
 There is no doubt that it is T1136.001
 
-```
-T1136.001
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1136.001</code></pre>
+</details>
 
 > Q15: The attacker uploaded a simple command shell through file upload vulnerability. Provide the name of the URL parameter used to execute commands?
 
@@ -169,9 +186,10 @@ T1136.001
 
 File upload vulnerability on web server often exploited by uploading webshell in php script so we just have to find for any php script that take an argument into a parameter which eventuallly lead us to `phpshell.php` which take argument to `cmd` paremeter to execute
 
-```
-cmd
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>cmd</code></pre>
+</details>
 
 > Q16: One of the uploaded files by the attacker has an md5 that starts with "559411". Provide the full hash.
 
@@ -183,9 +201,10 @@ uploaded file should be at `\xampp\htdocs\DVWA\` which we can see there are 2 fi
 
 `webshell.php` md5 hash start with "559441" so we can copy the rest to answer this question
 
-```
-5594112b531660654429f8639322218b
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5594112b531660654429f8639322218b</code></pre>
+</details>
 
 > Q17: The attacker used Command Injection to add user "hacker" to the "Remote Desktop Users" Group. Provide the IP address that was part of the executed command?
 
@@ -193,9 +212,10 @@ uploaded file should be at `\xampp\htdocs\DVWA\` which we can see there are 2 fi
 
 Lets assume that this command injection spawned cmd process so we have to dump memory of this process with `vol.py -f memdump.mem --profile=Win2008SP1x86 memdump -p 1972 -D .` then use `strings 1972.dmp | grep -i "hacker"` to find for anything related to this user and we got lucky that this cmd process is the one that responsible for this activity
 
-```
-192.168.56.102
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.56.102</code></pre>
+</details>
 
 > Q18: The attacker dropped a shellcode through SQLi vulnerability. The shellcode was checking for a specific version of PHP. Provide the PHP version number?
 
@@ -215,9 +235,10 @@ Convert back to ASCII then we can see its check for php version lower than 4.1.0
 
 We can put this in PHP beautifier and learn how this shell code works
 
-```
-4.1.0
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4.1.0</code></pre>
+</details>
 
 ![7da822263c57fe3378a29a9546ff7897.png](/resources/7da822263c57fe3378a29a9546ff7897.png)
 * * *

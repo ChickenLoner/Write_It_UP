@@ -31,17 +31,21 @@ Here after PsExec was successfully written, The attacker immediately used it
 ![99608d01cdb8abb4dda61942a7cabc6c.png](/resources/99608d01cdb8abb4dda61942a7cabc6c.png)
 PSEXECSVC was also created on `\\10.0.0.133\IPC$` which mean the attacker also used this network share beside `ADMIN$`
 
-```
-10.0.0.130
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10.0.0.130</code></pre>
+</details>
 
 > Q2: To fully comprehend the extent of the breach, can you determine the machine's hostname to which the attacker first pivoted?
 
 ![99ca483dceae564db4bf13c427efaee4.png](/resources/99ca483dceae564db4bf13c427efaee4.png)
 I knew that the attacker already used PsExec but I didn't know where to find the answer but in the end, Follow TCP Stream worked.
-```
-SALES-PC
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>SALES-PC</code></pre>
+</details>
+
 ![91ff4afa9b0cf253c918428bd6a136b1.png](/resources/91ff4afa9b0cf253c918428bd6a136b1.png)
 And I found out later that it could be seen on DCERPC packet
 
@@ -49,24 +53,32 @@ And I found out later that it could be seen on DCERPC packet
 
 ![5b9ea03016bf699e92dfe1e8a001d1cd.png](/resources/5b9ea03016bf699e92dfe1e8a001d1cd.png)
 On SMB2 packet, I saw that `ssales` user was the account of this session
-```
-ssales
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>ssales</code></pre>
+</details>
 
 > Q4: After figuring out how the attacker moved within our network, we need to know what they did on the target machine. What's the name of the service executable the attacker set up on the target?
-```
-PSEXESVC
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>PSEXESVC</code></pre>
+</details>
 
 > Q5: We need to know how the attacker installed the service on the compromised machine to understand the attacker's lateral movement tactics. This can help identify other affected systems. Which network share was used by PsExec to install the service on the target machine?
-```
-ADMIN$
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>ADMIN$</code></pre>
+</details>
 
 > Q6: We must identify the network share used to communicate between the two machines. Which network share did PsExec use for communication?
-```
-IPC$
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>IPC$</code></pre>
+</details>
 
 > Q7: Now that we have a clearer picture of the attacker's activities on the compromised machine, it's important to identify any further lateral movement. What is the machine's hostname to which the attacker attempted to pivot within our network?
 
@@ -75,9 +87,10 @@ IPC$
 ![4c94509bbd34a8535bff1ccfd68140d6.png](/resources/4c94509bbd34a8535bff1ccfd68140d6.png)
 </div>
 
-```
-MARKETING-PC
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>MARKETING-PC</code></pre>
+</details>
 
 <div align=center>
 

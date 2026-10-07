@@ -33,9 +33,11 @@ We can get an information about system's hostname within `SYSTEM` hive at `HKLM\
 ![ae7100a4c3732c2cba4d513f24942bbb.png](/resources/ae7100a4c3732c2cba4d513f24942bbb.png)
 
 Export the hive and open it with Registry Explorer or RegRipper and navigate to the registry key 
-```
-WIN-NF3JQEU4G0T
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>WIN-NF3JQEU4G0T</code></pre>
+</details>
 
 > Q2: What is the messaging app installed on the victim machine?
 
@@ -46,9 +48,11 @@ I searched User folders which I found `WhatsApp.exe` in Downloads folder
 ![96658f3b53c2d259705c1e64e8380f65.png](/resources/96658f3b53c2d259705c1e64e8380f65.png)
 
 Which I also found WhatsApp folders inside AppData folder which mean WhatsApp was installed on this system
-```
-WhatsApp
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>WhatsApp</code></pre>
+</details>
 
 > Q3: The attacker tricked the victim into downloading a malicious document. Provide the full download URL.
 
@@ -64,9 +68,10 @@ And this [blog](https://www.magnetforensics.com/blog/artifact-profile-whatsapp-m
 
 Export database file and open with DB Browser for SQLite or WhatsApp viewer, we can see that a phishing link was sent which is a download link to a document file
 
-```
-http://appIe.com/IPhone-Winners.doc
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://appIe.com/IPhone-Winners.doc</code></pre>
+</details>
 
 > Q4: Multiple streams contain macros in the document. Provide the number of the highest stream.
 
@@ -81,9 +86,11 @@ Export it and use oleid from oletools suite to find any malicious indicators (`p
 ![a32a03ecb4472672037d7a3d4d813864.png](/resources/a32a03ecb4472672037d7a3d4d813864.png)
 
 But to find the highest macro stream we need to use oledump from DidierSteven suite with this command `python oledump.py IPhone-Winners.doc`, now you can see that there are 2 objects embedded with macros and the highest one is 10
-```
-10
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>10</code></pre>
+</details>
 
 > Q5: The macro executed a program. Provide the program name?
 
@@ -100,9 +107,11 @@ It's not that hard to deobfuscate, you can see that it's using "Chr()" to change
 ![bd41412e4f57ab3d34e64c745b1457a6.png](/resources/bd41412e4f57ab3d34e64c745b1457a6.png)
 
 Then go to https://codebeautify.org/ascii-to-text and try making it sense, in the end we will see that it will be parsed to PowerShell so the IIIIIIIII variable is storing base64 encoding strings
-```
-PowerShell
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>PowerShell</code></pre>
+</details>
 
 > Q6: The macro downloaded a malicious file. Provide the full download URL.
 
@@ -110,9 +119,10 @@ PowerShell
 
 We know its base64 so just decode it, the code mean to make a web request to specific url (same domain that was used to download maldoc which was sent via WhatsApp) to download an executable file and save it to Temp folder
 
-```
-http://appIe.com/Iphone.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://appIe.com/Iphone.exe</code></pre>
+</details>
 
 > Q7: Where was the malicious file downloaded to? (Provide the full path)
 
@@ -123,9 +133,11 @@ From the base64 decoded code, we know it save to Temp folder
 ![7dda0ee4c98ef83293a3b50cc02453fb.png](/resources/7dda0ee4c98ef83293a3b50cc02453fb.png)
 
 And it's still there
-```
-C:\Temp\IPhone.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Temp\IPhone.exe</code></pre>
+</details>
 
 > Q8: What is the name of the framework used to create the malware?
 
@@ -140,9 +152,11 @@ Some vendors labeled this file as Meterpreter which is a shell made for Metasplo
 ![c85939ff331388d1df153a81fe00ad46.png](/resources/c85939ff331388d1df153a81fe00ad46.png)
 
 On the Community Tab, some sandboxes even gave this file a name as Metasploit 
-```
-Metasploit
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Metasploit</code></pre>
+</details>
 
 > Q9: What is the attacker's IP address?
 
@@ -150,9 +164,10 @@ Metasploit
 
 Go to Behavior tab, There is 1 TCP that was connected with unusual port and this IP address is the attacker IP 
 
-```
-155.94.69.27
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>155.94.69.27</code></pre>
+</details>
 
 > Q10: The fake giveaway used a login page to collect user information. Provide the full URL of the login page?
 
@@ -169,9 +184,10 @@ Use MZHistoryView from Nirsoft to parse `places.sqlite` which store firefox brow
 
 There are several histories to `appIe.com` which is a phishing site we're familiar with 
 
-```
-http://appIe.competitions.com/login.php
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://appIe.competitions.com/login.php</code></pre>
+</details>
 
 > Q11: What is the password the user submitted to the login page?
 
@@ -184,9 +200,11 @@ Select firefox profile folder then click Ok
 ![98b7ccc8d3c778b4974665ca09697cee.png](/resources/98b7ccc8d3c778b4974665ca09697cee.png)
 
 We got user credential that user puts to phishing site
-```
-GacsriicUZMY4xiAF4yl
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>GacsriicUZMY4xiAF4yl</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/phishy/
 

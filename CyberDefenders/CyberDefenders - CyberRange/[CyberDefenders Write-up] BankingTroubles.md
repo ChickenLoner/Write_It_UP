@@ -29,17 +29,21 @@ Company X was able to obtain a memory image of the employee's virtual machine up
 First I used imageinfo to determine which profile to use and its WinXPSP2x86
 ![a4d2f54922511f465df107ff94d77d11.png](/resources/a4d2f54922511f465df107ff94d77d11.png)
 next I tried to use netscan which didn't support this profile so I used `vol.py -f Bob.vmem --profile=WinXPSP2x86 connections` instead then you can see local IP address of this machine
-```
-192.168.0.176
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.0.176</code></pre>
+</details>
 
 > Q2: What was the OS environment variable's value?
 
 ![7ba445df04ac37c78214f99d64f4be6e.png](/resources/7ba445df04ac37c78214f99d64f4be6e.png)
 We can use envars plugin to display a process's environment variables then combined with grep like this `vol.py -f Bob.vmem --profile=WinXPSP2x86 envars | grep OS`
-```
-Windows_NT
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Windows_NT</code></pre>
+</details>
 
 > Q3: What was the Administrator's password?
 
@@ -48,40 +52,50 @@ There are 2 ways we can proceed with this question either with lsadump or hashdu
 
 ![a4f9077712e3582d387e70df4da46d8f.png](/resources/a4f9077712e3582d387e70df4da46d8f.png)
 Then we can use `john --wordlist=/usr/share/wordlists/rockyou.txt admin_hash` to crack NTLM hash 
-```
-PASSWORD
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>PASSWORD</code></pre>
+</details>
 
 > Q4: Which process was most likely responsible for the initial exploit?
 
 ![49bb04a168031d5af75d4c4ad8cefc72.png](/resources/49bb04a168031d5af75d4c4ad8cefc72.png)
 I used `vol.py -f Bob.vmem --profile=WinXPSP2x86 pstree` to list all processes first then according to the scenario, acrobat reader process likely to be the one that responsible for this and as you can see that it was a process spawned under firefox so user might opened an email from Firefox then use Acrobat reader to open it
-```
-AcroRd32.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>AcroRd32.exe</code></pre>
+</details>
 
 > Q5: What is the extension of the malicious file retrieved from the process responsible for the initial exploit?
 
 It is obviously PDF
-```
-pdf
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>pdf</code></pre>
+</details>
 
 > Q6: Suspicious processes opened network connections to external IPs. One of them starts with "2". Provide the full IP.
 
 ![d26261cd6941fc9e1b4773fa19126b7c.png](/resources/d26261cd6941fc9e1b4773fa19126b7c.png)
 back to connections plugin, you can see that processes that contacted this IP address is firefox and acrobat reader
-```
-212.150.164.203
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>212.150.164.203</code></pre>
+</details>
 
 > Q7: A suspicious URL was present in process svchost.exe memory. Provide the full URL that points to a PHP page hosted over a public IP (no FQDN).
 
 ![a4b9a43db42fea1938d52b3bae59580c.png](/resources/a4b9a43db42fea1938d52b3bae59580c.png)
 I used `strings Bob.vmem | grep -Ei "http.*php|php.*http"` and let it scroll for a while until I saw this then I stopped which was the right choice
-```
-http://193.104.22.71/~produkt/9j856f_4m9y8urb.php
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>http://193.104.22.71/~produkt/9j856f_4m9y8urb.php</code></pre>
+</details>
 
 > Q8: Extract files from the initial process. One file has an MD5 hash ending with "528afe08e437765cc". When was this file first submitted for analysis on VirusTotal?
 
@@ -95,16 +109,20 @@ After foremost finished, go to output directory and read `audit.txt` then we can
 md5hash all of them then pipe to grep, you will get a file (I renamed it, in case I forgot)
 ![1a7de6c0000bf487251ef8cc4940ed56.png](/resources/1a7de6c0000bf487251ef8cc4940ed56.png)
 After searched in hash on VirusTotal, go to Details and History to grab the First Submission for an answer
-```
-2010-03-29 19:31:45
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2010-03-29 19:31:45</code></pre>
+</details>
 
 > Q9: What was the PID of the process that loaded the file PDF.php?
 
 of course, Its an acrobat process
-```
-1752
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>1752</code></pre>
+</details>
 
 > Q10: The JS includes a function meant to hide the call to function eval(). Provide the name of that function.
 
@@ -121,9 +139,11 @@ So I used `python2 /usr/local/bin/pdf-parser.py --raw -o 1054 -f malicious_pdf.p
 But after you got a file, use `js-beautify malicious.js > beautify_malicious.js` to beautify JS script to make it easier to read
 ![96c12397bae3f57dfc2710f0fa6e7576.png](/resources/96c12397bae3f57dfc2710f0fa6e7576.png)
 eval is in this weird function
-```
-HNQYxrFW
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>HNQYxrFW</code></pre>
+</details>
 
 > Q11: The payload includes 3 shellcodes for different versions of Acrobat reader. Provide the function name that corresponds to Acrobat v9.
 
@@ -132,9 +152,11 @@ We will use js-patched to deobfuscated the code and we need to add closing brack
 ![1833cb9b8253fecb4619aca422990980.png](/resources/1833cb9b8253fecb4619aca422990980.png)
 You can see that there are conditions to check for number
 On the last function, if its lower than 9 it will triggered this function so this function is checking for Acrobat version
-```
-XiIHG
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>XiIHG</code></pre>
+</details>
 
 > Q12: Process winlogon.exe hosted a popular malware that was first submitted for analysis at VirusTotal on 2010-03-29 11:34:01. Provide the MD5 hash of that malware.
 
@@ -147,9 +169,11 @@ Grab it pid and dump it using `vol.py -f Bob.vmem --profile=WinXPSP2x86 malfind 
 Instead of manually search all of them on VirusTotal, I read this [write-up](https://forensicskween.com/ctf/cyberdefenders/bankingtroubles/)  and found that we can use clamav to scan for a malware from these files which leaves us with only 1 file identifies as [Zeusbot](https://blogs.blackberry.com/en/2020/04/threat-spotlight-zeus-infostealer-trojan)
 ![cf9934874bd82286faf9bb4f67ff2d18.png](/resources/cf9934874bd82286faf9bb4f67ff2d18.png)
 Confirming its maliciousness and history on VirusTotal, we can confirmed it was the right one 
-```
-066f61950bdd31db4ba95959b86b5269
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>066f61950bdd31db4ba95959b86b5269</code></pre>
+</details>
 
 > Q13: What is the name of the malicious executable referenced in registry hive '\WINDOWS\system32\config\software', and is variant of ZeuS trojan?
 
@@ -160,9 +184,10 @@ To legitimately solve this question, We have to use hivelist plugin to find virt
 ![9817d025f10a51bdc5a09aded780dea7.png](/resources/9817d025f10a51bdc5a09aded780dea7.png)
 Then we can use `vol.py -f Bob.vmem --profile=WinXPSP2x86 printkey -o 0xe1526748 -K 'Microsoft\Windows NT\CurrentVersion\Winlogon'`  to print value of this key
 
-```
-sdra64.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>sdra64.exe</code></pre>
+</details>
 
 > Q14:The shellcode for Acrobat v7 downloads a file named e.exe from a specific URL. Provide the URL. 
 
@@ -173,9 +198,10 @@ I confirmed that this file existed on the memory image with `vol.py -f Bob.vmem 
 ![5aedc250055eb878365a73162708fe74.png](/resources/5aedc250055eb878365a73162708fe74.png)
 I remembered that there are other urls that kept appearing from `strings Bob.vmem | grep -Ei "http.*php|php.*http"` output, which is the correct answer for this question
 
-```
-http://search-network-plus.com/load.php?a=a&st=Internet Explorer 6.0&e=2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://search-network-plus.com/load.php?a=a&amp;st=Internet Explorer 6.0&amp;e=2</code></pre>
+</details>
 
 > Q15: The shellcode for Acrobat v8 exploits a specific vulnerability. Provide the CVE number.
 
@@ -183,9 +209,11 @@ http://search-network-plus.com/load.php?a=a&st=Internet Explorer 6.0&e=2
 I didn't know where to start since Zeus exploited so many Acrobat CVEs from time to time ([Ref](https://www.bitdefender.com/blog/hotforsecurity/scanned-documents-spreading-zbot/)) so I checked for hint and it told me to use [jsunpack-n](https://github.com/urule99/jsunpack-n) but for some reason (again) probably due to my remnux is the lastest version but jsunpack-n lastest update is 9 years ago, it didn't work for me 
 ![7e6a82b351ee75521a09fcc74ff010cc.png](/resources/7e6a82b351ee75521a09fcc74ff010cc.png)
 I checked for another hint and used Google which finally lead me to an answer of this question
-```
-CVE-2008-2992
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2008-2992</code></pre>
+</details>
 
 ![738ba4617f2cc94c92dc9b0c7476a5ed.png](/resources/738ba4617f2cc94c92dc9b0c7476a5ed.png)
 * * *

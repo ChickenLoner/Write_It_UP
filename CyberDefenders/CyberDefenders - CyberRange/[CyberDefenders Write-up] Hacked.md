@@ -23,9 +23,11 @@ A soc analyst has been called to analyze a compromised Linux web server. Figure 
 We got Linux disk to work with and the partition we will be investigating is `VulnOSv2-vg-root`
 ![df86487f788b6a55f229650e14b53751.png](/resources/df86487f788b6a55f229650e14b53751.png)
 A file that store timezone information is `/etc/timezone`
-```
-Europe/Brussels
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Europe/Brussels</code></pre>
+</details>
 
 > Q2: Who was the last user to log in to the system?
 
@@ -36,25 +38,31 @@ On FTK Imager, click `View file in plain text` then we can read content of this 
 ![b418bb52ba4d9888fcb3e75741f37e22.png](/resources/b418bb52ba4d9888fcb3e75741f37e22.png)
 Another way is to check auth log at `/var/log/auth.log` for SSHD event
 ![6be99fc0d1381ed8d10b3dcefc1565f0.png](/resources/6be99fc0d1381ed8d10b3dcefc1565f0.png)
-```
-mail
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>mail</code></pre>
+</details>
 
 > Q3: What was the source port the user 'mail' connected from?
 
 ![fb16d50c259685b43ae73387c2e4b288.png](/resources/fb16d50c259685b43ae73387c2e4b288.png)
 From the previous question, we know that mail user was using SSH to login to this system so Inside `auth.log` we will filter for "Accepted password" then you will got a source IP address and port of this connection 
-```
-57708
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>57708</code></pre>
+</details>
 
 > Q4: How long was the last session for user 'mail'? (Minutes only)
 
 ![3229ddb93e291a7e2401b8459006ff76.png](/resources/3229ddb93e291a7e2401b8459006ff76.png)
 Check for SSHD session opened and closed, it almost 1 minute so the answer is 1 
-```
-1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>1</code></pre>
+</details>
 
 > Q5: Which server service did the last user use to log in to the system?
 
@@ -62,33 +70,41 @@ Check for SSHD session opened and closed, it almost 1 minute so the answer is 1
 We know that user connected to a system using SSH so SSHD is doing it job to handle it
 ![634dcfab5d16b822b0d48f4e40823ab2.png](/resources/634dcfab5d16b822b0d48f4e40823ab2.png)
 Here is an explaination of SSHD by ChatGPT
-```
-sshd
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>sshd</code></pre>
+</details>
 
 > Q6: What type of authentication attack was performed against the target machine?
 
 ![1044b929ee81570ba53ebad977b33309.png](/resources/1044b929ee81570ba53ebad977b33309.png)
 Still in `auth.log` scroll up a little bit we can see several authentication failure happened sevaral events in a short time which mean an attacker was bruteforcing `root` user password
-```
-brute-force
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>brute-force</code></pre>
+</details>
 
 > Q7: How many IP addresses are listed in the '/var/log/lastlog' file?
 
 ![8da5f715e9238c340761158ef6354f1a.png](/resources/8da5f715e9238c340761158ef6354f1a.png)
 There are 2 unique IP addresses logged in `lastlog`
-```
-2
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2</code></pre>
+</details>
 
 > Q8: How many users have a login shell?
 
 ![5071f5a1c8dbe2b0cc8b0bf5c38b5a10.png](/resources/5071f5a1c8dbe2b0cc8b0bf5c38b5a10.png)
 Go to `/etc/passwd` to see how many user have permission to use `/bash` shell and there are 5 of them
-```
-5
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>5</code></pre>
+</details>
 
 > Q9: What is the password of the mail user?
 
@@ -99,17 +115,21 @@ My VM doesn't meet the requirement to use hashcat so I'll use John to crack this
 ![69eda4543806b447b2ede0864e8e7b94.png](/resources/69eda4543806b447b2ede0864e8e7b94.png)
 Then using john with rockyou wordlist to bruteforce passwords inside this unshadow file with `john --wordlist=rockyou.txt unshadow.txt`
 As you can see, both php and mail user has the same password
-```
-forensics
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>forensics</code></pre>
+</details>
 
 > Q10: Which user account was created by the attacker?
 
 ![74dd39dcf615f8ab3586754a1091139f.png](/resources/74dd39dcf615f8ab3586754a1091139f.png)
 back to `auth.log` then find for `useradd` command, and the result shows that php was added by root and added to sudo group
-```
-php
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>php</code></pre>
+</details>
 
 > Q11: How many user groups exist on the machine?
 
@@ -117,9 +137,11 @@ php
 A file that hold information about all the groups on Linux system is `/etc/group`
 ![372a9c6b7ab45b7222c3bbdc5bdee316.png](/resources/372a9c6b7ab45b7222c3bbdc5bdee316.png)
 Count the lines, we got 58 groups on this system
-```
-58
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>58</code></pre>
+</details>
 
 > Q12: How many users have sudo access?
 
@@ -127,17 +149,21 @@ Count the lines, we got 58 groups on this system
 We can confirmed that which group have the sudo privilege by reading `/etc/sudoers` and the the only group that has this privilege is "sudo"
 ![e49575238811497f047f992910072c22.png](/resources/e49575238811497f047f992910072c22.png)
 back to `/etc/group` and find for "sudo" group, we got 2 users on this group
-```
-2
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2</code></pre>
+</details>
 
 > Q13: What is the home directory of the PHP user?
 
 ![9c2711060ef69b70cf4585c8d98a11d8.png](/resources/9c2711060ef69b70cf4585c8d98a11d8.png)
 Go to `/etc/passwd`, it also store the home directory of each user and PHP user got this directory as a home directory 
-```
-/usr/php
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>/usr/php</code></pre>
+</details>
 
 > Q14: What command did the attacker use to gain root privilege? (Answer contains two spaces).
 
@@ -145,18 +171,22 @@ Go to `/etc/passwd`, it also store the home directory of each user and PHP user 
 An attacker accessed this system as mail user so get mail user home directory from `/etc/passwd` 
 ![652739220b6f4934901fbdf7b8a628a7.png](/resources/652739220b6f4934901fbdf7b8a628a7.png)
 Then read bash history, as we know from previous question that mail is in sudo group which mean an attacker can just use sudo to switch user to root directly
-```
-sudo su -
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>sudo su -</code></pre>
+</details>
 
 > Q15: Which file did the user 'root' delete?
 
 ![7bfa4800ef16f8db0d3bf45a88a4965b.png](/resources/7bfa4800ef16f8db0d3bf45a88a4965b.png)
 Go to root home directory to read bash history
 inside `/tmp/` directory, there is a C script that was deleted and if you ever practice pentesting then you will feel familiar with this filename as it coming from Exploit-DB
-```
-37292.c
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>37292.c</code></pre>
+</details>
 
 > Q16: Recover the deleted file, open it and extract the exploit author name.
 
@@ -182,25 +212,31 @@ Go to `/tmp/` directory and you will see all recoverable deleted files which inc
 Open C script and you will find author was written at the top as comment 
 ![dac8297c64f00f172a3dee2c2cb3b7b7.png](/resources/dac8297c64f00f172a3dee2c2cb3b7b7.png)
 Don't forget to Unmount all images
-```
-Rebel
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Rebel</code></pre>
+</details>
 
 > Q17: What is the content management system (CMS) installed on the machine?
 
 ![dc599b4d1d7a2050e78d5a9eefb80823.png](/resources/dc599b4d1d7a2050e78d5a9eefb80823.png)
 The word installed mean CMS was installed via apt or dkpg so I went to `/var/log/apt/history.log` which I found drupal7 was installed using apt
-```
-drupal
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>drupal</code></pre>
+</details>
 
 > Q18: What is the version of the CMS installed on the machine?
 
 ![6c80f3e344c5b00970d00c425a58f122.png](/resources/6c80f3e344c5b00970d00c425a58f122.png)
 Relying on apt history log is not enough to exact version so dpkg which is a package management system (`/var/log/dpkg.log`) will revealing more in depth about the exact CMS version that was installed 
-```
-7.26
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>7.26</code></pre>
+</details>
 
 > Q19: Which port was listening to receive the attacker's reverse shell?
 
@@ -217,9 +253,11 @@ One of this log contained `eval()` and `base64_decode` in the url which mean an 
 Decode URL properly 
 ![fb3564900e7f1c538ccba360eba875eb.png](/resources/fb3564900e7f1c538ccba360eba875eb.png)
 Then grab only base64 strings to decode, which we finally found out that it is a reverse shell script to connect to an attacker IP address at port 4444
-```
-4444
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>4444</code></pre>
+</details>
 
 ![0bf7902e0a530bf8081d96f50a57ee1d.png](/resources/0bf7902e0a530bf8081d96f50a57ee1d.png)
 * * *

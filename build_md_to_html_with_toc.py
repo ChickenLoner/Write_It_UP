@@ -891,6 +891,23 @@ def _unwrap_details_paragraphs(html_body: str) -> str:
     html_body = _DETAILS_OPEN_P_RE.sub(r'\1', html_body)
     return _DETAILS_CLOSE_P_RE.sub(r'\1', html_body)
 
+_DETAILS_BEFORE_RE = re.compile(r'(?<=[^\n])\n(?=[ \t]*<details\b)')
+_DETAILS_AFTER_RE  = re.compile(r'(</details>[ \t]*)\n(?=[^\n])')
+
+def _space_details(md: str) -> str:
+    """Put a blank line before and after every <details> block.
+
+       Without it markdown2 folds the tag into the neighbouring paragraph (or,
+       after a "> question" line, into the blockquote), leaving stray <p> tags
+       and — for a blockquote — the answer rendered inside the question box.
+       Fenced code is left untouched."""
+    parts = re.split(r'(^```.*?^```)', md, flags=re.MULTILINE | re.DOTALL)
+    for i in range(0, len(parts), 2):                  # even = outside a fence
+        parts[i] = _DETAILS_AFTER_RE.sub(r'\1\n\n',
+                    _DETAILS_BEFORE_RE.sub('\n\n', parts[i]))
+    return "".join(parts)
+
+
 def _enable_markdown_in_blocks(md: str) -> str:
     """Tag raw block-level HTML so markdown2 processes the markdown inside it.
 
@@ -925,7 +942,7 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
     # of them across 56 write-ups. markdown2 will process the contents when the
     # tag carries markdown="1", so inject that and enable the extra.
     html_body = markdown2.markdown(
-        _enable_markdown_in_blocks(md_content),
+        _enable_markdown_in_blocks(_space_details(md_content)),
         extras=["fenced-code-blocks", "tables", "header-ids", "strike",
                 "markdown-in-html"]
     )

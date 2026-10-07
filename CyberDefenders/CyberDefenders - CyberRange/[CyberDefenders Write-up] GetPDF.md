@@ -41,9 +41,10 @@ There are not much communications were captured so it would be easier to move to
 
 It we filtered for HTTP protocol then we can see there are 6 different url involved in this incident
 
-```
-6
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>6</code></pre>
+</details>
 
 > Q2: What is the URL which contains the JS code?
 
@@ -55,9 +56,10 @@ Open pcap file with Wireshark then inspect each conversation to find which URL h
 
 Which you can see that this URL has very suspicious obfuscated JavaScript inside script tag 
 
-```
-http://blog.honeynet.org.my/forensic_challenge/
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://blog.honeynet.org.my/forensic_challenge/</code></pre>
+</details>
 
 > Q3: What is the URL hidden in the JS code?
 
@@ -73,9 +75,10 @@ Then we will use https://playcode.io/empty_javascript to play with this JS and w
 
 We can see that it inserts an iframe into the document, which loads content from the specified URL.
 
-```
-http://blog.honeynet.org.my/forensic_challenge/getpdf.php
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://blog.honeynet.org.my/forensic_challenge/getpdf.php</code></pre>
+</details>
 
 ![e2e0af616c72f3b530f5acac8696655f.png](/resources/e2e0af616c72f3b530f5acac8696655f.png)
 
@@ -87,9 +90,10 @@ Which you can see that after this page was requested, URL that we found was requ
 
 Go to NetworkMiner to get the hash of pdf file we found earlier
 
-```
-659cf4c6baa87b082227540047538c2a
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>659cf4c6baa87b082227540047538c2a</code></pre>
+</details>
 
 > Q5: How many object(s) are contained inside the PDF file?
 
@@ -101,9 +105,10 @@ We can see on wireshark that this pdf file contains JS so we will go to NetworkM
 
 Then open pdf file with PDFStreamDumper, we will see how many objects contains within this pdf file
 
-```
-19
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>19</code></pre>
+</details>
 
 > Q6: How many filtering schemes are used for the object streams?
 
@@ -111,9 +116,10 @@ Then open pdf file with PDFStreamDumper, we will see how many objects contains w
 
 It will be easier to find them on Wireshark so after reviewing this conversation, we can see that there are 4 filters that were applied to these object streams
 
-```
-4
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4</code></pre>
+</details>
 
 > Q7: What is the number of the 'object stream' that might contain malicious JS code?
 
@@ -121,9 +127,10 @@ It will be easier to find them on Wireshark so after reviewing this conversation
 
 We can easily obtain an answer here, its an object 5
 
-```
-5
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5</code></pre>
+</details>
 
 ![b908fc8cc7594bc9f53650010453f209.png](/resources/b908fc8cc7594bc9f53650010453f209.png)
 
@@ -176,9 +183,10 @@ Put it in https://beautifier.io/, then we will see it get content of object 9 an
 
 Now it is confirmed that object 7 and 9 are the shellcodes that was divided
 
-```
-7,9
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>7,9</code></pre>
+</details>
 
 > Q9: The JS code responsible for executing the exploit contains shellcodes that drop malicious executable files. What is the full path of malicious executable files after being dropped by the malware on the victim machine?
 
@@ -206,9 +214,10 @@ Then after emulate how this shellcode work with shellcode debugger, we can see t
 
 Here is the result from `notepad.exe` payload, look like there is a little bit different between both payload which is URL to download an executable file but in the end, it will be downloaded to the same path and execute it
 
-```
-c:\WINDOWS\system32\a.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>c:\WINDOWS\system32\a.exe</code></pre>
+</details>
 
 > Q10: The PDF file contains another exploit related to CVE-2010-0188. What is the URL of the malicious executable that the shellcode associated with this exploit drop?
 
@@ -252,9 +261,10 @@ Now put these base64 inside CyberChef and to make a shellcode, we need to use "F
 
 Save it as a file then use shellcode debugger to get the answer
 
-```
-http://blog.honeynet.org.my/forensic_challenge/the_real_malware.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://blog.honeynet.org.my/forensic_challenge/the_real_malware.exe</code></pre>
+</details>
 
 > Q11: How many CVEs are included in the PDF file?
 
@@ -294,9 +304,10 @@ Which leads us to [CVE-2009-0927 Adobe Collab.getIcon() Buffer Overflow](https:/
 
 Now if we count the fifth vulnerability we found on previous task, it will be 5 vulnerabilities in total!
 
-```
-5
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5</code></pre>
+</details>
 
 ![df55e8d265ac373f94b791f788fb23ad.png](/resources/df55e8d265ac373f94b791f788fb23ad.png)
 

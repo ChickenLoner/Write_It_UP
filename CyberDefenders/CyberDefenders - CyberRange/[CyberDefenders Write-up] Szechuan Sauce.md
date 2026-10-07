@@ -55,9 +55,10 @@ We got plenty of artifacts here so its naturally come with different approach fo
 
 Which you can see that Domain Controller server is using Windows Server 2012 R2 Standard Edition
 
-```
-2012 R2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2012 R2</code></pre>
+</details>
 
 The other way to solve this challenge is to used volatility to query registry key from memory dump which I would not recommend doing that if we have disk image available
 
@@ -67,9 +68,10 @@ The other way to solve this challenge is to used volatility to query registry ke
 
 We will use the same approach here on Desktop's disk image to dump registry key and read `CurrentVersion` subkey
 
-```
-Windows 10 Enterprise Evaluation
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Windows 10 Enterprise Evaluation</code></pre>
+</details>
 
 > Q3: What was the IP address assigned to the domain controller?
 
@@ -77,9 +79,10 @@ Windows 10 Enterprise Evaluation
 
 This time, we will have to open SYSTEM registry hive and go to `ControlSet001\Services\Tcpip\Parameters\Interfaces\` and manually display content of each subkey which represent different network interface on the domain controller
 
-```
-10.42.85.10
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10.42.85.10</code></pre>
+</details>
 
 > Q4: What was the timezone of the Server?
 
@@ -97,9 +100,10 @@ So the other way I could think of is to use EvtxCmd from EZ Tools and use Timeli
 
 Now we can see that the result from EvtxCmd and pcap file are different for an hour so its UTC-6 not UTC-7
 
-```
-UTC-6
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>UTC-6</code></pre>
+</details>
 
 > Q5: What was the initial entry vector (how did they get in)?. Provide protocol name.
 
@@ -111,9 +115,10 @@ I exported some event log files and use [DeepBlueCLI](https://github.com/sans-bl
 
 We can use BrimSecurity with Suricata rules to correlated suspicious activities from pcap file for us which we can see that all those login failures happened on port 3389 which is RDP protocol
 
-```
-rdp
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>rdp</code></pre>
+</details>
 
 > Q6: What was the malicious process used by the malware? (one word)
 
@@ -131,9 +136,10 @@ When we searched this IP address on VirusTotal, we can see that its from Thailan
 
 Go back to our text file to find a process responsible for this connection
 
-```
-coreupdater
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>coreupdater</code></pre>
+</details>
 
 > Q7: Which process did malware migrate to after the initial compromise? (one word)
 
@@ -159,9 +165,10 @@ I copied memory dump and dumped it again and pretend that we did not know anythi
 
 Now we can properly see it on VirusTotal
 
-```
-spoolsv
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>spoolsv</code></pre>
+</details>
 
 > Q8: Identify the IP Address that delivered the payload.
 
@@ -173,16 +180,19 @@ find the `coreupdater.exe` on pcap file then we can see that it was hosted on th
 
 This IP address is in Russia and get 1 total red flag on VirusTotal
 
-```
-194.61.24.102
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>194.61.24.102</code></pre>
+</details>
 
 > Q9: What IP Address was the malware calling to?
 
 We already know an answer of this question from `windows.netscan` plugin
-```
-203.78.103.109
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>203.78.103.109</code></pre>
+</details>
 
 > Q10: Where did the malware reside on the disk?
 
@@ -190,9 +200,10 @@ We already know an answer of this question from `windows.netscan` plugin
 
 I got an answer of this question on autorunsc csv file of the domain controller, we can see that it was placed inside `\Windows\System32` folder
 
-```
-C:\Windows\System32\coreupdater.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Windows\System32\coreupdater.exe</code></pre>
+</details>
 
 > Q11: What's the name of the attack tool you think this malware belongs to? (one word)
 
@@ -200,14 +211,17 @@ C:\Windows\System32\coreupdater.exe
 
 We already know this answer, there is other way to find this question and it is to find this alert in BrimSecurity
 
-```
-Metasploit
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Metasploit</code></pre>
+</details>
 
 > Q12: One of the involved malicious IP's is based in Thailand. What was the IP? 
-```
-203.78.103.109
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>203.78.103.109</code></pre>
+</details>
 
 > Q13: Another malicious IP once resolved to klient-293.xyz . What is this IP?
 
@@ -215,9 +229,10 @@ Metasploit
 
 I did not find this on pcap file and host files so I went back to VirusTotal and go to Relations, we can see that this IP address once resolved to `klient-293.xyz`
 
-```
-194.61.24.102
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>194.61.24.102</code></pre>
+</details>
 
 > Q14: The attacker performed some lateral movements and accessed another system in the environment via RDP. What is the hostname of that system?
 
@@ -229,9 +244,10 @@ We can get this answer by take a look at `ControlSet001\Control\ComputerName\Com
 
 Or we can go to Administrator's documents folder in the domain controller disk image to find `Default.rdp` which is a file created when open Remote Desktop program and it eventually 
 
-```
-DESKTOP-SDN1RPT
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>DESKTOP-SDN1RPT</code></pre>
+</details>
 
 > Q15: Other than the administrator, which user has logged into the Desktop machine? (two words)
 
@@ -243,9 +259,10 @@ We can see that beside the administrator, there are other 2 user accounts and we
 
 Filter Event ID 4624 in `Security.evtx` then we will see only "ricksanchez" was successfully logged on and found no evidence of other user which mean other account did not log into this machine
 
-```
-Rick Sanchez
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Rick Sanchez</code></pre>
+</details>
 
 > Q16: What was the password for "jerrysmith" account?
 
@@ -261,9 +278,10 @@ We got the hive, we got the file so lets do it ! - `sudo python secretsdump.py -
 
 Now since we already exported it to a file then we can proceed with `john --wordlist=/usr/share/wordlists/rockyou.txt password.txt.ntds --format=NT` to get all password cracked
 
-```
-!BETHEYBOO12!
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>!BETHEYBOO12!</code></pre>
+</details>
 
 > Q17: What was the original filename for Beth’s secrets?
 
@@ -275,17 +293,19 @@ Inside disk image of the domain controller, there is a file named `Beth_Secret.t
 
 I guessed it would be renamed so we could check for MFT file but I found another text file inside RecybleBin which is the original secret file that was deleted
 
-```
-Secret_beth.txt
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Secret_beth.txt</code></pre>
+</details>
 
 > Q18: What was the content of Beth’s secret file? ( six words, spaces in between)
 
 ![2a3df80440f6b21393eba78b76f758f2.png](/resources/2a3df80440f6b21393eba78b76f758f2.png)
 
-```
-Earth Beth is the real Beth
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Earth Beth is the real Beth</code></pre>
+</details>
 
 > Q19: The malware tried to obtain persistence in a similar way to how Carbanak malware obtains persistence. What is the corresponding MITRE technique ID?
 
@@ -297,9 +317,10 @@ After searching for this malware, we will come across [MITRE ATT&CK](https://att
 
 I happened to use Regripper on SYSTEM registry hive, we can see that `coreupdater` really made itself a service so we can confirm the technique that was used by this malware
 
-```
-T1543.003
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1543.003</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/szechuan-sauce/
 

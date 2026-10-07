@@ -44,9 +44,10 @@ I also used `vol.py -f win7ecorpoffice2010-36b02ed3.vmem --profile=Win7SP1x64 cm
 
 We can also see that user from this system is called phillip price, an infamous character from Mr. Robot which is the theme of this lab
 
-```
-1364
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>1364</code></pre>
+</details>
 
 > Q2: File->ecorpoffice What is the C2 server IP address?
 
@@ -58,9 +59,10 @@ Lets use `vol.py -f win7ecorpoffice2010-36b02ed3.vmem --profile=Win7SP1x64 netsc
 
 This IP address owned by Amazon AWS and its the right answer for this question
 
-```
-54.174.131.235
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>54.174.131.235</code></pre>
+</details>
 
 > Q3: File->ecorpoffice What is the Teamviewer version abused by the malicious file?
 
@@ -70,9 +72,10 @@ I used filescan plugin with grep to seach for TeamViewer version but it didn't t
 
 But we know an IP address that malicious process connected to so I will use `strings win7ecorpoffice2010-36b02ed3.vmem | grep -i "54.174.131.235"` to find anything related to this IP address from memory dump directly, and after carefully review urls return from strings output, we can see that `tvrv` should represent TeamViewer Version and turn out I was right
 
-```
-0.2.2.2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0.2.2.2</code></pre>
+</details>
 
 > Q4: File->ecorpoffice What password did the malicious file use to enable remote access to the system?
 
@@ -86,9 +89,10 @@ Which lead us to another plugin called [editbox](https://github.com/bridgeythege
 
 Lets use `vol.py -f win7ecorpoffice2010-36b02ed3.vmem --profile=Win7SP1x64 editbox` then we can see both ID (can answer Q8) and Password here
 
-```
-P59fS93m
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>P59fS93m</code></pre>
+</details>
 
 > Q5: File->ecorpoffice What was the sender's email address that delivered the phishing email?
 
@@ -108,9 +112,10 @@ First I will use `strings /tmp/ecorp/2692.dmp | grep "Reply-To"` to find for "Re
 
 Or we can use `strings /tmp/ecorp/2692.dmp | grep -E -o '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'` to catch all emails from this memory dump, we know that phillip.price is a user from this machine which mean another email belongs to the attacker
 
-```
-karenmiles@t-online.de
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>karenmiles@t-online.de</code></pre>
+</details>
 
 > Q6: File->ecorpoffice What is the MD5 hash of the malicious document?
 
@@ -148,9 +153,10 @@ This is how phillip fell for, an attacker fake ecorp invoice and sent this to ph
 
 so we can use `md5sum` on this malicious document to calculate MD5 hash
 
-```
-c2dbf24a0dc7276a71dd0824647535c9
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>c2dbf24a0dc7276a71dd0824647535c9</code></pre>
+</details>
 
 > Q7: File->ecorpoffice What is the bitcoin wallet address that ransomware was demanded?
 
@@ -168,14 +174,17 @@ I started with Message00010 from inbox first, which you can see its an email dem
 
 And judging from email sent, look like phillip had no clue about it
 
-```
-25UMDkGKBe484WSj5Qd8DhK6xkMUzQFydY
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>25UMDkGKBe484WSj5Qd8DhK6xkMUzQFydY</code></pre>
+</details>
 
 > Q8: File->ecorpoffice What is the ID given to the system by the malicious file for remote access?
-```
-528 812 561
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>528 812 561</code></pre>
+</details>
 
 > Q9: File->ecorpoffice What is the IPv4 address the actor last connected to the system with the remote access tool?
 
@@ -185,9 +194,10 @@ I used  to filter out strings result with any strings that look like legitimate 
 
 2 IP addresses that started with 3 caught my eyes and and first one from above image is the correct answer (even though VirusTotal didn't flag it as malicious)
 
-```
-31.6.13.155
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>31.6.13.155</code></pre>
+</details>
 
 > Q10: File->ecorpoffice What Public Function in the word document returns the full command string that is eventually run on the system?
 
@@ -199,9 +209,10 @@ First, lets confirm if there is any malicious vba macro embbed with `oleid` then
 
 After used `olevba`, we can see that this function has suspicious long string inside and then deobfuscate it before return as string 
 
-```
-UsoJar
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>UsoJar</code></pre>
+</details>
 
 > Q11: File->ecorpwin7 What is the MD5 hash of the malicious document?
 
@@ -253,9 +264,10 @@ You can used HxD to remove all those trailing null byes but I will use `xxd -p f
 
 Btw, special thanks to [ForensicKween](https://forensicskween.com/ctf/cyberdefenders/teamspy/) for this awesome command!
 
-```
-00e4136876bf4c1069ab9c4fe40ed56f
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>00e4136876bf4c1069ab9c4fe40ed56f</code></pre>
+</details>
 
 > Q12: File->ecorpwin7 What is the common name of the malicious file that gets loaded?"
 
@@ -281,9 +293,10 @@ Some vendors recognized it as Korplug malware
 
 Which is also know as PlugX
 
-```
-PlugX
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>PlugX</code></pre>
+</details>
 
 > Q13: File->ecorpwin7 What password does the attacker use to stage the compressed file for exfil?
 
@@ -299,9 +312,10 @@ Then I will use `grep -E "\.(zip|tar|gz|tgz|bz2|7z|rar|xz|Z|jar|war|ear|iso)$" m
 
 Those dll might came from this rar file and it should be a password protected to avoid some anti virus solution so I will use `strings -el ecorpwin7-e73257c4.vmem | grep "reports.rar"` to find any command that extract content of this file with password
 
-```
-password1234
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>password1234</code></pre>
+</details>
 
 > Q14: File->ecorpwin7 What is the IP address of the c2 server for the malicious file?
 
@@ -313,9 +327,10 @@ Just use `vol.py -f ecorpwin7-e73257c4.vmem --profile=Win7SP1x64 netscan` and lo
 
 I confirmed it by searching on VirusTotal, lucky me then there are enough information on Relations tab that it was dropped malicious exe file (foreshadow to my bonus section)
 
-```
-52.90.110.169
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>52.90.110.169</code></pre>
+</details>
 
 > Q15: File->ecorpwin7 What is the email address that sent the phishing email?
 
@@ -323,9 +338,10 @@ I confirmed it by searching on VirusTotal, lucky me then there are enough inform
 
 Go back to mail files that was processed with pffexport, inspect header of an email that sent malicious rtf file
 
-```
-lloydchung@allsafecybersec.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>lloydchung@allsafecybersec.com</code></pre>
+</details>
 
 > Q16: File->ecorpwin7 What is the name of the deb package the attacker staged to infect the E Coin Servers?
 
@@ -345,9 +361,10 @@ So I want to know more details of this file so I will use `cat mft.txt | grep -F
 
 I dump this shell script with `vol.py -f ecorpwin7-e73257c4.vmem --profile=Win7SP1x64 mftparser -o 0x699e3c00 -D /tmp/ecorp/` then we can see that this script ensures necessary tools are in place and handles the download and extraction of a Debian package, setting up the environment for further configuration tasks.
 
-```
-linuxav.deb
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>linuxav.deb</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/teamspy/
 

@@ -56,9 +56,10 @@ Query: `host="ip-10-10-3-108" smtpd | sort _time`
 
 This domain is known for malicious mail sender and could be used to send many spoofed emails all at once.
 
-```
-114.29.236.247
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>114.29.236.247</code></pre>
+</details>
 
 >Q2: During the initial phase of the attack, a suspicious file was downloaded via a webmail client. The file's hash can help confirm its identity and origin. Identify the SHA256 hash of the downloaded file and provide it.
 
@@ -78,9 +79,10 @@ To obtain the hash of this file, along with confirm that it really come from an 
 
 Query: `source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=15 NovaSecure_Audit_Findings.iso | sort UtcTime | table UtcTime,Image,file_path,user,host,SHA256,Contents`
 
-```
-F445F806066028D621D8E6A6B949E59342C309DFEB1D517BD847F70069B1B8DD
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>F445F806066028D621D8E6A6B949E59342C309DFEB1D517BD847F70069B1B8DD</code></pre>
+</details>
 
 * * *
 ### Execution
@@ -101,14 +103,17 @@ So if we could guess what happened then the victim executed lnk file which will 
 
 Query: `source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=11 Image="*7zG.exe" | sort UtcTime | table UtcTime,Image,file_path,user,host`
 
-```
-Compliance_Reports.lnk
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Compliance_Reports.lnk</code></pre>
+</details>
 
 >Q4: Following the execution of the previous file, a file was loaded and executed by a legitimate Windows utility as part of the attack chain. What is the name of this file?
-```
-23.dll
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>23.dll</code></pre>
+</details>
 
 >Q5: The beacon spawned an instance of a specific executable. What is the name of the created process?
 
@@ -134,9 +139,10 @@ We can even correlated this with Event ID 10 as well
 
 Query: `source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=10  *ImagingDevices.exe* | sort UtcTime | table UtcTime, TargetImage,TargetProcessId,SourceImage,SourceProcessId`
 
-```
-ImagingDevices.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ImagingDevices.exe</code></pre>
+</details>
 
 >Q6: On DC01, the attacker dropped a compressed archive, likely staging for malicious activities. They then executed a command to extract its contents. What was the exact command used for this operation?
 
@@ -156,9 +162,10 @@ Looking at the process creation event belong to SYSTEM user on the domain contro
 
 Query: `source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1 host=DC01 user=SYSTEM Image!="*wmiprvse.exe" | sort UtcTime | table UtcTime,CommandLine,process_id,ParentCommandLine,user,SHA256`
 
-```
-7zr.exe x 1.7z
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>7zr.exe x 1.7z</code></pre>
+</details>
 
 * * *
 ### Defense Evasion
@@ -170,9 +177,10 @@ As we already discovered that the `ImagingDevices.exe` was injected from `rundll
 
 Query: `EventCode=8  *ImagingDevices.exe* | sort UtcTime | table UtcTime, TargetImage,TargetProcessId,SourceImage,SourceProcessId,StartAddress`
 
-```
-0x000001C75CB60000
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0x000001C75CB60000</code></pre>
+</details>
 
 * * *
 ### Discovery
@@ -190,9 +198,10 @@ Going back to the process creation event on the IT01 (patience zero / breachhead
 
 Before dumping lsass with sysinternal's process dump and compressed it to `doc1.7z` before deleting it (probably downloaded before deletion event but downloading event from C2 could not be logged with Sysmon)
 
-```
-nltest  /domain_trusts
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>nltest  /domain_trusts</code></pre>
+</details>
 
 >Q9: Network scanning activity was observed across the environment on DC01, focusing on key systems with straightforward network reachability tests. Further investigation revealed that the attacker utilized a script to automate these actions. What was the name of the script used in this operation?
 
@@ -206,9 +215,10 @@ Query: `source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1
 
 The same script was observed from this case as well - report published by The DFIR Report - [BumbleBee: Round Two](https://thedfirreport.com/2022/09/26/bumblebee-round-two/)
 
-```
-1.bat
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>1.bat</code></pre>
+</details>
 
 * * *
 ### Credential Access
@@ -227,19 +237,24 @@ To find out about how many files were dropped from injected process, I query for
 Query: `source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=11 host=IT01 Image="*ImagingDevices.exe*"
 | sort UtcTime | table UtcTime,Image,file_path,user,host`
 
-```
-C:\ProgramData\procdump64.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\ProgramData\procdump64.exe</code></pre>
+</details>
 
 >Q11: Timing is critical for understanding the attacker’s actions and reconstructing the sequence of events. What was the timestamp when the attacker executed the credential dumping operation?
-```
-2024-12-01 21:15
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-12-01 21:15</code></pre>
+</details>
 
 >Q12: the attacker dropped a compression tool on IT01. What is the full path where this tool was created on the system?
-```
-C:\ProgramData\7zr.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\ProgramData\7zr.exe</code></pre>
+</details>
 
 * * *
 ### Privilege Escalation
@@ -257,9 +272,10 @@ I focus on the process creation from this user next, Which I can see that this u
 
 Query: `source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1 user=markw | sort UtcTime | table UtcTime,CommandLine,process_id,ParentCommandLine,host`
 
-```
-markw
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>markw</code></pre>
+</details>
 
 * * *
 ### Lateral Movement
@@ -277,9 +293,10 @@ As we seen in the process creation event from FILESERVER, the threat actor archi
 
 Query: `source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1 user=markw host="fileserver01" | sort UtcTime | table UtcTime,CommandLine,process_id,ParentCommandLine,host`
 
-```
-445
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>445</code></pre>
+</details>
 
 >Q15: The malicious executable was stored in a shared location before execution. What was the full path where the executable was first created on DC01?
 
@@ -287,9 +304,10 @@ Query: `source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1
 
 As we already discovered that `0453497.exe` was likely to be ps-exec like executable created on the domain controller to run beacon as SYSTEM after already compromised administrator-level user. 
 
-```
-C:\Windows\0453497.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Windows\0453497.exe</code></pre>
+</details>
 
 >Q16: The attacker initiated an RDP connection to DC01 using a compromised account. What is the name of the attacker's workstation?
 
@@ -299,9 +317,10 @@ I query for successful logon as markw user again and focus on the workstation na
 
 Query: `EventCode=4624 TargetUserName=markw  WorkstationName!="-" | sort SystemTime    | table  SystemTime,Computer,WorkstationName,LogonType`
 
-```
-EC2AMAZ-NVLPEI1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>EC2AMAZ-NVLPEI1</code></pre>
+</details>
 
 >Q17: The attacker utilized the remote access tool to establish a connection to the system and performed the first interactive login using the created account for persistence. At what time did this logon occur?
 
@@ -311,9 +330,10 @@ As we already discovered that the sql-admin is the backdoor user created for per
 
 Query: `EventCode=4624 TargetUserName=sql_admin  WorkstationName!="-" | sort SystemTime    | table  SystemTime,Computer,WorkstationName,LogonType`
 
-```
-2024-12-01 22:25
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-12-01 22:25</code></pre>
+</details>
 
 * * *
 ### Persistence
@@ -325,25 +345,28 @@ As we already know that the threat actor used psexec-like capability to gain SYS
 
 Query: `EventCode=7045 | sort SystemTime | table SystemTime,ServiceName,ImagePath,StartType`
 
-```
-0453497
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0453497</code></pre>
+</details>
 
 >Q19: To establish persistence on DC01, the attacker created a new local user account and elevated its privileges. What were the username and password set for this account?
 
 ![d79efaca2997adec9b5e7e658c9b7a19.png](/resources/d79efaca2997adec9b5e7e658c9b7a19.png)
 
-```
-sql_admin:P@ssw0rd!
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>sql_admin:P@ssw0rd!</code></pre>
+</details>
 
 >Q20: The attacker installed a remote access tool on DC01 to enable persistent remote access and ensure continued control over the system. At what exact time was this service installed?
 
 ![a54f6271b1fc597d125367ae71e48079.png](/resources/a54f6271b1fc597d125367ae71e48079.png)
 
-```
-2024-12-01 22:17
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-12-01 22:17</code></pre>
+</details>
 
 * * *
 ### Collection
@@ -353,14 +376,17 @@ sql_admin:P@ssw0rd!
 
 As we already seen on the process creation event as sql-admin on the domain controller which reveals that the threat actor opened `Admin_Passwords_v3_HASHED.csv` file from the file share using notepad then use 7zip to create an archive of file share into `Shares.7z` file before executed `patch.exe`
 
-```
-Admin_Passwords_v3_HASHED.csv
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Admin_Passwords_v3_HASHED.csv</code></pre>
+</details>
 
 >Q22: The attacker leveraged an RDP connection from DC01 to FileServer01 to access and collect sensitive documents. After gathering the files, the attacker used a compression utility to archive them into a single file, preparing the data for exfiltration. What was the name of the compressed file created by the attacker during this operation?
-```
-Shares.7z
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Shares.7z</code></pre>
+</details>
 
 >Q23: The attacker initiated an RDP connection from their workstation to Support01 and accessed the mail server through a web browser. Using compromised credentials—reused by the domain admin for both Active Directory and the mail server—they successfully logged in. Then, the attacker downloaded a file containing potentially sensitive information from the compromised email account.
 What was the name of the file downloaded by the attacker?
@@ -381,9 +407,10 @@ File creation event also reveals the creation of zone.identifier of this csv fil
 
 Query: `source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=11 host=SUPPORT01 Image="*chrome.exe" user=markw | sort UtcTime | table UtcTime,Image,file_path,user,host`
 
-```
-Accounts_Updates_1524.csv
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Accounts_Updates_1524.csv</code></pre>
+</details>
 
 * * *
 ### Command and Control
@@ -395,9 +422,10 @@ We can query for the network connection event (TCP) originate from `rundll32.exe
 
 Query: `source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=3 host=IT01 | sort UtcTime | stats count by user,dest_ip,dest_port,process_path`
 
-```
-3.68.97.124:443
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3.68.97.124:443</code></pre>
+</details>
 
 >Q25: The spawned process by the beacon established a network connection to another external Command-and-Control (C2) server. What is the IP address and port of the C2 server that was contacted?
 
@@ -407,9 +435,10 @@ By querying Event ID 5156 (The Windows Filtering Platform has allowed a connecti
 
 Query: `EventCode=5156 host=IT01| sort SystemTime | stats count by DestAddress,DestPort,Application`
 
-```
-18.193.157.255:443
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>18.193.157.255:443</code></pre>
+</details>
 
 >Q26: After obtaining domain admin privileges on DC01, the attacker established a network connection to an external Command-and-Control (C2) server. What was the destination IP address and port of this connection?
 
@@ -419,9 +448,10 @@ We can make the same query used in Q24 but change the hostname which reveal anot
 
 Query: `source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=3 host=DC01 | sort UtcTime | stats count by user,dest_ip,dest_port,process_path`
 
-```
-3.68.27.19:443
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3.68.27.19:443</code></pre>
+</details>
 
 * * *
 ### Impact
@@ -439,9 +469,10 @@ Then we can also see that this file was first executed from the file server and 
 
 Query: `source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1 Image="*patch.exe" | sort UtcTime | table UtcTime,CommandLine,process_id,ParentCommandLine,user,SHA256,host`
 
-```
-\10.10.11.18\Shares\patch.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>\10.10.11.18\Shares\patch.exe</code></pre>
+</details>
 
 >Q28: The malware executed across multiple machines on the network was identified as part of a well-known ransomware family. What is the name of the ransomware family associated with the malware?
 
@@ -449,14 +480,17 @@ Query: `source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1
 
 We can search the file hash of this ransomware on [VirusTotal](https://www.virustotal.com/gui/file/d9243af49f96c8b66715287d0dc26dbd82eab8570d5f20629ddf9e5fe06c051c) which reveals the ransomware familty and look like this ransomware is from the Conti ransomware family.
 
-```
-Conti
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Conti</code></pre>
+</details>
 
 >Q29: A message files were dropped on the infected systems, which likely contained ransom instructions. What was the name of the message file dropped by the malware?
-```
-R3ADM3.txt
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>R3ADM3.txt</code></pre>
+</details>
 
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/bumblesting/

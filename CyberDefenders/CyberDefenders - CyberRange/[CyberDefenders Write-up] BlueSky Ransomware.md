@@ -31,9 +31,11 @@ then I realized that "87.96.21.84" was likely to conduct port scanning activity 
 
 ![6bcbff9a8600b8907039fa6ef5332ed7.png](/resources/6bcbff9a8600b8907039fa6ef5332ed7-1.png)
 The same result could obviously be seen on Wireshark too
-```
-87.96.21.84
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>87.96.21.84</code></pre>
+</details>
 
 >Q2: During the investigation, it's essential to determine the account targeted by the attacker. Can you identify the targeted account username?
 
@@ -42,9 +44,11 @@ NetworkMiner caught one credential which was from TDS protocol (a protocol that 
 
 ![48680e36dc7913834255f728fbb13bfd.png](/resources/48680e36dc7913834255f728fbb13bfd-1.png)
 Or you can inspect this TDS7 login packet to get both answer
-```
-sa
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>sa</code></pre>
+</details>
 
 ![f42a362ce6bd5a82c2769ef94fc85808.png](/resources/f42a362ce6bd5a82c2769ef94fc85808-1.png)
 If we filtered TDS protocol on WireShark, we can see that there are several login attempts which look like a bruteforce attack to gain access to SQL Server (Notice those handshake, likely most of communication will be encrypted so PREPARE for some noises!)
@@ -74,9 +78,11 @@ After reading though some of them without decoding, I found that there is also a
 Confirmed by ChatGPT
 
 >Q3: We need to determine if the attacker succeeded in gaining access. Can you provide the correct password discovered by the attacker?
-```
-cyb3rd3f3nd3r$
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>cyb3rd3f3nd3r$</code></pre>
+</details>
 
 >Q4: Attackers often change some settings to facilitate lateral movement within a network. What setting did the attacker enable to control the target host further and execute further commands?
 
@@ -86,9 +92,11 @@ I used [hayabusa](https://github.com/Yamato-Security/hayabusa) for this one (`ha
 
 ![da048066f49bc19ec02a07e9a1ae26ce.png](/resources/da048066f49bc19ec02a07e9a1ae26ce-1.png)
 We can totally see that it was changed after those failed logon 
-```
-xp_cmdshell
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>xp_cmdshell</code></pre>
+</details>
 
 >Q5: Process injection is often used by attackers to escalate privileges within a system. What process did the attacker inject the C2 into to gain administrative privileges?
 
@@ -99,9 +107,11 @@ So after obtained clues from this report, now it making sense that an executable
 I went back to WireShark and confirmed that there is a connection was established after TDS communication (SQL Batch) was completed
 ![6e8936b8b2c065cb0d104797531aa76e.png](/resources/6e8936b8b2c065cb0d104797531aa76e-1.png)
 Back to Hayabusa, we can see that this tool caught this process injection activity and you can see that this winlogon process has MSFConsole as a hostname which should be obvious at this point
-```
-winlogin.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>winlogin.exe</code></pre>
+</details>
 
 >Q6: Following privilege escalation, the attacker attempted to download a file. Can you identify the URL of this file downloaded?
 
@@ -111,9 +121,10 @@ Scrolling down after Encrypted communication, We finally found something we can 
 ![571d4127e553e20d5497ea384e0cd352.png](/resources/571d4127e553e20d5497ea384e0cd352-1.png)
 An attacker downloaded `checking.ps1` from his python server 
 
-```
-http://87.96.21.84/checking.ps1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://87.96.21.84/checking.ps1</code></pre>
+</details>
 
 According to [The DFIR Report](https://thedfirreport.com/2023/12/04/sql-brute-force-leads-to-bluesky-ransomware/) this script was used to perform
 - Admin privilege check
@@ -149,27 +160,35 @@ I think we got everything we need to know now, lets continue with the rest
 
 ![1d74567f37f0e1aca5a9e9d0cedd6f2f.png](/resources/1d74567f37f0e1aca5a9e9d0cedd6f2f-1.png)
 We know what `checking.ps1` have this SID and with a little explanation from ChatGPT, its pretty clear why it needs need SID to proceed with other processes
-```
-S-1-5-32-544
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>S-1-5-32-544</code></pre>
+</details>
 
 >Q8: Windows Defender plays a critical role in defending against cyber threats. If an attacker disables it, the system becomes more vulnerable to further attacks. What are the registry keys used by the attacker to disable Windows Defender functionalities? Provide them in the same order found.
 
 ![202c89174b0bbc8195bb185cac75af36.png](/resources/202c89174b0bbc8195bb185cac75af36-1.png)
 Go to StopAV function inside `checking.ps1`, you will find these keys that associated with Windows Defender directly
-```
-DisableAntiSpyware,DisableRoutinelyTakingAction,DisableRealtimeMonitoring,SubmitSamplesConsent,SpynetReporting
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>DisableAntiSpyware,DisableRoutinelyTakingAction,DisableRealtimeMonitoring,SubmitSamplesConsent,SpynetReporting</code></pre>
+</details>
 
 >Q9: Can you determine the URL of the second file downloaded by the attacker?
-```
-http://87.96.21.84/del.ps1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>http://87.96.21.84/del.ps1</code></pre>
+</details>
 
 >Q10: Identifying malicious tasks and understanding how they were used for persistence helps in fortifying defenses against future attacks. What's the full name of the task created by the attacker to maintain persistence?
-```
-\Microsoft\Windows\MUI\LPupdate
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>\Microsoft\Windows\MUI\LPupdate</code></pre>
+</details>
 
 >Q11: According to your analysis of the second malicious file, what is the MITRE ID of the tactic the file aims to achieve?
 
@@ -177,24 +196,31 @@ http://87.96.21.84/del.ps1
 `del.ps1` aimed to kill those tools to hide what happening to a system so it has to be Defense Evasion
 ![8788fa86235b43d70bedfc396a16e97d.png](/resources/8788fa86235b43d70bedfc396a16e97d-1.png)
 
-```
-TA0005
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>TA0005</code></pre>
+</details>
 
 >Q12: What's the invoked PowerShell script used by the attacker for dumping credentials?
-```
-Invoke-PowerDump.ps1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Invoke-PowerDump.ps1</code></pre>
+</details>
 
 >Q13: Understanding which credentials have been compromised is essential for assessing the extent of the data breach. What's the name of the saved text file containing the dumped credentials?
-```
-hashes.txt
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>hashes.txt</code></pre>
+</details>
 
 >Q14: Knowing the hosts targeted during the attacker's reconnaissance phase, the security team can prioritize their remediation efforts on these specific hosts. What's the name of the text file containing the discovered hosts?
-```
-extracted_hosts.txt
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>extracted_hosts.txt</code></pre>
+</details>
 
 >Q15: After hash dumping, the attacker attempted to deploy ransomware on the compromised host, spreading it to the rest of the network through previous lateral movement activities using SMB. You’re provided with the ransomware sample for further analysis. By performing behavioral analysis, what’s the name of the ransom note file?
 
@@ -204,14 +230,18 @@ NetworkMiner already calculated filehash for me so I can just search this hash o
 This ransomware is from Conti family, use this as an answer for next question
 ![38dc764718e873d0365b96058da8dc82.png](/resources/38dc764718e873d0365b96058da8dc82-1.png)
 Go to Behavior tab and scroll down to Files Dropped section, you got the pattern now
-```
-# DECRYPT FILES BLUESKY #
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code># DECRYPT FILES BLUESKY #</code></pre>
+</details>
 
 >Q16: In some cases, decryption tools are available for specific ransomware families. Identifying the family name can lead to a potential decryption solution. What's the name of this ransomware family?
-```
-Conti
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Conti</code></pre>
+</details>
 
 ![8882413302158e23540d6944e127b175.png](/resources/8882413302158e23540d6944e127b175-1.png)
 * * *

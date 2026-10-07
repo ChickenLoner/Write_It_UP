@@ -48,9 +48,10 @@ Then we can go to the "Chrome - Downloads" section which we can see that there i
 
 Website history reveals that the user was downloaded for Discord nitro from this url.
 
-```
-https://ufile.io/57rdyncx
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://ufile.io/57rdyncx</code></pre>
+</details>
 
 >Q2: What is the name of the downloaded APK?
 
@@ -58,9 +59,10 @@ https://ufile.io/57rdyncx
 
 We know that the user downloaded a file from `ufile.io` so it should be located in `data\media\0\Download` and we can see the name of this downloaded apk right here.
 
-```
-Discord_nitro_Mod.apk
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Discord_nitro_Mod.apk</code></pre>
+</details>
 
 >Q3: What is the malicious package name found in the APK?
 
@@ -74,9 +76,10 @@ After decompiled the APK, we can take a look at `AndroidManifest.xml` under "Res
 
 Which we can see the package name of this APK indicating that this is the Keylogger.
 
-```
-com.example.keylogger
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>com.example.keylogger</code></pre>
+</details>
 
 >Q4: Which port was used to exfiltrate the data?
 
@@ -88,14 +91,17 @@ Leverage the package name we got from Android Manifest file, we can go to "Sourc
 
 To find out about the port used to exfiltrate data, we have to take a look at `SendEmail` class which contains with function related to email handling for exfiltration and we can see that there is a function called `openEmailClient` which will open an email client to `sandbox.smtp.mailtrap.io`, one of the domain of legitimate email delivery platform on port 456 to send an email from the data that was collected to the attacker's email.
 
-```
-465
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>465</code></pre>
+</details>
 
 >Q5: What is the service platform name the attacker utilized to receive the data being exfiltrated?
-```
-mailtrap.io
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>mailtrap.io</code></pre>
+</details>
 
 >Q6: What email was used by the attacker when exfiltrating data?
 
@@ -103,9 +109,10 @@ mailtrap.io
 
 To find out about the the attacker's email, we have to find out which function is called the `SendEmail` class and it is `BroadcastForAlarm` class right here and one more thing to notice that is the `config.txt` that was created to store data of the keylogger locally before sending it to the attacker.
 
-```
-APThreat@gmail.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>APThreat@gmail.com</code></pre>
+</details>
 
 >Q7: The attacker has saved a file containing leaked company credentials before attempting to exfiltrate it. Based on the data, can you retrieve the credentials found in the leak?
 
@@ -117,9 +124,10 @@ Knowing the filename, make it's easier to find so we can open any of them to get
 
 We can retrieve that company credential that was leaked inside this file right here.
 
-```
-hany.tarek@brightwave.com:HTarek@9711$QTPO309
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>hany.tarek@brightwave.com:HTarek@9711$QTPO309</code></pre>
+</details>
 
 >Q8: The malware altered images stored on the Android phone by encrypting them. What is the encryption key used by the malware to encrypt these images?
 
@@ -131,9 +139,10 @@ The hard-coded AES key could be found inside `ENC` function under `MainTask` cla
 
 We can decode base64 string to get the cleartext key as the answer to this question with CyberChef.
 
-```
-9bY$wQ7!cTz465TX
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>9bY$wQ7!cTz465TX</code></pre>
+</details>
 
 >Q9: The employee stored sensitive data in their phone's gallery, including credit card information. What is the CVC of the credit card stored?
 
@@ -145,9 +154,10 @@ One thing I noticed while browsing on ALEAPP is this native downloading files, w
 
 Unfortunately I could not find both images but there is 1 image located on `data\media\0\Pictures\.aux` that just happened to have CVC of the credit card and turned out, this is the answer to this question as well
 
-```
-128
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>128</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/androidbreach/ 
 * * *

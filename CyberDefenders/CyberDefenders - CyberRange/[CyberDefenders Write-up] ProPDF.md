@@ -30,9 +30,10 @@ We only have pdf sample on this lab and looking at tools provided for us; we mig
 
 PDF file is known for initial access vector as it could embedded with JavaScript code to execute once the file is opened. First, we will have to use PDF Walker to inspect the JavaScript object inside this file on object 88 which reveals that the actual JavaScript content is stored in steam 89
 
-```
-89
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>89</code></pre>
+</details>
 
 >Q2: The analysis of the extracted malicious code reveals an additional procedure within the PDF, What specific API is utilized to embed this secondary malicious code?
 
@@ -54,9 +55,10 @@ The dumped JavaScript code is a very long one-liner one but ultimately, it will 
 
 By looking at this [documentation](https://online.verypdf.com/examples/doc/AcroJS.pdf), we can see that `addScript` API is used to execute base64-decoded JavaScript declared in `aa()` function.
 
-```
-addScript
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>addScript</code></pre>
+</details>
 
 >Q3: Upon analyzing the scripts, it appears that it was actively carrying out malicious operations. The script uses a method to alter memory permissions. What is the Windows API function name?
 
@@ -88,9 +90,10 @@ Alright so this JavaScript exploit use-after-free (UAF) vulnerability on the Ado
 
 In the process of injection, it will use `VirtualProtect` API to grant execution permission (PAGE_EXECUTE_READWIRTE) to specific memory address that will be used to run the executable file or shellcode.
 
-```
-VirtualProtect
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>VirtualProtect</code></pre>
+</details>
 
 >Q4: We are attempting to identify the specific malicious payload. Could you provide the SHA256 hash of the code injected into the memory generated from the second stage? To determine its origins and any potential connections to other known threats.
 
@@ -140,9 +143,10 @@ Now I will copy the whole variable from `stage1.js` (not beautify version) and r
 
 By searching this hash on [VirusTotal - File - 6f5068784fc1635daddcfa447082098fa960e32b00906898bc0c4ed921d72b32](https://www.virustotal.com/gui/file/6f5068784fc1635daddcfa447082098fa960e32b00906898bc0c4ed921d72b32), it reveals that this sample is a dropper that related to Kimsuky, the infamous North Korean stated-sponsor group
 
-```
-6f5068784fc1635daddcfa447082098fa960e32b00906898bc0c4ed921d72b32
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>6f5068784fc1635daddcfa447082098fa960e32b00906898bc0c4ed921d72b32</code></pre>
+</details>
 
 >Q5: The malicious executable connects with a C2 server to download another stage. What is the C2 server name?
 
@@ -163,9 +167,10 @@ Command: `strings extracted_payload.exe -n 10`
 
 Lastly, we can use Ghidra to decompile the executable file like this.
 
-```
-tksrpdl.atwebpages.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>tksrpdl.atwebpages.com</code></pre>
+</details>
 
 >Q6: The malicious executable connects with a C2 server to download another stage. What is the C2 server name?
 
@@ -173,9 +178,10 @@ tksrpdl.atwebpages.com
 
 As we already discovered suspicious dll file from the `strings` , we can track it back in Ghidra which reveals that the downloaded fille will be dropped inside `C:\Users\<username>\AppData\Roaming\adobe` folder under the name of  `AdobeAdv.dll` before invoking its main function as we have seen in the code.
 
-```
-AdobeAdv.dll
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>AdobeAdv.dll</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/propdf/
 * * *

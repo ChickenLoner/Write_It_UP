@@ -46,9 +46,10 @@ index=goldenspray winlog.event_id=4625 "winlog.channel"=Security
 | table @timestamp, Host, AuthPkg, IP, Domain, User
 ```
 
-```
-77.91.78.115
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>77.91.78.115</code></pre>
+</details>
 
 >Q2: What country is the attack originating from?
 
@@ -56,9 +57,10 @@ index=goldenspray winlog.event_id=4625 "winlog.channel"=Security
 
 We can look up this IP address using any IP location service, including [VirusTotal](https://www.virustotal.com/gui/ip-address/77.91.78.115). Several vendors have flagged it as malicious, and the IP is located in Finland.
 
-```
-Finland
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Finland</code></pre>
+</details>
 
 >Q3: What's the compromised account username used for initial access?
 
@@ -89,31 +91,40 @@ Query : `index=goldenspray winlog.event_id=1 event.provider=Microsoft-Windows-Sy
 |  sort winlog.event_data.UtcTime 
 |  table winlog.event_data.UtcTime,winlog.event_data.User,winlog.event_data.CommandLine,winlog.event_data.ProcessId,winlog.event_data.ParentCommandLine,winlog.computer_name`
 
-```
-SECURETECH\mwilliams
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SECURETECH\mwilliams</code></pre>
+</details>
 
 >Q4: What's the name of the malicious file utilized by the attacker for persistence on `ST-WIN02`?
-```
-OfficeUpdater.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>OfficeUpdater.exe</code></pre>
+</details>
 
 >Q5: What is the complete path used by the attacker to store their tools?
-```
-C:\Users\Public\Backup_Tools\
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Public\Backup_Tools\</code></pre>
+</details>
 
 >Q6: What's the process ID of the tool responsible for dumping credentials on `ST-WIN02`?
-```
-3708
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>3708</code></pre>
+</details>
 
 >Q7: What's the second account username the attacker compromised and used for lateral movement?
 
 ![4963386c02f88da6dc7571002005f10e.png](/resources/4963386c02f88da6dc7571002005f10e.png)
-```
-SECURETECH\jsmith
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>SECURETECH\jsmith</code></pre>
+</details>
 
 >Q8: Can you provide the scheduled task created by the attacker for persistence on the domain controller?
 
@@ -123,9 +134,10 @@ Next, we adjusted our query to focus on DC01 and the "jsmith" account in order t
 
  Query : `index=goldenspray winlog.event_id=1 event.provider=Microsoft-Windows-Sysmon ST-DC01.SECURETECH.local jsmith | sort winlog.event_data.UtcTime | table winlog.event_data.UtcTime,winlog.event_data.User,winlog.event_data.CommandLine,winlog.event_data.ProcessId,winlog.event_data.ParentCommandLine,winlog.computer_name`
 
-```
-FilesCheck
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>FilesCheck</code></pre>
+</details>
 
 >Q9: What type of encryption is used for Kerberos tickets in the environment?
 
@@ -139,9 +151,10 @@ Query : `index=goldenspray winlog.event_id=4769 "winlog.channel"=Security | sort
 According to the [Kerberos encryption types table](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4768)
 , the ticket type 0x17 corresponds to RC4-HMAC, which is weaker than the default AES-based encryption typically used in Active Directory. RC4-HMAC tickets can be cracked using tools such as Hashcat or John the Ripper if the associated account password is weak. This weakness underpins techniques like Kerberoasting and AS-REP Roasting, which attackers commonly use to obtain service account credentials.
 
-```
-RC4-HMAC
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>RC4-HMAC</code></pre>
+</details>
 
 >Q10: Can you provide the full path of the output file in preparation for data exfiltration?
 
@@ -152,9 +165,10 @@ Data exfiltration is often performed by compressing collected files into a singl
 
 Query : `index=goldenspray winlog.event_id=11 event.provider=Microsoft-Windows-Sysmon ST-FS01.SECURETECH.local jsmith zip | sort winlog.event_data.UtcTime`
 
-```
-C:\Users\Public\Documents\Archive_8673812.zip
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Public\Documents\Archive_8673812.zip</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/goldenspray/ 
 * * *
