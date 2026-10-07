@@ -25,9 +25,10 @@ To get the list of program executed by this user, I used Registry Explorer to pa
 
 There is a text file on the desktop as well which telling us that this group used Zoom for their main way of communication
 
-```
-Zoom
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Zoom</code></pre>
+</details>
 
 >Task 2: Determine the last time Nefarious used the conferencing application.
 
@@ -39,9 +40,10 @@ I tried to submit the last executed timestamp from UserAssist key but it was not
 
 Then we can open the timeline output of PEmd result and filter for zoom binary then we can see that there are paired of `zoom.exe` was executed in short period of time which make the latter one is the correct answer of this question.
 
-```
-2024-07-16 09:02:02
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-07-16 09:02:02</code></pre>
+</details>
 
 >Task 3: Where is the conferencing application's data stored?
 
@@ -57,9 +59,10 @@ We can now confirm that this folder were copied during evidence acquisition so w
 
 Now after confirmed all files needed for investigations are here then we can answer and continue with the next question.
 
-```
-C:\Users\Nefarious\AppData\Roaming\Zoom\data
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Nefarious\AppData\Roaming\Zoom\data</code></pre>
+</details>
 
 >Task 4: Which Windows data protection service is used to secure the conferencing application's database files?
 
@@ -67,9 +70,10 @@ C:\Users\Nefarious\AppData\Roaming\Zoom\data
 
 According to this blog post, the zoom database files are protected with Windows Data Protection API (DPAPI) with key derivation function page size of 1024 and key derivation function (KDF) iteration of 4000 and this will come in handy when we actually get a key and open database file.
 
-```
-DPAPI
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>DPAPI</code></pre>
+</details>
 
 >Task 5: Determine the sign-in option used by Nefarious.
 
@@ -81,9 +85,10 @@ There are so many options to sign in to Zoom including SSO, Apple, Google, Faceb
 
 We can answer this after obtained a key to unlock zoom database file which we can see that there is no information regarding of other platform so this user might sign in via Password.
 
-```
-Password
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Password</code></pre>
+</details>
 
 >Task 6: Retrieve the password used by Nefarious
 
@@ -117,9 +122,10 @@ To speed up the process, I count the asterisk on the answer format which is 15 c
 
 Now after bruteforcing with new wordlist (`john --wordlist=/tmp/rock15you.txt hash.txt`), we will have `ohsonefarious92` as the password of "Nefarous" user.
 
-```
-ohsonefarious92
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ohsonefarious92</code></pre>
+</details>
 
 >Task 7: Find the key derivation function iterations used in the encryption process of the conferencing application's database.
 
@@ -127,14 +133,17 @@ ohsonefarious92
 
 As we already know that , the zoom database files are protected with Windows Data Protection API (DPAPI) with key derivation function page size of 1024 and key derivation function (KDF) iteration of 4000, and since we already get plaintext password of user then we should be able to decrypt master key and `win_osencrypt_key`.
 
-```
-4000
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4000</code></pre>
+</details>
 
 >Task 8: Find the key derivation function page size used in the encryption process.
-```
-1024
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>1024</code></pre>
+</details>
 
 >Task 9: Identify Nefarious email address.
 
@@ -174,9 +183,10 @@ Now we can use DB Browser for SQLCipher to open `zoomus.enc.db` file with the fo
 
 After successfully opened encrypted database, we can proceed to look at `zoom_user_account_enc` table to get an information about logged in user including email address right here.
 
-```
-nefarious92@outlook.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>nefarious92@outlook.com</code></pre>
+</details>
 
 >Task 10: What is the Meeting ID?
 
@@ -217,9 +227,10 @@ Now we have an IV (`f7 50 fe 8b 35 1b fe 78 60 a2 af 16 73 c6 9e 8`).
 
 We can simply use CyberChef to decrypt the data and now we will have Meeting ID of the last zoom meeting right here.
 
-```
-86233834426
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>86233834426</code></pre>
+</details>
 
 >Task 11: Retrieve the password used to encrypt the plan PDF file from the meeting chat.
 
@@ -227,9 +238,10 @@ We can simply use CyberChef to decrypt the data and now we will have Meeting ID 
 
 To be able to read the meeting chat, we need to use open `zoommeeting.enc.db` file with all the same options from main database file and then go to `zoon_conf_chat_gen2_enc` table, now we can see that there are 2 people on this zoom meeting talking to each other and even sent file with password via Zoom chat as well.
 
-```
-EOztYmVeUxp6TmV
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>EOztYmVeUxp6TmV</code></pre>
+</details>
 
 >Task 12: Discover the location from which the upcoming cyber-attack will be launched.
 
@@ -249,9 +261,10 @@ Open pdf file and put password we got from zoom meeting chat.
 
 Then we can finally get the location of upcoming attack that is in white right there.
 
-```
-Eastern Europe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Eastern Europe</code></pre>
+</details>
 
 https://labs.hackthebox.com/achievement/sherlock/1438364/900
 * * *

@@ -14,9 +14,11 @@ We got access.log and phpbb.sqlite3 which could be opened with DB Browser for SQ
 
 ![de09104369c1658644b1a72832d1c724.png](/resources/de09104369c1658644b1a72832d1c724.png)
 After opened database file, we can lookup the infomation about all users in "phpbb_users" table
-```
-apoole1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>apoole1</code></pre>
+</details>
 
 >Task 2: What IP address did the contractor use to create their account?
 
@@ -24,9 +26,11 @@ apoole1
 We can get this information from the same "phpbb_users" table too
 ![6201c2b0a44d78536d1eecacb506f61b.png](/resources/6201c2b0a44d78536d1eecacb506f61b.png)
 just in case, I searched for "register" on access.log and it still landed me with the right answer
-```
-10.10.0.78
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>10.10.0.78</code></pre>
+</details>
 
 >Task 3: What is the post_id of the malicious post that the contractor made?
 
@@ -34,9 +38,11 @@ just in case, I searched for "register" on access.log and it still landed me wit
 Go to "phpbb_posts" table, then you can see that this forum has only 3 posts
 
 I didn't see any problem from first and second post but I found strange Javascript on the last one 
-```
-9
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>9</code></pre>
+</details>
 
 >Task 4: What is the full URI that the credential stealer sends its data to?
 
@@ -46,9 +52,11 @@ After beautify a script, I can finally see the problem here
 ![545653b16cc856d39fc4fe11bf9e86e8.png](/resources/545653b16cc856d39fc4fe11bf9e86e8.png)
 
 Its a script to steal user credentials by setting cookie, add event listener and hidden frame then when user submit that user cretential, it will use HTTP POST method and send them to /update.php which hosted on a contractor machine
-```
-http://10.10.0.78/update.php
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>http://10.10.0.78/update.php</code></pre>
+</details>
 
 >Task 5: When did the contractor log into the forum as the administrator? (UTC)
 
@@ -56,9 +64,11 @@ http://10.10.0.78/update.php
 We can retrieve forum log in "phpbb_log" table then we will get those events associated with the contractor here started from Login as admin successfully to back up forum database
 ![ae51ef63ac4341a538023c94d3244113.png](/resources/ae51ef63ac4341a538023c94d3244113.png)
 Use [epochconverter](https://www.epochconverter.com/) to convert UNIX timestamp to UTC/GMT
-```
-26/04/2023 10:53:12
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>26/04/2023 10:53:12</code></pre>
+</details>
 
 >Task 6: In the forum there are plaintext credentials for the LDAP connection, what is the password?
 
@@ -66,17 +76,21 @@ Use [epochconverter](https://www.epochconverter.com/) to convert UNIX timestamp 
 I did some research on how phpbb connect to LDAP then I found this [docs](https://www.phpbb.com/support/docs/en/3.1/ug/adminguide/general_client/) which tell us that it could be stored in plaintext in config file
 ![5b08b5ce36b26c68409d8e468e79ee6c.png](/resources/5b08b5ce36b26c68409d8e468e79ee6c.png)
 We didn't have config file but we still have "phpbb_config" table to cover us
-```
-Passw0rd1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Passw0rd1</code></pre>
+</details>
 
 >Task 7: What is the user agent of the Administrator user?
 
 ![00d834b2f48e26bd766407ef8dbbb3f7.png](/resources/00d834b2f48e26bd766407ef8dbbb3f7.png)
 There are only 2 IP addresses found on this log file and we already know both IP address of Administrator and the contractor from phpbb database
-```
-Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36</code></pre>
+</details>
 
 >Task 8: What time did the contractor add themselves to the Administrator group? (UTC)
 
@@ -84,23 +98,29 @@ Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like 
 Go to "phpbb_log" again to grab UNIX timestamp
 ![7acebb4c4e295f587787e1e4c874e676.png](/resources/7acebb4c4e295f587787e1e4c874e676.png)
 epoch converter should be added to our tool list at this point
-```
-26/04/2023 10:53:51
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>26/04/2023 10:53:51</code></pre>
+</details>
 
 >Task 9: What time did the contractor download the database backup? (UTC)
 
 ![7ee583f3db0622daa754ec011ecae583.png](/resources/7ee583f3db0622daa754ec011ecae583.png)
 The contractor would send a request for a file to server which there is one sql file was requested right there
  and dont forget to subtract 1 hour off to make it UTC
-```
-26/04/2023 11:01:38
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>26/04/2023 11:01:38</code></pre>
+</details>
 
 >Task 10: What was the size in bytes of the database backup as stated by access.log?
-```
-34707
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>34707</code></pre>
+</details>
 
 ![84e8fd08905477da06f4a31a1cb547fa.png](/resources/84e8fd08905477da06f4a31a1cb547fa.png)
 * * *

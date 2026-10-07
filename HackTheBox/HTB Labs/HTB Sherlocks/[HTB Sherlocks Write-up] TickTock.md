@@ -18,9 +18,10 @@ This lab provided us with artefacts collected with KAPE and the first thing I wa
 
 Since its C2 agent then we could expect it to make connection to C2 so we need to find Sysmon Event ID 3 : Network connection detected and we can see that there is one suspicious exe file that keep contacting with ec2 instance so this has to be the one we are looking for.
 
-```
-merlin.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>merlin.exe</code></pre>
+</details>
 
 ![cb647565a0adf74e36a933b8abc1fe9c.png](/resources/cb647565a0adf74e36a933b8abc1fe9c.png)
 
@@ -36,9 +37,10 @@ From the scenario, we know that hackers gained access via remote access so I exp
 
 After opened `TeamViewer15_Logfile.log`, we can see that hackers connected to Gladys's computer with this session id.
 
-```
--2102926010
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>-2102926010</code></pre>
+</details>
 
 ![64702862c802c78ff4722b3b6f5780ad.png](/resources/64702862c802c78ff4722b3b6f5780ad.png)
 
@@ -54,9 +56,10 @@ After opened PowerShell event log, we will find this powershell command that exe
 
 Then we can see that its command to set bitlocker password on C: drive and it will encrypt with AES256 algorithm.
 
-```
-reallylongpassword
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>reallylongpassword</code></pre>
+</details>
 
 >Task 4: What name was used by the attacker?
 
@@ -64,42 +67,51 @@ reallylongpassword
 
 TeamViewer always logged name of the host that connected to the system with their program so if we search for 'Participant channel ' then we will have a name used by the attacker as you can see from image above.
 
-```
-fritjof olfasson
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>fritjof olfasson</code></pre>
+</details>
 
 >Task 5: What IP address did the C2 connect back to?
 
 Its an IP address that `merlin.exe` made connection to
-```
-52.56.142.81
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>52.56.142.81</code></pre>
+</details>
 
 >Task 6: What category did Windows Defender give to the C2 binary file?
 
 ![f43c34c07952ba819bdc1b216c92714c.png](/resources/f43c34c07952ba819bdc1b216c92714c.png)
 
 We can open Windows Defender Operation log and find 'Warning' event which we can see that it detected `merlin.exe` as malware and if we inspected next event then we could see that this file was sent to Quarantine too.
-```
-VirTool:Win32/Myrddin.D
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>VirTool:Win32/Myrddin.D</code></pre>
+</details>
 
 >Task 7: What was the filename of the powershell script the attackers used to manipulate time?
 
 ![37feb01c62af508b6d919c40cfbf8362.png](/resources/37feb01c62af508b6d919c40cfbf8362.png)
 
 I did not find the name of the script from PowerShell log but luckily for me, User's PowerShell history still caught the name of this script as we can see right here.
-```
-Invoke-TimeWizard.ps1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Invoke-TimeWizard.ps1</code></pre>
+</details>
 
 >Task 8: What time did the initial access connection start?
 
 ![d94fc4be6b7a5c2b6ec2219a7c860f8b.png](/resources/d94fc4be6b7a5c2b6ec2219a7c860f8b.png)
 Grab the timestamp of first log since there is no other connection to other host via TeamViewer on this system.
-```
-2023/05/04 11:35:27
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2023/05/04 11:35:27</code></pre>
+</details>
 
 >Task 9: What is the SHA1 and SHA2 sum of the malicious binary?
 
@@ -111,9 +123,10 @@ We already know that Microsoft Defender detected and quarantined this file befor
 
 Search for the name then we will have both hashes ready to answer.
 
-```
-ac688f1ba6d4b23899750b86521331d7f7ccfb69:42ec59f760d8b6a50bbc7187829f62c3b6b8e1b841164e7185f497eb7f3b4db9
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ac688f1ba6d4b23899750b86521331d7f7ccfb69:42ec59f760d8b6a50bbc7187829f62c3b6b8e1b841164e7185f497eb7f3b4db9</code></pre>
+</details>
 
 >Task 10: How many times did the powershell script change the time on the machine?
 
@@ -142,16 +155,19 @@ Go to "Filter Current Log..." then "XML" -> "Edit query manually" and pass the q
 
 In the end, we should have 2371 events from this filter.
 
-```
-2371
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2371</code></pre>
+</details>
 
 >Task 11: What is the SID of the victim user?
 
 Get SID from Security log then we should be able to complete this lab easily!
-```
-S-1-5-21-3720869868-2926106253-3446724670-1003
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>S-1-5-21-3720869868-2926106253-3446724670-1003</code></pre>
+</details>
 
 ![388863d0d17944c54fca33c8bc5c0fe9.png](/resources/388863d0d17944c54fca33c8bc5c0fe9.png)
 * * *

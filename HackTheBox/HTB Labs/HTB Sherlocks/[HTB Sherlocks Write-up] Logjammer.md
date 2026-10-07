@@ -13,9 +13,11 @@ You have been presented with the opportunity to work as a junior DFIR consultant
 To find an event log about login, we will need to filter with Event ID 4624 ([An account was successfully logged on](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=4624)) on Security log then sort by Date and Time and find the first logged in successful of this user
 
 Its 09:37:09 PM (21:37:09) on my PC which is UTC +7 if we convert back we would be 02:37:09 PM (14:37:09)
-```
-27/03/2023 14:37:09
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>27/03/2023 14:37:09</code></pre>
+</details>
 
 >Task 2: The user tampered with firewall settings on the system. Analyze the firewall event logs to find out the Name of the firewall rule added?
 
@@ -23,16 +25,20 @@ Its 09:37:09 PM (21:37:09) on my PC which is UTC +7 if we convert back we would 
 We need to opened Firewall log and go to the time that User was logged on 
 
 You can see that this rule clearly stated what the intention of it which is a rule for metasploit to accept receive a connection from infected PC
-```
-Metasploit C2 Bypass
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Metasploit C2 Bypass</code></pre>
+</details>
 
 >Task 3: Whats the direction of the firewall rule?
 
 Rule was for C2 bypass mean an internal network needed to be interact with external network so it is outbound traffic
-```
-Outbound
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Outbound</code></pre>
+</details>
 
 >Task 4: The user changed audit policy of the computer. Whats the Subcategory of this changed policy?
 
@@ -40,9 +46,11 @@ Outbound
 Filter Event ID 4719 ([System audit policy was changed](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=4719)) on Security log
 
 There is only 1 record of this Event ID so we don't need to look that far 
-```
-Other Object Access Events
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Other Object Access Events</code></pre>
+</details>
 
 >Task 5: The user "cyberjunkie" created a scheduled task. Whats the name of this task?
 
@@ -51,55 +59,71 @@ Filter Event ID 4698 ([A scheduled task was created](https://www.ultimatewindows
 
 You can see that this "user" created a schedule task to execute powershell script with specific argument
 ![d3c6e1021f9badf345c40d25b6631184.png](/resources/d3c6e1021f9badf345c40d25b6631184.png)
-```
-HTB-AUTOMATION
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>HTB-AUTOMATION</code></pre>
+</details>
 
 >Task 6: Whats the full path of the file which was scheduled for the task?
-```
-C:\Users\CyberJunkie\Desktop\Automation-HTB.ps1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\CyberJunkie\Desktop\Automation-HTB.ps1</code></pre>
+</details>
 
 >Task 7: What are the arguments of the command?
-```
--A cyberjunkie@hackthebox.eu
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>-A cyberjunkie@hackthebox.eu</code></pre>
+</details>
 
 >Task 8: The antivirus running on the system identified a threat and performed actions on it. Which tool was identified as malware by antivirus?
 
 ![51bd82deecfd9e38533c34e2d5f77f9a.png](/resources/51bd82deecfd9e38533c34e2d5f77f9a.png)
 Go to Windows Defender log, Warning type log totally caught my eyes and it caught Sharphound (a tool for collecting information from domain controllers, used for AD pentesting and AD attacks)
-```
-Sharphound
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Sharphound</code></pre>
+</details>
 
 >Task 9: Whats the full path of the malware which raised the alert?
-```
-C:\Users\CyberJunkie\Downloads\SharpHound-v1.1.0.zip
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\CyberJunkie\Downloads\SharpHound-v1.1.0.zip</code></pre>
+</details>
 
 >Task 10: What action was taken by the antivirus?
 
 ![87f8d5bbdbab1c95d200b640267ffaa1.png](/resources/87f8d5bbdbab1c95d200b640267ffaa1.png)
-```
-Quarantine
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Quarantine</code></pre>
+</details>
 
 >Task 11: The user used Powershell to execute commands. What command was executed by the user?
 
 ![90283e001d93f5d8b52f7f3746c0f411.png](/resources/90283e001d93f5d8b52f7f3746c0f411.png)
 Opened Powershell log then find Verbose type log which will log what commands that executed by user and look like user was trying to identify integrity of a powershell script here
-```
-Get-FileHash -Algorithm md5 .\Desktop\Automation-HTB.ps1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Get-FileHash -Algorithm md5 .\Desktop\Automation-HTB.ps1</code></pre>
+</details>
 
 >Task 12: We suspect the user deleted some event logs. Which Event log file was cleared?
 
 ![c0f9c407aae020ca3f86f57c4d456d1e.png](/resources/c0f9c407aae020ca3f86f57c4d456d1e.png)
 I used description search for this one and I looked up for any "clear" event which we can see that Firewall log was cleared
-```
-Microsoft-Windows-Windows Firewall With Advanced Security/Firewall
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Microsoft-Windows-Windows Firewall With Advanced Security/Firewall</code></pre>
+</details>
 
 ![3c9c2581fa89afd3110b4b51aec3f4f0.png](/resources/3c9c2581fa89afd3110b4b51aec3f4f0.png)
 * * *

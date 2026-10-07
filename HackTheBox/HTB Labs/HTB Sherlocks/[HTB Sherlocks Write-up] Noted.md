@@ -21,25 +21,31 @@ The other file we got it the problematic script written in Java, you can see tha
 Using that password, we got crypto wallet and contact of an attacker (task 5 and 6)
 ![7db3bfad96dcf2590b51763cef31c98a.png](/resources/7db3bfad96dcf2590b51763cef31c98a.png)
 But the answer of this task lie in config.xml file
-```
-C:\Users\Simon.stark\Documents\Dev_Ops\AWS_objects migration.pl
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Simon.stark\Documents\Dev_Ops\AWS_objects migration.pl</code></pre>
+</details>
 
 >Task 2: The attacker duplicated some program code and compiled it on the system, knowing that the victim was a software engineer and had all the necessary utilities. They did this to blend into the environment and didn't bring any of their tools. This code gathered sensitive data and prepared it for exfiltration. What is the full path of the program's source file?
 
 ![5b46a2d4c74db272dd14b66672e51c90.png](/resources/5b46a2d4c74db272dd14b66672e51c90.png)
 You can see its original path from sessions.xml 
-```
-C:\Users\Simon.stark\Desktop\LootAndPurge.java
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Simon.stark\Desktop\LootAndPurge.java</code></pre>
+</details>
 
 >Task 3: What's the name of the final archive file containing all the data to be exfiltrated?
 
 ![35369e9c83f30cacc521b8f5774d97fb.png](/resources/35369e9c83f30cacc521b8f5774d97fb.png)
 Read Java script again then you will find a name
-```
-Forela-Dev-Data.zip
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Forela-Dev-Data.zip</code></pre>
+</details>
 
 >Task 4: What's the timestamp in UTC when attacker last modified the program source file?
 
@@ -53,19 +59,25 @@ in our case `full value = 31047188 * 4294967296 + (4294967296-1354503710)`
 I let WolframAlpha does it thing and we finally got LDAP filetime (133346660033227234)
 ![a5532994ec27ed1915ff6b3bd2db26ed.png](/resources/a5532994ec27ed1915ff6b3bd2db26ed.png)
 Lastly we will use [epoch converter](https://www.epochconverter.com/ldap) to convert to UTC 
-```
-2023-07-24 09:53:23
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-07-24 09:53:23</code></pre>
+</details>
 
 >Task 5: The attacker wrote a data extortion note after exfiltrating data. What is the crypto wallet address to which attackers demanded payment?
-```
-0xca8fa8f0b631ecdb18cda619c4fc9d197c8affca
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>0xca8fa8f0b631ecdb18cda619c4fc9d197c8affca</code></pre>
+</details>
 
 >Task 6: What's the email address of the person to contact for support?
-```
-CyberJunkie@mail2torjgmxgexntbrmhvgluavhj7ouul5yar6ylbvjkxwqf6ixkwyd.onion
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>CyberJunkie@mail2torjgmxgexntbrmhvgluavhj7ouul5yar6ylbvjkxwqf6ixkwyd.onion</code></pre>
+</details>
 
 ![7e81a79ec8f334bf5c1047b2d8543f84.png](/resources/7e81a79ec8f334bf5c1047b2d8543f84.png)
 * * *

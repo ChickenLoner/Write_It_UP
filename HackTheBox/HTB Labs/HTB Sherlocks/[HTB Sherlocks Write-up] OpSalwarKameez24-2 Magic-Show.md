@@ -22,30 +22,37 @@ I parsed many logs file such as **PowerShell** log, **Security** log and **Local
 
 So we have to get successful logon event timestamp from Security log right here.
 
-```
-2024-10-22 15:25:57
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-10-22 15:25:57</code></pre>
+</details>
 
 >Task 2: What protocol did the threat actor us to access the workstation?
 
 ![9d6c02bc7570c88be06648264128bb44.png](/resources/9d6c02bc7570c88be06648264128bb44.png)
 We already know that this IP address was found in Local Session log so the protocol that used to access this workstation is **Remote Desktop Protocol (RDP)**
-```
-rdp
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>rdp</code></pre>
+</details>
 
 >Task 3: What logon type was logged when the threat actor accessed the workstation?
 
 ![16dab27fff6a9cef95bb9a9f719db8fc.png](/resources/16dab27fff6a9cef95bb9a9f719db8fc.png)
 The logon type field indicates the kind of logon that occurred and when connected to any workstation with RDP, Windows will log **10** as logon type which is **RemoteInteractive** 
-```
-10
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>10</code></pre>
+</details>
 
 >Task 4: What was the IP address of the workstation the threat actor pivoted through to access the internal network?
-```
-10.10.0.81
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>10.10.0.81</code></pre>
+</details>
 
 >Task 5: At what time did the threat actor first attempt to bypass a feature of Windows Defender? (UTC)
 
@@ -62,14 +69,18 @@ One thing to keep in mind that the system on this workstation was changed 2 time
 ![d1f9018c2c9ab320ca974613170506f3.png](/resources/d1f9018c2c9ab320ca974613170506f3.png)
 
 Now we will have to get the timestamp of bypass command right here.
-```
-2024-10-22 21:49:29
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-10-22 21:49:29</code></pre>
+</details>
 
 >Task 6: What is the name of the tool the threat actor used to enumerate the workstation for misconfigurations?
-```
-PowerUp
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>PowerUp</code></pre>
+</details>
 
 >Task 7: What is the name of the executable the threat actor used to elevate their privileges?
 
@@ -83,9 +94,10 @@ Its a tool from [WiX Toolset](https://wixtoolset.org/) that used to create MSI f
 
 Now you probably think "wait... then the threat actor might use maliciosu msi file for privilege escalation right?" , well since this task is asking for "executable" so "Light.exe" that was used to create MSI file could count i guess?
 
-```
-Light.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Light.exe</code></pre>
+</details>
 
 *One thing you might also notice from the output of AppCompatCache is **mimikatz** was executed under "Chhupa" download folder which mean that the threat actor might create a new privileged user then use that account in "**Attack on Objective**" phase. 
 
@@ -93,17 +105,21 @@ Light.exe
 
 ![7c1eac532451b3aca953328c9fe03b5f.png](/resources/7c1eac532451b3aca953328c9fe03b5f.png)
 Go back to Security log, then we could see that user "Chhupa" was really created by the threat actor around this time.
-```
-2024-10-22 21:52:24
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-10-22 21:52:24</code></pre>
+</details>
 
 >Task 9: What was the SID of the user that created the new user?
 
 ![4a133152c71c3198a1b0fc5a3d9141c0.png](/resources/4a133152c71c3198a1b0fc5a3d9141c0.png)
 Then we could also noticed that this account was used to create the new user and this SID is [local system](https://system32.eventsentry.com/error/code/S-1-5-18) so the hypothesis about AlwaysInstallElevated is confirmed at this point.
-```
-S-1-5-18
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>S-1-5-18</code></pre>
+</details>
 
 >Task 10: What is the original name of the exploit binary the threat actor used to bypass several Windows security features?
 
@@ -125,9 +141,10 @@ After submitted its hash on [VirusTotal](https://www.virustotal.com/gui/file/c20
 
 Here is the original name of this executable.
 
-```
-windows_downdate.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>windows_downdate.exe</code></pre>
+</details>
 
 >Task 11: What time did the threat actor first run the exploit? (UTC)
 
@@ -139,9 +156,10 @@ We can use prefetch to find out most of exe execution timestamp.
 
 Then we can see that the threat actor executed this exe several times but the first time that was executed is right here.
 
-```
-2024-10-22 22:31:43
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-10-22 22:31:43</code></pre>
+</details>
 
 >Task 12: Which account owns the files manipulated by the exploit?
 
@@ -157,9 +175,10 @@ Which we can see that it will downgrade `securekernel.exe`
 
 Which belong to **TrustedInstaller**
 
-```
-TrustedInstaller
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>TrustedInstaller</code></pre>
+</details>
 
 >Task 13: The threat actor managed to exfiltrate some domain credentials, which Windows security feature did they bypass using the exploit?
 
@@ -171,9 +190,10 @@ We know that the threat actor deployed `mimikatz` after downgrade Windows so let
 
 This is an easy one, because `mimikatz` can be used to dump credential so the feature that will be needed to bypass is **Credential Guard**
 
-```
-Credential Guard
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Credential Guard</code></pre>
+</details>
 
 >Task 14: What is the NT hash of the domain administrator compromised by the Threat Actor?
 
@@ -193,9 +213,10 @@ Then we will have plaintext password of the domain administrator.
 
 Use [NTLM hash generator](https://codebeautify.org/ntlm-hash-generator) to create NTLM hash of this password then we will have answer of this task.
 
-```
-AE974876D974ABD805A989EBEAD86846
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>AE974876D974ABD805A989EBEAD86846</code></pre>
+</details>
 
 >Task 15: What is the password set by the threat actor for their generated user?
 
@@ -210,9 +231,10 @@ We can use `mimikatz` to dump lsass with following command in Kali Linux (`pypyk
 
 Once we got the hash then use [CrackStation](https://crackstation.net/) to find the plaintext then we will have password of this generated user and completed this sherlock!
 
-```
-Password123
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Password123</code></pre>
+</details>
 
 ![2c2fbdd973b082fbb9eb071aa7dc9fdf.png](/resources/2c2fbdd973b082fbb9eb071aa7dc9fdf.png)
 https://labs.hackthebox.com/achievement/sherlock/1438364/791

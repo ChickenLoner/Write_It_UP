@@ -33,9 +33,10 @@ The scenario strongly suggest that the user Elfin is potentially be an insider t
 
 And by inspecting `AppData\Roaming` folder of Elfin user, we can see `eMClient` folder which contains files associated to eM Client, a email client used by Elfin user.
 
-```
-eM Client
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>eM Client</code></pre>
+</details>
 
 >Task 2: What is the email the threat actor is using?
 
@@ -95,9 +96,10 @@ It is ELF binary and compiled with GCC so to understand what it does, we might n
 
 I ran strings on the binary to get a rough idea of what it might do, and we can see that it contains credential of "elf-admin" and exposed S3 bucket so this binary might be used in an automation of Santa gift delivery process.
 
-```
-definitelynotthegrinch@gmail.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>definitelynotthegrinch@gmail.com</code></pre>
+</details>
 
 >Task 3: When does the threat actor reach out to Elfin?
 
@@ -107,9 +109,10 @@ After determine who is the threat actor, We can go back to the first email sent 
 
 The content of this email made it look like they have seen Elfin from the North Pole HQ, we can already see the inconsistency at the end that they introduced themselves as "Wendy Elflower" to Elfin.
 
-```
-2023-11-27 17:27:26
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-11-27 17:27:26</code></pre>
+</details>
 
 >Task 4: What is the name of Elfins boss?
 
@@ -117,9 +120,10 @@ The content of this email made it look like they have seen Elfin from the North 
 
 Inside the inbox, we can see that Elfin also had conversion with his boss "elfuttin bigelf" using an email as well and from the tone of the boss message sent to Elfin, I think we can understand how Elfin had joined the dark side at the end.
 
-```
-elfuttin bigelf
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>elfuttin bigelf</code></pre>
+</details>
 
 >Task 5: What is the title of the email in which Elfin first mentions his access to Santas special files?
 
@@ -131,9 +135,10 @@ In one of the email, Elfin finally mentioned that he has access to some of santa
 
 We can open the property of this email which we can see that it is a reply from the "Work" subject email sent by the threat actor to ask about the secret project that Elfin was working on.
 
-```
-Re: work
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Re: work</code></pre>
+</details>
 
 >Task 6: The threat actor changes their name, what is the new name + the date of the first email Elfin receives with it?
 
@@ -145,9 +150,10 @@ As we know that the threat actor used the different name on the email sender but
 
 Which they finally changed in at 2023-11-28 10:00:21 when asking about special binaries that Elfin has access to.
 
-```
-wendy elflower, 2023-11-28 10:00:21
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>wendy elflower, 2023-11-28 10:00:21</code></pre>
+</details>
 
 >Task 7: What is the name of the bar that Elfin offers to meet the threat actor at?
 
@@ -155,9 +161,10 @@ wendy elflower, 2023-11-28 10:00:21
 
 After knowing the existence of secret binary, the threat actor sent another mail to Elfin to question his work ethic, is is worth sacrificing his wellbeing for the work and they planed to have a meeting at SnowGlobe bar later.
 
-```
-SnowGlobe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SnowGlobe</code></pre>
+</details>
 
 >Task 8: When does Elfin offer to send the secret files to the actor?
 
@@ -173,9 +180,10 @@ Elfin offered to send the binary to the threat actor which they agreed to let hi
 
 We can look at the email property (email header) to get the date header where the email was sent to the threat actor.
 
-```
-2023-11-28 16:56:13
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-11-28 16:56:13</code></pre>
+</details>
 
 >Task 9: What is the search string for the first suspicious google search from Elfin? (Format: string)
 
@@ -198,9 +206,10 @@ ORDER BY last_visit_time DESC;
 
 The result shows that after sending binary to the threat actor, Elfin searched on Google about how to get around work security, delete emails and how to destroy companies using Google Chrome.
 
-```
-how to get around work security
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>how to get around work security</code></pre>
+</details>
 
 >Task 10: What is the name of the author who wrote the article from the CIA field manual?
 
@@ -212,17 +221,19 @@ Elfin also accessed to CIA Manual about poor management can sabotage a workplace
 
 By following the URL, we can get the author who published this blog here.
 
-```
-Joost Minnaar
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Joost Minnaar</code></pre>
+</details>
 
 >Task 11: What is the name of Santas secret file that Elfin sent to the actor?
 
 ![628c9a13fb77fded830f300b77be72de.png](/resources/628c9a13fb77fded830f300b77be72de.png)
 
-```
-santa_deliveries.zip
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>santa_deliveries.zip</code></pre>
+</details>
 
 >Task 12: According to the filesystem, what is the exact CreationTime of the secret file on Elfins host?
 
@@ -245,14 +256,17 @@ The second approach is obvious, we can either use MFT record or USN journal to f
 
 The Created0x01 column also contains the same timestamp we found from JumpLists so 2 different ways to approach the same conclusion
 
-```
-2023-11-28 17:01:29
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-11-28 17:01:29</code></pre>
+</details>
 
 >Task 13: What is the full directory name that Elfin stored the file in?
-```
-C:\Users\Elfin\AppData\Roaming\top-secret
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Elfin\AppData\Roaming\top-secret</code></pre>
+</details>
 
 >Task 14: Which country is Elfin trying to flee to after he exfiltrates the file?
 
@@ -260,9 +274,10 @@ C:\Users\Elfin\AppData\Roaming\top-secret
 
 Elfin did search on Google about flights to Greece afterward.
 
-```
-Greece
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Greece</code></pre>
+</details>
 
 >Task 15: What is the email address of the apology letter the user (elfin) wrote out but didn’t send?
 
@@ -270,9 +285,10 @@ Greece
 
 We can go look at the unfinished draft email which reveals an email address of the recipient that Elfin wanted to send his email to, which is a Santa Claus
 
-```
-santa.claus@gmail.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>santa.claus@gmail.com</code></pre>
+</details>
 
 >Task 16: The head elf PixelPeppermint has requested any passwords of Elfins to assist in the investigation down the line. What’s the windows password of Elfin’s host?
 
@@ -290,9 +306,10 @@ python .\secretsdump.py -sam "C:\Users\chicken\Desktop\Samples\HackTheBox\Op\elf
 
 And then use public rainbow table service like crackstation to look up for the plaintext password which we can finally recover the password that was used by Elfin on this workstation here.
 
-```
-Santaknowskungfu
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Santaknowskungfu</code></pre>
+</details>
 
 ![e68f9fae7d637c3db84b891092cc1a33.png](/resources/e68f9fae7d637c3db84b891092cc1a33.png)
 

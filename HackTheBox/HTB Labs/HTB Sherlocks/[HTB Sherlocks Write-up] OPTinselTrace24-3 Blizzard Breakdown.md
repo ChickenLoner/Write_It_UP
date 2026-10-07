@@ -40,9 +40,10 @@ Take a look at these logs, we will have to review each one of them.
 
 Then after reviewing all of them, a message from "W4yne" is the most suspicious one which will can see that this user asked "Lanny" to use Ammy Admin instead of team viewer and we can even get ID and password that the Rogue Elf used to connect to this system right here.
 
-```
-95192516
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>95192516</code></pre>
+</details>
 
 >Task 2: What is the IP address of the Rogue Elf used during the attack?
 
@@ -50,9 +51,10 @@ Then after reviewing all of them, a message from "W4yne" is the most suspicious 
 
 We can get an IP address of the Rogue Elf right here.
 
-```
-146.70.202.35
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>146.70.202.35</code></pre>
+</details>
 
 >Task 3: What is the name of the executable the victim ran to enable remote access to their system?
 
@@ -70,9 +72,10 @@ Then use Timeline Explorer to open    can see that there is one file with `AA_v3
 
 There it is!
 
-```
-AA_v3.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>AA_v3.exe</code></pre>
+</details>
 
 >Task 4: What time (UTC) did the Rogue Elf connect to the victim's workstation?
 
@@ -90,9 +93,10 @@ We can use tool like [Registry Explorer](https://www.sans.org/tools/registry-exp
 
 So we will have to add 8 hour to the timestamp which will convert it to UTC
 
-```
-2024-11-13 12:23:34
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-11-13 12:23:34</code></pre>
+</details>
 
 >Task 5: The Rogue Elf compromised an AWS Access Key. What is the AWS Access Key ID obtained from the victim's workstation?
 
@@ -104,9 +108,10 @@ So we know that Rogue Elf accessed to this system using Ammy Admin while Lanny w
 
 But for Linux user, we can just read `plum.sqlite-wal` or `plum.sqlite-shm` which store transaction log and event which we can also see that Lanny stores password list and AWS access key ID and secret key on Sticky Notes which can also be obtained by Rogue Elf after remoted access to this system!
 
-```
-AKIA52GPOBQCBFYGAYHI
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>AKIA52GPOBQCBFYGAYHI</code></pre>
+</details>
 
 >Task 6: Which S3 bucket did the Rogue Elf target during the incident?
 
@@ -138,9 +143,10 @@ Rouge Elf also failed to list user policy with the same error code.
 
 Then Rouge Elf went to enumerate S3 storage at 2024-11-13 15:25:48 with [ListObjects](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html) event to return objects in `arctic-archive-freezer` bucket which is the answer of this question
 
-```
-arctic-archive-freezer
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>arctic-archive-freezer</code></pre>
+</details>
 
 ![57a288afa0083903bd7b7f771bdbc815.png](/resources/57a288afa0083903bd7b7f771bdbc815.png)
 
@@ -156,9 +162,10 @@ After that Rouge Elf started to dig deeper into this bucket with each queries fr
 - `Claus_Operation_Data/operational_files/`
 - `Claus_Operation_Data/security_protocols/`
 
-```
-Claus_Operation_Data
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Claus_Operation_Data</code></pre>
+</details>
 
 >Task 8: What time (UTC) did the Rogue Elf disable versioning for the S3 bucket?
 
@@ -170,9 +177,10 @@ Then Rouge Elf obtained versioning state of a bucket with [GetBucketVersioning](
 
 Then at 2024-11-13 15:31:15, Rouge Elf used [PutBucketVersioning](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketVersioning.html) to disable bucket versioning which effectively disable an ability to restore file from previous version. 
 
-```
-2024-11-13 15:31:15
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-11-13 15:31:15</code></pre>
+</details>
 
 ![7bbfa44b0ef94929a9f856569bd92c5b.png](/resources/7bbfa44b0ef94929a9f856569bd92c5b.png)
 
@@ -184,9 +192,10 @@ Then at 2024-11-13 15:31:15, Rouge Elf used [PutBucketVersioning](https://docs.a
 
 The action from question 8 could be linked to [T1490: Inhibit System Recovery](https://attack.mitre.org/techniques/T1490/) technique on MITRE ATT&CK
 
-```
-T1490
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1490</code></pre>
+</details>
 
 >Task 10: What time (UTC) was the first restore operation successfully initiated for the S3 objects?
 
@@ -198,9 +207,10 @@ Then at 2024-11-13 15:36:52, Rouge Elf attempted to restore several S3 objects w
 
 Then Rouge Elf successfully restored first S3 object at 2024-11-13 15:43:49
 
-```
-2024-11-13 15:43:49
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-11-13 15:43:49</code></pre>
+</details>
 
 ![cce2170a507df175f630489a7d781770.png](/resources/cce2170a507df175f630489a7d781770.png)
 
@@ -212,9 +222,10 @@ To query for RestoreObject events, we can use this filter to specific only these
 
 Rouge Elf used Expedited tier to recover S3 objects which is the most fastest one to restore but also cost the most among 3 tiers! (you can read more about these tiers from [RestoreObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_RestoreObject.html) documentation)
 
-```
-Expedited
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Expedited</code></pre>
+</details>
 
 >Task 12: What is the filename of the S3 object that the Rogue Elf attempted to delete?
 
@@ -226,9 +237,10 @@ After retrieves so many objects, Rouge Elf deleted s3 object with [DeleteObject]
 
 Which we can see that at 2024-11-13 16:04:09, Rouge Elf successfully deleted `GiftList_Worldwide.csv` from S3 bucket.
 
-```
-GiftList_Worldwide.csv
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>GiftList_Worldwide.csv</code></pre>
+</details>
 
 >Task 13: What is the size (MB) of the S3 object that the Rogue Elf targeted in Question 12?
 
@@ -242,9 +254,10 @@ Which we can see that at 2024-11-13 15:56:58, Rouge Elf retrieved this file from
 
 Then we can see that there are total of 19 events with this bytes transfer so lets sum them up by 8 MB x 19 which is 152 MB in total.
 
-```
-152
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>152</code></pre>
+</details>
 
 >Task 14: The Rogue Elf uploaded corrupted files to the S3 bucket. What time (UTC) was the first object replaced during the attack?
 
@@ -256,9 +269,10 @@ This time we have to query for [PutObject](https://docs.aws.amazon.com/AmazonS3/
 
 Then we can see that at 2024-11-13 16:10:03, Rouge Elf putted the first object to S3 bucket (effectively replaced a file with same name in S3 bucket).
 
-```
-2024-11-13 16:10:03
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-11-13 16:10:03</code></pre>
+</details>
 
 >Task 15: What storage class was used for the S3 objects to mimic the original settings and avoid suspicion?
 
@@ -270,9 +284,10 @@ Take a look at "[x-amz-storage-class](https://docs.aws.amazon.com/AmazonS3/lates
 
 We can also see that all 20 PutObject events were used with this setting. 
 
-```
-GLACIER
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>GLACIER</code></pre>
+</details>
 
 ![0820fae8daf0bba938274b0127b2e272.png](/resources/0820fae8daf0bba938274b0127b2e272.png)
 https://labs.hackthebox.com/achievement/sherlock/1438364/831

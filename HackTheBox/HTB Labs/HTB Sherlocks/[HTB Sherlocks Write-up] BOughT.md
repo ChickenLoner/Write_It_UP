@@ -13,14 +13,17 @@ A non-technical client recently purchased a used computer for personal use from 
 
 We can use `vol.py -f memdump.mem imageinfo` to let volatility suggest which profile is the best for this memory image and with this plugin, we can also get an answer of second task too (date and time when this memory image was captured)
 
-```
-Win10x64_19041
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Win10x64_19041</code></pre>
+</details>
 
 >Task 2: When was the image captured in UTC?
-```
-2023-08-07 21:28:13
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-08-07 21:28:13</code></pre>
+</details>
 
 >Task 3: Check running processes and confirm the name of the suspicious running process.
 
@@ -34,14 +37,17 @@ After examined the result of `vol.py -f memdump.mem --profile=Win10x64_19041 pst
 
 We can use `vol.py -f memdump.mem --profile=Win10x64_19041 cmdline` to see all command line arguments of each running processes at the time which we can see that this file / process is the one we are looking for since its in start up folder 
 
-```
-SecurityCheck.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SecurityCheck.exe</code></pre>
+</details>
 
 >Task 4: What is the full path of malicious process?
-```
-C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\SecurityCheck.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\SecurityCheck.exe</code></pre>
+</details>
 
 >Task 5: What is the sha256 value of the malware?
 
@@ -49,9 +55,10 @@ C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\SecurityCheck.exe
 
 We do not need to dump that file from memory image since we have disk image of this system so lets go to that path, export it out and use your favorite way to get sha256 hash
 
-```
-4062963405cc71c032ca51ffd409e832120fcfd496969f4ef548774323c72413
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4062963405cc71c032ca51ffd409e832120fcfd496969f4ef548774323c72413</code></pre>
+</details>
 
 >Task 6: What is the compilation timestamp for the malware?
 
@@ -61,9 +68,10 @@ We got the hash, so lets search it on VirusTotal and get an answer from this sec
 
 Then we can see it right away that whoever compiled this file is also messed with compilation timestamp since there is no way that this file is compiled on 2037
 
-```
-2037-09-03 08:20:55
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2037-09-03 08:20:55</code></pre>
+</details>
 
 >Task 7: What is the name of the mutex that the malware creates?
 
@@ -71,9 +79,10 @@ Then we can see it right away that whoever compiled this file is also messed wit
 
 An easy way to answer this task is to go to "Behavior" tab and go to "Mutexes Created" then we will have an answer of right there
 
-```
-config_m2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>config_m2</code></pre>
+</details>
 
 ***Note***: Another way to solve this one is to decompile an executable file and find `CreateMutexA` function called
 
@@ -89,14 +98,17 @@ Then we can see it that inside this function (I think this function should be a 
 
 Then it will sleep for 15 minutes before checking if a debugger is presented and it will exit if `IsDebuggerPresent` returns `true`
 
-```
-IsDebuggerPresent
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>IsDebuggerPresent</code></pre>
+</details>
 
 >Task 9: How many minutes does the malware sleep before calling above anti- debugging function?
-```
-15
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>15</code></pre>
+</details>
 
 >Task 10: This malware uses DGA, how many unique C2 domains in total is this DGA capable of generating?
 
@@ -107,9 +119,11 @@ After reviewing the code for a while, we will eventually found that `FUN_0040254
 We can see that it will initialize constants consist of 9 unique characters then it will use `seed` (which will derive from  `srand` and `time`) before loop to generate 6 characters string (which will be domain concatenate with `http://` and `.xyz`) but the index 2 is 0 so it will randomly generate just 5 characters 
 
 So the combination of all unique domains will be 9 Power of 5 which is 9 x 9 x 9 x 9 x 9 = 59049
-```
-59049
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>59049</code></pre>
+</details>
 
 >Task 11: How many unique C2 domains start with “rb”?
 
@@ -117,17 +131,20 @@ In this case, we already got 3 characters from domain (`rb0___.xyz`) which left 
 
 The answer of this task is 9 Power of 3 = 9 x 9 x 9 = 729
 
-```
-729
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>729</code></pre>
+</details>
 
 >Task 12: How many unique C2 domains end with “rla”?
 
 On this one, we only have 2 characters to be randomized (`__0rla.xyz`)
 Which mean its just 9 x 9 = 81
-```
-81
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>81</code></pre>
+</details>
 
 >Task 13: Which file is being used to store active C2 domain?
 
@@ -149,9 +166,10 @@ Then after coming back to `main` function, there is a function called `FUN_00401
 
 ***NOTE***: `connectC2` function image was captured after I'm done renaming all function that making sense for me so you might find some functions does not have the same name as you decompiled in on Ghidra
 
-```
-C:\Users\Public\Documents\win.ini
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Public\Documents\win.ini</code></pre>
+</details>
 
 >Task 14: Which file is being used to store commands from the C2 server?
 
@@ -174,14 +192,17 @@ So if we get into a function that will decode this base64 and follow it, we will
 
 And then it will separate value into 3 parts then proceed to call another function with is `FUN_0040211d` (which i will name it `ddos_attack` because it is a function that designed to do this kind of attack)
 
-```
-C:\Users\Public\config.ini
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Public\config.ini</code></pre>
+</details>
 
 >Task 15: What was the active C2 FQDN at the time of artifact collection?
-```
-http://cl0lr8.xyz
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>http://cl0lr8.xyz</code></pre>
+</details>
 
 >Task 16: How many kinds of DDoS attacks can this malware perform?
 
@@ -203,14 +224,17 @@ Here is a function that will send request to targeted url
 
 Here is the summary of this function
 
-```
-2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2</code></pre>
+</details>
 
 >Task 17: What is the FQDN of the target website.
-```
-http://nbscl231sdn.mnj
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>http://nbscl231sdn.mnj</code></pre>
+</details>
 
 >Task 18: What was the expiration date for the active attack at the time of artifact collection in UTC?
 
@@ -222,14 +246,17 @@ We can convert UNIX timestamp with "From UNIX Timestamp" recipe on [CyberChef](h
 
 Or we can use [Epoch Converter](https://www.epochconverter.com/) that especially designed for this
 
-```
-2023-08-31 11:45:58
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-08-31 11:45:58</code></pre>
+</details>
 
 >Task 19: How many GET requests does the malware perform against target domain before sleeping for a while?
-```
-20
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>20</code></pre>
+</details>
 
 >Task 20: There seems to be another attack method with ICMP requests. How many of these requests can the malware send before sleeping for a while?
 
@@ -237,14 +264,17 @@ Or we can use [Epoch Converter](https://www.epochconverter.com/) that especially
 
 Inside `ddos_attack` function, we can see that if `parem_2==1`, then it will execute system command and after making some sense from it then we will have `ping -c 16 parem_1` which is a ping command that will send ICMP packets to target for 16 times
 
-```
-16
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>16</code></pre>
+</details>
 
 >Task 21: Is this malware prone to Botnet hijacking?
-```
-Yes
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Yes</code></pre>
+</details>
 
 ![168947706cef979af754e686d6d143c7.png](/resources/168947706cef979af754e686d6d143c7.png)
 * * *

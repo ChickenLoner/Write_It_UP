@@ -32,9 +32,10 @@ So after following HTTP stream, we can see the AI chatbot giving an answer to "H
 
 The attacker then assumed that Juliet is the username so the second question was to check if Juliet is the username of the machine running AI chatbot but AI chatbot avoided answering this question.
 
-```
-Juliet
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Juliet</code></pre>
+</details>
 
 >Task 2: What is the name of the AI chatbot that the attacker unsuccessfully attempted to manipulate into revealing data stored on its server?
 
@@ -57,9 +58,10 @@ The attacker tried to list all information currently being held on this chatbot 
 
 The attacker then tried to use manipulative technique to get this chatbot to provide the data but it was not effective.
 
-```
-GDPR Chatbot
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>GDPR Chatbot</code></pre>
+</details>
 
 >Task 3: On which server technology is the AI chatbot running?
 
@@ -67,9 +69,10 @@ GDPR Chatbot
 
 If we took a look at the response of HTTP server, we can see that this AI chatbot was running the Werkzeug HTTP library version 3.1.3 on Python version 3.12.7.
 
-```
-Werkzeug/3.1.3 Python/3.12.7
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Werkzeug/3.1.3 Python/3.12.7</code></pre>
+</details>
 
 >Task 4: Which AI chatbot disclosed to the attacker that it could assist in viewing webpage content and files stored on the server?
 
@@ -85,9 +88,10 @@ Which is Web & Files Chatbot
 
 The attacker asked a chatbot what it could do which reveals that this chatbot can be used to reading content from local files, listing files in a directory which are very dangerous functions for a chatbot to have here.
 
-```
-Web & Files Chatbot
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Web &amp; Files Chatbot</code></pre>
+</details>
 
 >Task 5: Which file exposed user credentials to the attacker?
 
@@ -103,9 +107,10 @@ So the attacker used chatbot to display content of this file which reveal that t
 
 The attacker being nice to chatbot by display his gratitude to the chatbot as the last question sent by the attacker so we can close out wireshark and a-packet and continue with `auth.log` next.
 
-```
-creds.txt
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>creds.txt</code></pre>
+</details>
 
 >Task 6: What time did the attacker use the exposed credentials to log in?
 
@@ -113,9 +118,10 @@ creds.txt
 
 We know that the attacker obtained noel credential so we can use simply command like `grep Accepted auth.log` or more specific with `grep Accepted auth.log | grep noel` but we still have the same result nonetheless which the attacker successfully logged on into the system as noel.
 
-```
-06:49:44
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>06:49:44</code></pre>
+</details>
 
 >Task 7: Which CVE was exploited by the attacker to escalate privileges?
 
@@ -127,14 +133,17 @@ Its time to take a look at bash history which we can see the suspicious payload 
 
 So we can search this langchain version on Google which reveal the CVE number related to arbitrary code execution via `__import__` in Python code
 
-```
-CVE-2023-44467
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2023-44467</code></pre>
+</details>
 
 >Task 8: Which function in the Python library led to the exploitation of the above vulnerability?
-```
-__import__
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>__import__</code></pre>
+</details>
 
 >Task 9: What time did the attacker successfully execute commands with root privileges?
 
@@ -142,9 +151,10 @@ __import__
 
 We know that the attacker exploited CVE-2023-44467 to successfully executed code as root so if we go back to `auth.log` and using command `grep Command auth.log` to filter for all command execution that were logged on this file which we can see that the first payload that was executed as root at 06:56:41
 
-```
-06:56:41
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>06:56:41</code></pre>
+</details>
 
 ![6d86080dc4f03ef0dfa0a7c0a49cadf8.png](/resources/6d86080dc4f03ef0dfa0a7c0a49cadf8.png)
 https://labs.hackthebox.com/achievement/sherlock/1438364/832

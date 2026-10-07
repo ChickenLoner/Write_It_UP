@@ -67,14 +67,17 @@ the log closely the ZeroLogin exploitation where the exploitation script started
 
 The netlogon event from Event ID 5805 (System event log) also confirmed that this is indeed ZeroLogon (CVE-2020-1472) exploitation and this exploit was followed by the creation of `vulnerable_to_zerologon` service, the obvious indicator right there.
 
-```
-CVE-2020-1472
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2020-1472</code></pre>
+</details>
 
 >Task 2: What time did the TA initially exploit the CVE? (UTC)
-```
-2023-12-13 09:24:23
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-12-13 09:24:23</code></pre>
+</details>
 
 >Task 3: What is the name of the executable related to the unusual service installed on the system around the time of the CVE exploitation?
 
@@ -82,9 +85,10 @@ CVE-2020-1472
 
 We can look at the ImagePath of the `vulnerable_to_zerologon` service discovered eariler and we can see that the name is very random. this is likely PSEXEC-like service execution on the target system to get a session as SYSTEM on target computer if we have local administrator privilege which from the security log earilier, the threat actor already compromised DC$ and local Administrator account
 
-```
-hAvbdksT.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>hAvbdksT.exe</code></pre>
+</details>
 
 >Task 4: What date & time was the unusual service start?
 
@@ -92,14 +96,17 @@ hAvbdksT.exe
 
 We can look at the event ID 7036 to determine the service start or stop time and we can see that after installation, a second later, this service was started.
 
-```
-2023-12-13 09:24:24
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-12-13 09:24:24</code></pre>
+</details>
 
 >Task 5: What was the TA's IP address within our internal network?
-```
-192.168.68.200
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.68.200</code></pre>
+</details>
 
 >Task 6: Please list all user accounts the TA utilised during their access. (Ascending order)
 
@@ -111,9 +118,10 @@ As we already determined the IP address used by the threat actor, we can filter 
 
 Prior to this, we can see that the Bytesparkle user password was reset at 09:27:36
 
-```
-Administrator, Bytesparkle
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Administrator, Bytesparkle</code></pre>
+</details>
 
 >Task 7: What was the name of the scheduled task created by the TA?
 
@@ -121,9 +129,10 @@ Administrator, Bytesparkle
 
 We can look at the Event ID 106 which reveals that the scheduled task `svc_vnc` was created with the suspicious `svchost.exe` to be executed.
 
-```
-svc_vnc
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>svc_vnc</code></pre>
+</details>
 
 >Task 8: Santa's memory is a little bad recently! He tends to write a lot of stuff down, but all our critical files have been encrypted! Which creature is Santa's new sleigh design planning to use?
 
@@ -244,9 +253,10 @@ if __name__ == "__main__":
 
 And then we can see the Unicorn is used in the new Santa's sleigh design from the decrypted files.
 
-```
-Unicorn
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Unicorn</code></pre>
+</details>
 
 >Task 9: Please confirm the process ID of the process that encrypted our files.
 
@@ -254,9 +264,10 @@ Unicorn
 
 To find out about this, we need to look at the UAC-Virtualization log it log the protected system path and we can see that the ransomware attempted to encrypt protected file and we can get the process ID of the ransomware here.
 
-```
-5828
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5828</code></pre>
+</details>
 
 ![1aa40f8943f681fdd865e276fd46f5f5.png](/resources/1aa40f8943f681fdd865e276fd46f5f5.png)
 https://labs.hackthebox.com/achievement/sherlock/1438364/582

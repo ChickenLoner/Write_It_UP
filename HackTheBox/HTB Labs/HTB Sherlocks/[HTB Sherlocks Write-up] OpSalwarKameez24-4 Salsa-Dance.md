@@ -22,9 +22,10 @@ After parsed prefetch folder, we will get 2 csv files then we can use Output Tim
 
 We can also see that PowerShell is likely to be the process that executed `nltest` and all the rest.
 
-```
-2024-10-24 06:27:29
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-10-24 06:27:29</code></pre>
+</details>
 
 >Task 2: To what directory on the compromised system did the threat actor download the tools used for reconnaissance?
 
@@ -44,14 +45,17 @@ After parsed event log with `EvtxECmd.exe`, I opened output file in Timeline Exp
 
 We will have to take a look at details of this event to get download path of this file.
 
-```
-C:\Windows\INF
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Windows\INF</code></pre>
+</details>
 
 >Task 3: Which legitimate Windows program did the threat actor use to download the initial file?
-```
-BITSADMIN.EXE
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>BITSADMIN.EXE</code></pre>
+</details>
 
 >Task 4: What is the MITRE ATT&CK Technique ID associated with the method used by the threat actor in Question #3?
 
@@ -59,9 +63,10 @@ BITSADMIN.EXE
 
 We know that the threat actor use BITS jobs to download file which match [this](https://attack.mitre.org/techniques/T1197/) technique on MITRE ATT&CK framework
 
-```
-T1197
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1197</code></pre>
+</details>
 
 >Task 5: The threat actor used a program to identify the credentials stored on the victim machine. What was the original filename of this program before it was renamed?
 
@@ -85,14 +90,17 @@ We will get the hash of this binary right here which is also the answer of Task 
 
 Search this hash on VirusTotal, we can see that this binary is actually [CredentialsFileView](https://www.nirsoft.net/utils/credentials_file_view.html) from NirSoft that can be used to displays the passwords and other data stored inside Credentials files of Windows.
 
-```
-CredentialsFileView
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CredentialsFileView</code></pre>
+</details>
 
 >Task 6: What is the SHA1 hash of the file in Question #5?
-```
-5463f4140efd005a7bafa6fa0fa759bcfcf7da4a
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>5463f4140efd005a7bafa6fa0fa759bcfcf7da4a</code></pre>
+</details>
 
 >Task 7: At what time (UTC) did the threat actor rename the program in Question #5?
 
@@ -104,9 +112,10 @@ When talking about renaming file, the artifact that would come to mind is UsnJou
 
 Filter for "CredentialFileView" which we can see that it was renamed at this time after it was created on this system.
 
-```
-2024-10-24 06:35:24
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-10-24 06:35:24</code></pre>
+</details>
 
 >Task 8: What is the name of the compromised account used by the threat actor to connect to the database server?
 
@@ -118,14 +127,17 @@ Its time to analyze artifacts collected by CatScale.
 
 We can go to "Logs" directory to read the output of `lastlog` command which show user that was connected to the database server and the source IP address (Answer of Task 9), we can alse see the login timestamp which also matched the timeframe of this incident so we can confirm that "sdb-aroy" is the compromised user of this database server.
 
-```
-sdb-aroy
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>sdb-aroy</code></pre>
+</details>
 
 >Task 9: What is the source IP address used by the threat actor to connect to the database server?
-```
-10.10.2.55
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>10.10.2.55</code></pre>
+</details>
 
 >Task 10: What database command did the threat actor initially enter that resulted in an error?
 
@@ -141,9 +153,10 @@ The database presents on this server is PostgreSQL which we will have to analyze
 
 Then we can see that after threat actor logged in into this server, the threat actor used 2 wildcard queries to retrieve data from database but due to low privilege on this account which result in error for permission denied.
 
-```
-SELECT * FROM accounts;
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SELECT * FROM accounts;</code></pre>
+</details>
 
 >Task 11: What is the full command used by the threat actor to gain elevated access?
 
@@ -155,9 +168,10 @@ Its time to take a look at `.psql_history` of compromised account.
 
 We can see that the threat actor use this query to make "sdb-aroy" user a SUPERUSER which will make the threat actor be able to query data which result in error from previous task.
 
-```
-COPY (SELECT '') TO PROGRAM 'psql -U postgres -c ''ALTER USER "sdb-aroy" WITH SUPERUSER;''';
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>COPY (SELECT '') TO PROGRAM 'psql -U postgres -c ''ALTER USER "sdb-aroy" WITH SUPERUSER;''';</code></pre>
+</details>
 
 >Task 12: What tool was used by the threat actor to export the database?
 
@@ -165,9 +179,10 @@ COPY (SELECT '') TO PROGRAM 'psql -U postgres -c ''ALTER USER "sdb-aroy" WITH SU
 
 Then after made "sdb-aroy" a SUPERUSER, the threat actor create another user as SUPERUSER then dump database using `ps_dump` then uploaded it to S3 bucket (Task13)
 
-```
-pg_dump
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>pg_dump</code></pre>
+</details>
 
 >Task 13: What is the complete target URL used by the threat actor for exfiltration?
 
@@ -175,9 +190,10 @@ pg_dump
 
 We can also see this command from `.bash_history` and then after exfiltrated sql dump file, the threat actor removed dumped sql file then edited `.bashrc` file so we will have to take a look at this file on next task.
 
-```
-https://festival-of-files.s3.amazonaws.com/atm.sql
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://festival-of-files.s3.amazonaws.com/atm.sql</code></pre>
+</details>
 
 >Task 14: What public IP addresses were used by the threat actor for persistence? Sort smallest initial octet to largest.
 
@@ -197,9 +213,10 @@ Then After navigated to Tasks folder, I noticed this task is very suspicious so 
 
 Sure enough! it is another netcat command for persistence.
 
-```
-3.224.124.130, 34.234.202.16
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3.224.124.130, 34.234.202.16</code></pre>
+</details>
 
 >Task 15: At what time (UTC) did the victim's Windows machine connect to the Domain Controller?
 
@@ -211,9 +228,10 @@ I made an hypothesis that the threat actor might use RDP for remote connecting t
 
 Parse it with `EvtxECmd.exe` then we can see that the connection was established around 07:07:45 then disconnecting around 07:34:40 which we can use these timestamp to calculate duration of this session for the next task.
 
-```
-2024-10-24 07:07:45
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-10-24 07:07:45</code></pre>
+</details>
 
 >Task 16: After accessing the Domain Controller, how long did the threat actor’s session last (in seconds)?
 
@@ -221,9 +239,10 @@ Parse it with `EvtxECmd.exe` then we can see that the connection was established
 
 We can grab both timestamp and let AI do the work, then we will have duration of this sessions in seconds like this
 
-```
-1615
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>1615</code></pre>
+</details>
 
 ![5dc3da0bd3b0b65ffbd17e87f862694d.png](/resources/5dc3da0bd3b0b65ffbd17e87f862694d.png)
 https://labs.hackthebox.com/achievement/sherlock/1438364/793

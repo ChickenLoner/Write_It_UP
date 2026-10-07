@@ -27,14 +27,17 @@ The bash history reveals the activity of this user, starting with starting the S
 
 After taking a look at the script from the [GitHub repository](https://github.com/pttemplates/autoenum/blob/main/enum.sh), we can see that the `do_wget_and_run` function performs actions that an enumeration script is not supposed to do — it downloads a ZIP file hosted on Dropbox, extracts it with a hard-coded password into the `/tmp` directory, executes it, and sets a cron job for persistence so that the file runs at every reboot. So this “autoenum” repository is the root cause of the compromise.
 
-```
-autoenum
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>autoenum</code></pre>
+</details>
 
 >Task 2: What is the name of the malicious function within the script ran by the Pen Tester?
-```
-do_wget_and_run
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>do_wget_and_run</code></pre>
+</details>
 
 >Task 3: What is the password of the zip file downloaded within the malicious function?
 
@@ -42,9 +45,10 @@ do_wget_and_run
 
 The password is hard-coded in the script, split into `part1` and `part2` variables, but in the end, they’re concatenated and decoded with `base64 -d`. We can do the same to get the password for this ZIP file right here.
 
-```
-superhacker
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>superhacker</code></pre>
+</details>
 
 >Task 4: What is the full URL of the file downloaded by the attacker?
 
@@ -52,9 +56,10 @@ superhacker
 
 The full URL used to download the ZIP file is also separated into two variables, `f1` and `f2`, so we can simply do what the script does and combine them to get the full URL like this.
 
-```
-https://www.dropbox.com/scl/fi/uw8oxug0jydibnorjvyl2/blob.zip?rlkey=zmbys0idnbab9qnl45xhqn257&st=v22geon6&dl=1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://www.dropbox.com/scl/fi/uw8oxug0jydibnorjvyl2/blob.zip?rlkey=zmbys0idnbab9qnl45xhqn257&amp;st=v22geon6&amp;dl=1</code></pre>
+</details>
 
 >Task 5: When did the attacker finally take out the real comments for the malicious function?
 
@@ -70,9 +75,10 @@ Then I used `git log` to see git commit history and we can see that there are qu
 
 Then we will eventually look into commit 7d203152c5a3a56af3d57eb1faca67a3ec54135f that was committed at 2024-12-23 22:27:58 has introduced the final part of this malicious function by removing various comments from the `do_wget_and_run` function.
 
-```
-2024-12-23 22:27:58
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-12-23 22:27:58</code></pre>
+</details>
 
 >Task 6: The attacker changed the URL to download the file, what was it before the change?
 
@@ -80,9 +86,10 @@ Then we will eventually look into commit 7d203152c5a3a56af3d57eb1faca67a3ec54135
 
 On the commit 5d88bee8918d514a206fec91be72899544cdd37b, we can see the URL was changed on this commit.
 
-```
-https://www.dropbox.com/scl/fi/wu0lhwixtk2ap4nnbvv4a/blob.zip?rlkey=gmt8m9e7bd02obueh9q3voi5q&st=em7ud3pb&dl=1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://www.dropbox.com/scl/fi/wu0lhwixtk2ap4nnbvv4a/blob.zip?rlkey=gmt8m9e7bd02obueh9q3voi5q&amp;st=em7ud3pb&amp;dl=1</code></pre>
+</details>
 
 >Task 7: What is the MITRE technique ID utilized by the attacker to persist?
 
@@ -90,9 +97,10 @@ https://www.dropbox.com/scl/fi/wu0lhwixtk2ap4nnbvv4a/blob.zip?rlkey=gmt8m9e7bd02
 
 As we can see, after the blob `file` is extracted from the ZIP to `/tmp` and executed, a cron job is also created to run it at every reboot. The MITRE technique that aligns with this is obviously [T1053.003 : Scheduled Task/Job: Cron](https://attack.mitre.org/techniques/T1053/003/). But the main problem with this malware is that it’s located in the /tmp directory, which gets cleared every reboot, so the cron job might not work as intended.
 
-```
-T1053.003
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1053.003</code></pre>
+</details>
 
 >Task 8: What is the name of the technique relevant to the binary the attacker runs?
 
@@ -104,9 +112,10 @@ Knowing the full path of this file, I ran `grep -r "/tmp/blob" ./*` to check for
 
 Using file hash to seach on [VirusTotal](https://www.virustotal.com/gui/file/b0e1ae6d73d656b203514f498b59cbcf29f067edf6fbd3803a3de7d21960848d/detection) which reveal that this file is a cryptominer which have to hijack resouce to mine cryptocurrency and that align with [T1496 : Resource Hijacking](https://attack.mitre.org/techniques/T1496/) technique from MITRE ATT&CK. and now we are done with this sherlock!
 
-```
-T1496
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1496</code></pre>
+</details>
 
 ![15e854f7fc49aaf6627b8d4b2b626c87.png](/resources/15e854f7fc49aaf6627b8d4b2b626c87.png)
 https://labs.hackthebox.com/achievement/sherlock/1438364/764

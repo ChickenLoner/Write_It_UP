@@ -16,23 +16,28 @@ Try to find "Ticker Encryption Type: 0x17" then we will have timestamp and infor
 
 And donot forget to convert this timestamp into UTC because event because an event log will convert all timestamp to your local time.
 
-```
-2024-05-21 03:18:09
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-05-21 03:18:09</code></pre>
+</details>
 
 >Task 2: What is the Service Name that was targeted?
 
 ![6b3dc9299a477a3f636fb286bd308088.png](/resources/6b3dc9299a477a3f636fb286bd308088.png)
-```
-MSSQLService
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>MSSQLService</code></pre>
+</details>
 
 >Task 3: It is really important to identify the Workstation from which this activity occurred. What is the IP Address of the workstation?
 
 ![dbe08d2b3999643580ef6a335b4354ca.png](/resources/dbe08d2b3999643580ef6a335b4354ca.png)
-```
-172.17.79.129
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>172.17.79.129</code></pre>
+</details>
 
 >Task 4: Now that we have identified the workstation, a triage including PowerShell logs and Prefetch files are provided to you for some deeper insights so we can understand how this activity occurred on the endpoint. What is the name of the file used to Enumerate Active directory objects and possibly find Kerberoastable accounts in the network?
 
@@ -44,14 +49,17 @@ Switch to Powershell operation event log and we can focus on Event ID 4101 which
 
 Then after the threat actor bypass powershell restriction then powerview can be executed properly(?)
 
-```
-powerview.ps1 
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>powerview.ps1</code></pre>
+</details>
 
 >Task 5: When was this script executed?
-```
-2024-05-21 03:16:32
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-05-21 03:16:32</code></pre>
+</details>
 
 >Task 6: What is the full path of the tool used to perform the actual kerberoasting attack?
 
@@ -67,14 +75,17 @@ There it is, it is really Rubeus as expected
 
 Go to Files Loads column and double click to find for full path
 
-```
-C:\USERS\ALONZO.SPIRE\DOWNLOADS\RUBEUS.EXE
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\USERS\ALONZO.SPIRE\DOWNLOADS\RUBEUS.EXE</code></pre>
+</details>
 
 >Task 7: When was the tool executed to dump credentials?
-```
-2024-05-21 03:18:08
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-05-21 03:18:08</code></pre>
+</details>
 
 ![3d9a6167c90211c1cd189ab51861f6b7.png](/resources/3d9a6167c90211c1cd189ab51861f6b7.png)
 * * *

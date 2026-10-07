@@ -27,9 +27,10 @@ Now lets open SYSTEM hive with Registry Explorer and check out `ControlSet001\Co
 
 With a quick google search reveal the UTC time format and we can use this to answer this question right away.
 
-```
-UTC+05:00
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>UTC+05:00</code></pre>
+</details>
 
 >Task 2: Employees should be trained not to leave their accounts unlocked. What is the username of the logged in user?
 
@@ -37,9 +38,10 @@ UTC+05:00
 
 Normally I would look up SAM hive but there is none on this sherlock so the only user available to us on is MrManj, the author of this sherlock 😂
 
-```
-MrManj
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>MrManj</code></pre>
+</details>
 
 >Task 3: How many USB storage devices were attached to this host in total?
 
@@ -53,19 +55,24 @@ Now we have total of 4 devices but then for some reason, the correct answer of t
 
 Then from the scenario, we also know that Eddie using "Toshiba" USB so Toshiba TransMemory might be the one that plugged into the machine and did something dirty so we will get last connected and last disconnected time to answer task 4 and 5 before proceeded to find out what happened during this time.
 
-```
-3
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3</code></pre>
+</details>
 
 >Task 4: What is the attach timestamp for the USB in UTC?
-```
-2024-02-23 11:37:50
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-02-23 11:37:50</code></pre>
+</details>
 
 >Task 5: What is the detach timestamp for the USB in UTC?
-```
-2024-02-23 11:39:12
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-02-23 11:39:12</code></pre>
+</details>
 
 >Task 6: Which folder did he copy to the USB?
 
@@ -79,14 +86,17 @@ After exported it and use JumpLists Explorer to open it, we can see that there a
 
 Libre Calc is for xls file and Libre Writer is for docx file. which leaves us to Windows Explorer which is expected and as we can see that there are a folder with 2 sub-folders were opened from E drive and this drive is the USB storage drive of Eddie! and we can also see that 2 sub-folders of Work Documents are the copied of "Documents" folder of the author of this sherlock.
 
-```
-Documents
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Documents</code></pre>
+</details>
 
 >Task 7: There were subfolders in the folder that was copied. What is the name of the first subfolder? (Alphabetically)
-```
-Business Proposals
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Business Proposals</code></pre>
+</details>
 
 >Task 8: Eddie opens some files after copying them to the USB. What is the name of the file with the .xlsx extension Eddie opens?
 
@@ -94,9 +104,10 @@ Business Proposals
 
 For xlsx file, we have to take a look at files that were opened by Libre Calc and we can see that there is a single file xlsx opened from eddie flash drive.
 
-```
-Business Leads.xlsx
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Business Leads.xlsx</code></pre>
+</details>
 
 >Task 9: Eddie opens some files after copying them to the USB. What is the name of the file with the .docx extension Eddie opens?
 
@@ -104,9 +115,10 @@ Business Leads.xlsx
 
 The same goes for docx file that was opened with Libre Writer right here.
 
-```
-Proposal Brnrdr ltd.docx
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Proposal Brnrdr ltd.docx</code></pre>
+</details>
 
 >Task 10: What was the volume name of the USB?
 
@@ -114,9 +126,10 @@ Proposal Brnrdr ltd.docx
 
 Some might not know that when opened a file on USB storage, JumpLists also stores the volume name/label and serial number of that USB storage as well so what we need to do is to open the detailed of this file and we will see the answer of this question right here.
 
-```
-RVT-9J
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>RVT-9J</code></pre>
+</details>
 
 >Task 11: What was the drive letter of the USB?
 
@@ -124,9 +137,10 @@ RVT-9J
 
 E drive is only a single drive letter other than C and this is correct answer of this question as well.
 
-```
-E
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>E</code></pre>
+</details>
 
 >Task 12: I hope we can find some more evidence to tie this all together. What is Eddie's last name?
 
@@ -139,9 +153,10 @@ There is no trace of Eddie on this machine beside his USB storage so how we coul
 
 So after exported it out, I used [Thumbcache viewer](https://thumbcacheviewer.github.io/) to open `thumbcache_256.db` file which reveal that author of this sherlock once opened an image of Eddie's resume/CV and its cached here.
 
-```
-Homer
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Homer</code></pre>
+</details>
 
 >Task 13: There was an unbranded USB in the USB list, can you identify it's manufacturer’s name?
 
@@ -155,9 +170,10 @@ First we will have to dissect Vender ID and Product ID from key name of this dev
 
 Now we have VenderID = 0x346D and ProductID = 0x5678 so we can use the following [website](https://the-sz.com/products/usbid/index.php?v=0x346D&p=0x5678&n=) to look up for this device and it reveals the manufacturer name of this product right here.
 
-```
-Shenzhen SanDiYiXin Electronic Co.,LTD
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Shenzhen SanDiYiXin Electronic Co.,LTD</code></pre>
+</details>
 
 ![23ab6bc12a24fdd72f47d94d110c70c8.png](/resources/23ab6bc12a24fdd72f47d94d110c70c8.png)
 https://labs.hackthebox.com/achievement/sherlock/1438364/874

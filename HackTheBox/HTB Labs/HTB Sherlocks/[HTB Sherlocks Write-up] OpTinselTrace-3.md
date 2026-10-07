@@ -72,9 +72,10 @@ Open both file using JumpLists Explorer and we can see that at 2023-11-30 16:42:
 
 We can look at the MFT output from mftparser plugin and we can see that `present_for_santa.zip` was created 2 seconds after Santaclaus accessed to file share.
 
-```
-present_for_santa.zip
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>present_for_santa.zip</code></pre>
+</details>
 
 >Task 2: What is the file name used to trigger the attack (including the file extension)?
 
@@ -94,14 +95,17 @@ unzip -l present_for_santa.zip
 
 The shortcut file is stand out more than vbs file here and look like it was designed to let victim click it and once click it, it will run PowerShell command to eventually search for any `present*.vbs` file located inside `C:\Users\` and execute them with `cscript`, if user extracted malicious zip file then `present.vbs` is the one of them that will be executed.
 
-```
-click_for_present.lnk
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>click_for_present.lnk</code></pre>
+</details>
 
 >Task 3: What is the name of the file executed by click_for_present.lnk (including the file extension)?
-```
-present.vbs
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>present.vbs</code></pre>
+</details>
 
 >Task 4: What is the name of the program used by the vbs script to execute the next stage?
 
@@ -113,9 +117,10 @@ The `present.vbs` is filled with Junk and heavility obfuscated so we will need t
 
 From the [VirusTotal](https://www.virustotal.com/gui/file/78ba1ea3ac992391010f23b346eedee69c383bc3fd2d3a125ede6cba3ce77243/behavior), we will have a full command that actually ended up executing and we can see that it is using `powershell.exe` to run PowerShell functions
 
-```
-powershell.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>powershell.exe</code></pre>
+</details>
 
 >Task 5: What is the name of the function used for the powershell script obfuscation?
 
@@ -123,9 +128,10 @@ powershell.exe
 
 Using Code Beautifier and Syntax highlighter, we can see that it defines `WrapPresent` function which take strings (argument), and pick every 7 characters start at index 6.
 
-```
-WrapPresent
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>WrapPresent</code></pre>
+</details>
 
 >Task 6: What is the URL that the next stage was downloaded from?
 
@@ -137,9 +143,10 @@ The Network Communication also detected the HTTP request sent to C2 address to f
 
 To actually understand what it does, I let Claude deobfuscated it and we can see that it will download file from C2 to temp folder as `present.exe` then  execute it as we already saw this process in the process tree. 
 
-```
-http://77.74.198.52/destroy_christmas/evil_present.jpg
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://77.74.198.52/destroy_christmas/evil_present.jpg</code></pre>
+</details>
 
 >Task 7: What is the IP and port that the executable downloaded the shellcode from (IP:Port)?
 
@@ -161,14 +168,17 @@ And by using malfind plugin, we can see that it was injected into `svchost.exe` 
 
 Command: `vol3 -f santaclaus.bin windows.malfind`
 
-```
-77.74.198.52:445
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>77.74.198.52:445</code></pre>
+</details>
 
 >Task 8: What is the process ID of the remote process that the shellcode was injected into?
-```
-724
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>724</code></pre>
+</details>
 
 >Task 9: After the attacker established a Command & Control connection, what command did they use to clear all event logs?
 
@@ -184,9 +194,10 @@ Using evtx_dump to parse evtx log in Remnux, we can see the command that was use
 
 Command: `evtx_dump.py Windows\ PowerShell.evtx`
 
-```
-Get-EventLog -List | ForEach-Object { Clear-EventLog -LogName $_.Log }
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Get-EventLog -List | ForEach-Object { Clear-EventLog -LogName $_.Log }</code></pre>
+</details>
 
 >Task 10: What is the full path of the folder that was excluded from defender?
 
@@ -216,9 +227,10 @@ Command: `vol3 -f santaclaus.bin windows.dumpfiles --virtaddr 0xa48e00183de0`
 
 And with the event ID 5007, we can see that the path was successfully added to exclusion path
 
-```
-C:\users\public
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\users\public</code></pre>
+</details>
 
 >Task 11: What is the original name of the file that was ingressed to the victim?
 
@@ -229,14 +241,17 @@ We already figured it out from the argument given to `PresentForNaughtyChild.exe
 
 Command: `vol3 -f santaclaus.bin windows.dumpfiles --virtaddr 0xa48e00d10a90`
 
-```
-procdump.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>procdump.exe</code></pre>
+</details>
 
 >Task 12: What is the name of the process targeted by procdump.exe?
-```
-lsass.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>lsass.exe</code></pre>
+</details>
 
 ![97ca7bedcb6059ab25778264b9323393.png](/resources/97ca7bedcb6059ab25778264b9323393.png)
 

@@ -13,26 +13,32 @@ The SOC team has recently been alerted to the potential existence of an insider 
 We got 2 urls and 1 unharmed pdf file to work with
 ![d1655d8a4182f1ef3dda92218bf0cf11.png](/resources/d1655d8a4182f1ef3dda92218bf0cf11.png)
 To solve this we need to use [unfurl](https://dfir.blog/unfurl/) and let it extract timestamp for us, an answer is first timestamp that was extracted
-```
-2023-09-16 16:03:37
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-09-16 16:03:37</code></pre>
+</details>
 
 >Task 2: What was the name of the file sent to the suspected insider threat?
 
 ![7b3faec8e43cab3261f81c08fec14618.png](/resources/7b3faec8e43cab3261f81c08fec14618.png)
 Its the same file we have
 ![6bba4ddaa0ffe52e4f533407564503f3.png](/resources/6bba4ddaa0ffe52e4f533407564503f3.png)
-```
-NDA_Instructions.pdf
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>NDA_Instructions.pdf</code></pre>
+</details>
 
 >Task 3: When was the file sent to the suspected insider threat? (UTC)
 
 ![8a4f7edb41cfe552a38643efa2316511.png](/resources/8a4f7edb41cfe552a38643efa2316511.png)
 The answer is second timestamp from unfurl
-```
-2023-09-27 05:27:02
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-09-27 05:27:02</code></pre>
+</details>
 
 >Task 4: The suspect utilised Google to search something after receiving the file. What was the search query?
 
@@ -40,46 +46,58 @@ The answer is second timestamp from unfurl
 put it on browser directly to solve this
 ![a69f16c50e173666b81d74a7c3e1c15f.png](/resources/a69f16c50e173666b81d74a7c3e1c15f.png)
 But another way to solve this is to use unfurl 
-```
-how to zip a folder using tar in linux
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>how to zip a folder using tar in linux</code></pre>
+</details>
 
 >Task 5: The suspect originally typed something else in search tab, but found a Google search result suggestion which they clicked on. Can you confirm which words were written in search bar by the suspect originally?
 
 ![ff2114346a429f18348b90e085768364.png](/resources/ff2114346a429f18348b90e085768364.png)
-```
-How to archive a folder using tar i
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>How to archive a folder using tar i</code></pre>
+</details>
 
 >Task 6: When was this Google search made? (UTC)
 
 ![2c41773f1729e9c59ef3b0aab9b1c08b.png](/resources/2c41773f1729e9c59ef3b0aab9b1c08b.png)
-```
-2023-09-27 05:31:45
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-09-27 05:31:45</code></pre>
+</details>
 
 >Task 7: What is the name of the Hacker group responsible for bribing the insider threat?
 
 ![476487ef0a5a4cea64bf140a4e3dc433.png](/resources/476487ef0a5a4cea64bf140a4e3dc433.png)
 Open a pdf file then we can read the content inside which starts with an introduction before telling karen riley (insider) to exfiltrate data of a company to AWS S3 bucket 
-```
-AntiCorp Gr04p
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>AntiCorp Gr04p</code></pre>
+</details>
 
 >Task 8: What is the name of the person suspected of being an Insider Threat?
 
 ![9c5988117a4d21772db72bfb2994186f.png](/resources/9c5988117a4d21772db72bfb2994186f.png)
-```
-karen riley
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>karen riley</code></pre>
+</details>
 
 >Task 9: What is the anomalous stated creation date of the file sent to the insider threat? (UTC)
 
 ![28676b2fcc954cd41ff35ff0b5bae639.png](/resources/28676b2fcc954cd41ff35ff0b5bae639.png)
 used exif tool to get a create date of this file
-```
-2054-01-17 22:45:22
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2054-01-17 22:45:22</code></pre>
+</details>
 
 >Task 10: The Forela threat intel team are working on uncovering this incident. Any OpSec mistakes made by the attackers are crucial for Forela's security team. Try to help the TI team and confirm the real name of the agent/handler from Anticorp.
 
@@ -89,16 +107,20 @@ We can see that an email was presented on metadata
 Which lead to LinkedIn profile
 ![8604c6e5a3fcf24e3c2c312915b840fc.png](/resources/8604c6e5a3fcf24e3c2c312915b840fc.png)
 This should be the one
-```
-Abdullah Al Sajjad
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Abdullah Al Sajjad</code></pre>
+</details>
 
 >Task 11: Which City does the threat actor belong to?
 
 ![8bafce6ddb1c9da3a6f8c5af969b249a.png](/resources/8bafce6ddb1c9da3a6f8c5af969b249a.png)
-```
-Bahawalpur
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Bahawalpur</code></pre>
+</details>
 
 ![1d9cdb406039663b55aa4ca056691ccf.png](/resources/1d9cdb406039663b55aa4ca056691ccf.png)
 * * *

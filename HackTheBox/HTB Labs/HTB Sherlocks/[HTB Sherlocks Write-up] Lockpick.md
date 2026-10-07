@@ -19,9 +19,11 @@ I checked the complier with Detect It Easy first and since it was compiled using
 There is one function calls inside main() which pass 2 arguments, first argument look like an output of files that will be encrypted and second argument does look like an encryption key
 ![6b0958b184447f7255f650f8b58808fe.png](/resources/6b0958b184447f7255f650f8b58808fe.png)
 Inside process_directory(), there is other one function calls to encrypt file and it also pass second argument to this function which mean we're correct about the key
-```
-bhUlIshutrea98liOp
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>bhUlIshutrea98liOp</code></pre>
+</details>
 
 >Task 2: We have recently recieved an email from wbevansn1@cocolog-nifty.com demanding to know the first and last name we have him registered as. They believe they made a mistake in the application process. Please confirm the first and last name of this applicant.
 
@@ -77,9 +79,11 @@ Its flawless, After confirmed how successful this script is then I made ChatGPT 
 now all files are decrypted
 ![df0be4582fe79f4ea9ac7850f051cf1c.png](/resources/df0be4582fe79f4ea9ac7850f051cf1c.png)
 Next I used `grep -r "wbevansn1@cocolog-nifty.com" .` to find this particular mail and look like it stores in sql file
-```
-Walden Bevans
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Walden Bevans</code></pre>
+</details>
 
 >Task 3: What is the MAC address and serial number of the laptop assigned to Hart Manifould?
 
@@ -126,17 +130,20 @@ if __name__ == "__main__":
 Now we can search thing with less much brain hurt
 ![3a7fc352c8ed72d28c92bc5be8c7831b.png](/resources/3a7fc352c8ed72d28c92bc5be8c7831b.png)
 
-```
-E8-16-DF-E7-52-48, 1316262
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>E8-16-DF-E7-52-48, 1316262</code></pre>
+</details>
 
 >Task 4: What is the email address of the attacker?
 
 ![2247789d21e1f5ad41cace13097c6d80.png](/resources/2247789d21e1f5ad41cace13097c6d80.png)
 an answer lies in ransomnote
-```
-bes24@protonmail.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>bes24@protonmail.com</code></pre>
+</details>
 
 >Task 5: City of London Police have suspiciouns of some insider trading taking part within our trading organisation. Please confirm the email address of the person with the highest profit percentage in a single trade alongside the profit percentage.
 
@@ -183,17 +190,21 @@ if __name__ == "__main__":
 ```
 ![5b54af4bc7c52227d79d5cb53d4c00d8.png](/resources/5b54af4bc7c52227d79d5cb53d4c00d8.png)
 I asked it to write me finding the highest profile percent in JSON with pretty accurate demical point then after i executed, it worked  
-```
-fmosedale17a@bizjournals.com, 142303.1996053929628411706675436
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>fmosedale17a@bizjournals.com, 142303.1996053929628411706675436</code></pre>
+</details>
 
 >Task 6: Our E-Discovery team would like to confirm the IP address detailed in the Sales Forecast log for a user who is suspected of sharing their account with a colleague. Please confirm the IP address for Karylin O'Hederscoll.
 
 ![022903b71ea80ec1e22f9a914819ec2e.png](/resources/022903b71ea80ec1e22f9a914819ec2e.png)
 We need to search just Firstname or Surname then we will have her IP address
-```
-8.254.104.208
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>8.254.104.208</code></pre>
+</details>
 
 >Task 7: Which of the following file extensions is not targeted by the malware? `.txt, .sql,.ppt, .pdf, .docx, .xlsx, .csv, .json, .xml`
 
@@ -202,27 +213,35 @@ I suddenly thought of [trend micro encyclopedia](https://www.trendmicro.com/vinf
 it does not encrypt PowerPoint file 
 ![50d28c36971e60833886dae30fa071a4.png](/resources/50d28c36971e60833886dae30fa071a4.png)
 or we can go back to Ghidra, in process_directory()
-```
-.ppt
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>.ppt</code></pre>
+</details>
 
 >Task 8: We need to confirm the integrity of the files once decrypted. Please confirm the MD5 hash of the applicants DB.
 
 ![add8e97e08bd080d704ae4de0b9d38a8.png](/resources/add8e97e08bd080d704ae4de0b9d38a8.png)
 Put everything in HashMyFiles from Nirsoft then you got all the answer from this task to task 10
-```
-f3894af4f1ffa42b3a379dddba384405
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>f3894af4f1ffa42b3a379dddba384405</code></pre>
+</details>
 
 >Task 9: We need to confirm the integrity of the files once decrypted. Please confirm the MD5 hash of the trading backup.
-```
-87baa3a12068c471c3320b7f41235669
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>87baa3a12068c471c3320b7f41235669</code></pre>
+</details>
 
 >Task 10: We need to confirm the integrity of the files once decrypted. Please confirm the MD5 hash of the complaints file.
-```
-c3f05980d9bd945446f8a21bafdbf4e7
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>c3f05980d9bd945446f8a21bafdbf4e7</code></pre>
+</details>
 
 ![12359ab52153caf8b5379437fee27ffc.png](/resources/12359ab52153caf8b5379437fee27ffc.png)
 * * *

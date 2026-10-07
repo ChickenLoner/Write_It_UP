@@ -24,19 +24,24 @@ As soon as I applied the `http` filter, I immediately spotted suspicious activit
 
 After exported file using Export Object feature, I calcucated SHA256 hash to answer next task and search it in [VirusTotal](https://www.virustotal.com/gui/file/9b8ffdc8ba2b2caa485cca56a82b2dcbd251f65fb30bc88f0ac3da6704e4d3c6) which reveals that this file is actually a Pikabot malware.
 
-```
-162.252.172.54
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>162.252.172.54</code></pre>
+</details>
 
 >Task 2: What is the SHA256 hash of the malware?
-```
-9b8ffdc8ba2b2caa485cca56a82b2dcbd251f65fb30bc88f0ac3da6704e4d3c6
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>9b8ffdc8ba2b2caa485cca56a82b2dcbd251f65fb30bc88f0ac3da6704e4d3c6</code></pre>
+</details>
 
 >Task 3: What is the Family label of the malware?
-```
-Pikabot
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Pikabot</code></pre>
+</details>
 
 >Task 4: When was the malware first seen in the wild (UTC)?
 
@@ -44,9 +49,10 @@ Pikabot
 
 First Seen in The Wild is only timestamp that could be provide on VirusTotal, no one really understand what this field really mean. at least for people I know of but to answer this, we can get this timestamp right here.
 
-```
-2023-05-19 14:01:21
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-05-19 14:01:21</code></pre>
+</details>
 
 >Task 5: The malware used HTTPS traffic with a self-signed certificate. What are the ports, from smallest to largest?
 
@@ -63,9 +69,10 @@ To determine if a certificate is self-signed in Wireshark, examine the certifica
 
 Then after taking a look at these TLS traffic, we can see that there are communication on 3 ports (2078,2222 and 32999) that exchanged with self-signed certificate and they are the answer of this task. 
 
-```
-2078, 2222, 32999
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2078, 2222, 32999</code></pre>
+</details>
 
 >Task 6: What is the id-at-localityName of the self-signed certificate associated with the first malicious IP?
 
@@ -73,9 +80,10 @@ Then after taking a look at these TLS traffic, we can see that there are communi
 
 The first TLS communication after the compromised machine requested Pikabot occurred on port 2078, and the `id-at-localityName` value of the exchanged self-signed certificate was "Pyopneumopericardium".
 
-```
-Pyopneumopericardium
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Pyopneumopericardium</code></pre>
+</details>
 
 >Task 7: What is the notBefore time(UTC) for this self-signed certificate?
 
@@ -83,9 +91,10 @@ Pyopneumopericardium
 
 We can find the `notBefore` time of this self-signed certificate in the Validity field of the certificate header, right here.
 
-```
-2023-05-14 08:36:52
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-05-14 08:36:52</code></pre>
+</details>
 
 >Task 8: What was the domain used for tunneling?
 
@@ -93,9 +102,10 @@ We can find the `notBefore` time of this self-signed certificate in the Validity
 
 We previously identified an unusually high volume of DNS traffic in this pcap file, which is atypical for normal operations. Further analysis revealed that this activity was the result of DNS tunneling conducted by Pikabot, leveraging the domain steasteel[.]net. This concludes our Sherlock investigation; however, for those interested in learning more about [Pikabot](https://attack.mitre.org/software/S1145/), MITRE ATT&CK provides a dedicated software page: S1145 – Pikabot, which contains detailed analysis and related resources.
 
-```
-steasteel.net
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>steasteel.net</code></pre>
+</details>
 
 ![b11b7d93aeba6614f2120d28116b6926.png](/resources/b11b7d93aeba6614f2120d28116b6926.png)
 https://labs.hackthebox.com/achievement/sherlock/1438364/758

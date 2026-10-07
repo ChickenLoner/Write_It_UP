@@ -11,9 +11,10 @@ After extracted archive file, I did not see sysmon log so I started exploring Ad
 
 Here, we can see that user installed PublishIgnor package with PowerShell.
 
-```
-nuget install PublishIgnor -Version 1.0.11-beta
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>nuget install PublishIgnor -Version 1.0.11-beta</code></pre>
+</details>
 
 >Task 2: Identify the URL from which the package was downloaded.
 
@@ -25,9 +26,10 @@ I used DB Browser for SQLite to open Chrome's History file which we can see that
 
 To make our investigation a little bit easier, timeline is a key so lets convert visit time to UTC with [WebKit timestamp converter](https://www.epochconverter.com/webkit).
 
-```
-https://www.nuget.org/packages/PublishIgnor/
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://www.nuget.org/packages/PublishIgnor/</code></pre>
+</details>
 
 >Task 3: Who is the threat actor responsible for publishing the malicious package? (the name of the package publisher)
 
@@ -35,9 +37,10 @@ https://www.nuget.org/packages/PublishIgnor/
 
 Upon visiting package url, we could see the owner of this package (which is also author of this sherlock)
 
-```
-a1l4m
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>a1l4m</code></pre>
+</details>
 
 >Task 4: When did the attacker initiate the download of the package? Provide the timestamp in UTC format (YYYY-MM-DD HH:MM).
 
@@ -49,9 +52,10 @@ I used MFTCmd.exe to parse `$MFT` file so we could use Master File Table record 
 
 We already know the name of package, package URL visited timestamp so the downloaded time had to happened after that which we can just search for `nuget` and it will land us with the these results.
 
-```
-2024-03-19 18:41
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-03-19 18:41</code></pre>
+</details>
 
 >Task 5: Despite restrictions, the attacker successfully uploaded the malicious file to the official site by altering one key detail. What is the modified package ID of the malicious package?
 
@@ -63,9 +67,10 @@ We can get package ID of any package by inspecting nuspec file of each package a
 
 nuspec stores metadata in xml format and we can get package ID from id tag right there.
 
-```
-PublishIgnor
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>PublishIgnor</code></pre>
+</details>
 
 >Task 6: Which deceptive technique did the attacker employ during the initial access phase to manipulate user perception? (technique name)
 
@@ -79,19 +84,24 @@ I also did some search on NuGet exploitation and I found out that this script ac
 
 and after reviewing what happened then so this sherlock is about Impala stealer dropped from malicious NuGet package that got installed via typosquatting technique.
 
-```
-typosquatting
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>typosquatting</code></pre>
+</details>
 
 >Task 7: Determine the full path of the file within the package containing the malicious code.
-```
-C:\Users\Administrator\.nuget\packages\publishignor\1.0.11-beta\tools\init.ps1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Administrator\.nuget\packages\publishignor\1.0.11-beta\tools\init.ps1</code></pre>
+</details>
 
 >Task 8: When tampering with the system's security settings, what command did the attacker employ?
-```
-Set-MpPreference -DisableRealtimeMonitoring $true
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Set-MpPreference -DisableRealtimeMonitoring $true</code></pre>
+</details>
 
 >Task 9: Following the security settings alteration, the attacker downloaded a malicious file to ensure continued access to the system. Provide the SHA1 hash of this file.
 
@@ -103,16 +113,19 @@ This one is a little bit tricky to find, I had to skip to Task 12 first to know 
 
 Then I went to Microsoft Defender directory to find relevant logs, Fortunately this log stores SHA1 of detected file as you can see right here.
 
-```
-57b7acf278968eaa53920603c62afd8b305f98bb
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>57b7acf278968eaa53920603c62afd8b305f98bb</code></pre>
+</details>
 
 I also searched this hash on VirusTotal and Hybrid Analysis which result with no result so this file might be a custom payload made by author of this sherlock.
 
 >Task 10: Identify the framework utilised by the malicious file for command and control communication.
-```
-Sliver
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Sliver</code></pre>
+</details>
 
 >Task 11: At what precise moment was the malicious file executed?
 
@@ -126,21 +139,26 @@ Notice that `whoami.exe` was executed after this payload so C2 connection might 
 
 I found the run time of this payload in Timeline csv file which was accepted as the answer of this question meaning that it is the actual run time of this payload.
 
-```
-2024-03-19 19:23:36
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-03-19 19:23:36</code></pre>
+</details>
 
 >Task 12: The attacker made a mistake and didn’t stop all the features of the security measures on the machine. When was the malicious file detected? Provide the timestamp in UTC.
-```
-2024-03-19 19:33:32
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-03-19 19:33:32</code></pre>
+</details>
 
 >Task 13: After establishing a connection with the C2 server, what was the first action taken by the attacker to enumerate the environment? Provide the name of the process.
 
 We already found an answer of this question on task 11
-```
-whoami.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>whoami.exe</code></pre>
+</details>
 
 >Task 14: To ensure continued access to the compromised machine, the attacker created a scheduled task. What is the name of the created task?
 
@@ -152,9 +170,10 @@ After navigated to Tasks directory, I noticed that there is one task that was mo
 
 This task was set to disable real time monitoring so there is no doubt that this is the task created by the attacker
 
-```
-MicrosoftSystemDailyUpdates
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>MicrosoftSystemDailyUpdates</code></pre>
+</details>
 
 >Task 15: When was the scheduled task created? Provide the timestamp in UTC.
 
@@ -162,9 +181,10 @@ MicrosoftSystemDailyUpdates
 
 Right click to inspect property of this task, we can see the Modified timestamp that can be used to answer this task.
 
-```
-2024-03-19 19:24:05
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-03-19 19:24:05</code></pre>
+</details>
 
 >Task 16: Upon concluding the intrusion, the attacker left behind a specific file on the compromised host. What is the name of this file?
 
@@ -182,9 +202,10 @@ Here is the result hash from Amcacheparser, now we can use this hash to search o
 
 It is Impala stealer malware that we read from those articles!
 
-```
-file.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>file.exe</code></pre>
+</details>
 
 >Task 17: As an anti-forensics measure. The threat actor changed the file name after executing it. What is the new file name?
 
@@ -192,14 +213,17 @@ file.exe
 
 I noticed `Updater.exe` file inside `ProgramData` directory which is weird so I calculated filehash and ...Sure enough, It is the new file name of `file.exe` 
 
-```
-Updater.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Updater.exe</code></pre>
+</details>
 
 >Task 18: Identify the malware family associated with the file mentioned in the previous question (17).
-```
-Impala
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Impala</code></pre>
+</details>
 
 >Task 19: When was the file dropped onto the system? Provide the timestamp in UTC.
 
@@ -207,9 +231,10 @@ Impala
 
 Back to Master File Table record, Search for this file and submit timestamp in "Created0x10" field.
 
-```
-2024-03-19 19:30:04
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-03-19 19:30:04</code></pre>
+</details>
 
 ![d72e6f6c95b59bd3cc94155541e6d2d1.png](/resources/d72e6f6c95b59bd3cc94155541e6d2d1.png)
 https://labs.hackthebox.com/achievement/sherlock/1438364/752
