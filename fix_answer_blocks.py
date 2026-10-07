@@ -62,6 +62,13 @@ MAX_ANSWER_LINES = 3
 # that merely quotes a note ("> An oplock is …") has a handful of fences under
 # quotes and the rest are commands, so below this share the file is skipped.
 MIN_QA_SHARE = 0.5
+# A fence whose first line starts like this is a shell/console line the author
+# typed, not a value to submit. Narrow on purpose: it only ever keeps a fence as
+# code, so a miss costs a ⚠ line and never a wrongly converted command.
+# A single-line CTF flag: word{...}. Only used in heading mode, to recognise a
+# section that holds several separate flags (each fence its own answer).
+FLAG_RE = re.compile(r"^\s*[A-Za-z0-9_\-]{2,24}\{.+\}\s*$")
+PROMPT_RE = re.compile(r"^\s*(\$ |# |PS [A-Z]:\\[^>]*> |PS> |C:\\[^>]*> |>>> |sudo )")
 
 
 def _is_question(line: str) -> bool:
@@ -112,7 +119,10 @@ def convert(text: str, heading_sections: bool = False,
         if _is_question(line) or (heading_sections and HEADING_RE.match(line)):
             q_starts.append(i)
             cur_q = len(q_starts) - 1
-        elif HEADING_RE.match(line) or RULE_RE.match(line):
+        elif HEADING_RE.match(line) or (RULE_RE.match(line) and not heading_sections):
+            # A rule closes a "> question" section. In heading mode it must not:
+            # Joplin writes "### Challenge", then "***", then the content, so the
+            # rule would cancel the section the heading just opened.
             cur_q = None
         i += 1
 
@@ -129,11 +139,24 @@ def convert(text: str, heading_sections: bool = False,
 
     def answer_shaped(f):
         return (not f["lang"] and 1 <= len(f["body"]) <= max_lines
-                and any(b.strip() for b in f["body"]))
+                and any(b.strip() for b in f["body"])
+                and not PROMPT_RE.match(f["body"][0]))
 
     review, edits = [], []
     for q, fs in by_q.items():
         if q is not None and len(fs) > 1:
+            # Heading mode: one heading can hold several separate flags, each in
+            # its own fence. Every fence being a single-line flag is the signal;
+            # then all of them are answers, not "scripts followed by an answer".
+            flags = [f for f in fs if answer_shaped(f) and len(f["body"]) == 1
+                     and FLAG_RE.match(f["body"][0])]
+            if heading_sections and len(flags) >= 2 and fs[-1] in flags:
+                edits.extend(flags)
+                for f in fs:
+                    if f not in flags and answer_shaped(f):
+                        review.append((f["start"] + 1, "kept as code, precedes the answer",
+                                       " | ".join(f["body"])[:70]))
+                continue
             # Query/script then answer: only the last fence can be the answer.
             if answer_shaped(fs[-1]):
                 edits.append(fs[-1])
@@ -155,6 +178,8 @@ def convert(text: str, heading_sections: bool = False,
                 review.append((f["start"] + 1, f"language-tagged ({f['lang']})", preview))
             elif not (1 <= len(body) <= max_lines) or not any(b.strip() for b in body):
                 review.append((f["start"] + 1, f"{len(body)} lines", preview))
+            elif PROMPT_RE.match(body[0]):
+                review.append((f["start"] + 1, "starts with a shell prompt (a command)", preview))
             else:
                 edits.append(f)
 

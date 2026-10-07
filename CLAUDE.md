@@ -57,11 +57,17 @@ skipped whole (`--min-qa-share`): machine write-ups sometimes quote a note with
 `>` and the command below it would otherwise be mistaken for an answer — HTB
 Machines would have lost 4 commands that way. Pass `--platform` (and `--only`)
 so it only ever runs on the platform being checked.
-SOC alert playbooks (`LetsDefend Alert`) have no questions — each `### Step`
-heading is the question — so they take `--only "LetsDefend Alert"
---heading-sections [--max-lines 12]`, which refuses to run without `--only`
-(under a heading, a machine write-up's fence is a command). `publish.py` does not
-use that mode: for a new alert write-up it prints the command to run instead.
+Two kinds of write-up have no questions and answer each heading instead: SOC
+alert playbooks (`LetsDefend Alert`, each `### Step`) and CTF write-ups
+(`Unlisted Labs`, each challenge heading, where the answer is a flag or a short
+value). They take `--only "<folder>" --heading-sections --max-lines <N>` (12 for
+alerts, whose analyst notes run long; 3 for CTFs), which refuses to run without
+`--only` because under a heading a machine write-up's fence is a command. In that
+mode a section whose fences are all single-line flags (`word{...}`) has every one
+converted, since one challenge can hold several flags; and a fence that starts
+with a shell prompt (`$ `, `# `, `PS>`, `sudo `) is always kept as code. `publish.py`
+does not use this mode: for a new write-up in either folder it prints the exact
+command to run instead.
 
 The build puts a blank line around every `<details>` before rendering, because
 markdown2 otherwise folds the tag into the previous paragraph or blockquote.
