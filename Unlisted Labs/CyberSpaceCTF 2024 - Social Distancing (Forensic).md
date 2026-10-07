@@ -20,7 +20,9 @@ Now we can see the original name of this malware (absolute path) from a file ins
 
 Then we have to go to `ResourceData` directory for an actual script that was restored which we can see that a flag of this challenge is base64 encoded.
 
-```
-CSCTF{y0u_un-qu4rant1n3d_my_scr1Pt!_0x91a3edff6}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CSCTF{y0u_un-qu4rant1n3d_my_scr1Pt!_0x91a3edff6}</code></pre>
+</details>
+
 ***

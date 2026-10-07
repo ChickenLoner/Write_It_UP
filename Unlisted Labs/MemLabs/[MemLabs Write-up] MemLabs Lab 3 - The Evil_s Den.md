@@ -69,7 +69,10 @@ To extract content out of any steg file, use `steghide extract -sf suspision1.jp
 We solved this!
 
 ## Lab 3 : Flag
-```
-inctf{0n3_h4lf_1s_n0t_3n0ugh}
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>inctf{0n3_h4lf_1s_n0t_3n0ugh}</code></pre>
+</details>
+
 ***

@@ -42,9 +42,10 @@ Flag Format: flag{...}
 
 โดยปกติแล้วไฟล์ PDF มักจะมี metadata ที่เกี่ยวข้องกับคนเซฟไฟล์ประเภทนี้เอาไว้ เช่นชื่อคนสร้างไฟล์มักจะอยู่ในส่วนของ Author ซึ่งเราสามารถใช้ exiftool ในการเช็ค metadata ได้และเราก็จะเห็นว่า flag ของข้อนี้อยู่ในส่วนของ Author และ Creator ของไฟล์นี้นั่นเอง ดังนั้นเวลาเราเซฟไฟล์อะไรส่งชาวบ้านเราไม่อยากให้จับได้ เช่นส่งพิกัดเที่ยวหนีเมียก็อย่าลืมไปลบ metadata ออกด้วยนะครับ เดี๋ยวซวยกันหมด
 
-```
-flag{Gh0st}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>flag{Gh0st}</code></pre>
+</details>
 
 * * *
 ### Hello Gh0st #2 
@@ -62,9 +63,10 @@ Flag Format: hxxps[://]xxx[.]com/yyy
 
 flag format ในข้อนี้ให้เรา defang url โดยการ defang url นั้นจะทำให้เราไม่สามารถเผลอกด click เข้าถูก direct ไปยังเว็บไซต์นั้นได้นั่นเอง มักจะถูกใช้กันอย่างแพร่หลายในวงการนี้ในการแชร์ IoC (Indicator of Compromise)
 
-```
-hxxps[://]webhook[.]site/bb27db55-4d88-4914-a4c5-acd67fbdc347
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>hxxps[://]webhook[.]site/bb27db55-4d88-4914-a4c5-acd67fbdc347</code></pre>
+</details>
 
 * * *
 ### Something’s Wrong 
@@ -113,9 +115,10 @@ Command: `EvtxECmd.exe -d "C:\Users\chicken\Desktop\Samples\CTF\EventLogs" --csv
 
 จากนั้นเราจะตัดเฉพาะส่วนของ command ออกให้เหลือแต่ base64 string เพียวๆมา decode แล้วเราก็จะได้ flag ส่วนแรกมาตอบแล้วก็จบกันไปกับข้อนี้ 
 
-```
-forensic{(1Al@@ba*st3r6CAtap#88D1ny_89),(CVE-2025-49144),(192.168.1.104)}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{(1Al@@ba*st3r6CAtap#88D1ny_89),(CVE-2025-49144),(192.168.1.104)}</code></pre>
+</details>
 
 * * *
 ### Email Analysis 
@@ -136,9 +139,10 @@ E.g. forensic{127.0.0.1}
 
 ซึ่งเราจะสามารถหา IP ของผู้ส่งได้จากหลาย header ซึ่งในกรณีนี้เราจะเห็นว่าอีเมล์ได้ส่งมาจาก info@edm.co.mz (160.19.190.18 ดูจากได้ SPF ที่ได้ให้มอบให้ IP นี้สามารถส่งในนามของ info@edm.co.mz domain ได้) ไปหา gmail ของ [Taipun](https://th.linkedin.com/in/taipun-bannasit) 
 
-```
-forensic{160.19.190.18}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{160.19.190.18}</code></pre>
+</details>
 
 * * *
 ### ExtractCredential 
@@ -169,9 +173,10 @@ Flag Format: forensic{username:password}
 
 ส่วนนี่จาก Recorded Future [Tria.ge](https://tria.ge/250820-xgl9raap4s) ซึ่งจะเห็นข้อมูล confg คล้าย ๆ กันแต่จะพบว่า VMRay ทำได้ดีกว่ามากในการหา Encryption type และ key ของมัลแวร์ตัวนี้
 
-```
-forensic{isb@crescenttrack.com:isb123}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{isb@crescenttrack.com:isb123}</code></pre>
+</details>
 
 ![571dd41b3b628685dab742bb3438e4ad.png](/resources/571dd41b3b628685dab742bb3438e4ad.png)
 
@@ -231,9 +236,10 @@ Format flag: forensic{...}
 
 เรายืนยันตัว C2 ได้แล้ว เรามาส่งคำตอบแล้วไปยังข้อต่อไปกันเลยดีกว่า
 
-```
-forensic{34.124.239.18}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{34.124.239.18}</code></pre>
+</details>
 
 * * *
 ### Grurat#2
@@ -269,9 +275,10 @@ key แบบที่สองนั้นจะลงท้ายด้วย 
 
 เมื่อรันสคริปต์เสร็จก็จะได้ flag ออกมาสำหรับเอาไปตอบข้อนี้และ Grurat#3 ได้เลย
 
-```
-forensic{niarRF}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{niarRF}</code></pre>
+</details>
 
 * * *
 ### Grurat#3
@@ -286,9 +293,10 @@ Format flag: forensic{...}
 
 ท้ายที่สุดผมก็ให้ Claude มันลองเขียน Write-up มาให้แล้ว ซึ่งเขียนออกมาได้ดีเลยครับ ลองไปอ่านกันได้ → [Claude Grurat Malware Analysis - CTF Write-up](https://claude.ai/public/artifacts/8c0795d1-47c8-47b4-b191-052e8293d7f6)
 
-```
-forensic{DESKTOP-P477C8C_10.0.19045}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{DESKTOP-P477C8C_10.0.19045}</code></pre>
+</details>
 
 * * *
 ### LumnaStealer 
@@ -317,9 +325,10 @@ Flag Format: forensic{URL}
 
 ซึ่งถ้าเรามาดูตรง Process Tree หรือ เราก็จะเห็นว่าตัวลูกน้องใช้โทรศัพย์ยี่ห้อ PowerShell เพื่อเรียกลูกพี่ `Evang.xll` จาก `n.kliphirofey.shop` และนั่นก็เป็นคำตอบของข้อนี้นี่เอง เราจับโจรได้แล้ว
 
-```
-forensic{https://n.kliphirofey.shop/Evang.xll}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{https://n.kliphirofey.shop/Evang.xll}</code></pre>
+</details>
 
 * * *
 ### This is Halloween 
@@ -365,9 +374,11 @@ https://users.cs.jmu.edu/buchhofp/forensics/formats/pkzip.html
 
 เราสามารถใช้ [ROT8000 Decoder](https://www.dcode.fr/rot8000-cipher) เพื่อ decode กลับเป็น flag ได้เลย
 
-```
-FLAG{howling_werepuppy_under_the_blood_moon}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>FLAG{howling_werepuppy_under_the_blood_moon}</code></pre>
+</details>
+
 * * *
 แถม Cryptography ที่ดูเหมือน Digital Forensics ให้อีก 2 ข้อครับ
 
@@ -396,9 +407,10 @@ password for unzip: secplayground
 
 และใน zip ไฟล์นี้ยังมีอีกสองไฟล์ที่ถูกเข้ารหัส แต่ไม่ได้ถูกเข้ารหัสด้วย 8base แล้วดังนั้นเราจะต้องหาวิธีอื่นในการถอดรหัสเพื่อหาไฟล์จริงออกมา แต่ตอบเอา flag กันก่อน จากนั้นโจทย์ก็จะให้เราไปหาวิธีถอดรหัสไฟล์ทั้งสองไฟล์นี้ในข้อถัดไป
 
-```
-crypto{287354.enc,782396.enc}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>crypto{287354.enc,782396.enc}</code></pre>
+</details>
 
 * * *
 ### Ransomware#2
@@ -443,9 +455,11 @@ AES-128 ECB Mode ก็คือ symmetric key algorithm ซึ่งจะใ�
 
 เมื่อเรา decode ออกมาก็จะเจอกับ flag ในบรรทัดสุดท้ายครับ 
 
-```
-crypto{HeadlessHorseman}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>crypto{HeadlessHorseman}</code></pre>
+</details>
+
 * * *
 
 ในส่วนของ Blog นี้ก็จบไปแล้วครับ ขอขอบคุณทีมงานสำหรับโจทย์ให้เล่นฆ่าเวลาครับ ไว้เจอกันในงานและโอกาสอื่น ๆ 

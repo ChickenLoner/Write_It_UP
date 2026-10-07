@@ -49,9 +49,10 @@ At first, I tried to extract some useful information with `exiftool` and determi
 
 Then I went to https://www.dcode.fr/rot-cipher to bruteforce ROT Cipher then we can see that a flag was encoded with ROT13 and now we got a flag to submit
 
-```
-CyGenixCTF{ImAgE_aRtIfAcT_uNvEiLeD}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CyGenixCTF{ImAgE_aRtIfAcT_uNvEiLeD}</code></pre>
+</details>
 
 ***
 ### Espionage (100)
@@ -70,9 +71,10 @@ So the first thing we could do is to open provided pcap file with Wireshark and 
 
 We can use any tool we like to decode it, `base64` binary in terminal was the quickest and easiest way at the time so I did just that and turned in a flag
 
-```
-CyGenixCTF{PApdsjRTae}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CyGenixCTF{PApdsjRTae}</code></pre>
+</details>
 
 ![a508d47b03cf8862790c92738343655c.png](/resources/a508d47b03cf8862790c92738343655c.png)
 
@@ -101,9 +103,10 @@ Then I used "Swap endianness" by 4 bytes to piece it back to PNG file again and 
 
 Here is an image file that was downloaded, magic number was really crucial for this challenge 
 
-```
-CyGenixCTF{Th3_jUmbl3D_uP_PNG_3b9cd0e17f}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CyGenixCTF{Th3_jUmbl3D_uP_PNG_3b9cd0e17f}</code></pre>
+</details>
 
 ![046ff95b08ff09672de310b8005c1ae1.png](/resources/046ff95b08ff09672de310b8005c1ae1.png)
 
@@ -123,9 +126,10 @@ Flag format: CyGenixCTF{flag_here}
 
 This one is considered very easy compared to other CTF I've ever particiated, I just need to join their discord for this challenge and browser for "ctf-announcement" channel description, a flag is right here
 
-```
-CyGenixCTF{w3lc0me_t0_cyg3nix_ctf}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CyGenixCTF{w3lc0me_t0_cyg3nix_ctf}</code></pre>
+</details>
 
 ***
 ### Whistleblower (100)
@@ -151,9 +155,11 @@ So I started by searching with "readboard" and tried to find any articles or new
 
 So we got Firstname, Lastname and ProgramName, what left is SystemName and this one should not be that hard since it became talk of the town then Snowden leaked NSA classified document which also leaked this https://en.wikipedia.org/wiki/XKeyscore system and if you watched "Snowden", a movie made to uncover what Snowden did and experienced when he worked for NSA then you will got this thing right in an instant.
 
-```
-CyGenixCTF{Edward_Snowden_XKeyscore_Heartbeat}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CyGenixCTF{Edward_Snowden_XKeyscore_Heartbeat}</code></pre>
+</details>
+
 ***
 ## Cryptography
 ### DH-900 (150)
@@ -207,9 +213,11 @@ else:
 
 Then I executed it and submit this as a flag
 
-```
-CyGenixCTF{2293}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CyGenixCTF{2293}</code></pre>
+</details>
+
 ***
 ## Reverse Engineering
 ### Easy Peasy Apk (150)
@@ -220,9 +228,11 @@ CyGenixCTF{2293}
 
 This challenge provided an apk file so I guess a legitimate way is to use android studio and find a flag inside of it but since I already know flag format then I tried using `strings` and accidently(?) found a flag right here
 
-```
-CyGenixCTF{h4rdc0d3d_53cr375_4lw4y5_m4k35_17_w0r53}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CyGenixCTF{h4rdc0d3d_53cr375_4lw4y5_m4k35_17_w0r53}</code></pre>
+</details>
+
 ***
 ## Steganography
 ### Valour (100)
@@ -246,9 +256,11 @@ I tried to use `exiftool` to read metadata of an image file for some hint but th
 
 Then I used that password to open flag file then submitted it
 
-```
-CyGenixCTF{J0hn_7h3_b1N4ry-W4lK1n6_z1Pp3R!!}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CyGenixCTF{J0hn_7h3_b1N4ry-W4lK1n6_z1Pp3R!!}</code></pre>
+</details>
+
 ***
 ## OSINT
 ### Cake Shop (150)
@@ -264,9 +276,11 @@ I started with Google Image Search to get a name of this place which is Archeolo
 
 Then I used Google Maps to find the nearest cake shop to this place which I found a review in flag format right here 
 
-```
-CyGenixCTF{4mazing_C4ke_Sh0p}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CyGenixCTF{4mazing_C4ke_Sh0p}</code></pre>
+</details>
+
 ***
 ![0a536cdab7505184bab9c8393e70b2f0.png](/resources/0a536cdab7505184bab9c8393e70b2f0.png)
 

@@ -136,10 +136,14 @@ def step_answers() -> list:
         print(f"   · {rel.rsplit('/', 1)[-1]}: left alone — {why}")
     for rel, line, why, prev in unsure:
         print(f"   ⚠ {rel.rsplit('/', 1)[-1]}:{line}  [{why}]  {prev}")
-    if any("LetsDefend Alert" in r[0] for r in notes):
-        print('   hint: SOC alert playbooks answer each heading — run')
-        print('         python fix_answer_blocks.py --platform LetsDefend --only "LetsDefend Alert" \\')
-        print("             --heading-sections --max-lines 12 --apply")
+    # Write-ups with no "> question" lines answer each heading instead.
+    for folder, platform, why, lines in (
+            ("LetsDefend Alert", "LetsDefend", "SOC alert playbooks answer each heading", 12),
+            ("Unlisted Labs", "Unlisted Labs", "CTF write-ups answer each challenge heading", 3)):
+        if any(folder in r[0] for r in notes):
+            print(f"   hint: {why} — run")
+            print(f'         python fix_answer_blocks.py --platform "{platform}" --only "{folder}" \\')
+            print(f"             --heading-sections --max-lines {lines} --apply")
     return unsure
 
 

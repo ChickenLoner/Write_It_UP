@@ -18,9 +18,11 @@ The first vulnerability received a CVSS score of 10.0 CRITICAL. The flag is the 
 
 This is an easy, we just need to search for specific keyword like "2023", "cisco", "rce", "cvss 10" then we will have this [CVE-2023-20198](https://nvd.nist.gov/vuln/detail/CVE-2023-20198) which is an answer of this challenge
 
-```
-CVE-2023-20198
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2023-20198</code></pre>
+</details>
+
 ***
 ## Got my tail! (200 points)
 ![a194baa2c67b07c9c80ae3b97f6ca365.png](/resources/a194baa2c67b07c9c80ae3b97f6ca365.png)
@@ -34,9 +36,11 @@ This one is a little bit tricky here, first we need to search for "Center 16 of 
 
 Even though malware deployed by Center 16 is called "Snake" but there are other names too and this article already telling us that in early versions, this malware was called an Uroboros which is an answer of this challenge
 
-```
-Uroburos
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Uroburos</code></pre>
+</details>
+
 ***
 ## APT jeopardy 1 (250 points)
 ![1ef7050c9c3c0bbb64eb725938746489.png](/resources/1ef7050c9c3c0bbb64eb725938746489.png)
@@ -50,9 +54,11 @@ Name the APT!
 
 There are so many APT groups that targeted US in 2021 so we will have to find for any activities that remotely closed to their unique TTPs and according to MITRE ATT&CK, [Volt Typhoon](https://attack.mitre.org/groups/G1017/) is the most fitting one is this scenario hence the answer of this challenge
 
-```
-Volt Typhoon
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Volt Typhoon</code></pre>
+</details>
+
 ***
 ## APT jeopardy 2 (250 points)
 ![66db6df5ceb4de54019fe03703e20d8f.png](/resources/66db6df5ceb4de54019fe03703e20d8f.png)
@@ -77,9 +83,11 @@ even through we found a name of an APT ([APT28](https://attack.mitre.org/groups/
 
 And that name is Fancy Bear, [securityweek](https://www.securityweek.com/xtunnel-malware-specifically-built-dnc-hack-report/) got me covered here
 
-```
-Fancy Bear
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Fancy Bear</code></pre>
+</details>
+
 ***
 ## APT jeopardy 3 (300 points)
 ![f19c4d690dcfb190ed055310894e54d4.png](/resources/f19c4d690dcfb190ed055310894e54d4.png)
@@ -99,9 +107,11 @@ Name the APT!
 
 We did not need to find anything, just search hash of a binary that forensics recovered on VirusTotal and go to Community to get an answer
 
-```
-TEMP.Periscope
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>TEMP.Periscope</code></pre>
+</details>
+
 ***
 ![6743f3a9b5ec98673ec1e337cef6b4d9.png](/resources/6743f3a9b5ec98673ec1e337cef6b4d9.png)
 ***

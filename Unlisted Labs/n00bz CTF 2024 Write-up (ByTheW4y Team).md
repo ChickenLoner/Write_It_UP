@@ -31,9 +31,11 @@ An [attachment](https://static.n00bzunit3d.xyz/Crypto/Vinegar/enc.txt) got us ci
 
 So I went to https://www.dcode.fr/vigenere-cipher to decode it and sure enough, this one is vigenere cipher
 
-```
-n00bz{vigenerecipherisfun}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>n00bz{vigenerecipherisfun}</code></pre>
+</details>
+
 ***
 ### RSA (291 points)
 ![d351627f8e55ff12500d3cffccc8f71b.png](/resources/d351627f8e55ff12500d3cffccc8f71b.png)
@@ -74,9 +76,11 @@ print("Decoded message:", plaintext.decode())
 
 Then execute it to get a flag
 
-```
-n00bz{crypt0_1s_1nc0mpl3t3_w1th0ut_rs4!!}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>n00bz{crypt0_1s_1nc0mpl3t3_w1th0ut_rs4!!}</code></pre>
+</details>
+
 ***
 ### Vinegar 2 (360 points)
 ![10648c980ce2658350931614eb2abe78.png](/resources/10648c980ce2658350931614eb2abe78.png)
@@ -125,9 +129,11 @@ print(decrypted_flag)
 
 Execute it to get a flag
 
-```
-n00bz{4lph4num3r1c4l_1s_n0t_4_pr0bl3m}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>n00bz{4lph4num3r1c4l_1s_n0t_4_pr0bl3m}</code></pre>
+</details>
+
 ***
 ## Forensics
 ### Plane (176 points)
@@ -142,9 +148,11 @@ This challenge is not "OSINT" but "FORENSICS" so we must exiftool to find GPS Po
 
 Then use https://www.gps-coordinates.net/ to get latitude and longtitude of this position which we can see that it landed us with the most favorite number of all CTF players 
 
-```
-n00bz{13.37,-13.37}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>n00bz{13.37,-13.37}</code></pre>
+</details>
+
 ***
 ## Web
 ### Passwordless (100 points)
@@ -176,9 +184,11 @@ Execute it to get `uid` of an admin
 
 Go straight to this page and get a flag
 
-```
-n00bz{1337-13371337-1337-133713371337-1337} 
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>n00bz{1337-13371337-1337-133713371337-1337}</code></pre>
+</details>
+
 ***
 ## OSINT
 ### Pastebin (347 points)
@@ -194,9 +204,11 @@ Since this link is already taken down, we will need to use waybackmachine
 
 Someone already created snapshot for us so we just have to visit that specific snapshot and get a flag right there
 
-```
-n00bz{l0ng_t1m3_ag0_m34ns_w4yb4ck}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>n00bz{l0ng_t1m3_ag0_m34ns_w4yb4ck}</code></pre>
+</details>
+
 ***
 ## Rev
 ### Vacation (126 points)
@@ -214,7 +226,9 @@ We were given a powershell script that convert content of a flag with XOR and sa
 
 So we just need to convert it back to plaintext with XOR recipe with 3 as a key
 
-```
-n00bz{from_paris_wth_xor}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>n00bz{from_paris_wth_xor}</code></pre>
+</details>
+
 ***

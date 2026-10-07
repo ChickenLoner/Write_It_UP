@@ -62,9 +62,12 @@ But since there is one more flag, I could not let it end like this but I remembe
 So I dumped that file and open it with IDA (Freeware btw) which lead to these weird strings push to stack and when I putted it together, turns out it is a flag and now we're done with Lab 5.
 
 ## Lab 5 : Flags
-```
-flag{!!_w3LL_d0n3_St4g3-1_0f_L4B_5_D0n3_!!}
+
+<details>
+  <summary>Answer</summary>
+<pre><code>flag{!!_w3LL_d0n3_St4g3-1_0f_L4B_5_D0n3_!!}
 flag{W1th_th1s_$taGe_2_1s_cOmPL3T3_!!}
-bi0s{M3m_l4b5_OVeR_!}
-```
+bi0s{M3m_l4b5_OVeR_!}</code></pre>
+</details>
+
 ***
