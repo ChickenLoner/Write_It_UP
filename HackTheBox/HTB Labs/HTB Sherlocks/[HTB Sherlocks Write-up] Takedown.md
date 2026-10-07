@@ -17,19 +17,24 @@ After opening the network capture file in Wireshark, I immediately noticed a DNS
 
 Using Wireshark’s Export Objects feature to inspect SMB file transfers, we can see that the admin user successfully retrieved the full content of this file in packet number 60. We also observe a request from 10.3.19.101—the same IP address that previously downloaded the VBS script from escuelademarina[.]com—making another HTTP request to 103.124.105.78. With this confirmed, we can proceed to answer the first three tasks and review the VBS script for further analysis.
 
-```
-escuelademarina.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>escuelademarina.com</code></pre>
+</details>
 
 >Task 2: What was the IP address associated with the domain in question #1 used for this attack?
-```
-165.22.16.55
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>165.22.16.55</code></pre>
+</details>
 
 >Task 3: What is the filename of the VBS script used for initial access?
-```
-AZURE_DOC_OPEN.vbs
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>AZURE_DOC_OPEN.vbs</code></pre>
+</details>
 
 >Task 4: What was the URL used to get a PowerShell script?
 
@@ -41,24 +46,31 @@ The VBS script appeared harmless until the last four lines, where it created an 
 
 After reviewing the content of `nrwncpwo`, we found that it is a PowerShell script designed to create the folder `C:\rimz`, then download three additional files—`AutoHotkey.exe`, `script.ahk`, and `test.txt`—from the same domain. This indicates that the AutoHotkey script will be executed afterward. The script also hides the `C:\rimz` directory. However, the purpose of `test.txt` remains unclear until we examine either `script.ahk` or `test.txt` itself.
 
-```
-badbutperfect.com/nrwncpwo
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>badbutperfect.com/nrwncpwo</code></pre>
+</details>
 
 >Task 5: What likely legit binary was downloaded to the victim machine?
-```
-AutoHotkey.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>AutoHotkey.exe</code></pre>
+</details>
 
 >Task 6: From what URL was the malware used with the binary from question #5 downloaded?
-```
-http://badbutperfect.com/jvtobaqj
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>http://badbutperfect.com/jvtobaqj</code></pre>
+</details>
 
 >Task 7: What filename was the malware from question #6 given on disk?
-```
-script.ahk
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>script.ahk</code></pre>
+</details>
 
 >Task 8: What is the TLSH of the malware?
 
@@ -74,9 +86,10 @@ The [VirusTotal](https://www.virustotal.com/gui/file/5aac7d31149048763e688878c39
 
 We can get TLSH hash of this script right here.
 
-```
-T15E430A36DBC5202AD8E3074270096562FE7DC0215B4B32659C9EF16835CF6FF9B6A1B8
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T15E430A36DBC5202AD8E3074270096562FE7DC0215B4B32659C9EF16835CF6FF9B6A1B8</code></pre>
+</details>
 
 >Task 9: What is the name given to this malware? Use the name used by McAfee, Ikarus, and alejandro.sanchez.
 
@@ -88,9 +101,10 @@ As we already know that this script will infect victim with DarkGate but we can 
 
 Here is the screenshot I took on 10th August 2025 while writing this write-up, all those collection gone but it is still contained in alejandro.sanchez's DarkGate collection here.
 
-```
-DarkGate
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>DarkGate</code></pre>
+</details>
 
 >Task 10: What is the user-agent string of the infected machine?
 
@@ -98,14 +112,17 @@ DarkGate
 
 After infection, we observed numerous POST requests sent from the compromised machine to the C2 server, indicating beaconing activity. We were also able to identify the User-Agent used in this activity right here and now we should be able to finish this sherlock!
 
-```
-Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36</code></pre>
+</details>
 
 >Task 11: To what IP does the RAT from the previous question connect?
-```
-103.124.105.78
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>103.124.105.78</code></pre>
+</details>
 
 ![f492d709726f6898973c6de3350f9ac1.png](/resources/f492d709726f6898973c6de3350f9ac1.png)
 https://labs.hackthebox.com/achievement/sherlock/1438364/761

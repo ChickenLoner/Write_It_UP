@@ -38,29 +38,38 @@ So we have to find Kerberos authentication that happened after this timestamp to
 
 Which we can see that after another domain user was authenticated after quite some times which mean threat actor successfully cracked this password and legitimately authenticate as domain user.
 
-```
-2024-05-29 06:36:40
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-05-29 06:36:40</code></pre>
+</details>
 
 >Task 2: Please confirm the User Account that was targeted by the attacker.
-```
-arthur.kyle
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>arthur.kyle</code></pre>
+</details>
 
 >Task 3: What was the SID of the account?
-```
-S-1-5-21-3239415629-1862073780-2394361899-1601
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>S-1-5-21-3239415629-1862073780-2394361899-1601</code></pre>
+</details>
 
 >Task 4: It is crucial to identify the compromised user account and the workstation responsible for this attack. Please list the internal IP address of the compromised asset to assist our threat-hunting team.
-```
-172.17.79.129
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>172.17.79.129</code></pre>
+</details>
 
 >Task 5: We do not have any artifacts from the source machine yet. Using the same DC Security logs, can you confirm the user account used to perform the ASREP Roasting attack so we can contain the compromised account/s?
-```
-happy.grunwald
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>happy.grunwald</code></pre>
+</details>
 
 ![dbb7aba657c7b20640228a5dd80c5197.png](/resources/dbb7aba657c7b20640228a5dd80c5197.png)
 * * *

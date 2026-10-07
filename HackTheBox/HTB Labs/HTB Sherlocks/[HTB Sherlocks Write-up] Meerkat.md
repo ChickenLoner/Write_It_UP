@@ -17,9 +17,11 @@ Look like port 8080 were hosting webserver
 Follow TCP stream then we will see the full path along with domain name
 ![7af0677736c15be48725f9663dcac7d0.png](/resources/7af0677736c15be48725f9663dcac7d0.png)
 By searching on the Internet, we finally obtained the name of this application which [Bonitasoft](https://www.bonitasoft.com/) is Open Source BPM (Business Process Management) Platform
-```
-BonitaSoft
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>BonitaSoft</code></pre>
+</details>
 
 >Task 2: We believe the attacker may have used a subset of the brute forcing attack category - what is the name of the attack carried out?
 
@@ -30,9 +32,11 @@ By filtering for only HTTP protocol, we can see that after an attacker found por
 And after take a look at those HTML form that stored username and password, we can see there are different username and password were sent to authenticate 
 
 This is a credential stuffing attack that an attacker obtained leaked credential then use it to authenticate 
-```
-Credential Stuffing
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Credential Stuffing</code></pre>
+</details>
 
 >Task 3: Does the vulnerability exploited have a CVE assigned - and if so, which one?
 
@@ -44,9 +48,11 @@ somehow exploited RCE vulnerability by using `whoami` command which server respo
 Based on all the context we have so far, it is authorized rce so I did google search for this
 ![57cca6a13d21cc69c1f60697fea58223.png](/resources/57cca6a13d21cc69c1f60697fea58223.png)
 And found [CVE number](https://rhinosecuritylabs.com/application-security/cve-2022-25237-bonitasoft-authorization-bypass/) right away
-```
-CVE-2022-25237
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2022-25237</code></pre>
+</details>
 
 >Task 4: Which string was appended to the API URL path to bypass the authorization filter by the attacker's exploit?
 
@@ -56,9 +62,11 @@ This CVE was found to the the fact that sessionIsNotNeeded function checks for e
 And [here](https://github.com/RhinoSecurityLabs/CVEs/blob/master/CVE-2022-25237/CVE-2022-25237.py) is the script that was designed to exploit this vulnerability 
 ![f21a4761302b44962a6a45efc0a2d742.png](/resources/f21a4761302b44962a6a45efc0a2d742.png)
 Which we can see that an attacker successfully exploited this vulnerability by follow TCP stream of this HTTP request
-```
-i18ntranslation 
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>i18ntranslation</code></pre>
+</details>
 
 >Task 5: How many combinations of usernames and passwords were used in the credential stuffing attack?
 
@@ -69,22 +77,29 @@ If we filtered with url form and filter out "install" user then we will have all
 From the same TCP Stream that an attacker successfully exploited Authenticated RCE, we can see which credential were used to authenticate
 ![f03eeaf6a5dadb454df173346f0eab6b.png](/resources/f03eeaf6a5dadb454df173346f0eab6b.png)
 Then we will filter for the user credentials that an attacker successfully authenticated, and we will have to deduct 59 with 3 so an attacker used combination of 56 credentials for credential stuffing attack
-```
-56
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>56</code></pre>
+</details>
 
 >Task 6: Which username and password combination was successful?
-```
-seb.broom@forela.co.uk:g0vernm3nt
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>seb.broom@forela.co.uk:g0vernm3nt</code></pre>
+</details>
 
 >Task 7: If any, which text sharing site did the attacker utilise?
 
 ![13117603c1ba30f7d6549a5b84a9b2b2.png](/resources/13117603c1ba30f7d6549a5b84a9b2b2.png)
 After credential stuffing attack was completed, an attacker changed his/her IP address to manual exploit RCE started with read content of `/etc/passwd` and then using wget to download `bx5gcr0et8` from `pastes.io`
-```
-pastes.io
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>pastes.io</code></pre>
+</details>
+
 ![627e2220539054eeb3aa2f3a5ab32c25.png](/resources/627e2220539054eeb3aa2f3a5ab32c25.png)
 And lastly using bash to execute that file
 
@@ -95,22 +110,28 @@ Lets understand which file that was downloaded first, this is [my public report 
 You can see that first file is a bash script to download a file to ssh authorized_keys directory which mean this new file is ssh public key for an attacker to gain access to infected server
 ![7a903a07041d0b75d6c0b42c352176a8.png](/resources/7a903a07041d0b75d6c0b42c352176a8.png)
 There it is
-```
-hffgra4unv
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>hffgra4unv</code></pre>
+</details>
 
 >Task 9: Can you confirmed the file modified by the attacker to gain persistence?
-```
-/home/ubuntu/.ssh/authorized_keys
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>/home/ubuntu/.ssh/authorized_keys</code></pre>
+</details>
 
 >Task 10: Can you confirm the MITRE technique ID of this type of persistence mechanism?
 
 ![570a0051b8b90c4809556c1e4a9cfe1b.png](/resources/570a0051b8b90c4809556c1e4a9cfe1b.png)
 Search on MITRE ATT&CK website then you can see its technique ID
-```
-T1098.004
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>T1098.004</code></pre>
+</details>
 
 ![cd98a7fd15681e9233f6b63fafad5ca1.png](/resources/cd98a7fd15681e9233f6b63fafad5ca1.png)
 ![95ee00467b0c97ff67e3adda56485ec2.png](/resources/95ee00467b0c97ff67e3adda56485ec2.png)

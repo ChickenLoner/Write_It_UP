@@ -18,51 +18,64 @@ And lucky for us, HackTheBox already posted a blog about [Tracking WSL Activity 
 
 ![e08bfbfa90e328076ee35575b81fa2c5.png](/resources/e08bfbfa90e328076ee35575b81fa2c5.png)
 An answer of this question lied in `Attacker.apmx64`
-```
-whoami
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>whoami</code></pre>
+</details>
 
 >Task 2: Which string function can be intercepted to monitor keystrokes by an insider?
 
 Read the blog the answer this question
-```
-RtlUnicodeToUTF8N, WideCharToMultiByte
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>RtlUnicodeToUTF8N, WideCharToMultiByte</code></pre>
+</details>
 
 >Task 3: Which Linux distribution the insider was interacting with?
 
 ![721cd8ddc56489591dbfc94ce552ac16.png](/resources/721cd8ddc56489591dbfc94ce552ac16.png)
 Its kali linux
-```
-kali
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>kali</code></pre>
+</details>
 
 >Task 4: Which file did the insider access in order to read its contents?
 
 To be honest, This question was merely a guess and it was correct
-```
-flag.txt
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>flag.txt</code></pre>
+</details>
 
 >Task 5: Submit the first flag.
 
 ![bf6fcfda69167f2214e2706448bca288.png](/resources/bf6fcfda69167f2214e2706448bca288.png)
-```
-HOOK_tH1$_apI_R7lUNIcoDet0utf8N
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>HOOK_tH1$_apI_R7lUNIcoDet0utf8N</code></pre>
+</details>
 
 >Task 6: Which PowerShell module did the insider utilize to extract data from their machine?
 
-```
-Invoke-WebRequest
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Invoke-WebRequest</code></pre>
+</details>
 
 >Task 7: Which string function can be intercepted to monitor the usage of Windows tools via WSL by an insider?
 
 ![2e07a46d2a89f5b720ee090eb7eba83a.png](/resources/2e07a46d2a89f5b720ee090eb7eba83a.png)
-```
-RtlUTF8ToUnicodeN
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>RtlUTF8ToUnicodeN</code></pre>
+</details>
 
 >Task 8: The insider has also accessed 'confidential.txt'. Please provide the second flag for submission.
 
@@ -70,37 +83,47 @@ RtlUTF8ToUnicodeN
 So now we know that an insider used powershell to upload confidential.txt to attacker's hosted website
 ![9c4a978e13e9ae5d87de170dd1d6dbef.png](/resources/9c4a978e13e9ae5d87de170dd1d6dbef.png)
 At the end of API events, we will eventually obtain this flag 
-```
-H0ok_ThIS_@PI_rtlutf8TounICOD3N
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>H0ok_ThIS_@PI_rtlutf8TounICOD3N</code></pre>
+</details>
 
 >Task 9: Which command executed by the attacker resulted in a 'not found' response?
 
 ![dc3ac7cd1f3ca3fc3b06608de1588bd2.png](/resources/dc3ac7cd1f3ca3fc3b06608de1588bd2.png)
-```
-lsassy
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>lsassy</code></pre>
+</details>
 
 >Task 10: Which link was utilized to download the 'lsassy' binary?
 
 ![b6a0d8a9d4c27c3fce6fec56d61ae909.png](/resources/b6a0d8a9d4c27c3fce6fec56d61ae909.png)
 An attacker using wget to fetch this url
-```
-http://3.6.165.8/lsassy
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>http://3.6.165.8/lsassy</code></pre>
+</details>
 
 >Task 11: What is the SHA1 hash of victim 'user' ?
 
 ![76cfd3b0835669a7add4b2475da984b2.png](/resources/76cfd3b0835669a7add4b2475da984b2.png)
 Find any WriteFile API then we finally see that user's masterkey was saved to keys.txt and his SHA1 was shown here too
-```
-e8f97fba9104d1ea5047948e6dfb67facd9f5b73
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>e8f97fba9104d1ea5047948e6dfb67facd9f5b73</code></pre>
+</details>
 
 >Task 12: When an attacker utilizes WSL2, which WIN32 API would you intercept to monitor its behavior?
-```
-WriteFile
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>WriteFile</code></pre>
+</details>
 
 ![72452f41f3a623572bbaeb8ccf88eeb3.png](/resources/72452f41f3a623572bbaeb8ccf88eeb3.png)
 * * *

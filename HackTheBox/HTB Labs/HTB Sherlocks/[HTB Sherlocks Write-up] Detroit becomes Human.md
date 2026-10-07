@@ -18,9 +18,10 @@ We were given Microsoft Edge artefacts which mean we can only examine Edge's his
 
 Go to `urls` then we can see that user visit facebook post about GEMINI which lead to download link of suspicious file
 
-```
-https://www.facebook.com/AI.ultra.new/posts/pfbid0BqpxXypMtY5dWGy2GDfpRD4cQRppdNEC9SSa72FmPVKqik9iWNa2mRkpx9xziAS1l
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://www.facebook.com/AI.ultra.new/posts/pfbid0BqpxXypMtY5dWGy2GDfpRD4cQRppdNEC9SSa72FmPVKqik9iWNa2mRkpx9xziAS1l</code></pre>
+</details>
 
 >Task 2: Can you confirm the timestamp in UTC when alonzo visited this post?
 
@@ -28,9 +29,10 @@ https://www.facebook.com/AI.ultra.new/posts/pfbid0BqpxXypMtY5dWGy2GDfpRD4cQRppdN
 
 We can copy timestamp of the history database to https://www.epochconverter.com/webkit which will convert 13355296200136503 to Tuesday, March 19, 2024 4:30:00 AM
 
-```
-2024-03-19 04:30:00
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-03-19 04:30:00</code></pre>
+</details>
 
 >Task 3: Alonzo downloaded a file on the system thinking it was an AI Assistant tool. What is name of the archive file downloaded?
 
@@ -38,9 +40,10 @@ We can copy timestamp of the history database to https://www.epochconverter.com/
 
 Go to `downloads` table and find name of a file that was downloaded and the destination path of that file
 
-```
-AI.Gemini Ultra For PC V1.0.1.rar
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>AI.Gemini Ultra For PC V1.0.1.rar</code></pre>
+</details>
 
 >Task 4: What was the full direct url from where the file was downloaded?
 
@@ -48,9 +51,10 @@ AI.Gemini Ultra For PC V1.0.1.rar
 
 We can go to `downloads_url_chains` which stores full direct url of the downloaded files and we already know that the last one is the one we are looking for
 
-```
-https://drive.usercontent.google.com/download?id=1z-SGnYJCPE0HA_Faz6N7mD5qf0E-A76H&export=download
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://drive.usercontent.google.com/download?id=1z-SGnYJCPE0HA_Faz6N7mD5qf0E-A76H&amp;export=download</code></pre>
+</details>
 
 >Task 5: Alonzo then proceeded to install the newly download app, thinking that its a legit AI tool. What is the true product version which was installed?
 
@@ -66,9 +70,10 @@ Then put an output file to `Timeline Explorer`, then we can see that an installe
 
 So we can proceed to use any registry lookup tool to examine Uninstall key which also stores version of this software and as you can see that version that was installed is so different with the version stated on the installer 
 
-```
-3.32.3
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3.32.3</code></pre>
+</details>
 
 >Task 6: When was the malicious product/package successfully installed on the system?
 
@@ -76,9 +81,10 @@ So we can proceed to use any registry lookup tool to examine Uninstall key which
 
 Go back to the result from `MFTECmd`, find the "last access" timestamp which is the timestamp indicating the installation was done at that time from this file
 
-```
-2024-03-19 04:31:33
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-03-19 04:31:33</code></pre>
+</details>
 
 >Task 7: The malware used a legitimate location to stage its file on the endpoint. Can you find out the Directory path of this location?
 
@@ -94,9 +100,10 @@ I digged a little bit deeper then I finally found that a file that user download
 
 Then on Recorded Future Triage, we could see that one of `ps1` file also stores malware configuration and it also confirmed the path used by this installer for staging
 
-```
-C:\Program Files (x86)\Google
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Program Files (x86)\Google</code></pre>
+</details>
 
 >Task 8: The malware executed a command from a file. What is name of this file?
 
@@ -116,9 +123,10 @@ We know that installation ended at 04:31:33 so both executable files were execut
 
 And we also confirmed that `install.cmd` was loaded with `cmd.exe`
 
-```
-INSTALL.CMD
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>INSTALL.CMD</code></pre>
+</details>
 
 >Task 9: What are the contents of the file from question 8? Remove whitespace to avoid format issues.
 
@@ -134,9 +142,10 @@ Then after we got the right offset, use "go to" to go straight to that record th
 
 To submit an answer, use CyberChef to remove whitespace for us
 
-```
-@echooffpowershell-ExecutionPolicyBypass-File"%~dp0nmmhkkegccagdldgiimedpic/ru.ps1"
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>@echooffpowershell-ExecutionPolicyBypass-File"%~dp0nmmhkkegccagdldgiimedpic/ru.ps1"</code></pre>
+</details>
 
 >Task 10: What was the command executed from this file according to the logs?
 
@@ -144,9 +153,10 @@ To submit an answer, use CyberChef to remove whitespace for us
 
 We can find this from PowerShell event log file
 
-```
-powershell -ExecutionPolicy Bypass -File C:\Program Files (x86)\Google\Install\nmmhkkegccagdldgiimedpic/ru.ps1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>powershell -ExecutionPolicy Bypass -File C:\Program Files (x86)\Google\Install\nmmhkkegccagdldgiimedpic/ru.ps1</code></pre>
+</details>
 
 >Task 11: Under malware staging Directory, a js file resides which is very small in size.What is the hex offset for this file on the filesystem?
 
@@ -158,9 +168,10 @@ There are 2 js files on this directory but the smaller one is `content.js` file
 
 calculate an offset to answer this task
 
-```
-3E90C00
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3E90C00</code></pre>
+</details>
 
 >Task 12: Recover the contents of this js file so we can forward this to our RE/MA team for further analysis and understanding of this infection chain. To sanitize the payload, remove whitespaces.
 
@@ -180,9 +191,10 @@ And search it on any.run public report and from here, we did not need to fix any
 
 just remove whitespace and submit this as an answer
 
-```
-varisContentScriptExecuted=localStorage.getItem('contentScriptExecuted');if(!isContentScriptExecuted){chrome.runtime.sendMessage({action:'executeFunction'},function(response){localStorage.setItem('contentScriptExecuted',true);});}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>varisContentScriptExecuted=localStorage.getItem('contentScriptExecuted');if(!isContentScriptExecuted){chrome.runtime.sendMessage({action:'executeFunction'},function(response){localStorage.setItem('contentScriptExecuted',true);});}</code></pre>
+</details>
 
 >Task 13: Upon seeing no AI Assistant app being run, alonzo tried searching it from file explorer. What keywords did he use to search?
 
@@ -190,14 +202,17 @@ varisContentScriptExecuted=localStorage.getItem('contentScriptExecuted');if(!isC
 
 We did not have Windows Search artefact but we still have `NTUSER.DAT` so lets open it with any registry viewer you have and inspect `\Software\Microsoft\Windows\CurrentVersion\Explorer\WordWheelQuery` key then we will see that this user searched for this tool at this specific time
 
-```
-Google Ai Gemini tool
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Google Ai Gemini tool</code></pre>
+</details>
 
 >Task 14: When did alonzo searched it?
-```
-2024-03-19 04:32:11
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-03-19 04:32:11</code></pre>
+</details>
 
 >Task 15: After alonzo could not find any AI tool on the system, he became suspicious, contacted the security team and deleted the downloaded file. When was the file deleted by alonzo?
 
@@ -209,14 +224,17 @@ For this one, we need [$I Parse](https://df-stream.com/recycle-bin-i-parser/) to
 
 We will have tsv (tab separated value) file as an output, and here is the one we're looking for
 
-```
-2024-03-19 04:34:16
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-03-19 04:34:16</code></pre>
+</details>
 
 >Task 16: Looking back at the starting point of this infection, please find the md5 hash of the malicious installer.
-```
-bf17d7f8dac7df58b37582cec39e609d
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>bf17d7f8dac7df58b37582cec39e609d</code></pre>
+</details>
 
 ![48f2e1a82fa22727bbf7a97be3bb09f8.png](/resources/48f2e1a82fa22727bbf7a97be3bb09f8.png)
 https://labs.hackthebox.com/achievement/sherlock/1438364/697

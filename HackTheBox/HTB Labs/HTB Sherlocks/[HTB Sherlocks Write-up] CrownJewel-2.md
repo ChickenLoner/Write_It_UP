@@ -24,9 +24,10 @@ We were provided with 3 event log files which are APPLICATION, SECURITY and SYST
 
 If we want to find the most recent timestamp of shadow copy service, then we will have to filter for Event ID 7086 (**The service has entered the ... state**) and use built-in event viewer feature called "Find" then we will find total of 4 Shadow Copy service entered running state event and the event showed here is the most recent one.
 
-```
-2024-05-15 05:39:55
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-05-15 05:39:55</code></pre>
+</details>
 
 >Task 2: Identify the full path of the dumped NTDS file.
 
@@ -36,27 +37,33 @@ As we already know that Shadow Copy service will enter running state before NTDS
 
 Event ID 325 indicates new ntds file were created and will also logged location of a new file as you could see from an image above and Event ID 327 indicates that newly dumped NTDS file were detached from database and ready to be used.
 
-```
-C:\Windows\Temp\dump_tmp\Active Directory\ntds.dit
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Windows\Temp\dump_tmp\Active Directory\ntds.dit</code></pre>
+</details>
 
 >Task 3: When was the database dump created on the disk?
-```
-2024-05-15 05:39:56
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-05-15 05:39:56</code></pre>
+</details>
 
 >Task 4: When was the newly dumped database considered complete and ready for use?
-```
-2024-05-15 05:39:58
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-05-15 05:39:58</code></pre>
+</details>
 
 >Task 5: Event logs use event sources to track events coming from different sources. Which event source provides database status data like creation and detachment?
 
 Event ID 325 and 327 came from the same source which is ESENT (Extensible Storage Engine) and its associated with the Extensible Storage Engine (ESE) technology used by Windows (if you're curious about the details of this technology, you might need to do your own research since it will be too technical and digging ourselves into another rabbit hole).
 
-```
-ESENT
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ESENT</code></pre>
+</details>
 
 >Task 6: When ntdsutil.exe is used to dump the database, it enumerates certain user groups to validate the privileges of the account being used. Which two groups are enumerated by the ntdsutil.exe process? Also, find the Logon ID so we can easily track the malicious session in our hunt.
 
@@ -70,9 +77,10 @@ And here, we can see that Backup Operators group is one of enumeration target of
 
 The other group that was enumerated is Administrators group
 
-```
-Administrators, Backup Operators, 0x8DE3D
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Administrators, Backup Operators, 0x8DE3D</code></pre>
+</details>
 
 >Task 7: Now you are tasked to find the Login Time for the malicious Session. Using the Logon ID, find the Time when the user logon session started.
 
@@ -80,9 +88,10 @@ Administrators, Backup Operators, 0x8DE3D
 
 We're still on the System log, but this time we will have to filter for EventID 4768 (**A Kerberos authentication ticket (TGT) was requested**), 4769 (**A Kerberos service ticket was requested**) and 5379 (**Credential Manager credentials were read**) that happened after NTDS file was dumped and user groups were enumerated and with Logon ID we obtained from previous task, we can determine that user logon session started at this time.
 
-```
-2024-05-15 05:36:31
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-05-15 05:36:31</code></pre>
+</details>
 
 ![81dda09d9c1ec9b249e8bbf7dc2b4962.png](/resources/81dda09d9c1ec9b249e8bbf7dc2b4962.png)
 

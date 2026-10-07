@@ -18,36 +18,45 @@ This sherlock was launched with a new [blog](https://www.hackthebox.com/blog/llm
 
 We can filter for LLMNR query and response using `udp.port == 5355` which we can see that `172.17.79.136` made queries for `DCC01` (its a typo since it should be `DC01`) then `172.17.79.135` response back hence LLMNR posioning attack took place here
 
-```
-172.17.79.135
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>172.17.79.135</code></pre>
+</details>
 
 >Task 2: What is the hostname of the rogue machine?
 
 ![281c6167c34b87bec840dc8b76ab2f59.png](/resources/281c6167c34b87bec840dc8b76ab2f59.png)
 
 We got an IP address of an attacker then can find hostname of this IP address from DHCP Request like this
-```
-kali
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>kali</code></pre>
+</details>
 
 >Task 3: Now we need to confirm whether the attacker captured the user's hash and it is crackable!! What is the username whose hash was captured?
 
 ![b6b5377d0c61d292bbc41841569b66a3.png](/resources/b6b5377d0c61d292bbc41841569b66a3.png)
 Filter for SMB2 then we can see that at the same time when LLMNR queries were made, NTLM authentication negotiations were also happened right there
-```
-john.deacon
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>john.deacon</code></pre>
+</details>
 
 >Task 4: In NTLM traffic we can see that the victim credentials were relayed multiple times to the attacker's machine. When were the hashes captured the First time?
-```
-2024-06-24 11:18:30
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-06-24 11:18:30</code></pre>
+</details>
 
 >Task 5: What was the typo made by the victim when navigating to the file share that caused his credentials to be leaked?
-```
-DCC01
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>DCC01</code></pre>
+</details>
 
 >Task 6: To get the actual credentials of the victim user we need to stitch together multiple values from the ntlm negotiation packets. What is the NTLM server challenge value?
 
@@ -57,17 +66,20 @@ We will use this first set of NTLM Authentication Negotiation to get all values 
 ![738b926c4b06456ff8b673cb0c892bf9.png](/resources/738b926c4b06456ff8b673cb0c892bf9.png)
 You can see server challenge value from NTLMSSP_CHALLENGE packet right here
 
-```
-601019d191f054f1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>601019d191f054f1</code></pre>
+</details>
 
 >Task 7: Now doing something similar find the NTProofStr value.
 
 ![195a4f3ffd4f3d8c657b1d7a5d90a526.png](/resources/195a4f3ffd4f3d8c657b1d7a5d90a526.png)
 This value can be obtained by inspecting NTLMSSP_AUTH
-```
-c0cc803a6d9fb5a9082253a04dbd4cd4
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>c0cc803a6d9fb5a9082253a04dbd4cd4</code></pre>
+</details>
 
 >Task 8: To test the password complexity, try recovering the password from the information found from packet capture. This is a crucial step as this way we can find whether the attacker was able to crack this and how quickly.
 
@@ -86,16 +98,19 @@ Then use "Find / Replace" on any text editor you prefered to delete first 16 byt
 
 Lets use `hashcat -a0 -m5600 hashfile.txt /usr/share/wordlists/rockyou.txt` to crack then we will finally have a password for this user which an attacker successfully cracked
 
-```
-NotMyPassword0k?
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>NotMyPassword0k?</code></pre>
+</details>
 
 >Task 9: Just to get more context surrounding the incident, what is the actual file share that the victim was trying to navigate to?
 
 ![41f5aa0fabf919ca32bf5ea59b04825a.png](/resources/41f5aa0fabf919ca32bf5ea59b04825a.png)
-```
-\\DC01\DC-Confidential
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>\\DC01\DC-Confidential</code></pre>
+</details>
 
 ![0e12799461957c8101b32a196105912f.png](/resources/0e12799461957c8101b32a196105912f.png)
 * * *

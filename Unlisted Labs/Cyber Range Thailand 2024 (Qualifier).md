@@ -74,9 +74,10 @@ Platform ที่ใช้ในการแข่งขันครั้ง�
 
 คำตอบที่แท้จริงของข้อนี้ก็คือ 48 bytes โดยเราสามารถไปหาคำตอบเพิ่มเติมได้จาก link นี้ครับ https://stackoverflow.com/questions/58645401/why-is-there-something-written-in-the-data-section-of-an-icmpv4-echo-ping-reques
 
-```
-48
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>48</code></pre>
+</details>
 
 ![0997ce0bd1501bcf27e089f52334e340.png](/resources/0997ce0bd1501bcf27e089f52334e340.png)
 ***
@@ -87,9 +88,10 @@ Platform ที่ใช้ในการแข่งขันครั้ง�
 
 ข้อนี้สิ่งที่เราต้องทำก็แค่สร้าง filter ให้หา packet ที่เป็น Type A DNS queries ไปที่ IP address เป้าหมาย โดยที่ผมใช้จะเป็นตัวนี้ครับ `dns.qry.type==1 && ip.dst == 208.67.220.220` และจำนวน Displayed packet ของ filter นี้ก็คือคำตอบของข้อนี้ครับ
 
-```
-19
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>19</code></pre>
+</details>
 
 ![bd51dd4c299617e06a7f5fe62aff9122.png](/resources/bd51dd4c299617e06a7f5fe62aff9122.png)
 * * *
@@ -98,9 +100,10 @@ Platform ที่ใช้ในการแข่งขันครั้ง�
 
 ข้อนี้จะเป็นการให้หา flag ครับ โดย communication ที่น่าสนใจใน pcap นี้ก็คือ HTTP ครับ ซึ่งผมก็ได้ไปเจอ flag อยู่ใน HTTP Response ที่เป็น JSON ในรูปเลย
 
-```
-flag{y0u_h4v3_f0und_th3_gzipp3d_answ3r}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>flag{y0u_h4v3_f0und_th3_gzipp3d_answ3r}</code></pre>
+</details>
 
 ![3a46573937d53adb22e886ab1e382389.png](/resources/3a46573937d53adb22e886ab1e382389.png)
 * * *
@@ -121,9 +124,10 @@ flag{y0u_h4v3_f0und_th3_gzipp3d_answ3r}
 
 สุดท้ายก็เอามา convert เป็น text ก็จะได้ flag อย่างที่เห็นครับ
 
-```
-flag{this_is_a_hidden_message_in_dns_requests}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>flag{this_is_a_hidden_message_in_dns_requests}</code></pre>
+</details>
 
 ![c5b126dc2742063a008828d4b90a40df.png](/resources/c5b126dc2742063a008828d4b90a40df.png)
 * * *
@@ -136,9 +140,10 @@ flag{this_is_a_hidden_message_in_dns_requests}
 
 ตัว flag ก็จะมาจาก `4.txt` บน `\\192.168.108.1\data` นั่นเอง
 
-```
-flag{smb_tr4nsfer_sn1ff}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>flag{smb_tr4nsfer_sn1ff}</code></pre>
+</details>
 
 ![256e222b2aefea4351613e061afee173.png](/resources/256e222b2aefea4351613e061afee173.png)
 * * *
@@ -155,9 +160,10 @@ flag{smb_tr4nsfer_sn1ff}
 
 ส่วนตัวผมใช้ https://www.imagetotext.info/ เพราะผมไม่เชื่อใจนิ้วตัวเองเท่าไหร่ครับช่วงนี้ 5555
 
-```
-flag{8be9140721c890ae21c2bd02788bf30b}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>flag{8be9140721c890ae21c2bd02788bf30b}</code></pre>
+</details>
 
 ![589f848b0dd893a3d391c714355ea512.png](/resources/589f848b0dd893a3d391c714355ea512.png)
 * * *
@@ -168,9 +174,10 @@ flag{8be9140721c890ae21c2bd02788bf30b}
 
 ข้อนี้ให้หา MAC address ของ IP หนึ่งซึ่งเราจะ filter หา arp request / response ก็ได้ แต่เราไม่จำเป็นต้องทำขนาดนั้นเพราะใน Data Link Layer ก็จะมีการใส่ MAC address ลงไปอยู่แล้ว
 
-```
-00:0c:29:ce:5b:7b
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>00:0c:29:ce:5b:7b</code></pre>
+</details>
 
 ![251819b2b2ca275c97b85227fe241685.png](/resources/251819b2b2ca275c97b85227fe241685.png)
 * * *
@@ -192,9 +199,10 @@ flag{8be9140721c890ae21c2bd02788bf30b}
 
 เอา payload มา encode ด้วย base64 แล้วส่งคำตอบก็จะได้คะแนนมาครับ
 
-```
-PD9waHAgaWYoIGlzc2V0KCAkX1JFUVVFU1RbJ2MnXSApICkgeyBzeXN0ZW0oICRfUkVRVUVTVFsnYyddIC4gJyAyPiYxJyApOyB9
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>PD9waHAgaWYoIGlzc2V0KCAkX1JFUVVFU1RbJ2MnXSApICkgeyBzeXN0ZW0oICRfUkVRVUVTVFsnYyddIC4gJyAyPiYxJyApOyB9</code></pre>
+</details>
 
 **สำหรับคนที่มองหา intended way, เชิญทางนี้ครับ
 
@@ -210,9 +218,11 @@ PD9waHAgaWYoIGlzc2V0KCAkX1JFUVVFU1RbJ2MnXSApICkgeyBzeXN0ZW0oICRfUkVRVUVTVFsnYydd
 
 ![b66df6fced9be407a144b350cdc09a99.png](/resources/b66df6fced9be407a144b350cdc09a99.png)
 intended way ก็คือการเอา base64 จากข้อแรกไป search ตรง ๆ ใน google ครับ ก็จะขึ้นมา repo แรกเลย
-```
-CVE-2018-7600
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2018-7600</code></pre>
+</details>
 
 หรือจะตอบว่า `drupalgeddon2` ก็ได้เหมือนกันครับ
 
@@ -226,9 +236,10 @@ CVE-2018-7600
 - `encr.sh`
 และ `FLAG.txt` โดย IP address ตัวนี้ก็จะใช้ในการ exfiltrate file ออกไปด้วยครับ
 
-```
-10.7.200.50
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10.7.200.50</code></pre>
+</details>
 
 >What port did the attacker use to access the command shell with elevated privileges?
 
@@ -249,9 +260,10 @@ CVE-2018-7600
 
 หลังจากนั้น threat actor ก็ได้ใช้ socat สร้าง remote shell connection ในอีก session ด้วย root privilege ที่ port 8081 ซึ่งก็คือคำตอบของข้อนี้ครับ
 
-```
-8081
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>8081</code></pre>
+</details>
 
 >What type of encryption did the attacker use to encrypt the files? 
 
@@ -263,26 +275,30 @@ CVE-2018-7600
 
 ซึ่งเมื่อเลื่อนลงไปเรื่อย ๆ ตาม flow ก็จะพบว่าเป็น AES-256-CBC โดยมี key เข้ารหัสไฟล์และ iv ตามที่เห็นแล้ว และไฟล์ที่ถูก encrypted ก็จะมี extension ต่อท้ายเป็น `.encr`
 
-```
-AES-256-CBC
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>AES-256-CBC</code></pre>
+</details>
 
 >What encryption key did the attacker use 
 
 ![b8c3b01a47f2a970f185433ccd84de9e.png](/resources/b8c3b01a47f2a970f185433ccd84de9e.png)
 threat actor ได้ทำการ encrypt ไฟล์หลายไฟล์มากโดยใช้ key เดียวกัน แต่ก็มี `FLAG.txt` ที่ถูก encrypt ด้วย key และ IV ที่ต่างออกไป ซึ่งผมก็ได้ลอง submit key นี้ไปแล้วระบบก็นับว่า key นี้คือคำตอบที่ถูก ดังนั้นข้อนี้เราสามารถตอบได้สอง key ครับ
-```
-/yB4pcpUbRG5JDpc9fpX5Q==
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>/yB4pcpUbRG5JDpc9fpX5Q==</code></pre>
+</details>
 
 >What protocol did the attacker use for exfiltration 
 
 ![fea890a5d28e022734de0c29aad732c6.png](/resources/fea890a5d28e022734de0c29aad732c6.png)
 เรารู้ว่า threat actor ได้ drop `exfil.sh` ลงมาดังนั้นผมก็มุ่งเป้าความสนใจไปที่ script นี้เลย ซึ่งก็จะพบว่าเป็นสคริปต์ที่ใช้ gzip, base64,sed,tr กับไฟล์สำคัญ ๆ เช่น `/etc/passwd` และ `/etc/shadow` แล้วสร้าง DNS query ด้วย `dig` เพื่อ exfiltrate ผลลัพท์จาก command เหล่านั้นไปยัง C2 ดังนั้น protocol ที่ใช้ก็คือ DNS นั่นเอง
 
-```
-DNS
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>DNS</code></pre>
+</details>
 
 ![971f5f9d33f46016642d74c96ed07dea.png](/resources/971f5f9d33f46016642d74c96ed07dea.png)
 * * *
@@ -296,17 +312,20 @@ DNS
 
 ข้อนี้ผมใช้กำปั้นทุบดินด้วยการรัน command `grep -i "attack" fast.log` แล้วก็หาว่ามี alert/warning ไหนที่น่าสนใจบ้างซึ่งก็พบว่ามีการโจมตี Web Attack มาจาก IP Address นึงอย่างต่อเนื่อง ซึ่งนั่นก็เป็น IP Address ของ threat actor นั่นเอง
 
-```
-10.64.5.69
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10.64.5.69</code></pre>
+</details>
 
 >What tool was used to scan the nodes 
 
 ![f244023cf7a58bb3c9aa47b041f92f19.png](/resources/f244023cf7a58bb3c9aa47b041f92f19.png)
 กำปั้นทุบดินไปอีกข้อครับ ผมเปลี่ยน keyword เป็นคำว่า nmap แทนเพราะเป็น well-known scanning tool แล้วก็พบว่ามีการใช้ nmap ในการแสกนจริง ๆ ครับ
-```
-nmap
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>nmap</code></pre>
+</details>
 
 >When was the last attack on a web server? 10.69.2.11,format :HH:MM:SS
 
@@ -314,9 +333,10 @@ nmap
 
 command ที่ผมใช้ในข้อนี้ก็คือ `grep  "10.69.2.11" fast.log | grep -i "web" | tail` โดยเริ่มจากการ filter IP ที่เราสนใจ จากนั้นก็ไปเอาเฉพาะ alert/warning ที่เกี่ยวกับเว็บและให้ display ส่วนสุดท้ายของผลลัพธ์ที่ผ่านการ filter แล้วออกมาก็จะได้ timestamp สุดท้ายของ alert/warning ที่มีการโจมตีไปที่ web server ตัวนี้ครับ
 
-```
-19:53:28
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>19:53:28</code></pre>
+</details>
 
 >To which address was the password brute force attack carried out 
 
@@ -324,25 +344,30 @@ command ที่ผมใช้ในข้อนี้ก็คือ `grep  "
 
 ข้อนี้ผมเริ่มจากการ filter หา protocol ที่สามารถถูก bruteforce ได้ โดยเริ่มจาก SSH (ซึ่งไม่ใช่คำตอบที่ถูกต้อง) แล้วก็มาเจอว่ามีการ Brute force ผ่าน RDP เกิดขึ้นไปยัง IP 10.69.1.254 และ 10.69.3.20 ซึ่งผม submit ตัวที่สองแล้วได้คะแนน ซึ่งมันก็ต้องเป็นตัวนี้แล้วหละ 555
 
-```
-10.69.3.20
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10.69.3.20</code></pre>
+</details>
 
 >From what address was the attack on the domain controller 10.69.3.10 
 
 ![c9d414d6125b60d9f3295eeae8d7d9e4.png](/resources/c9d414d6125b60d9f3295eeae8d7d9e4.png)
 ข้อนี้เราสามารถใช้ command `grep  "10.69.3.10:" fast.log` ได้ตรง ๆ เลยซึ่งก็จะพบว่า มีการพยายามโจมตีมายัง domain controller ด้วย DCSync attack จาก IP ภายใน IP หนึ่งซึ่งคาดว่าจะเป็น compromised host แล้วพยายาม pivot มาที่ DC
-```
-10.69.2.11
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>10.69.2.11</code></pre>
+</details>
 
 >What tool did the attacker use to encrypt files on a Windows server? 
 
 ![1c4d1e15c954002be88cd23bf02860ff.png](/resources/1c4d1e15c954002be88cd23bf02860ff.png)
 เมื่อมีการ encrypt นั่นย่อมหมายถึง Ransomware ซึ่งผมก็ใช้ command `grep -i "ransom" fast.log` ที่ให้โชว์ alert/warning ที่น่าจะเกี่ยวกับ ransomware attack เท่านั้น โดยข้อนี้จะให้เราตอบเป็น library ที่ใช้ในการ encrypt ซึ่งก็คือ CryptoAPI นั่นเอง
-```
-CryptoAPI
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>CryptoAPI</code></pre>
+</details>
 
 >Write the number of the most frequent warning suricata 
 
@@ -354,17 +379,20 @@ CryptoAPI
 
 ซึ่งจะเป็นว่าเป็น RDP bruteforce attack warning นั่นเอง
 
-```
-20094
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>20094</code></pre>
+</details>
 
 >When did the attack happen ,format: dd/mm/yyyy? 
 
 ![af25011dd33544956eb893b0f60b00f4.png](/resources/af25011dd33544956eb893b0f60b00f4.png)
 ข้อนี้แจกคะแนนครับ เนื่องจากการ attack ทั้งหมดมันเกิดในวันเดียวกัน 
-```
-11/08/2022
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>11/08/2022</code></pre>
+</details>
 
 ![c2ca0118dec3453ab1e08a7cc62132ba.png](/resources/c2ca0118dec3453ab1e08a7cc62132ba.png)
 ***
@@ -376,17 +404,21 @@ CryptoAPI
 
 ![642cd40c8e82c846eb8eb1275586f018.png](/resources/642cd40c8e82c846eb8eb1275586f018.png)
 ข้อแจกคะแนนครับ แค่เปิด log มาก็พบแล้ว
-```
-mx1.company.local
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>mx1.company.local</code></pre>
+</details>
 
 >What is the number of unsuccessful entries in the log
 
 ![361de3640843ea33c6f0fba3ca4c6219.png](/resources/361de3640843ea33c6f0fba3ca4c6219.png)
 ในข้อนี้เราต้อง filter เอาเฉพาะ EventID 4625 An account failed to log on. ซึ่งก็จะพบว่ามีอยู่ 108 entries ใน log นี้ครับ
-```
-108
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>108</code></pre>
+</details>
 
 >The password for which account was selected 
 
@@ -398,9 +430,10 @@ mx1.company.local
 
 ซึ่งหลังจากนั้นก็ได้มีการเอา `psexec64.exe` มาด้วยซึ่ง without a doubt แล้วหละว่า Admin ถูก compromised ไปแล้ว
 
-```
-Admin
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Admin</code></pre>
+</details>
 
 ซึ่งเมื่อย้อนกลับไปดูตั้งแต่เริ่มก็จะพบว่า threat actor ได้รัน
 - `hostname` : แสดง hostname 
@@ -426,9 +459,10 @@ Admin
 
 และนี่ก็คือ technique ที่ใช้ครับ
 
-```
-T1003.001
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1003.001</code></pre>
+</details>
 
 >What is the password for the Administrator account 
 
@@ -436,23 +470,28 @@ T1003.001
 
 อะไรก็ตามที่อยู่หลัง -p ใน psexec command ก็คือ password ครับ
 
-```
-Server1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Server1</code></pre>
+</details>
 
 >Write the name of the attacker's tool for horizontal movement 
 
 เรารู้ว่า threat actor ใช้ psexec ในการรัน command บนเครื่อง 10.73.3.50 ดังนั้นก็แค่ใส่ exe name ของ psexec ลงไป
-```
-psexec64.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>psexec64.exe</code></pre>
+</details>
 
 >Write the name of the scheduler task created by the attacker for pinning 
 
 ![0579af437efc749ce881e52229dad8ab.png](/resources/0579af437efc749ce881e52229dad8ab.png)
-```
-WindowsUpdate
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>WindowsUpdate</code></pre>
+</details>
 
 ![bec34f660d54807117e4803c742761c3.png](/resources/bec34f660d54807117e4803c742761c3.png)
 * * *
@@ -465,9 +504,10 @@ WindowsUpdate
 ![75359352c27e813939109145eb505ed4.png](/resources/75359352c27e813939109145eb505ed4.png)
 เมื่อเปิด pcap ไฟล์ขึ้นมาเราก็จะพบกับ port scanning activity ทันทีซึ่งก็ไม่ต้องสืบถึง IP Address ของ threat actor เลย มันอยู่ตรงหน้าเราแล้ว
 
-```
-10.14.200.50
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10.14.200.50</code></pre>
+</details>
 
 >Which packet ended with the initial scanning of the external network. 
 
@@ -475,9 +515,10 @@ WindowsUpdate
 
 ในส่วนนี้ผมก็ filter IP address ของ target ที่โดน port scan แล้วเลื่อนไปท้ายสุดที่มี SYN และ RST, ACK packet คู่สุดท้ายก็จะพบ packet 6016 และ 6017 เป็น packet สุดท้ายที่จบการ scan จาก threat actor IP นี้
 
-```
-6017
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>6017</code></pre>
+</details>
 
 >What tool did the attacker use to scan the web server 
 
@@ -485,9 +526,10 @@ WindowsUpdate
 
 ซึ่งหลังจากทำ port scan เสร็จ ทางฝั่ง threat actor ก็ได้ข้อมูลมาว่ามี web server รันอยู่บนเครื่องนี้ ดังนั้นเพื่อหาช่องโหว่ของ web server, ทาง threat actor ก็ได้ใช้ well-known web scanner อย่าง Nikto ในการแสกนหาช่องโหว่ต่อเลย ซึ่งรู้ได้ไงว่าเป็น Nikto? ดูจาก User-agent ได้เลยครับ
 
-```
-Nikto
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Nikto</code></pre>
+</details>
 
 >What vulnerability did the attacker use to attack 10.14.2.11 
 
@@ -496,9 +538,12 @@ Nikto
 ในเมื่อเรารู้แล้วว่า threat actor ใช้ Nikto ดังนั้นเพื่อ filter noise ออกไปก็ต้องไปเอา user-agent ออก แล้วผมก็ไปโฟกัสที่ HTTP Request ของ threat actor ที่ส่งไปยัง web server แทน ซึ่งก็พบว่ามีการ exploit drupalgeddon2 เกิดขึ้นแล้วทำสำเร็จซะด้วยทำให้ threat actor สามารถ upload webshell และรัน command ผ่าน webshell ได้
 
 ข้อนี้เราจะตอบเป็น CVE Identifier หรือชื่อของช่องโหว่ก็ได้ครับ
-```
-CVE-2018-7600
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2018-7600</code></pre>
+</details>
+
 หรือ `drupalgeddon2`
 
 >What vulnerability did the attacker use to escalate privileges on 10.14.2.11 
@@ -519,9 +564,10 @@ CVE-2018-7600
 
 filter ด้วย `tcp.port == 8080` แล้ว follow tcp stream ก็จะพบว่า threat actor จะเปิด port 8081 เพื่อทำอีก bind shell ด้วยสิทธิ์ root ซึ่งก็จะเห็น DirtyCow ถูก exploit จริง ๆ จาก stream นี้ครับ
 
-```
-CVE-2016-5195
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2016-5195</code></pre>
+</details>
 
 >What tool did the attacker use to tunnel connections into the internal infrastructure network 
 
@@ -533,9 +579,10 @@ socat ก็ใช้ไปแล้ว มันก็เหลือแค่ 
 
 ซึ่งก้จะเห็นว่า threat actor ใช้ Web Socket ในการทำ tunnel ไปยัง internal infrastructure network ของเป้าหมาย
 
-```
-chisel
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>chisel</code></pre>
+</details>
 
 >What tool did the attacker use to encrypt files on 10.14.2.11
 
@@ -545,9 +592,10 @@ chisel
 
 ซึ่งก็คืออัลกอริทึมเดียวกันที่เราพบใน Auditd log เลยครับ แต่ในที่นี้เราก็จะเห็นข้อความเพิ่มเติมด้วย อย่างเช่นการเพิ่มข้อความลงใน `/etc/motd` เพื่อบอก user เมื่อ login เข้ามาว่าโดน ransom แล้วนะ
 
-```
-openssl
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>openssl</code></pre>
+</details>
 
 >What key did the attacker use to encrypt files on the Windows server 
 
@@ -559,9 +607,10 @@ openssl
 
 ซึ่งเมื่ออ่าน script นี้ดูก็จะพบว่าข้อสันนิษฐานของเราถูกต้องครับ
 
-```
-xThizmhZ6SEdI2rvVtjPGPQtmGf/nsjllzsegJOHySY=
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>xThizmhZ6SEdI2rvVtjPGPQtmGf/nsjllzsegJOHySY=</code></pre>
+</details>
 
 >Through what vulnerability did the attacker gain access to the domain controller 10.14.3.10 
 
@@ -570,14 +619,18 @@ xThizmhZ6SEdI2rvVtjPGPQtmGf/nsjllzsegJOHySY=
 ข้อนี้เราต้อง filter IP ของ domain controller แล้วก็มาดูว่ามี protocol ที่เกี่ยวกับ domain controller ไหนที่ดูแปลก ๆ บ้าง ซึ่งก็ไปเจอ Net Logon ครับ เลยก็ "อะ ฮ่า!" ทันที เพราะช่องโหว่ที่เกี่ยวกับ Net Logon ที่น่าจะรู้จักกันดีก็คือ ZeroLogon ครับ
 
 โดยวิธีการ detect ก็อ่านได้จากเว็บนี้เลย https://arista.my.site.com/AristaCommunity/s/article/Network-Threat-Hunting-for-Zerologon-Exploits-CVE-2020-1472
-```
-CVE-2020-1472
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2020-1472</code></pre>
+</details>
 
 >Write the name of the encryption script 
-```
-Ransom.ps1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Ransom.ps1</code></pre>
+</details>
 
 ![511ffa31bec5847acef140c09586f879.png](/resources/511ffa31bec5847acef140c09586f879.png)
 ***

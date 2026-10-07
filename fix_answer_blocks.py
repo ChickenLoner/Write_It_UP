@@ -25,6 +25,8 @@ reported for a human and left untouched:
     lang-tagged or long fence       (real code)
     fence outside any question      (commands in a machine write-up)
     several fences, last not short  (nothing to pick as the answer)
+    a file where under half the fences are under questions
+                                    (a machine write-up quoting a note: skipped whole)
     short fence before the answer   (kept as code; listed so it can be checked)
 
 Some write-ups have no "> question" lines: SOC alert playbooks answer each
@@ -56,6 +58,10 @@ NOT_Q_RE   = re.compile(r"^(\*\*)?(tags|category|note|created|last updated)\b", 
 HEADING_RE = re.compile(r"^#{1,6}\s")
 RULE_RE    = re.compile(r"^\s*(\* \* \*|\*\*\*|---)\s*$")
 MAX_ANSWER_LINES = 3
+# A Q&A write-up has nearly every fence under a question. A machine write-up
+# that merely quotes a note ("> An oplock is …") has a handful of fences under
+# quotes and the rest are commands, so below this share the file is skipped.
+MIN_QA_SHARE = 0.5
 
 
 def _is_question(line: str) -> bool:
@@ -74,7 +80,7 @@ def _answer_block(body: list[str]) -> list[str]:
 
 
 def convert(text: str, heading_sections: bool = False,
-            max_lines: int = MAX_ANSWER_LINES):
+            max_lines: int = MAX_ANSWER_LINES, min_qa_share: float = MIN_QA_SHARE):
     """Return (new_text, converted, spaced, review).
     spaced = <details> blocks separated from a preceding "> question" line.
     review = [(line, reason, preview)]."""
@@ -114,6 +120,12 @@ def convert(text: str, heading_sections: bool = False,
     for f in fences:
         if not f["in_details"]:
             by_q.setdefault(f["q"], []).append(f)
+
+    total = sum(len(v) for v in by_q.values())
+    under_q = total - len(by_q.get(None, []))
+    if total and under_q / total < min_qa_share:
+        return text, 0, 0, [(1, f"not a Q&A write-up: {under_q} of {total} fences are under "
+                                f"a question (commands, not answers)", "")]
 
     def answer_shaped(f):
         return (not f["lang"] and 1 <= len(f["body"]) <= max_lines
@@ -205,6 +217,9 @@ def main() -> int:
                     help="treat each heading as the question (SOC alert playbooks); needs --only")
     ap.add_argument("--max-lines", type=int, default=MAX_ANSWER_LINES,
                     help=f"longest fence to treat as an answer (default {MAX_ANSWER_LINES})")
+    ap.add_argument("--min-qa-share", type=float, default=MIN_QA_SHARE,
+                    help="skip a file unless this share of its fences are under a "
+                         f"question (default {MIN_QA_SHARE})")
     ap.add_argument("--apply", action="store_true", help="write changes (default: dry run)")
     args = ap.parse_args()
     if args.heading_sections and not args.only:
@@ -215,7 +230,8 @@ def main() -> int:
     all_review = []
     for rel in sorted(iter_writeups(args.platform, args.only)):
         text = rel.read_text(encoding="utf-8")
-        new, count, spaced, review = convert(text, args.heading_sections, args.max_lines)
+        new, count, spaced, review = convert(text, args.heading_sections, args.max_lines,
+                                          args.min_qa_share)
         for line, why, prev in review:
             all_review.append((rel, line, why, prev))
         if count or spaced:

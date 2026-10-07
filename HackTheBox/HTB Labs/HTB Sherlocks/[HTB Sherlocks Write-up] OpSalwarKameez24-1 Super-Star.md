@@ -18,9 +18,10 @@ We got 2 files, The first file is Nullsoft Scriptable Installer (NSIS file) and 
 
 Generate file hash then search it on [VirusTotal](https://www.virustotal.com/gui/file/bb46f86d668b5a9928f2f8353e9618ef42cf837b53f9ee277d76acdc03d19945/behavior) and go to Behavior tab then we would be able to see malicious nodejs process is a child process of NSIS process.
 
-```
-Coupon.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Coupon.exe</code></pre>
+</details>
 
 >Task 2: Which option has the attacker enabled in the script to run the malicious Node.js application?
 
@@ -64,9 +65,10 @@ Notice that it also loads `/../extraResources/preload.js` and `/public/testPage.
 
 Here is the explaination from [Quasar Framework documentation](https://v1.quasar.dev/quasar-cli/developing-electron-apps/node-integration)
 
-```
-nodeIntegration
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>nodeIntegration</code></pre>
+</details>
 
 >Task 3: What protocol and port number is the attacker using to transmit the victim's keystrokes?
 
@@ -78,9 +80,10 @@ Now lets take a look what's inside `testPage.html` which we can see that it will
 
 Upon reviewing this script, we can see that it will capture keystroke and send it to C2 IP address (0.0.0.0 is likely be to a placeholder for us investigator to run this safely) on port 44500 using WebSocket.
 
-```
-WebSocket, 44500
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>WebSocket, 44500</code></pre>
+</details>
 
 >Task 4: What XOR key is the attacker using to decode the encoded shellcode?
 
@@ -96,9 +99,10 @@ Then we can see that it will send a request to C2 address on port 80 which will 
 
 So if we opened provided pcap file and use `http` or `tcp.port==80` filter then we would see this TCP stream 9 that sent XOR key back to infected system.
 
-```
-ec1ee034ec1ee034
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ec1ee034ec1ee034</code></pre>
+</details>
 
 >Task 5: What is the IP address, port number and process name encoded in the attacker payload ?
 
@@ -108,9 +112,10 @@ We got both base64 strings and key so lets decode and XOR it to find an actual p
 
 Which we can see that this is a function that will spawn `cmd.exe` and connect back to C2 on port 4444 (Reverse shell).
 
-```
-15.206.13.31, 4444, cmd.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>15.206.13.31, 4444, cmd.exe</code></pre>
+</details>
 
 >Task 6: What are the two commands the attacker executed after gaining the reverse shell?
 
@@ -122,9 +127,10 @@ Lets go back to Wireshark then filter for `tcp.port==4444` for reverse shell con
 
 Follow TCP Stream then we can see that the attacker executed `whoami` and `ipconfig` before terminated this session.
 
-```
-whoami, ipconfig
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>whoami, ipconfig</code></pre>
+</details>
 
 >Task 7: Which Node.js module and its associated function is the attacker using to execute the shellcode within V8 Virtual Machine contexts?
 
@@ -136,9 +142,10 @@ Go back to `preload.js` then we can see that it uses [vm](https://nodejs.org/api
 
 Then the function that uses to execute the shellcode is [runInNewContext](https://nodejs.org/api/vm.html#scriptruninnewcontextcontextobject-options) function.
 
-```
-vm, runInNewContext
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>vm, runInNewContext</code></pre>
+</details>
 
 >Task 8: Decompile the bytecode file included in the package and identify the Win32 API used to execute the shellcode.
 
@@ -166,9 +173,10 @@ Why `9.4.146.24.exe`? I tried to run it without disassembly binary and this pyth
 
 Open an output file which stores disassembly of the bytecode file then we can see that the Win32 API that will be used to execute shellcode is [CreateThread](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createthread).
 
-```
-CreateThread
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CreateThread</code></pre>
+</details>
 
 >Task 9: Submit the fake discount coupon that the attacker intended to present to the victim.
 
@@ -180,9 +188,10 @@ There is one array on the output file that stores shellcode so I wrote a simply 
 
 Use CyberChef to convert it then we might notice 2 weird strings ("COUPON1337" and "PWNED") with `user32.dll` and the take discount coupon is the first string we found from this output. 
 
-```
-COUPON1337
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>COUPON1337</code></pre>
+</details>
 
 ![b499ad77e9ae85148c29770ae48dbe9c.png](/resources/b499ad77e9ae85148c29770ae48dbe9c.png)
 https://labs.hackthebox.com/achievement/sherlock/1438364/790

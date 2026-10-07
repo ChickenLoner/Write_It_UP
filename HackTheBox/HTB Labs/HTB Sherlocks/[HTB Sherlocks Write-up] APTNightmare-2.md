@@ -22,9 +22,10 @@ First I used `vol.py -f dump.mem --profile=LinuxUbuntu_5_3_0-70-generic_profilex
 
 I got to the point after failing to determine suspicious process with `vol.py -f dump.mem --profile=LinuxUbuntu_5_3_0-70-generic_profilex64 linux_netstat | grep TCP | grep ESTABLISHED` command then we can see that bash process with PID 
 
-```
-10.0.2.6:443
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10.0.2.6:443</code></pre>
+</details>
 
 >Task 2: What was the PPID of the malicious reverse shell connection?
 
@@ -36,9 +37,10 @@ I went back to process tree again to find out that this plugin could not get the
 
 Then I went with `linux_psscan` that will list all processes that existed on the system even terminated one which I finally found that there was a bash with PID 3632 running on this system and this PID is the one we are looking for.
 
-```
-3632
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3632</code></pre>
+</details>
 
 >Task 3: Provide the name of the malicious kernel module.
 
@@ -50,9 +52,10 @@ I used `vol.py -f dump.mem --profile=LinuxUbuntu_5_3_0-70-generic_profilex64 lin
 
 By looking at its name and conducted a little bit of research then we could tell that this module tried to masquerade as nfnetlink module which is a legitimate module of netfilter.
 
-```
-nfentlink
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>nfentlink</code></pre>
+</details>
 
 >Task 4: What time was the module loaded?
 
@@ -68,9 +71,10 @@ To find out about this, I used `vol.py -f dump.mem --profile=LinuxUbuntu_5_3_0-7
 
 ...
 
-```
-2024-05-01 20:42:57
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-05-01 20:42:57</code></pre>
+</details>
 
 >Task 5: What is the full path and name of the malicious kernel module file?
 
@@ -81,9 +85,10 @@ To find out about this, I used `vol.py -f dump.mem --profile=LinuxUbuntu_5_3_0-7
 
 ![93471bfb782a365f6b2101de8f215147.png](/resources/93471bfb782a365f6b2101de8f215147.png)
 
-```
-/lib/modules/5.3.0-70-generic/kernel/drivers/net/nfnetlink.ko
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/lib/modules/5.3.0-70-generic/kernel/drivers/net/nfnetlink.ko</code></pre>
+</details>
 
 >Task 6: Whats the MD5 hash of the malicious kernel module file?
 
@@ -95,9 +100,10 @@ I used `vol.py -f dump.mem --profile=LinuxUbuntu_5_3_0-70-generic_profilex64 lin
 
 Then if we searched for this hash on [VirusTotal](https://www.virustotal.com/gui/file/3cdf556862470b38503f79d9d35e21008b11f19639a92538ee14dceaea228817), we can see that we got the right module
 
-```
-35bd8e64b021b862a0e650b13e0a57f7
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>35bd8e64b021b862a0e650b13e0a57f7</code></pre>
+</details>
 
 >Task 7: What is the full path and name of the legitimate kernel module file?
 
@@ -105,9 +111,10 @@ Then if we searched for this hash on [VirusTotal](https://www.virustotal.com/gui
 
 We know that there are 2 `nfnetlink.ko` on this system and we already got the malicious one so the other one is definitely the legitimate one.
 
-```
-/lib/modules/5.3.0-70-generic/kernel/net/netfilter/nfnetlink.ko
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/lib/modules/5.3.0-70-generic/kernel/net/netfilter/nfnetlink.ko</code></pre>
+</details>
 
 >Task 8: What is the single character difference in the author value between the legitimate and malicious modules?
 
@@ -119,9 +126,10 @@ I used `strings` to find interesting strings from this module which we can see t
 
 Even google putted this character for us when we searched it.
 
-```
-i
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>i</code></pre>
+</details>
 
 >Task 9: What is the name of initialization function of the malicious kernel module?
 
@@ -133,23 +141,28 @@ Lets decompile this module on Ghidra which reveal that source file with `nfentli
 
 Then after Ghidra successfully decompiled `init_module` function, we could 
 
-```
-nfnetlink_init
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>nfnetlink_init</code></pre>
+</details>
 
 >Task 10: There is a function for hooking syscalls. What is the last syscall from the table?
 
 ![720a4f5f81626b98481ba020028b2096.png](/resources/720a4f5f81626b98481ba020028b2096.png)
-```
-__x64_sys_kill
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>__x64_sys_kill</code></pre>
+</details>
 
 >Task 11: What signal number is used to hide the process ID (PID) of a running process when sending it?
 
 ![ebcd50890407204aeb9286047d1be292.png](/resources/ebcd50890407204aeb9286047d1be292.png)
-```
-64
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>64</code></pre>
+</details>
 
 https://labs.hackthebox.com/achievement/sherlock/1438364/857
 * * *

@@ -46,7 +46,11 @@ structure, not content (`whoami` is a valid command and a valid answer): in a
 question's section, the sole — or last — untagged 1-3 line fence is the answer;
 earlier fences are code and stay. Lang-tagged or long fences, fences outside any
 question (machine write-ups have none), and anything ambiguous are listed for a
-human and left alone. Run it only on platforms that use `> question` blockquotes.
+human and left alone. A file where under half the fences sit under a question is
+skipped whole (`--min-qa-share`): machine write-ups sometimes quote a note with
+`>` and the command below it would otherwise be mistaken for an answer — HTB
+Machines would have lost 4 commands that way. Pass `--platform` (and `--only`)
+so it only ever runs on the platform being checked.
 SOC alert playbooks (`LetsDefend Alert`) have no questions — each `### Step`
 heading is the question — so they take `--only "LetsDefend Alert"
 --heading-sections [--max-lines 12]`, which refuses to run without `--only`

@@ -30,9 +30,10 @@ After import output file to Splunk, then we will filter for  `eventSource="iam.a
 
 Then we can see that TA created Access key for "forela-admin" user, now we have TA's IP address to proceed further
 
-```
-54.242.59.197
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>54.242.59.197</code></pre>
+</details>
 
 >Task 2: What was the time, filename, and Account ID of the first recorded s3 object accessed by the TA?
 
@@ -40,9 +41,10 @@ Then we can see that TA created Access key for "forela-admin" user, now we have 
 
 By using `source="output.json" host="ffbc19d3eef9" sourcetype="new_json" 54.242.59.197 eventSource="s3.amazonaws.com" eventName=GetObject | sort eventTime`, we can search for event within s3.amazonaws and GetObject event sorted by eventTime
 
-```
-2023-11-02T14:52:03Z,prod-EC2-readonly_accessKeys.csv,anonymous
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-11-02T14:52:03Z,prod-EC2-readonly_accessKeys.csv,anonymous</code></pre>
+</details>
 
 >Task 3: How many Access Keys were compromised, at a minimum?
 
@@ -50,9 +52,10 @@ By using `source="output.json" host="ffbc19d3eef9" sourcetype="new_json" 54.242.
 
 After using this `source="output.json" host="ffbc19d3eef9" sourcetype="new_json"  54.242.59.197 eventSource="s3.amazonaws.com" eventName=GetObject  "requestParameters.key"="*accesskey*"` query, then go to right bar which we can see that there are 7 different access keys were compromised
 
-```
-7
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>7</code></pre>
+</details>
 
 >Task 4: The TA executed a command to filter EC2 instances. What were the name and value used for filtering?
 
@@ -60,9 +63,10 @@ After using this `source="output.json" host="ffbc19d3eef9" sourcetype="new_json"
 
 Use `source="output.json" host="ffbc19d3eef9" sourcetype="new_json"  54.242.59.197 eventSource="ec2.amazonaws.com"` then find for filterSet that have both name and value
 
-```
-instance-state-name:running
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>instance-state-name:running</code></pre>
+</details>
 
 >Task 5: Can you provide the count of unsuccessful discovery and privilege escalation attempts made by the TA before gaining elevated access with the compromised keys?
 
@@ -71,9 +75,10 @@ instance-state-name:running
 By using `source="output.json" host="ffbc19d3eef9" sourcetype="new_json"  54.242.59.197 errorMessage=*
 | stats count by eventName, errorMessage`, we can see that there are 42 events that return with error 
 
-```
-42
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>42</code></pre>
+</details>
 
 >Task 6: Which IAM user successfully gained elevated privileges in this incident?
 
@@ -83,9 +88,10 @@ Remember CreateAccessKey event that created for forela?, we will go back to it f
 
 ![e9d7bd12432f38be135ad1713fed253c.png](/resources/e9d7bd12432f38be135ad1713fed253c.png)
 
-```
-dev-policy-specialist
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>dev-policy-specialist</code></pre>
+</details>
 
 >Task 7: Which event name permitted the threat actor to generate an admin-level policy?
 
@@ -93,9 +99,10 @@ dev-policy-specialist
 
 Go back to table that listed all eventName, there is a PutUserPolicy event that triggered once which is the answer of this task
 
-```
-PutUserPolicy
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>PutUserPolicy</code></pre>
+</details>
 
 >Task 8: What is the name and statement of the policy that was created that gave a standard user account elevated privileges?
 
@@ -103,9 +110,10 @@ PutUserPolicy
 
 Display full requestParameters that we can see both policyName and Statement of this policy 
 
-```
-sbhyy79zky,[{"Effect": "Allow","Action": "*","Resource": "*"}]
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>sbhyy79zky,[{"Effect": "Allow","Action": "*","Resource": "*"}]</code></pre>
+</details>
 
 >Task 9: What was the ARN (Amazon Resource Name) used to encrypt the files?
 
@@ -113,9 +121,10 @@ sbhyy79zky,[{"Effect": "Allow","Action": "*","Resource": "*"}]
 
 We will use `source="output.json" host="ffbc19d3eef9" sourcetype="new_json" 54.242.59.197 encryption` to display everything related to the TA and also has encryption within event then we will eventually find this ARN on one of CopyObject events 
 
-```
-arn:aws:kms:us-east-1:263954014653:key/mrk-85e24f85d964469cba9e4589335dd0f4
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>arn:aws:kms:us-east-1:263954014653:key/mrk-85e24f85d964469cba9e4589335dd0f4</code></pre>
+</details>
 
 >Task 10: What was the name of the file that the TA uploaded to the S3 bucket?
 
@@ -123,9 +132,10 @@ arn:aws:kms:us-east-1:263954014653:key/mrk-85e24f85d964469cba9e4589335dd0f4
 
 There is one PutObject event from the TA so we will use `source="output.json" host="ffbc19d3eef9" sourcetype="new_json"  54.242.59.197 eventName=PutObject` to find out which file the TA uploaded to S3 bucket
 
-```
-README2DECRYPT.txt
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>README2DECRYPT.txt</code></pre>
+</details>
 
 >Task 11: Which IAM user account did the TA modify in order to gain additional persistent access?
 
@@ -133,9 +143,10 @@ README2DECRYPT.txt
 
 remembered CreateAccessKey event? its the same event but different answer
 
-```
-forela-admin
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forela-admin</code></pre>
+</details>
 
 >Task 12: What action was the user not authorized to perform to view or download the file in the S3 bucket?
 
@@ -143,9 +154,10 @@ forela-admin
 
 We will use `source="output.json" host="ffbc19d3eef9" eventSource="s3.amazonaws.com" accessdenied` to filter for all accessdenied within s3 buckets then you will see specific user can't perform specific action for some reason
 
-```
-kms:Decrypt
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>kms:Decrypt</code></pre>
+</details>
 
 ![3c347eddf63d606aa2743cbae572582f.png](/resources/3c347eddf63d606aa2743cbae572582f.png)
 * * *

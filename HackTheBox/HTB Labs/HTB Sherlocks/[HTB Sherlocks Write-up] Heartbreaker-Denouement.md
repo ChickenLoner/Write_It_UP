@@ -25,9 +25,10 @@ Then after examined  `access.log`, we can see that there are several requests fr
 
 And according to MITRE ATT&CK, this action is called [Wordlist Scanning](https://attack.mitre.org/techniques/T1595/003/)
 
-```
-Wordlist Scanning
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Wordlist Scanning</code></pre>
+</details>
 
 >Task 2: It seems a web request possibly could have been rerouted, potentially revealing the web server's web path to the Threat Actor. What specific HTML status code might have provided this information?
 
@@ -39,9 +40,10 @@ There are 2 HTTP Status code that we might want to take a look which are
 
 I didnot find 302 but I found one 301 so it has to be this one
 
-```
-301
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>301</code></pre>
+</details>
 
 >Task 3: What was the initial payload submitted by the threat actor to exploit weakness of the web server?
 
@@ -49,17 +51,19 @@ I didnot find 302 but I found one 301 so it has to be this one
 
 We have to investigate `error.log` and we can see that the threat actor tried to exploit LFI with `file:///etc/passwd` payload
 
-```
-file:///etc/passwd
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>file:///etc/passwd</code></pre>
+</details>
 
 >Task 4: What is the name of the vulnerability exploited by the Threat Actor?
 
 The Threat Actor send POST requests and get what he want from a server, it is SSRF
 
-```
-Server Side Request Forgery
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Server Side Request Forgery</code></pre>
+</details>
 
 >Task 5: At what time (UTC) did the Threat Actor first realize they could access the cloud metadata of the web server instance?
 
@@ -71,9 +75,10 @@ We can see that from here, The Threat actor gained access to cloud metadata of t
 
 We can confirm `/etc/timezone` to check the timezone before submit the timestamp and fortunately, this machine is using UTC so we do not need to convert anything.
 
-```
-2024-03-13 14:06:21
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-03-13 14:06:21</code></pre>
+</details>
 
 >Task 6: For a clearer insight into the Database content that could have been exposed, could you provide the name of at least one of its possible tables?
 
@@ -85,9 +90,10 @@ There is `.mysql_history` file on `ubuntu` user home directory which stores all 
 
 We can see that there is a table name `CustomerInfo` in `CUSTOMER_DATA` database so this table is the one that could have been exposed to the threat actor.
 
-```
-CustomerInfo
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CustomerInfo</code></pre>
+</details>
 
 >Task 7: Which AWS API call functions similarly to the 'whoami' command in Windows or Linux?
 
@@ -95,9 +101,10 @@ CustomerInfo
 
 an API call function similarly to `whoami` command is [GetCallerIdentity](https://docs.aws.amazon.com/STS/latest/APIReference/API_GetCallerIdentity.html)
 
-```
-GetCallerIdentity
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>GetCallerIdentity</code></pre>
+</details>
 
 ![0095ad6e8cc7bad679029048aa4cfc99.png](/resources/0095ad6e8cc7bad679029048aa4cfc99.png)
 
@@ -117,9 +124,10 @@ We know that the threat actor had accessed to cloud metadata of web server insta
 
 We could not use `EC2DatabaseConnection` to solve this task since this identity could access all 17 regions but luckily for us that `ec2-instance` were not widely used and only used on these 2 regions which are correct answers on this task.
 
-```
-us-east-1,us-east-2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>us-east-1,us-east-2</code></pre>
+</details>
 
 >Task 9: Discovering that the compromised IAM account was used prior to the web server attack, this suggests the threat actor might have obtained the public IP addresses of running instances. Could you specify the API call the could have exposed this information?
 
@@ -131,9 +139,10 @@ We can suspect that the threat actor used `GetCallerIdentity` From task 7 and we
 
 Then we can find any API calls that could expose an information about running instance which there is one particular API call that could do this job which is [DescribeInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
 
-```
-DescribeInstances
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>DescribeInstances</code></pre>
+</details>
 
 >Task 10: Looks like the Threat Actor didn’t only use a single IP address. What is the total number of unsuccessful requests made by the Threat Actor?
 
@@ -141,9 +150,10 @@ DescribeInstances
 
 We already know the first IP address of the Threat Actor which is `35.169.66.138` but we need to find another one and one way to find out is to use `errorCode="*"` and find top 2 `sourceIPAddress` that appeared with this query, now we have both IP address of the threat actor so we can combine them and answer this task.
 
-```
-742
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>742</code></pre>
+</details>
 
 >Task 11: Can you identify the Amazon Resource Names (ARNs) associated with successful API calls that might have revealed details about the victim's cloud infrastructure? Separate ARNs by comma and in ascending order.
 
@@ -158,9 +168,10 @@ And as we already know that `arn:aws:iam::949622803460:user/devops-ash` was used
 
 Then after digging a little bit more, we can also confirm that  `arn:aws:sts::949622803460:assumed-role/EC2DatabaseConnection/i-0bdf91168b50e943e` was used by `34.202.84.37` which is another IP address of the threat actor
 
-```
-arn:aws:iam::949622803460:user/devops-ash,arn:aws:sts::949622803460:assumed-role/EC2DatabaseConnection/i-0bdf91168b50e943e
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>arn:aws:iam::949622803460:user/devops-ash,arn:aws:sts::949622803460:assumed-role/EC2DatabaseConnection/i-0bdf91168b50e943e</code></pre>
+</details>
 
 >Task 12: Evidence suggests another database was targeted. Identify all snapshot names created. Separate names by comma and in ascending order.
 
@@ -172,9 +183,10 @@ We will have to search for [CreateDBSnapshot](https://docs.aws.amazon.com/Amazon
 
 And this is the second one, the threat actor only created 2 DB snapshots so we can submit both as an answer of this task rightaway.
 
-```
-transactiondb-prod-2024-03-13-06-53,wb-customerdb-prod-2024-03-13-07-59
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>transactiondb-prod-2024-03-13-06-53,wb-customerdb-prod-2024-03-13-07-59</code></pre>
+</details>
 
 >Task 13: The Threat Actor successfully exfiltrated the data to their account. Could you specify the account ID that was used?
 
@@ -184,9 +196,10 @@ We can search for one of `dBSnapshotIdentifier`, we found earlier and obtain the
 
 When I gave a hint to my new friend on discord, he gave me this [link](https://docs.datadoghq.com/security/default_rules/cloudtrail-aws-rds-snapshot-exfiltration/) which is related to this technique directly (RDS snapshot exfiltration) so if possible, you should give it a try! 
 
-```
-143637014344
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>143637014344</code></pre>
+</details>
 
 >Task 14: Which MITRE Technique ID corresponds to the activity described in Question 13?
 
@@ -194,9 +207,10 @@ When I gave a hint to my new friend on discord, he gave me this [link](https://d
 
 This technique is called [Transfer Data to Cloud Account](https://attack.mitre.org/techniques/T1537/) according to MITRE ATT&CK framework.
 
-```
-T1537
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1537</code></pre>
+</details>
 
 ![4fbd2add930d702e2f0beb900af3e471.png](/resources/4fbd2add930d702e2f0beb900af3e471.png)
 https://labs.hackthebox.com/achievement/sherlock/1438364/700

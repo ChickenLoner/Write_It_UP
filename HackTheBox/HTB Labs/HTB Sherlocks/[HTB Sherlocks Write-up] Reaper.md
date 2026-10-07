@@ -20,9 +20,10 @@ This sherlock was launched with a new [blog](https://www.hackthebox.com/blog/ntl
 
 We can filter for `nbns` for NetBIOS Name Service (NBNS) Refresh packet which allows a device to refresh its NetBIOS name registration on the network. and as you can see that this IP address is refreshing its NetBIOS name that is Folera-Wkstn001
 
-```
-172.17.79.129
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>172.17.79.129</code></pre>
+</details>
 
 >Task 2: What is the IP Address for Forela-Wkstn002?
 
@@ -30,9 +31,10 @@ We can filter for `nbns` for NetBIOS Name Service (NBNS) Refresh packet which al
 
 We could do the same as previous task on this task to get an IP address of Forela-Wkstn002.
 
-```
-172.17.79.136
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>172.17.79.136</code></pre>
+</details>
 
 >Task 3: Which user account's hash was stolen by attacker?
 
@@ -49,14 +51,17 @@ After filtered with `smb2 && ip.addr == 172.17.79.135`, we can see that this unk
 
 Its time to open audit log to see that there is one login event that look very suspicious since there is no Logon ID (NULL SID) and it was authenticated via NTLM and the source IP address is the suspicious device we are after.
 
-```
-arthur kyle
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>arthur kyle</code></pre>
+</details>
 
 >Task 4: What is the IP Address of Unknown Device used by the attacker to intercept credentials?
-```
-172.17.79.135
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>172.17.79.135</code></pre>
+</details>
 
 >Task 5: What was the fileshare navigated by the victim user account?
 
@@ -64,32 +69,40 @@ arthur kyle
 
 For this one, we have to find for Tree Connect that response with Error like this which mean file share could not be found or was not recognized by the server. This could happen if the share doesn't exist, is offline, or the client doesn't have access rights.
 
-```
-\\DC01\Trip
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>\\DC01\Trip</code></pre>
+</details>
 
 >Task 6: What is the source port used to logon to target workstation using the compromised account?
 
 ![572eaf443289950ed21ca9eb612f02f6.png](/resources/572eaf443289950ed21ca9eb612f02f6.png)
-```
-40252
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>40252</code></pre>
+</details>
 
 >Task 7: What is the Logon ID for the malicious session?
-```
-0x64A799
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>0x64A799</code></pre>
+</details>
 
 >Task 8: The detection was based on the mismatch of hostname and the assigned IP Address.What is the workstation name and the source IP Address from which the malicious logon occur?
 
-```
-FORELA-WKSTN002, 172.17.79.135
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>FORELA-WKSTN002, 172.17.79.135</code></pre>
+</details>
 
 >Task 9: When did the malicious logon happened. Please make sure the timestamp is in UTC?
-```
-2024-07-31 04:55:16
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-07-31 04:55:16</code></pre>
+</details>
 
 >Task 10: What is the share Name accessed as part of the authentication process by the malicious tool used by the attacker?
 
@@ -97,9 +110,10 @@ FORELA-WKSTN002, 172.17.79.135
 
 For this, we have to inspect EventID 5140 (network share accessed) that happened after the threat actor authenticated as arthur
 
-```
-\\*\IPC$
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>\\*\IPC$</code></pre>
+</details>
 
 ![6908aa531e679423f53a8ceb785dd685.png](/resources/6908aa531e679423f53a8ceb785dd685.png)
 * * *

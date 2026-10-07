@@ -11,9 +11,11 @@ Khalid has just logged onto a host that he and his team use as a testing host fo
 
 ![333a982e999be77fdf82dbea9de179f5.png](/resources/333a982e999be77fdf82dbea9de179f5.png)
 So after opened provided network pcap file, first thing I noticed is the suspicious high DNS traffic since you will not see these much since its just for DOMAIN NAME RESOLUTION so DNS exfiltration or DNS tunneling could happened during this capture.
-```
-DNS
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>DNS</code></pre>
+</details>
 
 >Task 2: There seems to be a lot of traffic between our host and another, what is the IP address of the suspect host?
 
@@ -21,9 +23,10 @@ DNS
 
 Now lets filter for DNS protocol to confirm our suspicion which we will see that 192.168.157.144 kept query with weird subdomain to 192.168.157.155 on port 53 so we could say that suspect host is C2 server of the threat actor that will receive encoded data via DNS query.
 
-```
-192.168.157.145
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.157.145</code></pre>
+</details>
 
 >Task 3: What is the first command the attacker sends to the client?
 
@@ -39,9 +42,10 @@ Put name query into Input field and use "From Hex" recipe then we can see conten
 
 Then we will have the first command used by threat actor from packet 14757 that is `whoami` 
 
-```
-whoami
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>whoami</code></pre>
+</details>
 
 >Task 4: What is the version of the DNS tunneling tool the attacker is using?
 
@@ -65,9 +69,10 @@ Now after we carefully reviewed files in test's user download directory, we will
 **What is dnscat2?**
 Its a tool that will make DNS tunneling which will create encrypted channel for C2 communication which was designed to run on client machine so thats why we can see it here.
 
-```
-0.07
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0.07</code></pre>
+</details>
 
 >Task 5: The attackers attempts to rename the tool they accidentally left on the clients host. What do they name it to?
 
@@ -75,18 +80,21 @@ Its a tool that will make DNS tunneling which will create encrypted channel for 
 
 Scrolling down for a bit then we will see that the threat actor renamed dnscat2 executable file to other name that look legitimate.
 
-```
-win_installer.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>win_installer.exe</code></pre>
+</details>
 
 >Task 6: The attacker attempts to enumerate the users cloud storage. How many files do they locate in their cloud storage directory?
 
 ![c67538aac1e6d3377478bb55010cce0a.png](/resources/c67538aac1e6d3377478bb55010cce0a.png)
 
 After that threat actor explored many directories on infected machine including OneDrive which is cloud storage service of Microsoft which there is no file located in this directory at all.
-```
-0
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>0</code></pre>
+</details>
 
 >Task 7: What is the full location of the PII file that was stolen?
 
@@ -96,18 +104,20 @@ Scrolling down for a bit, We can see a lot of struggling to read confidential fi
 
 But the threat actor eventually got it and it shows PII of user from this csv file
 
-```
-C:\Users\test\Documents\client data optimisation\user details.csv
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\test\Documents\client data optimisation\user details.csv</code></pre>
+</details>
 
 >Task 8: Exactly how many customer PII records were stolen?
 
 ![29210a6eade89566dde810a2dc48f7dd.png](/resources/29210a6eade89566dde810a2dc48f7dd.png)
 We know that it has index start from 0 so we will have to scroll to the bottom of this and find the last number and add 1 and that will be the number of user details stores on that csv file.
 
-```
-721
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>721</code></pre>
+</details>
 
 ![f4b873f18b8ca1e68d6ec9ec617a6a79.png](/resources/f4b873f18b8ca1e68d6ec9ec617a6a79.png)
 * * *

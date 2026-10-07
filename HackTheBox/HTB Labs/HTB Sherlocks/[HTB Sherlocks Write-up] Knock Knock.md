@@ -14,17 +14,20 @@ After opened pcap file on Wireshark, I reviewed question again and thought that 
 
 If a port is opened then it would send SYN, ACK packet back so we could filter with `ip.addr == 172.31.39.46 && frame.number >= 76081 && frame.number <= 207174 && tcp.flags == 0x012` which will see that there are 5 opened ports on Forela Dev server.
 
-```
-21,22,3306,6379,8086
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>21,22,3306,6379,8086</code></pre>
+</details>
 
 >Task 2: Whats the UTC time when attacker started their attack against the server?
 
 ![3ab512b2b37ac44801b1dbb68a678cc0.png](/resources/3ab512b2b37ac44801b1dbb68a678cc0.png)
 Go back to where the attacker started sending SYN packet to port 1 on the server then we will have the answer of this question.
-```
-21/03/2023 10:42:23
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>21/03/2023 10:42:23</code></pre>
+</details>
 
 >Task 3: What's the MITRE Technique ID of the technique attacker used to get initial access?
 
@@ -36,9 +39,10 @@ So we know that the port scan activity ended at packet 207174 so we could use `i
 
 After take a look at one of these stream, we could see that the attacker tried to authenticate with different username and password so... it is a password spray attack.
 
-```
-T1110.003
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1110.003</code></pre>
+</details>
 
 >Task 4: What are valid set of credentials used to get initial foothold?
 
@@ -49,14 +53,17 @@ We can search for FTP Status 230 Login Successful then we follow that stream to 
 
 ![19322f48ccf0a2e4aa698d5e8979adf3.png](/resources/19322f48ccf0a2e4aa698d5e8979adf3.png)
 
-```
-tony.shephard:Summer2023!
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>tony.shephard:Summer2023!</code></pre>
+</details>
 
 >Task 5: What is the Malicious IP address utilized by the attacker for initial access?
-```
-3.109.209.43
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>3.109.209.43</code></pre>
+</details>
 
 >Task 6: What is name of the file which contained some config data and credentials?
 
@@ -70,16 +77,19 @@ After carefully review the content of this file, I recognized that this is back 
 
 You can read more about Port Knocking [here](https://medium.com/@reotmani/port-knocking-dbe6d8aaeb9)
 
-```
-.backup
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>.backup</code></pre>
+</details>
 
 >Task 7: Which port was the critical service running?
 
 ![36063f9c4ca6a5e92bf46dfcfbaa49c0.png](/resources/36063f9c4ca6a5e92bf46dfcfbaa49c0.png)
-```
-24456
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>24456</code></pre>
+</details>
 
 >Task 8: Whats the name of technique used to get to that critical service?
 
@@ -87,21 +97,26 @@ You can read more about Port Knocking [here](https://medium.com/@reotmani/port-k
 
 We can go back to Wireshark and we could see that the attacker knocked 29999, 50234, 45087 ports in order then finally established connection to internal FTP server on port 24456. 
 
-```
-Port Knocking
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Port Knocking</code></pre>
+</details>
 
 >Task 9: Which ports were required to interact with to reach the critical service?
-```
-29999,45087,50234
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>29999,45087,50234</code></pre>
+</details>
 
 >Task 10: Whats the UTC time when interaction with previous question ports ended?
 
 Enter the timestamp of last port that was knocked
-```
-21/03/2023 10:58:50
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>21/03/2023 10:58:50</code></pre>
+</details>
 
 >Task 11: What are set of valid credentials for the critical service?
 
@@ -111,17 +126,20 @@ We already know that the attacker already obtained valid credential for internal
 
 We can see that this credential was used to authenticate here as expected.
 
-```
-abdullah.yasin:XhlhGame_90HJLDASxfd&hoooad
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>abdullah.yasin:XhlhGame_90HJLDASxfd&amp;hoooad</code></pre>
+</details>
 
 >Task 12: At what UTC Time attacker got access to the critical server?
 
 ![37aa4d14d552ce4a46fc7b8931c61e75.png](/resources/37aa4d14d552ce4a46fc7b8931c61e75.png)
 We have to find the packet that sent message "230 Login successful" to user which is frame 210799 so we could use this timestamp to answer this question.
-```
-21/03/2023 11:00:01
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>21/03/2023 11:00:01</code></pre>
+</details>
 
 >Task 13: Whats the AWS AccountID and Password for the developer "Abdullah"?
 
@@ -137,9 +155,10 @@ To get the content of this file, we need to go to frame 211114 and follow TCP st
 
 This sql file is used to create AWS_EC2_DEV table with name, accountID and password that will be inserted into after that and we could see AWS AccountID and Password of "Abdullah" right there.
 
-```
-391629733297:yiobkod0986Y[adij@IKBDS
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>391629733297:yiobkod0986Y[adij@IKBDS</code></pre>
+</details>
 
 >Task 14: Whats the deadline for hiring developers for forela?
 
@@ -159,9 +178,10 @@ Since we need to export this file so we have to click "Save as..." and name it a
 
 After exported this file out, opened it then we can see deadline of 4 activitities including hiring developers one.
 
-```
-30/08/2023
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>30/08/2023</code></pre>
+</details>
 
 >Task 15: When did CEO of forela was scheduled to arrive in pakistan?
 
@@ -177,9 +197,10 @@ Go to frame 211188 to read the content of this text file.
 
 We can see that CEO Happy will arrive in pakistan on 8 march 2023.
 
-```
-08/03/2023
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>08/03/2023</code></pre>
+</details>
 
 >Task 16: The attacker was able to perform directory traversel and escape the chroot jail.This caused attacker to roam around the filesystem just like a normal user would. Whats the username of an account other than root having /bin/bash set as default shell?
 
@@ -195,9 +216,10 @@ Go to frame 211273 and follow the stream.
 
 We can see that beside from root, cyberjunkie is the user that has /bin/bash as default shell.
 
-```
-cyberjunkie
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>cyberjunkie</code></pre>
+</details>
 
 >Task 17: Whats the full path of the file which lead to ssh access of the server by attacker?
 
@@ -209,9 +231,10 @@ The attacker navigated to `/opt/reminders` and then downloaded `.reminder` file 
 
 its on frame 211605 which we can see that there is a GitHub repo that might contain SSH credential that the attacker found out and used that credential to gain access to server.
 
-```
-/opt/reminders/.reminder
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/opt/reminders/.reminder</code></pre>
+</details>
 
 >Task 18: Whats the SSH password which attacker used to access the server and get full access?
 
@@ -231,9 +254,10 @@ Lets take a look at commit history when it created.
 
 We can see that there is SSH password when this repo was created and the attacker used this to access server.
 
-```
-YHUIhnollouhdnoamjndlyvbl398782bapd
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>YHUIhnollouhdnoamjndlyvbl398782bapd</code></pre>
+</details>
 
 >Task 19: Whats the full url from where attacker downloaded ransomware?
 
@@ -245,14 +269,17 @@ Since we could not read SSH traffic so what left is to find any connection happe
 
 The attacker download zip file that might contain ransomware using wget 
 
-```
-้้http://13.233.179.35/PKCampaign/Targets/Forela/Ransomware2_server.zip
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>้้http://13.233.179.35/PKCampaign/Targets/Forela/Ransomware2_server.zip</code></pre>
+</details>
 
 >Task 20: Whats the tool/util name and version which attacker used to download ransomware?
-```
-Wget/1.21.2
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Wget/1.21.2</code></pre>
+</details>
 
 >Task 21: Whats the ransomware name?
 
@@ -260,9 +287,10 @@ Wget/1.21.2
 
 I almost exported this file out but then I keep scrolling to the bottom and found that there is a "GonnaCry" directory so the ransomware that was downloaded is GonnaCry ransomware 
 
-```
-GonnaCry
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>GonnaCry</code></pre>
+</details>
 
 ![5a3498b675f4f3c52a3a0b3b7043b853.png](/resources/5a3498b675f4f3c52a3a0b3b7043b853.png)
 * * *

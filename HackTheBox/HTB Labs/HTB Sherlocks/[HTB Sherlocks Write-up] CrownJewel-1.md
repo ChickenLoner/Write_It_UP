@@ -24,9 +24,10 @@ The volume shadow copy related services will be started before the creation of t
 
 After filtered with Event ID 7036 (**The service has entered the ... state**) with Event Source = ESENT, we can use "Find" to search for volume shadow copy service so we will not have to go through every one of these logs, and luckily for us that there is only 1 volume shadow copy log on this file and this is the timestamp of this service entered running state. 
 
-```
-2024-05-14 03:42:16
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-05-14 03:42:16</code></pre>
+</details>
 
 >Task 2: When a volume shadow snapshot is created, the Volume shadow copy service validates the privileges using the Machine account and enumerates User groups. Find the User groups it enumerates, the Subject Account name, and also identify the Process ID(in decimal) of the Volume shadow copy service process
 
@@ -42,9 +43,10 @@ And then we can see that at the same timestamp, this process were enumerated "Ba
 
 And of course, "Administrators" group 
 
-```
-Administrators, Backup Operators, DC01$
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Administrators, Backup Operators, DC01$</code></pre>
+</details>
 
 >Task 3: Identify the Process ID (in Decimal) of the volume shadow copy service process.
 
@@ -52,9 +54,10 @@ Administrators, Backup Operators, DC01$
 
 From this log, it logged process ID in hex so we just need to convert it to decimal (easily done with built-in calculator in Programmer mode)
 
-```
-4496
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4496</code></pre>
+</details>
 
 >Task 4: Find the assigned Volume ID/GUID value to the Shadow copy snapshot when it was mounted.
 
@@ -62,9 +65,10 @@ From this log, it logged process ID in hex so we just need to convert it to deci
 
 Now we just have to open `Microsoft-Windows-NTFS.evtx` which stores events related to the NTFS (New Technology File System) file system and find for any event log 
 
-```
-{06c4a997-cca8-11ed-a90f-000c295644f9}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>{06c4a997-cca8-11ed-a90f-000c295644f9}</code></pre>
+</details>
 
 >Task 5: Identify the full path of the dumped NTDS database on disk.
 
@@ -78,9 +82,10 @@ And of course, there is a tool that could parse `$MFT` file for us which is [MFT
 
 "Find" feature always come in handy on every tool so we can just use that and then we will see uncommon file path of `ntds.dit` file that is the answer of this task
  
-```
-C:\Users\Administrator\Documents\backup_sync_Dc\Ntds.dit
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Administrator\Documents\backup_sync_Dc\Ntds.dit</code></pre>
+</details>
 
 >Task 6: When was newly dumped ntds.dit created on disk?
 
@@ -88,9 +93,10 @@ C:\Users\Administrator\Documents\backup_sync_Dc\Ntds.dit
 
 Scrolled a little bit to the right until we found "Created0x10" column, this is a column store created timestamp of every file.
 
-```
-2024-05-14 03:44:22
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-05-14 03:44:22</code></pre>
+</details>
 
 >Task 7: A registry hive was also dumped alongside the NTDS database. Which registry hive was dumped and what is its file size in bytes?
 
@@ -98,9 +104,10 @@ Scrolled a little bit to the right until we found "Created0x10" column, this is 
 
 We already know that to crack hashes from NTDS, we need SYSTEM registry hive but there will be too many results if we searched for "SYSTEM" so lets assume that registry hive would also be dumped to the same folder as `ntds.dit` file which there is one as expected right here.
 
-```
-SYSTEM, 17563648
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SYSTEM, 17563648</code></pre>
+</details>
 
 ![b45f8884f9923bf9c380dc1d48faa736.png](/resources/b45f8884f9923bf9c380dc1d48faa736.png)
 * * *

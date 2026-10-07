@@ -32,9 +32,10 @@ And we can see that there are 22,440 events detected from AWS Cloudtrail log of 
 
 To obtain the answer of this question, we need to go back to the artifacts collected from previous sherlock and calculate MD5 of the the `santa_deliveries` file which leaked the existence of public S3 bucket (`https://papa-noel.s3.eu-west-3.amazonaws.com/santa-list.csv`)
 
-```
-62d5c1f1f9020c98f97d8085b9456b05
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>62d5c1f1f9020c98f97d8085b9456b05</code></pre>
+</details>
 
 >Task 2: What time did the Threat Actor begin their automated retrieval of the contents of our exposed S3 bucket?
 
@@ -46,9 +47,10 @@ I noticed 43 events from python user-agent which likely to indicate the automati
 
 Upon the filtering for this user-agent, we can see that all of them originated from the same IP address - 191.101.31.57, this reveals the automatic file retrival from "papa-noel" bucket.
 
-```
-2023-11-29 08:24:07
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-11-29 08:24:07</code></pre>
+</details>
 
 >Task 3: What time did the Threat Actor complete their automated retrieval of the contents of our exposed S3 bucket?
 
@@ -56,14 +58,17 @@ Upon the filtering for this user-agent, we can see that all of them originated f
 
 The automated retreival ended at 2023-11-29 08:24:16, 9 seconds to retrieve files from the exposed S3 bucket.
 
-```
-2023-11-29 08:24:16
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-11-29 08:24:16</code></pre>
+</details>
 
 >Task 4: Based on the Threat Actor's user agent - what scripting language did the TA likely utilise to retrieve the files?
-```
-python
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>python</code></pre>
+</details>
 
 >Task 5: Which file did the Threat Actor locate some hard coded credentials within?
 
@@ -77,9 +82,10 @@ So the only way to make up for this is to read Official write-up but i can not b
 
 As we can see that `claus.py` exposed the existence of `north-pole-private`, a private S3 bucket along with AWS Access and Secret key to access it. 
 
-```
-claus.py
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>claus.py</code></pre>
+</details>
 
 >Task 6: Please detail all confirmed malicious IP addresses. (Ascending Order)
 
@@ -91,9 +97,10 @@ We know that 191.101.31.57 is one of them but we need to find the second IP addr
 
 We can filter by this bucket with the time range after the retrieval of first S3 bucket, which we can see that the threat actor used different IP address to access private S3 bucket after successfully ListBucket using leaked access key which belongs to "elfadmin" 
 
-```
-45.133.193.41, 191.101.31.57
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>45.133.193.41, 191.101.31.57</code></pre>
+</details>
 
 >Task 7: We are extremely concerned the TA managed to compromise our private S3 bucket, which contains an important VPN file. Please confirm the name of this VPN file and the time it was retrieved by the TA.
 
@@ -105,14 +112,17 @@ After successfully utilized access key to access private S3 bucket, the threat a
 
 The openvpn configuration file can be used to connect and conduct operation inside the internal network later.
 
-```
-bytesparkle.ovpn, 2023-11-29 10:16:53
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>bytesparkle.ovpn, 2023-11-29 10:16:53</code></pre>
+</details>
 
 >Task 8: Please confirm the username of the compromised AWS account?
-```
-elfadmin
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>elfadmin</code></pre>
+</details>
 
 >Task 9: Based on the analysis completed Santa Claus has asked for some advice. What is the ARN of the S3 Bucket that requires locking down?
 
@@ -120,9 +130,10 @@ elfadmin
 
 The root cause of this breach came from public S3 bucket exposed AWS access key and private S3 bucket so lock down `papa-noel` is obviously the right choice here.
 
-```
-arn:aws:s3:::papa-noel
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>arn:aws:s3:::papa-noel</code></pre>
+</details>
 
 ![a28db93ad85bf47f6af67bb712d9cb7c.png](/resources/a28db93ad85bf47f6af67bb712d9cb7c.png)
 

@@ -13,9 +13,11 @@ Torrin is suspected to be an insider threat in Forela. He is believed to have le
 We only have 1 artifact avaliable here which is Windows Notifications database
 ![6ca2ddd874e8bb8e195d49821c298d6d.png](/resources/6ca2ddd874e8bb8e195d49821c298d6d-1.png)
 So after opened it with DB Browser for SQLite, go to Notification table and then you will see a lot of slack notification stored here.
-```
-slack
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>slack</code></pre>
+</details>
 
 >Task 2: What's the name of the rival company to which Torrin leaked the data?
 
@@ -23,35 +25,45 @@ slack
 When inspect value inside we can see unfamiliar name which should be the rival company at this point
 ![de2257ecca2423cc46c6e4c3d126cdba.png](/resources/de2257ecca2423cc46c6e4c3d126cdba-1.png)
 And the one we invited Torrin is Cyberjunkie, the creator of this sherlock
-```
-PrimeTech Innovations
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>PrimeTech Innovations</code></pre>
+</details>
 
 >Task 3: What is the username of the person from the competitor organization whom Torrin shared information with?
-```
-Cyberjunkie-PrimeTechDev:
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Cyberjunkie-PrimeTechDev:</code></pre>
+</details>
 
 >Task 4: What's the channel name in which they conversed with each other?
 
 ![eb7a8e7d3f9f7530c7d8e9a290ccc858.png](/resources/eb7a8e7d3f9f7530c7d8e9a290ccc858-1.png)
-```
-forela-secrets-leak
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>forela-secrets-leak</code></pre>
+</details>
 
 >Task 5: What was the password for the archive server?
 
 ![49b8f5432621c8728a2d3a015890caf1.png](/resources/49b8f5432621c8728a2d3a015890caf1-1.png)
-```
-Tobdaf8Qip$re@1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Tobdaf8Qip$re@1</code></pre>
+</details>
 
 >Task 6: What was the URL provided to Torrin to upload stolen data to?
 
 ![c99fc0f574d57768119f07f5b713ecc0.png](/resources/c99fc0f574d57768119f07f5b713ecc0-1.png)
-```
-https://drive.google.com/drive/folders/1vW97VBmxDZUIEuEUG64g5DLZvFP-Pdll?usp=sharing
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>https://drive.google.com/drive/folders/1vW97VBmxDZUIEuEUG64g5DLZvFP-Pdll?usp=sharing</code></pre>
+</details>
 
 >Task 7: When was the above link shared with Torrin?
 
@@ -72,16 +84,19 @@ utc_time = datetime.utcfromtimestamp(epoch_time)
 print("UTC Time:", utc_time)
 ```
 
-```
-2023-04-20 10:34:49
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-04-20 10:34:49</code></pre>
+</details>
 
 >Task 8: For how much money did Torrin leak Forela's secrets?
 
 ![64682c658e56dd997ecbf74b3216cb16.png](/resources/64682c658e56dd997ecbf74b3216cb16-1.png)
-```
-£10000
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>£10000</code></pre>
+</details>
 
 ![53fcc9e536bb851d141e2e4d77446650.png](/resources/53fcc9e536bb851d141e2e4d77446650-1.png)
 * * *

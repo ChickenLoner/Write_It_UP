@@ -10,9 +10,11 @@ There has been a new joiner in Forela, they have downloaded their onboarding doc
 >Task 1: What is the MD5 hash of the MFT?
 
 ![1bfa426c86a9c2c8c8406ff7ae149a7f.png](/resources/1bfa426c86a9c2c8c8406ff7ae149a7f.png)
-```
-3730c2fedcdc3ecd9b83cbea08373226
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>3730c2fedcdc3ecd9b83cbea08373226</code></pre>
+</details>
 
 >Task 2: What is the name of the only user on the system?
 
@@ -32,9 +34,10 @@ Search for `\Users\` directory then we will have all users on this system
 
 Easier than that? just use MFTExplorer and navigate to this path directly :D
 
-```
-Randy Savage
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Randy Savage</code></pre>
+</details>
 
 >Task 3: What is the name of the malicious HTA that was downloaded by that user?
 
@@ -46,9 +49,10 @@ one way to find this is to search for `.hta` file within `Downloads` directory o
 
 Another way... yep, that was easy
 
-```
-Onboarding.hta
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Onboarding.hta</code></pre>
+</details>
 
 >Task 4: What is the ZoneId of the download for the malicious HTA file?
 
@@ -62,14 +66,17 @@ Look at these from hexdump in MFTExplorer
 
 `ZoneId = 3` means that this file was downloaded from the internet and the url is stored in the following `HostUrl` variable 
 
-```
-3
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3</code></pre>
+</details>
 
 >Task 5: What is the download URL for the malicious HTA?
-```
-https://doc-10-8k-docs.googleusercontent.com/docs/securesc/9p3kedtu9rd1pnhecjfevm1clqmh1kc1/9mob6oj9jdbq89eegoedo0c9f3fpmrnj/1680708975000/04991425918988780232/11676194732725945250Z/1hsQhtmZJW9xZGgniME93H3mXZIV4OKgX?e=download&uuid=56e1ab75-ea1e-41b7-bf92-9432cfa8b645&nonce=u98832u1r35me&user=11676194732725945250Z&hash=j5meb42cqr57pa0ef411ja1k70jkgphq
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>https://doc-10-8k-docs.googleusercontent.com/docs/securesc/9p3kedtu9rd1pnhecjfevm1clqmh1kc1/9mob6oj9jdbq89eegoedo0c9f3fpmrnj/1680708975000/04991425918988780232/11676194732725945250Z/1hsQhtmZJW9xZGgniME93H3mXZIV4OKgX?e=download&amp;uuid=56e1ab75-ea1e-41b7-bf92-9432cfa8b645&amp;nonce=u98832u1r35me&amp;user=11676194732725945250Z&amp;hash=j5meb42cqr57pa0ef411ja1k70jkgphq</code></pre>
+</details>
 
 >Task 6: What is the allocated size for the HTA file? (bytes)
 
@@ -79,18 +86,20 @@ csv file could not answer us with this one, we need to use MFTExplorer and get p
 ![44bd8ab6163b5f30127c0d4c9d4d8899.png](/resources/44bd8ab6163b5f30127c0d4c9d4d8899.png)
 Convert it to demical then we will have allocated size of this file in bytes and demical
 
-```
-4096
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4096</code></pre>
+</details>
 
 >Task 7: What is the real size of the HTA file? (bytes)
 
 ![d6a4bc15da5ecba3324cf6a70f15d8e4.png](/resources/d6a4bc15da5ecba3324cf6a70f15d8e4.png)
 We can convert logical size to demical or just go to csv file for this one
 
-```
-1144
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>1144</code></pre>
+</details>
 
 >Task 8: When was the powerpoint presentation downloaded by the user?
 
@@ -102,9 +111,10 @@ Search for powerpoint file extension `.pptx` with this one then we will have Cre
 
 We can also find this one in MFTExplorer since it parsed the same data from MFT but not only that, we found other files resides on this directory as well which will be useful for next task
 
-```
-05/04/2023 13:11:49
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>05/04/2023 13:11:49</code></pre>
+</details>
 
 >Task 9: The user has made notes of their work credentials, what is their password?
 
@@ -116,9 +126,10 @@ I suspected that `notes.txt` might store this work credentials so I inspected it
 
 You can also search for password using your local hex editor tool like this
 
-```
-ReallyC00lDucks2023!
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ReallyC00lDucks2023!</code></pre>
+</details>
 
 >Task 10: How many files remain under the C:\Users\ directory? (Recursively)
 
@@ -126,9 +137,10 @@ ReallyC00lDucks2023!
 
 For this one, we need to filter for InUse = TRUE, ParentPath start with `.\Users`, IsDirectory = FALSE and lastly, IsAds = FALSE then we will have total of files on this directory recursively.
 
-```
-3471
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3471</code></pre>
+</details>
 
 ![4921d4f6b4e6881aed01756ef409a8f9.png](/resources/4921d4f6b4e6881aed01756ef409a8f9.png)
 * * *

@@ -24,22 +24,28 @@ Then its time for PECmd from EZ Tools to parse and process prefetch folder and f
 I did input a whole prefetch folder here ...actually only psexc executable is already enough
 ![e08ce7c632f9aa172d25b4b6ea45ce44.png](/resources/e08ce7c632f9aa172d25b4b6ea45ce44.png)
 Open result file in Timeline Explorer and search for this executable, you can see it was executed 9 times
-```
-9
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>9</code></pre>
+</details>
 
 >Task 2: What is the name of the service binary dropped by PsExec tool allowing attacker to execute remote commands?
-```
-psexesvc.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>psexesvc.exe</code></pre>
+</details>
 
 >Task 3: Now we have confirmed that PsExec ran multiple times, we are particularly interested in the 5th Last instance of the PsExec. What is the timestamp when the PsExec Service binary ran?
 
 ![c9028801db523894c89079aee531814a.png](/resources/c9028801db523894c89079aee531814a.png)
 This answer could be obtained from timeline file that was created along with result file by PECmd
-```
-07/09/2023 12:06:54
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>07/09/2023 12:06:54</code></pre>
+</details>
 
 >Task 4: Can you confirm the hostname of the workstation from which attacker moved laterally?
 
@@ -48,32 +54,40 @@ I did some research on how to detect psexec and found this blog posted by [HackT
 ![3c76b12b2811cbc7ac910bb29fadc117.png](/resources/3c76b12b2811cbc7ac910bb29fadc117.png)
 From the blog, we know that after PSEXEC was executed, it will generated `.key` file that named after hostname so we will use Usr Journal artifact to solve this (`./MFTECmd.exe -f 'C:\Users\chicken\Desktop\Sample\HTB\1Easy\tracer\C\$Extend\$J' --csv .\Results --csvf USNJOURNAL_DETECTION.csv`)
 ![d783b454338fce71c84b758c3be43dd2.png](/resources/d783b454338fce71c84b758c3be43dd2.png)
-```
-FORELA-WKSTN001
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>FORELA-WKSTN001</code></pre>
+</details>
 
 >Task 5: What is full name of the Key File dropped by 5th last instance of the Psexec?
 
 ![30989f3ce19a6023c4c19ed7780b613b.png](/resources/30989f3ce19a6023c4c19ed7780b613b.png)
 We already obtained the 5th last instance time from task 3 so we can correlated timeline and obtained the right key here
-```
-PSEXEC-FORELA-WKSTN001-95F03CFE.key
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>PSEXEC-FORELA-WKSTN001-95F03CFE.key</code></pre>
+</details>
 
 >Task 6: Can you confirm the timestamp when this key file was created on disk?
 
 It was created after PSExec was executed for a sec
-```
-07/09/2023 12:06:55
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>07/09/2023 12:06:55</code></pre>
+</details>
 
 >Task 7: What is the full name of the Named Pipe ending with the "stderr" keyword for the 5th last instance of the PsExec?
  
 ![524de7965119f0ce952d95c3a591089f.png](/resources/524de7965119f0ce952d95c3a591089f.png)
 We will use sysmon Event ID 17 ([Pipe created](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=90017)) and find an event that happened around 5th PSExec execution
-```
-\PSEXESVC-FORELA-WKSTN001-3056-stderr
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>\PSEXESVC-FORELA-WKSTN001-3056-stderr</code></pre>
+</details>
 
 ![2fbcf4325d8ed8fe66886a4f13ff08f2.png](/resources/2fbcf4325d8ed8fe66886a4f13ff08f2.png)
 * * *
