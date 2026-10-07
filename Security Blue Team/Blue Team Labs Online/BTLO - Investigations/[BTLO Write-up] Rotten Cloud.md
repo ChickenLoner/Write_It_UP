@@ -130,7 +130,7 @@ With that token, they could access or modify Azure resources depending on the VM
 
 <details>
   <summary>Answer</summary>
-<pre><code>curl -H secret:4ebc6d54-f421-4321-81c4-fd9e29d28a0f 'http://169.254.130.3:8081/msi/token?api-version=2017-09-01&resource=https://management.azure.com/' </code></pre>
+<pre><code>curl -H secret:4ebc6d54-f421-4321-81c4-fd9e29d28a0f 'http://169.254.130.3:8081/msi/token?api-version=2017-09-01&amp;resource=https://management.azure.com/' </code></pre>
 </details>
 
 >Q7) After gaining access to the Azure environment, the attacker was able to list and access data from cloud storage services. Identify the name of the specific storage blob container that was targeted.

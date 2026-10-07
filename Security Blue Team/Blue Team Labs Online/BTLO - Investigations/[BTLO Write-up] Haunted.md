@@ -240,7 +240,7 @@ This one is aspx file which is a "webshell".
 
 <details>
   <summary>Answer</summary>
-<pre>social engineering, webshell<code></code></pre>
+<pre><code>social engineering, webshell</code></pre>
 </details>
 
 >Q12) One of the IOCs contains shellcode. Use a tool and review the output to identify the offset of the PEB (Process Environment Block). (Hint: Output + OSINT!) (Format: 0x..) 

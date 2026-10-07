@@ -28,7 +28,7 @@ To answer Q1, we need to use file command to an image file provided and turns ou
 
 <details>
   <summary>Answer</summary>
-<pre>pdf<code></code></pre>
+<pre><code>pdf</code></pre>
 </details>
 
 >Q2) Let’s look for Indicators of Compromise, such as URLs. What are the three suspicious URLs within the file in respective order—defanged? (Format: URL1, URL2, URL3) 

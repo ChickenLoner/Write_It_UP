@@ -58,7 +58,7 @@ Open this file then we will have KeePass version as expected.
 
 <details>
   <summary>Answer</summary>
-<pre>2.53<code></code></pre>
+<pre><code>2.53</code></pre>
 </details>
 
 >Q4) What is the CVE number that is associated with that version? (Format: CVE-XXXX-XXXXX)

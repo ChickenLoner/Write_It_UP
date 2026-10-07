@@ -104,7 +104,7 @@ Go back to VirusTotal again for this one then go to process terminated or shell 
 
 <details>
   <summary>Answer</summary>
-<pre><code>cmd.exe /C timeout /T 10 /NOBREAK > Nul & Del /f /q</code></pre>
+<pre><code>cmd.exe /C timeout /T 10 /NOBREAK &gt; Nul &amp; Del /f /q</code></pre>
 </details>
 
 >Q8: For a comprehensive threat analysis, knowing where 'ShadowSteal' originates from is key. This includes the full path to its build folder on the attacker's computer. Can you provide this path?

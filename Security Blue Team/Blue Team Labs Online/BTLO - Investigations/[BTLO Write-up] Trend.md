@@ -182,7 +182,7 @@ The attacker then added cronjob for persistence which will execute the reverse s
 
 <details>
   <summary>Answer</summary>
-<pre><code>echo "@reboot /tmp/shell.sh" >> /etc/crontab</code></pre>
+<pre><code>echo "@reboot /tmp/shell.sh" &gt;&gt; /etc/crontab</code></pre>
 </details>
 
 * * *

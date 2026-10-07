@@ -94,7 +94,7 @@ Since we have dnSpy and ILspy then lets decompile this then we can see URL that 
 
 <details>
   <summary>Answer</summary>
-<pre><code>http://turnscor.com/wp-includes/contact.php, D(G+KbPeShVmYq3t6v9y$B&E)H@McQfT, 8y/B?E(G+KbPeShV</code></pre>
+<pre><code>http://turnscor.com/wp-includes/contact.php, D(G+KbPeShVmYq3t6v9y$B&amp;E)H@McQfT, 8y/B?E(G+KbPeShV</code></pre>
 </details>
 
 >Q7) What was the C2 framework from which this in memory loader code was taken? (Hint: use OSINT) (Format: C2 Framework) 
