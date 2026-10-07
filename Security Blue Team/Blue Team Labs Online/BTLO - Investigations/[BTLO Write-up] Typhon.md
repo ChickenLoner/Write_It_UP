@@ -82,6 +82,7 @@ Then we can finally see `rundll32.exe` (Q4) were used to executed `typhon.dll` u
 </details>
 
 >Q4) Which LOLBAS is leveraged to execute the DLL? (Format: LOLBAS Name)
+
 <details>
   <summary>Answer</summary>
 <pre><code>rundll32.exe</code></pre>
@@ -154,6 +155,7 @@ The executable that added to this key is a replica of the malware inside user te
 </details>
 
 >Q10) What is the name of the registry entry added? (Format: Entry Name)
+
 <details>
   <summary>Answer</summary>
 <pre><code>Typhon</code></pre>

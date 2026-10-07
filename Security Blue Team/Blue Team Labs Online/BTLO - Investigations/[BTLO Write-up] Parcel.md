@@ -46,6 +46,7 @@ To find out requirement of this package, we have to read `Distribution` file whi
 </details>
 
 >Q2) What is the minimum macOS version allowed by the package (Format: macOSVersion)
+
 <details>
   <summary>Answer</summary>
 <pre><code>10.14</code></pre>
@@ -110,30 +111,35 @@ We almost got everything, only Q12 left
 </details>
 
 >Q7) Submit the full URL to which the exfiltrated data was sent. (Format: http://something/something)
+
 <details>
   <summary>Answer</summary>
 <pre><code>http://185.237.165.180:8000/upload</code></pre>
 </details>
 
 >Q8) A file was added to a location to maintain persistence. Submit the Location. (Format: FullPath/FileName)
+
 <details>
   <summary>Answer</summary>
 <pre><code>~/Library/LaunchAgents/com.apple.health.plist</code></pre>
 </details>
 
 >Q9) Apart from PEM files and system recon, malware tried to copy a database file responsible for storing credentials. Submit the name of the database file. (Format: Filename)
+
 <details>
   <summary>Answer</summary>
 <pre><code>login.keychain-db</code></pre>
 </details>
 
 >Q10) Exfiltrated data was saved in a folder with a unique name. What was the command responsible for creating a unique folder name? (Format: Command)
+
 <details>
   <summary>Answer</summary>
 <pre><code>hostname</code></pre>
 </details>
 
 >Q11) Submit the full command found in the code responsible for searching and copying .pem files. (Format: FullCommand)
+
 <details>
   <summary>Answer</summary>
 <pre><code>sudo find /Users -type f -name '*.pem' -exec cp {} "/tmp/$machine_name/pemkeys" \;</code></pre>

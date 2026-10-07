@@ -43,6 +43,7 @@ In this case, the real file extension is `.hta`, which denotes an HTML Applicati
 </details>
 
 >Q3) What is the file path of the file when it was added to the document? (Format: Drive:\path\to\file.ext)
+
 <details>
   <summary>Answer</summary>
 <pre><code>C:\Users\Administrator\Desktop\Onedrive\temphta.eno</code></pre>
@@ -74,6 +75,7 @@ The answer of Q5 and Q6 come from the last `AutoOpen` function on this file righ
 </details>
 
 >Q6) What is the name of the second file downloaded and written to disk, and what is the full URL it's downloaded from? (Format: filename.extension, https://domain.tld/path/to/file.ext)
+
 <details>
   <summary>Answer</summary>
 <pre><code>system32.bat, https://transfer.sh/AudGFk/1.bat</code></pre>

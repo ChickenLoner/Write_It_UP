@@ -27,9 +27,10 @@ Go to "Investigation Files" folder on the desktop, you will see 2 folders
 
 Go to "Disk Image/Zerry", image file is there along with FTK log file which could be used to answer this question
 
-```
-25165824, 5c4e94315039f890e839d6992aeb6c58
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>25165824, 5c4e94315039f890e839d6992aeb6c58</code></pre>
+</details>
 
 > What is the decryption key of the online messenger app used by Zerry?
 
@@ -47,9 +48,10 @@ I did some research about how to find signal decryption key on a file system and
 ![77add12c1a985ca65c1c8a0173cd3874.png](/resources/77add12c1a985ca65c1c8a0173cd3874-1.png)  
 Lets grab the artifact in `vol_vol3/Users/ZerryD/AppData/Roaming/Signal/config.json` and there you can see signal decryption raw key
 
-```
-c2a0e8d6f0853449cfcf4b75176c277535b3677de1bb59186b32f0dc6ed69998
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>c2a0e8d6f0853449cfcf4b75176c277535b3677de1bb59186b32f0dc6ed69998</code></pre>
+</details>
 
 > What is the registered phone number and profile name of Zerry in the messenger application used?
 
@@ -61,9 +63,10 @@ Use `0xc2a0e8d6f0853449cfcf4b75176c277535b3677de1bb59186b32f0dc6ed69998` as raw 
 ![267af952c51d449bbaf9758d913ef672.png](/resources/267af952c51d449bbaf9758d913ef672-1.png)  
 Go to "conversations" table then you will eventually find both info here
 
-```
-13026482364,ZerryThe🔥
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>13026482364,ZerryThe🔥</code></pre>
+</details>
 
 > What is the email id found in the chat?
 
@@ -72,9 +75,10 @@ On the same database, go to "messages" table then you will find a conversation b
 
 After reviewing this conversation, an attacker used Tor to browse website and Eraser to securely delete sensitive data and he even provided an email address to receive a file from other entity.
 
-```
-eekurk@baybabes.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>eekurk@baybabes.com</code></pre>
+</details>
 
 > What is the filename(including extension) that is received as an attachment via email?
 
@@ -83,9 +87,10 @@ Since it was erased using Eraser so I don't expect it to be found on Recycle Bin
 ![64076435377d58ca481d8145c5828075.png](/resources/64076435377d58ca481d8145c5828075-1.png)  
 But Recent Documents caught a shoutcut file for me and now we can see that it was an image file
 
-```
-⏳📅.png
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>⏳📅.png</code></pre>
+</details>
 
 > What is the Date and Time of the planned attack?
 
@@ -100,9 +105,10 @@ I exported them all and open it with Thumbcache Viewer, then find for png file
 
 There are 2 png files and the first one (on the above image) is the right one, you can see that its 01-02-2021 0900 with a sun which mean AM
 
-```
-01-02-2021 9:00 AM
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>01-02-2021 9:00 AM</code></pre>
+</details>
 
 > What is the GPS location of the blast? The format is the same as found in the evidence . \[Hint: Encode(XX Degrees,XX Minutes, XX Seconds)\]
 
@@ -121,9 +127,11 @@ We got this `\id=f92c091d-7161-4cce-8deb-b53438d8238c 40 qrterrf 45 zvahgrf 28.6
 Then ROT 13 we found eariler comes into play to decode it back to its original from
 ![4f22bba4831347c2e30afa8d2a7c385f.png](/resources/4f22bba4831347c2e30afa8d2a7c385f-1.png)
 There we go
-```
-40 degrees 45 minutes 28.6776 seconds N, 73 degrees 59 minutes 7.994 seconds W
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>40 degrees 45 minutes 28.6776 seconds N, 73 degrees 59 minutes 7.994 seconds W</code></pre>
+</details>
 
 ![cfd940ef2e810e823f65f98e58bd63f9.png](/resources/cfd940ef2e810e823f65f98e58bd63f9.png)
 * * *

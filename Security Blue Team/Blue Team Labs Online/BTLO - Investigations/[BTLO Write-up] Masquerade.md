@@ -256,6 +256,7 @@ We have to use `vadinfo` plugin for this one which we can see both starting poin
 </details>
 
 >Q18) What is the IP address and port number of the Command and Control (C2) server the malware connects to? (Format: IP Address:Port)
+
 <details>
   <summary>Answer</summary>
 <pre><code>3.17.35.28:1234</code></pre>
@@ -320,6 +321,7 @@ Looking at this process tree again then you will find this weird process with `.
 </details>
 
 >Q23) Tracking the ransomware process in Allam’s machine. What is the PID of the ransomware process? (Format: XXXX)
+
 <details>
   <summary>Answer</summary>
 <pre><code>2148</code></pre>

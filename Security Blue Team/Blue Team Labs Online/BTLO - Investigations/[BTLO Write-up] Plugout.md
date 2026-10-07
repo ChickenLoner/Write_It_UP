@@ -27,12 +27,14 @@ After opened `access.log` then we can see that there is one IP address that star
 </details>
 
 >Q2) What is the user-agent of the tool used? (Format: User Agent)
+
 <details>
   <summary>Answer</summary>
 <pre><code>WPScan v3.8.25 (https://wpscan.com/wordpress-security-scanner)</code></pre>
 </details>
 
 >Q3) With this tool, what is the timestamp & HTTP VERB of the first 200 response code? (Format: timestamp, VERB)
+
 <details>
   <summary>Answer</summary>
 <pre><code>04/Apr/2024:08:50:49 +0000, POST</code></pre>
@@ -111,6 +113,7 @@ Then we could also see that the attacker uploaded plugin that contain webshell (
 </details>
 
 >Q12) What is the path to the web shell? (Format: path) 
+
 <details>
   <summary>Answer</summary>
 <pre><code>/wp-content/plugins/Security-Tool-v1/SWebTheme.php</code></pre>

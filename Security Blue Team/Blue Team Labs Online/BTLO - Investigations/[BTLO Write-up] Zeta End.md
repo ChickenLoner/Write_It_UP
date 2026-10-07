@@ -327,6 +327,7 @@ Beside that, we can also see the sliver implant here with netcat binary and expl
 </details>
 
 >Q18) To use that alternate tool, the attacker needed cloud access. They stored credentials on the system. Provide the email and password for that account that they used. [No need for brute force anywhere.]
+
 <details>
   <summary>Answer</summary>
 <pre><code>00darksideofme00+2@gmail.com:Necrobyte001123!</code></pre>

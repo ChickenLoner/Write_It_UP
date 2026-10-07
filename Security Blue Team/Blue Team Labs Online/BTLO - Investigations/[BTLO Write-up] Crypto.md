@@ -35,6 +35,7 @@ And this public IP address is the correct answer of this question, so we got the
 </details>
 
 >Q2) The script downloads an executable from this malicious IP, what is the name of it? (Format: filename.extension)
+
 <details>
   <summary>Answer</summary>
 <pre><code>wxm.exe</code></pre>
@@ -132,6 +133,7 @@ I used `python vol.py -f memdump.mem --profile=Win10x64_17134 pstree` to make it
 </details>
 
 >Q11) What time was this process started on the victim system? (Format: YYYY-MM-DD HH:MM:SS UTC+XXXX)
+
 <details>
   <summary>Answer</summary>
 <pre><code>2022-03-16 02:05:57 UTC+0000</code></pre>

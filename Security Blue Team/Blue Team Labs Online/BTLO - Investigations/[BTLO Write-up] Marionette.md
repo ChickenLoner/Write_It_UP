@@ -106,6 +106,7 @@ I started with grepping "Employee" then grep "pdf" and we will have only 1 resul
 </details>
 
 >Q8) What is the timestomped Date Modified of this file? (Format: YYYY-MM-DD XX:XX:XX)
+
 <details>
   <summary>Answer</summary>
 <pre><code>2023-05-12 00:00:00</code></pre>
