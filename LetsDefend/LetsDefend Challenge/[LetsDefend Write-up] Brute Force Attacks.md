@@ -25,14 +25,17 @@ First thing that we could notice is that there are multiple RDP connection from 
 
 When filtered for the external IP address which revealing another story, turns out that this external IP address is a webserver and it was also bruteforced to get access via login page 
 
-```
-51.116.96.181
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>51.116.96.181</code></pre>
+</details>
 
 >Which directory was targeted by the attacker's brute-force attempt?
-```
-index.php
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>index.php</code></pre>
+</details>
 
 >Identify the correct username and password combination used for login. <br>
 **Answer Format**: username:password
@@ -47,9 +50,10 @@ And I finally found one right there, we can see that this HTTP response got 1 le
 
 And here is the valid credentials that was accepted on this webserver
 
-```
-web-hacker:admin12345
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>web-hacker:admin12345</code></pre>
+</details>
 
 >How many user accounts did the attacker attempt to compromise via RDP brute-force?
 
@@ -73,9 +77,10 @@ By using `rdp.neg_type == 0x01`, we can determine 10 unique users that sent nego
 
 But there are only 7 that got bruteforced
 
-```
-7
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>7</code></pre>
+</details>
 
 >What is the “clientName” of the attacker's machine?
 
@@ -83,9 +88,10 @@ But there are only 7 that got bruteforced
 
 We can use `rdp.client.name` filter to get clientName of an attacker machine
 
-```
-t3m0-virtual-ma
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>t3m0-virtual-ma</code></pre>
+</details>
 
 >When did the user last successfully log in via SSH, and who was it? <br>
 **Answer Format**: username:time (HH:MM:SS)
@@ -94,9 +100,10 @@ t3m0-virtual-ma
 
 By using `grep -i "accepted" auth.log` to filter for all successful authentication then take a look at the last record from the result, this is the one we are looking for
 
-```
-mmox:11:43:54
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>mmox:11:43:54</code></pre>
+</details>
 
 >How many unsuccessful SSH connection attempts were made by the attacker?
 
@@ -104,9 +111,10 @@ mmox:11:43:54
 
 At first I thought we have to identify an attacker IP address first before filter for unsuccessful attempt but its simpler than expected, we can just use `grep -i "failed password" auth.log | wc -l` for this one
 
-```
-7480
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>7480</code></pre>
+</details>
 
 >What technique is used to gain access? <br>
 **Answer Format**: MitreID
@@ -114,9 +122,11 @@ At first I thought we have to identify an attacker IP address first before filte
 ![ef0eea3909d607040fd7a11a4c0d3d8e.png](/resources/ef0eea3909d607040fd7a11a4c0d3d8e.png)
 
 We already know its a brute force attack and [here](https://attack.mitre.org/techniques/T1110/) is the MITRE ATT&CK ID for this technique
-```
-T1110
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>T1110</code></pre>
+</details>
 
 * * *
 ## Summary

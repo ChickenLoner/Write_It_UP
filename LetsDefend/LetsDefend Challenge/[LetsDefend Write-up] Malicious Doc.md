@@ -37,29 +37,40 @@ File that dropped is also flagged as malcious by **55** security vendors
 
 * * *
 > What type of exploit is running as a result of the relevant file running on the victim machine?
-```
-rtf.exploit
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>rtf.exploit</code></pre>
+</details>
 
 > What is the relevant Exploit CVE code obtained as a result of the analysis?
-```
-CVE-2017-11882
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2017-11882</code></pre>
+</details>
 
 > What is the name of the malicious software downloaded from the internet as a result of the file running?
-```
-jan2.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>jan2.exe</code></pre>
+</details>
 
 > What is the ip address and port information it communicates with?
-```
-185.36.74.48:80
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>185.36.74.48:80</code></pre>
+</details>
 
 > What is the exe name it drops to disk after it runs?
-```
-aro.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>aro.exe</code></pre>
+</details>
+
 * * *
 ## Summary
 This doc file is a crafted rtf file to exploit remote code execution vulnerability to a system using **CVE-2017-11882**. It is a stager that once it opened it tries to download an actual malware from a certain URL using HTTP GET method and It also drops a file after it runs. 

@@ -27,16 +27,19 @@ There it is
 
 ![9e29a986d7a6f8951016faaa064917b0.png](/resources/9e29a986d7a6f8951016faaa064917b0.png)
 
-```
-Hewlett-Packard
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Hewlett-Packard</code></pre>
+</details>
 
 >What is the CMM Type?
 
 ![50eb7c78686d0c0850cd9e2ae59d024c.png](/resources/50eb7c78686d0c0850cd9e2ae59d024c.png)
-```
-Linotronic
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Linotronic</code></pre>
+</details>
 
 >What is the tool that created the payload inside the image?
 
@@ -45,9 +48,11 @@ Just search Google for Powershell Steganography
 ![cc9e2750477b389dedee2505856d9fd9.png](/resources/cc9e2750477b389dedee2505856d9fd9.png)
 
 This is a tool to encodes powershell script into a png file that we're looking for
-```
-Invoke-PSImage
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Invoke-PSImage</code></pre>
+</details>
 
 >After decoding the payload, can you find out the function's name?
 
@@ -73,9 +78,10 @@ Then I piped result to a text file
 
 Which we can see that the embbeded script is a mimikatz, a popular credential dumping tool.
 
-```
-Invoke-Mimikatz
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Invoke-Mimikatz</code></pre>
+</details>
 
 >There are two hidden executables in the decoded payload. What is the sha256 hash of the 32-bit version of the executable?
 
@@ -89,9 +95,10 @@ So I searched a Virus keyword for VirusTotal which I found 32-bit version of mim
 
 ![1371ec9b1dbc742ec79d6e58bfe34cb7.png](/resources/1371ec9b1dbc742ec79d6e58bfe34cb7.png)
 
-```
-BE3414602121B6D23FC06EDB6BD01AD60B584485266120C242877BBD4F7C8059
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>BE3414602121B6D23FC06EDB6BD01AD60B584485266120C242877BBD4F7C8059</code></pre>
+</details>
 
 * * *
 ## Summary

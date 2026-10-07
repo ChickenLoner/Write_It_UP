@@ -21,9 +21,10 @@ You need to dissect the inner workings of this Golang malware, identify its capa
 
 Easily done after extracted file, use whatever tool we want to calculate MD5 hash of this file.
 
-```
-193964c937493b979b1e9649a83ff000
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>193964c937493b979b1e9649a83ff000</code></pre>
+</details>
 
 ![d06ef49b2974cce6f9f5c1e2795d37f5.png](/resources/d06ef49b2974cce6f9f5c1e2795d37f5.png)
 
@@ -35,9 +36,10 @@ I also searched for this hash on VirusTotal which telling me that this golang ma
 
 After I threw this ransomware to Detect It Easy then check for its entropy, we can see that there are 5 sections + PE header section so we have 6 sections in total.
 
-```
-6
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>6</code></pre>
+</details>
 
 >What code does the malware execute to kill the processes?
 
@@ -57,9 +59,10 @@ Double click that variable which will redirect us to `.rdata` (read-only data) s
 
 Decode base64 (if you're doing it in CyberChef then do not forget to remove null bytes) then we will have a code that will constantly looping to disable Windows Defender and kill `tasklist.exe` which is cmd utility to monitor process just like task explorer but without GUI.
 
-```
-while($true){ Set-MpPreference -DisableRealtimeMonitoring $true;taskkill /f /im tasklist.exe;taskkill 
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>while($true){ Set-MpPreference -DisableRealtimeMonitoring $true;taskkill /f /im tasklist.exe;taskkill</code></pre>
+</details>
 
 >What is the first parameter of the OpenFile function in the function that grants the malware high privileges?
 
@@ -67,9 +70,10 @@ while($true){ Set-MpPreference -DisableRealtimeMonitoring $true;taskkill /f /im 
 
 `OpenFile` is a Windows API function used to open files. Similarly, `call os_OpenFile` refers to a system call that interacts with the operating system to open files, which is commonly used in different contexts or environments for file access operations. so I searched for that and found `main_IsAdminPrivileges` function that responsible for this ransomware to obtain high privilege and the first parameter that was loaded is from `aPhysicaldrive0` variable.
 
-```
-\\\\.\\PHYSICALDRIVE0
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>\\\\.\\PHYSICALDRIVE0</code></pre>
+</details>
 
 >What is the name of the DLL used by the malware to disable Windows Defender?
 
@@ -77,9 +81,10 @@ while($true){ Set-MpPreference -DisableRealtimeMonitoring $true;taskkill /f /im 
 
 There is one function that was named dedicating to disable Windows Defender which is `main_DisableWindowsDefender` which we can see that it loaded Microsoft Defender DLL from known location to disable it.
 
-```
-MpClient.dll
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>MpClient.dll</code></pre>
+</details>
 
 >What is the decryption flag used by the malware?
 
@@ -89,9 +94,10 @@ This ransomware was known to use CHACHA20 algorithm to encrypt / decrypt file an
 
 And as you can see that there is a function named `main_cziIdlConfig` that stores config / setting of this malware including encryption key right here. 
 
-```
-chacha
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>chacha</code></pre>
+</details>
 
 >What is the file name of the ransomware note?
 
@@ -99,9 +105,10 @@ chacha
 
 We can try search for string like `README` or an `.txt` extension since most ransomware shared the same name conversion when it comes to ransomnote. In my case, I found `main_RenameAFiles` function look very endearing so I inspected it and found ransomnote right here. 
 
-```
-README_TO_DECRYPT.txt
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>README_TO_DECRYPT.txt</code></pre>
+</details>
 
 >What command can be executed by the "main_ErHiYtIhpAnKGp_func8" function?
 
@@ -109,9 +116,10 @@ README_TO_DECRYPT.txt
 
 Go straight to this function which we will see a command that will be executed from this function right away right here, its a command to delete system state backup. (typical behavior of every new-gen ransomware) 
 
-```
-wbadmin DELETE SYSTEMSTATEBACKUP
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>wbadmin DELETE SYSTEMSTATEBACKUP</code></pre>
+</details>
 
 ***
 ## Summary

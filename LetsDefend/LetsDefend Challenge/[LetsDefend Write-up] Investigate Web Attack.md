@@ -34,39 +34,53 @@ After successfully gaining access to the website through brute force attacks, th
 
 * * *
 >Which automated scan tool did attacker use for web reconnansiance?
-```
-nikto
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>nikto</code></pre>
+</details>
 
 >After web reconnansiance activity, which technique did attacker use for directory listing discovery?
-```
-directory brute force
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>directory brute force</code></pre>
+</details>
 
 >What is the third attack type after directory listing discovery?
-```
-brute force
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>brute force</code></pre>
+</details>
 
 >Is the third attack success?
-```
-yes
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>yes</code></pre>
+</details>
 
 >What is the name of fourth attack?
-```
-code injection
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>code injection</code></pre>
+</details>
 
 >What is the first payload for 4rd attack?
-```
-whoami
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>whoami</code></pre>
+</details>
 
 >Is there any persistency clue for the victim machine in the log file ? If yes, what is the related payload?
-```
-%27net%20user%20hacker%20Asd123!!%20/add%27
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>%27net%20user%20hacker%20Asd123!!%20/add%27</code></pre>
+</details>
 
 * * *
 ## Summary

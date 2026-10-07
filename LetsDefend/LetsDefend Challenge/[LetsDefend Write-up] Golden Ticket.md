@@ -32,14 +32,17 @@ After open the result csv file on the Timeline explorer, I will filter for Event
 
 As soon as I applied this filter, I noticed weird thing right away as this account was logged in from "192.168.110.129" over network (probably authentication over SMB) and the authentication was handled over "NTLM" which mean this account was logged on using username and password or Pass-The-Hash attack from "192.168.110.129" and the timestamp of first event is the correct answer of this question so the threat actor compromised this service account first before compromised other account and finally forge golden ticket
 
-```
-2024-10-05 16:50:29 UTC
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-10-05 16:50:29 UTC</code></pre>
+</details>
 
 > What is the name of the compromised service account?
-```
-SQLService
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>SQLService</code></pre>
+</details>
 
 > Which IP address and port were used by the attacker to log into the compromised account?
 
@@ -47,9 +50,10 @@ SQLService
 
 As there are multiple successful logon event, even all of them logon from the same IP adddress but the port will be different so to get the correct answer of this question we will look for the first event that occured as shown here
 
-```
-192.168.110.129:48858
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.110.129:48858</code></pre>
+</details>
 
 > Before that the same attacker tried to perform an AS-REP attack. What user account did the attacker target during this Kerberos attack?
 
@@ -59,23 +63,27 @@ To hunt for AS-REP Roasting attack, we can combine seveal indicator together wit
 
 Then we will have 1 record that very standout which happened at 2024-10-05 14:42:44, as we can see that AS-REP Roasting attack was used to retrieve TGT of Corrado user 
 
-```
-Corrado
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Corrado</code></pre>
+</details>
 
 > When did the attacker request that TGT ticket to perform the AS-REP attack?
 <br>**Answer Format**: (YYYY-MM-DD HH:MM:SS UTC)
-```
-2024-10-05 14:42:44 UTC
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-10-05 14:42:44 UTC</code></pre>
+</details>
 
 > After gaining access to the Domain Controller, the attacker attempted to generate a Golden Ticket to impersonate a DC user. What was the target account?
 
 A Golden Ticket Attack is an attack where the attacker that already compromised krbtgt account to have it NTLM hash and since this service account is used by the Key Distribution Center (KDC) to encrypt and sign all TGTs, the attacker can forge TGT of any user so normally attacker would like to forge TGT of a member of enterprise or domain admins group so my guess is Administrator and why I have to guess? i'll explain it in the next question
 
-```
-Administrator
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Administrator</code></pre>
+</details>
 
 > At what time did the attacker try to log in using the Golden Ticket?
 Answer Format: (YYYY-MM-DD HH:MM:SS UTC)
@@ -91,9 +99,10 @@ The authentication happened because of the golden ticket will be handled over Ke
 
 In my opinion, the answer of this question is wrong since this is a legitimate logon from the domain controller itself indicates by "Logon Type" = 2 combining with "LogonProcessName" = User32 means Keyboard / console / GUI logon and as Authentication Package is NTLM means that user used username and password to login locally on the machine instead of usage of Golden Ticket. 
 
-```
-2024-10-05 17:57:03 UTC
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-10-05 17:57:03 UTC</code></pre>
+</details>
 
 * * *
 ## Summary

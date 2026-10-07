@@ -27,9 +27,10 @@ Second is to grab the banners from memory file
 ![0ac372e871cc9196ec3b60b5de90f5e9.png](/resources/0ac372e871cc9196ec3b60b5de90f5e9.png)
 we will use `vol.py -f MyW3B.vmem banners.Banners` to grab Linux banners
 
-```
-5.4.0-150-generic
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5.4.0-150-generic</code></pre>
+</details>
 
 > What was the command that our friend Ghazy used to run his website?
 
@@ -38,9 +39,11 @@ But we need to determine which memory profile we should use first ( `vol.py -f M
 
 ![a441fd3546c0f9eb9cb953f98447d70c.png](/resources/a441fd3546c0f9eb9cb953f98447d70c.png)
 Then use `vol.py --profile=LinuxUbuntu_5_4_0-150-generic_profilex64 -f MyW3B.vmem linux_bash` to recover bash history then we can see that user ghazy used docker to run his website
-```
-sudo docker run -dp 8001:80 ghazy
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>sudo docker run -dp 8001:80 ghazy</code></pre>
+</details>
 
 
 > We are sure that the attacker has uploaded a shell to the site. Can you get the Inode address?
@@ -49,9 +52,10 @@ sudo docker run -dp 8001:80 ghazy
 
 I used `vol.py --profile=LinuxUbuntu_5_4_0-150-generic_profilex64 -f MyW3B.vmem linux_enumerate_files | grep "\.php"` to enumerate all files as much as possible then find for ".php" since its a shell for web server to execute so I expected it to be php file which I was right  
 
-```
-0xffff9c4fdee03448
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0xffff9c4fdee03448</code></pre>
+</details>
 
 
 > What is the attacker's IP address and port?
@@ -64,18 +68,20 @@ I used netstat plugin but couldn't find anything so I have to use `vol.py --prof
 ![1a653b105b673cd4441d538ea7b69d2c.png](/resources/1a653b105b673cd4441d538ea7b69d2c.png)
 Its a typical php reverse shell that many hackers are used so it won't be hard to find where IP address and Port are declared
 
-```
-89.187.162.105:3351
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>89.187.162.105:3351</code></pre>
+</details>
 
 > According to the IP address you got, what is the country of the attacker?
 
 ![0632418ce44e98f76811baab3615f35e.png](/resources/0632418ce44e98f76811baab3615f35e.png)
 According to IP location, This IP address located in Singapore 
 
-```
-Singapore
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Singapore</code></pre>
+</details>
 
 > What is the name of the user with UID value 1000?
 
@@ -87,9 +93,10 @@ We need to use `vol.py --profile=LinuxUbuntu_5_4_0-150-generic_profilex64 -f MyW
 
 Then use `vol.py --profile=LinuxUbuntu_5_4_0-150-generic_profilex64 -f MyW3B.vmem linux_find_file -i 0xffff9c500abd7480 -O ~/Desktop/ChallengeFile/passwd` to dump it which we can see that UID 1000 is kirito user
 
-```
-kirito
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>kirito</code></pre>
+</details>
 
 > What is the IP address of the victim?
 
@@ -97,9 +104,10 @@ kirito
 
 Luckily for us that `vol.py --profile=LinuxUbuntu_5_4_0-150-generic_profilex64 -f MyW3B.vmem linux_ifconfig` could be used and the IP address that match answer format is from ens33 interface
 
-```
-192.168.245.129
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.245.129</code></pre>
+</details>
 
 
 * * *

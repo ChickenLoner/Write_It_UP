@@ -56,49 +56,67 @@ So our investigation concluded here
 
 * * *
 > What is the sending email address?
-```
-yanting@united.com.sg
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>yanting@united.com.sg</code></pre>
+</details>
 
 > What is the email address of the recipient?
-```
-admin@malware-traffic-analysis.net
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>admin@malware-traffic-analysis.net</code></pre>
+</details>
 
 > What is the subject line of the email?
-```
-united scientific equipment
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>united scientific equipment</code></pre>
+</details>
 
 > What date was the Email sent? Date format: MM/DD/YYYY
-```
-02/08/2021
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>02/08/2021</code></pre>
+</details>
 
 > What is the originating IP?
-```
-71.19.248.52
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>71.19.248.52</code></pre>
+</details>
 
 > What country is the ip address from?
-```
-Canada
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Canada</code></pre>
+</details>
 
 > What is the name of the attachment when you unzip it? (with extension)
-```
-united scientific equipent.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>united scientific equipent.exe</code></pre>
+</details>
 
 > What is the sha256 hash of the File?
-```
-9909753BFB0AC8AB165BAB3555233D03B01A9274A92E57C022F87CCBE51CA415
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>9909753BFB0AC8AB165BAB3555233D03B01A9274A92E57C022F87CCBE51CA415</code></pre>
+</details>
 
 > Is the email attachment malicious? Yes/No
-```
-Yes
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Yes</code></pre>
+</details>
 
 * * *
 ## Summary

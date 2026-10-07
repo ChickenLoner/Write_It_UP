@@ -52,14 +52,18 @@ I found none, but we still couldn't be certained yet that user didn't access thi
 User could scan this QR code on a phone too.
 
 >Determine the Type of Reconnaissance
-```
-Phishing for Information
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Phishing for Information</code></pre>
+</details>
 
 >Attacker IP Analysis
-```
-External
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>External</code></pre>
+</details>
 
 >IP Reputation Check
 Is the attacker IP suspicious or not?
@@ -67,9 +71,11 @@ Is the attacker IP suspicious or not?
 Lets check SMTP address on AbuseIPDB
 ![b5e14493df95ce7bf786bb14cd3b0030.png](/resources/b5e14493df95ce7bf786bb14cd3b0030.png)
 This IP address has a bad reputation, its very suspicious or even malicious
-```
-Yes
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Yes</code></pre>
+</details>
 
 >Determine the Scope
 
@@ -79,34 +85,42 @@ We got an IP address that hosting this phishing site from VirusTotal so lets sea
 There is no activity related to this IP address found 
 
 This mail is targeted only 1 user 
-```
-No
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>No</code></pre>
+</details>
 
 >Containment
 
 We found no IOC and user didn't access this phishing site on her endpoint, looking at these evidence there is no reason to contain this host but it still should be treated with caution 
 
 Lets just contain it to investigate more futher.if this is a real-life scenario, SOC team should contact Claire to confirm that this phishing site is visited or not. 
-```
-Yes
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Yes</code></pre>
+</details>
 
 >Add Artifacts
-```
-209.94.90.1
+
+<details>
+  <summary>Answer</summary>
+<pre><code>209.94.90.1
 158.69.201.47
-https://ipfs.io/ipfs/Qmbr8wmr41C35c3K2GfiP2F8YGzLhYpKpb4K66KU6mLmL4#
-```
+https://ipfs.io/ipfs/Qmbr8wmr41C35c3K2GfiP2F8YGzLhYpKpb4K66KU6mLmL4#</code></pre>
+</details>
 
 >Analyst Note
-```
-Quishing attack has been confirmed, an attacker tried to mimicking Microsoft login page to harvest user credential from an employee of this company.
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Quishing attack has been confirmed, an attacker tried to mimicking Microsoft login page to harvest user credential from an employee of this company.
 
 There is not confirmed that this phishing site was visited, SOC team should contacted this employee to investigate if this QR code was scanned on her phone or not.
 
-An employee's endpoint is contained temporary until the investigation process is completed and found no threat.
-```
+An employee's endpoint is contained temporary until the investigation process is completed and found no threat.</code></pre>
+</details>
 
 ***
 ## Close Alert

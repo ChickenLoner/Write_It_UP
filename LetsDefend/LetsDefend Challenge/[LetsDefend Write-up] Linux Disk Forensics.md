@@ -16,9 +16,11 @@ Dean downloaded a cracked software application from an unofficial source and sub
 
 We can see which linux distro of this system by reading `/etc/issue` content
 ![907660c8df72eeb10c5838f51b12cc5f.png](/resources/907660c8df72eeb10c5838f51b12cc5f.png)
-```
-Ubuntu 22.04.2 LTS
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Ubuntu 22.04.2 LTS</code></pre>
+</details>
 
 >What is the SHA256 hash of the crack file that was downloaded?
 
@@ -26,31 +28,39 @@ Ubuntu 22.04.2 LTS
 There is only 1 user directory, most of directories are empty except for Desktop which have a ELF file there
 ![08115fe11dc381dc1d384a2d266cde2a.png](/resources/08115fe11dc381dc1d384a2d266cde2a.png)
 Export the file and calculate hash the way you want.
-```
-d73e103c7a980417aefb2683e315180d76bd75eccefbff57802bf97c5efd75fb
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>d73e103c7a980417aefb2683e315180d76bd75eccefbff57802bf97c5efd75fb</code></pre>
+</details>
 
 > What is the IP address and port used by the attacker?
 **Answer Format:** IP:Port
 
 ![454b6290974b93b7fc415d30c93d3b0b.png](/resources/454b6290974b93b7fc415d30c93d3b0b.png)
 I used `strings` for this question and it was very effective, we can see that this file aimed to compress google chrome's data to `dean_data.tar` then send to a specific IP address using netcat, it was designed for this user only.
-```
-192.168.229.129:201
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.229.129:201</code></pre>
+</details>
 
 > What is the specific tool or software employed by the attacker?
-```
-netcat
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>netcat</code></pre>
+</details>
 
 > Which was the year of the last use of the Dean account?
 
 ![c6494e99434a4f69ede62c641edbc130.png](/resources/c6494e99434a4f69ede62c641edbc130.png)
 Lastest Updated on `auth.log` is 2023 so its 2023
-```
-2023
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2023</code></pre>
+</details>
 
 * * *
 ## Summary

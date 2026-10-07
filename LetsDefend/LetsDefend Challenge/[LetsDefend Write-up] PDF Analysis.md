@@ -88,64 +88,88 @@ Then I used IP2Location to find the location of this IP address and it is in Chi
 
 * * *
 >What local directory name would have been targeted by the malware?
-```
-C:\Documents\
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Documents\</code></pre>
+</details>
 
 > What would have been the name of the file created by the payload?
-```
-D0csz1p
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>D0csz1p</code></pre>
+</details>
 
 > What file type would this have been if it were created?
-```
-zip
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>zip</code></pre>
+</details>
 
 > Which external web domain would the malware have attempted to interact with?
-```
-filebin.net
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>filebin.net</code></pre>
+</details>
 
 > Which HTTP method would it have used to interact with this service?
-```
-POST
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>POST</code></pre>
+</details>
 
 > What is the name of the obfuscation used for the Javascript payload?
-```
-eval
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>eval</code></pre>
+</details>
 
 > Which tool would have been used for creating the persistence mechanism?
-```
-wmic
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>wmic</code></pre>
+</details>
 
 > How often would the persistence be executed once Windows starts? (format: X.X hours)?
-```
-2.5 hours
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2.5 hours</code></pre>
+</details>
 
 > Which LOLBin would have been used in the persistence method?
-```
-Powerpnt.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Powerpnt.exe</code></pre>
+</details>
 
 > What is the filename that would have been downloaded and executed using the LOLbin?
-```
-wallpaper482.scr
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>wallpaper482.scr</code></pre>
+</details>
 
 > Where would this have been downloaded from? (format: IP address)
-```
-60.187.184.54
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>60.187.184.54</code></pre>
+</details>
 
 > Which country is this IP Address located in?
-```
-China
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>China</code></pre>
+</details>
 
 * * *
 ## Summary

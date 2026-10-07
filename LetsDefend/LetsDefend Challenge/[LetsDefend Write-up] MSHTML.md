@@ -51,29 +51,39 @@ for futher analysis, you can read it from here
 
 * * *
 > Examing the `Employees_Contact_Audit_Oct_2021.docx file`, what is the malicious IP in the docx file?
-```
-175.24.190.249
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>175.24.190.249</code></pre>
+</details>
 
 > Examing the `Employee_W2_Form.docx` file, what is the malicious domain in the docx file?
-```
-arsenal.30cm.tw
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>arsenal.30cm.tw</code></pre>
+</details>
 
 >Examing the `Work_From_Home_Survey.doc` file, what is the malicious domain in the doc file?
-```
-trendparlye.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>trendparlye.com</code></pre>
+</details>
 
 >Examing the `income_tax_and_benefit_return_2021.docx`, what is the malicious domain in the docx file?
-```
-hidusi.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>hidusi.com</code></pre>
+</details>
 
 >What is the vulnerability the above files exploited?
-```
-CVE-2021-40444
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2021-40444</code></pre>
+</details>
 
 * * *
 ## Summary

@@ -22,25 +22,31 @@ We got a VBscript file to work with so just open with NotePad++ or VSCode to ana
 ![47b89e2cfb75cece8b4477806989aa86.png](/resources/47b89e2cfb75cece8b4477806989aa86.png)
 ![4518c9816f4da44160b44e59dec8f477.png](/resources/4518c9816f4da44160b44e59dec8f477.png)
 SyInf is the first function that use WMI to queried from `Win32_ComputerSystem`,`Win32_OperatingSystem` and `Win32_Processor` for 9 information about an endpoint that executed this script
-```
-9
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>9</code></pre>
+</details>
 
 >Which WMI class is used in the "AntiQuery" function to retrieve antivirus product information?
 
 ![15e94a50c7c49e53fcff611d14911154.png](/resources/15e94a50c7c49e53fcff611d14911154.png)
 Inside AntiQuery function, WMI will be used to get an instance of `AntiVirusProduct` and then get a list of all AntiVirusProduct on an endpoint
-```
-AntiVirusProduct
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>AntiVirusProduct</code></pre>
+</details>
 
 >What is the name of the file that the "Rep" subroutine includes with the data when sending it to a specified URL?
 
 ![9144a64bacf235f550c7f5dcdd79087a.png](/resources/9144a64bacf235f550c7f5dcdd79087a.png)
 This function is used to send all the information that collected using this script inside `Info.txt` to C2 server 
-```
-Info.txt
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Info.txt</code></pre>
+</details>
 
 >Which registry key is modified by the "SetIEState" subroutine to have a value of "no"?
 
@@ -50,33 +56,40 @@ This function is modify registry keys of Internet Explorer to
 - not prompt the user to customize settings or perform any initial configuration steps the first time it is launched.
 - Users will not be redirected from Internet Explorer to Microsoft Edge during migration processes.
 
-```
-HKCU\Software\Microsoft\Internet Explorer\Main\Check_Associations
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>HKCU\Software\Microsoft\Internet Explorer\Main\Check_Associations</code></pre>
+</details>
 
 >Which shell operation is used to retrieve the root directory path?
 
 ![eeffbba93eb25dd7b167b5ffed2c57db.png](/resources/eeffbba93eb25dd7b167b5ffed2c57db.png)
 This function is used to retrieve directories of an endpoint.
-```
-osa.Self.Path
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>osa.Self.Path</code></pre>
+</details>
 
 >What is the property that lists the recent files retrieved in the "FInf" function?
 
 ![afdac4344cfb5c9a1778c4be0cebdee4.png](/resources/afdac4344cfb5c9a1778c4be0cebdee4.png)
 This function is used to retrieve Word Application Recent Files that was opened and specific folder which is `\Downloads`
-```
-obWord.RecentFiles
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>obWord.RecentFiles</code></pre>
+</details>
 
 >Which WMI class is used in the "QProc" function to retrieve the list of running processes?
 
 ![426bc7e2bf3ef087aba3e5f5439d1f8f.png](/resources/426bc7e2bf3ef087aba3e5f5439d1f8f.png)
 This function used to retrieve information about process on an endpoint
-```
-Win32_Process
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Win32_Process</code></pre>
+</details>
 
 * * *
 ## Summary

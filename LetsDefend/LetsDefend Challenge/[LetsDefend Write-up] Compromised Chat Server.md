@@ -30,9 +30,10 @@ Now we know what to look for then we can start our investigation.
 
 Since we were provided with pcap file then we can open it in Wireshark and use `http.request.method == "GET"` filter to display all HTTP GET request like this.
 
-```
-128
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>128</code></pre>
+</details>
 
 >What is the host value in the first HTTP packet?
 
@@ -40,9 +41,10 @@ Since we were provided with pcap file then we can open it in Wireshark and use `
 
 Reduce our filter to `http` then inspect first HTTP request (packet number 29) to get Host value, we can see that vulnerable openfire was running on port 9090 of 192.168.18.155
 
-```
-192.168.18.155:9090
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.18.155:9090</code></pre>
+</details>
 
 >What is the CSRF token value for the first login request?
 
@@ -50,9 +52,10 @@ Reduce our filter to `http` then inspect first HTTP request (packet number 29) t
 
 This CSRF token will differentiate legitimate user from the threat actor so we can see that after filtered by HTTP POST request, IP 192.168.18.1 sent POST request to vulnerable openfire server which likely to be the legitimate user that set this server up.   
 
-```
-A2HxEJfAcs31PlD
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>A2HxEJfAcs31PlD</code></pre>
+</details>
 
 >What is the password of the first user who logged in?
 
@@ -60,9 +63,10 @@ A2HxEJfAcs31PlD
 
 Inspect HTTP Form then we will have credential of legitimate admin of this openfire server.
 
-```
-adminnothere
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>adminnothere</code></pre>
+</details>
 
 >What is the first username that was created by the attacker?
 
@@ -70,9 +74,10 @@ adminnothere
 
 We know that the threat actor has to create user with `user-create.jsp` so we can just search for that and the result shown 4 HTTP GET request to this endpoint and this is the first one request that was successfuly, here is the user that was created. 
 
-```
-umu6od
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>umu6od</code></pre>
+</details>
 
 >How many user accounts did the attacker create?
 
@@ -84,9 +89,10 @@ There are 4 HTTP GET requests to this endpoint but not all of them are successfu
 
 Here is the second user that was created.
 
-```
-2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2</code></pre>
+</details>
 
 >What is the username that the attacker used to log in to the admin panel?
 
@@ -94,9 +100,10 @@ Here is the second user that was created.
 
 Scroll down for a bit from user account creation then we will see that second user that was created is the one that threat actor authenticated to openfire dashboard.
 
-```
-byvr3r
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>byvr3r</code></pre>
+</details>
 
 >What is the name of the plugin that the attacker uploaded?
 
@@ -106,9 +113,10 @@ We know that threat actor had to upload webshell in admin panel so we can inspec
 
 ![f9b1de04eef907d779938d60ebacd874.png](/resources/f9b1de04eef907d779938d60ebacd874.png)
 
-```
-openfire-management-tool-plugin.jar
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>openfire-management-tool-plugin.jar</code></pre>
+</details>
 
 >What is the first command executed by the user?
 
@@ -116,9 +124,10 @@ openfire-management-tool-plugin.jar
 
 We know that it has to be a webshell so we have to find HTTP POST request sent to plugin path, which we can see that the threat actor successfully executed 2 commands and first command is `whoami`.
 
-```
-whoami
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>whoami</code></pre>
+</details>
 
 >What is the last command that the attacker used on the server?
 
@@ -130,9 +139,10 @@ The second command that was successfully executed is this netcat reverse shell c
 
 we can see that after the threat actor received reverse shell connection, the threat actor executed 3 commands and the last one is `uname -a` that will display OS name.
 
-```
-uname -a
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>uname -a</code></pre>
+</details>
 
 * * *
 ## Summary

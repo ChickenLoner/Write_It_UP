@@ -19,9 +19,10 @@ Our organization's Security Operations Center (SOC) has detected suspicious acti
 
 After extracted sample file out of 7z archive then we can use given HashCalc tool to calculate MD5 of this sample
 
-```
-5e53b40cf972f4eb08990999ce17c5c8
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5e53b40cf972f4eb08990999ce17c5c8</code></pre>
+</details>
 
 ![e7420e26e9e1f2b20671a602336a176c.png](/resources/e7420e26e9e1f2b20671a602336a176c.png) 
 
@@ -37,9 +38,10 @@ Open the sample with DIE then we should be able to see Entry point address (Q5) 
 
 Entropy window will pop up and it will show entropy of every regions(sections) and total entropy of this sample.
 
-```
-6.58565
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>6.58565</code></pre>
+</details>
 
 >According to the Detect It Easy(DIE) tool, what is the virtual address of the “.text” section?
 
@@ -51,20 +53,25 @@ For this one, we have to go back to DIE main screen then click at "Sections" the
 
 Now we can see Virtual Address of `.text` section but to answer this question, we need to add 0x indicating its hex value.
 
-```
-0x1000
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0x1000</code></pre>
+</details>
 
 >According to the Detect Easy tool, what is the “time date stamp”?
-```
-2020-02-26 21:41:13
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2020-02-26 21:41:13</code></pre>
+</details>
 
 >According to the Detect It Easy (DIE) tool, what is the entry point address of the executable?
 Answer Format: 0x000000
-```
-0x42800a
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>0x42800a</code></pre>
+</details>
 
 >What is the domain used by the malicious embedded code?
 
@@ -82,9 +89,10 @@ We know that this malware was packed from DIE but how to unpack it? the answer l
 
 We can see that this script will download 2 files from specific domain to specific path (path was written in hex) and also called [CallWindowsProcW](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-callwindowproca) from `user32.dll`.
 
-```
-office-cleaner-commander.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>office-cleaner-commander.com</code></pre>
+</details>
 
 >What is the file path encoded in hexadecimal in the malicious code?
 
@@ -92,14 +100,17 @@ office-cleaner-commander.com
 
 decode hex to string then we can see a path that malicious file will be downloaded into.
 
-```
-:\Windows\System32\
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>:\Windows\System32\</code></pre>
+</details>
 
 >What is the name of the DLL called by the malicious code?
-```
-user32.dll
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>user32.dll</code></pre>
+</details>
 
 * * *
 ## Summary

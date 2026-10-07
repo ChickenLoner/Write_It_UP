@@ -23,9 +23,10 @@ According to [MITRE ATT&CK](https://attack.mitre.org/software/S0668/), TinyTurla
 
 In `RunShell` method, it will pass 1 argument from the function calls and execute it as an argument of `cmd.exe /c` command
 
-```
-cmd.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>cmd.exe</code></pre>
+</details>
 
 > Which command in the "runCommand" method sets the sleep time for the program?
 
@@ -34,9 +35,10 @@ cmd.exe
 
 `runCommand` method that is responsible for handles command polling from C2 server and the command that will be used to set sleep time of this backdoor is `[<sleep>]`
 
-```
-[<sleep>]
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>[&lt;sleep&gt;]</code></pre>
+</details>
 
 > Which command in the "runCommand" method is used to execute a shell command?
 
@@ -44,9 +46,10 @@ cmd.exe
 
 When the `[<shell>]` is specified from C2 and pass the argument to `RunShell` method which will execute command via `cmd.exe`
 
-```
-[<shell>]
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>[&lt;shell&gt;]</code></pre>
+</details>
 
 > Which command in the "runCommand" method downloads a file to the server?
 
@@ -54,9 +57,10 @@ When the `[<shell>]` is specified from C2 and pass the argument to `RunShell` me
 
 When `[<download>]` is specified, it will get the name of the file then send it to C2 server with HTTP POST request via `HttpsPost` method
 
-```
-[<download>]
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>[&lt;download&gt;]</code></pre>
+</details>
 
 > Which process's main window title is specifically checked and hidden in the "Execute" method?
 
@@ -64,9 +68,10 @@ When `[<download>]` is specified, it will get the name of the file then send it 
 
 The main functionality of this backdoor is this `Execute` method where it executes the decrypted MSBuild project file using `MSBuild.exe`, which subsequently runs the inline task present within the project file directly in memory when the project is built and one of its thread will monitor for main window title contains `MSBuild.exe` and hide it, this will hide itself from MSBuild inline task running 
 
-```
-MSBuild.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>MSBuild.exe</code></pre>
+</details>
 
 > Which DLL is imported to use the GetConsoleWindow function in the code?
 
@@ -74,9 +79,10 @@ MSBuild.exe
 
 The backdoor imported `GetConsoleWindows` API from `kernel32.dll`
 
-```
-Kernel32.dll
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Kernel32.dll</code></pre>
+</details>
 
 > What method is used to perform HTTP GET requests in the provided code?
 
@@ -85,9 +91,10 @@ Kernel32.dll
 
 `HttpsGet` method will be invoked after specifiy with `[<upload>]` command to download a file from C2 server to the target which as its name imply, will use HTTP GET Method to fetch file from C2 and save it to victim host
 
-```
-HttpsGet
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>HttpsGet</code></pre>
+</details>
 
 > Which IP address does the "HttpsPost" method use when making POST requests?
 
@@ -95,9 +102,10 @@ HttpsGet
 
 The IP address and the url scheme was declared in the `ClassExample` class directly and as we can see that it use private IP which could indicates that this is a custom malware made to mimick TinyTurla backdoor and test it locally
 
-```
-192.168.31.10
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.31.10</code></pre>
+</details>
 
 * * *
 ## Summary

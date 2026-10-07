@@ -56,45 +56,57 @@ Go to File System to grab it hash
 
 ![d64b6448e5126e2410bd65a0e79e93b8.png](/resources/d64b6448e5126e2410bd65a0e79e93b8.png)
 This dll is a ransomware so its the one we're looking for
-```
-C:\Users\charles\AppData\Local\Temp\MpsVc.dll
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\charles\AppData\Local\Temp\MpsVc.dll</code></pre>
+</details>
 
 > What is the MD5 hash for the dll?
-```
-040818b1b3c9b1bf8245f5bcb4eebbbc
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>040818b1b3c9b1bf8245f5bcb4eebbbc</code></pre>
+</details>
 
 > What is the name of ransomware note that got dropped?
 
 ![08606a153abe4f8373ee119267776e07.png](/resources/08606a153abe4f8373ee119267776e07.png)
 On File System, I searched with ".txt" that we have this ransomnotes on sevaral locations
-```
-2s6lc-readme
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2s6lc-readme</code></pre>
+</details>
 
 > What is the URL that the initial payload was downloaded from? (Include the whole URL with the payload)
 
 ![9a3ef81bb07a803c148866736cf64147.png](/resources/9a3ef81bb07a803c148866736cf64147.png)
-```
-http://192.168.75.129:8111/Documents/lsass
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>http://192.168.75.129:8111/Documents/lsass</code></pre>
+</details>
 
 > The ransomware drops the copy of the legitimate application into the Temp folder. Please provide the filename including the extension
 
 ![7401ef78f0f55d640db485d7de0306ed.png](/resources/7401ef78f0f55d640db485d7de0306ed.png)
 We already know that "MsMpEng.exe" is legitimate file but was executed from user temp directory that is not where its belong
-```
-MsMpEng.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>MsMpEng.exe</code></pre>
+</details>
 
 > What is name of the ransomware?
 
 ![d80adf3133f3993d49786c9f03dda47a.png](/resources/d80adf3133f3993d49786c9f03dda47a.png)
 Sodinokibi or it also known as REvil ransomware
-```
-Sodinokibi
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Sodinokibi</code></pre>
+</details>
 
 * * *
 ## Summary

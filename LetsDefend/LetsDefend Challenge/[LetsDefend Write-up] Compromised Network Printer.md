@@ -16,9 +16,10 @@ You are a DFIR Analyst for a corporation. A network printer running in the inter
 After we opened sample pcap file on Wireshark then go to "Statistics" -> "
 Conversations" to display conversation statistics of this pcap file then sort IP address (either Address A or B is fine), remember that NAT IP Address could start with 10.xx.xx.xx, 172.xx.xx.xx or 192.168.xx.xx and we need only 1 IP address in that stand out from the rest and match the answer format which will eventually landed us with this one 
 
-```
-172.31.35.23 
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>172.31.35.23</code></pre>
+</details>
 
 One more thing, you might also notice which is this IP address sent so much packets (over 100k) to `172.31.40.241` so I guessed that attacker probably conducted bruteforce attack on this IP address.
 
@@ -32,9 +33,10 @@ Filtered conversation found on previous question then we could see that there ar
 
 For a connection to fully established, 3-way handshake must be completed (SYN -> SYN-ACK -> ACK) which we could see that port 9001 is the one that the attacker found.
 
-```
-9100
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>9100</code></pre>
+</details>
 
 >Based on the abused port number, which printer language/method was being abused by the attacker for unattended malicious activity on the network printer?
 
@@ -46,14 +48,17 @@ Follow TCP stream then we can see that this printer is "HP LaserJet pro 4001dn" 
 
 You can do a little more research on this one to learn more about syntax and common commands
 
-```
-PJL
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>PJL</code></pre>
+</details>
 
 >Which Printer Name/Model was attacked?
-```
-HP LaserJet pro 4001dn
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>HP LaserJet pro 4001dn</code></pre>
+</details>
 
 >The attacker has discovered a scheduled print job that is associated with an employee who is suspected of being an insider threat. What is the full path of the print job file?
 
@@ -61,9 +66,10 @@ HP LaserJet pro 4001dn
 
 Now after understand the context and language used by this printer, we can keep digging into this conversation then we will eventually find this "FSUPLOAD" command which will upload file on a printer to an external source and we can see that an attacker uploaded this ps (PostScript file) which is a type of file that printer might store for scheduled print or repeated jobs.
 
-```
-0:/saveDevice/SavedJobs/InProgress/scheduled.ps
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0:/saveDevice/SavedJobs/InProgress/scheduled.ps</code></pre>
+</details>
 
 >What is the name of the targeted organization?
 
@@ -71,9 +77,10 @@ Now after understand the context and language used by this printer, we can keep 
 
 We can get an answer of this question by inspecting PostScript file content uploaded.
 
-```
-LetsDefend Corp Company
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>LetsDefend Corp Company</code></pre>
+</details>
 
 >The attacker found information about RDP within the internal network. What is the directory path where this sensitive information was located?
 
@@ -85,9 +92,10 @@ After scrolling almost the end of this conversation, we could see that the attac
 
 And here is that conversation, the attacker found `internal.rdp` (a file used to store rdp configuration and setting) and `remote_service.ps1` on this directory.
 
-```
-/backup/jumphost/2023
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/backup/jumphost/2023</code></pre>
+</details>
 
 >What is the IP address of the Jumphost?
 
@@ -95,14 +103,17 @@ And here is that conversation, the attacker found `internal.rdp` (a file used to
 
 By reviewing content of `interal.rdp` file, we could see full IP address that will be connected to when open this file on Windows machine.
 
-```
-172.31.23.97
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>172.31.23.97</code></pre>
+</details>
 
 >What is the filename of the PowerShell script used by admins which was also found by the attacker?
-```
-remote-service.ps1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>remote-service.ps1</code></pre>
+</details>
 
 * * *
 ## Summary

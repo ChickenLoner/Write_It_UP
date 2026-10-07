@@ -28,9 +28,10 @@ When downloaded thing, if user does not set default download folder or select an
 
 On the MFTExplorer, we can navigate to this folder directly as if we are using Windows explorer and we still have everything as we seen from the MFTECmd as well since it came from the same piece of evidence.
 
-```
-scanner98.zip
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>scanner98.zip</code></pre>
+</details>
 
 >What is the source URL of the downloaded file?
 
@@ -42,9 +43,10 @@ Every downloaded file to NTFS file system comes with **Zone Identifier** in Alte
 
 On the MFTExplorer, we will have to look at the hex section right here.
 
-```
-https://drive.usercontent.google.com/download?id=1hqL4dh5i7bzvfY-v_NmsMhCkJbZDEonO&export=download
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://drive.usercontent.google.com/download?id=1hqL4dh5i7bzvfY-v_NmsMhCkJbZDEonO&amp;export=download</code></pre>
+</details>
 
 >What was the time of download of the malicious file? <br>
 (Answer Format: YYYY-MM-DD HH:MM:SS)
@@ -57,9 +59,10 @@ We will have to get **Created0x10** timestamp from the MFTECmd result.
 
 Which is translate to **SI_Created On** on MFTExplorer.
 
-```
-2024-04-22 04:00:43
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-04-22 04:00:43</code></pre>
+</details>
 
 >A powershell script was created on disk by the malicious file. What is the full path of this script on the system? <br>
 (Answer Format: C:\x\x\x\file.extension)
@@ -70,9 +73,10 @@ Which is translate to **SI_Created On** on MFTExplorer.
 
 As we already found PowerShell script on the same folder as the zip file, Yes this is the one we are looking for on this question.
 
-```
-C:\Users\LetsDefend\Downloads\x.ps1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\LetsDefend\Downloads\x.ps1</code></pre>
+</details>
 
 >What is the file size of the script in bytes?
 
@@ -84,9 +88,10 @@ We can get the file size of this script by looking at **File Size** column right
 
 On MFTExplorer, we can get the file size on the overview tab right here and it will be displayed in Hex so we need to convert it to decimal before answer.
 
-```
-152
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>152</code></pre>
+</details>
 
 >Recover the file contents of this script. What is the URL it reaches out to?
 
@@ -106,9 +111,10 @@ After jumpping to the location that we just calculated then we have to scroll do
 
 Meanwhile on the MFTExplorer, We do not have to calculate an offset since its already displayed on the both Hex and Overview tab as shown in the image above.
 
-```
-https://raw.githubusercontent.com/samratashok/nishang/master/Gather/Keylogger.ps1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://raw.githubusercontent.com/samratashok/nishang/master/Gather/Keylogger.ps1</code></pre>
+</details>
 
 Remember that you can only recover only small text file like this from the Master File Table, to actually recover file then you have to use file craving tool / recovery tool on the actual disk image.
 
@@ -118,14 +124,17 @@ Remember that you can only recover only small text file like this from the Maste
 
 We know that the script is the keylogger for sure or you can even go to the Github Repository that host the script then you can see that its actually keylogger so according to MITRE ATT&CK, the TTP of key logger is [T1056.001](https://attack.mitre.org/techniques/T1056/001/).
 
-```
-T1056.001
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1056.001</code></pre>
+</details>
 
 >Which powershell cmdlet was used to execute the code in the script?
-```
-IEX
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>IEX</code></pre>
+</details>
 
 * * *
 ## Summary

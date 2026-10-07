@@ -50,40 +50,55 @@ Let's break down each command
 We can now answer all the questions below
 * * *
 > What encoding is the malicious script using?
-```
-base64
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>base64</code></pre>
+</details>
 
 > What parameter in the powershell script makes it so that the powershell window is hidden when executed?
-```
--W Hidden
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>-W Hidden</code></pre>
+</details>
 
 > What parameter in the Powershell script prevents the user from closing the process?
-```
--NonI
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>-NonI</code></pre>
+</details>
+
 No user interaction also mean user couldn't close the process because user couldn't see it without task manager or other process listing command. 
 
 > What line of code allows the script to interact with websites and retrieve information from them?
-```
-$WC=New-ObjEcT SySTeM.NET.WebCliENt
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>$WC=New-ObjEcT SySTeM.NET.WebCliENt</code></pre>
+</details>
 
 > What is the user agent string that is being spoofed in the malicious script?
-```
-Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko</code></pre>
+</details>
 
 > What line of code is used to set the proxy credentials for authentication in the script?
-```
-$wc.PROxY.CrEdenTialS = [SysTem.NEt.CRedeNTIAlCAcHE]::DeFAULTNetWOrKCredENTiAls
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>$wc.PROxY.CrEdenTialS = [SysTem.NEt.CRedeNTIAlCAcHE]::DeFAULTNetWOrKCredENTiAls</code></pre>
+</details>
 
 > When the malicious script is executed, what is the URL that the script contacts to download the malicious payload?
-```
-http://98.103.103.170:7443/index.asp
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>http://98.103.103.170:7443/index.asp</code></pre>
+</details>
 
 * * *
 ## Summary

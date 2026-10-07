@@ -27,7 +27,16 @@ reported for a human and left untouched:
     several fences, last not short  (nothing to pick as the answer)
     short fence before the answer   (kept as code; listed so it can be checked)
 
-Dry run by default.   uv run fix_answer_blocks.py [--platform TryHackMe] [--apply]
+Some write-ups have no "> question" lines: SOC alert playbooks answer each
+"### Step" heading directly. `--heading-sections` makes a heading start a
+section, exactly like a question. It needs `--only`, because in a machine
+write-up the very same shape (a fence under a heading) is a command.
+`--max-lines N` raises the 3-line limit for longer analyst notes.
+
+Dry run by default.
+    uv run fix_answer_blocks.py [--platform TryHackMe] [--apply]
+    uv run fix_answer_blocks.py --platform LetsDefend --only "LetsDefend Alert" \\
+        --heading-sections --max-lines 12
 ─────────────────────────────────────────────────────────────────────────────
 """
 
@@ -64,7 +73,8 @@ def _answer_block(body: list[str]) -> list[str]:
             f"<pre><code>{text}</code></pre>", "</details>"]
 
 
-def convert(text: str):
+def convert(text: str, heading_sections: bool = False,
+            max_lines: int = MAX_ANSWER_LINES):
     """Return (new_text, converted, spaced, review).
     spaced = <details> blocks separated from a preceding "> question" line.
     review = [(line, reason, preview)]."""
@@ -93,7 +103,7 @@ def convert(text: str):
             in_details = True
         if "</details>" in line:
             in_details = False
-        if _is_question(line):
+        if _is_question(line) or (heading_sections and HEADING_RE.match(line)):
             q_starts.append(i)
             cur_q = len(q_starts) - 1
         elif HEADING_RE.match(line) or RULE_RE.match(line):
@@ -106,7 +116,7 @@ def convert(text: str):
             by_q.setdefault(f["q"], []).append(f)
 
     def answer_shaped(f):
-        return (not f["lang"] and 1 <= len(f["body"]) <= MAX_ANSWER_LINES
+        return (not f["lang"] and 1 <= len(f["body"]) <= max_lines
                 and any(b.strip() for b in f["body"]))
 
     review, edits = [], []
@@ -131,7 +141,7 @@ def convert(text: str):
                 review.append((f["start"] + 1, "outside any question", preview))
             elif f["lang"]:
                 review.append((f["start"] + 1, f"language-tagged ({f['lang']})", preview))
-            elif not (1 <= len(body) <= MAX_ANSWER_LINES) or not any(b.strip() for b in body):
+            elif not (1 <= len(body) <= max_lines) or not any(b.strip() for b in body):
                 review.append((f["start"] + 1, f"{len(body)} lines", preview))
             else:
                 edits.append(f)
@@ -170,7 +180,7 @@ def convert(text: str):
     return "\n".join(lines), len(edits), spaced, sorted(review)
 
 
-def iter_writeups(platform: str | None):
+def iter_writeups(platform: str | None, only: str | None = None):
     for root, dirs, files in os.walk("."):
         dirs[:] = [d for d in dirs if d not in fix_paths.SKIP_FOLDERS]
         for name in files:
@@ -182,20 +192,30 @@ def iter_writeups(platform: str | None):
                 continue
             if platform and rel.parts[0].lower() != platform.lower():
                 continue
+            if only and only.lower() not in rel.as_posix().lower():
+                continue
             yield rel
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--platform", help="top-level folder, e.g. TryHackMe")
+    ap.add_argument("--only", help="only paths containing this text, e.g. 'LetsDefend Alert'")
+    ap.add_argument("--heading-sections", action="store_true",
+                    help="treat each heading as the question (SOC alert playbooks); needs --only")
+    ap.add_argument("--max-lines", type=int, default=MAX_ANSWER_LINES,
+                    help=f"longest fence to treat as an answer (default {MAX_ANSWER_LINES})")
     ap.add_argument("--apply", action="store_true", help="write changes (default: dry run)")
     args = ap.parse_args()
+    if args.heading_sections and not args.only:
+        ap.error("--heading-sections needs --only: fences under headings are "
+                 "commands in machine write-ups")
 
     total = spaced_total = files_changed = 0
     all_review = []
-    for rel in sorted(iter_writeups(args.platform)):
+    for rel in sorted(iter_writeups(args.platform, args.only)):
         text = rel.read_text(encoding="utf-8")
-        new, count, spaced, review = convert(text)
+        new, count, spaced, review = convert(text, args.heading_sections, args.max_lines)
         for line, why, prev in review:
             all_review.append((rel, line, why, prev))
         if count or spaced:

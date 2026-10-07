@@ -56,33 +56,42 @@ There are nothing more to be dig up so let's answer the questions
 
 * * *
 > What is the email address of Ann's secret boyfriend?
-```
-mistersecretx@aol.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>mistersecretx@aol.com</code></pre>
+</details>
 
 > What is Ann's email password?
 
 ![1c1864692c4ff2c5fcff820036c40c39.png](/resources/1c1864692c4ff2c5fcff820036c40c39.png)
 
-```
-558r00lz
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>558r00lz</code></pre>
+</details>
 
 
 > What is the name of the file that Ann sent to his secret lover?
-```
-secretrendezvous.docx
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>secretrendezvous.docx</code></pre>
+</details>
 
 > In what country will Ann meet with her secret lover?
-```
-Mexico
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Mexico</code></pre>
+</details>
 
 > What is the MD5 value of the attachment Ann sent?
-```
-9e423e11db88f01bbff81172839e1923
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>9e423e11db88f01bbff81172839e1923</code></pre>
+</details>
 
 ![6746acb89959d9efd9676755554f8aed.png](/resources/6746acb89959d9efd9676755554f8aed.png)
 

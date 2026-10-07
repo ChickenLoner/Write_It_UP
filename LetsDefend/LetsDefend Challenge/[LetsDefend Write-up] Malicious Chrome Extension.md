@@ -26,26 +26,32 @@ Then I found this `mmnbenehknklpbendgmgngeaignppnbe` extension id to be very sus
 [My first search result](https://www.mcafee.com/blogs/other-blogs/mcafee-labs/malicious-cookie-stuffing-chrome-extensions-with-1-4-million-users/) is the one that confirmed that this extension is malicious and its the one we're looking for
 ![6c4ab0f5a07ff7d710921f0cf2c755f5.png](/resources/6c4ab0f5a07ff7d710921f0cf2c755f5.png)
 There are 5 extensions that were used to conduct this malicious activity, and one of them was installed on Administrator Chrome's browser
-```
-mmnbenehknklpbendgmgngeaignppnbe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>mmnbenehknklpbendgmgngeaignppnbe</code></pre>
+</details>
 
 > What is the name of the malicious extension?
 
 ![bbc33337a5a5b1b0f9c12be00ff814cb.png](/resources/bbc33337a5a5b1b0f9c12be00ff814cb.png)
 Go to `/_locales/en/`, there is a file that store a name of this extension since a name from `manifest.json` couldn't be used as an answer
 ![bd8c9fad4dde345cd0799e44e563e7be.png](/resources/bd8c9fad4dde345cd0799e44e563e7be.png)
-```
-Netflix Party Official
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Netflix Party Official</code></pre>
+</details>
 
 > How many people were affected by this extension?
 
 ![4438d9ad703749f38501b5df3d35a2b9.png](/resources/4438d9ad703749f38501b5df3d35a2b9.png)
 Based on McAfree blog, 800k user installed this extension
-```
-800,000
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>800,000</code></pre>
+</details>
 
 > What is the attacker's domain name?
 
@@ -53,17 +59,21 @@ According to McAfree's blog, these extensions are tracking user browsing activit
 ![0b03a3163262985522367420b19c065e.png](/resources/0b03a3163262985522367420b19c065e.png)
 Here is the port of `e` varible declaration, its different from infected system we got so we have to read `b0.js` ourselves
 ![a1ea7ecb44a5edbb6aba70e6c462ca5f.png](/resources/a1ea7ecb44a5edbb6aba70e6c462ca5f.png)
-```
-a1l4m.000webhostapp.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>a1l4m.000webhostapp.com</code></pre>
+</details>
 
 > What is the full URL the attacker uses to exfiltrate the data?
 
 ![9050c72ad2e5ca9b5eaeeabd0c4779a4.png](/resources/9050c72ad2e5ca9b5eaeeabd0c4779a4.png)
 to send any data that was being tracked, this extension need to use HTTP POST method which I also found that `url` variable was consist of `e` variable and other string which is a directory of C2 
-```
-https://a1l4m.000webhostapp.com/chrome/TrackData/
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>https://a1l4m.000webhostapp.com/chrome/TrackData/</code></pre>
+</details>
 
 > What is the function name responsible for getting the victim's location?
 
@@ -71,17 +81,21 @@ https://a1l4m.000webhostapp.com/chrome/TrackData/
 According to blog, this extension also collected user location
 ![7e063738f9775eaa00d3474315ab5d2b.png](/resources/7e063738f9775eaa00d3474315ab5d2b.png)
 Which is presented inside `b0.js` file, an attacker used `ip-api.com` to get user location which will responsed back in JSON
-```
-get_location
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>get_location</code></pre>
+</details>
 
 > What is the variable name that is responsible for storing the zip code of the victim?
 
 ![87b894e7762c6fdac9a79a755e8044eb.png](/resources/87b894e7762c6fdac9a79a755e8044eb.png)
 you can see that zip code will be assigned to `zip` variable
-```
-zip
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>zip</code></pre>
+</details>
 
 * * *
 ## Summary

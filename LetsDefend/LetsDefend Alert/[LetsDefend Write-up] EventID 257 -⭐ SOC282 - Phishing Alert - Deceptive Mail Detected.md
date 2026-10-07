@@ -26,32 +26,37 @@ Last Updated: 11/07/2024 07:10
 
 Lets go to Email Security and find this email first then we can see that this is obviously a phishing email from sender email to file attachment 
 
-```
-When was it sent? : May, 13, 2024, 09:22 AM
+<details>
+  <summary>Answer</summary>
+<pre><code>When was it sent? : May, 13, 2024, 09:22 AM
 What is the email's SMTP address? : 103.80.134.63
 What is the sender address? : free@coffeeshooop.com
 What is the recipient address? : Felix@letsdefend.io
 Is the mail content suspicious? : Yes
-Are there any attachment? : Yes
-```
+Are there any attachment? : Yes</code></pre>
+</details>
 
 ![44951fba7b48aa39062f76a09c69c6de.png](/resources/44951fba7b48aa39062f76a09c69c6de.png)
 
 I also searched for the SMTP address of the sender which was flagged by 12 different security vendors
 
 >Are there attachments or URLs in the email?
-```
-Yes
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Yes</code></pre>
+</details>
 
 >Analyze Url/Attachment
 
 ![2d2e40035c226a266a0c8424e6505f8d.png](/resources/2d2e40035c226a266a0c8424e6505f8d.png)
 
 After searching filehash on [VirusTotal](https://www.virustotal.com/gui/file/cd903ad2211cf7d166646d75e57fb866000f4a3b870b5ec759929be2fd81d334/detection), we can see that this attachment is an infamous AsyncRAT (Asynchronous Remote Access Trojan) malware so we did not need to think twice and answer this as "Malicious"
-```
-Malicious
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Malicious</code></pre>
+</details>
 
 >Check If Mail Delivered to User?
 
@@ -73,9 +78,10 @@ After that we can see another log from Felix to C2 server which we can also see 
 
 After searching for this IP address on VirusTotal, we can see that this IP address also used for multiple RAT, not just AsyncRAT
 
-```
-Delivered
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Delivered</code></pre>
+</details>
 
 >Delete Email From Recipient!
 <div align=center>
@@ -95,9 +101,11 @@ and after looking other processes, we can see `cmd.exe` is a child process of `C
 ![2b37805de1fd23859614ba6a8f9904df.png](/resources/2b37805de1fd23859614ba6a8f9904df.png)
 
 By taking a look at Terminal History, we can see how many commands were executed and most of them is about recon/gathering information on infected system (Felix's Endpoint)
-```
-Opened
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Opened</code></pre>
+</details>
 
 >Containment
 <div align=center>
@@ -107,21 +115,25 @@ Opened
 
 
 >Add Artifacts
-```
-free@coffeeshooop.com
+
+<details>
+  <summary>Answer</summary>
+<pre><code>free@coffeeshooop.com
 coffeeshooop.com
 103.80.134.63
 37.120.233.226
 files-ld.s3.us-east-2.amazonaws.com/59cbd215-76ea-434d-93ca-4d6aec3bac98-free-coffee.zip
-961d8e0f1ec3c196499bfcbd0a9d19fa
-```
+961d8e0f1ec3c196499bfcbd0a9d19fa</code></pre>
+</details>
 
 >Analyst Note
-```
-Phishing mail was detected and was not blocked by firewall or other security measures, which lead to user downloaded AsyncRAT malware and executed it and after that a new connection was established to C2 server and executed command using `cmd.exe` to gather information on the infected system.
 
-Email was deleted and host is contained upon uncovering these facts so the next step would be eradicating malware and recovery process and then after that a lesson learned process need to be conducted to prevent future incidents like this from happening again.
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Phishing mail was detected and was not blocked by firewall or other security measures, which lead to user downloaded AsyncRAT malware and executed it and after that a new connection was established to C2 server and executed command using `cmd.exe` to gather information on the infected system.
+
+Email was deleted and host is contained upon uncovering these facts so the next step would be eradicating malware and recovery process and then after that a lesson learned process need to be conducted to prevent future incidents like this from happening again.</code></pre>
+</details>
 
 ***
 ## Close Alert

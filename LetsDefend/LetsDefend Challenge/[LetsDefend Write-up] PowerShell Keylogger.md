@@ -49,19 +49,24 @@ Now lets start answering the question and finish this challenge before wrap it u
 
 As this keylogger also have C2 capability and it will connect back to the threat actor TOR service, and the proxy port that was used is 9050 with the IP address of "37.143.129.165"
 
-```
-9050
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>9050</code></pre>
+</details>
 
 > What function-method is used for starting keylogging?
-```
-Start-Keylogger
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Start-Keylogger</code></pre>
+</details>
 
 > What is the name of the file used by the script to store the keylog data?
-```
-keylog.txt
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>keylog.txt</code></pre>
+</details>
 
 > What command is used by the script to achieve persistence?
 
@@ -69,19 +74,24 @@ keylog.txt
 
 The script does not yet implement any persistence mechanism yet but as we can see that it is intended to have one from the `Establish-Connection` function
 
-```
-persist
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>persist</code></pre>
+</details>
 
 > What is the command used by the script to upload data?
-```
-upload:
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>upload:</code></pre>
+</details>
 
 > What is the regex used by the script to filter IP addresses?
-```
-^(127\.|169\.254\.)
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>^(127\.|169\.254\.)</code></pre>
+</details>
 
 > What is the DLL imported by the script to call keylogging APIs?
 
@@ -89,14 +99,17 @@ upload:
 
 In `Start-Keylogger` function, 4 functions used for keylogging are imported from `user32.dll`
 
-```
-user32.dll
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>user32.dll</code></pre>
+</details>
 
 > How many seconds does the script wait before re-establishing a connection?
-```
-60
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>60</code></pre>
+</details>
 
 * * *
 ## Summary

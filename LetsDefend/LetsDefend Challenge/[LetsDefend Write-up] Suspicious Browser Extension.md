@@ -27,25 +27,31 @@ Then I did some research on how to analyse this file without installing it and f
 And according to information provided on this website, we know now that crx file can be unzip
 ![b49eb6a700469b7a68ac65b7fc220bb4.png](/resources/b49eb6a700469b7a68ac65b7fc220bb4.png)
 There is it, crx file is designed for Google Chrome so answer of this question is Google Chrome obviously
-```
-Google Chrome
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Google Chrome</code></pre>
+</details>
 
 > What is the name of the main file which contains metadata?
 
 ![57627edae35803fb8ff200b14b96d6b4.png](/resources/57627edae35803fb8ff200b14b96d6b4.png)
 I knew the answer is `manifest.json` but I also did some research on why it has to be this file and my search result made it crystal clear to me
-```
-manifest.json
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>manifest.json</code></pre>
+</details>
 
 > How many js files are there? (Answer should be numerical)
 
 ![83466bf1ffef7fad76c84f431307d3a9.png](/resources/83466bf1ffef7fad76c84f431307d3a9.png)
 There are 2 js files here
-```
-2
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2</code></pre>
+</details>
 
 > Go to crxcavator.io and check if this browser extension has already been analyzed by searching its name. Is it known to the community? (Yes/No)
 
@@ -53,9 +59,11 @@ There are 2 js files here
 Checking extension name from `manifest.json`
 ![54d58aec5b716714122f72a4b8ef5217.png](/resources/54d58aec5b716714122f72a4b8ef5217.png)
 Then search on crxcavator.io which found none which mean the answer is No
-```
-No
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>No</code></pre>
+</details>
 
 > Download and install ExtAnalysis. Is the author of the extension known? (Yes/No)
 
@@ -72,32 +80,40 @@ Then after all requirements are met, executed python file then ExtAnalysis will 
 Go to UPLOAD EXTENSION to upload crx file
 ![bcd758c3ba524049dbf88e7161848a04.png](/resources/bcd758c3ba524049dbf88e7161848a04.png)
 On BASIC INFO, look like Author is unknown so the answer of this question is No
-```
-No
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>No</code></pre>
+</details>
 
 > Often there are URLs and domains in malicious extensions. Using ExtAnlaylsis, check the ‘URLs and Domains’ tab How many URLs & Domains are listed? (Answer should be numerical)
 
 ![45bbfe74c9f9652a9ecb025722159e87.png](/resources/45bbfe74c9f9652a9ecb025722159e87.png)
 We got 2 domains here
-```
-2
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2</code></pre>
+</details>
 
 > Find the piece of code that uses an evasion technique. Analyse it, what type of systems is it attempting to evade?
 
 ![516131e3ccb94c417a9f6e630b332d5d.png](/resources/516131e3ccb94c417a9f6e630b332d5d.png)
 Open `ThankYou.html` with your preferred text editor which you can see that if statement is checking for virtual machine and once any of them is detected, it will write something on web browser console and terminate chrome.exe process
-```
-virtual machine
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>virtual machine</code></pre>
+</details>
 
 > If this type of system is detected what function is triggered in its response?
 
 ![87b54d75d7596b48d913b7e0fcda5c74.png](/resources/87b54d75d7596b48d913b7e0fcda5c74.png)
-```
-chrome.processes.terminate(0)
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>chrome.processes.terminate(0)</code></pre>
+</details>
 
 > What keyword in a user visited URL will trigger the if condition statement in the code?
 
@@ -116,18 +132,22 @@ To make life easier I found this https://obf-io.deobfuscate.io/ website to be ve
 It's time to deobfuscate and analyze this js script
 ![2ed6ba8cb89d35ef42aa2ad6fb248cf4.png](/resources/2ed6ba8cb89d35ef42aa2ad6fb248cf4.png)
 In conclusion, this script is a keylogger
-```
-login
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>login</code></pre>
+</details>
 
 > Based on the analysis of the content.js, what type of malware is this?
 
 ![fd34ddb2d1fc0f6925a1478792f2943e.png](/resources/fd34ddb2d1fc0f6925a1478792f2943e.png)
 ![46973b530be0270187572fea72fdab71.png](/resources/46973b530be0270187572fea72fdab71.png)
 `window.onkeydown` is a property that used to capture any keystroke so the only malware type that do this thing is a keylogger malware
-```
-keylogger
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>keylogger</code></pre>
+</details>
 
 > Which domain/URL will data be sent to?
 
@@ -135,16 +155,20 @@ keylogger
 Now open `background.js` to grab an url which we couldn't find on `content.js`
 ![1bab56193df19cbe21cc2b428ca498ca.png](/resources/1bab56193df19cbe21cc2b428ca498ca.png)
 Put it in [deobfuscator](https://obf-io.deobfuscate.io/ ) we finally obtained a C2
-```
-https://google-analytics-cm.com/analytics-3032344.txt
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>https://google-analytics-cm.com/analytics-3032344.txt</code></pre>
+</details>
 
 > As a remediation measure, what type of credential would you recommend all affected users to reset immediately?
 
 Keylogger designed to grab username along with password from infected host so the only one that can be reseted is password.
-```
-password
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>password</code></pre>
+</details>
 
 * * *
 ## Summary

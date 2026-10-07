@@ -30,19 +30,25 @@ And jackpot! We also found all the answers including payload that trying to expl
 
 * * *
 > What is the server operating system?
-```
-ubuntu
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>ubuntu</code></pre>
+</details>
 
 > What is the application server and version running on the target system?
-```
-Apache/2.2.22
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Apache/2.2.22</code></pre>
+</details>
 
 > What is the exact command that the attacker wants to run on the target server?
-```
-/bin/ping -c1 10.246.50.2
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>/bin/ping -c1 10.246.50.2</code></pre>
+</details>
 
 * * *
 ## Summary

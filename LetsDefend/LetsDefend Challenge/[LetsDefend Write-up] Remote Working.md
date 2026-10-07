@@ -48,29 +48,40 @@ Once this file is opened, a child process is spawned and it was a cscript that t
 
 * * *
 > What is the date the file was created?
-```
-2020-02-01 18:28:07
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2020-02-01 18:28:07</code></pre>
+</details>
 
 > With what name is the file detected by Bitdefender antivirus?
-```
-Trojan.GenericKD.36266294
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Trojan.GenericKD.36266294</code></pre>
+</details>
 
 > How many files are dropped on the disk?
-```
-3
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>3</code></pre>
+</details>
 
 > What is the sha-256 hash of the file with emf extension it drops?
-```
-979dde2aed02f077c16ae53546c6df9eed40e8386d6db6fc36aee9f966d2cb82
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>979dde2aed02f077c16ae53546c6df9eed40e8386d6db6fc36aee9f966d2cb82</code></pre>
+</details>
 
 > What is the exact url to which the relevant file goes to download spyware?
-```
-https://multiwaretecnologia.com.br/js/Podaliri4.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>https://multiwaretecnologia.com.br/js/Podaliri4.exe</code></pre>
+</details>
+
 * * *
 ## Summary
 This XLS File is a microsoft excel with VBA macro embedded. It is a stager that once it opened it tries to download an actual malware from a certain URL.

@@ -50,29 +50,40 @@ Which I've found that there is no `Work` user anymore but instead `Sl3awy` were 
 ![2dd57901374f0e36083e5d1d71b29958.png](/resources/2dd57901374f0e36083e5d1d71b29958.png)
 * * *
 >What is the MD5 hash of the malicious document?
-```
-9cd09e5cd94e83ed4824f652829b0b52
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>9cd09e5cd94e83ed4824f652829b0b52</code></pre>
+</details>
 
 >What is the domain from which the document was downloaded?
-```
-http://www.freejobin-kafr-elshiekh.org/
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>http://www.freejobin-kafr-elshiekh.org/</code></pre>
+</details>
 
 >What is the email address of the victim?
-```
-Sl3awy@gmail.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Sl3awy@gmail.com</code></pre>
+</details>
 
 >What is the command that is executed by the malicious document?
-```
-powershell -EncodedCommand TmV3LUl0ZW1Qcm9wZXJ0eSAtUGF0aCAiSEtDVTpcRW52aXJvbm1lbnQiIC1OYW1lICJzM2NyM3RGMW8wdyIgLVZhbHVlICJTMHJyeUJ1N0lOM2VkVGgxc00wTjNZIiAgLVByb3BlcnR5VHlwZSAiU3RyaW5nIg==
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>powershell -EncodedCommand TmV3LUl0ZW1Qcm9wZXJ0eSAtUGF0aCAiSEtDVTpcRW52aXJvbm1lbnQiIC1OYW1lICJzM2NyM3RGMW8wdyIgLVZhbHVlICJTMHJyeUJ1N0lOM2VkVGgxc00wTjNZIiAgLVByb3BlcnR5VHlwZSAiU3RyaW5nIg==</code></pre>
+</details>
 
 >Seems the PC username changed to another one. Can you identify the new Username?
-```
-Sl3awy
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Sl3awy</code></pre>
+</details>
+
 * * *
 ## Summary
 On this challenge, We used FTK Imager to investigate Windows disk image to find the culprit of the incident which is malicious PDF file that will execute PowerShell command.

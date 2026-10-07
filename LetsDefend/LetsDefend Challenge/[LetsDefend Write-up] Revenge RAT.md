@@ -21,9 +21,10 @@ DFIR analysts have extracted the malware. Now they need you to analyse the sampl
 
 We can use DIE to get an answer of this question like this, then we can see that this sample is .NET based malware so we can use .NET decompiler such as JetBrains dotPeek, dnSpy or ILSpy to decompile this sample and analyze code and behavior of this sample
 
-```
-VB.NET
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>VB.NET</code></pre>
+</details>
 
 >What is the mutex name checked by the malware at the start of execution?
 
@@ -39,18 +40,20 @@ After decompiled sample, go to `Lime` namespace and `Main()` function then we sh
 
 Followed to `Config` class, we can also see other information related to this malware such as C2 IP and port, ID that look like base64 encoded, Mutex name, key and etc.
 
-```
-c416f58db13c4
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>c416f58db13c4</code></pre>
+</details>
 
 >What function was used to get information about the CPU?
 
 ![1a2ef3eb9d3c8d1abd961ca9f7e1b302.png](/resources/1a2ef3eb9d3c8d1abd961ca9f7e1b302.png)
 Inside there is an `idGenerator` class within `Lime Helper` namespace that declares many functions to retrieve information on infected host and `GetCpu` is the one responsible for getting CPU information via registry key
 
-```
-GetCpu
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>GetCpu</code></pre>
+</details>
 
 >What key was used during the “SendInfo” function?
 
@@ -64,9 +67,10 @@ Which you can see that this function is under `IdGenerator` class and it retriev
 
 Get the key and submit the answer 
 
-```
-Revenge-RAT
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Revenge-RAT</code></pre>
+</details>
 
 >What API was used by the malware to prevent the system from going to sleep?
 
@@ -78,17 +82,20 @@ We can also see that there is one class that responsible for prevent the system 
 
 its a Windows API that capable of doing this job  
 
-```
-SetThreadExecutionState
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SetThreadExecutionState</code></pre>
+</details>
 
 >What variable stores the volume name and the function that imported the "GetVolumeInformationA" api?
 
 ![b2deb8c985e4610b49fe0fd3a981a58c.png](/resources/b2deb8c985e4610b49fe0fd3a981a58c.png)
 We can see that [GetVolumeInformationA](https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getvolumeinformationa) is imported from `kernel32.dll` then `GVI` function will be responsible for storing each information retrieve by `GetVolumeInformationA` and `IP` stored volumn name
-```
-IP
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>IP</code></pre>
+</details>
 
 >What function was used to retrieve information about installed video capture drivers?
 
@@ -99,9 +106,10 @@ We can that there are another dll imports and the one that related to video capt
 ![1fd047b38ae84950e4d13bb289a5df45.png](/resources/1fd047b38ae84950e4d13bb289a5df45.png)
 Then we can see that `GetCamera` is the only function that called `capGetDriverDescription` hence the answer of this question
 
-```
-GetCamera
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>GetCamera</code></pre>
+</details>
 
 >What is the value of the ID after removing obfuscation?
 
@@ -110,9 +118,11 @@ GetCamera
 Remember id varible? lets grab it and decode it
 
 ![23fe3f17e5f545ee61b488ef3d5ab5fc.png](/resources/23fe3f17e5f545ee61b488ef3d5ab5fc.png)
-```
-MR_ahmed
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>MR_ahmed</code></pre>
+</details>
 
 * * *
 ## Summary

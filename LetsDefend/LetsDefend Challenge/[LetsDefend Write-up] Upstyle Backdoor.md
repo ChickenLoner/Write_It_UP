@@ -32,9 +32,10 @@ So now we can analyze malicious python script used for this exploit with knowing
 
 We can see that inside `check()` function, it does everything we learned from our research
 
-```
-check()
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>check()</code></pre>
+</details>
 
 >What is the system path that is used by the threat actor?
 
@@ -42,46 +43,60 @@ check()
 
 Here is a path that backdoor will be installed
 
-```
-/usr/lib/python3.6/site-packages/system.pth
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/usr/lib/python3.6/site-packages/system.pth</code></pre>
+</details>
 
 >What is the CSS path used by the script?
 
 ![02287993aa5d6c5e11ae7e0aeaa5c278.png](/resources/02287993aa5d6c5e11ae7e0aeaa5c278.png)
-```
-/var/appweb/sslvpndocs/global-protect/portal/css/bootstrap.min.css
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>/var/appweb/sslvpndocs/global-protect/portal/css/bootstrap.min.css</code></pre>
+</details>
 
 >Where does the script attempt to remove certain license files from?
 
 ![0f12e5a88e4526f0d4eb59b86b6388c1.png](/resources/0f12e5a88e4526f0d4eb59b86b6388c1.png)
-```
-/opt/pancfg/mgmt/licenses/
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>/opt/pancfg/mgmt/licenses/</code></pre>
+</details>
 
 >What specific signal does the protection function respond to?
 
 ![92d12103a221a6553d496907bab8d435.png](/resources/92d12103a221a6553d496907bab8d435.png)
-```
-SIGTERM
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>SIGTERM</code></pre>
+</details>
 
 >What function is responsible for protecting the script itself?
 **Answer Format**: functionname()
-```
-protect()
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>protect()</code></pre>
+</details>
 
 >What type of pattern does the script search for within the log file?
-```
-img\[([a-zA-Z0-9+/=]+)\]
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>img\[([a-zA-Z0-9+/=]+)\]</code></pre>
+</details>
 
 >Which specific log file does the script read from?
-```
-/var/log/pan/sslvpn_ngx_error.log
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>/var/log/pan/sslvpn_ngx_error.log</code></pre>
+</details>
+
 * * *
 ## Summary
 On this challenge, we analyzed a script use to exploit CVE-2024-3400 or Upstyle Backdoor and learn how this script can achieve command execution and stay persistence on the infected system.

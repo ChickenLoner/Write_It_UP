@@ -29,9 +29,10 @@ We can use dotPeek to decomplie this and we can see there there are a function t
 
 It is a function to decrypt given Base64-encoded string using TripleDES encryption in ECB mode with a specific key derived from an MD5 hash and return value back to function calls
 
-```
-0xb11a1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0xb11a1</code></pre>
+</details>
 
 >What is the mod that is used in the process of decryption?
 
@@ -39,9 +40,10 @@ It is a function to decrypt given Base64-encoded string using TripleDES encrypti
 
 This snippet clearly declared that it used TripleDES ECB Mode
 
-```
-ECB
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ECB</code></pre>
+</details>
 
 >What is the port number that is used by the RAT with C2 connection?
 **Note**: You should create a custom python script for solving the following questions.
@@ -95,9 +97,10 @@ dotPeek didn't get the code inside main function for me so I switched to ILSpy t
 
 There it is
 
-```
-4321
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4321</code></pre>
+</details>
 
 >What is the name of RAT?
 
@@ -111,17 +114,19 @@ It is DarkCrystal RAT or rad-x
 
 Alternatively, you can also decrypt those base64 from main function too
 
-```
-rad-x
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>rad-x</code></pre>
+</details>
 
 >What is the decrypt value of this string “SdB8pdfQ1nTkMSX7BnUPucesbN9ijxjK”?
 
 ![6df3d8bf70daececa30d0dd111795822.png](/resources/6df3d8bf70daececa30d0dd111795822.png)
 
-```
-localExtensionSettings
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>localExtensionSettings</code></pre>
+</details>
 
 * * *
 ## Summary

@@ -23,34 +23,41 @@ I started by using RegRipper 3 with SYSTEM hive which hold system information
 Search for ComputerName
 ![c5c12c43c057b2d604ae62c8ca6526cc.png](/resources/c5c12c43c057b2d604ae62c8ca6526cc.png)
 
-```
-DESKTOP-8K4U4R6
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>DESKTOP-8K4U4R6</code></pre>
+</details>
 
 >What is the last shutdown time for this machine? <br>
 Format: YYYY/MM/DD HH:MM:SS
 
 Search by shutdown on the system hive output
 ![486f2baa4bbc3f2802364647f903d0f2.png](/resources/486f2baa4bbc3f2802364647f903d0f2.png)
-```
-2023-03-23 21:53:11
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-03-23 21:53:11</code></pre>
+</details>
 
 >What is the time zone name that the machine uses?
 
 Search by timezone on the system hive output
 ![07594b051ca85eca5c63e3ca33358c5e.png](/resources/07594b051ca85eca5c63e3ca33358c5e.png)
-```
-Pacific Standard Time
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Pacific Standard Time</code></pre>
+</details>
 
 >What is the IP address of the default gateway?
 
 Search by gateway on the system hive output, We got only DHCP Default Gateway here
 ![09c69a75369872c5a14c3561ba84fb81.png](/resources/09c69a75369872c5a14c3561ba84fb81.png)
-```
-192.168.235.2
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.235.2</code></pre>
+</details>
 
 >What is the last login date for the user “Work”? <br>
 Format: DD/MM/YYYY HH:MM:SS
@@ -59,65 +66,80 @@ Now move to SAM hive for user information
 ![1620896d9973270b0fa043e336cac28f.png](/resources/1620896d9973270b0fa043e336cac28f.png)
 ![e4db74ebbc242ab65ba88af42baf0cfe.png](/resources/e4db74ebbc242ab65ba88af42baf0cfe.png)
 
-```
-23/03/2023 21:53:29
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>23/03/2023 21:53:29</code></pre>
+</details>
 
 >How many logins did the “Work” user have?
 
 ![72d1dc85e4690b6a120cb57d00bf991f.png](/resources/72d1dc85e4690b6a120cb57d00bf991f.png)
-```
-3
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>3</code></pre>
+</details>
 
 >What is the OS “ProductName”?
 
 use Registry Explorer to load Software Hive then go to `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion` which hold information about Windows OS and Product
 ![2155f45bb469e7d3d5ba84b712f84846.png](/resources/2155f45bb469e7d3d5ba84b712f84846.png)
-```
-Windows 10 Pro
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Windows 10 Pro</code></pre>
+</details>
 
 >What is the OS “BuildNumber”?
 
 Still on `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion`
 ![292db90dd3711a107ade2fecc9174736.png](/resources/292db90dd3711a107ade2fecc9174736.png)
-```
-19043
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>19043</code></pre>
+</details>
 
 >How many programs run on startup for any user?
  
 `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run` registry holds information for programs that will be run on startup
 ![9f8c4f2d16956f57ad8ea0aa2ff73c06.png](/resources/9f8c4f2d16956f57ad8ea0aa2ff73c06.png)
-```
-2
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2</code></pre>
+</details>
 
 >What is the last installed app?
 
 `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Uninstall` registry holds this information despite it names 
 ![6eeb502c818b3f1503724344f787a446.png](/resources/6eeb502c818b3f1503724344f787a446.png)
-```
-xampp
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>xampp</code></pre>
+</details>
 
 >What is the “DefaultGatewayMac”?
 
 Registry NetworkList holds this information, so just search for this
 ![d709695939e0237693ffbc2cbf25dc6f.png](/resources/d709695939e0237693ffbc2cbf25dc6f.png)
-```
-00-50-56-FD-27-94
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>00-50-56-FD-27-94</code></pre>
+</details>
 
 >What is the Machine SID?
 
 This question can obtained by using RegRipper 2.8 only, and the hive that hold this information is SECURITY Hive
 ![08c48c7b70cbea3d35a605d3a797c7cc.png](/resources/08c48c7b70cbea3d35a605d3a797c7cc.png)
 ![f47a18535ba6575eec8afe6d230f89eb.png](/resources/f47a18535ba6575eec8afe6d230f89eb.png)
-```
-S-1-5-21-1957816478-2793074591-1041990146
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>S-1-5-21-1957816478-2793074591-1041990146</code></pre>
+</details>
 
 * * *
 ## Summary

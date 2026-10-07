@@ -32,9 +32,10 @@ So after this process started, there are sevaral Sysmon Event ID 3 (Network conn
 
 Which eventually leaded me to here, command execution via CMD so `IDM.exe` is the payload that made connection back to the attacker as reverse shell.
 
-```
-IDM.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>IDM.exe</code></pre>
+</details>
 
 >What did the attacker use to bypass UAC? Mention the EXE.
 
@@ -54,14 +55,17 @@ And the executable file that was executed at the same time as those registry key
 
 Which is popular trusted binary of Windows being known for Bypassing UAC and execute commands as Administrator and those registry keys set are the indicators that UAC bypassing was actually happened.
 
-```
-fodhelper.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>fodhelper.exe</code></pre>
+</details>
 
 >What registry path and value was used by the above EXE to gain higher privileges? (path\value)
-```
-HKCU:\Software\Classes\ms-settings\shell\open\command\sEpQhpkr
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>HKCU:\Software\Classes\ms-settings\shell\open\command\sEpQhpkr</code></pre>
+</details>
 
 >The attacker dropped a file. What is the file location?
 
@@ -69,9 +73,10 @@ HKCU:\Software\Classes\ms-settings\shell\open\command\sEpQhpkr
 
 Filtered by Sysmon Event ID 11 (FileCreate) then we could see that `IDM.exe` downloaded mimikatz to infected system.
 
-```
-C:\Users\Gabr\Downloads\mimikatz.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Gabr\Downloads\mimikatz.exe</code></pre>
+</details>
 
 >What are the technique name and ID used by the dropped EXE?
 
@@ -83,17 +88,19 @@ Sysmon usually logged RuleName which based on MITRE ATT&CK framework but I could
 
 You can read more about this technique [here](https://attack.mitre.org/techniques/T1003/).
 
-```
-Credential Dumping: T1003
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Credential Dumping: T1003</code></pre>
+</details>
 
 >What is the name of the attack?
 
 Mimikatz is also known for "pass the hash" which use NTLM hash dumping from lsass to authenticate and launch another process (normally cmd or powershell) as that user (Read more about Pass The Hash attack [here](https://www.netwrix.com/pass_the_hash_attack_explained.html?source=post_page-----edb6fb3022b7--------------------------------))
 
-```
-pass the hash
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>pass the hash</code></pre>
+</details>
 
 >What EXE did the attacker run using elevated privileges from the above attack?
 
@@ -105,9 +112,10 @@ So we need to know "ProcessId" of `mimikatz` process first then we can use this 
 
 Search for "ParentProcessId 4988" which we can see that `powershell.exe` is a process spawned by pass the hash attack.
 
-```
-powershell.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>powershell.exe</code></pre>
+</details>
 
 >The attacker downloaded and ran a file. What is the filename?
 
@@ -119,9 +127,11 @@ We already know ProcessID of powershell process so we could use that to find any
 
 And here is ProcessID of this process
 
-```
-012e382049b88808e2d0b26e016dc189f608deea9b6cc993ce24a57c99dd93d1.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>012e382049b88808e2d0b26e016dc189f608deea9b6cc993ce24a57c99dd93d1.exe</code></pre>
+</details>
+
 * * *
 ## Summary
 On this challenge, we investigated sysmon log to uncover reverse shell activities started from a initial payload that made a connection to the attacker then leads to mimikatz execution to dumping NTLM hash and finally use that hash to spawn another powershell process to download and execute another payload.

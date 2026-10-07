@@ -24,23 +24,27 @@ First I started with emails that stored in `\AppData\Local\Microsoft\Windows Liv
 ![84eac805b2146f78def37f379f6fa2e0.png](/resources/84eac805b2146f78def37f379f6fa2e0.png)
 All of these mails only contains 2 characters, one is victim and this one is an attacker
 
-```
-abdlhameed
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>abdlhameed</code></pre>
+</details>
 
 >What application is used for messaging?
 
 ![cfb589d040d8f0073c5df63281d4a247.png](/resources/cfb589d040d8f0073c5df63281d4a247.png)
 An attacker suggested to contact him with discord and I found discord shortcut on Desktop folder, it seem like user agreed to contact an attacker with discord
 
-```
-discord
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>discord</code></pre>
+</details>
 
 >What is the attacker's username on the application?
-```
-abdo8azy
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>abdo8azy</code></pre>
+</details>
 
 >When did an attacker send the first message to the victim on this application?
 Answer Format: YYYY-MM-DDTHH:MM:SS
@@ -65,18 +69,20 @@ Then we will have 2 urls that contains an attacker username, one is private chat
 
 On private chat, search for timestamp and go the the bottom because the bottom timestamp will be the first message that was cached on this file
 
-```
-2023-11-11T22:15:11
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-11-11T22:15:11</code></pre>
+</details>
 
 >The attacker has sent a server invitation URL to the victim, what is the full URL?
 
 ![bed673c2a26318c2be25af8f17be7e15.png](/resources/bed673c2a26318c2be25af8f17be7e15.png)
 We will focus on content or url field of an attacker then we will have this discord group url which lead us to discord group that we found earlier
 
-```
-https://discord.gg/ajHEwPq3
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://discord.gg/ajHEwPq3</code></pre>
+</details>
 
 >How many people were on the Discord server?
 
@@ -84,9 +90,10 @@ https://discord.gg/ajHEwPq3
 
 An attacker did mention how many people where there, do the math
 
-```
-4
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4</code></pre>
+</details>
 
 >What is the MD5 hash of the attachment file that the victim sent to the attacker?
 
@@ -100,9 +107,10 @@ It mean user sent this file to this server
 
 I found this file on Documents folder, with tool provided we can easily get MD5 hash
 
-```
-4243e8b9c73d6cb5db5b64d64fcd4347
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4243e8b9c73d6cb5db5b64d64fcd4347</code></pre>
+</details>
 
 >What is the victim’s country?
 
@@ -110,9 +118,10 @@ I found this file on Documents folder, with tool provided we can easily get MD5 
 
 First I searched for location which indicate that this user was from Egypt but that not the right answer so another idea is to find a country_code and it tells us a different country 
 
-```
-France
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>France</code></pre>
+</details>
 
 >What is the URL of the attachment that the attacker sent to the victim?
 
@@ -120,9 +129,10 @@ France
 
 An attacker sent another mails  (`idk*.eml`) to an employee for blackmailing to download this suspicious url which likely to be a malware that was detected according to scenario
 
-```
-https://files.doxbin.gg/8tgwESMK.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://files.doxbin.gg/8tgwESMK.exe</code></pre>
+</details>
 
 * * *
 ## Summary

@@ -23,9 +23,10 @@ There are several ways to answer this question mine is to use `python3 vol.py -f
 
 Then use `cat ../ChallengeFile/sessions.txt | grep '/' | awk '{print $5}' | sort | uniq` to display all unique user process username from sessions then we will have 4 users have sessions on this system
 
-```
-4
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4</code></pre>
+</details>
 
 >Which user is the infected one?
 
@@ -37,14 +38,17 @@ Scenario gave us a hint that victim fell to a suspicious crack tool which might 
 
 Then use `cat ../ChallengeFile/filescan.txt | grep "Downloads"` to find all files inside Downloads folder then we can see there is `Windows10Crack.exe` inside flapjack's Downloads folder
 
-```
-flapjack
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>flapjack</code></pre>
+</details>
 
 >Which file dropped the ransomware?
-```
-Windows10Crack.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Windows10Crack.exe</code></pre>
+</details>
 
 >How did that file drop the ransomware [URL]?
 
@@ -56,9 +60,10 @@ Lets dump `Windows10Crack.exe` from memory dump with `python3 vol.py -f vLP.vmem
 
 Then use IDA Free to decompile this file which you will see that this file will drop ransomware to temp folder
 
-```
-http://48.147.154.231/XGUbdem0hd.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://48.147.154.231/XGUbdem0hd.exe</code></pre>
+</details>
 
 >What is the virtual offset of that ransomware?
 
@@ -66,9 +71,10 @@ http://48.147.154.231/XGUbdem0hd.exe
 
 Using `cat ../ChallengeFile/filescan.txt | grep "XGUbdem0hd.exe"` then we will have virtual offset of this ransomware
 
-```
-0xe4870d737570
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0xe4870d737570</code></pre>
+</details>
 
 >The ransomware edited one of the primary hash manager registry key. Find the key that got modified.
 
@@ -88,9 +94,10 @@ Go to behavior tab, under Registry actions and you will see that registry at the
 
 Here is the explaination about this key
 
-```
-HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters</code></pre>
+</details>
 
 >What is the credential of the AdminRecovery?
 
@@ -98,9 +105,10 @@ HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameter
 
 Go to the last section under behavior tab, we will see Decoded Text that has AdminRecovery's credential
 
-```
-K3ller!$Supp1y
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>K3ller!$Supp1y</code></pre>
+</details>
 
 * * *
 ## Summary
