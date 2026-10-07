@@ -12,32 +12,40 @@ A multinational corporation has been hit by a cyber attack that has led to the t
 > Q1: Which volatility profile would be best for this machine?
 
 By using volatility 2 imageinfo plugin `vol.py -f CYBERDEF-567078-20230213-171333.raw imageinfo`, it will suggest that 2 profiles but the one we will use will be "WinXPSP2x86"
-```
-WinXPSP2x86
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>WinXPSP2x86</code></pre>
+</details>
 
 > Q2: How many processes were running when the image was acquired?
 
 ![80318a1e2063833eae819a32d87aa2c1.png](/resources/80318a1e2063833eae819a32d87aa2c1.png)
 by running `vol3 -f CYBERDEF-567078-20230213-171333.raw psscan`, we can see that there are 25 processes and 6 processes were already exited which leave us with 19 processes that still running
-```
-19
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>19</code></pre>
+</details>
 
 > Q3: What is the process ID of cmd.exe?
 
 ![9a0bbdeda7bdb5ab86ae247230859a7b.png](/resources/9a0bbdeda7bdb5ab86ae247230859a7b.png)
-```
-1960
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>1960</code></pre>
+</details>
 
 > Q4: What is the name of the most suspicious process?
 
 ![2005827e9e3a75067fe6bdddaefb0e23.png](/resources/2005827e9e3a75067fe6bdddaefb0e23.png)
 Well.. Its self-explanatory here
-```
-rootkit.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>rootkit.exe</code></pre>
+</details>
 
 > Q5: Which process shows the highest likelihood of code injection?
 
@@ -51,9 +59,11 @@ As expected this process is indeed malicious
 
 ![47151de00c311555450936dbd18558d9.png](/resources/47151de00c311555450936dbd18558d9.png)
 And if its really BlackEnergy malware then it made sense why it has to be this process
-```
-svchost.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>svchost.exe</code></pre>
+</details>
 
 > Q6: There is an odd file referenced in the recent process. Provide the full path of that file.
 
@@ -61,9 +71,11 @@ svchost.exe
 I used `strings /tmp/outfile/pid.880.vad.0x980000-0x988fff.dmp` to find any path hidden in this files and there is one
 ![7a146ab98b291ed3be598cdecde856cf.png](/resources/7a146ab98b291ed3be598cdecde856cf.png)
 Probably for persistence
-```
-C:\WINDOWS\system32\drivers\str.sys
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\WINDOWS\system32\drivers\str.sys</code></pre>
+</details>
 
 > Q7: What is the name of the injected dll file loaded from the recent process?
 
@@ -71,17 +83,21 @@ For a plugin that detected dll injection, I would recommend you to read this [bl
 
 ![31cf201fd9ebd404ac4a1d62f99474b1.png](/resources/31cf201fd9ebd404ac4a1d62f99474b1.png)
 So lets do this `vol3 -f CYBERDEF-567078-20230213-171333.raw windows.ldrmodules --pid=880` then we will find the only one dll that does not mapped for all 3 
-```
-msxml3r.dll
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>msxml3r.dll</code></pre>
+</details>
 
 > Q8: What is the base address of the injected dll?
 
 ![c2783f5d1bd669f7e97f007f563c49ac.png](/resources/c2783f5d1bd669f7e97f007f563c49ac.png)
 We can get this by using malfind and the base address could be found here
-```
-0x980000
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>0x980000</code></pre>
+</details>
 
 
 You can read more about this malware [here](https://attack.mitre.org/software/S0089/)

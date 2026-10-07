@@ -24,26 +24,32 @@ We're currently in the midst of a murder investigation, and we've obtained the v
 After a while, open report once it finished and go to Installed Apps then you will see that this phone only has 1 trading app
 ![5c27c09e13bd764388562f6e98b39490.png](/resources/5c27c09e13bd764388562f6e98b39490.png)
 Which is Olymp Trade
-```
-Olymp Trade
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Olymp Trade</code></pre>
+</details>
 
 > Q2: According to the testimony of the victim's best friend, he said, "While we were together, my friend got several calls he avoided. He said he owed the caller a lot of money but couldn't repay now". How much does the victim owe this person?
 
 ![0df5a81118313378f7f9585053c11e27.png](/resources/0df5a81118313378f7f9585053c11e27.png)
 If sevaral calls were avoided then the debt owner often go to SMS message and after examined SMS message, look like victim owned someone large amount of money
-```
-250000
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>250000</code></pre>
+</details>
 
 > Q3: What is the name of the person to whom the victim owes money?
 
 ![3d93dde883d5b13cfdae6dd80d840629.png](/resources/3d93dde883d5b13cfdae6dd80d840629.png)
 We got debt owner number so we can use this to find his name in Contacts
 ![fd4e3c890ea8238f7e438656955a92e7.png](/resources/fd4e3c890ea8238f7e438656955a92e7.png)
-```
-Shady Wahab
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Shady Wahab</code></pre>
+</details>
 
 > Q4: Based on the statement from the victim's family, they said that on September 20, 2023, he departed from his residence without informing anyone of his destination. Where was the victim located at that moment?
 
@@ -51,9 +57,11 @@ Shady Wahab
 I checked Recent Activity then I found that victim used Google Maps which also has Snapsnot image too
 ![5f9808d4ca4b611b9a9cfaa235317f97.png](/resources/5f9808d4ca4b611b9a9cfaa235317f97.png)
 We can see that victim was stayed inside this hotel
-```
-The Nile Ritz-Carlton
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>The Nile Ritz-Carlton</code></pre>
+</details>
 
 > Q5: The detective continued his investigation by questioning the hotel lobby. She informed him that the victim had reserved the room for 10 days and had a flight scheduled thereafter. The investigator believes that the victim may have stored his ticket information on his phone. Look for where the victim intended to travel.
 
@@ -61,17 +69,21 @@ The Nile Ritz-Carlton
 ALEAPP result didn't get me any result so I went to media folder and just as I guessed, it was saved under Download folder
 ![895a11b71ef50cc983678f2a60613e94.png](/resources/895a11b71ef50cc983678f2a60613e94.png)
 Victim intented to travel in Las Vegas
-```
-Las Vegas
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Las Vegas</code></pre>
+</details>
 
 > Q6: After examining the victim's Discord conversations, we discovered he had arranged to meet a friend at a specific location. Can you determine where this meeting was supposed to occur?
 
 ![ca802ba099f0b3196dc6f99fa01c1f76.png](/resources/ca802ba099f0b3196dc6f99fa01c1f76.png)
 Go back to ALEAPP, it caught discord chats for us and look like victim had an appointment in The Mob Museum
-```
-The Mob Museum
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>The Mob Museum</code></pre>
+</details>
 
 ![58747bdb6837a8cfed60d75741493827.png](/resources/58747bdb6837a8cfed60d75741493827.png)
 * * *

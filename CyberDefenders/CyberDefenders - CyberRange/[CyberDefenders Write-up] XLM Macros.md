@@ -32,9 +32,10 @@ We got 2 microsoft excel sample to investigate and we will have to investigate s
 
 First, we will determine if this file is encrypted or not with `msoffcrypto-tool -t -v sample1-fb5ed444ddc37d748639f624397cff2a.bin`, we use `-t` which we can see it is encrypted so we will use `msoffcrypto-crack.py sample1-fb5ed444ddc37d748639f624397cff2a.bin` to find for the password hence the answer of this question
 
-```
-VelvetSweatshop
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>VelvetSweatshop</code></pre>
+</details>
 
 > Q2: Sample1: This document contains six hidden sheets. What are their names? Provide the value of the one starting with S.
 
@@ -50,9 +51,10 @@ First, using password we got from the last time to decrypt it then we will have 
 
 Next lets use `oledump.py sample1_decrypt -p /opt/oledump-files/plugin_biff.py --pluginoptions '-x'` to dump all relevant information for us then at the top we can see all sheet information including hidden sheets
 
-```
-SOCWNEScLLxkLhtJp
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SOCWNEScLLxkLhtJp</code></pre>
+</details>
 
 > Q3: Sample1: What URL is the malware using to download the next stage? Only include the second-level and top-level domain. For example, xyz.com.
 
@@ -60,9 +62,10 @@ SOCWNEScLLxkLhtJp
 
 Back to `olevba`, just take a look that IOC this tool caught for us
 
-```
-http://rilaer.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://rilaer.com</code></pre>
+</details>
 
 > Q4: Sample1: What malware family was this document attempting to drop?
 
@@ -70,9 +73,10 @@ http://rilaer.com
 
 Searching this domain on [urlhaus](https://urlhaus.abuse.ch/browse.php?search=rilaer.com) and you will see which malware family was dropped from this domain
 
-```
-Dridex
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Dridex</code></pre>
+</details>
 
 > Q5: Sample2: This document has a very hidden sheet. What is the name of this sheet?
 
@@ -84,9 +88,10 @@ First we need to check if this file is encrypted or not which is not
 
 So we can proceed with `oledump.py sample2-b5d469a07709b5ca6fee934b1e5e8e38.bin -p /opt/oledump-files/plugin_biff.py --pluginoptions '-x'` which we can see that there is only 1 sheet that is very hidden
 
-```
-CSHykdYHvi
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CSHykdYHvi</code></pre>
+</details>
 
 > Q6: Sample2: This document uses reg.exe. What registry key is it checking?
 
@@ -102,9 +107,10 @@ To find which key is really check, we need to use `strings` then you will found 
 
 Here is the describe for each value it could represent
 
-```
-VBAWarnings
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>VBAWarnings</code></pre>
+</details>
 
 > Q7: Sample2: From the use of reg.exe, what value of the assessed key indicates a sandbox environment?
 
@@ -114,9 +120,10 @@ We can see that after it retrieve `VBAWarnings` key value, it will be check with
 
 As we can see that "1" mean its potentially mean a sandbox which it need least restrictive to execute malware
 
-```
-0x1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0x1</code></pre>
+</details>
 
 > Q8: Sample2: This document performs several additional anti-analysis checks. What Excel 4 macro function does it use?
 
@@ -128,14 +135,17 @@ We can see these chains of formula so lets ChatGPT analyze them for us
 
 So it use `GET.WORKSPACE` to retrieve environment information to determine if it should exit or not 
 
-```
-GET.WORKSPACE
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>GET.WORKSPACE</code></pre>
+</details>
 
 > Q9: Sample2: This document checks for the name of the environment in which Excel is running. What value is it using to compare?
-```
-Windows
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Windows</code></pre>
+</details>
 
 > Q10: Sample2: What type of payload is downloaded?
 
@@ -143,28 +153,35 @@ Windows
 
 After It passed all tests, this macro will download a file from specific url and run it with `rundll32.exe` which is an executable file designed to run dll file hence the file that will be downloaded is dll 
 
-```
-dll
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>dll</code></pre>
+</details>
 
 > Q11: Sample2: What URL does the malware download the payload from?
 
 ![428ae43e5155ac717f61399756400b65.png](/resources/428ae43e5155ac717f61399756400b65.png)
-```
-https://ethelenecrace.xyz/fbb3
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>https://ethelenecrace.xyz/fbb3</code></pre>
+</details>
 
 > Q12: Sample2: What is the filename that the payload is saved as?
 
 ![150868672a430cc8ebb0254e48e82a81.png](/resources/150868672a430cc8ebb0254e48e82a81.png)
-```
-bmjn5ef.html
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>bmjn5ef.html</code></pre>
+</details>
 
 > Q13: Sample2: How is the payload executed? For example, mshta.exe
-```
-rundll32.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>rundll32.exe</code></pre>
+</details>
 
 > Q14: Sample2: What was the malware family?
 
@@ -173,9 +190,11 @@ rundll32.exe
 I couldn't find this domain on URLHaus so I searched it on google and found someone posted about this on T**X**ITTER
 
 ![827091ae449c5e9ffd30500d69d9c278.png](/resources/827091ae449c5e9ffd30500d69d9c278.png)
-```
-zloader
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>zloader</code></pre>
+</details>
 
 ![d999e856aee989f74d85b8552156fea2.png](/resources/d999e856aee989f74d85b8552156fea2.png)
 * * *

@@ -23,9 +23,10 @@ I copied pcapng file then saved it as pcap then now I can use NetworkMiner to an
 
 ![911ea69c9ac966cc42cd72b84c4e8f45.png](/resources/911ea69c9ac966cc42cd72b84c4e8f45.png)
 
-```
-74.204.41.73
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>74.204.41.73</code></pre>
+</details>
 
 
 > Q2: PCAP: Alright, now we need you to determine a starting point for the timeline that will be useful in mapping out the incident. Please determine the arrival time of frame 1 in the "GrrCON.pcapng" evidence file.
@@ -34,9 +35,10 @@ Just opened pcap or pcapng file, you can already see the time of the first packe
 
 ![ea21a57beffddec87cad85d8e9e768d0.png](/resources/ea21a57beffddec87cad85d8e9e768d0.png)
 
-```
-22:51:07 UTC
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>22:51:07 UTC</code></pre>
+</details>
 
 > Q3: PCAP: What version number of PHP is the development.wse.local server running?
 
@@ -48,26 +50,30 @@ Used `http` filter then used Find Packet for this webserver, but you can also us
 
 Just followed TCP or HTTP stream
 
-```
-5.3.2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5.3.2</code></pre>
+</details>
 
 > Q4: PCAP: What version number of Apache is the development.wse.local web server using?
 
 ![fb3b92fbc0e6f4f45b05f542dd4a8bf5.png](/resources/fb3b92fbc0e6f4f45b05f542dd4a8bf5.png)
 
-```
-2.2.14
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2.2.14</code></pre>
+</details>
 
 > Q5: IR: What is the common name of the malware reported by the IDS alert provided?
 
 ![IR-Alert.png](/resources/IR-Alert.png)
 
 Look at the above or References, it clearly stated the malware name
-```
-Zeus
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Zeus</code></pre>
+</details>
 
 > Q6: PCAP: Please identify the Gateway IP address of the LAN because the infrastructure team reported a potential problem with the IDS server that could have corrupted the PCAP
 
@@ -75,17 +81,19 @@ Since the webserver is on 172.16.0.0/24 then gateway should be `172.16.0.1`
 
 ![62ab683f61f544adf217e498768cb519.png](/resources/62ab683f61f544adf217e498768cb519.png)
 
-```
-172.16.0.1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>172.16.0.1</code></pre>
+</details>
 
 > Q7: IR: According to the IDS alert, the Zeus bot attempted to ping an external website to verify connectivity. What was the IP address of the website pinged?
 
 ![c298892f8f3068888289a84010bf03e7.png](/resources/c298892f8f3068888289a84010bf03e7.png)
 
-```
-74.125.225.112
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>74.125.225.112</code></pre>
+</details>
 
 > Q8: PCAP: It’s critical to the infrastructure team to identify the Zeus Bot CNC server IP address so they can block communication in the firewall as soon as possible. Please provide the IP address?
 
@@ -102,9 +110,11 @@ So I clicked for hints and it says I could use Brim and look out for SURICATA al
 ![9756a87216d7440b5a7dfcd4d628360f.png](/resources/9756a87216d7440b5a7dfcd4d628360f.png)
 
 I queried with SURICATA and the infected system IP address and there is only 1 alert
-```
-88.198.6.20
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>88.198.6.20</code></pre>
+</details>
 
 > Q9: PCAP: The infrastructure team also requests that you identify the filename of the “.bin” configuration file that the Zeus bot downloaded right after the infection. Please provide the file name?
 
@@ -112,9 +122,10 @@ I queried with SURICATA and the infected system IP address and there is only 1 a
 
 I filtered out by an IP address I got from previous question then use Find Packet for `.bin` file, you can see there are two more exe file that was downloaded that is `bt.exe` and `NewDesign.jpg.exe` but the one that was actually downloaded is `bt.exe`
 
-```
-bt.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>bt.exe</code></pre>
+</details>
 
 > Q10: PCAP: No other users accessed the development.wse.local WordPress site during the timeline of the incident and the reports indicate that an account successfully logged in from the external interface. Please provide the password they used to log in to the WordPress page around 6:59 PM EST?
 
@@ -133,9 +144,11 @@ I scrolled a little down more and found `/wp-login.php` with 200 status
 ![a2b292b9e4ea3cb3243c75f3dae6673f.png](/resources/a2b292b9e4ea3cb3243c75f3dae6673f.png)
 
 Scrolled down a little more to find POST request then followed it stream, I obtained the credentials 
-```
-wM812ugu
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>wM812ugu</code></pre>
+</details>
 
 Alternatively you can just use NetworkMiner
 
@@ -146,18 +159,22 @@ Alternatively you can just use NetworkMiner
 ![e5244b5706a6fdbc0736f02808f77d66.png](/resources/e5244b5706a6fdbc0736f02808f77d66.png)
 
 Easily obtained from NetworkMiner
-```
-23:04:04 UTC
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>23:04:04 UTC</code></pre>
+</details>
 
 > Q12: PCAP: What is the source port number in the shellcode exploit? Dest Port was 31708 IDS Signature GPL SHELLCODE x86 inc ebx NOOP
 
 ![ebb99789712918f3ff424dd6aa1b1149.png](/resources/ebb99789712918f3ff424dd6aa1b1149.png)
 
 On Brim, just queried dest port there is only 1 result 
-```
-39709
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>39709</code></pre>
+</details>
 
 Alternatively, on wireshark you can use dstport filter
 
@@ -175,9 +192,10 @@ You can see php meterpreter reverse shell script that was used
 
 Kept scrolling down, you will obtain this answer
 
-```
-2.6.32-38-server
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2.6.32-38-server</code></pre>
+</details>
 
 > Q14: PCAP: What is the value of the token passed in frame 3897?
 
@@ -185,9 +203,10 @@ Kept scrolling down, you will obtain this answer
 
 Just filtered by frame number then you can see it is a HTML form so you will get the answer there
 
-```
-b7aad621db97d56771d6316a6d0b71e9
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>b7aad621db97d56771d6316a6d0b71e9</code></pre>
+</details>
 
 > Q15: PCAP: What was the tool that was used to download a compressed file from the webserver? 
 
@@ -195,9 +214,10 @@ b7aad621db97d56771d6316a6d0b71e9
 
 I searched by various type of compressed file extension and finally found one and it was downloaded via wget
 
-```
-wget
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>wget</code></pre>
+</details>
 
 > Q16: PCAP: What is the download file name the user launched the Zeus bot?
 
@@ -213,9 +233,10 @@ Exported this file to calculate hash
 
 confirmed 
 
-```
-bt.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>bt.exe</code></pre>
+</details>
 
 > Q17: Memory: What is the full file path of the system shell spawned through the attacker's meterpreter session?
 
@@ -239,9 +260,10 @@ Next I used `linux_psaux` plugin to list all processes which I fould PID 1274 an
 
 To confirm that those shells assosiated with this attack, I used `linux_netstat` to find the connection of the meterpreter session which result showed that those process are shells spawned from meterpreter sessions (metasploit default port is 4444)
 
-```
-/bin/sh
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/bin/sh</code></pre>
+</details>
 
 > Q18: Memory: What is the Parent Process ID of the two 'sh' sessions?
 
@@ -249,9 +271,10 @@ To confirm that those shells assosiated with this attack, I used `linux_netstat`
 
 I used `linux_pstree` to show the process tree and then the result showed that PID 1275 is a child process of PID 1274 and PID 1274 is a child process of PID1042 apache2 process which make sense that an attacker exploited webserver to gain a meterpreter shell (PID 1274) then meterpeter spawned bash shell again (PID 1275)
 
-```
-1042
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>1042</code></pre>
+</details>
 
 > Q19: Memory: What is the latency_record_count for PID 1274?
 
@@ -265,9 +288,10 @@ Used `linux_pslist` plugin to find offset of this meterpreter process then use `
 
 Then using `dt("task_struct",0xffff880006dd8000)` to display type of data structure, we will obtain the answer
 
-```
-0
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0</code></pre>
+</details>
 
 > Q20: Memory: For the PID 1274, what is the first mapped file path?
 
@@ -277,9 +301,10 @@ There is a plugin specific for this question which is `linux_proc_maps`
 
 ![46d4574c390009c617bf68ea012ccd99.png](/resources/46d4574c390009c617bf68ea012ccd99.png)
 
-```
-/bin/dash
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/bin/dash</code></pre>
+</details>
 
 > Q21: Memory:What is the md5hash of the receive.1105.3 file out of the per-process packet queue?
 
@@ -291,9 +316,10 @@ There is a plugin specific for this question which is `linux_pkt_queues` and use
 
 ![3773e45bcb4ad3c85ff80266867e5972.png](/resources/3773e45bcb4ad3c85ff80266867e5972.png)
 
-```
-184c8748cfcfe8c0e24d7d80cac6e9bd
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>184c8748cfcfe8c0e24d7d80cac6e9bd</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/l337-s4uc3/
 

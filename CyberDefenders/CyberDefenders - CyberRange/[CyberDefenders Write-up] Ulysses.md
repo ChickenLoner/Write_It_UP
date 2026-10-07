@@ -31,25 +31,31 @@ First we need to move zip profile to overlay directory then we can start our inv
 Look like memory file can't be used to solve this question, we gonna need to retrieve log files from disk image
 ![181f49d0b465410233a4afce80df8371.png](/resources/181f49d0b465410233a4afce80df8371-1.png)
 Lucky for us that auth.log is not large so we can catch the right account that was brute forced right away
-```
-ulysses
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>ulysses</code></pre>
+</details>
 
 > Q2: How many were failed attempts there?
 
 ![645ae5837636463ab753a027f1b689a2.png](/resources/645ae5837636463ab753a027f1b689a2-1.png)
 Filtered by "failed" but there are 33 of them which is not the correct answer so we have to minus 1 that not related to brute force attack which is this one
-```
-32
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>32</code></pre>
+</details>
 
 > Q3: What kind of system runs on the targeted server?
 
 ![46e9434b140637443d7b3fdf94f42d30.png](/resources/46e9434b140637443d7b3fdf94f42d30-1.png)
 Find `/etc/issues`, then you will have the answer
-```
-Debian GNU/Linux 5.0
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Debian GNU/Linux 5.0</code></pre>
+</details>
 
 > Q4: What is the victim's IP address?
 
@@ -61,9 +67,10 @@ We already know which profile to use so lets use `vol.py -f victoria-v8.memdump.
 
 Another way to find this answer is to find `/var/lib/dhcp3/dhclient.eth0.leases`  that store DHCP lease information for the eth0 network interface
 
-```
-192.168.56.102
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.56.102</code></pre>
+</details>
 
 > Q5: What are the attacker's two IP addresses? Format: comma-separated in ascending order
 
@@ -71,9 +78,10 @@ Another way to find this answer is to find `/var/lib/dhcp3/dhclient.eth0.leases`
 
 Result from previous netstat scan, we can see that there are connections this these 2 IP addresses, one on port 4444 and 8888 which might be reverse shell connection and one is from smtp port to an attacker IP address 
 
-```
-192.168.56.1,192.168.56.101
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.56.1,192.168.56.101</code></pre>
+</details>
 
 > Q6: What is the "nc" service PID number that was running on the server?
 
@@ -81,9 +89,10 @@ Result from previous netstat scan, we can see that there are connections this th
 
 Use `vol.py -f victoria-v8.memdump.img --profile=LinuxDebian5_26x86 linux_pslist` to list all process or you can go back to netstat plugin result which also tells us the same PID
 
-```
-2169
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2169</code></pre>
+</details>
 
 > Q7: What service was exploited to gain access to the system? (one word)
 
@@ -104,32 +113,40 @@ I investigated `mainlog` first, It does look like an attacker exploited RCE vuln
 ![0dd19d9023e941660d0eb5c79d602711.png](/resources/0dd19d9023e941660d0eb5c79d602711-1.png)
 
 But if you also investigated `injectlog`
-```
-exim4
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>exim4</code></pre>
+</details>
 
 > Q8: What is the CVE number of exploited vulnerability?
 
 ![ca39606084a60bda4e66b24d4bf105a5.png](/resources/ca39606084a60bda4e66b24d4bf105a5-1.png)
 we know the version of exim4 and it results in RCE so we can search for CVE with just this information thus landed me with this exploit database [script](https://www.exploit-db.com/exploits/16925) and it was found along his brother CVE-2010-4345 for local privilege escaltion
-```
-CVE-2010-4344
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2010-4344</code></pre>
+</details>
 
 > Q9: During this attack, the attacker downloaded two files to the server. Provide the name of the compressed file.
 
 ![6040e3fd1e3f7e35eccd817791bc3a8a.png](/resources/6040e3fd1e3f7e35eccd817791bc3a8a-1.png)
-```
-rk.tar
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>rk.tar</code></pre>
+</details>
 
 > Q10: Two ports were involved in the process of data exfiltration. Provide the port number of the highest one.
 
 ![476f120e04faf4e3eba1dbbd705cce9c.png](/resources/476f120e04faf4e3eba1dbbd705cce9c-1.png)
 Result from netstat plugin told us that an attacker made a several connection to infected host
-```
-8888
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>8888</code></pre>
+</details>
 
 > Q11: Which port did the attacker try to block on the firewall?
 
@@ -146,9 +163,11 @@ use `tar -xf rz.tar` to extract it then you will have a directory contains 5 fil
 Then what I opened `install.sh`, It was right there 
 
 Command that create a rule on IPTable to drop any packet that coming to port 45295
-```
-45295
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>45295</code></pre>
+</details>
 
 
 ![67193c3d6213a7f657b195d5a2d970d6.png](/resources/67193c3d6213a7f657b195d5a2d970d6-1.png)

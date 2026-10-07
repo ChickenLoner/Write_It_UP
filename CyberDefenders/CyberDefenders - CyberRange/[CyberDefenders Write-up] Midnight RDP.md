@@ -67,9 +67,10 @@ By using the username within our query, we can now see the syslog which reveals 
 
 Query: `host="ip-10-10-3-192" rnichols | sort _time`
 
-```
-twhite@infinitechsolutions.xyz
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>twhite@infinitechsolutions.xyz</code></pre>
+</details>
 
 >Q2: After identifying the compromised account, the attacker sent phishing emails to other employees within the organization. What are the names of those employees, sorted chronologically and separated by commas?
 
@@ -79,17 +80,19 @@ We can use the subject of the email we found eariler with the compromised email 
 
 Query: `host="ip-10-10-3-192" "twhite@infinitechsolutions.xyz" "Zero Trust Compliance Verification" | sort _time`
 
-```
-rnichols,llopez,gbaker,ahall
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>rnichols,llopez,gbaker,ahall</code></pre>
+</details>
 
 >Q3: What is the name of the malicious attachment that was sent from the compromised account?
 
 ![591711c7caa07bd18a83c44fcf76b699.png](/resources/591711c7caa07bd18a83c44fcf76b699.png)
 
-```
-cloud zerotrust compliance.rdp
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>cloud zerotrust compliance.rdp</code></pre>
+</details>
 
 ### Execution
 >Q1: Upon analyzing user interactions, which employee downloaded and executed the malicious attachment?
@@ -116,9 +119,10 @@ We can also confirm this via file creation event, we can see that `mstsc.exe` wh
 
 Query: `Sysmon EventCode=11 file_path="*Startup*" | sort UtcTime | table UtcTime,Image,file_path,user,host`
 
-```
-rnichols
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>rnichols</code></pre>
+</details>
 
 >Q2: On the DC machine, a DLL beacon was executed by the attacker in memory. What are the first 10 bytes of the SHA-256 hash of this malicious DLL file?
 
@@ -157,9 +161,10 @@ To confirm this, we can get the full hash and search it on [VirusTotal](https://
 
 Another way is to save output file from the memory via PowerShell, the [official write-up](https://cyberdefenders.org/walkthroughs/midnight-rdp/) use this method so you can give it a read as well.
 
-```
-0ee6bc20a7f855d881cc
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0ee6bc20a7f855d881cc</code></pre>
+</details>
 
 ### Persistence
 >Q1: Following the establishment of the malicious connection, a file was dropped onto the system. What is the name of this dropped file?
@@ -168,9 +173,10 @@ Another way is to save output file from the memory via PowerShell, the [official
 
 As we already discovered that RDP configuration file automatically dropped the `ztssvc.exe` file on the start up folder when RDP connection was established.
 
-```
-ztssvc.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ztssvc.exe</code></pre>
+</details>
 
 >Q2: To maintain long-term access, the attacker established a scheduled task on the compromised machine. What is the name of this task?
 
@@ -186,9 +192,10 @@ After gaining access to IT02 host, the threat actor started by running `whoami /
 
 With high integrity access token, the threat actor created a new scheduled task for persistence under the name of "Amazon Zero Trust Agent" to execute `C:\Windows\System32\Amazon ZeroTrust Compl.exe` on logon as SYSTEM.
 
-```
-Amazon Zero Trust Agent
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Amazon Zero Trust Agent</code></pre>
+</details>
 
 >Q3: As part of their persistence strategy, the attacker created a new user account. What is the name of this unauthorized account?
 
@@ -202,9 +209,10 @@ After created scheduled task, the threat actor created new user "Adminstrator" w
 
 And we can also see that after dropped other beacon and established persistence via scheduled task, the threat actor removed every files on the start up folder of "rnichols" and "jgreen", essentially remove old beacon to use new one instead.
 
-```
-Adminstrator
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Adminstrator</code></pre>
+</details>
 
 >Q4: To facilitate remote access, the attacker modified Remote Desktop settings. What is the name of the registry key that controls whether Remote Desktop Protocol (RDP) connections are permitted?
 
@@ -214,9 +222,10 @@ Adminstrator
 
 Before creating new backdoor user, the threat actor checked `HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections` registry to determine whether Remote Desktop Protocol (RDP) connections are allowed on the system. 
 
-```
-fDenyTSConnections
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>fDenyTSConnections</code></pre>
+</details>
 
 >Q5: Further probing revealed a new user account created on the DC. What is the name of this account?
 
@@ -231,9 +240,10 @@ Query: `host=DC01 EventCode=400
 
 We can see that the threat actor add a new lookalike user to the local administrator on IT02 and add both user to "Domain Admins" group.
 
-```
-rniclos
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>rniclos</code></pre>
+</details>
 
 ### Privilege Escalation
 >Q1: Investigating the escalation technique, what are the last 6 bytes of the CLSID of the privileged COM interface that the attacker exploited?
@@ -250,14 +260,17 @@ According to [UACMe's README.md](https://github.com/hfiref0x/UACME/tree/v3.2.x) 
 
 According to [Elastic](https://www.elastic.co/docs/reference/security/prebuilt-rules/rules/windows/privilege_escalation_uac_bypass_com_interface_icmluautil#investigating-uac-bypass-via-icmluautil-elevated-com-interface), the one we discovered is indeed correct, when bypassing with this method, `dllhost.exe` is in the priority list to monitor with either COM interface {3E5FC7F9-9A51-4367-9063-A120244FBEC7} or {D2E7041B-2927-42FB-8E9F-7CE93B6DC937}
 
-```
-7CE93B6DC937
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>7CE93B6DC937</code></pre>
+</details>
 
 >Q2: To escalate privileges, the attacker dropped another file on the system. What is the name of this file?
-```
-akagi64.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>akagi64.exe</code></pre>
+</details>
 
 ### Defense Evasion
 >Q1: The attacker sought to modify system behavior to weaken security settings. What is the name of the registry key that governs the User Account Control (UAC) prompt settings for administrative users?
@@ -268,9 +281,10 @@ akagi64.exe
 
 As already discovered that after gaining access to the IT02 host, the threat actor queried `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\ConsentPromptBehaviorAdmin` registry key to retrieves the `ConsentPromptBehaviorAdmin` value, which controls how Windows prompts administrators when elevated privileges are required.
 
-```
-ConsentPromptBehaviorAdmin
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ConsentPromptBehaviorAdmin</code></pre>
+</details>
 
 >Q2: In an effort to avoid detection, the attacker moved the beacon to a protected system directory. What is the name of this relocated malicious file?
 
@@ -280,18 +294,20 @@ ConsentPromptBehaviorAdmin
 
 As we already discovered that the threat actor dropped a new beacon and set up scheduled to execute it as SYSTEM on logon before deleting old beacon.
 
-```
-Amazon ZeroTrust Compl.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Amazon ZeroTrust Compl.exe</code></pre>
+</details>
 
 ### Discovery
 >Q1: Determining the attacker’s first move on the compromised machine, what was the first command executed to gather system information?
 
 ![42c804c61c42f5c5ff5cb519419703b2.png](/resources/42c804c61c42f5c5ff5cb519419703b2.png)
 
-```
-whoami  /groups
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>whoami  /groups</code></pre>
+</details>
 
 ### Lateral Movement
 >Q1: Which tool did the attacker use to move laterally to the DC?
@@ -311,9 +327,10 @@ After decoding them, reveal series of commands to faticilate lateral movement:
 
 All of these wil allow the threat actor to connect to the domain controller via WinRM and eventually deployed in-memory beacon as seen on the PowerShell Script block logging.
 
-```
-Winrm
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Winrm</code></pre>
+</details>
 
 ### Command and Control
 >Q1: Tracing back the attacker's activities, what was the IP address from which the malicious emails were originally sent?
@@ -324,9 +341,10 @@ By looking at the login event of the compromised email before sending emails, it
 
 Query: `host="ip-10-10-3-192" "twhite@infinitechsolutions.xyz" | sort _time`
 
-```
-3.78.253.99
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3.78.253.99</code></pre>
+</details>
 
 >Q2: After the malicious attachment was executed, it established a connection to an external server. What is the specific endpoint that the malicious attachment communicated with?
 
@@ -336,9 +354,10 @@ We can query for all network connection (TCP) event from IT02 host and focus on 
 
 Query: `Sysmon EventCode=3 host=IT01 user=rnichols | sort UtcTime | stats count by Image,dest_ip,dest_port`
 
-```
-3.78.253.99:3389
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3.78.253.99:3389</code></pre>
+</details>
 
 >Q3: Analysis revealed that the dropped file functions as a Cobalt Strike beacon. What is the endpoint of the Command and Control (C&C) server that this beacon communicates with?
 
@@ -346,9 +365,10 @@ Query: `Sysmon EventCode=3 host=IT01 user=rnichols | sort UtcTime | stats count 
 
 The first beacon is `ztssvc.exe` that dropped on start up folder which connecting to 3.78.244.11 on port 8080, same as the second beacon.
 
-```
-3.78.244.11:8080
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3.78.244.11:8080</code></pre>
+</details>
 
 >Q4: Examining the DLL's configuration, what value is associated with the 'C2Server' key that directs the beacon's communication?
 
@@ -356,9 +376,10 @@ The first beacon is `ztssvc.exe` that dropped on start up folder which connectin
 
 On the behavior tab of VirusTotal, we can see memory pattern urls that associated with C2 server and its beaconing endpoint here.
 
-```
-3.78.244.11,/dot.gif
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3.78.244.11,/dot.gif</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/midnight-rdp/
  

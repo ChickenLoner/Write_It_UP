@@ -16,9 +16,11 @@ Provided the phishing kit, you as a soc analyst are requested to analyze it and 
 Here are the directory of the kit after decompressed 
 ![0e03e9d8fc117e5c560fd6e3f6983fed.png](/resources/0e03e9d8fc117e5c560fd6e3f6983fed.png)
 There is a metamask which should be the answer of this question
-```
-metamask
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>metamask</code></pre>
+</details>
 
 For those who wonders what's Metamask?
 There you go
@@ -28,9 +30,11 @@ There you go
 
 ![a0851403d61765a4eb535a8ea9852fb8.png](/resources/a0851403d61765a4eb535a8ea9852fb8.png)
 Inside the metamask folder, there is a php file 
-```
-metamask.php
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>metamask.php</code></pre>
+</details>
 
 > Q3: In which language was the kit written?
 
@@ -39,16 +43,19 @@ Its a php script to retrieve geolocation data based on the user IP address then 
 
 After that it also log data it receive from a form to `/log/log.txt` by appending it 
 
-```
-php
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>php</code></pre>
+</details>
 
 > Q4: What service does the kit use to retrieve the victim's machine information?
 
 ![b9c264a1c5bf32fbe1a4b80de2f2edca.png](/resources/b9c264a1c5bf32fbe1a4b80de2f2edca.png)
-```
-sypex geo
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>sypex geo</code></pre>
+</details>
 
 > Q5: How many seed phrases were already collected?
 
@@ -58,47 +65,58 @@ I went to where the log where created and then opened it
 ![cab4bca61530f2dd5219d6ecdd0f60cf.png](/resources/cab4bca61530f2dd5219d6ecdd0f60cf.png)
 Looking at the content it seems like a wallet seed phases
 
-```
-3
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3</code></pre>
+</details>
 
 > Q6: Write down the seed phrase of the most recent phishing incident?
 
 Since the log were written by appending the recent one must be the lastest
-```
-father also recycle embody balance concert mechanic believe owner pair muffin hockey
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>father also recycle embody balance concert mechanic believe owner pair muffin hockey</code></pre>
+</details>
 
 > Q7: Which medium had been used for credential dumping?
 
 By looking at the code, the telegram it is
 ![58e14e41143dad1c40f903af8988fdad.png](/resources/58e14e41143dad1c40f903af8988fdad.png)
-```
-telegram
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>telegram</code></pre>
+</details>
 
 > Q8: What is the token for the channel?
 
 ![a9b0358b83aa2aaaad7f3a107b819805.png](/resources/a9b0358b83aa2aaaad7f3a107b819805.png)
-```
-5457463144:AAG8t4k7e2ew3tTi0IBShcWbSia0Irvxm10
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>5457463144:AAG8t4k7e2ew3tTi0IBShcWbSia0Irvxm10</code></pre>
+</details>
 
 > Q9: What is the chat ID of the phisher's 
 channel?
 
 ![8db8522e257ee6213b308d1b782e7566.png](/resources/8db8522e257ee6213b308d1b782e7566.png)
-```
-5442785564
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>5442785564</code></pre>
+</details>
 
 > Q10: What are the allies of the phish kit developer?
 
 There is a comment on this script and there is a name too
 ![26444d99cdadb056695f3226c9ea3c73.png](/resources/26444d99cdadb056695f3226c9ea3c73.png)
-```
-j1j1b1s@m3r0
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>j1j1b1s@m3r0</code></pre>
+</details>
 
 > Q11: What is the full name of the Phish Actor?
 
@@ -108,16 +126,20 @@ And I found this getChat method that can retrieve information about the user
 So I used this command
 `wget https://api.telegram.org/bot5457463144:AAG8t4k7e2ew3tTi0IBShcWbSia0Irvxm10/getChat?chat_id=5442785564` on the cmd and got the answer
 ![b4a20c2f90512f98eb34f72c843e3925.png](/resources/b4a20c2f90512f98eb34f72c843e3925.png)
-```
-Marcus Aurelius
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Marcus Aurelius</code></pre>
+</details>
 
 > Q12: What is the username of the Phish Actor? 
 
 ![bcb191b9783a674f9c8f78b007cfc7b1.png](/resources/bcb191b9783a674f9c8f78b007cfc7b1.png)
-```
-pumpkinboii
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>pumpkinboii</code></pre>
+</details>
 
 ![66e1647b340aae50c0a9613b53120797.png](/resources/66e1647b340aae50c0a9613b53120797.png)
 * * *

@@ -32,14 +32,17 @@ Knowing what to look for, I queried Event ID 4769 and found that the ticket encr
 
 Query : `index="kerberoasted" event.code=4769 |  sort @timestamp | table @timestamp,winlog.event_data.ServiceName,winlog.event_data.TargetUserName,winlog.computer_name,winlog.event_data.TicketEncryptionType`
 
-```
-RC4-HMAC
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>RC4-HMAC</code></pre>
+</details>
 
 >Q2: What is the username of the account that sequentially requested Ticket Granting Service (TGS) for two distinct application services within a short timeframe?
-```
-johndoe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>johndoe</code></pre>
+</details>
 
 >Q3: We must delve deeper into the logs to pinpoint any compromised service accounts for a comprehensive investigation into potential successful kerberoasting attack attempts. Can you provide the account name of the compromised service account?
 
@@ -49,14 +52,17 @@ To confirm which account was used after successfully cracking the password, we f
 
 Query : `index="kerberoasted" "event.code"=4624 winlog.event_data.AuthenticationPackageName=NTLM | sort @timestamp | table @timestamp,winlog,winlog.event_data.TargetUserName,winlog.event_data.IpAddress,winlog.computer_name,winlog.event_data.WorkstationName`
 
-```
-SQLService
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SQLService</code></pre>
+</details>
 
 >Q4: To track the attacker's entry point, we need to identify the machine initially compromised by the attacker. What is the machine's IP address?
-```
-10.0.0.154
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>10.0.0.154</code></pre>
+</details>
 
 >Q5: To understand the attacker's actions following the login with the compromised service account, can you specify the service name installed on the Domain Controller (DC)?
 
@@ -70,9 +76,10 @@ Query : `index="kerberoasted" "event.code"=7045 | sort @timestamp`
 
 The second event also shows another service installation with different name, but the content appears to be the same as the first one.
 
-```
-iOOEDsXjWeGRAyGl
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>iOOEDsXjWeGRAyGl</code></pre>
+</details>
 
 >Q6: To grasp the extent of the attacker's intentions, What's the complete registry key path where the attacker modified the value to enable Remote Desktop Protocol (RDP)?
 
@@ -93,9 +100,10 @@ index="kerberoasted" "event.provider"="Microsoft-Windows-Sysmon" "event.code"=1
          winlog.computer_name as Computer
 ```
 
-```
-HKLM\system\currentcontrolset\control\terminal server\fDenyTSConnections
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>HKLM\system\currentcontrolset\control\terminal server\fDenyTSConnections</code></pre>
+</details>
 
 >Q7: To create a comprehensive timeline of the attack, what is the UTC timestamp of the first recorded Remote Desktop Protocol (RDP) login event?
 
@@ -105,9 +113,10 @@ After enabling RDP, the attacker logged on to the domain controller via RDP usin
 
 Query : `index="kerberoasted" "winlog.channel"=Security "event.code"=4624 "winlog.event_data.LogonType"=10 | sort @timestamp | table  @timestamp,winlog.event_data.TargetUserName,winlog.computer_name,winlog.event_data.WorkstationName,winlog.event_data.IpAddress`
 
-```
-2023-10-16 07:50
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-10-16 07:50</code></pre>
+</details>
 
 >Q8: To unravel the persistence mechanism employed by the attacker, what is the name of the WMI event consumer responsible for maintaining persistence?
 
@@ -118,9 +127,10 @@ Leveraging Sysmon Event ID 20 to detect WMI event consumer registrations, we can
 
 Query : `index="kerberoasted" event.code=20 "event.provider"="Microsoft-Windows-Sysmon"`
 
-```
-Updater
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Updater</code></pre>
+</details>
 
 >Q9: Which class does the WMI event subscription filter target in the WMI Event Subscription you've identified?
 
@@ -130,9 +140,10 @@ We can see that the WMI trigger for "Updater" is configured to execute when ther
 
 Query : `index="kerberoasted" event.code=19 "event.provider"="Microsoft-Windows-Sysmon"`
 
-```
-Win32_NTLogEvent
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Win32_NTLogEvent</code></pre>
+</details>
 
 * * *
 

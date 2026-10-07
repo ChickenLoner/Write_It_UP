@@ -22,14 +22,17 @@ We can start by determine if this memory dump was taken from Windows or Linux by
 
 After determined that this is a memory image captured from Windows then we can proceed with `vol3 -f 192-Reveal.dmp windows.pstree` to display process tree and find suspicious process that should not be there which we can see that PowerShell and `net.exe` were running on this machine during memory acquisition  
 
-```
-powershell.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>powershell.exe</code></pre>
+</details>
 
 >Q2: Knowing the parent process ID (PID) of the malicious process aids in tracing the process hierarchy and understanding the attack flow. What is the parent PID of the malicious process?
-```
-4120
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>4120</code></pre>
+</details>
 
 >Q3: Determining the file name used by the malware for executing the second-stage payload is crucial for identifying subsequent malicious activities. What is the file name that the malware uses to execute the second-stage payload?
 
@@ -37,14 +40,17 @@ powershell.exe
 
 We already know that `net.exe` that spawned under PowerShell process has something to do with it but lets use `vol3 -f 192-Reveal.dmp windows.cmdline` to get command line argument that was used on this PowerShell process which we can see that it used `net` command to get malicious dll file on shared directory then execute it with `rundll32`
 
-```
-3435.dll
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3435.dll</code></pre>
+</details>
 
 >Q4: Identifying the shared directory on the remote server helps trace the resources targeted by the attacker. What is the name of the shared directory being accessed on the remote server?
-```
-davwwwroot
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>davwwwroot</code></pre>
+</details>
 
 >Q5: What is the MITRE sub-technique ID used by the malware to execute the second-stage payload?
 
@@ -52,9 +58,10 @@ davwwwroot
 
 It used `rundll32` to execute malicious dll file so it has to be this [technique](https://attack.mitre.org/techniques/T1218/011/)
 
-```
-T1218.011
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1218.011</code></pre>
+</details>
 
 >Q6: Identifying the username under which the malicious process runs helps in assessing the compromised account and its potential impact. What is the username that the malicious process runs under?
 
@@ -62,9 +69,10 @@ T1218.011
 
 Lets use `vol3 -f 192-Reveal.dmp windows.sessions` to display all sessions associated with each process which we can see that this PowerShell and other processes were executed with "Elon" account
 
-```
-Elon
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Elon</code></pre>
+</details>
 
 >Q7: Knowing the name of the malware family is essential for correlating the attack with known threats and developing appropriate defenses. What is the name of the malware family?
 
@@ -72,9 +80,10 @@ Elon
 
 We can just search for an IP address we found on VirusTotal which we can see that it was used by StrelaStealer
 
-```
-STRELASTEALER
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>STRELASTEALER</code></pre>
+</details>
 
 ![020faa057349146f6dfef426b3a16cbf.png](/resources/020faa057349146f6dfef426b3a16cbf.png)
 * * *

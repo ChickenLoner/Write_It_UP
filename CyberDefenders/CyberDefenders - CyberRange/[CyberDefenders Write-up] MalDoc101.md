@@ -30,9 +30,10 @@ I always make sure to use `oleid` first to identify VBA Macros within any docume
 
 But to answer this question, we need to use `oledump.py` which you can see that there are 3 objects that contain macros and the highest one is stream 16
 
-```
-16
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>16</code></pre>
+</details>
 
 > Q2: What event is used to begin the execution of the macros?
 
@@ -40,9 +41,10 @@ But to answer this question, we need to use `oledump.py` which you can see that 
 
 Using `olevba` then we can see that this tool already detect which event reponsisble for execution of macros
 
-```
-Document_Open
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Document_Open</code></pre>
+</details>
 
 > Q3: What malware family was this maldoc attempting to drop?
 
@@ -50,9 +52,10 @@ Document_Open
 
 Using `md5sum` or other hash generator then search it on VirusTotal
 
-```
-emotet
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>emotet</code></pre>
+</details>
 
 > Q4: What stream is responsible for the storage of the base64-encoded string?
 
@@ -64,9 +67,10 @@ After dumping all macros with `olevba`, we can see that there is an object that 
 
 Go back to `oledump.py` and identify stream of this object
 
-```
-34
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>34</code></pre>
+</details>
 
 > Q5: This document contains a user-form. Provide the name?
 
@@ -82,9 +86,10 @@ Then go to "Tools" > "Macros" > "Edit Macros..." to edit/view all macros on this
 
 Which we will see the name of user-form inside this document
 
-```
-roubhaol
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>roubhaol</code></pre>
+</details>
 
 > Q6: This document contains an obfuscated base64 encoded string; what value is used to pad (or obfuscate) this string?
 
@@ -104,9 +109,10 @@ Use `oledump.py` again to find which stream match this object name
 
 Then we will use `oledump.py -s 15 --vbadecompresscorrupt sample.bin > macro.vba` to dump this object into a file with VBA decompression to analyze which you can see from an above that this string is a pattern to be removed
 
-```
-2342772g3&*gs7712ffvs626fq
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2342772g3&amp;*gs7712ffvs626fq</code></pre>
+</details>
 
 > Q7: What is the program executed by the base64 encoded string?
 
@@ -125,9 +131,10 @@ Now after removing padding strings, we come down to this and as you can see we n
 
 Now we can see that it is a powershell command to execute this base64 encoded string
 
-```
-powershell
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>powershell</code></pre>
+</details>
 
 > Q8: What WMI class is used to create the process to launch the trojan?
 
@@ -135,16 +142,19 @@ powershell
 
 Decode base64 string then we will see that `win32_Process` is used here
 
-```
-win32_Process
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>win32_Process</code></pre>
+</details>
 
 > Q9: Multiple domains were contacted to download a trojan. Provide first FQDN as per the provided hint.
 
 ![f100f9f5185167eb83bbf2fe5eaea0fa.png](/resources/f100f9f5185167eb83bbf2fe5eaea0fa.png)
-```
-haoqunkong.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>haoqunkong.com</code></pre>
+</details>
 
 ![93186614fc76af03c012822366527d6f.png](/resources/93186614fc76af03c012822366527d6f.png)
 * * *

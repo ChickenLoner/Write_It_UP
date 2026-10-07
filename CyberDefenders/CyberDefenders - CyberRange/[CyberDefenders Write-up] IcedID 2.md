@@ -46,9 +46,10 @@ We know that the ISO file has to be mounted then we can use Event Log Explorer t
 
 We can see that this iso file was indeed mounted.
 
-```
-docs_invoice_173.iso
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>docs_invoice_173.iso</code></pre>
+</details>
 
 >Q2: The initial delivery of the malware is crucial for understanding the attack vector. What is the link used to view the malicious malware?
 
@@ -61,14 +62,17 @@ Lets take a look at the Chrome browser history of the "admin" user as the sole u
 
 We can see that the user was downloaded the iso file from Google Drive.
 
-```
-https://drive.google.com/file/d/1WsffqUcaojZchwIOcVTr-E__j1971Qh0/view
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://drive.google.com/file/d/1WsffqUcaojZchwIOcVTr-E__j1971Qh0/view</code></pre>
+</details>
 
 >Q3: Identifying the storage location of a rogue process is critical for assessing its origin and purpose within a compromised system. What is the directory path where this process is located on the workstation?
-```
-C:\Users\admin\Downloads
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\admin\Downloads</code></pre>
+</details>
 
 >Q4: To track the timeline of the attack, it is essential to know when the malware was dropped on the system. What is the download date and time of the malicious file on the affected device?
 
@@ -76,9 +80,10 @@ C:\Users\admin\Downloads
 
 We can use D-code to convert Chrome timestamp to UTC and get the answer to this question.
 
-```
-2024-06-15 08:56
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-06-15 08:56</code></pre>
+</details>
 
 >Q5: Determining the root of the malicious activity is essential for comprehending the extent of the intrusion. What is the malicious command that triggered this malicious behavior?
 
@@ -98,9 +103,10 @@ Then I listed the dll/modules that was loaded into process with PID 3312 and We 
 
 Command : `python vol.py -f "C:\Users\Administrator\Desktop\Start Here\Artifacts\memory.dmp" windows.dllist --pid 3312`
 
-```
-rundll32.exe dar.dll,DllRegisterServer
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>rundll32.exe dar.dll,DllRegisterServer</code></pre>
+</details>
 
 >Q6: Identifying file indicators is crucial for a comprehensive forensic analysis. What is the SHA256 hash of the DLL associated with the last execution of the malware?
 
@@ -114,9 +120,10 @@ Command : `certutil -hashfile pefile.dll sha256`
 
 [VirusTotal](https://www.virustotal.com/gui/file/d90b4ee7e8adf2d7aa5fcff2c017c1fa4e99143fdcd9cd3d1bd7827ae59d9a05) confirmed that this file is indeed IcedID 
 
-```
-d90b4ee7e8adf2d7aa5fcff2c017c1fa4e99143fdcd9cd3d1bd7827ae59d9a05
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>d90b4ee7e8adf2d7aa5fcff2c017c1fa4e99143fdcd9cd3d1bd7827ae59d9a05</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/icedid-2/ 
 

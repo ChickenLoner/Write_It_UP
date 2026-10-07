@@ -30,9 +30,10 @@ And the result shows sevaral profiles, normally first profile should be the one 
 
 I used volatility 3 to help me scan for Windows information, you can see that it found build of this OS that is 24214 but we didn't have this exact profile from previous scan so the most suitable one should be 24000 build profile which is the closest build to 24214
 
-```
-Win7SP1x64_24000
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Win7SP1x64_24000</code></pre>
+</details>
 
 > Q2: What is the KDBG virtual address of the memory sample?
 
@@ -40,9 +41,10 @@ Win7SP1x64_24000
 
 We can find this from result of imageinfo plugin
 
-```
-0xf80002bef120
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0xf80002bef120</code></pre>
+</details>
 
 > Q3: There is a malicious process running, but it's hidden. What's its name?
 
@@ -50,14 +52,17 @@ We can find this from result of imageinfo plugin
 
 To find hidden process, it mean it was hidden from pslist and psscan so we need to use `vol.py -f banking-malware.vmem --profile=Win7SP1x64_24000 psxview` to find it which you can see that only 1 process that couldn't be find with both plugins
 
-```
-vds_ps.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>vds_ps.exe</code></pre>
+</details>
 
 > Q4: What is the physical offset of the malicious process?
-```
-0x000000007d336950
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>0x000000007d336950</code></pre>
+</details>
 
 > Q5: What is the full path (including executable name) of the hidden executable?
 
@@ -65,9 +70,10 @@ vds_ps.exe
 
 We can use filescan or `vol.py -f banking-malware.vmem --profile=Win7SP1x64_24000 cmdline --offset=0x000000007d336950` for this question
 
-```
-C:\Users\john\AppData\Local\api-ms-win-service-management-l2-1-0\vds_ps.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\john\AppData\Local\api-ms-win-service-management-l2-1-0\vds_ps.exe</code></pre>
+</details>
 
 > Q6: Which malware is this?
 
@@ -83,9 +89,10 @@ After got an offset of this file, use `vol.py -f banking-malware.vmem --profile=
 
 it is EMOTET
 
-```
-Emotet
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Emotet</code></pre>
+</details>
 
 > Q7: The malicious process had two PEs injected into its memory. What's the size in bytes of the Vad that contains the largest injected PE? Answer in hex, like: 0xABC
 
@@ -106,9 +113,10 @@ Copy both address that use vadinfo given offset of emotet process and address of
 
 After got start and end address of both then we can use calculator to calculate which one is the largest 
 
-```
-0x36fff
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0x36fff</code></pre>
+</details>
 
 > Q8: This process was unlinked from the ActiveProcessLinks list. Follow its forward link. Which process does it lead to? Answer with its name and extension
 
@@ -121,9 +129,10 @@ To put it simply, we just need to find process ID next to emotet process ID
 
 This process has the next closest process ID to emotet process ID which should be this one 
 
-```
-SearchIndexer.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SearchIndexer.exe</code></pre>
+</details>
 
 > Q9: What is the pooltag of the malicious process in ascii? (HINT: use volshell)
 
@@ -167,9 +176,10 @@ Convert to HEX
 
 Then convert HEX to ASCII but its not the final form yet, we still need to reverse it because of the endian
 
-```
-R0oT
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>R0oT</code></pre>
+</details>
 
 > Q10: What is the physical address of the hidden executable's pooltag? (HINT: use volshell)
 
@@ -177,9 +187,10 @@ R0oT
 
 We need to add 4 bytes to this address because The PoolTag is an unsigned long (4 bytes) starting at offset 0x4 within the `_POOL_HEADER` structure. To access the PoolTag directly, we calculate its address by adding the offset where PoolTag is stored (0x4) to the base address of the` _POOL_HEADER`
 
-```
-0x7D3368F4
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0x7D3368F4</code></pre>
+</details>
 
 ![1adb9f6550b7a035ee8d8a730e2f4e7b.png](/resources/1adb9f6550b7a035ee8d8a730e2f4e7b.png)
 * * *

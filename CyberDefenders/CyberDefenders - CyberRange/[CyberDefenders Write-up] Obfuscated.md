@@ -22,9 +22,10 @@ After confirmed that we got the right file then we can proceed with your hash ge
 
 ![9c46e3baf96c7fa50b308ccc4cedfccd.png](/resources/9c46e3baf96c7fa50b308ccc4cedfccd.png)
 
-```
-ff2c8cadaa0fd8da6138cce6fce37e001f53a5d9ceccd67945b15ae273f4d751
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ff2c8cadaa0fd8da6138cce6fce37e001f53a5d9ceccd67945b15ae273f4d751</code></pre>
+</details>
 
 > Q2: Multiple streams contain macros in this document. Provide the number of lowest one.
 
@@ -32,9 +33,10 @@ ff2c8cadaa0fd8da6138cce6fce37e001f53a5d9ceccd67945b15ae273f4d751
 
 By using `oledump.py` then you can see that there are macros in object 8 and 9 and also have OLE stream within object 17 too
 
-```
-8
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>8</code></pre>
+</details>
 
 > Q3: What is the decryption key of the obfuscated code?
 
@@ -46,19 +48,24 @@ I tried to dump macros with `olevba --deob 49b367ac261a722a7c2bbbc328c32545`, yo
 
 Lets search file hash of this document file on any.run then we will see that it was actually passed to `maintools.js` as expected
 
-```
-EzZETcSXyKAdF_e5I2i1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>EzZETcSXyKAdF_e5I2i1</code></pre>
+</details>
 
 > Q4: What is the name of the dropped file?
-```
-maintools.js
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>maintools.js</code></pre>
+</details>
 
 > Q5: This script uses what language?
-```
-JScript
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>JScript</code></pre>
+</details>
 
 > Q6: What is the name of the variable that is assigned the command-line arguments?
 
@@ -82,14 +89,17 @@ after extracted file, then we can see that `wvy1` variable will be assigned a va
 
 We can use https://beautifier.io/ to beautify JS code from this file and make our analysis a little bit easier
 
-```
-wvy1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>wvy1</code></pre>
+</details>
 
 > Q7: How many command-line arguments does this script expect?
-```
-1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>1</code></pre>
+</details>
 
 > Q8: What instruction is executed if this script encounters an error?
 
@@ -97,9 +107,10 @@ wvy1
 
 This script using `try` and `catch(e)` to execute a script which mean any errors that occurs will be handled by `catch(e)` and it will quit wscript that was running this script
 
-```
-WScript.Quit()
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>WScript.Quit()</code></pre>
+</details>
 
 > Q9: What function returns the next stage of code (i.e. the first round of obfuscated code)?
 
@@ -111,9 +122,10 @@ There is a very long base64 string declaration inside this function and it will 
 
 Which will be called here and assigned to `ES3c` variable which will be passed to other 2 functions before execute with `eval`
 
-```
-y3zb
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>y3zb</code></pre>
+</details>
 
 > Q10: The function LXv5 is an important function, what variable is assigned a key string value in determining what this function does?
 
@@ -125,14 +137,17 @@ We can see that `LXv5` and `MTvK` function are used to decode base64 to binary t
 
 Here is an indicator that telling us it decoding base64 string
 
-```
-LUK7
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>LUK7</code></pre>
+</details>
 
 > Q11: What encoding scheme is this function responsible for decoding?
-```
-base64
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>base64</code></pre>
+</details>
 
 > Q12: In the function CpPT, the first two for loops are responsible for what important part of this function?
 
@@ -140,9 +155,10 @@ base64
 
 We know that `LXv5` and `MTvK` function are used to decode base64 to binary but what about `CpPT` that will handle this binary to executable command? ChatGPT got our back and it telling us how this can be possible by using RC4 cipher to convert it back to respective script
 
-```
-Key-Scheduling Algorithm
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Key-Scheduling Algorithm</code></pre>
+</details>
 
 > Q13: The function CpPT requires two arguments, where does the value of the first argument come from?
 
@@ -150,33 +166,42 @@ Key-Scheduling Algorithm
 
 First argument that this function required is a key for RC4 and we already know where it comes from
 
-```
-command-line argument
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>command-line argument</code></pre>
+</details>
 
 > Q14: For the function CpPT, what does the first argument represent?
-```
-key
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>key</code></pre>
+</details>
 
 > Q15: What encryption algorithm does the function CpPT implement in this script?
-```
-rc4
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>rc4</code></pre>
+</details>
 
 > Q16: What function is responsible for executing the deobfuscated code?
 
 ![0e285df43d2a023f6cccef2afccc8023.png](/resources/0e285df43d2a023f6cccef2afccc8023.png)
-```
-eval
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>eval</code></pre>
+</details>
 
 > Q17: What Windows Script Host program can be used to execute this script in command-line mode?
 
 ![353167ec980989812a16b6802eab603d.png](/resources/353167ec980989812a16b6802eab603d.png)
-```
-cscript.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>cscript.exe</code></pre>
+</details>
 
 > Q18: What is the name of the first function defined in the deobfuscated code?
 
@@ -184,9 +209,10 @@ cscript.exe
 
 Using CyberChef to decode base64 and then decrypt those messy binary to respective script with RC4 with a key we got which we can see the first function is called `UspD` and it responsible for create an ADODB.Stream object and read a file
 
-```
-UspD
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>UspD</code></pre>
+</details>
 
 ![a4895eb54c1eb43e7c926b9b8457c99a.png](/resources/a4895eb54c1eb43e7c926b9b8457c99a.png)
 * * *

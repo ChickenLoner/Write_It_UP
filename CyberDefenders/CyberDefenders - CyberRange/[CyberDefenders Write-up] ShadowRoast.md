@@ -50,9 +50,10 @@ index=shadowroast "event.provider"="Microsoft-Windows-Sysmon" "event.code"=1
 
 We can export table we just queried as CVE file and upload it to LLM like Claude or Gemini to create process tree, process life cycle or even let it analyze this for us, which we can see that Claude detected this suspicious activity from the same binary and also highlighting AS-REP Roasting activity from `BackupUtility.exe`, privilege escalation to "tcooper" user and multiple execution of `DefragTool.exe`.
 
-```
-AdobeUpdater.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>AdobeUpdater.exe</code></pre>
+</details>
 
 >Q2: What's the registry run key name created by the attacker for maintaining persistence?
 
@@ -63,9 +64,10 @@ By leveringing Sysmon Event ID 13 and focus on Run registry created by "sanderso
 Query : `index=shadowroast "event.provider"="Microsoft-Windows-Sysmon" "event.code"=13 Run sanderson | sort winlog.event_data.UtcTime 
 |  table winlog.event_data.UtcTime,winlog.event_data.User,winlog.event_data.Image,winlog.event_data.TargetObject,winlog.event_data.Details`
 
-```
-wyW5PZyF
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>wyW5PZyF</code></pre>
+</details>
 
 >Q3: What's the full path of the directory used by the attacker for storing his dropped tools?
 
@@ -73,9 +75,10 @@ wyW5PZyF
 
 Coming back to our Sysmon Event ID 1 query, we can see that `BackupUtility.exe` was executed from `C:\Users\Default\AppData\Local\Temp\` which is the location that all user have write permission to it and it also make it stand out from the rest as well.
 
-```
-C:\Users\Default\AppData\Local\Temp\
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Default\AppData\Local\Temp\</code></pre>
+</details>
 
 >Q4: What tool was used by the attacker for privilege escalation and credential harvesting?
 
@@ -89,9 +92,10 @@ Query : `index=shadowroast "event.provider"="Microsoft-Windows-Sysmon" "event.co
 
 We can double check it wit h [VirusTotal](https://www.virustotal.com/gui/file/1bfbefa4ff4d0df3ee0090b5079cf84ed2e8d5377ba5b7a30afd88367d57b9ff) as well.
 
-```
-Rubeus
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Rubeus</code></pre>
+</details>
 
 >Q5: Was the attacker's credential harvesting successful? If so, can you provide the compromised domain account username?
 
@@ -115,9 +119,10 @@ Query : `index=shadowroast "winlog.channel"=Security "event.code"=4624
 |  sort @timestamp 
 | table @timestamp,winlog.event_data.AuthenticationPackageName,winlog.event_data.TargetUserName,winlog.event_data.SubjectUserName,winlog.computer_name,winlog.event_data.WorkstationName`
 
-```
-tcooper
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>tcooper</code></pre>
+</details>
 
 >Q6: What's the tool used by the attacker for registering a rogue Domain Controller to manipulate Active Directory data?
 
@@ -127,9 +132,10 @@ tcooper
 
 Going back to Sysmon Event ID 1, we observed that on 2024-08-06 at 01:14:21, a `powershell.exe` process was spawned from `cmd.exe`, which subsequently executed `DefragTool.exe`. Examination of the "OriginalFileName" field revealed that this binary is in fact Mimikatz. This indicates that after successfully logging in as "tcooper", the attacker leveraged Mimikatz to perform a DCShadow attack against the domain.
 
-```
-mimikatz
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>mimikatz</code></pre>
+</details>
 
 >Q7: What's the first command used by the attacker for enabling RDP on remote machines for lateral movement?
 
@@ -138,9 +144,10 @@ mimikatz
 
 Following the DCShadow attack with Mimikatz, the attacker proceeded to enable Remote Desktop Protocol (RDP) on three hosts within reach: Office-PC, FileServer, and DC01.
 
-```
-reg add "hklm\system\currentcontrolset\control\terminal server" /f /v fDenyTSConnections /t REG_DWORD /d 0
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>reg add "hklm\system\currentcontrolset\control\terminal server" /f /v fDenyTSConnections /t REG_DWORD /d 0</code></pre>
+</details>
 
 >Q8: What's the file name created by the attacker after compressing confidential files?
 
@@ -150,9 +157,10 @@ Using Sysmon Event ID 11, I searched for popular archive extensions such as .zip
 
 Query : `index=shadowroast "event.code"=11 (winlog.event_data.TargetFilename=*.zip OR winlog.event_data.TargetFilename=*.7z OR winlog.event_data.TargetFilename=*.rar)`
 
-```
-CrashDump.zip
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CrashDump.zip</code></pre>
+</details>
 
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/shadowroast/ 

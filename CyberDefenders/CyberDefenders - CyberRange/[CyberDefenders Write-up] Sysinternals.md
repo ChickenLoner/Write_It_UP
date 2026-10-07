@@ -31,14 +31,17 @@ The question asked for a file name that user downloaded so It might be on the Do
 ![136922075f2dfb18ca0402675b7f7363.png](/resources/136922075f2dfb18ca0402675b7f7363.png)
 Which I've found it on the Public user
 
-```
-Sysinternals.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Sysinternals.exe</code></pre>
+</details>
 
 > Q2: When was the last time the malicious executable file was modified? 12-hour format
-```
-11/15/2022 09:18:51 PM
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>11/15/2022 09:18:51 PM</code></pre>
+</details>
 
 > Q3: What is the SHA1 hash value of the malware?
 
@@ -70,9 +73,10 @@ So I started with UnassociatedFileEntries since the file was downloaded
 ![91878be475a16a199a2ce5d92c90a972.png](/resources/91878be475a16a199a2ce5d92c90a972.png)
 There it is SHA1 of the malware
 
-```
-fa1002b02fc5551e075ec44bb4ff9cc13d563dcf
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>fa1002b02fc5551e075ec44bb4ff9cc13d563dcf</code></pre>
+</details>
 
 > Q4: What is the malware's family?
 
@@ -90,9 +94,10 @@ So I tried Rozena and It was the right answer
 This answer could be easily obtained from the VirusTotal
 ![47725d5a0018fe8675b398847398e417.png](/resources/47725d5a0018fe8675b398847398e417.png)
 
-```
-www.malware430.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>www.malware430.com</code></pre>
+</details>
 
 But there is another way to get the answer by reading the PowerShell Command History at
 `C:\Users\IEUser\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_History.txt`
@@ -103,9 +108,11 @@ Which we can also see which commands that were executed before that too
 
 Looking at the PowerShell Command History, We can see that malware added the C2 domain to the host file and we can also see that what IP it was used 
 ![c994a11e60b066d925562ee3d6d05366.png](/resources/c994a11e60b066d925562ee3d6d05366.png)
-```
-192.168.15.10
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.15.10</code></pre>
+</details>
 
 Or we can navigate to the host file at
 `
@@ -121,16 +128,19 @@ I didn't want to extract the malware to analyze on my work machine so I searched
 So after the malware was run, it downloaded `VMWAREUPDATE.EXE` from C2 server and possibly renamed it to `vmtoolsIO.exe` then spawned cmd to install it and start a service name `VMwareIOHelperService` and config itself to stay persistence by running every system start-up
 ![28e4108b24afbfa82da4454b1b82f602.png](/resources/28e4108b24afbfa82da4454b1b82f602.png)
 
-```
-vmtoolsIO.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>vmtoolsIO.exe</code></pre>
+</details>
 
 > Q8: What is the name of the service installed by 2nd stage executable?
 
 The answer could be obtained from the previous question
-```
-VMwareIOHelperService 
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>VMwareIOHelperService</code></pre>
+</details>
 
 > Q9: What is the extension of files deleted by the 2nd stage executable?
 
@@ -148,9 +158,11 @@ Or if you prefer ChatGPT, there you go
 
 ![5bb528141f9bdd27b37c559146aaecaf.png](/resources/5bb528141f9bdd27b37c559146aaecaf.png)
 There we go
-```
-pf
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>pf</code></pre>
+</details>
 
 ![7eee05460daa02f9437343f20071aba0.png](/resources/7eee05460daa02f9437343f20071aba0.png)
 * * *

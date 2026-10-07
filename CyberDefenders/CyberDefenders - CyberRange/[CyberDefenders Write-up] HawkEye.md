@@ -20,34 +20,42 @@ An accountant at your organization received an email regarding an invoice with a
 
 Open pcap file in wireshark to answer this question
 ![924a0ce9b43b3360417888ecd503803e.png](/resources/924a0ce9b43b3360417888ecd503803e.png)
-```
-4003
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>4003</code></pre>
+</details>
 
 > Q2: At what time was the first packet captured?
 
 Inspect first packet to answer this question
 ![196a02a69b3f8a94a1dbab0e02c30644.png](/resources/196a02a69b3f8a94a1dbab0e02c30644.png)
-```
-2019-04-10 20:37:07 UTC
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2019-04-10 20:37:07 UTC</code></pre>
+</details>
 
 > Q3: What is the duration of the capture?
 
 To answer this question, Go to Statistics > Capture File Properties 
 ![7d3c908ab76996f9a20d9b9182d03852.png](/resources/7d3c908ab76996f9a20d9b9182d03852.png)
-```
-01:03:41
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>01:03:41</code></pre>
+</details>
 
 > Q4: What is the most active computer at the link level?
 
 To answer this question, Go to Statistics > Endpoints
 ![da06fee57c47067912e05176424fc576.png](/resources/da06fee57c47067912e05176424fc576.png)
 Go to Ethernet then sort out for the highest packets
-```
-00:08:02:1c:47:ae
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>00:08:02:1c:47:ae</code></pre>
+</details>
 
 > Q5: Manufacturer of the NIC of the most active system at the link level?
 
@@ -55,17 +63,21 @@ To answer this question, Go to Tools > MAC Address Blocks then search for MAC ad
 ![51d88bd4f2614ed2799bfbd0adc1435d.png](/resources/51d88bd4f2614ed2799bfbd0adc1435d.png)
 Alternatively, You can use NetworkMiner
 ![3ab8abf94483d48139a504997566df06.png](/resources/3ab8abf94483d48139a504997566df06.png)
-```
-Hewlett-Packard
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Hewlett-Packard</code></pre>
+</details>
 
 > Q6: Where is the headquarter of the company that manufactured the NIC of the most active computer at the link level?
 
 Its OSINT time, just search for "HP HQ location"
 ![0f8b68f95f4073d09739bec9717bef40.png](/resources/0f8b68f95f4073d09739bec9717bef40.png)
-```
-Palo Alto
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Palo Alto</code></pre>
+</details>
 
 > Q7: The organization works with private addressing and netmask /24. How many computers in the organization are involved in the capture?
 
@@ -75,49 +87,61 @@ Go to IPv4, you can see that there are 4 private IP addresses on 10.4.10.0/24 an
 
 Alternatively, you can also get the answer from NetworkMiner
 ![50d8317f7507e5edee2a67cae2d125e6.png](/resources/50d8317f7507e5edee2a67cae2d125e6.png)
-```
-3
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>3</code></pre>
+</details>
 
 > Q8: What is the name of the most active computer at the network level?
 
 Still on Endpoints window, then sort for the highest packets then use NetworkMiner to find this host
 ![af67b211a3328e532c880b558a37cd65.png](/resources/af67b211a3328e532c880b558a37cd65.png)
-```
-BEIJING-5CD1-PC
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>BEIJING-5CD1-PC</code></pre>
+</details>
 
 > Q9: What is the IP of the organization's DNS server?
 
 ![5ee7c627ceb75367be32e51fe65d7601.png](/resources/5ee7c627ceb75367be32e51fe65d7601.png)
 Filtered by `dns`, you can see that all DNS queries sent to 10.4.10.4
-```
-10.4.10.4
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>10.4.10.4</code></pre>
+</details>
 
 > Q10: What domain is the victim asking about in packet 204?
 
 You can use filter for a specific frame but this question ask for domain so `dns` filter can still be used
 ![1e54d108150bc486b02a883954cd8b65.png](/resources/1e54d108150bc486b02a883954cd8b65.png)
-```
-proforma-invoices.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>proforma-invoices.com</code></pre>
+</details>
 
 > Q11: What is the IP of the domain in the previous question?
 
 ![e350a5d1761b5f3598fdc1750b383fd9.png](/resources/e350a5d1761b5f3598fdc1750b383fd9.png)
 As you can see that DNS server responded back in packet 206
-```
-217.182.138.150
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>217.182.138.150</code></pre>
+</details>
 
 > Q12: Indicate the country to which the IP in the previous section belongs.
 
 OSINT time again, using [IPLocation](https://www.iplocation.net/ip-lookup), we can easily obtain the answer
 ![5d9f056dedcdc0aea938914603b7a3b4.png](/resources/5d9f056dedcdc0aea938914603b7a3b4.png)
-```
-France
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>France</code></pre>
+</details>
 
 > Q13: What operating system does the victim's computer run?
 
@@ -125,23 +149,29 @@ France
 On NetworkMiner, I found that there is a suspicious exe file downloaded by a private IP address so I assumed this is the victim
 ![5a127b1de7863e7647533c1b258e1f5b.png](/resources/5a127b1de7863e7647533c1b258e1f5b.png)
 I went to this host's Browser User-agent to find the answer
-```
-Windows NT 6.1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Windows NT 6.1</code></pre>
+</details>
 
 > Q14: What is the name of the malicious file downloaded by the accountant?
 
 As I found on previous question, I retrieved the hash of that suspicious exe file then searched on [VirusTotal](https://www.virustotal.com/gui/file/62099532750dad1054b127689680c38590033fa0bdfa4fb40c7b4dcb2607fb11)
 ![14f1aaaeb5c37825ba12a3743e935a85.png](/resources/14f1aaaeb5c37825ba12a3743e935a85.png)
 Its a hawkeye keylogger, so that's the answer
-```
-tkraw_Protected99.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>tkraw_Protected99.exe</code></pre>
+</details>
 
 > Q15: What is the md5 hash of the downloaded file?
-```
-71826ba081e303866ce2a2534491a2f7
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>71826ba081e303866ce2a2534491a2f7</code></pre>
+</details>
 
 > Q16: What software runs the webserver that hosts the malware?
 
@@ -149,9 +179,11 @@ tkraw_Protected99.exe
 On NetworkMiner, It caught web server banner which is LiteSpeed
 ![62805e189c96bdf20a88ffa5c5152b3d.png](/resources/62805e189c96bdf20a88ffa5c5152b3d.png)
 You can also used wireshark and followed TCP stream when victim downloaded the malware
-```
-LiteSpeed
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>LiteSpeed</code></pre>
+</details>
 
 > Q17: What is the public IP of the victim's computer?
 
@@ -163,9 +195,11 @@ Alternatively, you can also see that there is a website to ask for a public IP a
 Which was contacted by victim machine
 ![be134e70943e70e5453974d463c3a2a3.png](/resources/be134e70943e70e5453974d463c3a2a3.png)
 Then you can use wireshark to obtain the answer
-```
-173.66.146.112
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>173.66.146.112</code></pre>
+</details>
 
 > Q18: In which country is the email server to which the stolen information is sent?
 
@@ -175,33 +209,41 @@ I filtered for Simple Mail Transfer Protocol on Wireshark then I obtained an IP 
 With the help of IPLocation, I finally obtained the correct answer
 ![40930eb68e4de8a7bed2fb9c923ef31a.png](/resources/40930eb68e4de8a7bed2fb9c923ef31a.png)
 Alternatively, you can also get an IP address with user credential in plaintext from NetworkMiner
-```
-United States
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>United States</code></pre>
+</details>
 
 > Q19: Analyzing the first extraction of information. What software runs the email server to which the stolen data is sent?
 
 ![9056c81efc57ad5011999d70e9e249ec.png](/resources/9056c81efc57ad5011999d70e9e249ec.png)
 Followed the tcp stream of SMTP communication, you can see what software is running on the first response of the server
-```
-Exim 4.91
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Exim 4.91</code></pre>
+</details>
 
 > Q20: To which email account is the stolen information sent?
 
 ![5b7d8f2813462c25de65440e3f7aa822.png](/resources/5b7d8f2813462c25de65440e3f7aa822.png)
 On the SMTP stream, we can see that this email was used to send information
-```
-sales.del@macwinlogistics.in
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>sales.del@macwinlogistics.in</code></pre>
+</details>
 
 > Q21: What is the password used by the malware to send the email?
 
 You can copy password from NetworkMiner directly or you can decode base64 password from SMTP stream
 ![02b5217d55de2e72fe19251c8fbbd9aa.png](/resources/02b5217d55de2e72fe19251c8fbbd9aa.png)
-```
-Sales@23
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Sales@23</code></pre>
+</details>
 
 > Q22: Which malware variant exfiltrated the data? 
 
@@ -209,25 +251,31 @@ Sales@23
 Still on the SMTP stream, I found this base64 encoded text are subjects and content that was sent to the SMTP server so If decoded, I could get some clues
 ![df941d0619bd536c2af37992ca38c438.png](/resources/df941d0619bd536c2af37992ca38c438.png)
 After decoded, we can see that this malware stated its name and family along with the infected system information on the subject
-```
-Reborn v9
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Reborn v9</code></pre>
+</details>
 
 > Q23: What are the bankofamerica access credentials? (username:password)
 
 ![d6905d93bf7e23c173426739349b97a3.png](/resources/d6905d93bf7e23c173426739349b97a3.png)
-```
-roman.mcguire:P@ssw0rd$
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>roman.mcguire:P@ssw0rd$</code></pre>
+</details>
 
 > Q24: Every how many minutes does the collected data get exfiltrated?
 
 I noticed that malware had to authenticate to SMTP server everytime to send data again so I used `AUTH` command as a filter to obtain the answer
 ![d18c4ab95f206ac3890d3c13b9cdaf43.png](/resources/d18c4ab95f206ac3890d3c13b9cdaf43.png)
 As you can see every authentication has 10 minutes time-interval so thats the answer
-```
-10
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>10</code></pre>
+</details>
 
 
 ![15ac476fb2f92dc661c98c46c084d5fc.png](/resources/15ac476fb2f92dc661c98c46c084d5fc.png)

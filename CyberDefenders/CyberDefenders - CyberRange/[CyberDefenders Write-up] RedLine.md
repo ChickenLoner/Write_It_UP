@@ -27,9 +27,10 @@ And its parent process is `svchost.exe`
 Then I did some research about this research and found that this process is legitimate Windows software called [Windows SmartScreen](https://www.file.net/process/smartscreen.exe.html) a cloud based antimalware and anti-phishing software
 So Its understandable that malfind found this suspicious and now we got `oneetx.exe` that is one and only suspicious process here.
 
-```
-oneetx.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>oneetx.exe</code></pre>
+</details>
 
 > Q2: What is the child process name of the suspicious process?
 
@@ -39,18 +40,22 @@ It also means that this suspicious process has dynamic link library (dll) file t
 
 ![22342311d882ded73afac83ae6aea2ef.png](/resources/22342311d882ded73afac83ae6aea2ef.png)
 And if you used `windows.pstree` plugin, We can also see that the suspicious process was executed from Temp folder
-```
-rundll32.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>rundll32.exe</code></pre>
+</details>
 
 > Q3: What is the memory protection applied to the suspicious process memory region?
 
 Back to `windows.malfind` plugin
 ![06593d476ee41aa56d1a1eb7fffaf603.png](/resources/06593d476ee41aa56d1a1eb7fffaf603.png)
 We can see that this process has everything it needed, memory region should be both readable and writable, allowing it to be used for storing executable code and data.
-```
-PAGE_EXECUTE_READWRITE
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>PAGE_EXECUTE_READWRITE</code></pre>
+</details>
 
 > Q4: What is the name of the process responsible for the VPN connection?
 
@@ -63,17 +68,20 @@ So I went back to `pstree` to find the parent process
 ![58e2572fab66f7ff77d0a3d28109e933.png](/resources/58e2572fab66f7ff77d0a3d28109e933.png)
 Which is `Outline.exe`, and this process has `explorer.exe` as a parent process so It might got executed by user from Windows Explorer
 
-```
-Outline.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Outline.exe</code></pre>
+</details>
 
 > Q5: What is the attacker's IP address?
 
 From `windows.netscan` plugin I used eariler, and I knew which process is suspicious so I searched by using process name and found it
 ![4809ff9a1381d569a476e0ac488ff64b.png](/resources/4809ff9a1381d569a476e0ac488ff64b.png)
-```
-77.91.124.20
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>77.91.124.20</code></pre>
+</details>
 
 > Q6: Based on the previous artifacts. What is the name of the malware family?
 
@@ -85,26 +93,32 @@ Then I renamed it, and generated file hash to search on VirusTotal
 [VirusTotal](https://www.virustotal.com/gui/file/8d5d5bbdccb82a10ac28e2779ba0821f12da3e1f08f03ec467ce213a6fccf38c) told me its a Mars Stealer but I also got IP address to search then
 ![fce3f49eed3ecbc600e68201a7438fdc.png](/resources/fce3f49eed3ecbc600e68201a7438fdc.png)
 This IP address was used by RedLine so Its RedLine Stealer
-```
-RedLine Stealer
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>RedLine Stealer</code></pre>
+</details>
 
 > Q7: What is the full URL of the PHP file that the attacker visited?
 
 I didn't know which plugin to use but since I already got the IP address so I used strings and filter out all the rest and looking for the attacker IP address
 ![27993fd733a0f8952e4f901c66b56426.png](/resources/27993fd733a0f8952e4f901c66b56426.png)
 And found it
-```
-http://77.91.124.20/store/games/index.php
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>http://77.91.124.20/store/games/index.php</code></pre>
+</details>
 
 > Q8: What is the full path of the malicious executable?
 
 I already got the answer from `pstree` plugin
 ![145425270b125a7d2eb87fd8a8c3a5d8.png](/resources/145425270b125a7d2eb87fd8a8c3a5d8.png)
-```
-C:\Users\Tammam\AppData\Local\Temp\c3912af058\oneetx.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Tammam\AppData\Local\Temp\c3912af058\oneetx.exe</code></pre>
+</details>
 
 ![9a7fe2d9b4ba2d2085563e8efb665ff2.png](/resources/9a7fe2d9b4ba2d2085563e8efb665ff2.png)
 * * *

@@ -72,9 +72,11 @@ We can get system information from registry hive that located in `Windows\System
 ![bf73eecf94b73dfd40fd93c062b41611.png](/resources/bf73eecf94b73dfd40fd93c062b41611.png)
 
 Use RegRipper or RegistryExplorer then to go `SOFTWARE\Microsoft\Windows NT\CurrentVersion` which hold this information
-```
-16299
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>16299</code></pre>
+</details>
 
 > Q2: How many users are there?
 
@@ -84,9 +86,11 @@ A registry key that hold all SID and profile path of all users inside a system i
 Which we can see that there are 6 users on this system
 
 Alternatively, you can see locate to `Users` folder and count all folders there
-```
-6
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>6</code></pre>
+</details>
 
 > Q3: What is the CRC64 hash of the file "fruit_apricot.jpg"?
 
@@ -98,9 +102,11 @@ This image is located in `hansel.apricot\Pictures\Saved Picture`
 
 export it and we can use 7z to calculate CRC34 hash for us with this command `7z j -scrcCRC64 fruit_apricot.jpg` 
 - h parameter telling 7z that we're using this program to calculate filehash while we need to pass an algorithm as an argument after then and lastly is the file we will calculate filehash
-```
-ED865AA6DFD756BF
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>ED865AA6DFD756BF</code></pre>
+</details>
 
 > Q4: What is the logical size of the file "strawberry.jpg" in bytes?
 
@@ -111,9 +117,11 @@ This file located inside `suzy.strawberry\Pictures`
 ![7a9bc7957d7cd389bfdcc743b3dab9e0.png](/resources/7a9bc7957d7cd389bfdcc743b3dab9e0.png)
 
 Export it and we can just use our cmd, powershell and bash to display logical file size 
-```
-72448
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>72448</code></pre>
+</details>
 
 > Q5: What is the processor architecture of the system? (one word)
 
@@ -123,9 +131,10 @@ I asked ChatGPT for this question and it told us which registry key we need to g
 
 ![96a56ad321c3f693fd5a6793f72f4148.png](/resources/96a56ad321c3f693fd5a6793f72f4148.png)
 
-```
-AMD64
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>AMD64</code></pre>
+</details>
 
 > Q6: Which user has a photo of a dog in their recycling bin?
 
@@ -136,9 +145,11 @@ Go to recycle bin and searching through all image files which the only photo of 
 ![72696cc96241ff08da3fd570c2892c9d.png](/resources/72696cc96241ff08da3fd570c2892c9d.png)
 
 This image belong to hansel
-```
-hansel.apricot
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>hansel.apricot</code></pre>
+</details>
 
 > Q7: What type of file is "vegetable"? Provide the extension without a dot.
 
@@ -155,9 +166,11 @@ Export it and use `file` to detect it signature which turn out it's a 7z file
 ![0d36952f62ac29353d0f057063e5f765.png](/resources/0d36952f62ac29353d0f057063e5f765.png)
 
 The other way we can solve this question without exporting this file is to look at magic number which totally matched 7z file format (https://en.wikipedia.org/wiki/List_of_file_signatures)
-```
-7z
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>7z</code></pre>
+</details>
 
 > Q8: What type of girls does Miriam Grapes design phones for (Target audience)?
 
@@ -174,9 +187,11 @@ Miriam doesn't have Google folder inside App Data but Mozilla folder is there wh
 ![4a4c38ed56614035d6934958ef654a85.png](/resources/4a4c38ed56614035d6934958ef654a85.png)
 
 Using MZHistoryView or BrowserHistoryView from Nirsoft, we can see that the target audience of this phone is VSCO girl
-```
-VSCO
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>VSCO</code></pre>
+</details>
 
 > Q9: What is the name of the device?
 
@@ -184,18 +199,21 @@ This `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ComputerName\ComputerN
 
 ![7ee1a1dbef093dba37549bb5c9631fc2.png](/resources/7ee1a1dbef093dba37549bb5c9631fc2.png)
 
-```
-DESKTOP-3A4NLVQ
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>DESKTOP-3A4NLVQ</code></pre>
+</details>
 
 > Q10: What is the SID of the machine?
 
 ![c49f4572064163eeacebbbd64991cb14.png](/resources/c49f4572064163eeacebbbd64991cb14.png)
 
 Looking at these bunch of series of number, last 4 digits are SID of each user and the rest is SID of this machine
-```
-S-1-5-21-2446097003-76624807-2828106174
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>S-1-5-21-2446097003-76624807-2828106174</code></pre>
+</details>
 
 > Q11: How many web browsers are present?
 
@@ -212,9 +230,11 @@ I had to choice but to search for other browser which I found Tor browser shortc
 ![c15d510cb17d0169253e093c9b441279.png](/resources/c15d510cb17d0169253e093c9b441279.png)
 
 But in the end, it's a Tor Browser so this system has 5 browsers
-```
-5
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>5</code></pre>
+</details>
 
 > Q12: How many super secret CEO plans does Tim have? (Dr. Doofenshmirtz Type Beat)
 
@@ -233,18 +253,22 @@ On App Paths registry key, It confirmed that LibreOffice was installed on this s
 ![20218c029705d445d45972fc29f320c2.png](/resources/20218c029705d445d45972fc29f320c2.png)
 
 You can export and open it with LibreOffice and the inside of this file holds 4 objectives of Tim 
-```
-4
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>4</code></pre>
+</details>
 
 > Q13: Which employee does Tim plan to fire? (He's Dead, Tim. Enter the full name - two words - space separated)
 
 ![8ebcb3083c05f0fd194696db364c6764.png](/resources/8ebcb3083c05f0fd194696db364c6764.png)
 
 We know from Tim's secret file that he want to fire Jim
-```
-Jim Tomato
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Jim Tomato</code></pre>
+</details>
 
 > Q14: What was the last used username? (I didn't start this conversation, but I'm ending it!)
 
@@ -259,9 +283,11 @@ When to this key but turn out this is not the right answer so I did some more re
 ![12b31691720b5dc39810450f410b298e.png](/resources/12b31691720b5dc39810450f410b298e.png)
 
 And went to this `SOFTWARE\Microsoft\Windows NT\CurrentVersion\WinLogon` key which holds the answer of this question as it hold "LastUsedUsername" not "Last Logged In User" as i thought
-```
-jim.tomato
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>jim.tomato</code></pre>
+</details>
 
 > Q15: What was the role of the employee Tim was flirting with?
 
@@ -280,27 +306,33 @@ Use BrowserHistoryView from Nirsoft to import both files then display browser of
 Tim did search Google about it so now we know that secretary is his target
 
 And we also know that he also want to fire some stinky employee based on this browser history
-```
-secretary
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>secretary</code></pre>
+</details>
 
 > Q16: What is the SID of the user "suzy.strawberry"?
 
 ![72696cc96241ff08da3fd570c2892c9d.png](/resources/72696cc96241ff08da3fd570c2892c9d.png)
 
 Back to ProfileList registry key, user suzy's SID is 1004
-```
-1004
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>1004</code></pre>
+</details>
 
 > Q17: List the file path for the install location of the Tor Browser.
 
 ![4485a19cfd4d1cdf7c5772214e22cf4c.png](/resources/4485a19cfd4d1cdf7c5772214e22cf4c.png)
 
 We all know it was installed in `\Program1` as the shortcut file guided us through 
-```
-C:\Program1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Program1</code></pre>
+</details>
 
 > Q18: What was the URL for the Youtube video watched by Jim?
 
@@ -311,18 +343,22 @@ Jim has Chrome installed so lets export history file
 ![2861beaebb5a0af78d515523a1ad713e.png](/resources/2861beaebb5a0af78d515523a1ad713e.png)
 
 And using our friend from Nirsoft to display them, only Youtube url here is "How to Hack into a Computer" video
-```
-https://www.youtube.com/watch?v=Y-CsIqTFEyY
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>https://www.youtube.com/watch?v=Y-CsIqTFEyY</code></pre>
+</details>
 
 > Q19: Which user installed LibreCAD on the system?
 
 ![43803126452bb57eeecf69fd8eefde0e.png](/resources/43803126452bb57eeecf69fd8eefde0e.png)
 
 It has to be installer software on any user folder which I found it on Miriam's Downloads folder
-```
-miriam.grapes
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>miriam.grapes</code></pre>
+</details>
 
 > Q20: How many times "admin" logged into the system?
 
@@ -331,9 +367,11 @@ We can answer this by using Event log or SAM hive and I chose SAM
 ![5119442e1e21fb5dc44d392bee5a8832.png](/resources/5119442e1e21fb5dc44d392bee5a8832.png)
 
 Go to `SAM\Domains\Account\Users`, we can see that it stores total login count of all users and admin user logged into system 10 times
-```
-10
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>10</code></pre>
+</details>
 
 > Q21: What is the name of the DHCP domain the device was connected to?
 
@@ -343,9 +381,10 @@ I asked my friend ChatGPT for this question which tell me to get this `SYSTEM\Co
 
 ![bb9c00db74500c409383738ec207afc6.png](/resources/bb9c00db74500c409383738ec207afc6.png)
 
-```
-fruitinc.xyz
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>fruitinc.xyz</code></pre>
+</details>
 
 > Q22: What time did Tim download his background image? (Oh Boy 3AM . Answer in MM/DD/YYYY HH:MM format (UTC).)
 
@@ -362,9 +401,11 @@ Once we got path to this file, we can navigate to this folder directly
 ![01e7846588a919358280c87d2a57895a.png](/resources/01e7846588a919358280c87d2a57895a.png)
 
 We don't need to use export and use exiftool to analyze this file for us but Date Modified display on FTK Image is enough to answer this question
-```
-04/05/2020 03:49
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>04/05/2020 03:49</code></pre>
+</details>
 
 > Q23: How many times did Jim launch the Tor Browser?
 
@@ -387,9 +428,11 @@ Now its time to find through all GUID to find which one is the right one
 ![5c7c410b4d508783baacce428ce91be5.png](/resources/5c7c410b4d508783baacce428ce91be5.png)
 
 And the only registry key that count `firefox.exe` is this GUID which was executed Tor 2 times
-```
-2
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2</code></pre>
+</details>
 
 > Q24: There is a png photo of an iPhone in Grapes's files. Find it and provide the SHA-1 hash.
 
@@ -414,9 +457,10 @@ Now use binwalk with --dd to extract any files inside this image
 Then use sha1sum to calculate sha1 hash of this png file
 `sha1sum _samplePhone.jpg.extracted/174A`
 
-```
-537fe19a560ba3578d2f9095dc2f591489ff2cde
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>537fe19a560ba3578d2f9095dc2f591489ff2cde</code></pre>
+</details>
 
 > Q25: When was the last time a docx file was opened on the device? (An apple a day keeps the docx away. Answer in UTC, YYYY-MM-DD HH:MM:SS)
 
@@ -447,9 +491,11 @@ on the other hand, Jim opened 1 docx file
 while Tim and Miriam didn't open any docx file neither
 
 So we can use timestamp from `Document1.docx` that was opened by Jim to answer this question
-```
-2020-04-11 23:23:36
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2020-04-11 23:23:36</code></pre>
+</details>
 
 > Q26: How many entries does the MFT of the filesystem have?
 
@@ -467,18 +513,22 @@ Export `$MFT` from root folder
 ![3c3f11f5f976f5e4037c80f3368e88ad.png](/resources/3c3f11f5f976f5e4037c80f3368e88ad.png)
 
 Use it to parse Master File Record file directly (`mftdump.exe $MFT`) and while processing it will tell us how many file records on this MFT file 
-```
-219904
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>219904</code></pre>
+</details>
 
 > Q27: Tim wanted to fire an employee because they were ......?(Be careful what you wish for)
 
 ![60e35ac1664dc662076a011d0f5f849f.png](/resources/60e35ac1664dc662076a011d0f5f849f.png)
 
 In question 15, we know that he wanted to kick out stinky employee based on his browser history
-```
-stinky
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>stinky</code></pre>
+</details>
 
 > Q28: What cloud service was a Startup item for the user admin?
 
@@ -487,9 +537,11 @@ Grab admin's `NTUSER.DAT` hive then go to `SOFTWARE\Microsoft\Windows\CurrentVer
 ![b505988a075b0a5466194ddf3bbd81ce.png](/resources/b505988a075b0a5466194ddf3bbd81ce.png)
 
 Only 1 service was stored in this key which is OneDrive, a cloud service from Microsoft
-```
-OneDrive
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>OneDrive</code></pre>
+</details>
 
 > Q29: Which Firefox prefetch file has the most runtimes? (Flag format is <filename/#oftimesrun>)
 
@@ -508,9 +560,11 @@ Ignore Timeline file but open the larger file on Timeline Explorer
 ![abae63f36aedf57b161f8bab16cfe159.png](/resources/abae63f36aedf57b161f8bab16cfe159.png)
 
 We can see that this firefox prefetch file has the most run count among it peers 
-```
-FIREFOX.EXE-A606B53C.pf/21
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>FIREFOX.EXE-A606B53C.pf/21</code></pre>
+</details>
 
 > Q30: What was the last IP address the machine was connected to?
 
@@ -522,9 +576,11 @@ An answer of this question is the Dhcp IP Address
 ![334e9970461a188afbcbfed323ddb5b7.png](/resources/334e9970461a188afbcbfed323ddb5b7.png)
 
 Which doesn't make sense to me at all, to be honest if we're really want to know the last IP address we should dig into Event Log but it is what it is
-```
-192.168.2.242
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.2.242</code></pre>
+</details>
 
 > Q31: Which user had the most items pinned to their taskbar?
 
@@ -545,9 +601,11 @@ admin user has 2 shortcuts
 ![64d26b98a9e8dcce93c35218337a87d2.png](/resources/64d26b98a9e8dcce93c35218337a87d2.png)
 
 meanwhile all the rest have only 1 shortcut so admin pinned the most items to his taskbar
-```
-admin
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>admin</code></pre>
+</details>
 
 > Q32: What was the last run date of the executable with an MFT record number of 164885? (Format: MM/DD/YYYY HH:MM:SS (UTC).)
 
@@ -570,9 +628,11 @@ To verify this question we can use and output from `PECmd`
 ![7035ac4771210455dba1703a0424f4dd.png](/resources/7035ac4771210455dba1703a0424f4dd.png)
 
 Well it's different from MFT output file but an answer of this question is the time we got from PECmd 
-```
-04/12/2020 02:32:09
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>04/12/2020 02:32:09</code></pre>
+</details>
 
 > Q33: What is the log file sequence number for the file "fruit_Assortment.jpg"?
 
@@ -589,9 +649,11 @@ Open it with your CSV file viewer then we can see that there is LogfileSequenceN
 ![a4a152f1fc2c56268636bc2f94046571.png](/resources/a4a152f1fc2c56268636bc2f94046571.png)
 
 Using search function to find for this image file and look up for LogfileSequenceNumber column 
-```
-1276820064
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>1276820064</code></pre>
+</details>
 
 > Q34: Jim has some dirt on the company stored in a docx file. Find it, the flag is the fourth secret, in the format of <"The flag is a sentence you put in quotes">. (Secrets, secrets are no fun)
 
@@ -622,9 +684,11 @@ change file extension to doc and open it with LibreOffice again
 ![ac8c6fad6d93b2923a9e8d308aa4af32.png](/resources/ac8c6fad6d93b2923a9e8d308aa4af32.png)
 
 Then we finally see 4 company secrets 
-```
-Customer data is not stored securely
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Customer data is not stored securely</code></pre>
+</details>
 
 > Q35: In the company Slack, what is threatened to be deactivated if the user gets their email deactivated?
 
@@ -639,9 +703,11 @@ Grab it
 ![3140dc7d4e06b6537843ed2b5302d9fa.png](/resources/3140dc7d4e06b6537843ed2b5302d9fa.png)
 
 Using strings and searching for "deactivate", we found a message that if someone deactivate his email then he will deactivate kneecaps of that guy
-```
-kneecaps
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>kneecaps</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/corporatesecrets/
 

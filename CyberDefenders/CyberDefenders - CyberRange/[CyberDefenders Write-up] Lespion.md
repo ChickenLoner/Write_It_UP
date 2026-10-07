@@ -35,9 +35,10 @@ Nothing special about `fsociety.js`, its just a logo from the infamous Mr Robot 
 But on the other hand, There is an API key paremeter was set at the first line of `Login Page.js`
 ![2b0098dbccee1d111d18aea2d23b533f.png](/resources/2b0098dbccee1d111d18aea2d23b533f-1.png)
 
-```
-aJFRaLHjMXvYZgLPwiJkroYLGRkNBW
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>aJFRaLHjMXvYZgLPwiJkroYLGRkNBW</code></pre>
+</details>
 
 > Q2: File -> Github.txt: What is the plaintext password the insider added to his GitHub repositories?
 
@@ -45,9 +46,11 @@ Scroll to line 46~59, I found user credentials.
 ![541079eedde829692f6723648cf37ebc.png](/resources/541079eedde829692f6723648cf37ebc-1.png)
 Decode the password with cyberchef
 ![c1916bba638f1f54a8ed7ec650cabccc.png](/resources/c1916bba638f1f54a8ed7ec650cabccc-1.png)
-```
-PicassoBaguette99
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>PicassoBaguette99</code></pre>
+</details>
 
 > Q3: File -> Github.txt: What cryptocurrency mining tool did the insider use?
 
@@ -55,9 +58,11 @@ I couldn't find anything about the mining tool on the [Project-Build---Custom-Lo
 ![288f5150cc3ea355362fd80ca5d01594.png](/resources/288f5150cc3ea355362fd80ca5d01594-1.png)
 After reading the `README.md`, It is confirmed that this is the crypto mining tool that we're searching for
 ![0012ee4031ac0760074f0617e23d7178.png](/resources/0012ee4031ac0760074f0617e23d7178-1.png)
-```
-xmrig
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>xmrig</code></pre>
+</details>
 
 > Q4: What university did the insider go to? 
 
@@ -67,9 +72,10 @@ I used the email to search on google and found Linkedin profile that belongs to 
 And in the Linkedin there is an education section that list the university this user went to
 ![c9e4a9322236378cf27e06ecc765d332.png](/resources/c9e4a9322236378cf27e06ecc765d332-1.png)
 
-```
-Sorbonne
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Sorbonne</code></pre>
+</details>
 
 > Q5: What gaming website the insider had an account on?
 
@@ -80,18 +86,22 @@ So I went to other tool like [Namechk](https://namechk.com/)
 And there it is! This username exists on Steam
 ![4c5e0330567053bd6b2a951c9e2c8e0d.png](/resources/4c5e0330567053bd6b2a951c9e2c8e0d-1.png)
 ![b0eb65e1a231de0b0ef64da3a3b60910.png](/resources/b0eb65e1a231de0b0ef64da3a3b60910-1.png)
-```
-steam
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>steam</code></pre>
+</details>
 
 > Q6: What is the link to the insider Instagram profile?
 
 Just searching by username, The first link should be it
 ![746658e4ae483ce5e8220ffe0221eb28.png](/resources/746658e4ae483ce5e8220ffe0221eb28-1.png)
 ![321618eb8f73ec3777e2893d05a3bcb4.png](/resources/321618eb8f73ec3777e2893d05a3bcb4-1.png)
-```
-https://www.instagram.com/emarseille99/
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>https://www.instagram.com/emarseille99/</code></pre>
+</details>
 
 > Q7: Where did the insider go on the holiday? (Country only)
 
@@ -100,9 +110,11 @@ On the Instagram, This picture was posted with a holiday caption so This might b
 
 And the result is Marina Bay Sands in Singapore
 ![abd998eb0d2867e491ee7eaefc9c2d5a.png](/resources/abd998eb0d2867e491ee7eaefc9c2d5a-1.png)
-```
-Singapore
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Singapore</code></pre>
+</details>
 
 > Q8: Where is the insider family live? (City only)
 
@@ -113,9 +125,11 @@ I assumed that the second image is easier to search online so I used that
 
 The result says it's Burj Khalifa, It might be the highest tower that appeared on the image and It is located in Dubai
 ![7c53e2a85280a76c122f45f7b3db8548.png](/resources/7c53e2a85280a76c122f45f7b3db8548-1.png)
-```
-Dubai
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Dubai</code></pre>
+</details>
 
 > Q9: File -> office.jpg: You have been provided with a picture of the building in which the company has an office. Which city is the company located in?
 
@@ -126,9 +140,10 @@ And it says Birmingham New Street, on the office.jpg also showed the Grand Centr
 So both building confirmed the search result.
 ![1f772851f8bc3f9a0f2230bc3511c57c.png](/resources/1f772851f8bc3f9a0f2230bc3511c57c-1.png)
 
-```
-Birmingham
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Birmingham</code></pre>
+</details>
 
 > Q10: File -> Webcam.png: With the intel, you have provided, our ground surveillance unit is now overlooking the person of interest suspected address. They saw them leaving their apartment and followed them to the airport. Their plane took off and has landed in another country. Our intelligence team spotted the target with this IP camera. Which state is this camera in?
 
@@ -141,9 +156,10 @@ And There It is, same view confirmed now we need to know the state of this unive
 Indiana it is
 ![5253085b01ead368261a4241cacf1321.png](/resources/5253085b01ead368261a4241cacf1321-1.png)
 
-```
-Indiana
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Indiana</code></pre>
+</details>
 
 ![718647f618d6237452180364af952c4f.png](/resources/718647f618d6237452180364af952c4f.png)
 * * *

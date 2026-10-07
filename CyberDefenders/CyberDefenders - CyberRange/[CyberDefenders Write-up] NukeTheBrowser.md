@@ -24,17 +24,19 @@ As a soc analyst, analyze the artifacts and answer the questions.
 
 Open pcap file on Wireshark and go to Statistics and sort for the highest IP address
 
-```
-10.0.5.15
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10.0.5.15</code></pre>
+</details>
 
 > Q2: What protocol do you think the attack was carried over?
 
 When opened this pcap files, we saw a lot of HTTP communications and there are some executable files were served so the best guess would be HTTP protocol which is the correct answer
 
-```
-http
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http</code></pre>
+</details>
 
 > Q3: What was the URL for the page used to serve malicious executables (don't include URL parameters)?
 
@@ -50,9 +52,10 @@ Following through it, we can see that an executable file was served on `/fg/load
 
 The other way to find this is to use NetworkMiner, but we will miss those details information of each request / response
 
-```
-http://sploitme.com.cn/fg/load.php
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://sploitme.com.cn/fg/load.php</code></pre>
+</details>
 
 > Q4: What is the number of the packet that includes a redirect to the french version of Google and probably is an indicator for Geo-based targeting?
 
@@ -68,9 +71,10 @@ Go back to Wireshark, and use Find Packet function to jump to the first packet w
 
 It was packet 299, GET request was sent to `google.com` then it was redirected to `google.fr` hence the DNS query and sessions to `google.fr` were made after this packet
 
-```
-299
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>299</code></pre>
+</details>
 
 > Q5: What was the CMS used to generate the page 'shop.honeynet.sg/catalog/'? (Three words, space in between)
 
@@ -82,9 +86,10 @@ Find for `/catalog` then we can see which packet we should look into
 
 Follow HTTP request and try to find any CMS-like name that blended inside HTML code 
 
-```
-osCommerce Online Merchant
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>osCommerce Online Merchant</code></pre>
+</details>
 
 > Q6: What is the number of the packet that indicates that 'show.php' will not try to infect the same host twice?
 
@@ -104,9 +109,10 @@ Most of them have JS code except for this one
 
 Which is packet 366
 
-```
-366
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>366</code></pre>
+</details>
 
 > Q7: One of the exploits being served targets a vulnerability in "msdds.dll". Provide the corresponding CVE number.
 
@@ -117,9 +123,10 @@ After searching for `msdds.dll` vulnerability then we will see there is one part
 - https://www.exploit-db.com/exploits/26167
 - https://www.kb.cert.org/vuls/id/740372
 
-```
-CVE-2005-2127
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2005-2127</code></pre>
+</details>
 
 > Q8: What is the name of the executable being served via 'http://sploitme.com.cn/fg/load.php?e=8' ?
 
@@ -463,9 +470,10 @@ We will need to "Swap endianness" by 2 word length bytes before convert it "From
 
 Do not forget to use "Unlimited steps" and "FindSc", after we simulated it then we can see that `urlmon.dll` was loaded to use `URLDownloadToFileA` function and it was used to download `e.exe` from `http//sploitme.com.cn/fg/load.php?e=8` to user's temp folder then execute it with `WinExec` 
 
-```
-e.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>e.exe</code></pre>
+</details>
 
 > Q9: One of the malicious files was first submitted for analysis on VirusTotal at 2010-02-17 11:02:35 and has an MD5 hash ending with '78873f791'. Provide the full MD5 hash.
 
@@ -477,9 +485,10 @@ Remember `video.exe` that was served on Q3?, its filehash end with '78873f791'
 
 And after we searched it on VirusTotal, we can also see that First Submission Date is also matched so there is no doubt that we got the right file
 
-```
-52312bb96ce72f230f0350e78873f791
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>52312bb96ce72f230f0350e78873f791</code></pre>
+</details>
 
 > Q10: What is the name of the function that hosted the shellcode relevant to 'http://sploitme.com.cn/fg/load.php?e=3'?
 
@@ -489,9 +498,10 @@ After converting each shellcode then we will eventually found that url found in 
 
 ![ec96a135678bd694cb85900ccd541182.png](/resources/ec96a135678bd694cb85900ccd541182.png)
 
-```
-aolwinamp
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>aolwinamp</code></pre>
+</details>
 
 > Q11: Deobfuscate the JS at 'shop.honeynet.sg/catalog/' and provide the value of the 'click' parameter in the resulted URL.
 
@@ -507,9 +517,10 @@ Lets find relavant packet related to `shop.honeynet.sg/catalog/` then we can fol
 
 After replacing `document.write` with `console.log`, we can see that it is an invisible iframe to load specific url and `click` parameter was assigned value on this url might trigger different payload / interaction that will be taken for each parameter
 
-```
-84c090bd86
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>84c090bd86</code></pre>
+</details>
 
 > Q12: Deobfuscate the JS at 'rapidshare.com.eyu32.ru/login.php' and provide the value of the 'click' parameter in the resulted URL.
 
@@ -525,9 +536,10 @@ This time look like we need one more step to convert this hex to ascii
 
 But in the end, its an another invisible iframe here
 
-```
-3feb5a6b2f
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3feb5a6b2f</code></pre>
+</details>
 
 > Q13: What was the version of 'mingw-gcc' that compiled the malware?
 
@@ -539,16 +551,19 @@ There are 2 ways to solve this, first is to find where `video.exe` were sent and
 
 Or you can use `strings` on this malware directly to find it, its still the same answer 
 
-```
-3.4.5
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3.4.5</code></pre>
+</details>
 
 > Q14: The shellcode used a native function inside 'urlmon.dll' to download files from the internet to the compromised host. What is the name of the function?
 
 ![b25a86a0dea643796cc0295d3d4f7dda.png](/resources/b25a86a0dea643796cc0295d3d4f7dda.png)
-```
-URLDownloadToFile
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>URLDownloadToFile</code></pre>
+</details>
 
 ![f4d7676d704f3c1844155925fc32acf5.png](/resources/f4d7676d704f3c1844155925fc32acf5.png)
 * * *

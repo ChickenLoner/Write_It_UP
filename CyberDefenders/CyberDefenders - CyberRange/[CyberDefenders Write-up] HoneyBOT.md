@@ -31,14 +31,17 @@ As soon as I opened this pcap,I saw the connection between 2 IP addresses right 
 - `98.114.205.102` is the attacker
 - `192.150.11.111` is the honeypot
 
-```
-98.114.205.102
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>98.114.205.102</code></pre>
+</details>
 
 > Q2: What is the target's IP address?
-```
-192.150.11.111
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>192.150.11.111</code></pre>
+</details>
 
 > Q3: Provide the country code for the attacker's IP address (a.k.a geo-location).
 
@@ -50,9 +53,10 @@ and my second method is using Zui from Brimsecurity
 
 ![0b0db7bb112c86c23911ec978c560540.png](/resources/0b0db7bb112c86c23911ec978c560540.png)
 
-```
-US
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>US</code></pre>
+</details>
 
 > Q4: How many TCP sessions are present in the captured traffic?
 
@@ -65,9 +69,11 @@ Or you can use Zui for this question
 ![8f1e3e2ff76047b88c91ffc87e08c762.png](/resources/8f1e3e2ff76047b88c91ffc87e08c762.png)
 
 the number of `conn` is the answer
-```
-5
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>5</code></pre>
+</details>
 
 > Q5: How long did it take to perform the attack (in seconds)?
 
@@ -77,9 +83,11 @@ First packet started at 03:28:28
 
 And last packet ended at 03:28:44
 So it took 44-28 = 16 seconds
-```
-16
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>16</code></pre>
+</details>
 
 > Q7: Provide the CVE number of the exploited vulnerability.
 
@@ -97,9 +105,10 @@ Then I searched on google to explain this function explaination and how it could
 
 ![6d641e3e31ac9c35e0d41927f85500fb.png](/resources/6d641e3e31ac9c35e0d41927f85500fb.png)
 
-```
-CVE-2003-0533
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2003-0533</code></pre>
+</details>
 
 [here](https://www.broadcom.com/support/security-center/attacksignatures/detail?asid=20615) is the resource about this CVE but if you want the summary, its a buffer overflow attack that lead to remote code execution. thats it
 
@@ -110,9 +119,11 @@ So if you followed the TCP stream of the SMB packages, you can see those suspici
 > Q8: Which protocol was used to carry over the exploit?
 
 As I saw on this pcap file it was carries out by SMB
-```
-SMB
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>SMB</code></pre>
+</details>
 
 > Q9: Which protocol did the attacker use to download additional malicious files to the target system?
 
@@ -123,14 +134,18 @@ Since I already learned that this exploit lead to remote code execution then the
 ![047b321bf9c0ec8260fa9e139b67040b.png](/resources/047b321bf9c0ec8260fa9e139b67040b.png)
 
 these chain commands is an attacker made the honeypot connected to his/her ftp server to download `ssms.exe` then executed it, probably a reverse shell or some kind of backdoor.
-```
-ftp
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>ftp</code></pre>
+</details>
 
 > Q10: What is the name of the downloaded malware?
-```
-ssms.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>ssms.exe</code></pre>
+</details>
 
 > Q11: The attacker's server was listening on a specific port. Provide the port number.
 
@@ -141,9 +156,11 @@ So after I learned that an attacker used RCE to download and executed an executa
 ![028f967694757c56d497a3b163edc6b6.png](/resources/028f967694757c56d497a3b163edc6b6.png)
 
 So the port that listening to this is 8884
-```
-8884
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>8884</code></pre>
+</details>
 
 > Q12: When was the involved malware first submitted to VirusTotal for analysis? Format: YYYY-MM-DD
 
@@ -162,9 +179,11 @@ Sure enough, it is a backdoor
 ![3e9d428f5d566e60e9f762b50a8e4d3c.png](/resources/3e9d428f5d566e60e9f762b50a8e4d3c.png)
 
 Here is the answer
-```
-2007-06-27
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2007-06-27</code></pre>
+</details>
 
 > Q13: What is the key used to encode the shellcode?
 
@@ -190,9 +209,10 @@ and you can see that this shellcode is to open a port 1957 which will be spawn c
 
 We still need to figure it out a key so I started with an offset before operational shellcode then we can see that 0x99 we just found earlier are used to XOR with shellcode to function which mean 0x99 is the key to encode and decode shell code
 
-```
-0x99
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0x99</code></pre>
+</details>
 
 > Q14: What is the port number the shellcode binds to?
 
@@ -205,16 +225,20 @@ And another to way is the look at the result on Wireshark
 ![b583a6d30e964758e483c964c54dedc7.png](/resources/b583a6d30e964758e483c964c54dedc7.png)
 
 Here when an attacker successfully exploited BOF, a connection was established at port 1957
-```
-1957
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>1957</code></pre>
+</details>
 
 > Q15: The shellcode used a specific technique to determine its location in memory. What is the OS file being queried during this process?: 
 
 Those functions called were from `kernel32.dll`
-```
-kernel32.dll
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>kernel32.dll</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/honeybot/
 

@@ -72,9 +72,10 @@ Now we can see that this process was really attempted to reach this IP address.
 
 **Command** : `strings pid.4516.dmp > 4516.txt` and `grep '94\.140\.112\.73' 4516.txt`
 
-```
-94.140.112.73
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>94.140.112.73</code></pre>
+</details>
 
 >Q2: We need to determine if the malware attempted to communicate with another IP. Which IP address did the malware attempt to communicate with again?
 
@@ -92,24 +93,31 @@ Then we can see that it really fetched the .dat file from this IP address with H
 
 **Command** : `grep '45\.147\.230\.104' 4516.txt -B 5 -A 1`
 
-```
-45.147.230.104
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>45.147.230.104</code></pre>
+</details>
 
 >Q3: Identifying the process responsible for this suspicious behavior helps reconstruct the sequence of events leading to the execution of the malware and its source. What is the name of the process that initiated the malware?
-```
-EXCEL.EXE
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>EXCEL.EXE</code></pre>
+</details>
 
 >Q4: The malware's file name is crucial for further forensic analysis and extracting the malware. Can you provide its file name?
-```
-Payment.xls
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Payment.xls</code></pre>
+</details>
 
 >Q5: Hashes are like digital fingerprints for files. Once the hash is known, it can be used to scan other systems within the network to identify if the same malicious file exists elsewhere. What is the SHA256 hash of the malware?
-```
-3cef2e4a0138eeebb94be0bffefcb55074157e6f7d774c1bbf8ab9d43fdbf6a4
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>3cef2e4a0138eeebb94be0bffefcb55074157e6f7d774c1bbf8ab9d43fdbf6a4</code></pre>
+</details>
 
 >Q6: To trace the origin of the malware and understand its development timeline, can you provide the UTC creation time of the malware file?
 
@@ -117,9 +125,10 @@ Payment.xls
 
 Look up the History section under "Details" tab then we have the creation timestamp of this excel Qbot malware which is the answer of this question.
 
-```
-2015-06-05 18:17
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2015-06-05 18:17</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/qbot/ 
 * * *

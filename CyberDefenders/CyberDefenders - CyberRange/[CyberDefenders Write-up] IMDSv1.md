@@ -36,9 +36,10 @@ By filtering for this variable, we can see that the attacker leveraged this vuln
 
 **Filter** : `http.request.full_uri contains "check_url"`
 
-```
-http://www.google.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://www.google.com</code></pre>
+</details>
 
 >Q2: The attacker exploited the vulnerable website to send requests, ultimately obtaining the IAM role credentials. What is the exact URI used in the request made by the webserver to acquire these credentials?
 
@@ -50,9 +51,10 @@ Here is the url that was the answer of this question but lets take a look at the
 
 Then we can see that the secret of EC2-S3-Visa was really leaked with this URL.
 
-```
-http://169.254.169.254/latest/meta-data/iam/security-credentials/EC2-S3-Visa
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://169.254.169.254/latest/meta-data/iam/security-credentials/EC2-S3-Visa</code></pre>
+</details>
 
 >Q3: The attacker executed an AWS CLI command, similar to `whoami` in traditional systems, to retrieve information about the IAM user or role associated with the operation. When exactly did he execute that command?
 
@@ -66,9 +68,10 @@ The similar event to `whoami` command on AWS is `GetCallerIdentity` so we can si
 
 To make it a little bit (?) easier to read then we can use CyberChef and get the eventTime to answer this question.
 
-```
-2024-10-15 10:20
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-10-15 10:20</code></pre>
+</details>
 
 >Q4: During the investigation of the network traffic, we observed that the attacker attempted to retrieve the instance ID and subsequently tried to terminate or shut down the instance. What was the error code returned?
 
@@ -79,9 +82,10 @@ To terminate an instance, the attacker had to use `TerminateInstance` event whic
 
 **Command** : `cat 124355653975_CloudTrail_eu-central-1*  | grep 'aws-cli/2.18.5' | grep Terminate` 
 
-```
-Client.UnauthorizedOperation
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Client.UnauthorizedOperation</code></pre>
+</details>
 
 >Q5: The attacker made an attempt to create a new user but lacked the necessary permissions. What was the username the attacker tried to create?
 
@@ -92,9 +96,10 @@ To create a new user, the attacker have to use `CreateUser` event and it also er
 
 **Command** : `cat 124355653975_CloudTrail_eu-central-1*  | grep 'aws-cli/2.18.5' | grep CreateUser` 
 
-```
-H3ll
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>H3ll</code></pre>
+</details>
 
 >Q6: Which version of the AWS CLI did the attacker use?
 
@@ -102,9 +107,10 @@ H3ll
 
 We can look into the user-Agent of each request made by threat actor which all will have the same version of AWS CLI version as shown in the image above.
 
-```
-aws-cli/2.18.5
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>aws-cli/2.18.5</code></pre>
+</details>
 
 >Q7: After listing the available S3 buckets, the attacker proceeded to list the contents of one of them, Which bucket did the attacker list its contents?
 
@@ -115,9 +121,10 @@ We can take a look at which object was listed by filter for `ListObjects` event 
 
 **Command** : `cat 124355653975_CloudTrail_eu-central-1*  | grep 'aws-cli/2.18.5' | grep ListObjects`
 
-```
-tourists-visa-info
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>tourists-visa-info</code></pre>
+</details>
 
 >Q8: The attacker subsequently began downloading data from the bucket. What was the total amount of data stolen, measured in bytes?
 <br>Note: Don't forget to use the right filters to get the right answer.
@@ -132,9 +139,10 @@ Which I made it with this, I grep `visa` because there was other `GetObject` eve
 
 `Command` : `cat 124355653975_CloudTrail_eu-central-1*  | grep 'aws-cli/2.18.5' | grep GetObject | grep visa | awk '{print $13}' | cut -d ":" -f 13 | cut -d '}' -f 1 | awk '{sum += $1} END {print sum}'`
 
-```
-5449252456
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5449252456</code></pre>
+</details>
 
 >Q9: After stealing the data, the attacker began deleting the contents of the bucket. What IP address was used during these deletion activities?
 
@@ -145,9 +153,10 @@ When deleting the content inside the bucket then `DeleteObject` will be called a
 
 **Command** : `cat 124355653975_CloudTrail_eu-central-1*  | grep 'aws-cli/2.18.5' | grep DeleteObject`
 
-```
-193.189.100.204
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>193.189.100.204</code></pre>
+</details>
 
 >Q10: The attacker executed a deletion operation on the bucket, removing all of its contents. Every request in AWS is linked to a unique identifier for tracking purposes. What was the request ID associated with the `bucket's deletion event`?
 
@@ -158,9 +167,10 @@ When deleting the content inside the bucket then `DeleteObject` will be called a
 
 **Command** : `cat 124355653975_CloudTrail_eu-central-1*  | grep 'aws-cli/2.18.5' | grep DeleteBucket`
 
-```
-XT27FP62J3ACKDNW
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>XT27FP62J3ACKDNW</code></pre>
+</details>
 
 To sum it up, the attacker exploited SSRF to get the secret of "EC2-S3-Visa" then tried to create backdoor user but failed then exfiltrated files from `tourists-visa-info` before deleting them and delete the bucket as a whole.
 

@@ -22,9 +22,11 @@ Then after understands what happening, lets answer all the questions
 
 ![bf27e7c4e79a50ecc2e9ffb5468033b4.png](/resources/bf27e7c4e79a50ecc2e9ffb5468033b4.png)
 This IP address made a NBNS query for the mistyped of fileshare 
-```
-fileshaare
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>fileshaare</code></pre>
+</details>
 
 > Q2: We are investigating a network security incident. For a thorough investigation, we need to determine the IP address of the rogue machine. What is the IP address of the machine acting as the rogue entity?
 
@@ -32,30 +34,38 @@ fileshaare
 There is one address that sent the previous NBNS response back to 192.168.232.162
 ![017f0d1da3dade5333613afc1a3666c6.png](/resources/017f0d1da3dade5333613afc1a3666c6.png)
 This IP was not just responsed with 1 query but 2 of them which are `fileshaare` and `prineter` from the different IP addresses.
-```
-192.168.232.215
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.232.215</code></pre>
+</details>
 
 > Q3: During our investigation, it's crucial to identify all affected machines. What is the IP address of the second machine that received poisoned responses from the rogue machine?
-```
-192.168.232.176
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.232.176</code></pre>
+</details>
 
 > Q4: We suspect that user accounts may have been compromised. To assess this, we must determine the username associated with the compromised account. What is the username of the account that the attacker compromised?
 
 ![4e8ed2bacf0fc942955f5784ccad2a2e.png](/resources/4e8ed2bacf0fc942955f5784ccad2a2e.png)
 Since I already knew that 192.168.232.215 is an attacker, I made a query based of it and found the SMB2 session setup request packet with the username
-```
-janesmith
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>janesmith</code></pre>
+</details>
 
 > Q5: As part of our investigation, we aim to understand the extent of the attacker's activities. What is the hostname of the machine that the attacker accessed via SMB?
 
 ![81a490da4550e47997f54640b729fbfe.png](/resources/81a490da4550e47997f54640b729fbfe.png)
 The answer could be found on SMB2 > Session Setup Request (0x01) > Security Blob > GSS-API Generic Security Service Application Program Interface > negTokenTarg > NTLM Secure Service Provider > NTLM Response > NTLMv2 Response
-```
-ACCOUNTINGPC
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>ACCOUNTINGPC</code></pre>
+</details>
 
 <div align=center>
 

@@ -26,9 +26,10 @@ First we need to import volatility profile by moving profile provided by this la
 
 I tried using linux_banners plugin but it didn't work so we will have to use `grep -a "Linux release" dump.mem` which is the old school way to obtain Linux Distro version from memory dump
 
-```
-7.7.1908
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>7.7.1908</code></pre>
+</details>
 
 > Q2: There is a command containing a strange message in the bash history. Will you be able to read it?
 
@@ -36,9 +37,10 @@ I tried using linux_banners plugin but it didn't work so we will have to use `gr
 
 We will use `vol.py -f dump.mem --profile=LinuxCentos7_3_10_1062x64 linux_bash` to display bash history stored on this memory dump which we can see that there is a flag in base64 encoded here and there are 2 git clone command, 1 is PythonBackup which look like a python script to create a snapshot and later is LiME (Linux Memory Extractor) 
 
-```
-shkCTF{l3ts_st4rt_th3_1nv3st_75cc55476f3dfe1629ac60}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>shkCTF{l3ts_st4rt_th3_1nv3st_75cc55476f3dfe1629ac60}</code></pre>
+</details>
 
 > Q3: What is the PID of the suspicious process?
 
@@ -48,9 +50,10 @@ We will use `vol.py -f dump.mem --profile=LinuxCentos7_3_10_1062x64 linux_pstree
 
 It means that netcat was used to established a connection to the attacker, likely to be a reverse shell then a bash process under python was likely to be shell stabilizer created with python so the attacker will have more stable and functional interactive shell which lead to vim process 
 
-```
-2854
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2854</code></pre>
+</details>
 
 > Q4: The attacker downloaded a backdoor to gain persistence. What is the hidden message in this backdoor?
 
@@ -68,9 +71,10 @@ Followed it then we will have second flag in base64 and this backdoor which will
 
 ![872aa59c0444076b5a71b0a58cfa7c2d.png](/resources/872aa59c0444076b5a71b0a58cfa7c2d.png)
 
-```
-shkCTF{th4t_w4s_4_dumb_b4ckd00r_86033c19e3f39315c00dca}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>shkCTF{th4t_w4s_4_dumb_b4ckd00r_86033c19e3f39315c00dca}</code></pre>
+</details>
 
 > Q5: What are the attacker's IP address and the local port on the targeted machine?
 
@@ -78,9 +82,10 @@ shkCTF{th4t_w4s_4_dumb_b4ckd00r_86033c19e3f39315c00dca}
 
 Using `vol.py -f dump.mem --profile=LinuxCentos7_3_10_1062x64 linux_netstat` then wait..... for a while then we will have these connections as we should expected port 12345 to establish a connection to an attacker IP address
 
-```
-192.168.49.1:12345
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.49.1:12345</code></pre>
+</details>
 
 > Q6: What is the first command that the attacker executed?
 
@@ -88,9 +93,10 @@ Using `vol.py -f dump.mem --profile=LinuxCentos7_3_10_1062x64 linux_netstat` the
 
 Using `vol.py -f dump.mem --profile=LinuxCentos7_3_10_1062x64 linux_psaux` then we can see that I was right about shell stabilizer 
 
-```
-python -c import pty; pty.spawn("/bin/bash")
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>python -c import pty; pty.spawn("/bin/bash")</code></pre>
+</details>
 
 > Q7: After changing the user password, we found that the attacker still has access. Can you find out how?
 
@@ -105,9 +111,10 @@ Lets dump it with `vol.py -f dump.mem --profile=LinuxCentos7_3_10_1062x64 linux_
 
 Use `strings /tmp/Seized/*.vma | grep -i 'rc.local'`, then we will have this third flag and a clue about other persistence mechanism that an attacker added to `rc.local` which is added his SSH public key to k3vin user authorized key directory so an attacker can still use ssh to connect to this machine after chaning user password 
 
-```
-shkCTF{rc.l0c4l_1s_funny_be2472cfaeed467ec9cab5b5a38e5fa0}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>shkCTF{rc.l0c4l_1s_funny_be2472cfaeed467ec9cab5b5a38e5fa0}</code></pre>
+</details>
 
 > Q8: What is the name of the rootkit that the attacker used?
 
@@ -119,9 +126,10 @@ We will have to use this plugin and find for HOOKED in symbol field
 
 Using `vol.py -f dump.mem --profile=LinuxCentos7_3_10_1062x64 linux_check_syscall | grep "HOOKED"` then we will have the name of this rootkit
 
-```
-sysemptyrect
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>sysemptyrect</code></pre>
+</details>
 
 > Q9: The rootkit uses crc65 encryption. What is the key?
 
@@ -129,9 +137,10 @@ sysemptyrect
 
 We will have to use `vol.py -f dump.mem --profile=LinuxCentos7_3_10_1062x64 linux_lsmod -P` to print lists of loaded kernel modules with parameter then we will have this crc65_key loaded under rootkit 
 
-```
-1337tibbartibbar
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>1337tibbartibbar</code></pre>
+</details>
 
 ![13f645d83ed1b4b237218e9710efdc65.png](/resources/13f645d83ed1b4b237218e9710efdc65.png)
 * * *

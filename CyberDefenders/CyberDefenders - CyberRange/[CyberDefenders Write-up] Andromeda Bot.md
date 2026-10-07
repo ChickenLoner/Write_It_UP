@@ -37,14 +37,17 @@ Now we have so many ways to find the answer of this question. Why? because of wh
 
 Then we can just simply search for USBSTOR which we can see that at 2024-10-04 13:48:18 UTC, the USB with serial number "7095411056659025437&0" was plugged in/connected from the user with RID 1001 (tommy user) indicate by Mountpoint registry that was edit/created at the same time this USB was connected.
 
-```
-7095411056659025437&0
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>7095411056659025437&amp;0</code></pre>
+</details>
 
 >Q2: Tracking USB device activity is essential for building an incident timeline, providing a starting point for your analysis. When was the last recorded time the USB was inserted into the system?
-```
-2024-10-04 13:48
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-10-04 13:48</code></pre>
+</details>
 
 >Q3: Identifying the full path of the executable provides crucial evidence for tracing the attack's origin and understanding how the malware was deployed. What is the full path of the executable that was run after the PowerShell commands disabled Windows Defender protections?
 
@@ -60,9 +63,10 @@ I parsed the whole logs folder into a single CSV file (Which I do not usually do
 
 Command : `EvtxECmd.exe -d "M:\forensic\files\ROOT\Windows\System32\winevt\Logs" --csv output`
 
-```
-E:\hidden\Trusted Installer.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>E:\hidden\Trusted Installer.exe</code></pre>
+</details>
 
 >Q4: Identifying the bot malware’s C&C infrastructure is key for detecting IOCs. According to threat intelligence reports, what URL does the bot use to download its C&C file?
 
@@ -78,9 +82,10 @@ Then we can go to Relations tab which reveal the answer of this question right h
 
 We can use SHA256 hash to search for malware analysis report of this malware and some of search result will make us come across - "[Andromeda Malware Analysis](https://www.nec.com/en/global/solutions/cybersecurity/blog/240823/index.html)" by NEC Corporation and this blog post had analyzed Andromeda malware with the sample used on this lab and we can see that there are so many domains that were contacted with this sample but most have `/in.php` endpoint as we discovered from VirusTotal.
 
-```
-http://anam0rph.su/in.php
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://anam0rph.su/in.php</code></pre>
+</details>
 
 >Q5: Understanding the IOCs for files dropped by malware is essential for gaining insights into the various stages of the malware and its execution flow. What is the MD5 hash of the dropped .exe file?
 
@@ -96,9 +101,10 @@ Then from the behavior overview part of this blog, we can see that the sample (`
 
 Now lets get the answer of this question from Sysmon right here.
 
-```
-7FE00CC4EA8429629AC0AC610DB51993
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>7FE00CC4EA8429629AC0AC610DB51993</code></pre>
+</details>
 
 >Q6: Having the full file paths allows for a more complete cleanup, ensuring that all malicious components are identified and removed from the impacted locations. What is the full path of the first DLL dropped by the malware sample?
 
@@ -106,9 +112,10 @@ Now lets get the answer of this question from Sysmon right here.
 
 We can use Sysmon Event ID 11 with the `Trusted Installer.exe` as the image file which will reveal 4 dlls and 1 exe that was dropped by this sample and `Gozekeneka.dll` is the first of them.
 
-```
-C:\Users\Tomy\AppData\Local\Temp\Gozekeneka.dll
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Tomy\AppData\Local\Temp\Gozekeneka.dll</code></pre>
+</details>
 
 >Q7: Connecting malware to APT groups is crucial for uncovering an attack's broader strategy, motivations, and long-term goals. Based on IOCs and threat intelligence reports, which APT group reactivated this malware for use in its campaigns?
 
@@ -117,9 +124,10 @@ C:\Users\Tomy\AppData\Local\Temp\Gozekeneka.dll
 
 The blog post also talked about the background of this malware which was deployed by Turla team or UNC4210, reported by researchers from [Mandiant](https://cloud.google.com/blog/topics/threat-intelligence/turla-galaxy-opportunity/).
 
-```
-Turla
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Turla</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/andromeda-bot/ 
 * * *

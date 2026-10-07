@@ -38,9 +38,11 @@ Decode it then we will have a flag
 ![7a4cf4eb017a89a6a55384fca62c9aeb.png](/resources/7a4cf4eb017a89a6a55384fca62c9aeb.png)
 
 We can actually find base64 character here but strings would be the best to solve this one
-```
-0ops_i_used_1337_b64_encryption
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>0ops_i_used_1337_b64_encryption</code></pre>
+</details>
 
 > Q2: File: Just some JS - Check out what I can do!
 
@@ -52,9 +54,10 @@ After examined that code, It does look like heavily obfuscated JavaScript so I u
 
 I used [JavaScript Online Compiler](https://www.programiz.com/javascript/online-compiler/) to execute it rather than using console
 
-```
-what_a_cheeky_language!1!
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>what_a_cheeky_language!1!</code></pre>
+</details>
 
 > Q3: File: This is not JS - I'm tired of Javascript. Luckily, I found the grand-daddy of that lame last language!
 
@@ -66,9 +69,10 @@ I recognized this pattern, It is brainfuck
 
 Use [Brainfuck Translator](https://md5decrypt.net/en/Brainfuck-translator/) to obtain a flag
 
-```
-Now_THIS_is_programming
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Now_THIS_is_programming</code></pre>
+</details>
 
 > Q4: File: Unzip Me - I zipped flag.txt and encrypted it with the password "password", but I think the header got messed up... You can have the flag if you fix the file
 
@@ -90,9 +94,10 @@ Used HxD (Hex Editor) to fix it to 08 00
 
 Then we use can password provided from a question to read text file inside recovered zip file
 
-```
-R3ad_th3_spec
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>R3ad_th3_spec</code></pre>
+</details>
 
 > Q5: File: MALWARE101 - Apparently, my encryption isn't so secure. I've got a new way of hiding my flags!
 
@@ -104,9 +109,10 @@ Using decomplier, we can se that many characters will be assigned to different m
 
 Debug it then open stack memory which we will obtain a flag here
 
-```
-sTaCk_strings_LMAO
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>sTaCk_strings_LMAO</code></pre>
+</details>
 
 > Q6: File: MALWARE201 - Ugh... I guess I'll just roll my own encryption. I'm not too good at math, but it looks good to me!
 
@@ -160,9 +166,10 @@ I asked ChatGPT to write me this script so we can execute it and get the flag ri
 
 ![62af225da487a883e7de266de0bb3f8e.png](/resources/62af225da487a883e7de266de0bb3f8e.png)
 
-```
-malwar3-3ncryp710n-15-Sh17
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>malwar3-3ncryp710n-15-Sh17</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/re101/
  

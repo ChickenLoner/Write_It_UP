@@ -67,14 +67,17 @@ We can use an MFT parser tool like MFTExplorer or MFTECmd to find the record of 
 
 Another thing we can notice is the `.flocked` file extension along with the presence of a `readme.txt`, which indicates that Fog Ransomware has already executed on this system and encrypted most of the files.
 
-```
-https://limewire.com/d/lihUt#NrUgowrb29
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://limewire.com/d/lihUt#NrUgowrb29</code></pre>
+</details>
 
 >Q2: Establishing an exact timeline helps reconstruct the attack sequence accurately. What is the exact timestamp when the user downloaded the RAR file to the system?
-```
-2025-04-30 20:28
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2025-04-30 20:28</code></pre>
+</details>
 
 >Q3: Understanding how the payload was executed reveals the user action that led to compromise. Which file extracted from the archive was launched by the user, triggering the attack?
 
@@ -94,9 +97,10 @@ Since we also have the $R file—the actual file moved to the Recycle Bin (but n
 
 Command : `LECmd.exe -f "C:\Users\Administrator\Desktop\Start Here\Artifacts\C\$Recycle.Bin\S-1-5-21-1505444485-2617992307-1870881995-500\$R50Y0C5.lnk"`
 
-```
-pay rate.pdf.lnk
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>pay rate.pdf.lnk</code></pre>
+</details>
 
 ### Execution
 >Q1: Identifying the initial script clarifies the method used to deliver and execute malicious payloads. What is the name of the PowerShell script that executed the payloads?
@@ -105,9 +109,10 @@ pay rate.pdf.lnk
 
 Since we’ve confirmed that the shortcut file retrieved another payload via PowerShell—matching the behavior described in the Trend Micro article—we should expect the next stage of this execution to involve the drop of the ransomware loader (`cwiper.exe`), `ktool.exe`, and additional PowerShell scripts.
 
-```
-troubleshooting.ps1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>troubleshooting.ps1</code></pre>
+</details>
 
 >Q2: Pinpointing when ransomware activity began is crucial for defining the start of encryption. When did the ransomware first execute on the victim machine?
 
@@ -128,9 +133,10 @@ After opening the output file in Timeline Explorer and filtering for Sysmon Even
 
 This align with the `stage1.ps1` script from Trend Micro here.
 
-```
-2025-04-30 20:32
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2025-04-30 20:32</code></pre>
+</details>
 
 >Q3: Hash values allow correlation of the malware across systems and threat intelligence sources. What is the SHA256 hash of the ransomware executable used in this attack?
 
@@ -147,9 +153,10 @@ We can also retrieve the SHA256 hash of the ransomware loader here, since it was
 
 Inside the comment tab, we can see that Thor scanner detected this as Fog ransomware as it matches rules from different articles, one from Trend Micro article that we alreadt discovered and the other one is [Cyble](https://cyble.com/blog/doge-big-balls-ransomware-edward-coristine/) article which will also tell the similar story.
 
-```
-113A06C8BA6069D345F3C3DB89051553D8AFF7D27408945B50AA94256277DCB3
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>113A06C8BA6069D345F3C3DB89051553D8AFF7D27408945B50AA94256277DCB3</code></pre>
+</details>
 
 ### Persistence & Privilege Escalation
 >Q1: Knowing how persistence was maintained helps ensure thorough malware removal. What MITRE ATT&CK sub-technique ID did the attacker use to gain persistence post-reboot?
@@ -158,9 +165,10 @@ Inside the comment tab, we can see that Thor scanner detected this as Fog ransom
 
 Since this ransomware made itself persistence by placing it on global startup folder, this is obviously [T1547.001](https://attack.mitre.org/techniques/T1547/001/)
 
-```
-T1547.001
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1547.001</code></pre>
+</details>
 
 >Q2: Exploited drivers often reveal the attacker’s method for gaining elevated privileges. What is the name of the vulnerable driver the attacker used for privilege escalation?
 
@@ -174,14 +182,17 @@ The PowerShell script also dropped `Ktool.exe`, which was used for privilege esc
 ![3f985aee5a52a4bed8c29607acaaa10e.png](/resources/3f985aee5a52a4bed8c29607acaaa10e.png)
 We can also confirm that the driver was dropped during the ransomware’s execution, meaning it leveraged a BYOVD (Bring Your Own Vulnerable Driver) technique to escalate privileges.
 
-```
-iqvw64e.sys
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>iqvw64e.sys</code></pre>
+</details>
 
 >Q3: Mapping kernel-level techniques helps identify sophisticated system access methods. What technique did the attacker use to gain kernel-level access?
-```
-Bring your own vulnerable driver
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Bring your own vulnerable driver</code></pre>
+</details>
 
 ### Collection
 >Q1: Tracking files written by malware provides insight into its actions and scope. What is the name of the log file created by the ransomware to record its operations?
@@ -191,9 +202,10 @@ Bring your own vulnerable driver
 
 As noted in the Trend Micro article, the ransomware loader also dropped a log file, DbgLog.sys, which records encryption-related events. By reviewing Sysmon Event ID 11, we can confirm that this log file was also dropped on this system, as shown in the image above.
 
-```
-DbgLog.sys
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>DbgLog.sys</code></pre>
+</details>
 
 ### Command and Control & Impact
 >Q1: Command-and-control contact details help trace external infrastructure used in the attack. What IP address and port number did the downloader connect to in order to retrieve the payload?
@@ -202,14 +214,17 @@ DbgLog.sys
 
 Since we already discovered that the shortcut file connects to 192.168.1.54 on port 4561 to retrieve and execute the PowerShell script troubleshooting.ps1, we can confirm this activity with Sysmon Event ID 3, as shown in the image above.
 
-```
-192.168.1.54:4561
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.1.54:4561</code></pre>
+</details>
 
 >Q2: Understanding encryption behavior is vital for response and recovery planning. What file extension did the ransomware append to encrypted files?
-```
-.flocked
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>.flocked</code></pre>
+</details>
 
 >Q3: Ransom communication links are key for attribution and negotiation strategy. What is the .onion link provided by the attacker for ransom payment or communication?
 
@@ -218,9 +233,10 @@ Since we already discovered that the shortcut file connects to 192.168.1.54 on p
 
 We can go back to VirusTotal to get the onion link in the Behavior tab, under Decoded text or we can use [Recorded Future Tria.ge](https://tria.ge/250505-eyv9wa1ns3) to get the malware configuration, both will lead us to the same answer which is xql562evsy7njcsngacphc2erzjfecwotdkobn3m4uxu2gtqh26newid[.]onion and now we are done with this lab!
 
-```
-xql562evsy7njcsngacphc2erzjfecwotdkobn3m4uxu2gtqh26newid.onion
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>xql562evsy7njcsngacphc2erzjfecwotdkobn3m4uxu2gtqh26newid.onion</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/fog-ransomware/ 
 * * *

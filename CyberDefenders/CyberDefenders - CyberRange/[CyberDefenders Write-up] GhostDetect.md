@@ -56,9 +56,10 @@ On the procmon, I open the process tree which we can see that after shortcut fil
 
 I filtered the whole branch of the shortcut file process tree and focus on “CreateFile” operation which reveals that 2 files were dropped to Temp folder (also inside “2” folder in this case) as expected.
 
-```
-C:\Users\Administrator\AppData\Local\Temp
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Administrator\AppData\Local\Temp</code></pre>
+</details>
 
 >Q2: The malware's communication with external servers is key to its operation. What is the URL that was used by the malware to download a secondary payload?
 
@@ -74,35 +75,42 @@ As we already know that the pdf file might be the lure to make it look legitimat
 
 By using the online deobfuscator such as [Obfuscator.io Deobfuscator](https://obf-io.deobfuscate.io/) with the help of LLM, we can see that this script will download encrypted payload from `windacarmelita.pw` , decrypt it with Rabbit cipher and save it to the same temp folder under the name of  `mokpp9342jsOUth.dll` and execute it with `rundll32` by invoking specific function “NormalizeF”. 
 
-```
-https://windacarmelita.pw/picdir/big/113-1131910-clipart.svg
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://windacarmelita.pw/picdir/big/113-1131910-clipart.svg</code></pre>
+</details>
 
 >Q3: Understanding the malware's defense evasion techniques is essential for developing effective detection strategies. What encryption technique is employed by the malware to conceal its activities or payloads?
 
 ![242778690435314753c1d37a3fa02f1b.png](/resources/242778690435314753c1d37a3fa02f1b.png)
 
-```
-Rabbit
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Rabbit</code></pre>
+</details>
 
 >Q4: Decrypting payloads is a common technique used by malware to evade initial analysis. What is the decryption key used to unlock the second stage of the malware?
-```
-dfshji349jg843059utli
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>dfshji349jg843059utli</code></pre>
+</details>
 
 >Q5: Malware analysis often involves tracking how it interacts with the filesystem. What is the name of the file created by the malware to store decrypted data?
-```
-mokpp9342jsOUth.dll
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>mokpp9342jsOUth.dll</code></pre>
+</details>
 
 >Q6: Analyzing the malware's execution flow is crucial for understanding its impact and behavior. What function does the malware execute within the DLL to perform its malicious activities?
 
 ![8cf3f29f73f49d1a30e8128a4fc1a1a4.png](/resources/8cf3f29f73f49d1a30e8128a4fc1a1a4.png)
 
-```
-NormalizeF
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>NormalizeF</code></pre>
+</details>
 
 >Q7: Investigating related artifacts can provide insights into the broader campaign. What is the name of another JavaScript file that utilizes the domain identified during the investigation?
 
@@ -118,9 +126,10 @@ One more thing to notice here if you searched this domain while logging in on Vi
 
 On the “Relation” tab, under the “Communicating Files”. we can see that there are 3 js files but there is only one file that match the answer format.
 
-```
-sdfhui2kjd.js
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>sdfhui2kjd.js</code></pre>
+</details>
 
 >Q8: Attribution is a critical aspect of threat intelligence. Can you identify which Advanced Persistent Threat (APT) group is likely behind this attack?
 
@@ -136,9 +145,10 @@ There are 5 different references that mentioned this domain
 
 On the CERT-UA article, they mentioned this group as `UAC-0057` which is the correct answer of this question.
 
-```
-UAC-0057
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>UAC-0057</code></pre>
+</details>
 
 >Q9: What is the country of origin associated with the APT group identified in this investigation?
 
@@ -146,9 +156,10 @@ UAC-0057
 
 Quick google search about this threat actor group reveals that they allegedly originating from “Belarus” and that’s all we need for this question.
 
-```
-Belarus
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Belarus</code></pre>
+</details>
 
 https://cyberdefenders.org/blueteam-ctf-challenges/achievements/Chicken_0248/ghostdetect/
 * * *

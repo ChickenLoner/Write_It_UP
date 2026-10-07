@@ -19,9 +19,10 @@ A memory image was taken from a seized Windows machine. As a security blue team 
 
 We will use `vol3 -f 20210430-Win10Home-20H2-64bit-memdump.mem windows.info` to display system information including system time when this memory dump was captured
 
-```
-2021-04-30 17:52:19
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2021-04-30 17:52:19</code></pre>
+</details>
 
 > Q2: What is the SHA256 hash value of the RAM image?
 
@@ -29,9 +30,10 @@ We will use `vol3 -f 20210430-Win10Home-20H2-64bit-memdump.mem windows.info` to 
 
 Use your hash calculator to calculate filehash and if you're on linux distro then use `sha256sum 20210430-Win10Home-20H2-64bit-memdump.mem`
 
-```
-9db01b1e7b19a3b2113bfb65e860fffd7a1630bdf2b18613d206ebf2aa0ea172
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>9db01b1e7b19a3b2113bfb65e860fffd7a1630bdf2b18613d206ebf2aa0ea172</code></pre>
+</details>
 
 > Q3: What is the process ID of "brave.exe"?
 
@@ -43,9 +45,10 @@ Why piping it to text file?
 
 because I want to keep an output from pstree plugin in a text file so we can review it later and you can see that there is only 1 `brave.exe` process that already exited
 
-```
-4856
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4856</code></pre>
+</details>
 
 > Q4: How many established network connections were there at the time of acquisition? (number)
 
@@ -55,9 +58,10 @@ First off, we will use `vol3 -f 20210430-Win10Home-20H2-64bit-memdump.mem window
 
 so we can use `grep -i "established" netscan.txt | wc -l` to count all established connections
 
-```
-10
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10</code></pre>
+</details>
 
 > Q5: What FQDN does Chrome have an established network connection with?
 
@@ -69,9 +73,10 @@ get an IP address that chrome established connection to
 
 Then put it in [Reverse IP lookup tool](https://mxtoolbox.com/SuperTool.aspx?action=ptr%3a185.70.41.130&run=toolpage) which we can see that this IP address belongs to protonmail
 
-```
-protonmail.ch
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>protonmail.ch</code></pre>
+</details>
 
 > Q6: What is the MD5 hash value of process executable for PID 6988?
 
@@ -79,9 +84,10 @@ protonmail.ch
 
 Lets dump this process with `vol3 -f 20210430-Win10Home-20H2-64bit-memdump.mem windows.pslist --pid 6988 --dump` then use `md5sum` to calculate file hash
 
-```
-0b493d8e26f03ccd2060e0be85f430af
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0b493d8e26f03ccd2060e0be85f430af</code></pre>
+</details>
 
 > Q7: What is the word starting at offset 0x45BE876 with a length of 6 bytes?
 
@@ -91,9 +97,10 @@ I switched to FlareVM that has HxD installed then after opened this memory dump 
 
 Then we will see the word "hacker" perfectly matches what we're looking for
 
-```
-hacker
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>hacker</code></pre>
+</details>
 
 > Q8: What is the creation date and time of the parent process of "powershell.exe"? (YYYY-MM-DD HH:MM:SS)
 
@@ -101,9 +108,10 @@ hacker
 
 Go back to our pstree text file, we can see that powershell process was spawned under explorer process so we will have to get create time of `explorer.exe` process 
 
-```
-2021-04-30 17:39:48
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2021-04-30 17:39:48</code></pre>
+</details>
 
 > Q9: What is the full path and name of the last file opened in notepad?
 
@@ -113,9 +121,10 @@ We will try `vol3 -f 20210430-Win10Home-20H2-64bit-memdump.mem windows.cmdline` 
 
 And it worked just fine
 
-```
-C:\Users\JOHNDO~1\AppData\Local\Temp\7zO4FB31F24\accountNum
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\JOHNDO~1\AppData\Local\Temp\7zO4FB31F24\accountNum</code></pre>
+</details>
 
 > Q10: How long did the suspect use Brave browser? (hh:mm:ss)
 
@@ -130,9 +139,10 @@ So we will shift our focus to UserAssist key that store an information about how
 
 So we will use `vol3 -f 20210430-Win10Home-20H2-64bit-memdump.mem windows.registry.userassist > userassist.txt && grep -i "brave" userassist.txt` to save an output to text file and find any "brave" string within this text file, we will see that Brave were running for 4 hours!
 
-```
-04:01:54
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>04:01:54</code></pre>
+</details>
 
 ![e2cec96aef0a7ba232367d967cb0a18a.png](/resources/e2cec96aef0a7ba232367d967cb0a18a.png)
 * * *

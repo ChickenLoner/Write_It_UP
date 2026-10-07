@@ -44,9 +44,10 @@ Find for Headers then we will have an email of suspected sender
 
 ![66e475dcc919d59d019d30fc4a3dd291.png](/resources/66e475dcc919d59d019d30fc4a3dd291.png)
 
-```
-th3wh1t3r0s3@gmail.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>th3wh1t3r0s3@gmail.com</code></pre>
+</details>
 
 > Q2: Machine:Target1 What is the filename that was delivered in the email?
 
@@ -54,9 +55,10 @@ th3wh1t3r0s3@gmail.com
 
 Read `Message.html` we can see a file was sent as url for user to download this file from his browser
 
-```
-AnyConnectInstaller.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>AnyConnectInstaller.exe</code></pre>
+</details>
 
 > Q3: Machine:Target1 What is the name of the rat's family used by the attacker?
 
@@ -78,9 +80,10 @@ We will have dat and image files, both of them are malicious but there are the s
 
 I had to go to Community tab to finally figure out that it is XtreamRAT
 
-```
-XTREMERAT
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>XTREMERAT</code></pre>
+</details>
 
 > Q4: Machine:Target1 The malware appears to be leveraging process injection. What is the PID of the process that is injected?
 
@@ -92,9 +95,10 @@ Go to Shell Commands and Processes Injected section under Behavior tab then we c
 
 I used `vol.py -f Target1-1dd8701f.vmss --profile=Win7SP1x86_23418 pstree` to identify its pid of this process
 
-```
-2996
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2996</code></pre>
+</details>
 
 > Q5: Machine:Target1 What is the unique value the malware is using to maintain persistence after reboot?
 
@@ -102,9 +106,10 @@ I used `vol.py -f Target1-1dd8701f.vmss --profile=Win7SP1x86_23418 pstree` to id
 
 I found this on Registry Keys Set then we can see that it was set persistence under sevaral registry keys under the name of MrRobot which is a name of a show and theme of this lab
 
-```
-MrRobot
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>MrRobot</code></pre>
+</details>
 
 > Q6: Machine:Target1 Malware often uses a unique value or name to ensure that only one copy runs on the system. What is the unique name the malware is using?
 
@@ -118,9 +123,10 @@ So we will have to find for mutex created from this malware under Behavior tab t
 
 Or we can use `vol.py -f Target1-1dd8701f.vmss --profile=Win7SP1x86_23418 handles -p 2996 | grep -i "mutant"` to find mutex from memory dump directly
 
-```
-fsociety0.dat
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>fsociety0.dat</code></pre>
+</details>
 
 > Q7: Machine:Target1 It appears that a notorious hacker compromised this box before our current attackers. Name the movie he or she is from.
 
@@ -134,9 +140,10 @@ Then we can see that zerocool user was there when this memory dump was captured
 
 Which is from Hackers movie
 
-```
-hackers
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>hackers</code></pre>
+</details>
 
 > Q8: Machine:Target1 What is the NTLM password hash for the administrator account?
 
@@ -146,9 +153,10 @@ Used `vol.py -f Target1-1dd8701f.vmss --profile=Win7SP1x86_23418 hashdump` to du
 
 Then the rightest one is the NTLM while the middle is LM
 
-```
-79402b7671c317877b8b954b3311fa82
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>79402b7671c317877b8b954b3311fa82</code></pre>
+</details>
 
 > Q9: Machine:Target1 The attackers appear to have moved over some tools to the compromised front desk host. How many tools did the attacker move?
 
@@ -176,9 +184,10 @@ but `wce.exe` and `getlsasrvaddr.exe` are from found on the same github repo so 
 
 while `getlsasrvaddr.exe` is used to get lsas process virtual address as it names imply 
 
-```
-3
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3</code></pre>
+</details>
 
 > Q10: Machine:Target1 What is the password for the front desk local administrator account?
 
@@ -186,9 +195,10 @@ while `getlsasrvaddr.exe` is used to get lsas process virtual address as it name
 
 An attacker used `wce.exe` to "Dump cleartext passwords stored by the digest authentication package" so we also obtained cleartext password of front desk local admin here
 
-```
-flagadmin@1234
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>flagadmin@1234</code></pre>
+</details>
 
 > Q11: Machine:Target1 What is the std create data timestamp for the nbtscan.exe tool?
 
@@ -196,18 +206,21 @@ flagadmin@1234
 
 Used `vol.py -f Target1-1dd8701f.vmss --profile=Win7SP1x86_23418 mftparser | grep -i "nbtscan"` to find a timestamp from MFT directly
 
-```
-2015-10-09 10:45:12 UTC
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2015-10-09 10:45:12 UTC</code></pre>
+</details>
 
 > Q12: Machine:Target1 The attackers appear to have stored the output from the nbtscan.exe tool in a text file on a disk called nbs.txt. What is the IP address of the first machine in that file?
 
 ![777349483993ffbc2dcf4b770db4f207.png](/resources/777349483993ffbc2dcf4b770db4f207.png)
 
 Find physical address with filescan then dump it to display content inside of it 
-```
-10.1.1.2
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>10.1.1.2</code></pre>
+</details>
 
 > Q13: Machine:Target1 What is the full IP address and the port was the attacker's malware using?
 
@@ -215,9 +228,10 @@ Find physical address with filescan then dump it to display content inside of it
 
 Used `vol.py -f Target1-1dd8701f.vmss --profile=Win7SP1x86_23418 netscan | grep -i "iexplore"` to display connection associated with iexplore process only
 
-```
-180.76.254.120:22
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>180.76.254.120:22</code></pre>
+</details>
 
 > Q14: Machine:Target1 It appears the attacker also installed legit remote administration software. What is the name of the running process?
 
@@ -225,9 +239,10 @@ Used `vol.py -f Target1-1dd8701f.vmss --profile=Win7SP1x86_23418 netscan | grep 
 
 From pstree plugin output, we also see that Teamviewer was also running on this system
 
-```
-TeamViewer.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>TeamViewer.exe</code></pre>
+</details>
 
 > Q15: Machine:Target1 It appears the attackers also used a built-in remote access method. What IP address did they connect to?
 
@@ -235,9 +250,10 @@ TeamViewer.exe
 
 used netscan plugin again then find for microsoft built-in remote access tool then we have this `mstsc.exe` which used for RDP connection
 
-```
-10.1.1.21
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10.1.1.21</code></pre>
+</details>
 
 > Q16: Machine:Target2 It appears the attacker moved latterly from the front desk machine to the security admins (Gideon) machine and dumped the passwords. What is Gideon's password?
 
@@ -261,9 +277,10 @@ Next we will use `vol.py -f target2-6186fe9f.vmss --profile=Win7SP1x86_23418 fil
 
 Then dump it with `vol.py -f target2-6186fe9f.vmss --profile=Win7SP1x86_23418 dumpfiles -Q 0x000000003fcf2798 -D /tmp/robot/`
 
-```
-t76fRJhS
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>t76fRJhS</code></pre>
+</details>
 
 > Q17: Machine:Target2 Once the attacker gained access to "Gideon," they pivoted to the AllSafeCyberSec domain controller to steal files. It appears they were successful. What password did they use?
 
@@ -275,14 +292,17 @@ From console history,we can see that an attacker used rar to compress a file wit
 
 Lets ChatGPT explain each arguments for us
 
-```
-123qwe!@#
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>123qwe!@#</code></pre>
+</details>
 
 > Q18: Machine:Target2 What was the name of the RAR file created by the attackers?
-```
-crownjewlez.rar
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>crownjewlez.rar</code></pre>
+</details>
 
 > Q19: Machine:Target2 How many files did the attacker add to the RAR archive?
 
@@ -300,9 +320,10 @@ we all know that this archive aims to archive all text file inside crownjewel di
 
 ![be885ebae002fd3e154a8ce0a3b6b7e2.png](/resources/be885ebae002fd3e154a8ce0a3b6b7e2.png)
 
-```
-3
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3</code></pre>
+</details>
 
 > Q20: Machine:Target2 The attacker appears to have created a scheduled task on Gideon's machine. What is the name of the file associated with the scheduled task?
 
@@ -314,9 +335,10 @@ You can use R-studio to navigate to `'\Windows\System32\Tasks\'` and find for su
 
 So I dumped it with `vol.py -f target2-6186fe9f.vmss --profile=Win7SP0x86 dumpfiles -Q 0x000000003fc399b8 -D /tmp/robot/task/` then we can see it was set to execute a bat script, so this one is the task we're looking for
 
-```
-1.bat
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>1.bat</code></pre>
+</details>
 
 > Q21: Machine:POS What is the malware CNC's server?
 
@@ -328,9 +350,10 @@ This memory dump is still using the same profiles as other 2
 
 From other memory dumps we know that a process that was injected is `iexplore.exe` so we will use `vol.py -f POS-01-c4e8f786.vmss --profile=Win7SP0x86 netscan` and looking for `iexplore`
 
-```
-54.84.237.92
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>54.84.237.92</code></pre>
+</details>
 
 > Q22: Machine:POS What is the common name of the malware used to infect the POS system?
 
@@ -344,9 +367,10 @@ Lets use `vol.py -f POS-01-c4e8f786.vmss --profile=Win7SP0x86 malfind -p 3208 -D
 
 Search it hash on VirusTotal then we will have its common name
 
-```
-Dexter
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Dexter</code></pre>
+</details>
 
 > Q23: Machine:POS In the POS malware whitelist. What application was specific to Allsafecybersec?
 
@@ -354,9 +378,10 @@ Dexter
 
 I used strings and grep to use for exe then we can see that this exe file looking out of place here and turn out its the file we're looking for 
 
-```
-allsafe_protector.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>allsafe_protector.exe</code></pre>
+</details>
 
 > Q24: Machine:POS What is the name of the file the malware was initially launched from?
 
@@ -364,9 +389,10 @@ allsafe_protector.exe
 
 I used strings to search for C2 server from memory dump directly then we can see that suspicious file url was sent to POS with email 
 
-```
-allsafe_update.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>allsafe_update.exe</code></pre>
+</details>
 
 ![3b0491aa271516b19d1918aa1c4e5e54.png](/resources/3b0491aa271516b19d1918aa1c4e5e54.png)
 * * *
