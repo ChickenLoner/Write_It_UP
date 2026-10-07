@@ -94,7 +94,10 @@ Lets change 0x0000000C offset from 69(i) to 49(I) then save it, we should be abl
 Now we have both path of a flag and solved this lab! And now we've completed all Labs in MemLabs!
 
 ## Lab 6 : Flags
-```
-inctf{thi5cH4LL3Ng3_!s_g0nn4_b3_?_aN_Am4zINg_!_i_gU3Ss???}
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>inctf{thi5cH4LL3Ng3_!s_g0nn4_b3_?_aN_Am4zINg_!_i_gU3Ss???}</code></pre>
+</details>
+
 ***

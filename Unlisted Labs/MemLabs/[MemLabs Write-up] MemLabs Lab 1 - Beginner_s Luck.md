@@ -44,9 +44,10 @@ Go back to our memory dump file then we can use `vol.py -f MemoryDump_Lab1.raw -
 
 After used NTLM hash to view a file, this is an image which store third flag of this lab.
 
-```
-flag{w3ll_3rd_stage_was_easy}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>flag{w3ll_3rd_stage_was_easy}</code></pre>
+</details>
 
 ## Get first flag
 ![7f1bb577b3e018f28b9767d71db73aba.png](/resources/7f1bb577b3e018f28b9767d71db73aba.png)
@@ -61,9 +62,10 @@ We can run `vol.py -f MemoryDump_Lab1.raw --profile=Win7SP1x64 consoles` to disp
 
 Decode it to get our first flag!
 
-```
-flag{th1s_1s_th3_1st_st4g3!!}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>flag{th1s_1s_th3_1st_st4g3!!}</code></pre>
+</details>
 
 ## Get second flag
 ![7c3d839673c6396a2fc8638b0ba61629.png](/resources/7c3d839673c6396a2fc8638b0ba61629.png)
@@ -82,16 +84,20 @@ After open this file, we have to adjust width and height until we can see what u
 
 Carefully reviewing this drawing then we will have second flag of this lab
 
-```
-flag{G00d_BoY_good_girL}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>flag{G00d_BoY_good_girL}</code></pre>
+</details>
 
 ## Lab 1 : Flags
-```
-flag{th1s_1s_th3_1st_st4g3!!}
+
+<details>
+  <summary>Answer</summary>
+<pre><code>flag{th1s_1s_th3_1st_st4g3!!}
 flag{G00d_BoY_good_girL}
-flag{w3ll_3rd_stage_was_easy}
-```
+flag{w3ll_3rd_stage_was_easy}</code></pre>
+</details>
+
 ***
 
 

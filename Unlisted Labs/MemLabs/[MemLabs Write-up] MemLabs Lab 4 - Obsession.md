@@ -45,7 +45,10 @@ By using `vol.py -f MemoryDump_Lab4.raw --profile=Win7SP1x64 mftparser > mem4_mf
 We can do this by copy those hex to CyberChef and use "Remove whitespace" recipe after "From Hex" then we can easily read a flag without any worries.
 
 ## Lab 4 : Flag
-```
-inctf{1_is_n0t_EQu4l_7o_2_bUt_th1s_d0s3nt_m4ke_s3ns3}
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>inctf{1_is_n0t_EQu4l_7o_2_bUt_th1s_d0s3nt_m4ke_s3ns3}</code></pre>
+</details>
+
 ***

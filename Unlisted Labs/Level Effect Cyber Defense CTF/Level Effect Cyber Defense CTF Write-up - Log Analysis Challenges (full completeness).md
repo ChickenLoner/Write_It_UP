@@ -19,9 +19,11 @@ I failed to log on. What event ID am I?
 
 Easy one. we can just search for "failed" on encyclopedia then we will see that when an account failed to log on, Windows will log this as EventID 4625
 
-```
-4625
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4625</code></pre>
+</details>
+
 ***
 ## Name that event 2 (100 points)
 ![6e41a97c5e593e71b9de72112271e3dd.png](/resources/6e41a97c5e593e71b9de72112271e3dd.png)
@@ -31,9 +33,11 @@ I am newly scheduled. What event ID am I?
 
 From this clue, we know that its related to Schedule task and "newly" mean that it just created so Windows will log this as EventID 4698
 
-```
-4698
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4698</code></pre>
+</details>
+
 ***
 ## Name that event 3 (100 points)
 ![af48c369a211c8708fcaf9de542ac6bb.png](/resources/af48c369a211c8708fcaf9de542ac6bb.png)
@@ -43,9 +47,11 @@ I'm up and off to work. What event ID am I?
 
 I was a little bit struggle on this one, at first I thought it might be Event ID 4608 (Windows is starting up) but there is another EventID that came across my mind which is new process started / created and turns out, it was the right answer
 
-```
-4688
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4688</code></pre>
+</details>
+
 ***
 ## Name that event 4 (100 points)
 ![5dd0da9682ff74f6dfdc752d392d5883.png](/resources/5dd0da9682ff74f6dfdc752d392d5883.png)
@@ -55,9 +61,11 @@ I can't remember a thing. What event ID am I?
 
 Can not remember a thing? possible something was cleared
 
-```
-1102
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>1102</code></pre>
+</details>
+
 ***
 ## whoami (100 points)
 ![e232157079178661c5d2dd74f27acba6.png](/resources/e232157079178661c5d2dd74f27acba6.png)
@@ -67,9 +75,11 @@ What tactic was the attacker employing based on this command history? (1 word)
 
 After reviewing these commands, we can see that an attacker tried to gain information as much as possible on targeted system and this tactic called Discovery according to MITRE ATT&CK
 
-```
-Discovery
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Discovery</code></pre>
+</details>
+
 ***
 ## In the system (150 points)
 ![ffc31aaf84a002e4dee46203db849e8d.png](/resources/ffc31aaf84a002e4dee46203db849e8d.png)
@@ -83,9 +93,11 @@ After opened this event log, we can see that there are a lot of EventID 4624 (	A
 
 We will have to find any suspicious Account Name on this event log to get a flag, because... well, a flag is in an Account Name as you can see
 
-```
-leveleffect{10gg3d}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>leveleffect{10gg3d}</code></pre>
+</details>
+
 ***
 ![f638b6b3c90842f8b99dac165df45766.png](/resources/f638b6b3c90842f8b99dac165df45766.png)
 ***

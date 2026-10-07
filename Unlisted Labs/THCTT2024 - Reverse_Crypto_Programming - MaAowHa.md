@@ -93,9 +93,10 @@ int main(void) {
 
 เมื่อทำการ compiled เสร็จ ผมก็เริ่มรันแล้วเราก็จะได้ค่า seed ก็คือ 10839484 ซึ่งจะสามารถ generate flag ได้ออกมาเป็นค่านี้ซึ่งนำไป submit ได้คะแนน หรือก็คือค่านี้เป็นค่า seed ที่ถูกต้องแล้วนั่นเอง
 
-```
-THCTT24{6efcc484897d5f14bd9ec2a256cb7d2d}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{6efcc484897d5f14bd9ec2a256cb7d2d}</code></pre>
+</details>
 
 ส่วนสาเหตุว่าทำไมเราถึงต้อง bruteforce ด้วย C? คำอธิบายง่าย ๆ ก็คือ ทุก ๆ ภาษาจะมีการ handle PRNG ต่างกัน ซึ่งหมายความว่าค่าจาก function random ของแต่ละภาษาก็จะใช้ algorithm ที่ต่างกันนั่นเอง 
 
@@ -142,9 +143,11 @@ THCTT24{6efcc484897d5f14bd9ec2a256cb7d2d}
 
 พอกด run ก็จะได้ flag ตามที่คาดไว้ครับ
 
-```
-THCTT24{04ea80f7ae0bc109533a4027efd6341d}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{04ea80f7ae0bc109533a4027efd6341d}</code></pre>
+</details>
+
 ***
 ## Cryptography
 ### Easy1 (100)
@@ -155,9 +158,11 @@ THCTT24{04ea80f7ae0bc109533a4027efd6341d}
 
 ![83e93ecfe7f4a75a85d3c15d7ae32a5e.png](/resources/83e93ecfe7f4a75a85d3c15d7ae32a5e.png)
 
-```
-THCTT24{326aab60f9128a67b6203b1db5cf3eff}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{326aab60f9128a67b6203b1db5cf3eff}</code></pre>
+</details>
+
 ***
 ### Easy2 (100)
 ![0c70ff832a35215c96e4d3c27d930618.png](/resources/0c70ff832a35215c96e4d3c27d930618.png)
@@ -168,9 +173,11 @@ THCTT24{326aab60f9128a67b6203b1db5cf3eff}
 
 เมื่อแปลงค่ากลับมาเป็น ascii เราก็จะพบว่ามันเป็น flag ที่ถูก reverse อยู่ ดังนั้นเราแค่ต้อง reverse มันกลับมา แล้วเราก็จะได้ flag เพื่อไป submit
 
-```
-THCTT24{654342835914f3d0d4b5fe894473ab8b}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{654342835914f3d0d4b5fe894473ab8b}</code></pre>
+</details>
+
 ***
 ### Hard (300)
 ![71bc82b99c75ce4750af64902677ce0a.png](/resources/71bc82b99c75ce4750af64902677ce0a.png)
@@ -187,9 +194,11 @@ THCTT24{654342835914f3d0d4b5fe894473ab8b}
 ![bd0b2794266b51fb52dfd690e8cd2e8c.png](/resources/bd0b2794266b51fb52dfd690e8cd2e8c.png)
 
 แล้วเราก็สามารถใช้เว็บเดียวกันในการ decode ได้เลย
-```
-THCTT24{326c78e40c3c3cf8eaace48d0fd5a8bc}
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{326c78e40c3c3cf8eaace48d0fd5a8bc}</code></pre>
+</details>
 
 ***
 ## Programming
@@ -205,9 +214,11 @@ THCTT24{326c78e40c3c3cf8eaace48d0fd5a8bc}
 ![b6345545b3dd18b804fea67a68e4d50e.png](/resources/b6345545b3dd18b804fea67a68e4d50e.png)
 หรือเราจะสานต่อสคริปต์ด้วยการเติมให้มัน loop หา key ก็ออกได้เหมือนกัน
 
-```
-THCTT24{513630ecf4cb15a12a7e2956f005506f}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{513630ecf4cb15a12a7e2956f005506f}</code></pre>
+</details>
+
 ***
 ### Easy2 - emoji funny2 (100)
 ![7159d4e55146a0fb8e8a3366230e3aef.png](/resources/7159d4e55146a0fb8e8a3366230e3aef.png)
@@ -219,9 +230,10 @@ THCTT24{513630ecf4cb15a12a7e2956f005506f}
 
 และนี่ก็คือ message และ flag ที่ได้หลังจาก การแปลง emoji ครับ
 
-```
-THCTT24{f995d8fb94983ba6ce91f034a9c872ec}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{f995d8fb94983ba6ce91f034a9c872ec}</code></pre>
+</details>
 
 ***
 ### Medium - emoji pattern (200)
@@ -236,9 +248,10 @@ THCTT24{f995d8fb94983ba6ce91f034a9c872ec}
 
 แต่ในเมื่อเรารู้วิธีการ generate flag และ keyword ที่เราต้องการค้นหาแล้วเราก็ปรับให้มัน loop key หา keyword เพื่อหา flag ได้เลย
 
-```
-THCTT24{991968f75cd42d5a623fff107354df22}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{991968f75cd42d5a623fff107354df22}</code></pre>
+</details>
 
 ***
 ### type_the_word (300)

@@ -21,9 +21,10 @@ First one that describes client who owns a machine that was taken memory dump of
 
 So I tried to decode this path with base64 and look like it worked, we got our first flag!
 
-```
-flag{w3lc0m3_T0_$T4g3_!_Of_L4B_2}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>flag{w3lc0m3_T0_$T4g3_!_Of_L4B_2}</code></pre>
+</details>
 
 ## Get second flag
 ![c2da9489c47a111acbb4a230b22d4e1e.png](/resources/c2da9489c47a111acbb4a230b22d4e1e.png)
@@ -67,9 +68,10 @@ This is an image we just dumped, there is no flag but a password was there.
 
 We can this password to open keepass database file and obtain a flag from "Recycle Bin"
 
-```
-flag{w0w_th1s_1s_Th3_SeC0nD_ST4g3_!!}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>flag{w0w_th1s_1s_Th3_SeC0nD_ST4g3_!!}</code></pre>
+</details>
 
 ## Get third flag
 ![2c82f504ecd8d9549cf86f342d981a5f.png](/resources/2c82f504ecd8d9549cf86f342d981a5f.png)
@@ -92,14 +94,18 @@ Before tackle this lab, we should already done with Lab 1 so we just need to cal
 
 We're done with Lab 2! see you in Lab 3!
 
-```
-flag{oK_So_Now_St4g3_3_is_DoNE!!}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>flag{oK_So_Now_St4g3_3_is_DoNE!!}</code></pre>
+</details>
 
 ## Lab 2 : Flags
-```
-flag{w3lc0m3_T0_$T4g3_!_Of_L4B_2}
+
+<details>
+  <summary>Answer</summary>
+<pre><code>flag{w3lc0m3_T0_$T4g3_!_Of_L4B_2}
 flag{w0w_th1s_1s_Th3_SeC0nD_ST4g3_!!}
-flag{oK_So_Now_St4g3_3_is_DoNE!!}
-```
+flag{oK_So_Now_St4g3_3_is_DoNE!!}</code></pre>
+</details>
+
 ***

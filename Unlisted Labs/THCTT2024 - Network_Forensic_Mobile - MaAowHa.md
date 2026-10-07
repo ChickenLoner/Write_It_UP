@@ -46,9 +46,11 @@ So without further ado, Lets jump right in ครับ
 
 ผมก็เลยให้ ChatGPT เขียนสคริปต์ให้เปิดไฟล์ภาพแล้ว ดึง LSB ออกมา เพื่อ decode แล้วจะออกมาเป็น flag อย่างที่เห็นครับ
 
-```
-THCTT24{82d27383f4ce66b375cfc48b60afcb30}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{82d27383f4ce66b375cfc48b60afcb30}</code></pre>
+</details>
+
 ***
 ### Silent Whisper (100)
 ![32693a25aa9b7ee37b2ba70adb2da510.png](/resources/32693a25aa9b7ee37b2ba70adb2da510.png)
@@ -68,9 +70,10 @@ Flag Format : THCTT24{MD5}
 
 ซึ่งก็น่าจะเดาไม่ยากว่า flag ที่ถูกต้องจะทำให้ authenticate success โดย authentication successful บน FTP จะใช้ Status 230 Login Successful โดยนี่ก็คือ flag ของข้อนี้ครับ
 
-```
-THCTT24{e8de3a77e7c3ac4f45412c7a4d67d7f9}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{e8de3a77e7c3ac4f45412c7a4d67d7f9}</code></pre>
+</details>
 
 ***
 ### Encrypted C2 v2 (200)
@@ -95,9 +98,11 @@ Flag Format : THCTT24{MD5}
 
 ผลลัพธ์ก็จะออกมาเป็นคำสั่งให้ echo flag ลงบน terminal นั่นเอง
 
-```
-THCTT24{a6fce95191fb92a5878235d1d6b85862}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{a6fce95191fb92a5878235d1d6b85862}</code></pre>
+</details>
+
 ***
 ## Digital Forensics
 ### Easy1 (100)
@@ -113,9 +118,10 @@ Format: THCTT24{md5()}
 
 สิ่งแรกที่ผมทำก็คือใช้ `find` command เพื่ออ่าน flag ซึ่งผมก็เอ๊ะขึ้นมาว่าถ้า flag มัน identical กันเกือบทุกตัว มันก้ต้องมีตัวนึงแหละที่มัน unique, จึงเป็นสาเหตุให้ผมเพิ่ม `uniq` แล้วก็พบ flag ของจริงที่ซ๋อนอยู่
 
-```
-THCTT24{853cc79bcd99fd4b9688032b487c0724}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{853cc79bcd99fd4b9688032b487c0724}</code></pre>
+</details>
 
 ***
 ### Easy2 (100)
@@ -143,9 +149,11 @@ Format: THCTT24{md5()}
 
 ผมก็เลยอ่านมันทุกไฟล์เลยแล้ว pipe ใส่ `uniq` ซึ่งจะเห็นว่าตรงกลางก็คือ flag ที่ถูกต้องเนื่องจากไม่ถูก REDACTED ตรงกลางนั่นเอง
 
-```
-THCTT24{6b569a1f0566088c354bdc3d57c19063}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{6b569a1f0566088c354bdc3d57c19063}</code></pre>
+</details>
+
 ***
 ### Cloudo (300)
 TechCorp, a mid-sized technology company, has recently experienced a security incident. The company's SOC team has been alerted to suspicious activities on their server. As a Tier 1 SOC Analyst, you've been tasked with investigating the incident using the available server logs.
@@ -192,9 +200,11 @@ Format of answer: THCTT24{threat-actor-ip_CVE-number} such as THCTT24{10.0.0.01_
 
 แน่นอนว่าเรารู้ IP address ของ threat actor แล้ว ทาง CVE เราก็รู้แล้ว งั้นก็ submit เอาคะแนนได้เลยครับ
 
-```
-THCTT24{191.168.223.137_cve-2024-45507}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{191.168.223.137_cve-2024-45507}</code></pre>
+</details>
+
 ***
 ## Mobile 
 ### Easy - YouSeeMe (100)
@@ -217,9 +227,10 @@ THCTT24{191.168.223.137_cve-2024-45507}
 
 เอาไป decode ก็จะได้ flag มา
 
-```
-THCTT24{e28c529638e6d58b73b19b66e0e3dc50}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{e28c529638e6d58b73b19b66e0e3dc50}</code></pre>
+</details>
 
 ***
 ### The Face THCTT24 (100)
@@ -247,9 +258,10 @@ THCTT24{e28c529638e6d58b73b19b66e0e3dc50}
 
 Inverse ให้ดูอ่านง่าย แล้วก็พิมพ์ออกมาเพื่อส่ง flag ครับ
 
-```
-THCTT24{832b77d7e6da7cf86e79f85cee1815ff}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{832b77d7e6da7cf86e79f85cee1815ff}</code></pre>
+</details>
 
 *ข้อนี้เพื่อนผม PL.0x00 เป็นคนทำแล้วส่งรูปที่มันหายไปมาให้ผม ถามว่า "มันต้องทำ forensics อะไรป่าว ดูให้หน่อย" ซึ่งผมมอบแวบแรกก็เห็น flag เลย มีคนโดนเกรียนแบบนี้ไปแล้วกี่คนครับ :D 
 
@@ -270,9 +282,10 @@ THCTT24{832b77d7e6da7cf86e79f85cee1815ff}
 
 หลังจาก decode จาก hex ก็จะได้ค่า flag ออกมาครับ
 
-```
-THCTT24{4ae7e6c6a479587aecd90dc353205432}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{4ae7e6c6a479587aecd90dc353205432}</code></pre>
+</details>
 
 ***
 ### Click Click (200)
@@ -304,9 +317,11 @@ THCTT24{4ae7e6c6a479587aecd90dc353205432}
 
 เขียน script ให้มันคำนวณหา flag มาให้ เท่านี้เราก็ solve ข้อนี้แล้วครับ
 
-```
-THCTT24{03d124a4d859594308785750540014c6}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THCTT24{03d124a4d859594308785750540014c6}</code></pre>
+</details>
+
 ***
 
 จบกันไปแล้วครับกับ Write-up ของ 3 หมวดนี้ที่พวกผมทำได้ 

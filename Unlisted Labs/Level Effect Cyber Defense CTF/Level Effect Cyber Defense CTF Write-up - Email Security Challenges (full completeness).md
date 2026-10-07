@@ -19,9 +19,11 @@ Who is the actual sender of this phishing email? (provide the email address)
 
 provided text file is actually eml file in disguised which mean it contains email header which should contain actual email sender in "Return-Path" as you can see right there 
 
-```
-bartholomewbelet810@gmail.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>bartholomewbelet810@gmail.com</code></pre>
+</details>
+
 ***
 ## Safe for skin safe for emails... (100 points)
 ![1db971fe2c9ddab60a773a1753333ab7.png](/resources/1db971fe2c9ddab60a773a1753333ab7.png)
@@ -34,9 +36,11 @@ Well... This one is a well known protocol for [email security](https://www.check
 
 which has the same abbreviation as Sun Protection Skin which make challenge details made sense somehow
 
-```
-SPF
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SPF</code></pre>
+</details>
+
 ***
 ## Out phishing (150 points)
 ![5e7bbe26a047c8a912e3e7111675c1b3.png](/resources/5e7bbe26a047c8a912e3e7111675c1b3.png)
@@ -52,9 +56,11 @@ We got an eml file in disguised again, now we can acquire an SMTP address of an 
 
 By using IPLocation or IP2Location API, we can see that this IP address is from Lithuania
 
-```
-Lithuania
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Lithuania</code></pre>
+</details>
+
 ***
 ## 2045th trick in the book (200 points)
 ![2446ec5c60184ef73066c5428a56ce47.png](/resources/2446ec5c60184ef73066c5428a56ce47.png)
@@ -71,9 +77,11 @@ After let "Magic" on CyberChef recognized this format, we can see that its "Quot
 
 Do not just copy an output from CyberChef to submit directly, we need to write it down again in plain english (UTF-8)
 
-```
-leveleffect{dont_just_copy_paste_this_into_the_box}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>leveleffect{dont_just_copy_paste_this_into_the_box}</code></pre>
+</details>
+
 ***
 ![fc79cf6b874779787f382d5259f02b2c.png](/resources/c010fb44f7434c218c4f343013e6290e.png)
 ***
