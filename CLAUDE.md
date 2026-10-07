@@ -152,6 +152,12 @@ typo an indexable duplicate. The build always writes one.
 Deploys are serialised (`concurrency: cloudflare-pages`, cancel-in-progress) so
 two quick pushes cannot publish the older build last.
 
+Every same-repo pull request is also built and uploaded as a **preview**
+deployment by `cloudflare-preview.yml`, at `<branch>.write-it-up.pages.dev`
+(the URL is in the job summary). Production is unaffected — custom domains only
+serve the production deployment, and the preview job refuses to run for `main`.
+Use it to check a change on a real URL before merging.
+
 `deploy.yml` is kept as a manual-only rollback. Reverting means re-enabling
 GitHub Pages, re-adding the custom domain in repo settings, running that
 workflow, pointing the Porkbun CNAME back to `chickenloner.github.io`, and
