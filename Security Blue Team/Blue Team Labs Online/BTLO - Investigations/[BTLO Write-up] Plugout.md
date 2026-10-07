@@ -29,7 +29,7 @@ After opened `access.log` then we can see that there is one IP address that star
 >Q2) What is the user-agent of the tool used? (Format: User Agent)
 <details>
   <summary>Answer</summary>
-<pre>WPScan v3.8.25 (https://wpscan.com/wordpress-security-scanner)<code></code></pre>
+<pre><code>WPScan v3.8.25 (https://wpscan.com/wordpress-security-scanner)</code></pre>
 </details>
 
 >Q3) With this tool, what is the timestamp & HTTP VERB of the first 200 response code? (Format: timestamp, VERB)

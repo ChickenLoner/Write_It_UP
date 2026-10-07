@@ -227,7 +227,7 @@ We already know that we could view LAPS passwords of Workstations and Servers OU
 ![809c8d878e0944a9004e48c5aecc1088.png](/resources/809c8d878e0944a9004e48c5aecc1088.png)
 <details>
   <summary>Answer</summary>
-<pre><code>-Tn*N}Q&%/_a#>L, DxTX.@)D[):w-#$</code></pre>
+<pre><code>-Tn*N}Q&amp;%/_a#&gt;L, DxTX.@)D[):w-#$</code></pre>
 </details>
 
 >Q16) LAPS does not store a password’s expiration time in a normal date format. Looking at the company’s servers, what are the first six digits of the default timestamp LAPS uses to show when these local administrator passwords will expire? (Format: XXXXXX)

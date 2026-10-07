@@ -79,7 +79,7 @@ which we can see the identical filename we found inside `Investigation` folder s
 
 <details>
   <summary>Answer</summary>
-<pre><code>http://underground-n3rd.gg/games/zsnes/download/zsnes.zip/<code></pre>
+<pre><code>http://underground-n3rd.gg/games/zsnes/download/zsnes.zip/</code></pre>
 </details>
 
 >Q4) The downloaded file appears to be password-protected; what is the password? (Format: password)

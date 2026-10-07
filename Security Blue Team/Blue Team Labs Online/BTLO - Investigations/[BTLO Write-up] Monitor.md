@@ -115,7 +115,7 @@ Then we will eventually find that this ransomware used wmic to list all anti-vir
 We already seen both of them on process tree, first is to disable real-time monitoring and controlled access folder.
 <details>
   <summary>Answer</summary>
-<pre>DisableRealtimeMonitoring,EnableControlledFolderAccess<code></code></pre>
+<pre><code>DisableRealtimeMonitoring,EnableControlledFolderAccess</code></pre>
 </details>
 
 >Q7) The malware targeted only one folder for encryption. What is the folder path and extension of the encrypted file? (Format: C:\...\..., .extension)

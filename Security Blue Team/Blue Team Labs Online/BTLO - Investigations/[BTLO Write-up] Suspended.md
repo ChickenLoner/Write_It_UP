@@ -94,7 +94,7 @@ The url we found was already saved as HTML page for us to analyze so lets open i
 Right click at the button and copy link address to submit.
 <details>
   <summary>Answer</summary>
-<pre><code>https://www.google.com/url?q=http://gaykauaiwedding.com/&sa=D&source=editors&ust=1666280016126192&us</code></pre>
+<pre><code>https://www.google.com/url?q=http://gaykauaiwedding.com/&amp;sa=D&amp;source=editors&amp;ust=1666280016126192&amp;us</code></pre>
 </details>
 
 >Q9) Click the button with the malicious URL and let it (try to) load in the browser (remember, we have no internet in our analysis machine - this is fine). What is the domain name of this site? (Format: domain.tld)
@@ -105,7 +105,7 @@ Alternative way to retrieve this url beside copy link address from Q8 is to use 
 
 <details>
   <summary>Answer</summary>
-<pre>gaykauaiwedding.com<code></code></pre>
+<pre><code>gaykauaiwedding.com</code></pre>
 </details>
 
 >Q10) Look at the Phishing technique on MITRE ATT&CK. Which two sub-techniques are used by this actor? (Format: TXXXX.XXX, TXXXX.XXX)

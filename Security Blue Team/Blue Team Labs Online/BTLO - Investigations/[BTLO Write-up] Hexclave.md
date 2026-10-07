@@ -47,7 +47,7 @@ We can use `upx` with `-d` to unpack any file packed with UPX then we will have 
 >Q4) When was the Malware File compiled? (In UTC) (Format: DDMMYYYY HH:MM:SS)
 <details>
   <summary>Answer</summary>
-<pre>02012024 13:16:57<code></code></pre>
+<pre><code>02012024 13:16:57</code></pre>
 </details>
 
 >Q5) The Sample is trying to connect to a website to check for internet connectivity. Provide the website URL (Format: https://domain.tld)

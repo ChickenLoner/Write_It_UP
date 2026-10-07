@@ -43,7 +43,7 @@ We can add `--dump --pid ../ 856` to our previous command to dump this memory ad
 Use `strings` the output file from previous question then we will see this suspicious driver found which is an answer of this question and since we could guess that we're investigating BlackEnergy malware that make this driver stood out even more since BlackEnergy being known for root kit which loading drivers as part of its toolkit.
 <details>
   <summary>Answer</summary>
-<pre>C:\WINDOWS\system32\drivers\str.sys<code></code></pre>
+<pre><code>C:\WINDOWS\system32\drivers\str.sys</code></pre>
 </details>
 
 >Q4) How many functions were hooked and by which module after running the ssdt plugin and filtering out legitimate SSDT entries using egrep -v '(ntoskrnl|win32k)'? (Format: XX, Module)

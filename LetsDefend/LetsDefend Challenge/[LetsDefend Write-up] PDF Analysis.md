@@ -40,7 +40,7 @@ I started with pdfid.py to triage this this pdf file by inspecting suspicious ob
 
 - **OpenAction** will make a pdf file perform a certain action when the document is opened in a pdf viewer.
 - **Launch** works similarly to OpenAction, It can be used to run a script embedded in this pdf file
- <div align=center>
+<div align=center>
 
 ![4b232af0530fef9735c99fce71c58856.png](/resources/4b232af0530fef9735c99fce71c58856.png)
 After I knew what to look for, I used pdf-parser.py from DidierSteven Suite to parse objects for both OpenAction and Launch which you can see that 2 objects shared the same action 

@@ -122,7 +122,7 @@ Go back to Event ID 1 then we can see which process responsible for this action 
 Then after bypassed UAC, the attacker finally executed this command as NT AUTHORITY\SYSTEM which is the highest privilege user on Windows.
 <details>
   <summary>Answer</summary>
-<pre><code>cmd.exe /c echo tcjzyy > \\.\pipe\tcjzyy</code></pre>
+<pre><code>cmd.exe /c echo tcjzyy &gt; \\.\pipe\tcjzyy</code></pre>
 </details>
 
 >Q8) After successfully executing a privilege escalation attack, the attacker generated a script for a persistence mechanism and stored it in a designated location. Could you identify the name and the programming language of this script file? (Format: File Name, Programming Language)
