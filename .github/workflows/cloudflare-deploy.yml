@@ -1,9 +1,8 @@
 name: Cloudflare Pages
 
 # Publishes to the Cloudflare Pages PRODUCTION deployment on every push to
-# main, alongside deploy.yml which still publishes to GitHub Pages. Running
-# both during the transition is deliberate: each host holds a current copy, so
-# rolling back is a DNS change and nothing else.
+# main. This is the only host: GitHub Pages was retired (its workflow was
+# removed and the site unpublished; see CLAUDE.md, Hosting).
 #
 # The deploy must target the production branch (main). Custom domains serve the
 # production deployment only — a preview deployment is not reachable from

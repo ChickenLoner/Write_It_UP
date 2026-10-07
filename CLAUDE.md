@@ -196,10 +196,14 @@ deployment by `cloudflare-preview.yml`, at `<branch>.write-it-up.pages.dev`
 serve the production deployment, and the preview job refuses to run for `main`.
 Use it to check a change on a real URL before merging.
 
-`deploy.yml` is kept as a manual-only rollback. Reverting means re-enabling
-GitHub Pages, re-adding the custom domain in repo settings, running that
-workflow, pointing the Porkbun CNAME back to `chickenloner.github.io`, and
-reverting the extension-less URL commit.
+**GitHub Pages was retired on 2026-10-07.** `deploy.yml` (the manual-only
+rollback workflow) was removed and the Pages site unpublished in repo settings;
+Cloudflare is the only host. Rolling back a bad deploy now means reverting the
+commit on `main` (the deploy runs on every push), or rolling back to an earlier
+production deployment from the Cloudflare dashboard. Going back to GitHub Pages
+would mean restoring the workflow (`git show eb48bdb:.github/workflows/deploy.yml`),
+re-enabling Pages and the custom domain, repointing the Porkbun CNAME, and
+reverting the extension-less URL commit, so treat it as a rebuild, not a rollback.
 
 ### Capacity
 
