@@ -34,34 +34,46 @@ And it is a WMI namespace and class reference.
 
 * * *
 >The document initiates the download of a payload after the execution, can you tell what website is hosting it?
-```
-https://tinyurl.com/g2z2gh6f
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>https://tinyurl.com/g2z2gh6f</code></pre>
+</details>
 
 > What is the filename of the payload (include the extension)?
-```
-dropped.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>dropped.exe</code></pre>
+</details>
 
 > What method is it using to establish an HTTP connection between files on the malicious web server?
-```
-MSXML2.ServerXMLHTTP
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>MSXML2.ServerXMLHTTP</code></pre>
+</details>
 
 > What user-agent string is it using?
-```
-Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)</code></pre>
+</details>
 
 > What object does the attacker use to be able to read or write text and binary files?
-```
-ADODB.Stream
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>ADODB.Stream</code></pre>
+</details>
 
 >What is the object the attacker uses for WMI execution? Possibly they are using this to hide the suspicious application running in the background.
-```
-winmgmts:\\.\root\cimv2:Win32_Process
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>winmgmts:\\.\root\cimv2:Win32_Process</code></pre>
+</details>
 
 * * *
 ## Summary

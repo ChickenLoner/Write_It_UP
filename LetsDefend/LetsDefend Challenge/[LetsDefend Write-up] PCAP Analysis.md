@@ -43,29 +43,39 @@ Look like We got most of the question done
 * * *
 > In network communication, what are the IP addresses of the sender and receiver? <br>
 Answer Format: SenderIPAddress,ReceiverIPAddress
-```
-192.168.235.137,192.168.235.131
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.235.137,192.168.235.131</code></pre>
+</details>
 
 > P13 uploaded a file to the web server. What is the IP address of the server?
-```
-192.168.1.7
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.1.7</code></pre>
+</details>
 
 >What is the name of the file that was sent through the network?
-```
-file
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>file</code></pre>
+</details>
 
 >What is the name of the web server where the file was uploaded?
-```
-apache
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>apache</code></pre>
+</details>
 
 >What directory was the file uploaded to?
-```
-uploads
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>uploads</code></pre>
+</details>
 
 > How long did it take the sender to send the encrypted file?
 
@@ -76,9 +86,10 @@ This question can be answered by looking at Conversations of the sender IP and s
 </div>
 
 
-```
-0.0073
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0.0073</code></pre>
+</details>
 
 * * *
 ## Summary

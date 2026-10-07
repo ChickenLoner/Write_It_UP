@@ -17,9 +17,10 @@ After extracted content of zip file, I got relevant artefacts to analyze but the
 
 I also found chrome browser artefacts so I opened History file with DB Browser then we can see that there is suspicious zip file downloaded from Github.
 
-```
-https://github.com/0xMM0X/peloton
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://github.com/0xMM0X/peloton</code></pre>
+</details>
 
 >What is the name and version of the downloaded package?
 **Answer Format**: package-name111:0.0.01
@@ -28,9 +29,10 @@ https://github.com/0xMM0X/peloton
 
 We will find this information in `PKG-INFO` (package information) file 
 
-```
-peloton-client123:0.8.10
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>peloton-client123:0.8.10</code></pre>
+</details>
 
 >What is the exact time that this package was downloaded?
 **Answer Format**: YYYY-MM-DD HH:MM:SS
@@ -49,9 +51,10 @@ Use `MFTECmd.exe` from EZ tools to parse `$MFT` file.
 
 Now search for malicious package archive to get create timestamp which also the exact time this file was downloaded successful.
 
-```
-2024-01-22 20:00:11
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-01-22 20:00:11</code></pre>
+</details>
 
 >What file in the package contains malicious code?
 
@@ -67,14 +70,17 @@ So lets take a look at `setup.py`, we can see a lot of red flag here since it go
 
 Now we can see that it exfiltrate chrome's login data database file -> `temp_file.zip` -> send to C2 server -> delete `temp_file.zip` (clean up)
 
-```
-setup.py
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>setup.py</code></pre>
+</details>
 
 >What was the name of the archive file created for exfiltration and then deleted?
-```
-temp_file.zip
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>temp_file.zip</code></pre>
+</details>
 
 >When did the zip file get deleted?
 **Answer Format**: YYYY-MM-DD HH:MM:SS
@@ -91,14 +97,17 @@ After search for this file from output, we can see that it got 5 records from Cr
 
 Turn out... there is no need since this file was created and deleted in such short amount of time so it appeared with the same timestamp.
 
-```
-2024-01-22 20:00:42
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-01-22 20:00:42</code></pre>
+</details>
 
 >What exactly did the attacker steal from the victim's machine? (Name of the file)
-```
-Login Data
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Login Data</code></pre>
+</details>
 
 >The stolen file contains some sensitive data. What is the full URL of the website and the victim’s username?
 **Answer Format**: URL_username
@@ -107,15 +116,19 @@ Login Data
 
 Lets see whats important in `Login Data` database file which we could see that attacker could get saved login credential of app.letsdefend.io (self-promo)
 
-```
-https://app.letsdefend.io/_all4m
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://app.letsdefend.io/_all4m</code></pre>
+</details>
 
 >What is the IP and PORT number of the attacker C2?
 **Answer Format**: IP:Port
-```
-172.31.78.151:8000
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>172.31.78.151:8000</code></pre>
+</details>
+
 * * *
 ## Summary
 On this challenge, we analyzed 

@@ -26,9 +26,10 @@ After determine which profile to use with `vol.py -f Lockbit.vmem imageinfo` the
 
 After using `vol.py -f Lockbit.vmem --profile=Win7SP1x64 pstree`, we can see that malware process doesn't hide itself at all
 
-```
-2023-04-13 10:06:45
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-04-13 10:06:45</code></pre>
+</details>
 
 >What is the name of the ransomware family responsible for the attack?
 
@@ -44,9 +45,10 @@ Then I used `vol.py -f Lockbit.vmem --profile=Win7SP1x64 filescan > filescan.txt
 
 Then search filehash on VirusTotal, we can see that its lockbit ransomware just like the name of this challenge
 
-```
-lockbit
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>lockbit</code></pre>
+</details>
 
 >What file extension is appended to the encrypted files by the ransomware?
 
@@ -54,9 +56,10 @@ lockbit
 
 Go to dropped files under Relations and Behavior tab then we can see that all encrypted files have `.lockbit` extension 
 
-```
-.lockbit
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>.lockbit</code></pre>
+</details>
 
 >What is the TLSH (Trend Micro Locality Sensitive Hash) of the ransomware?
 
@@ -64,9 +67,10 @@ Go to dropped files under Relations and Behavior tab then we can see that all en
 
 Go to Details tab for this question
 
-```
-T119E3163DB459E165C8CF04B57E2516BAD671F83C037989F3EBD38C299420EE86626B07
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T119E3163DB459E165C8CF04B57E2516BAD671F83C037989F3EBD38C299420EE86626B07</code></pre>
+</details>
 
 >Which MITRE ATT&CK technique ID was used by the ransomware to perform privilege escalation?
 
@@ -74,9 +78,10 @@ T119E3163DB459E165C8CF04B57E2516BAD671F83C037989F3EBD38C299420EE86626B07
 
 This malware has many activities falls under Privilege Escalation tactic but an answer of this question is Windows Service
 
-```
-T1543
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1543</code></pre>
+</details>
 
 >What is the SHA256 hash of the ransom note dropped by the malware?
 
@@ -84,9 +89,10 @@ T1543
 
 Go to Behavior tab, and find a file dropped that look like ransomnote and append details for SHA256 
 
-```
-67c6784a5296658ac4d633f4e8c0914ecc783b1cf2f6431818c4e2f3cdcce91f
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>67c6784a5296658ac4d633f4e8c0914ecc783b1cf2f6431818c4e2f3cdcce91f</code></pre>
+</details>
 
 >What is the name of the registry key edited by the ransomware during the attack to apply persistence on the infected system?
 
@@ -94,9 +100,10 @@ Go to Behavior tab, and find a file dropped that look like ransomnote and append
 
 Under Registry Edited section, we can see that this weird value was added to Run registry key
 
-```
-XO1XADpO01
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>XO1XADpO01</code></pre>
+</details>
 
 * * *
 ## Summary

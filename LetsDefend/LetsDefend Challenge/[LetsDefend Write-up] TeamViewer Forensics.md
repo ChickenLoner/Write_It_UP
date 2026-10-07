@@ -21,16 +21,19 @@ Since we need to investigate TeamViewer so [here](https://benleeyr.wordpress.com
 
 `Connections_incoming.txt` stores ID, timestamp and username of remote user and local user so we can see that there is only 1 remote user connected to this system but was connected for 2 times
 
-```
-a1l4m
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>a1l4m</code></pre>
+</details>
 
 >What is the “user ID” associated with the intruder's username?
 
 ![3c1df2f8afd4cb2a92e08e55635d73a0.png](/resources/3c1df2f8afd4cb2a92e08e55635d73a0.png)
-```
-565955529
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>565955529</code></pre>
+</details>
 
 >The attacker has joined more than one time. When did the intruder first access 
 the victim's machine? <br>
@@ -42,9 +45,10 @@ We need to investigate `TeamViewer15_Logfile.log` for this one and find for "inc
 
 Here is the first access of the attacker and you can see that after this timestamp, negotiating session encryption client hello were received from the attacker's user ID
  
-```
-2024-07-04 04:34:16.699
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-07-04 04:34:16.699</code></pre>
+</details>
 
 >What is the “session ID” of the intruder's second access to the computer?
 
@@ -52,9 +56,10 @@ Here is the first access of the attacker and you can see that after this timesta
 
 Find second "incoming remote control", then we will see the session ID for this connection
 
-```
-536169703
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>536169703</code></pre>
+</details>
 
 >What was the duration of the second session in seconds.milliseconds? <br>
 Answer Format: 351.453
@@ -69,9 +74,10 @@ We can search for "SessionTerminate" for this which indicates a time when sessio
 
 Search for "time calculator with millisec" which will land us with https://datetimecalculator.net/time-calculator, then we can subtract timestamps we got to get the answer of this question 
 
-```
-607.571
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>607.571</code></pre>
+</details>
 
 >What is the IP address of the server to which the intruder exfiltrated data?
 
@@ -79,9 +85,10 @@ Search for "time calculator with millisec" which will land us with https://datet
 
 When navigated to targeted file system, I found `ConsoleHost_history.txt` which is a log that stores PowerShell command of each user and we can see that there is a command to compress files in `\Condidental` folder to `output.zip` then send it to `116.203.186.178` with `HTTP POST` method
 
-```
-116.203.186.178
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>116.203.186.178</code></pre>
+</details>
 
 >How many files did the intruder exfiltrate?
 
@@ -92,9 +99,11 @@ We can use `UsrJournal` which a feature of NTFS file system that keep track of c
 ![ab4372a02a88a1e36c97e6ef64f3bff7.png](/resources/ab4372a02a88a1e36c97e6ef64f3bff7.png)
 
 Then after open result file in Timeline explorer and find for `Condidential` folder, we can see that there are 3 files inside this folder
-```
-3
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>3</code></pre>
+</details>
 
 >When did the intruder delete the confidential data from the system? <br>
 Answer Format: 2023-02-24 05:12:03
@@ -103,9 +112,10 @@ Answer Format: 2023-02-24 05:12:03
 
 Find for `FileDelete` then we can see that 3 files we just found from previous question were deleted from this system including zip file that might be a file that was exfiltrated to C2 server
 
-```
-2024-07-04 04:42:09
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-07-04 04:42:09</code></pre>
+</details>
 
 * * *
 ## Summary

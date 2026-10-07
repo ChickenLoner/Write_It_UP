@@ -22,19 +22,24 @@ Welcome to the YARA Rules Challenge! This exercise is designed to introduce you 
 
 There are malware sample and YARA rule files inside Challenge folder, Open `sample.yara` with Notepad++ then we can see that this YARA rule is designed to detect Linux ransomware family GwisinLocker. 
 
-```
-linux_GwisinLocker_ransomware
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>linux_GwisinLocker_ransomware</code></pre>
+</details>
 
 >What is the name of the author of this YARA rule?
-```
-Marc Salinas @ CheckPoint Research
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Marc Salinas @ CheckPoint Research</code></pre>
+</details>
 
 >What is the extension of the encrypted file?
-```
-.mcrgnx
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>.mcrgnx</code></pre>
+</details>
 
 >What is the assembly instruction that stores the $hex opcode in the YARA rule?
 
@@ -46,9 +51,10 @@ Disassemble malware sample with IDA freeware then use binary search to find for 
 
 Search result lead us to this instruction, it means that 64-bit hexadecimal value `3864336264663066h` or `66 30 66 64 62 33 64 38` will be moved to rax register using `mov` instruction
 
-```
-rax
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>rax</code></pre>
+</details>
 
 >What is the address that we can find with $hex opcode with the IDA tool?
 Answer Format: 0x0000
@@ -57,9 +63,10 @@ Answer Format: 0x0000
 
 Open Output windows, we can see that our search were found at specific address which is the answer of this question
 
-```
-0x3B51
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0x3B51</code></pre>
+</details>
 
 >What is the name of the function that has $cde2?
 
@@ -67,9 +74,10 @@ Open Output windows, we can see that our search were found at specific address w
 
 $cde1 and $cde2 are hex pattern in wildcards so we need to copy specific part of it to search which eventually lead us to this instruction inside start_routine function
 
-```
-start_routine
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>start_routine</code></pre>
+</details>
 
 >What is the file signature in the YARA rule?
 Answer Format: 0x00000000
@@ -78,9 +86,10 @@ Answer Format: 0x00000000
 
 Looking at condition of this YARA rule, we can see that author of this rule want to match ELF magic number with other conditions that can determine GwisinLocker which is Linux ransomware.
 
-```
-0x464c457f
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0x464c457f</code></pre>
+</details>
 
 >Hunt on a [hybrid-analysis](https://www.hybrid-analysis.com/) site with Yara rules. What is the "threat level" of the sample timestamped September 1, 2022, 16:11:41 (UTC)?
 
@@ -92,9 +101,10 @@ We need to use YARA search but we need to login to use this function
 
 Then after logged in and search for all samples with this YARA rule, you can see that there is one report that match timestamp of this question and it was labeled as Malicious
 
-```
-malicious
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>malicious</code></pre>
+</details>
 
 * * *
 ## Summary

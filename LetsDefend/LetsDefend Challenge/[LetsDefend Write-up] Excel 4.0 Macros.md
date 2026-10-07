@@ -48,10 +48,12 @@ It contacted C2 server.
 That C2 was to download these dll to use regsvr32 to execute as second payload.
 
 but for further analysis to answer all the questions, I need to use [XLMMacroDeobfuscator](https://github.com/DissectMalware/XLMMacroDeobfuscator) if those we cannot use this tool because of this error
-```
-[Loading Cells] 
-Error [deobfuscator.py:3195 process_file(**vars(args))]
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>[Loading Cells]
+Error [deobfuscator.py:3195 process_file(**vars(args))]</code></pre>
+</details>
 
 [XLMMacroDeobfuscator - Solving Error \[deobfuscator.py:3195 process_file(**vars(args))](https://medium.com/@chaoskist/xlmmacrodeobfuscator-solving-error-deobfuscator-py-3195-process-file-vars-args-f9a26885cc23) here how to fix it
 
@@ -70,34 +72,47 @@ Congrats!
 
 * * *
 > Attackers use a function to make the malicious VBA macros they have prepared run when the document is opened. What do attackers change the cell name to to make Excel 4.0 macros work to provide the same functionality?
-```
-Auto_Open
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Auto_Open</code></pre>
+</details>
 
 > What is the address of the first cell where Excel 4.0 macros will run in the malicious Office document you are analyzing? (Example: {doc1!ab3})
-```
-Doc4!BA7
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Doc4!BA7</code></pre>
+</details>
 
 > Which function is used to start a process in the operating system in the document you are analyzing?
-```
-exec
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>exec</code></pre>
+</details>
 
 > Which LOLBAS tool was used in the Excel 4.0 macros you analyzed? (Format: {xxxx.exe})
-```
-regsvr32.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>regsvr32.exe</code></pre>
+</details>
 
 > What is the name of the registered DLL?
-```
-iroto.dll
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>iroto.dll</code></pre>
+</details>
 
 > What is the username that made the last change to the malicious document?
-```
-Amanda
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Amanda</code></pre>
+</details>
+
 ![05c4be109286fcaaf93e19b8807620a3.png](/resources/05c4be109286fcaaf93e19b8807620a3.png)
 
 * * *

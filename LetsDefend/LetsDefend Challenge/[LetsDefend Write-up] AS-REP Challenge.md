@@ -43,14 +43,17 @@ We can start with security log from the DC first, and to hunt for AS-REP Roastin
 
 Then we will have 1 record that very standout which happened at 2024-10-05 14:42:44, as we can see that AS-REP Roasting attack was used to retrieve TGT of Corrado user and the timestamp of this event is the correst answer of this question
 
-```
-2024-10-05 14:42:44
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-10-05 14:42:44</code></pre>
+</details>
 
 > What user account did the attacker target during this Kerberos attack?
-```
-Corrado
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Corrado</code></pre>
+</details>
 
 > What is the SID associated with the targeted user account?
 
@@ -58,14 +61,17 @@ Corrado
 
 We can look at the detailed event to get the TargetSID to get SID associated with the Corrado user here
 
-```
-S-1-5-21-3079141193-1468241477-2901848075-1108
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>S-1-5-21-3079141193-1468241477-2901848075-1108</code></pre>
+</details>
 
 > What encryption algorithm was used in this Kerberos ticket request?
-```
-RC4
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>RC4</code></pre>
+</details>
 
 > What is the IP and port number that was used to request the ticket?
 <br>**(Answer Format: IP:Port)**
@@ -74,9 +80,10 @@ RC4
 
 From the same page, we can also see that the attacker conducted AS-REP roasting attack from the internal network as seen in the IpAddress detail right here
 
-```
-192.168.110.129:49684
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.110.129:49684</code></pre>
+</details>
 
 > The attacker managed to crack the hash and used it to log into the compromised machine. When was their first successful logon?
 
@@ -87,9 +94,10 @@ This one tripped me a lot, in normal circumstance. the question was supposed to 
 
 But the timestamp that was accepted on this question is the anonymous login event which it’s not proof the cracked credentials were used and you can see that there is failed logon event (Event ID 4625) after this event which indicates that the attacker tried to use credential to login which was successful with anonymous logon but not as "Corrado" user so in my opinion the correct answer should be "2024-10-05 14:50:16"
 
-```
-2024-10-05 14:48:58
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-10-05 14:48:58</code></pre>
+</details>
 
 > Once inside, the attacker began exploring the system. What was the first command they executed?
 
@@ -97,14 +105,17 @@ But the timestamp that was accepted on this question is the anonymous login even
 
 Now it is the time we have to check for prefetch, after opened prefetch timeline output and look at each executable executed during the incident timeframe, the `whoami.exe` is definitely look out of place and just happened after last successful logon attempt from the attacker as well and this is the correct answer of this question
 
-```
-whoami
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>whoami</code></pre>
+</details>
 
 > When did the attacker execute this command exactly?
-```
-2024-10-05 15:01:28
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-10-05 15:01:28</code></pre>
+</details>
 
 * * *
 ## Summary

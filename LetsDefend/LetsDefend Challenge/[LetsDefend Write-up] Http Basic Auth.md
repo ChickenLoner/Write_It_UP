@@ -13,47 +13,61 @@ Note: pcap file found public resources.
 * * *
 ## Start Investigation
 > How many HTTP GET requests are in pcap?
-```
-5
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>5</code></pre>
+</details>
 
 ![be71793331ad1f36cf37e6845839a17b.png](/resources/be71793331ad1f36cf37e6845839a17b.png)
 
 > What is the server operating system?
-```
-FreeBSD
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>FreeBSD</code></pre>
+</details>
 
 ![a8a4b774a6101ba125aa2cac6556064d.png](/resources/a8a4b774a6101ba125aa2cac6556064d.png)
 
 > What is the name and version of the web server software?
-```
-Apache/2.2.15
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Apache/2.2.15</code></pre>
+</details>
 
 > What is the version of OpenSSL running on the server?
-```
-OpenSSL/0.9.8n
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>OpenSSL/0.9.8n</code></pre>
+</details>
 
 > What is the client's user-agent information?
-```
-Lynx/2.8.7rel.1 libwww-FM/2.14 SSL-MM/1.4.1 OpenSSL/0.9.8n
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Lynx/2.8.7rel.1 libwww-FM/2.14 SSL-MM/1.4.1 OpenSSL/0.9.8n</code></pre>
+</details>
 
 > What is the username used for Basic Authentication?
-```
-webadmin
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>webadmin</code></pre>
+</details>
 
 ![6746132e8475a700515a3c7427d37618.png](/resources/6746132e8475a700515a3c7427d37618.png)
 
 ![1634775f864642d8ab79ee57e69b9048.png](/resources/1634775f864642d8ab79ee57e69b9048.png)
 
 > What is the user password used for Basic Authentication?
-```
-W3b4Dm1n
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>W3b4Dm1n</code></pre>
+</details>
 
 * * *
 ## Summary

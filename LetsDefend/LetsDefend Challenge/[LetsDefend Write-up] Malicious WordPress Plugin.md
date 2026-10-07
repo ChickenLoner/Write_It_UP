@@ -18,9 +18,10 @@ Our WordPress website has been hacked; however, it's yet unclear how exactly. Th
 
 We know that WordPress server might used HTTP protocol so just filter for HTTP protocol that we will have an IP address that hosted WordPress.
 
-```
-192.168.204.128
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.204.128</code></pre>
+</details>
 
 >Two attackers were attempting to compromise our environment. What is the IP address of the first attacker based on time?
 
@@ -28,9 +29,10 @@ We know that WordPress server might used HTTP protocol so just filter for HTTP p
 
 I scrolled down for a bit then I found WPScan user-agent which mean an attacker used wpscan to enumerate this wordpress site.
 
-```
-192.168.204.132
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.204.132</code></pre>
+</details>
 
 >What are the versions of the Apache and PHP servers deployed in our environment? <br>
 **Answer Format**: ApacheVersion_PHPversion
@@ -39,9 +41,10 @@ I scrolled down for a bit then I found WPScan user-agent which mean an attacker 
 
 Follow TCP/HTTP stream then we will have Server Information right here.
 
-```
-2.4.58_8.2.12
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2.4.58_8.2.12</code></pre>
+</details>
 
 >During enumeration, the attacker tried to identify users on the site. How many users got enumerated?
 
@@ -60,9 +63,10 @@ Follow HEAD request of author 1 to do which kind of response that an attacker re
 ![cea067260742169d9cf46a4cd665afd9.png](/resources/cea067260742169d9cf46a4cd665afd9.png)
 Same with author 2 which mean GET request were used to confirm the result of HEAD request so this 3 users were enumerated by wpscan
 
-```
-3
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3</code></pre>
+</details>
 
 >After enumeration, a brute force attack was launched against all users. What is the name of the page used for the brute force attack? <br>
 **Answer Format**: pagename.extension
@@ -71,9 +75,10 @@ Same with author 2 which mean GET request were used to confirm the result of HEA
 
 Finding for HTML Form and POST requests, we can see that there are several attempts to bruteforce something on this webpage
 
-```
-xmlrpc.php
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>xmlrpc.php</code></pre>
+</details>
 
 >The attacker successfully gained access to one of the accounts. What are the username and password for that account? <br>
 **Answer Format**: username:password
@@ -88,9 +93,10 @@ Next lets use filter `frame contains "xmlrpc" && !frame contains "incorrect User
 
 ![af9e67b3b7b0f9c7eacf223d6a1532a1.png](/resources/af9e67b3b7b0f9c7eacf223d6a1532a1.png)
 
-```
-demomorgan:demomorgan
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>demomorgan:demomorgan</code></pre>
+</details>
 
 >There was a vulnerable plugin that the attacker exploited. What is the name of the plugin?
 
@@ -98,9 +104,10 @@ demomorgan:demomorgan
 
 search for plugin in http communication that we can see that this particular url was exploited for RCE
 
-```
-canto
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>canto</code></pre>
+</details>
 
 >What is the CVE number associated with that plugin?
 
@@ -108,14 +115,17 @@ canto
 
 Search on google about this plugin RCE then we have [this POC](https://github.com/leoanggal1/CVE-2023-3452-PoC) explaining how it worked and the pattern does look like we found on Wireshark
 
-```
-CVE-2023-3452
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CVE-2023-3452</code></pre>
+</details>
 
 >What is the C2 server IP address of the attacker?
-```
-172.26.211.155
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>172.26.211.155</code></pre>
+</details>
 
 >What is the name of the function that the attacker tested the exploit with?
 
@@ -123,18 +133,20 @@ CVE-2023-3452
 
 This could be found using `http contains "admin.php"` since malicious script will be added to `admin.php` file
 
-```
-phpinfo()
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>phpinfo()</code></pre>
+</details>
 
 >What is the name and version of the attacker's server? <br>
 **Answer Format**: name/version
 
 ![721d999512b85d35ef81bedff8ffbe6f.png](/resources/721d999512b85d35ef81bedff8ffbe6f.png)
 
-```
-Python/3.10.12
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Python/3.10.12</code></pre>
+</details>
 
 >What is the username that was logged on during the attack, including the domain?
 
@@ -142,9 +154,10 @@ Python/3.10.12
 
 Remember `whoami` command that were executed earlier?, go back to it to see how server response back then we will have user who hosted this wordpress website which is also an administrator of this machine 
 
-```
-desktop-2r3ar22\administrator
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>desktop-2r3ar22\administrator</code></pre>
+</details>
 
 >The attacker attempted to upload a reverse shell. What is the IP address and port number? <br>
 **Answer Format**: IP:PORT
@@ -153,9 +166,10 @@ desktop-2r3ar22\administrator
 
 back to `admin.php` and try to find for reverse shell commands
 
-```
-172.26.211.155:1234
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>172.26.211.155:1234</code></pre>
+</details>
 
 >What command posed an obstacle during the process of the reverse shell?
 
@@ -165,9 +179,10 @@ After confirming that an attacker tried to establish connection on port 1234 the
 
 ![f337dbb5bab42ada4e146cbed61017ed.png](/resources/f337dbb5bab42ada4e146cbed61017ed.png)
 
-```
-uname
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>uname</code></pre>
+</details>
 
 * * *
 ## Summary

@@ -25,9 +25,10 @@ When it comes to analyze code, we often start from Main() function and luckily f
 
 It's base64 encoded, so we will have to decode it first
 
-```
-https://central-cee-doja.ru/
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://central-cee-doja.ru/</code></pre>
+</details>
 
 >What is the API used by the stealer to detect debuggers?
 
@@ -43,9 +44,10 @@ Then when we read this function, we can see that there is a method imported from
 
 And here is an example on how this method is used inside of `Debugger()` function 
 
-```
-CheckRemoteDebuggerPresent
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CheckRemoteDebuggerPresent</code></pre>
+</details>
 
 >What is the number of the process names that are used by stealer to detect 
 malware analysts?
@@ -54,9 +56,10 @@ malware analysts?
 
 Following `Debugger()` function then we can see a list is declared and it consists of processes that are known for debugging and doing digital forensics
 
-```
-8
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>8</code></pre>
+</details>
 
 >What is the number of the functions that are used by the stealer as anti-analysis?
 
@@ -64,9 +67,10 @@ Following `Debugger()` function then we can see a list is declared and it consis
 
 Inside `Start()` function, we can see that 5 functions are used to determine if this malware should exit or not 
 
-```
-5
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5</code></pre>
+</details>
 
 >What is the first DLL name that was downloaded by the malware?
 
@@ -78,9 +82,10 @@ Go back to `Main()` function then you can see there is a function calls to `Down
 
 Upon following to `DynamicLinkLibrary` then we can see all dlls that going to be downloaded by `Download()` function
 
-```
-SQLite.dll
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SQLite.dll</code></pre>
+</details>
 
 >What is the name of the project advertised by the malware?
 
@@ -92,9 +97,10 @@ Agniane is known to be a made by Cinoshi project but if we want to find an answe
 
 Here is where Cinoshi project was mentioned
 
-```
-Cinoshi
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Cinoshi</code></pre>
+</details>
 
 >What is the user of the bot in Telegram?
 
@@ -102,9 +108,10 @@ Cinoshi
 
 This telegram bot is used to receive all informations that collect by this malware
 
-```
-@agnianebot
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>@agnianebot</code></pre>
+</details>
 
 >What is the first regex that is used by the malware to find tokens?
 
@@ -116,9 +123,10 @@ Inside `Compile()` function there is another function calls related to token whi
 
 Follow it to the bottom of this code then we can see Regex that used to find tokens
 
-```
-[a-zA-Z0-9]{24}\\.[a-zA-Z0-9]{6}\\.[a-zA-Z0-9_\\-]{27}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>[a-zA-Z0-9]{24}\\.[a-zA-Z0-9]{6}\\.[a-zA-Z0-9_\\-]{27}</code></pre>
+</details>
 
 >What is the build version?
 
@@ -126,9 +134,10 @@ Follow it to the bottom of this code then we can see Regex that used to find tok
 
 Go back to `Main()` function for this one
  
-```
-0.1.1 beta
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0.1.1 beta</code></pre>
+</details>
 
 >How many domains are targeted by the Stealer to collect passwords and login credentials?
 
@@ -140,9 +149,10 @@ Go back to `Compile()` function again then we can see there is a function calls 
 
 there are 4 domains that this malware tries to harvest credentials
 
-```
-4
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4</code></pre>
+</details>
 
 >Which specific registry key is targeted by the malware to collect Hostname, username, and password information from all sessions of WinSCP?
 
@@ -150,9 +160,10 @@ there are 4 domains that this malware tries to harvest credentials
 
 Go to `WinSCP` class then you can see `GetCredentials()` function responsible for harvesting all sessions of WinSCP
 
-```
-Software\\Martin Prikryl\\WinSCP 2\\Sessions
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Software\\Martin Prikryl\\WinSCP 2\\Sessions</code></pre>
+</details>
 
 >What is the file name that is used by the stealer to save the information about the system?
 
@@ -160,9 +171,10 @@ Software\\Martin Prikryl\\WinSCP 2\\Sessions
 
 Inside `Compile()` function, there is a text file that was created to save all information about system here.
 
-```
-PC Information.txt
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>PC Information.txt</code></pre>
+</details>
 
 * * *
 ## Summary

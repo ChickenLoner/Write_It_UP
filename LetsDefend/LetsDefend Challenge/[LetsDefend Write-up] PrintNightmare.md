@@ -46,9 +46,10 @@ If you tried to do this on built-in vm (Zui 1.7.0), you will find that there is 
 
 Load Data then enjoy Brim security with custom Suricata alerts which you can see that it worked well when inspect this alert event telling us that there were an exploitation of [CVE-2021-34527](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34527) priviledged RCE vulnerability that let threat actor execute any commands as SYSTEM
 
-```
-PrintNightmare, CVE-2021-34527
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>PrintNightmare, CVE-2021-34527</code></pre>
+</details>
 
 > What is Attacker's IP?
 
@@ -56,9 +57,10 @@ PrintNightmare, CVE-2021-34527
 
 We already know how this vulnerability works and when you inspected process in memory dump file captured with Mandiant Redline then you can see that `SYSTEM` process has a connection to threat actor IP address 
 
-```
-10.10.10.2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10.10.10.2</code></pre>
+</details>
 
 > What is Attacker's share path?
 
@@ -66,9 +68,10 @@ We already know how this vulnerability works and when you inspected process in m
 
 In Zui, search for share or smb then you will see the path of the share 
 
-```
-\\10.10.10.2\share
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>\\10.10.10.2\share</code></pre>
+</details>
 
 > What is the name of the malicious DLL file hosted by the attacker?
 
@@ -76,21 +79,26 @@ In Zui, search for share or smb then you will see the path of the share
 
 Searching for files and we can see that there is only 1 dll file detected from this pcap
 
-```
-notsostealthy.dll
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>notsostealthy.dll</code></pre>
+</details>
 
 > What is the MD5 hash of the DLL file?
-```
-8ac469b77518820bbf0603a9ad56691d
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>8ac469b77518820bbf0603a9ad56691d</code></pre>
+</details>
 
 > What is the email address used for the self-signed SSL Certificate in the traffic?
 
 ![85a3fb59a94683e29d830facfad9e171.png](/resources/85a3fb59a94683e29d830facfad9e171.png)
-```
-override@shields.mertz.net
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>override@shields.mertz.net</code></pre>
+</details>
 
 > What is the domain user used by the attacker to exploit the vulnerability?
 
@@ -102,14 +110,17 @@ Go to "System Information" then we can see which hostname that vulnerable and ex
 
 We got domain from Redline now we can search it on Zui to find username that was used to exploit 
 
-```
-BELLYBEAR\Jesse.Harmon
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>BELLYBEAR\Jesse.Harmon</code></pre>
+</details>
 
 > What is the exploit server's hostname?
-```
-WIN-FLO4EU2VMSM
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>WIN-FLO4EU2VMSM</code></pre>
+</details>
 
 > What is the username created by the attacker for persistence?
 
@@ -117,9 +128,10 @@ WIN-FLO4EU2VMSM
 
 Go to "Users", which you will find `hacker` user that has the weird Last Login time
 
-```
-hacker
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>hacker</code></pre>
+</details>
 
 > What is the event ID for user creation in Windows, and when was the user being created?
 
@@ -131,9 +143,10 @@ user creation in AD can be searched on event log with event ID 4720
 
 Filter for both keywords then we will have the time this log was generated and timestamp when this user was created in details
 
-```
-4720, 2021-08-16 19:31:46Z
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4720, 2021-08-16 19:31:46Z</code></pre>
+</details>
 
 > What process name is used to establish the shell connection between the attacker's machine and the Windows server? and what is the listening port on the attacker's machine?
 
@@ -141,9 +154,10 @@ Filter for both keywords then we will have the time this log was generated and t
 
 We know that the payload is dll file which mean `rundll32.exe` will be responsible for executing dll file and made a connection to threat actor C2, we can see that a port that being used for this connection is 443 (HTTPS) which make me think that a payload could be generated from msfvenom or metasploit
 
-```
-rundll32.exe, 443
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>rundll32.exe, 443</code></pre>
+</details>
 
 > The attacker used a famous post-exploitation framework to create the DLL file and establish the shell connection to the Windows server, what is the payload the attacker used?
 
@@ -159,9 +173,10 @@ Which we can see that [payload](https://www.rapid7.com/blog/post/2010/04/13/pers
 
 When I started learning penetration testing, one thing I remembered about Windows payload is there are 2 types of the same payload which are x86 and x64 architecture and after confirming architecture of this system then we can also determine which payload threat actor used for reverse shell connection
 
-```
-windows/x64/meterpreter/reverse_https
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>windows/x64/meterpreter/reverse_https</code></pre>
+</details>
 
 > The attacker left a text file for the user Administrator, can you find what the filename is?
 
@@ -169,9 +184,10 @@ windows/x64/meterpreter/reverse_https
 
 I found this weird text file inside `C:\Users\Administrator\Document\` which is the one we're looking for 
 
-```
-This-is-really-a-nightmare.txt
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>This-is-really-a-nightmare.txt</code></pre>
+</details>
 
 * * *
 ## Summary

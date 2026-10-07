@@ -19,9 +19,11 @@ This challenge prepared by [@MMOX](https://www.linkedin.com/in/0xMM0X)
 
 If you investigated on LetsDefend platform, you can just use `7z x hackerman.7z` to decompress image file then use `md5sum` to calculate hash of this image file
 ![1ca6d8b705a321c7b8d92e6a9c088f77.png](/resources/1ca6d8b705a321c7b8d92e6a9c088f77.png)
-```
-6be42bac99e0fff42ca9467b035859a3
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>6be42bac99e0fff42ca9467b035859a3</code></pre>
+</details>
 
 >What is the SHA256 hash of the file in the "hackerman" desktop?
 
@@ -33,18 +35,21 @@ I used this method to mount an image file to `/mnt` directory
 ![db73854f4101fc88cc6f9cadab03bb03.png](/resources/db73854f4101fc88cc6f9cadab03bb03.png)
 Then when we successfully mounted an image file, go to `/home/hackerman/Desktop` you will find a jpeg file then use `sha256sum` to calculate SHA256 hash of this jpeg file
 
-```
-3c76e6c36c18ea881e3a681baa51822141c5bdbfef73c8f33c25ce62ea341246
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3c76e6c36c18ea881e3a681baa51822141c5bdbfef73c8f33c25ce62ea341246</code></pre>
+</details>
 
 >What command did the user use to install Google Chrome?
 
 on user's home directory there is `.bash_history` that likely to log command histories of this user to lets grab that 
 ![a5a8252167331b7df4101ab4d247c44b.png](/resources/a5a8252167331b7df4101ab4d247c44b.png)
 This user installed google chrome stable via `dpkg`
-```
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>sudo dpkg -i google-chrome-stable_current_amd64.deb</code></pre>
+</details>
 
 >When was the Gimp app installed? Answer format: yyyy-mm-dd hh:mm:ss
 
@@ -52,25 +57,31 @@ When installed something on linux there are 1 or 2 package management software t
 ![485f547f979ed27d3bebff1d55b23e7a.png](/resources/485f547f979ed27d3bebff1d55b23e7a.png)
 ![8a3a1d9a149ab44af1de41f2d42b46bc.png](/resources/8a3a1d9a149ab44af1de41f2d42b46bc.png)
 read `history.log` we can see when gimp was installed
-```
-2023-05-06 10:49:42
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2023-05-06 10:49:42</code></pre>
+</details>
 
 >What is the hidden secret that the attacker believes they have successfully concealed in a secret file?
 
 When I searched for `.bash_history`, I also found `.secret` file on `/home/hackerman` directory
 ![e7236c6ef4f84c0e37d95f78c90e5231.png](/resources/e7236c6ef4f84c0e37d95f78c90e5231.png)
-```
-I_want_to_hack_my_Boss
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>I_want_to_hack_my_Boss</code></pre>
+</details>
 
 >What was the UUID of the main root volume?
 
 I did some [research](https://unix.stackexchange.com/questions/658/linux-how-can-i-view-all-uuids-for-all-available-disks-on-my-system) and found that I can obtain the answer from `/etc/fstab`
 ![c90e1d09f0d1a3f55b0f88c4fbc6cbeb.png](/resources/c90e1d09f0d1a3f55b0f88c4fbc6cbeb.png)
-```
-29153a2e-48a7-4e89-a844-dfa637a5d461
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>29153a2e-48a7-4e89-a844-dfa637a5d461</code></pre>
+</details>
 
 >How many privileged commands did the user run?
 
@@ -81,9 +92,11 @@ from `.bash_history`, I knew for sure that `sudo` is priviledge command so I use
 I did some more research and found that `pkexec` is also a priviledged command
 ![3c3adbac61a43e7de225cd6b8f53ed30.png](/resources/3c3adbac61a43e7de225cd6b8f53ed30.png)
 Count both of them, got 14 in total
-```
-14
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>14</code></pre>
+</details>
 
 >What is the last thing the user searches for in the installed browser?
 
@@ -92,9 +105,11 @@ hackerman installed google chrome so the browser artifact will be presented on u
 Went to `/home/hackerman/.config/google-chrome/Default`, then you will see `History` file which is a database file
 ![1f060458a36dad47cbeff6be9a55806a.png](/resources/1f060458a36dad47cbeff6be9a55806a.png)
 I used `string` command then I found that this is the lastest search url of this user
-```
-how to write a script to downlowad malware to my boss
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>how to write a script to downlowad malware to my boss</code></pre>
+</details>
 
 >From Q8 we know that the user tried to write a script, what is the script name that the user wrote?
 
@@ -103,43 +118,53 @@ on `.bash_history`, I saw that there is a shell script that was created
 I got a name
 ![03348bdc9f2c360f23cddaec60e8e99d.png](/resources/03348bdc9f2c360f23cddaec60e8e99d.png)
 and it was located at `/tmp` directory
-```
-superhackingscript.sh
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>superhackingscript.sh</code></pre>
+</details>
 
 >What is the URL that the user uses to download the malware?
 
 Print out the content of the script
 ![1ade31abeaffe6d763118c1013c1d288.png](/resources/1ade31abeaffe6d763118c1013c1d288.png)
 We got a URL and something like a hash of this malware?
-```
-https://mmox.me/supermalware
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>https://mmox.me/supermalware</code></pre>
+</details>
 
 >What is the name of the malware that the user tried to download?
 
 To confirm my speculation, I searched that string that look like hash to VirusTotal
 ![09a5a411e61357c210bb2128dc37947f.png](/resources/09a5a411e61357c210bb2128dc37947f.png)
 It is a hash of Mirai botnet
-```
-mirai
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>mirai</code></pre>
+</details>
 
 >What is the IP address associated with the domain that the user pinged?
 
 There is no log when user pinged something but there is `/etc/hosts` that used in matching an FQDN with the server IP hosting a specific domain.
 ![0ff42edd059f50cceb444df8b68c5c56.png](/resources/0ff42edd059f50cceb444df8b68c5c56.png)
-```
-185.199.111.153
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>185.199.111.153</code></pre>
+</details>
 
 >What is the password hash of the "hackerman" user?
 
 grab the `/etc/shadow`
 ![988bff1e46166f4558bd85956d6010f4.png](/resources/988bff1e46166f4558bd85956d6010f4.png)
-```
-$y$j9T$71dGsUtM2UGuXod7Z2SME/$NvWYKVfU9fSpnbbQNbTXcxCdGz4skq.CvJUqRxyKGx6
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>$y$j9T$71dGsUtM2UGuXod7Z2SME/$NvWYKVfU9fSpnbbQNbTXcxCdGz4skq.CvJUqRxyKGx6</code></pre>
+</details>
 
 * * *
 ## Summary

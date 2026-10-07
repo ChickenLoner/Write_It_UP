@@ -132,59 +132,81 @@ The answer was already covered from the Unit42 blog post, There are some communi
 
 * * *
 > Investigate the PCAP file, what is one of the popular document signing services used by the attacker to deliver the malware?
-```
-docusign
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>docusign</code></pre>
+</details>
 
 > Investigate the PCAP file, what is the full URL used by the attacker to create the malicious document?
-```
-http://ecofiltroform.triciclogo.com/swellheaded.php
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>http://ecofiltroform.triciclogo.com/swellheaded.php</code></pre>
+</details>
 
 > On the malicious website from the previous question, what kind of encoding technique used by the attacker to create the malicious document?
-```
-base64
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>base64</code></pre>
+</details>
 
 > What is the name of the malicious document opened by the user?
-```
-0524_4109399728218.doc
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>0524_4109399728218.doc</code></pre>
+</details>
 
 > What malware family this malicious file belongs to?
-```
-hancitor
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>hancitor</code></pre>
+</details>
 
 > After the user interacts with the malicious file, it runs malicious DLL on the system. What is the DLL run command?
-```
-rundll32.exe c:\users\[username]\appdata\roaming\microsoft\word\startup\ket.t,EUAYKIYBPAX
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>rundll32.exe c:\users\[username]\appdata\roaming\microsoft\word\startup\ket.t,EUAYKIYBPAX</code></pre>
+</details>
 
 > What is the C2 URL?
-```
-http://euvereginumet.ru/8/forum.php
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>http://euvereginumet.ru/8/forum.php</code></pre>
+</details>
 
 > What is the URL that serves the payload?
-```
-http://gromber6.ru/6hjusfd8.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>http://gromber6.ru/6hjusfd8.exe</code></pre>
+</details>
 
 > What is the name of the malware this payload links back to?
-```
-ficker stealer
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>ficker stealer</code></pre>
+</details>
 
 > What is the popular hacking framework being used in this campaign?
-```
-cobalt strike
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>cobalt strike</code></pre>
+</details>
 
 > What is the popular storage service used by the attacker to deliver the malware?
-```
-google docs
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>google docs</code></pre>
+</details>
 
 * * *
 ## Summary

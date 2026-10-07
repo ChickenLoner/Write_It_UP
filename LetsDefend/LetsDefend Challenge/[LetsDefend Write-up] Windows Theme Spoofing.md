@@ -31,9 +31,10 @@ We have bunch of tools as our disposal so lets just start with pcapng file first
 
 After opened `ntlm.pcapng` with Wireshark and filtered with `smb2` for SMB 2 protocol then we can see that there are several attempts to fetch resource from `\\DESKTOP-887GK2L\smb12` and this is the file share path that we are looking for.
 
-```
-\\DESKTOP-887GK2L\smb12
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>\\DESKTOP-887GK2L\smb12</code></pre>
+</details>
 
 >Victim's NTLM hash was relayed to the attacker's server allowing them to capture the hash and either use it in NTLM relay attacks or crack the hash. What is the Full Username of the compromised account? <br>
 **Answer Format**: DOMAIN\Username
@@ -42,9 +43,10 @@ After opened `ntlm.pcapng` with Wireshark and filtered with `smb2` for SMB 2 pro
 
 We can filter `ntlmssp` for NTLMSSP which is a protocol for Authentication using NTLM protocol which we can see that there are 3 Session Setup Requests using NTLMSSP_AUTH by "DESKTOP-ND6FH5D\LetsDefend" user and by sending these request then the attacker will be able to capture NTLM hash of this user.
 
-```
-DESKTOP-ND6FH5D\LetsDefend
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>DESKTOP-ND6FH5D\LetsDefend</code></pre>
+</details>
 
 >The victim's credentials were relayed to attackers 3 times. Considering only the packets related to the first relay, what is the NTLM Server challenge used in the NTLM negotiation?
 
@@ -56,9 +58,10 @@ SMB2 (Server Block Message Protocol version 2) -> Session Setup Request (0x01) -
 
 Then we will be able to get the NTLM Server Challenge used for this NTLM negotiation right here.
 
-```
-7b28fde95a265713
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>7b28fde95a265713</code></pre>
+</details>
 
 >What is the NTProofStr value in the NTLM negotiation?
 
@@ -70,9 +73,10 @@ SMB2 (Server Block Message Protocol version 2) -> Session Setup Request (0x01) -
 
 Then we should be able to retrieve NTProofStr value of this NTLM negotiation right here.
 
-```
-2731f9c2ac40d2f1aa3c1797ff0f026e
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2731f9c2ac40d2f1aa3c1797ff0f026e</code></pre>
+</details>
 
 >Security team saw an RDP connection from the Attacker's internal machine to the compromised victim's machine, a day after the CVE was exploited. When did the attacker log on successfully? <br>
 **Answer Format**: (YYYY-MM-DD HH:MM:SS)
@@ -89,9 +93,10 @@ By filtering Event ID 1149 (A successful Remote Desktop connection attempt is ma
 
 Then we can also see that "172.17.79.132" was the source IP of the attacker which successfully cracked "letsdefend" user password and connected to the victim machine via RDP
 
-```
-2024-03-15 03:03:44
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-03-15 03:03:44</code></pre>
+</details>
 
 >Tracing back to the start of the exploitation, what was the name of the file used to exploit the victim and exploit the cve. Please detail the full path of the file.
 
@@ -103,9 +108,10 @@ We know that this CVE can be exploited tricking user to open crafted theme file 
 
 Open the output from `MFTECmd.exe` with "Timeline Explorer" and just simply search for `.theme` extension and now we can see that there is a suspicious theme file that we are looking for located at the LetsDefend user's Downloads folder.
 
-```
-C:\Users\LetsDefend\Downloads\theme.theme
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\LetsDefend\Downloads\theme.theme</code></pre>
+</details>
 
 >Attacker downloaded a Powershell script on the system, to further their objectives. What is the name of the script?
 
@@ -113,9 +119,10 @@ C:\Users\LetsDefend\Downloads\theme.theme
 
 Now we will change our search term to `.ps1` extensino then we can see that `PowerView.ps1` is the one we are looking for and this script can gather detailed information about an Active Directory environment for reconnaissance and lateral movement.
 
-```
-PowerView.ps1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>PowerView.ps1</code></pre>
+</details>
 
 >Attacker Added a backdoor account for persistence mechanisms. What is the username and password of the newly created account? <br>
 **Answer Format**: Username:Password
@@ -128,9 +135,10 @@ This time, we will have to check PowerShell commands then focus on Event ID 4104
 
 We can also see that this user was also added to "administrators" group after successfully created.
 
-```
-SupportAgent:AgentPassword!
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SupportAgent:AgentPassword!</code></pre>
+</details>
 
 * * *
 ## Summary

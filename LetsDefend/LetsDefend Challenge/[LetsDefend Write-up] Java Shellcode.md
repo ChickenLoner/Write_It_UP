@@ -18,9 +18,10 @@ After decompiled it, we can see the `ShellcodeLoader.class` under `asexploit` ob
 
 Which will load Windows API from `kernel32.dll` that have several functions that can be used for shellcode injection.
 
-```
-com.sun.jna.Native
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>com.sun.jna.Native</code></pre>
+</details>
 
 >What system property is used to determine whether to target 32-bit or 64-bit processes?
 
@@ -28,9 +29,10 @@ com.sun.jna.Native
 
 Shellcode is defined within main function then it will pass to `loadShellcode` which will use [sun.arch.data.model](https://www.baeldung.com/java-detect-jvm-64-or-32-bit) property to identify architecture of JVM 
 
-```
-sun.arch.data.model
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>sun.arch.data.model</code></pre>
+</details>
 
 >How many x64 processes were targeted by the shellcode?
 
@@ -46,9 +48,10 @@ And 64-bit processes that were targeted are
 
 In total of 4 processes
 
-```
-4
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4</code></pre>
+</details>
 
 >Which API function loaded kernel32.dll?
 
@@ -60,9 +63,10 @@ We know that `kernel32.dll` is loaded via Native library but if we were to speci
 
 And according to [this](https://java-native-access.github.io/jna/5.3.1/javadoc/com/sun/jna/Native.html) document, it already deprecated
 
-```
-loadLibrary
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>loadLibrary</code></pre>
+</details>
 
 >What is the length of the shellcode?
 
@@ -74,9 +78,10 @@ This question is likely to ask for character length defined in `shelldode` varia
 
 Use CyberChef to count, which we can see that without convert it from Hex, the length of this shellcode is 386
 
-```
-386
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>386</code></pre>
+</details>
 
 >What is the API used to allocate a region of memory in the target process?
 
@@ -84,9 +89,10 @@ Use CyberChef to count, which we can see that without convert it from Hex, the l
 
 This malware used [VirtualAllocEx](https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualallocex) to allocate a region of memory which is a common API that used for process injection.
 
-```
-VirtualAllocEx
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>VirtualAllocEx</code></pre>
+</details>
 
 >What API was used to write shellcode?
 
@@ -94,9 +100,10 @@ VirtualAllocEx
 
 After allocated region of memory to be injected, then it will write shellcode to that region with [WriteProcessMemory](https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-writeprocessmemory)
 
-```
-WriteProcessMemory
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>WriteProcessMemory</code></pre>
+</details>
 
 >What API was used to execute the shellcode in the target process?
 
@@ -104,9 +111,11 @@ WriteProcessMemory
 
 Then [CreatedRemoteThread](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createremotethread) will execute the shellcode injected into memory as a thread
 
-```
-CreateRemoteThread
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CreateRemoteThread</code></pre>
+</details>
+
 * * *
 ## Summary
 On this investigation, we conducted static analysis of jar archive file that will loaded a shellcode into processes depended on different architectures and familiarized ourselves with Windows API that commonly used for process injection.

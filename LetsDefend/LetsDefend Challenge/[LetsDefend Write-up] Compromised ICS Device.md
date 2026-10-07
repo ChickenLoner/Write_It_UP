@@ -21,9 +21,10 @@ We were provided with 2 files, 1 pcap and 1 log file so lets I started with log 
 
 But when I opened pcap file with Wireshark and tried to find for `table_id` variable, there is only 1 `tables_id` on this pcap so this one should be the one that was running during the incident.
 
-```
-1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>1</code></pre>
+</details>
 
 >You need to determine the entry point of the attack. What is the public IP address and port number of the service running the PLC?
 Answer Format: IP:Port
@@ -34,9 +35,10 @@ PLC (Programmable Logic Controller) is specialized industrial computer used to a
 
 So to find an answer of this question, we can just take a look at one of these HTTP traffic which we can see that PLC was running on this `Host`.
 
-```
-18.194.239.42:8080
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>18.194.239.42:8080</code></pre>
+</details>
 
 >What is the IP address of the attacker?
 
@@ -48,9 +50,10 @@ We know an internal IP address of the service running the PLC, so I checked Conv
 
 Then after filtered for conversation between these 2 IP addresses, we could see that this specific IP address tried to access PLC by resorting bruteforce attack. 
 
-```
-38.180.17.118
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>38.180.17.118</code></pre>
+</details>
 
 >The logs reveal several failed login attempts. What username and password did the attacker use to finally gain access to the account controlling the PLC?
 Answer Format: username:password
@@ -59,9 +62,10 @@ Answer Format: username:password
 
 Now we only need to find for 302 HTTP status code which will redirect the attacker to PLC's dashboard, then we will see credentials that was used to gain access to it. 
 
-```
-openplc:breakingbad
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>openplc:breakingbad</code></pre>
+</details>
 
 >What was the “User-Agent” used by the attacker when they were attempting a brute force attack?
 
@@ -69,9 +73,10 @@ openplc:breakingbad
 
 Just pick any HTTP request with HTML Form URL Encoded then we could see User-Agent used by the attacker.
 
-```
-python-requests/2.32.2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>python-requests/2.32.2</code></pre>
+</details>
 
 >The attacker manipulated an industrial protocol to control the pumps and switches. What is this industrial protocol called?
 
@@ -79,9 +84,10 @@ python-requests/2.32.2
 
 We can open Protocol Hierarchy statistic and skim for any protocol that widely used for ICS system, on this case its Modbus protocol.
 
-```
-modbus
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>modbus</code></pre>
+</details>
 
 >What port number does this protocol typically use?
 
@@ -89,9 +95,10 @@ modbus
 
 Modbus protocol typically operates on port 502 which you can see that after I filtered for modbus protocol, destination port of PLC is 502
 
-```
-502
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>502</code></pre>
+</details>
 
 >After gaining access, the attacker targeted a specific URL to manipulate the running program. What is the full URL they used?
 
@@ -103,9 +110,10 @@ We knew that the attacker successfully accessed to PLC so he could use it to man
 
 Which we can see that this is URL that the attacker could see status of PLC control variable and in this case, its `PumpSwitch` and `WaterPump` 
 
-```
-http://18.194.239.42:8080/monitor-update?mb_port=502
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://18.194.239.42:8080/monitor-update?mb_port=502</code></pre>
+</details>
 
 >During the attack, the intruder turned the “WaterPump” on and off multiple times before leaving it on. When did they first turn the pump on?
 Answer Format: 2023-02-21 23:11:27.142513
@@ -118,9 +126,10 @@ We can see that both `PumpSwitch` and `WaterPump` have their each boolean variab
 
 We could do that by using "Find Packet" and we will have packet number 56993 is first response that `WaterPump` boolean variable became `True`
 
-```
-2024-06-14 19:51:54.234789
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2024-06-14 19:51:54.234789</code></pre>
+</details>
 
 >What was the final state of PumpSwitch and WaterPump in the system after the attacker left?
 Answer Format: pumpswitch-state_waterpump-state
@@ -135,9 +144,10 @@ First, we will need to go to the last request/response from the attacker and tak
 
 As we can see that `PumpSwitch` was set to `FALSE` and `WaterPump` was set to `TRUE`
 
-```
-0_1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0_1</code></pre>
+</details>
 
 * * *
 ## Summary

@@ -19,44 +19,59 @@ We got windows batch script that will start by not output anything to the consol
 - It uses `UnZipFile` function (which utilized VBScript) to extract content of downloaded zip file 
 - It runs malicious exe file that extracted from zip file and eventually delete this batch script from system
 
-```
-@echo off
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>@echo off</code></pre>
+</details>
 
 >Which tool is used to download a file from a specified URL in the script?
-```
-bitsadmin
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>bitsadmin</code></pre>
+</details>
 
 >What is the priority set for the download operation in the script?
-```
-FOREGROUND
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>FOREGROUND</code></pre>
+</details>
 
 >Which command is used to start localization of environment changes in the script?
-```
-setlocal
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>setlocal</code></pre>
+</details>
 
 >Which IP address is used by malicious code?
-```
-193.169.255.78
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>193.169.255.78</code></pre>
+</details>
 
 >What is the name of the subroutine called to extract the contents of the zip file?
-```
-UnZipFile
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>UnZipFile</code></pre>
+</details>
 
 >Which command attempts to start an executable file extracted from the zip file?
-```
-start "" "FW-APGKSDTPX4HOAUJJMBVDNXPOHZ.PDF.exe"
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>start "" "FW-APGKSDTPX4HOAUJJMBVDNXPOHZ.PDF.exe"</code></pre>
+</details>
 
 >Which scripting language is used to extract the contents of the zip file?
-```
-VBScript
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>VBScript</code></pre>
+</details>
 
 * * *
 ## Summary

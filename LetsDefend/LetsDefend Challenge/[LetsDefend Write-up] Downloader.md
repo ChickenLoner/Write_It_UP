@@ -20,9 +20,10 @@ First, I used DIE to detect which compiler was used to make this malware which i
 
 To make life easier, disassembly this binary in IDA and it will automatically detect `main` function for us and here is where we get an address of all functions in IDA.
 
-```
-0x140001170
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0x140001170</code></pre>
+</details>
 
 >What is the end address of the .text section?
 Answer Format: 0x000000000
@@ -31,9 +32,10 @@ Answer Format: 0x000000000
 
 Go to "View" -> "Toolbars" -> "Segments" which will display segments button in toolbars then after press it, it will display all segments of this binary including start and end offset of each section.
 
-```
-0x140007000
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0x140007000</code></pre>
+</details>
 
 >What is the IP address used to download the payload?
 
@@ -46,19 +48,24 @@ As you might noticed, there are some function declaration in `main` which are
 
 And we also see **WinHTTPOpen** will be called so this binary will connect to C2 address on port 80 with defined User-agent to download defined filename from that server.
 
-```
-45.249.93.80
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>45.249.93.80</code></pre>
+</details>
 
 >What is the name of the payload downloaded?
-```
-payload.bin
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>payload.bin</code></pre>
+</details>
 
 >What is the name of the user agent used by the downloader?
-```
-WinHTTP Example/1.0
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>WinHTTP Example/1.0</code></pre>
+</details>
 
 >What is the name of the DLL loaded by the downloader?
 
@@ -66,9 +73,10 @@ WinHTTP Example/1.0
 
 We can also see that after downloaded a file from C2 server, this dll was loaded then `VirtualProtect` was called to change memory protection of specific region of memory probably to allow writing file.
 
-```
-dbghelp.dll
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>dbghelp.dll</code></pre>
+</details>
 
 >What is the first API used during the function that retrieves data from the HTTP response?
 
@@ -80,9 +88,10 @@ After reversing these 2 functions, here are the result
 
 And the first API that was used in a function that retrieves data from the HTTP response is this API
 
-```
-WinHttpReceiveResponse
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>WinHttpReceiveResponse</code></pre>
+</details>
 
 >What is the name of the function that establishes the HTTP request?
 
@@ -90,9 +99,10 @@ WinHttpReceiveResponse
 
 Here is a function responsible for HTTP request, you can see `WinHTTPConnect` and `WinHTTPOpenRequest` being called here.
 
-```
-sub_140001000
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>sub_140001000</code></pre>
+</details>
 
 * * *
 ## Summary

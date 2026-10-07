@@ -53,24 +53,32 @@ Or we can just check from Port Scanning result, if port 139 (Microsoft RPC) was 
 
 * * *
 > What is the IP address scanning the environment?
-```
-10.42.42.253
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>10.42.42.253</code></pre>
+</details>
 
 > What is the IP address found as a result of the scan?
-```
-10.42.42.50
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>10.42.42.50</code></pre>
+</details>
 
 > What is the MAC address of the Apple system it finds?
-```
-00:16:cb:92:6e:dc
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>00:16:cb:92:6e:dc</code></pre>
+</details>
 
 > What is the IP address of the detected Windows system?
-```
-10.42.42.50
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>10.42.42.50</code></pre>
+</details>
 
 * * *
 ## Summary

@@ -22,14 +22,17 @@ After opened provided pcap file, first thing we could see is RDP traffic between
 
 But when I filtered for `http` and 1 of these IP address, we can see that there are some sort of bruteforce attack happening and `10.1.0.4` is our web server.
 
-```
-10.1.0.4
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10.1.0.4</code></pre>
+</details>
 
 >What is the IP address of the attacker?
-```
-197.32.212.121
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>197.32.212.121</code></pre>
+</details>
 
 >The attacker first tried to sign up on the website, however, he found a vulnerability that he could read the source code with. What is the name of the vulnerability?
 
@@ -41,9 +44,10 @@ We need to inspect each POST request to `/register/register.php` to find any ind
 
 Which we will eventually found one right there, Its XXE vulnerability which allow the attacker to get the source code in base64
 
-```
-xxe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>xxe</code></pre>
+</details>
 
 >There was a note in the source code, what is it?
 
@@ -51,9 +55,10 @@ xxe
 
 Decode base64 we got then we can see that there is a comment telling us to submit it as the answer
 
-```
-yougotme
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>yougotme</code></pre>
+</details>
 
 >After exploiting the previous vulnerability, the attacker got a hint about a possible username. What is the username that the attacker found?
 
@@ -65,14 +70,17 @@ Most of failed bruteforce attacks resulting in 200 HTTP Response so we have to f
 
 Inspect it then we can see credential that successfully logged in to this website
 
-```
-admin
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>admin</code></pre>
+</details>
 
 >The attacker tried to brute-force the password of the possible username that he found. What is the password of that user?
-```
-fernando
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>fernando</code></pre>
+</details>
 
 >Once the attacker gained admin access, they exploited another vulnerability that led the attacker to read internal files that were located on the server. What payload did the attacker use?
 
@@ -92,16 +100,19 @@ And it was successful
 
 Use URL Decode to get the answer for submission
 
-```
-../../../../../../../../../../../../../../../etc/passwd
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>../../../../../../../../../../../../../../../etc/passwd</code></pre>
+</details>
 
 >The attacker was able to view all the users on the server. What is the last user that was created on the server?
 
 ![5dd4e161e2fa2077eb98f36a016562d7.png](/resources/5dd4e161e2fa2077eb98f36a016562d7.png)
-```
-a1l4mFTW
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>a1l4mFTW</code></pre>
+</details>
 
 >The attacker also found an open redirect vulnerability. What is the URL the attacker tested the exploit with?
 
@@ -109,9 +120,10 @@ a1l4mFTW
 
 We can see that `https://evil.com/` was tested on `/dashboard/redirect.php?url=` and looking at HTTP Response code, this exploit was successful
 
-```
-https://evil.com/
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://evil.com/</code></pre>
+</details>
 
 * * *
 ## Summary

@@ -37,31 +37,41 @@ Scan this url in [VirusTotal](https://www.virustotal.com/gui/url/368c807550a0b39
 
 * * *
 > What is the return path of the email?
-```
-bounce@rjttznyzjjzydnillquh.designclub.uk.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>bounce@rjttznyzjjzydnillquh.designclub.uk.com</code></pre>
+</details>
 
 > What is the domain name of the url in this mail?
-```
-storage.googleapis.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>storage.googleapis.com</code></pre>
+</details>
 
 > Is the domain mentioned in the previous question suspicious?
-```
-yes
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>yes</code></pre>
+</details>
 
 > What is the body SHA-256 of the domain?
-```
-13945ecc33afee74ac7f72e1d5bb73050894356c4bf63d02a1a53e76830567f5
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>13945ecc33afee74ac7f72e1d5bb73050894356c4bf63d02a1a53e76830567f5</code></pre>
+</details>
 
 * Note: This is not body SHA-256 hash of the full URL we scanned in VirusTotal but the body SHA-256 hash of google api.
 
 > Is this email a phishing email?
-```
-yes
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>yes</code></pre>
+</details>
 
 ***
 ## Summary

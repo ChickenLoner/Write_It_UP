@@ -23,17 +23,21 @@ This challenge prepared by [0xCyberJunkie.sh](https://www.linkedin.com/in/abdull
 
 ![608a223b2e61352f9b66673eae191a7f.png](/resources/608a223b2e61352f9b66673eae191a7f.png)
 Volatility 2 didn't work well with this memory image (i tried) so I ended up with `vol3 -f dump.mem windows.info` to get SystemTime 
-```
-2022-07-26 18:16:32
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2022-07-26 18:16:32</code></pre>
+</details>
 
 > What was the suspicious process running on the system? (Format : name.extension)
 
 ![66a6442a9745d68d6741d794c3b83736.png](/resources/66a6442a9745d68d6741d794c3b83736.png)
 I used `vol3 -f dump.mem windows.pstree` and this lsass process is suddenly caught my eyes because it couldn't be the chlid process of explorer.exe
-```
-lsass.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>lsass.exe</code></pre>
+</details>
 
 
 > Analyze and find the malicious tool running on the system by the attacker (Format name.extension)
@@ -42,17 +46,21 @@ lsass.exe
 Lets drump it with `vol3 -f dump.mem -o /tmp/outfile/  windows.pslist --pid 7592 --dump` then use `md5sum /tmp/outfile/pid.7592.0x2238edc0000.dmp` to calculate MD5 so we can use this hash to search on VirusTotal
 ![76bb3e4b2a6ad7ff2a2f04837bd368b9.png](/resources/76bb3e4b2a6ad7ff2a2f04837bd368b9.png)
 It's [winPEAS](https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS), so the attacker tried to gain system/admin privilege or enumerate system using this tool
-```
-winPEAS.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>winPEAS.exe</code></pre>
+</details>
 
 > Which User Account was compromised? Format (DomainName/USERNAME)
 
 ![6e46717375b7fd5ff9ed5a97f6fdfd1d.png](/resources/6e46717375b7fd5ff9ed5a97f6fdfd1d.png)
 We will use `vol3 -f dump.mem windows.sessions` to determine if that suspicious process has a session under any username, which there is
-```
-MSEDGEWIN10/CyberJunkie
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>MSEDGEWIN10/CyberJunkie</code></pre>
+</details>
 
 > What is the compromised user password?
 
@@ -62,9 +70,11 @@ I used hashdump plugin then filter for specific user and pipe it to a file with 
 Then I made a little adjustment before using john to crack it
 ![c8a6b981c23fed540fe24e1d8d685bfd.png](/resources/c8a6b981c23fed540fe24e1d8d685bfd.png)
 Using `john --wordlist=/usr/share/wordlists/rockyou.txt CyberJunkie.hash --format=NT` then we have his password
-```
-password123
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>password123</code></pre>
+</details>
 
 <div align=center>
 

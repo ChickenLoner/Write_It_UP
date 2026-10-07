@@ -20,17 +20,20 @@ Answer Format: 0x000000
 
 Open sample file on Detect It Easy then you will have both Base address and Entry point, and do not that this sample is .NET base so we will have to use JetBrains dotPeek or ILSpy
 
-```
-0x400000
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0x400000</code></pre>
+</details>
 
 >What is the entry point of the sample?
 Answer Format: 0x000000
 
 ![cb4f34cff270f80b7b88790c04e07bcc.png](/resources/cb4f34cff270f80b7b88790c04e07bcc.png)
-```
-0x4aab56
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>0x4aab56</code></pre>
+</details>
 
 >What is the sha256 hash of the sample?
 
@@ -38,9 +41,10 @@ Answer Format: 0x000000
 
 Using HashCalc to calculate filehash of this sample file
 
-```
-9d1ba303d691bee165c66a698adba44419bc772182fb80c927ee1df3464f40f9
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>9d1ba303d691bee165c66a698adba44419bc772182fb80c927ee1df3464f40f9</code></pre>
+</details>
 
 >What is the directory name that was created by malware?
 
@@ -48,9 +52,10 @@ Using HashCalc to calculate filehash of this sample file
 
 Inside Form1 function, there is an attempt to create directory and then if a specific file in that folder exists then it will return indicating that it won't affect the same host twice.
 
-```
-Astasia
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Astasia</code></pre>
+</details>
 
 >What is the URL that is encoded by the malware?
 
@@ -62,9 +67,10 @@ There is an url belonged to github that will be encoded and decoded inside `VcSR
 
 Upon researching about this malware, I've learned that this `README.md` was used to store url that hosted for redline steader
 
-```
-https://raw.githubusercontent.com/newuploaders/newuploaders/main/README.md
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://raw.githubusercontent.com/newuploaders/newuploaders/main/README.md</code></pre>
+</details>
 
 >Using Thread.Sleep, how long does the code pause execution of the current thread? (in milliseconds)
 
@@ -72,25 +78,28 @@ https://raw.githubusercontent.com/newuploaders/newuploaders/main/README.md
 
 There is a `Lg4dXD` function inside `VcSR9o` class that will send information collects by redline stealer to telegram bot then sleep for 2000 milliseconds before deleting redline stealer then sleep again and then append number `1` to a file created by this malware
 
-```
-2000
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2000</code></pre>
+</details>
 
 >What is the name of the malware?
 
 ![2926014d1cbe5aaf197bbdb9ec89151b.png](/resources/2926014d1cbe5aaf197bbdb9ec89151b.png)
 
-```
-AstasiaLoader
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>AstasiaLoader</code></pre>
+</details>
 
 >What is the username of the attacker on Telegram?
 
 ![d93cc7c57c7e70b52c0fa0b62f320f6f.png](/resources/d93cc7c57c7e70b52c0fa0b62f320f6f.png)
 
-```
-@SkalaMmmvkusno
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>@SkalaMmmvkusno</code></pre>
+</details>
 
 >What is the name of the file that is deleted by the malware?
 
@@ -98,17 +107,19 @@ AstasiaLoader
 
 ![dc2274a5b5ff45a56bfed778546a9dcc.png](/resources/dc2274a5b5ff45a56bfed778546a9dcc.png)
 
-```
-infected.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>infected.exe</code></pre>
+</details>
 
 >What is the name of the file that was checked by malware or not?
 
 ![e34c84bbe7525a7ebce09a69cab9bb30.png](/resources/e34c84bbe7525a7ebce09a69cab9bb30.png)
 
-```
-currentscript.txt
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>currentscript.txt</code></pre>
+</details>
 
 * * *
 ## Summary

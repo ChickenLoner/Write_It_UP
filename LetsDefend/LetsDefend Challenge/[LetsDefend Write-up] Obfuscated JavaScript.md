@@ -73,45 +73,60 @@ Now we can remove the comment to make it easier to read, and here is the flow of
 So to put it simply, the actual malicious content of this script are in the comments and will be replaced with new line then the function the later part (`a` function and its brothers) will read though the script again and execute previously uncomment code to map network drive, install malicious msi file which will become more chaotic if AlwaysInstallElevated is enabled, and then unmap the drive for cleaning up.
 
 >What is the name of the ActiveXObject created in the script?
-```
-WScript.Network
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>WScript.Network</code></pre>
+</details>
 
 >What WMI namespace is accessed in the script?
-```
-root\cimv2
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>root\cimv2</code></pre>
+</details>
 
 >What is the initial value of the attempt variable in the script?
-```
-0
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>0</code></pre>
+</details>
 
 >What function is used to enumerate network drives in the script?
 
-```
-network.EnumNetworkDrives
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>network.EnumNetworkDrives</code></pre>
+</details>
 
 >How long does the script wait (in milliseconds) after executing the net use command?
-```
-3000
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>3000</code></pre>
+</details>
 
 >What is the MSI package used for installation in the script called?
-```
-avp.msi
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>avp.msi</code></pre>
+</details>
 
 >What is the final output message if the network drive removal fails in the script?
-```
-Failed.
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Failed.</code></pre>
+</details>
 
 >What function is used to check if a drive is mapped in the script?
-```
-isDriveMapped
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>isDriveMapped</code></pre>
+</details>
 
 * * *
 ## Summary
