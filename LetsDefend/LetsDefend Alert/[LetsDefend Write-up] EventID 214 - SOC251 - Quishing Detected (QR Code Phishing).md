@@ -112,13 +112,15 @@ https://ipfs.io/ipfs/Qmbr8wmr41C35c3K2GfiP2F8YGzLhYpKpb4K66KU6mLmL4#</code></pre
 </details>
 
 >Analyst Note
-```
-Quishing attack has been confirmed, an attacker tried to mimicking Microsoft login page to harvest user credential from an employee of this company.
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Quishing attack has been confirmed, an attacker tried to mimicking Microsoft login page to harvest user credential from an employee of this company.
 
 There is not confirmed that this phishing site was visited, SOC team should contacted this employee to investigate if this QR code was scanned on her phone or not.
 
-An employee's endpoint is contained temporary until the investigation process is completed and found no threat.
-```
+An employee's endpoint is contained temporary until the investigation process is completed and found no threat.</code></pre>
+</details>
 
 ***
 ## Close Alert

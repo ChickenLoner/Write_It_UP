@@ -47,7 +47,11 @@ question's section, the sole — or last — untagged 1-3 line fence is the answ
 earlier fences are code and stay. Lang-tagged or long fences, fences outside any
 question (machine write-ups have none), and anything ambiguous are listed for a
 human and left alone. Run it only on platforms that use `> question` blockquotes.
-Not yet wired into `publish.py`.
+SOC alert playbooks (`LetsDefend Alert`) have no questions — each `### Step`
+heading is the question — so they take `--only "LetsDefend Alert"
+--heading-sections [--max-lines 12]`, which refuses to run without `--only`
+(under a heading, a machine write-up's fence is a command). Not yet wired into
+`publish.py`.
 
 The build puts a blank line around every `<details>` before rendering, because
 markdown2 otherwise folds the tag into the previous paragraph or blockquote.

@@ -26,14 +26,15 @@ Last Updated: 11/07/2024 07:10
 
 Lets go to Email Security and find this email first then we can see that this is obviously a phishing email from sender email to file attachment 
 
-```
-When was it sent? : May, 13, 2024, 09:22 AM
+<details>
+  <summary>Answer</summary>
+<pre><code>When was it sent? : May, 13, 2024, 09:22 AM
 What is the email's SMTP address? : 103.80.134.63
 What is the sender address? : free@coffeeshooop.com
 What is the recipient address? : Felix@letsdefend.io
 Is the mail content suspicious? : Yes
-Are there any attachment? : Yes
-```
+Are there any attachment? : Yes</code></pre>
+</details>
 
 ![44951fba7b48aa39062f76a09c69c6de.png](/resources/44951fba7b48aa39062f76a09c69c6de.png)
 
@@ -114,14 +115,16 @@ By taking a look at Terminal History, we can see how many commands were executed
 
 
 >Add Artifacts
-```
-free@coffeeshooop.com
+
+<details>
+  <summary>Answer</summary>
+<pre><code>free@coffeeshooop.com
 coffeeshooop.com
 103.80.134.63
 37.120.233.226
 files-ld.s3.us-east-2.amazonaws.com/59cbd215-76ea-434d-93ca-4d6aec3bac98-free-coffee.zip
-961d8e0f1ec3c196499bfcbd0a9d19fa
-```
+961d8e0f1ec3c196499bfcbd0a9d19fa</code></pre>
+</details>
 
 >Analyst Note
 
