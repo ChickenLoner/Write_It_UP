@@ -20,9 +20,10 @@ Opened sample pcap file then use `http` filter which will filter all other proto
 
 Searched this IP address on VirusTotal, and also inspected the request which turn out this IP address is really malicious IP address that hosted a zip file that contains malicious document file.
 
-```
-2021-09-24 16:44:38
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2021-09-24 16:44:38</code></pre>
+</details>
 
 >What is the name of the zip file that was downloaded?
 
@@ -30,14 +31,17 @@ Searched this IP address on VirusTotal, and also inspected the request which tur
 
 And this is the name of zip file that was downloaded to victim host, Go to "File" > "Export Objects" > "HTTP" then export it out 
 
-```
-documents.zip
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>documents.zip</code></pre>
+</details>
 
 >What was the domain hosting the malicious zip file?
-```
-attirenepal.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>attirenepal.com</code></pre>
+</details>
 
 >Without downloading the file, what is the name of the file in the zip file?
 
@@ -45,9 +49,10 @@ attirenepal.com
 
 Since we already exported zip file, lets open it which we can see that it contains an xls file (which likely to be malicious document).
 
-```
-chart-1530076591.xls
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>chart-1530076591.xls</code></pre>
+</details>
 
 >What is the name of the webserver of the malicious IP from which the zip file was downloaded?
 
@@ -55,14 +60,17 @@ chart-1530076591.xls
 
 Inspect this conversation then you can see that this server is using PHP and we could get a name of this webserver right there
 
-```
-LiteSpeed
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>LiteSpeed</code></pre>
+</details>
 
 >What is the version of the webserver from the previous question?
-```
-PHP/7.2.34
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>PHP/7.2.34</code></pre>
+</details>
 
 >Malicious files were downloaded to the victim host from multiple domains. What were the three domains involved with this activity?
 
@@ -70,9 +78,10 @@ PHP/7.2.34
 
 We will have to use `dns` filter for this one and find DNS queries that happened after zip file was downloaded, we can use VirusTotal to confirm the maliciousness of each domain then we will have these 3 pair queries hence 3 domains we are looking for.
 
-```
-finejewels.com.au,thietbiagh.com,new.americold.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>finejewels.com.au,thietbiagh.com,new.americold.com</code></pre>
+</details>
 
 >Which certificate authority issued the SSL certificate to the first domain from the previous question?
 
@@ -80,9 +89,10 @@ finejewels.com.au,thietbiagh.com,new.americold.com
 
 We have to inspect TLSv1.2 traffic to the first domain and we will see that the CA that issued SSL certificate for this domain is GoDaddy
 
-```
-GoDaddy
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>GoDaddy</code></pre>
+</details>
 
 >What are the two IP addresses of the Cobalt Strike servers? Use VirusTotal (the Community tab) to confirm if IPs are identified as Cobalt Strike C2 servers. (answer format: enter the IP addresses in sequential order)
 
@@ -98,9 +108,10 @@ This is the first C2 server we found, Community tab got us cover here
 
 And here is the second C2 server
 
-```
-185.106.96.158,185.125.204.174
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>185.106.96.158,185.125.204.174</code></pre>
+</details>
 
 >What is the Host header for the first Cobalt Strike IP address from the previous question?
 
@@ -112,9 +123,10 @@ On the first domain, I also came across other comment in the community tab on Vi
 
 We can use `tcp && ip.addr == 185.106.96.158` to filter for TCP traffic to this C2 which we can see that the Host Header is the same as we found on VirusTotal
 
-```
-ocsp.verisign.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ocsp.verisign.com</code></pre>
+</details>
 
 >What is the domain name for the first IP address of the Cobalt Strike server? You may use VirusTotal to confirm if it's the Cobalt Strike server (check the Community tab).
 
@@ -122,9 +134,10 @@ ocsp.verisign.com
 
 We can use `dns` filter again for this one and find for the response that contains C2 IP address and we will obtain this domain from packet number 6511
 
-```
-survmeter.live
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>survmeter.live</code></pre>
+</details>
 
 >What is the domain name of the second Cobalt Strike server IP?  You may use VirusTotal to confirm if it's the Cobalt Strike server (check the Community tab).
 
@@ -132,9 +145,10 @@ survmeter.live
  
 We're still using `dns` filter but this time, we just have to search for second C2 IP address 
 
-```
-securitybusinpuff.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>securitybusinpuff.com</code></pre>
+</details>
 
 >What is the domain name of the post-infection traffic?
 
@@ -142,9 +156,10 @@ securitybusinpuff.com
 
 From the beginning of this investigation, we can see that there are multiple POST requests to specific web server and the Request URL does look like base64 encoded but what we will focus on right now is the domain name of this server which we can obtain it from Host Header.
 
-```
-maldivehost.net
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>maldivehost.net</code></pre>
+</details>
 
 >What are the first eleven characters that the victim host sends out to the malicious domain involved in the post-infection traffic?
 
@@ -152,9 +167,10 @@ maldivehost.net
 
 At first, I thought this question is asking for first 11 characters/bytes but turns out its asking for the path of this request right here. 
 
-```
-zLIisQRWZI9
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>zLIisQRWZI9</code></pre>
+</details>
 
 >What was the length for the first packet sent out to the C2 server?
 
@@ -162,9 +178,10 @@ zLIisQRWZI9
 
 We can get the length of this packet here
 
-```
-281
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>281</code></pre>
+</details>
 
 >What was the Server header for the malicious domain from the previous question?
 
@@ -172,9 +189,10 @@ We can get the length of this packet here
 
 We can get the answer of this question here
 
-```
-Apache/2.4.49 (cPanel) OpenSSL/1.1.1l mod_bwlimited/1.4
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Apache/2.4.49 (cPanel) OpenSSL/1.1.1l mod_bwlimited/1.4</code></pre>
+</details>
 
 >The malware used an API to check for the IP address of the victim’s machine. What was the date and time when the DNS query for the IP check domain occurred? (answer format: yyyy-mm-dd hh:mm:ss UTC)
 
@@ -182,14 +200,17 @@ Apache/2.4.49 (cPanel) OpenSSL/1.1.1l mod_bwlimited/1.4
 
 Back to our `dns` filter again then we can use "Find Packet" to find for `api` or `ip` which we will come across this domain which is the one we are looking for 
 
-```
-2021-09-24 17:00:04
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2021-09-24 17:00:04</code></pre>
+</details>
 
 >What was the domain in the DNS query from the previous question?
-```
-api.ipify.org
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>api.ipify.org</code></pre>
+</details>
 
 >Looks like there was some malicious spam (malspam) activity going on. What was the first MAIL FROM address observed in the traffic?
 
@@ -197,9 +218,10 @@ api.ipify.org
 
 For this one, we have to use `smtp` filter for SMTP protocol then inspect MAIL FROM packet to get an email address of malspam sender.
 
-```
-farshin@mailfa.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>farshin@mailfa.com</code></pre>
+</details>
 
 >How many packets were observed for the SMTP traffic?
 
@@ -207,9 +229,10 @@ farshin@mailfa.com
 
 When we are using `smtp` filter, look at the bottom which we can see how many SMTP packets were displayed (total SMTP packets on this pcap)
 
-```
-1439
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>1439</code></pre>
+</details>
 
 ![6330a04f4643bcb78d640d0a9474ee28.png](/resources/6330a04f4643bcb78d640d0a9474ee28.png)
 ***

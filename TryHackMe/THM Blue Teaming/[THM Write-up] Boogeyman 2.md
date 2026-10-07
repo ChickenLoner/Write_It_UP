@@ -29,9 +29,10 @@ After analyzed it, we can get the sender email from the "From" header right here
 
 And just to be sure, we will also have to cross check with "Return-Path" header which we can see that the email from both headers are matches!
 
-```
-westaylor23@outlook.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>westaylor23@outlook.com</code></pre>
+</details>
 
 >What is the email of the victim employee?
 
@@ -39,9 +40,10 @@ westaylor23@outlook.com
 
 We can get the victim email address from the "To" header right here.
 
-```
-maxine.beck@quicklogisticsorg.onmicrosoft.com
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>maxine.beck@quicklogisticsorg.onmicrosoft.com</code></pre>
+</details>
 
 >What is the name of the attached malicious document?
 
@@ -49,9 +51,10 @@ maxine.beck@quicklogisticsorg.onmicrosoft.com
 
 After reading the email body, we can see that the attacker tried to trick whatever in the position of reviewing the resume to open malicious attachment which we can see the name of an attachment right here.
 
-```
-Resume_WesleyTaylor.doc
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Resume_WesleyTaylor.doc</code></pre>
+</details>
 
 >What is the MD5 hash of the malicious attachment?
 
@@ -64,9 +67,10 @@ To actually get the file attachment without manually copy-pasta and place it to 
 
 We could not just decode base64 directly with the previous command since it will trigger input error and the hash won't match the original file, So I came up with this `tail -n +273 "Resume - Application for Junior IT Analyst Role.eml" | head -n -3 | tr -d '\r\n' | base64 -d > Resume_WesleyTaylor.doc` command to remove Unix new line (`\n`) and carriage return of Windows line ending (`\r`) and decode it and pipe the raw output to a file, then we should have an attachment that has MD5 hash matches what the question want.
 
-```
-52c4384a0b9e248b95804352ebec6c5b
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>52c4384a0b9e248b95804352ebec6c5b</code></pre>
+</details>
 
 >What URL is used to download the stage 2 payload based on the
 document's macro?
@@ -75,19 +79,24 @@ document's macro?
 
 Since we have Microsoft Office Document attachment then we can proceed with `olevba` tool to extract macro out of the file which we can see that upon opening this file, it will download a file from file hosting server to `C:\ProgramData\update.js` and execute it with `wscript` so from an attachment of the file and the binary that will be used to execute the stage 2 payload that the stage 2 payload is an actual JavaScript file so we will have to extract it out later.
 
-```
-https://files.boogeymanisback.lol/aa2a9c53cbb80416d3b47d85538d9971/update.png
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://files.boogeymanisback.lol/aa2a9c53cbb80416d3b47d85538d9971/update.png</code></pre>
+</details>
 
 >What is the name of the process that executed the newly downloaded stage 2 payload?
-```
-wscript.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>wscript.exe</code></pre>
+</details>
 
 >What is the full file path of the malicious stage 2 payload?
-```
-C:\ProgramData\update.js
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\ProgramData\update.js</code></pre>
+</details>
 
 >What is the PID of the process that executed the stage 2 payload?
 
@@ -95,14 +104,17 @@ C:\ProgramData\update.js
 
 We can now proceed with the memory dump, I used `vol -f WKSTN-2961.raw windows.pstree` command to display process trees which we can see that `wscript.exe` was actually executed after MalDoc was opened from the Outlook and beside that we also found the stage 3 payload (`updater.exe`) from this process tree as well!
 
-```
-4260
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4260</code></pre>
+</details>
 
 >What is the parent PID of the process that executed the stage 2 payload?
-```
-1124
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>1124</code></pre>
+</details>
 
 >What URL is used to download the malicious binary executed by the stage 2 payload?
 
@@ -118,9 +130,10 @@ Since we got the virtual address then we can proceed with `vol -f WKSTN-2961.raw
 
 Now we can read the content of the file we reveals that it will download stage 3 payload to `C:\Windows\Tasks` as we already found it from the filescan and pstree plugins but it also added this path to User Shell Folder for persistence before execute it and sleep/delay.
 
-```
-https://files.boogeymanisback.lol/aa2a9c53cbb80416d3b47d85538d9971/update.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://files.boogeymanisback.lol/aa2a9c53cbb80416d3b47d85538d9971/update.exe</code></pre>
+</details>
 
 >What is the PID of the malicious process used to establish the C2 connection?
 
@@ -132,14 +145,17 @@ We can also cross check the result of `vol -f WKSTN-2961.raw windows.cmdline` co
 
 So we can confirm that this is really stage 3 from all the evidence that leads to it.
 
-```
-6216
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>6216</code></pre>
+</details>
 
 >What is the full file path of the malicious process used to establish the C2 connection?
-```
-C:\Windows\Tasks\updater.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Windows\Tasks\updater.exe</code></pre>
+</details>
 
 >What is the IP address and port of the C2 connection initiated by the malicious binary? (Format: IP address:port)
 
@@ -147,9 +163,10 @@ C:\Windows\Tasks\updater.exe
 
 I tried to use netstat plugin but it did not work so I proceeded with `vol -f WKSTN-2961.raw windows.netscan > netscan.txt` to list all connection cached from the memory dump and grep for the stage 3 payload which reveals C2 address and port used by this binary.
 
-```
-128.199.95.189:8080
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>128.199.95.189:8080</code></pre>
+</details>
 
 >What is the full file path of the malicious email attachment based on the memory dump?
 
@@ -157,9 +174,10 @@ I tried to use netstat plugin but it did not work so I proceeded with `vol -f WK
 
 Review the result of cmdline plugin again then we will see the full path of email attachment from Microsoft Word process right here.
 
-```
-C:\Users\maxine.beck\AppData\Local\Microsoft\Windows\INetCache\Content.Outlook\WQHGZCFI\Resume_WesleyTaylor (002).doc
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\maxine.beck\AppData\Local\Microsoft\Windows\INetCache\Content.Outlook\WQHGZCFI\Resume_WesleyTaylor (002).doc</code></pre>
+</details>
 
 >The attacker implanted a scheduled task right after establishing the c2 callback. What is the full command used by the attacker to maintain persistent access?
 
@@ -167,9 +185,10 @@ C:\Users\maxine.beck\AppData\Local\Microsoft\Windows\INetCache\Content.Outlook\W
 
 I tried to dump strings from conhost process that was a child of stage 3 payload which should contains most of command line from the stage 3 payload but I could not find the full command line after filtered for schedule task creation command so I ended up dumping strings from the whole memory dump with `strings WKSTN-2961.raw | grep schtasks` and then we can finally see that command that responsible for schedule task persistence creation right here which will execute PowerShell base64 command that reside in the registry every day at 9.
 
-```
-schtasks /Create /F /SC DAILY /ST 09:00 /TN Updater /TR 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NonI -W hidden -c \"IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\Software\Microsoft\Windows\CurrentVersion debug).debug)))\"'
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>schtasks /Create /F /SC DAILY /ST 09:00 /TN Updater /TR 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NonI -W hidden -c \"IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\Software\Microsoft\Windows\CurrentVersion debug).debug)))\"'</code></pre>
+</details>
 
 ![e2b78b9ba439134f51870de7e15d44d9.png](/resources/e2b78b9ba439134f51870de7e15d44d9.png)
 

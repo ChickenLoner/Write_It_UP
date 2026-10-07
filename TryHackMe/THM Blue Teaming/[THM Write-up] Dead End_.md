@@ -27,9 +27,10 @@ Firstly we can start with `python3 vol.py -f ../RobertMemdump/memdump.mem window
 
 Now we can proceed with `python3 vol.py -f ../RobertMemdump/memdump.mem windows.pstree` to display process trees which we can see that from the image above, we got the `svchost.exe` that is not from `C:\\Windows\\System32` folder and the command line of this process indicates that this process is actually a netcat which used to create reverse shell connection to 10.14.74.53 on port 6996
 
-```
-C:\Tools\svchost.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Tools\svchost.exe</code></pre>
+</details>
 
 >The answer above shares the same parent process with another binary that references a .txt file - what is the full path of this .txt file?
 
@@ -37,9 +38,10 @@ C:\Tools\svchost.exe
 
 From the same process tree, we can see that `notepad.exe` was used to open `part2.txt` file and after tracing back the process tree, we can see that both netcat process and notepad are the child processes of PowerShell process and the PowerShell is the child process of `explorer.exe` which make it look like user itself opened the PowerShell. 
 
-```
-C:\Users\Bobby\Documents\tmp\part2.txt
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\Bobby\Documents\tmp\part2.txt</code></pre>
+</details>
 
 We are done with this machine, Lets go to the second machine
 
@@ -107,9 +109,10 @@ Since I could forget to enable command line logging so I went to PowerShell log 
 
 By inspecting the content of this file on Script Block, we can see that this script will edit open\shell\command registry of text file to execute `connector.ps1` when a text file was opened and also added the first path of the flag to the registry as well.
 
-```
-C:\Users\windows-networking-tools-master\windows-networking-tools-master\LatestBuilds\x64\Autoconnector.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\windows-networking-tools-master\windows-networking-tools-master\LatestBuilds\x64\Autoconnector.exe</code></pre>
+</details>
 
 Useful resource to follow to enable process ID 4688 with full capabilities (Command line included)
 - https://docs.nxlog.co/integrate/windows-command-line-auditing.html
@@ -120,17 +123,19 @@ Useful resource to follow to enable process ID 4688 with full capabilities (Comm
 
 There are several ways to proof the binary were executed but the intended way and the answer of this question is using bam registry as shown in the image above 
 
-```
-HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\bam\State\UserSettings\S-1-5-21-1966530601-3185510712-10604624-1008
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\bam\State\UserSettings\S-1-5-21-1966530601-3185510712-10604624-1008</code></pre>
+</details>
 
 >What is the content of "Part2"?
 
 ![6b50edb44a7c78dae814ddf65dd26384.png](/resources/6b50edb44a7c78dae814ddf65dd26384.png)
 
-```
-faDB3XzJfcDF2T1R9 
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>faDB3XzJfcDF2T1R9</code></pre>
+</details>
 
 >What is the flag?
 
@@ -142,9 +147,10 @@ We know the first part of the flag was added to the registry key so you can conf
 
 Decode base64 string then we should be able to get a flag.
 
-```
-THM{6l4D_y0u_kNOw_h0w_2_p1vOT}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THM{6l4D_y0u_kNOw_h0w_2_p1vOT}</code></pre>
+</details>
 
 ![5e6c5a409ca4bc8994a680bc9012b16f.png](/resources/5e6c5a409ca4bc8994a680bc9012b16f.png)
 

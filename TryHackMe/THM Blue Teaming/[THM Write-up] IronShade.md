@@ -16,9 +16,10 @@ Investigate the server and identify the footprints left behind after the exploit
 
 After we started the machine, we can open a terminal and read the file `/etc/machine-id` to get Machine ID of the machine we are investigating.
 
-```
-dc7c8ac5c09a4bbfaf3d09d399f10d96
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>dc7c8ac5c09a4bbfaf3d09d399f10d96</code></pre>
+</details>
 
 >What backdoor user account was created on the server?
 
@@ -26,9 +27,10 @@ dc7c8ac5c09a4bbfaf3d09d399f10d96
 
 We can take a look at the suspicious user from `/etc/passwd` file which we can see the user with uid 1001 that misspelled from microservice and is the only user that is only beside ubuntu and root so this is the one.
 
-```
-mircoservice
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>mircoservice</code></pre>
+</details>
 
 >What is the cronjob that was set up by the attacker for persistence?
 
@@ -44,9 +46,10 @@ We can see that the file is ELF 64-bit binary and disassembly is out of scope of
 
 But we also have to check when this file was created on 6th August 2024 so we can use this timestamp as the baseline of our investigation.
 
-```
-@reboot /home/mircoservice/printer_app
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>@reboot /home/mircoservice/printer_app</code></pre>
+</details>
 
 >Examine the running processes on the machine. Can you identify the suspicious-looking hidden process from the backdoor account?
 
@@ -70,9 +73,10 @@ I went to the `.tmp` directory and found another 2 files on this directory, the 
 
 C script just happened to have to same name as the hidden process and we can see that this is simple keylogger but it does not save to a file or send it over a network.
 
-```
-.strokes
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>.strokes</code></pre>
+</details>
 
 >How many processes are found to be running from the backdoor account’s directory?
 
@@ -80,9 +84,10 @@ C script just happened to have to same name as the hidden process and we can see
 
 We already know that there are 2 processes running from the backdoor's home directory but we can also use `Select pid, name, parent,path from processes where path LIKE "%mirco%";` on osquery to confirm that as well.
 
-```
-2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2</code></pre>
+</details>
 
 >What is the name of the hidden file in memory from the root directory?
 
@@ -94,9 +99,10 @@ Since we already started osquery then we can proceed with `SELECT filename, path
 
 Its also in the root directory so this is the one we are looking for.
 
-```
-.systmd
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>.systmd</code></pre>
+</details>
 
 >What suspicious services were installed on the server? Format is service a, service b in alphabetical order.
 
@@ -116,9 +122,10 @@ Another one is `strokes.service` which we can see the similar naming convention 
 
 And as we can guess, it will execute `.strokes` from the backdoor user directory and its the service responsible for running process we found as well.
 
-```
-backup.service,strokes.service
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>backup.service,strokes.service</code></pre>
+</details>
 
 >Examine the logs; when was the backdoor account created on this infected system?
 
@@ -130,9 +137,10 @@ Alright we will now have to check out `/var/log` directory but there are so many
 
 And now we can use grep to search for the trace of this user which we can see that even though we did not find `useradd` binary being used but we can see the first appearance of this user on 5th Auguest, just 1 day before the creation date of those backdoor we discovered.
 
-```
-Aug  5 22:05:33
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Aug  5 22:05:33</code></pre>
+</details>
 
 >From which IP address were multiple SSH connections observed against the suspicious backdoor account?
 
@@ -140,9 +148,10 @@ Aug  5 22:05:33
 
 Now we can focus on this user with keyword "Failed" to focus on failed attempts to authenticate as this user which we can see that there is only a single IP trying to authenticate as backdoor user.
 
-```
-10.11.75.247
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>10.11.75.247</code></pre>
+</details>
 
 >How many failed SSH login attempts were observed on the backdoor account?
 
@@ -154,9 +163,10 @@ Even though there are only 6 lines return from this but remember that there are 
 
 Here the breakdown from ChatGPT.
 
-```
-8
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>8</code></pre>
+</details>
 
 >Which malicious package was installed on the host?
 
@@ -172,14 +182,17 @@ We can use `dpkg -L pscaner` to list binary dropped from this package which we c
 
 Then we can use `dpkg -s pscanner` to display metadata of this package and we can see the secret code for next question and the one that really stood out is the Maintainer "johnnyEng" (Johnny English) 😆
  
-```
-pscanner
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>pscanner</code></pre>
+</details>
 
 >What is the secret code found in the metadata of the suspicious package?
-```
-{_tRy_Hack_ME_}
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>{_tRy_Hack_ME_}</code></pre>
+</details>
 
 ![be52c3bf291e212bac8a4560862fbc87.png](/resources/be52c3bf291e212bac8a4560862fbc87.png)
 

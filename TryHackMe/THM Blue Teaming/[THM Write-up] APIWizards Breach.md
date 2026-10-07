@@ -27,9 +27,10 @@ You were hired as a dedicated external DFIR specialist to help the APIWizards In
 
 After connected to the server, there is one directory that stores files related to API service so after reviewing files inside this directory, we can see that web application was written in python.
 
-```
-python
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>python</code></pre>
+</details>
 
 ![98762cb1e665a9e1e74c0e80448566f2.png](/resources/98762cb1e665a9e1e74c0e80448566f2.png)
 
@@ -45,14 +46,17 @@ Since we already know that `/time` could lead to command injection vulnerability
 
 We can paste these command to ChatGPT and let it beautify things for us, now we can see that the attacker exploited this vulnerability and added SSH public key to dev's `authorized_keys` file so the attacker could access this system via SSH as dev.
 
-```
-149.34.244.142
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>149.34.244.142</code></pre>
+</details>
 
 >Which vulnerability was found and exploited in the API service?
-```
-os command injection
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>os command injection</code></pre>
+</details>
 
 >Which file contained the credentials used to privesc to root?
 
@@ -64,9 +68,10 @@ Since dev is our current user so I checked `.bash_history` which we can see that
 
 There it is.
 
-```
-/home/dev/apiservice/src/config.py
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/home/dev/apiservice/src/config.py</code></pre>
+</details>
 
 >What file did the hacker drop and execute to persist on the server?
 
@@ -84,14 +89,17 @@ From `.bash_history`, we can see that the attacker did several things included
 - Cleared log
 - Checked `nginx` and `apiservice` service status (we might want to look into these 2 services later)
 
-```
-/tmp/rooter2
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/tmp/rooter2</code></pre>
+</details>
 
 >Which service was used to host the “rooter2” malware?
-```
-transfer.sh
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>transfer.sh</code></pre>
+</details>
 
 * * *
 ## Further Actions
@@ -103,14 +111,17 @@ transfer.sh
 
 After checking for `/etc/crontab` file, we could see that root user will execute what whatever stores in `$SYSTEMUPDATE` variable at 4:20 AM every day so after checking `/etc/environment` next, then it is confirmed that the attacker compromised these 2 files to stay persistence and it receive reverse shell connection from this cron job everyday. 
 
-```
-/etc/crontab, /etc/environment
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/etc/crontab, /etc/environment</code></pre>
+</details>
 
 >What is the C2 server IP address of the malicious actor?
-```
-5.230.66.147
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>5.230.66.147</code></pre>
+</details>
 
 >What port is the backdoored bind bash shell listening at?
 
@@ -120,9 +131,10 @@ Cron job from the above is reverse shell but there is more bind shell? lets chec
 
 Now we could see that there is netcat listener on port 3578 triggered by bash command so our next mission is to find out how this command got executed.
 
-```
-3578
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3578</code></pre>
+</details>
 
 >How does the bind shell persist across reboots?
 
@@ -130,14 +142,17 @@ Now we could see that there is netcat listener on port 3578 triggered by bash co
 
 I searched for this command with `grep -R 'nc -l' /etc/systemd/system 2>/dev/null` because I suspected that it has to be a service if not in cron job which we can see that `socket.service` is the service that responsible for this command so bind shell shall persist across reboot.
 
-```
-Systemd Service
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Systemd Service</code></pre>
+</details>
 
 >What is the absolute path of the malicious service?
-```
-/etc/systemd/system/socket.service
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>/etc/systemd/system/socket.service</code></pre>
+</details>
 
 * * *
 ## Even More Persistence
@@ -149,9 +164,10 @@ Systemd Service
 
 To list all Linux firewall rules, we can use `iptables -L` which we can see that there is one rule that will drop any packet send to port 3578 (bind shell port) but wait... if this is the case then no one can make a connection to this backdoor? well lets find out on the next question.
 
-```
-3578
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3578</code></pre>
+</details>
 
 >How do the firewall rules persist across reboots?
 
@@ -159,9 +175,10 @@ To list all Linux firewall rules, we can use `iptables -L` which we can see that
 
 There is another persistence that will make things persist across reboots which is `.bashrc` file and after checking all the rules that will be added to `iptables` then its totally making sense since packet drop on port 3578 will be the latest one on this list and only this IP address can make a connection to the backdoor.
 
-```
-/root/.bashrc
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/root/.bashrc</code></pre>
+</details>
 
 >How is the backdoored local Linux user named?
 
@@ -169,14 +186,17 @@ There is another persistence that will make things persist across reboots which 
 
 After checking for potential malicious user from `/etc/passwd` file, we can see that there is one more user other than dev on this machine which is `support` and upon checking authentication log, we could see that this user was also added to `sudo` group so this user has to be the one we are looking for.
 
-```
-support
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>support</code></pre>
+</details>
 
 >Which privileged group was assigned to the user?
-```
-sudo
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>sudo</code></pre>
+</details>
 
 >What is the strange word on one of the backdoored SSH keys?
 
@@ -184,9 +204,10 @@ sudo
 
 Lets check for `authorized_key` file of root user which we can see that only 1 public key on this file and the strange word has to be `ntsvc`.
 
-```
-ntsvc
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ntsvc</code></pre>
+</details>
 
 >Can you spot and name one more popular persistence method? Not a MITRE technique name.
 
@@ -194,9 +215,10 @@ ntsvc
 
 I toggled hint for this one, first word is special permission to executable files is `SUID` and the second word is `Binary` which make sense that this method can be abused for privilege escalation and also used for persistence.
 
-```
-SUID Binary
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SUID Binary</code></pre>
+</details>
 
 >What are the original and the backdoored binaries from question 6?
 
@@ -208,17 +230,19 @@ Now lets find out where is the SUID binary that the attacker abused with `find /
 
 So I tried to check the legitimacy of this binary which totally match `bash` binary so we found backdoored binary that can be used for privilege escalation and persistence.
 
-```
-/usr/bin/bash, /usr/bin/clamav
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/usr/bin/bash, /usr/bin/clamav</code></pre>
+</details>
 
 >What technique was used to hide the backdoor creation date?
 
 A technique that changed timestamp of a file is called [Timestomping](https://attack.mitre.org/techniques/T1070/006/) and it can make backdoor file look like legitimate file if it can modify creation date of backdoor file to creation date of other legitimate binaries on this machine. 
 
-```
-Timestomping
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Timestomping</code></pre>
+</details>
 
 * * *
 ## Final Target 
@@ -230,19 +254,24 @@ Timestomping
 
 We already know that `.dump.json` was exfiltrated so after checking content inside this file, we can see that it contains public IP address, OS with kernel information and internal IP addresses so no doubt that this file is a file that contained gathered victim information.
 
-```
-/root/.dump.json
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/root/.dump.json</code></pre>
+</details>
 
 >According to the dropped dump, what is the server’s kernel version?
-```
-5.15.0-78-generic
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>5.15.0-78-generic</code></pre>
+</details>
 
 >Which active internal IPs were found by the “rooter2” network scan?
-```
-192.168.0.21, 192.168.0.22
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.0.21, 192.168.0.22</code></pre>
+</details>
 
 >How did the hacker find an exposed HTTP index on another internal IP?
 
@@ -250,14 +279,17 @@ We already know that `.dump.json` was exfiltrated so after checking content insi
 
 Remember netcat command that used to conduct port scanning and retrieve backup file from found port, yes its that one.
 
-```
-nc -zv 192.168.0.22 1024-10000 2>&1 | grep -v failed
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>nc -zv 192.168.0.22 1024-10000 2&gt;&amp;1 | grep -v failed</code></pre>
+</details>
 
 >What command was used to exfiltrate the CDE database from the internal IP?
-```
-wget 192.168.0.22:8080/cde-backup.csv
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>wget 192.168.0.22:8080/cde-backup.csv</code></pre>
+</details>
 
 >What is the most secret and precious string stored in the exfiltrated database?
 
@@ -265,9 +297,10 @@ wget 192.168.0.22:8080/cde-backup.csv
 
 Print out content of the backup file then we can see a flag of this room so now we can submit and complete this room.
 
-```
-pwned{v3ry-secur3-cardh0ld3r-data-environm3nt}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>pwned{v3ry-secur3-cardh0ld3r-data-environm3nt}</code></pre>
+</details>
 
 ![c9e51953513df30f52ddc86e7ad78680.png](/resources/c9e51953513df30f52ddc86e7ad78680.png)
 * * *

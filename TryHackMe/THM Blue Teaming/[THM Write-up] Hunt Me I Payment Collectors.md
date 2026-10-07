@@ -39,9 +39,10 @@ I used `event.code:15` query to get all File Stream created event with would hel
 
 Leveraged what we got, I added `event.code:11` to my filter and search for any zip file creation which leads us to the zip attachment opened by user at 2023-09-15 18:41:00.069 
 
-```
-Invoice_AT_2023-227.zip
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Invoice_AT_2023-227.zip</code></pre>
+</details>
 
 ![36e75e1277c0348e2658850f0d6fa251.png](/resources/36e75e1277c0348e2658850f0d6fa251.png)
 
@@ -53,9 +54,10 @@ Another thing I found from this query is `exfilt8me.zip` file creation on `C:\Us
 
 Remember that there is a shortcut file opened by user so this is the one from the attachment that started the whole thing.
 
-```
-Payment_Invoice.pdf.lnk.lnk
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Payment_Invoice.pdf.lnk.lnk</code></pre>
+</details>
 
 >What was the name of the command-line process that spawned from the extracted file attachment?
 
@@ -67,24 +69,31 @@ Filter for Event ID 1 then we can see that upon opening the shortcut file, at 20
 
 Filter for Event ID 3 for network connection, we can see that the attacker used EC2 instance to receive reverse shell connection from the malicious attachment.
 
-```
-powershell.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>powershell.exe</code></pre>
+</details>
 
 >What URL did the attacker use to download a tool to establish a reverse shell connection?
-```
-https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1</code></pre>
+</details>
 
 >What port did the workstation connect to the attacker on?
-```
-19282
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>19282</code></pre>
+</details>
 
 >What was the first native Windows binary the attacker ran for system enumeration after obtaining remote access?
-```
-systeminfo.exe
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>systeminfo.exe</code></pre>
+</details>
 
 >What is the URL of the script that the attacker downloads to enumerate the domain?
 
@@ -106,9 +115,10 @@ Since sysmon did not catch the script that was executed then we have to use anot
 
 Going back a little by filter for Event ID 4103 and PowerView string which we can see that at 2023-09-15 18:42:23.787 the attacker downloaded PowerView from Github and saved it as `PowerView.ps1` on the user download folder as we already found from Script Block logging.
 
-```
-https://raw.githubusercontent.com/PowerShellEmpire/PowerTools/master/PowerView/powerview.ps1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://raw.githubusercontent.com/PowerShellEmpire/PowerTools/master/PowerView/powerview.ps1</code></pre>
+</details>
 
 >What was the name of the file share that the attacker mapped to Michael's workstation?
 
@@ -116,16 +126,19 @@ https://raw.githubusercontent.com/PowerShellEmpire/PowerTools/master/PowerView/p
 
 Going back to sysmon again, we can see that the attacker mapped file share related to financial of the victim's organization.
 
-```
-SSF-FinancialRecords
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SSF-FinancialRecords</code></pre>
+</details>
 
 >What directory did the attacker copy the contents of the file share to?
 
 ![0ca3320858b1e5584d893e194b37881d.png](/resources/0ca3320858b1e5584d893e194b37881d.png)
-```
-C:\Users\michael.ascot\downloads\exfiltration
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>C:\Users\michael.ascot\downloads\exfiltration</code></pre>
+</details>
 
 >What was the name of the Excel file the attacker extracted from the file share?
 
@@ -133,14 +146,17 @@ C:\Users\michael.ascot\downloads\exfiltration
 
 Utilize Event ID 11 with the name of exfiltration folder, we can see that 2 files were copied to exfiltration folder before compressed into zip file.
 
-```
-ClientPortfolioSummary.xlsx
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ClientPortfolioSummary.xlsx</code></pre>
+</details>
 
 >What was the name of the archive file that the attacker created to prepare for exfiltration?
-```
-exfilt8me.zip
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>exfilt8me.zip</code></pre>
+</details>
 
 >What is the **MITRE ID** of the technique that the attacker used to exfiltrate the data?
 
@@ -152,14 +168,17 @@ Going back to Sysmon, we can see that after compressed both files into a zip the
 
 Go to MITRE to find any technique under Exfiltration tactic which we can see that [Exfiltration Over Alternative Protocol](https://attack.mitre.org/techniques/T1048/) is the one that aligns with this action.
 
-```
-T1048
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>T1048</code></pre>
+</details>
 
 >What was the domain of the attacker's server that retrieved the exfiltrated data?
-```
-haz4rdw4re.io
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>haz4rdw4re.io</code></pre>
+</details>
 
 >The attacker exfiltrated an additional file from the victim's workstation. What is the flag you receive after reconstructing the file?
 
@@ -171,9 +190,10 @@ Notices that last 2 dig events timestamp appears to be late then all the rest by
 
 After decoding it, ye it is indeed a flag!
 
-```
-THM{1497321f4f6f059a52dfb124fb16566e}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THM{1497321f4f6f059a52dfb124fb16566e}</code></pre>
+</details>
 
 ![d6b682a0b7509c34a6183357c5ffcd55.png](/resources/d6b682a0b7509c34a6183357c5ffcd55.png)
 

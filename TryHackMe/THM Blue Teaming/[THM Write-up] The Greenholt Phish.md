@@ -15,9 +15,10 @@ We can start off by finding other tools on the machine but seem like there are o
 
 Upon opening an email, we can see the subject that contains Reference Number and also in the body of this email as well.
 
-```
-09674321
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>09674321</code></pre>
+</details>
 
 >Who is the email from?
 
@@ -25,19 +26,24 @@ Upon opening an email, we can see the subject that contains Reference Number and
 
 We can see that the email was sent from Mr. James Jackson as shown on the "From" and "Reply to" field but noticed that email on "Reply to" is different from email in "From"
 
-```
-Mr. James Jackson
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Mr. James Jackson</code></pre>
+</details>
 
 >What is his email address?
-```
-info@mutawamarine.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>info@mutawamarine.com</code></pre>
+</details>
 
 >What email address will receive a reply to this email? 
-```
-info.mutawamarine@mail.com
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>info.mutawamarine@mail.com</code></pre>
+</details>
 
 >What is the Originating IP?
 
@@ -53,9 +59,10 @@ Then we can see that the bottom "Received" header is the first hop that was rece
 
 We can copy whole source to [MX Toolbox](https://mxtoolbox.com/Public/Tools/EmailHeaders.aspx?huid=b7a8fc66-4b4f-4831-a63b-421fda233a7b) to automatically analyzed some of important headers, which we can see that the same information from this tool as well.
 
-```
-192.119.71.157
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.119.71.157</code></pre>
+</details>
 
 >Who is the owner of the Originating IP? (Do not include the "." in your answer.)
 
@@ -63,9 +70,10 @@ We can copy whole source to [MX Toolbox](https://mxtoolbox.com/Public/Tools/Emai
 
 Utilized [Whois](https://who.is/whois-ip/ip-address/192.119.71.157) then we can see that the Organization that owns this IP is Hostwind LLC.
 
-```
-Hostwinds LLC
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Hostwinds LLC</code></pre>
+</details>
 
 >What is the SPF record for the Return-Path domain?
 
@@ -73,9 +81,10 @@ Hostwinds LLC
 
 MX Toolbox already analyzed SPF and DMARC for us so we can go to the SPF analysis section which we can see that spf.protection.outlook.com is the authorized sender which if the receiver didn't receive an email from this sender then it tells receiver to reject it if not received from authorized sender.
 
-```
-v=spf1 include:spf.protection.outlook.com -all
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>v=spf1 include:spf.protection.outlook.com -all</code></pre>
+</details>
 
 >What is the DMARC record for the Return-Path domain?
 
@@ -83,9 +92,10 @@ v=spf1 include:spf.protection.outlook.com -all
 
 This DMARC record telling us that any emails that fail both SPF and DKIM alignment checks will be flagged and sent to the spam/junk folder and generates failure reports for failed SPF/DKIM alignment.
 
-```
-v=DMARC1; p=quarantine; fo=1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>v=DMARC1; p=quarantine; fo=1</code></pre>
+</details>
 
 >What is the name of the attachment?
 
@@ -97,9 +107,10 @@ We can see that this email also shipped with an attachment and its not common fi
 
 We can also confirm the name of it on from the source as well
 
-```
-SWT_#09674321____PDF__.CAB
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>SWT_#09674321____PDF__.CAB</code></pre>
+</details>
 
 >What is the SHA256 hash of the file attachment?
 
@@ -111,9 +122,10 @@ We can save an attachment from Thunderbird directly with this button.
 
 And now we can generate file hash with `sha256sum` get an answer of this question and we will also use this hash on Threat Intel platform such as VirusTotal as well.
 
-```
-2e91c533615a9bb8929ac4bb76707b2444597ce063d84a4b33525e25074fff3f
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2e91c533615a9bb8929ac4bb76707b2444597ce063d84a4b33525e25074fff3f</code></pre>
+</details>
 
 >What is the attachments file size? (Don't forget to add "KB" to your answer, **NUM KB**)
 
@@ -121,14 +133,17 @@ And now we can generate file hash with `sha256sum` get an answer of this questio
 
 Since we could not determine that exact file size from Linux by calculation then we will use the intended solution by submit the hash of the attachment to [VirusTotal](https://www.virustotal.com/gui/file/2e91c533615a9bb8929ac4bb76707b2444597ce063d84a4b33525e25074fff3f) which reveals this file attachment is actually RAR file that contains the actual payload which is Lokibot.
 
-```
-400.26 KB
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>400.26 KB</code></pre>
+</details>
 
 >What is the actual file extension of the attachment?
-```
-rar
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>rar</code></pre>
+</details>
 
 ![336c5df16cfaadf4d6a43cb7be6f56f4.png](/resources/336c5df16cfaadf4d6a43cb7be6f56f4.png)
 

@@ -11,9 +11,10 @@ Last Updated: 14/09/2024 23:46
 
 Alright, lets get straight to the `Case Files` folder on the desktop which we can see that it contains autopsy case file and E01 disk image file along with log file from FTK Imager, FTK imager will also do hash checksum at the end of evidence collection so we can obtain MD5 hash from there without doing it with cmd or PowerShell.
 
-```
-3f08c518adb3b5c1359849657a9b2079
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3f08c518adb3b5c1359849657a9b2079</code></pre>
+</details>
 
 >What is the computer account name?
 
@@ -21,9 +22,10 @@ Alright, lets get straight to the `Case Files` folder on the desktop which we ca
 
 Now lets open Autopsy case file and browse for OS information here, Autopsy already extracted some useful information for us and we need to find them according to the question which as you can see that Autopsy already extracted computer name from SYSTEM registry hive right here.
 
-```
-DESKTOP-0R59DJ3	
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>DESKTOP-0R59DJ3</code></pre>
+</details>
 
 >List all the user accounts. (alphabetical order)
 
@@ -31,9 +33,10 @@ DESKTOP-0R59DJ3
 
 Go to "Operating System User Account" then sort by "User ID" first so we can distinguish which are user accounts and which are service accounts (user account will have RID start with 100x) and as you can see there are 8 user accounts on this system so we can copy them and sort it elsewhere (or you can sort it on Autopsy now by "Username") then answer the question. 
 
-```
-H4S4N,joshwa,keshav,sandhya,shreya,sivapriya,srini,suba
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>H4S4N,joshwa,keshav,sandhya,shreya,sivapriya,srini,suba</code></pre>
+</details>
 
 >Who was the last user to log into the computer?
 
@@ -41,9 +44,10 @@ H4S4N,joshwa,keshav,sandhya,shreya,sivapriya,srini,suba
 
 We just need to sort by "Date Accessed" time to find out which user is the last one who logged into the computer.
 
-```
-sivapriya
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>sivapriya</code></pre>
+</details>
 
 >What was the IP address of the computer?
 
@@ -65,9 +69,10 @@ Sure enough, its network monitor tool so we will have to dig into install locati
 
 And there it is, `irunin.ini` under `\Program Files (x86)\Look@LAN` actually stores an IP address and MAC address of this computer.
 
-```
-192.168.130.216
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>192.168.130.216</code></pre>
+</details>
 
 >What was the MAC address of the computer? (XX-XX-XX-XX-XX-XX)
 
@@ -75,9 +80,10 @@ And there it is, `irunin.ini` under `\Program Files (x86)\Look@LAN` actually sto
 
 I was so lazy to format it myself so I made ChatGPT reformat this MAC for me, it worked btw.
 
-```
-08-00-27-2C-C4-B9
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>08-00-27-2C-C4-B9</code></pre>
+</details>
 
 >What is the name of the network card on this computer?
 
@@ -85,14 +91,17 @@ I was so lazy to format it myself so I made ChatGPT reformat this MAC for me, it
 
 For this one, we have to go to `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkCards` to get an answer.
 
-```
-Intel(R) PRO/1000 MT Desktop Adapter
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Intel(R) PRO/1000 MT Desktop Adapter</code></pre>
+</details>
 
 >What is the name of the network monitoring tool?
-```
-Look@LAN
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Look@LAN</code></pre>
+</details>
 
 >A user bookmarked a Google Maps location. What are the coordinates of the location?
 
@@ -100,9 +109,10 @@ Look@LAN
 
 Autopsy already parsed browser artefacts for us so we just have to dig into "Web Bookmarks" which we will see that there is 1 Google Maps Location that was bookmarked right here.
 
-```
-12°52'23.0"N 80°13'25.0"E
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>12°52'23.0"N 80°13'25.0"E</code></pre>
+</details>
 
 >A user has his full name printed on his desktop wallpaper. What is the user's full name?
 
@@ -120,9 +130,10 @@ Notice that mimikatz was also downloaded, we will keep that in mind.
 
 The answer of this question lies in user joshwa's download folder right here.
 
-```
-Anto Joshwa
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Anto Joshwa</code></pre>
+</details>
 
 >A user had a file on her desktop. It had a flag but she changed the flag using PowerShell. What was the first flag?
 
@@ -134,14 +145,17 @@ I went to check for each user desktop first which I found this PowerShell exploi
 
 It is indeed different from the latest one we found earlier.
 
-```
-flag{HarleyQuinnForQueen}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>flag{HarleyQuinnForQueen}</code></pre>
+</details>
 
 >The same user found an exploit to escalate privileges on the computer. What was the message to the device owner?
-```
-Flag{I-hacked-you}
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>Flag{I-hacked-you}</code></pre>
+</details>
 
 >2 hack tools focused on passwords were found in the system. What are the names of these tools? (alphabetical order)
 
@@ -153,9 +167,10 @@ We already know that one of them is mimikatz but what is the other one?
 
 I did not find anything from PowerShell history log but since this is Windows so maybe that tool is also an executable file and when an executable file is executed on Windows, Prefetch file will be created and Autopsy already parased those prefetch files for us which we can see that [LaZange](https://github.com/AlessandroZ/LaZagne) is the other tool focused on passwords.
 
-```
-Lazagne,Mimikatz
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Lazagne,Mimikatz</code></pre>
+</details>
 
 >There is a YARA file on the computer. Inspect the file. What is the name of the author?
 
@@ -167,9 +182,10 @@ We know that YARA file has `.yar` extension so I searched for this extension whi
 
 I could not find mimikatz folder, maybe it was deleted but we still have zip file that store this YARA file so we can read YARA rule from this file and answer the question.
 
-```
-Benjamin DELPY (gentilkiwi)
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Benjamin DELPY (gentilkiwi)</code></pre>
+</details>
 
 >One of the users wanted to exploit a domain controller with an MS-NRPC based exploit. What is the filename of the archive that you found? (include the spaces in your answer)
 
@@ -181,9 +197,10 @@ I started by searching on Google to find any clue about this exploit which give 
 
 And I found the file name of this archive from "Recent Documents".
 
-```
-2.2.0 20200918 Zerologon encrypted.zip
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2.2.0 20200918 Zerologon encrypted.zip</code></pre>
+</details>
 
 ![083eb409a88975821e4ceab6ea84108c.png](/resources/083eb409a88975821e4ceab6ea84108c.png)
 ***

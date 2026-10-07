@@ -46,19 +46,24 @@ After a little bit of exploration,I found that we have Sysmon so I'm gonna use i
 
 Since we know that the malicious attachment is an ISO file which contains HTML Application (hta file) masquerading as pdf file so I filtered for event ID 1 and adjusted the display table nicely then we can see that at 23:51:15 of 29 April 2023, User opened malicious hta file which resulting in `xcopy.exe` to copy stage 2 payload to user temp folder which then executed it with `rundll32.exe` indicating that the stage 2 payload (`review.dat`) is an DLL file.
 
-```
-6392
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>6392</code></pre>
+</details>
 
 >The stage 1 payload attempted to implant a file to another location. What is the full command-line value of this execution?
-```
-"C:\Windows\System32\xcopy.exe" /s /i /e /h D:\review.dat C:\Users\EVAN~1.HUT\AppData\Local\Temp\review.dat
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>"C:\Windows\System32\xcopy.exe" /s /i /e /h D:\review.dat C:\Users\EVAN~1.HUT\AppData\Local\Temp\review.dat</code></pre>
+</details>
 
 >The implanted file was eventually used and executed by the stage 1 payload. What is the full command-line value of this execution?
-```
-"C:\Windows\System32\rundll32.exe" D:\review.dat,DllRegisterServer
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>"C:\Windows\System32\rundll32.exe" D:\review.dat,DllRegisterServer</code></pre>
+</details>
 
 >The stage 1 payload established a persistence mechanism. What is the name of the scheduled task created by the malicious script?
 
@@ -66,9 +71,10 @@ Since we know that the malicious attachment is an ISO file which contains HTML A
 
 Since there is no schedule task creation presented in the Event ID 1 so I shifted my focus to Event ID 11 for the file creation on `C:\Windows\System32\Tasks` folder which is the location that stores all scheduled tasks of Windows system then we can see that the task "Review" was created after the execution of stage 1 and stage 2 payload.
 
-```
-Review
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Review</code></pre>
+</details>
 
 >The execution of the implanted file inside the machine has initiated a potential C2 connection. What is the IP and port used by this connection? (format: IP:port)
 
@@ -80,9 +86,10 @@ Following the execution trail, I found that several command executions from the 
 
 So we can filter for Event ID 3 and focus on the process ID 4672 which reveals the C2 connection for both IP and port as shown in the image above.
 
-```
-165.232.170.151:80
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>165.232.170.151:80</code></pre>
+</details>
 
 >The attacker has discovered that the current access is a local administrator. What is the name of the process used by the attacker to execute a UAC bypass?
 
@@ -94,9 +101,10 @@ Going back to the execution trail after the attacker established reverse shell c
 
 Lets look a little bit deeper into the command that was end up executed, After decoding it we can see that this is the PowerShell Empire stager so we know what kind of C2 framework that was being used by the attacker as well.
 
-```
-fodhelper.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>fodhelper.exe</code></pre>
+</details>
 
 >Having a high privilege machine access, the attacker attempted to dump the credentials inside the machine. What is the GitHub link used by the attacker to download a tool for credential dumping?
 
@@ -104,9 +112,10 @@ fodhelper.exe
 
 At 00:06:38 on 30th April 2023 onwards, we found that the attacker executed [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1) filelessly to enumerate Active Directory then Downloaded [mimikatz](https://github.com/gentilkiwi/mimikatz) to dump credential on the compromised machine.
 
-```
-https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20220919/mimikatz_trunk.zip
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20220919/mimikatz_trunk.zip</code></pre>
+</details>
 
 >After successfully dumping the credentials inside the machine, the attacker used the credentials to gain access to another machine. What is the username and hash of the new credential pair? (format: username:hash)
 
@@ -116,14 +125,17 @@ The attacker dumped logon credentials using Mimikatz, resulting in the compromis
 
 In addition, the attacker utilized PowerView to enumerate file shares, which led to the discovery and compromise of the following file `\\WKSTN-1327.quicklogistics.org\ITFiles\IT_Automation.ps1`
 
-```
-itadmin:F84769D250EB95EB2D7D8B4A1C5613F2 
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>itadmin:F84769D250EB95EB2D7D8B4A1C5613F2</code></pre>
+</details>
 
 >Using the new credentials, the attacker attempted to enumerate accessible file shares. What is the name of the file accessed by the attacker from a remote share?
-```
-IT_Automation.ps1
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>IT_Automation.ps1</code></pre>
+</details>
 
 >After getting the contents of the remote file, the attacker used the new credentials to move laterally. What is the new set of credentials discovered by the attacker? (format: username:password)
 
@@ -139,14 +151,17 @@ Lets dig into each commands, the attacker tested with `whoami` command first to 
 
 Which the attacker then proceeded to execute another PowerShell Empire stager again but this time as "allan.smith" user on host WKSTN-1327.
 
-```
-QUICKLOGISTICS\allan.smith:Tr!ckyP@ssw0rd987
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>QUICKLOGISTICS\allan.smith:Tr!ckyP@ssw0rd987</code></pre>
+</details>
 
 >What is the hostname of the attacker's target machine for its lateral movement attempt?
-```
-WKSTN-1327
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>WKSTN-1327</code></pre>
+</details>
 
 >Using the malicious command executed by the attacker from the first machine to move laterally, what is the parent process name of the malicious command executed on the second compromised machine?
 
@@ -154,9 +169,10 @@ WKSTN-1327
 
 We can see that both `whoami` and PowerShell Empire Stager really end up executing on WKSTN-1327 under `wsmprovhost.exe` (Windows Remote Management) process.
 
-```
-wsmprovhost.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>wsmprovhost.exe</code></pre>
+</details>
 
 >The attacker then dumped the hashes in this second machine. What is the username and hash of the newly dumped credentials? (format: username:hash)
 
@@ -164,9 +180,10 @@ wsmprovhost.exe
 
 Then we can see another attempt to pass-the-hash as "itadmin" user but end up unsuccessful then the attacker proceeded to dump logon credentials on this newly compromised host which resulting in "administrator" user's NTLM hash compromised and another pass-the-hash attempt (but unsuccessful again)
 
-```
-administrator:00f80f2538dcb54e7adc715c0e7091ec
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>administrator:00f80f2538dcb54e7adc715c0e7091ec</code></pre>
+</details>
 
 >After gaining access to the domain controller, the attacker attempted to dump the hashes via a DCSync attack. Aside from the administrator account, what account did the attacker dump?
 
@@ -186,9 +203,10 @@ The attacker downloaded Mimikatz to the domain controller and determine the loca
 
 The attacker then proceeded to dump NTLM hash of 2 users using DCSync attack.
 
-```
-backupda
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>backupda</code></pre>
+</details>
 
 >After dumping the hashes, the attacker attempted to download another remote file to execute ransomware. What is the link used by the attacker to download the ransomware binary?
 
@@ -200,9 +218,10 @@ After a while, the attacker then downloaded ransomware binary to the domain cont
 
 And its not just the domain controller but the WKSTN-1327 host as well.
 
-```
-http://ff.sillytechninja.io/ransomboogey.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://ff.sillytechninja.io/ransomboogey.exe</code></pre>
+</details>
 
 ![6163248005adb08560bc2d12f722678a.png](/resources/6163248005adb08560bc2d12f722678a.png)
 

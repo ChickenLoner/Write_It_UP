@@ -27,9 +27,10 @@ After started the machine, we can see our evidence inside "Evidence" folder on t
 
 Since we already know that we got the correct disk image, then we can use HxD to open disk image which we can see that at 0x01FE and 0x01FF, instead of `55 AA` which is the Boot signature of Master Boot Record (MBR), we got AC BD instead so this is why FTK Imager does not catch this disk image.
 
-```
-ACBD
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ACBD</code></pre>
+</details>
 
 ![0d615b053203a102cc543fcef426fba2.png](/resources/0d615b053203a102cc543fcef426fba2.png)
 
@@ -55,9 +56,10 @@ We know that there are 2 partitions on this disk image from the FTK imager but w
 
 So we can copy bytes that represent second partition and separate to table like this then we can see the total of section of second partition from byte 12-15 for this line and we have to switch position a little bit to make it little-endian.
 
-```
-0x01387800
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>0x01387800</code></pre>
+</details>
 
 >What is the size of the first partition in GB? (up to 2 decimals e.g: 15.25)
 
@@ -69,9 +71,10 @@ Its time for the first partition, we will have to multiply number of section wit
 
 But I had a better idea, I let ChatGPT did the work for me which I told it to convert total bytes to GB as well.
 
-```
-30.23
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>30.23</code></pre>
+</details>
 
 >What is the size of the second partition in GB? (up to 2 decimals e.g: 15.25)
 
@@ -79,9 +82,10 @@ But I had a better idea, I let ChatGPT did the work for me which I told it to co
 
 This time we got 9.77 has the size of second partition but the correct answer is 9.76 for some reasons.
 
-```
-9.76
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>9.76</code></pre>
+</details>
 
 >In the NTFS partition, when was the text file related to the password created on the system?
 
@@ -99,9 +103,10 @@ Then I parsed both file with `MFTECmd.exe -f $MFT --csv output` and `MFTECmd.exe
 
 Then I started by looking at MFT record which reveals that `passwords.txt` which is the file we are looking for, was created on 2025-03-19 22:01:57.
 
-```
-2025-03-19 22:01:57
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2025-03-19 22:01:57</code></pre>
+</details>
 
 >What is the full name of the sensitive pdf document accessed on this disk?
 
@@ -109,9 +114,10 @@ Then I started by looking at MFT record which reveals that `passwords.txt` which
 
 I could not find any PDF file that resemble the answer format so I shifted my focus on Usn Journal and to my surprised! there are some records regarding of the pdf file that matches the answer format from Usn Journal and it just happened to be the one that we are looking for as well.
 
-```
-Quantum-Resistant Cryptographic Algorithms.pdf
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Quantum-Resistant Cryptographic Algorithms.pdf</code></pre>
+</details>
 
 >When this file was first found on this disk?
 
@@ -119,9 +125,10 @@ Quantum-Resistant Cryptographic Algorithms.pdf
 
 So we can take a look at the earliest Update Timestamp which is the timestamp that recorded the first appearance of this file this system.
 
-```
-2025-03-20 00:44:37
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2025-03-20 00:44:37</code></pre>
+</details>
 
 >What is the entry number of the directory in the Journal that was created and then deleted for exfiltration purposes on the disk?
 
@@ -129,9 +136,10 @@ So we can take a look at the earliest Update Timestamp which is the timestamp th
 
 After filter for the Directory as File Attribute, I found the `data exfil` is the one that really stand out as its name imply so I grabbed its entry number and submitted as the correct answer.
 
-```
-163896
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>163896</code></pre>
+</details>
 
 >What is the starting offset of the first zip file found after the offset 4E7B00000?
 
@@ -149,9 +157,10 @@ Now I went to "Search" -> "Find..." to filter for Zip file header (50 4B 03 04) 
 
 Which we found the zip file that contains secret plan text file right here. 
 
-```
-4E7B0E000
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4E7B0E000</code></pre>
+</details>
 
 >What is the ending offset of the zip file?
 
@@ -167,9 +176,10 @@ But the offset 06 will not be the correct answer since there are many things fol
 
 Noticed that I putted the red rectangle around the 16th offset and thats is the correct offset that we will have to append to get the correct answer of this question.
 
-```
-4E7B0E43D
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>4E7B0E43D</code></pre>
+</details>
 
 >What is the flag hidden within the file inside the zip file?
 
@@ -177,9 +187,10 @@ Noticed that I putted the red rectangle around the 16th offset and thats is the 
 
 I noticed that the file might be in FAT32 partition so I tested my luck by going to it on FTK Image and to my surprise! we can get a file of the file inside the zip file this way as well!
 
-```
-FLAG:{RECOVERED_SECRET_THM}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>FLAG:{RECOVERED_SECRET_THM}</code></pre>
+</details>
 
 >In the FAT32 partition, a tool related to the disk wiping was installed and then deleted. Can you find the name of that executable?
 
@@ -187,9 +198,10 @@ FLAG:{RECOVERED_SECRET_THM}
 
 I hope your Autopsy already finished ingesting because its time to use it! and we can see that it actually catches the deleted executable from the FAT32 partition and this executable is the correct answer of this question.
 
-```
-Diskwipe.exe
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Diskwipe.exe</code></pre>
+</details>
 
 ![cec604b95cabde570719279be71ecca3.png](/resources/cec604b95cabde570719279be71ecca3.png)
 

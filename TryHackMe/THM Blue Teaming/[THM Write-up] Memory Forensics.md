@@ -28,9 +28,10 @@ After determined which profile is the most suitable one, we can proceed with `vo
 
 Then we can use online rainbow table service such as https://crackstation.net/ or if you prefered `john`, you crack it with `john` too
 
-```
-charmander999
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>charmander999</code></pre>
+</details>
 
 ## Analysis
 ![f48374de036a02f216c017ca73dad664.png](/resources/f48374de036a02f216c017ca73dad664.png)
@@ -46,9 +47,10 @@ To complete your forensic timeline, you should also have a look at what other in
 
 We can use `vol.py -f Snapshot19_1609159453792.vmem --profile=Win7SP1x64 shutdowntime` to let volatility plugin extract shut down time from System registry of this memory image
 
-```
-2020-12-27 22:50:12
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>2020-12-27 22:50:12</code></pre>
+</details>
 
 >What did John write?
 
@@ -56,9 +58,10 @@ We can use `vol.py -f Snapshot19_1609159453792.vmem --profile=Win7SP1x64 shutdow
 
 Lets assume that "John" wrote something using command prompt than we can use `vol.py -f Snapshot19_1609159453792.vmem --profile=Win7SP1x64 consoles` to display console history of this memory image then we can see that "John" wrote a flag to a text file
 
-```
-You_found_me
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>You_found_me</code></pre>
+</details>
 
 ## TrueCrypt
 ![3b5a7bc990da8594fd6541067d7612d0.png](/resources/3b5a7bc990da8594fd6541067d7612d0.png)
@@ -72,9 +75,10 @@ A common task of forensic investigators is looking for hidden partitions and enc
 
 Volatility 2 already have a plugin that will get TrueCrypt passphrase that stored in memory so we can use `vol.py -f Snapshot14_1609164553061.vmem --profile=Win7SP1x64 truecryptpassphrase` to get it and finish this challenge
 
-```
-forgetmenot
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>forgetmenot</code></pre>
+</details>
 
 ![0695d1037121c42460459d5e35694f2f.png](/resources/0695d1037121c42460459d5e35694f2f.png)
 ***

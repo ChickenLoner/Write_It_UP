@@ -16,9 +16,10 @@ Fortunately, for your company, that is all you need.
 
 We got lsass dump and a pcap file so we have to investigate this incident on Wireshark which you can see that the first SMB session was created for `WORKGROUP\mrealman` user and look like he tried to get something from client network share.
 
-```
-mrealman
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>mrealman</code></pre>
+</details>
 
 >What is the password of the user in question 1?
 
@@ -30,9 +31,10 @@ Since we have lsass dump then we can use `pypykatz lsa minidump lsass.DMP` to ge
 
 We can use `john` or `hashcat` to crack it but I always try with CrackStation.net first and the result was not disappointing.
 
-```
-Blockbuster1
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Blockbuster1</code></pre>
+</details>
 
 >What is the flag that the first user got access to?
 
@@ -82,9 +84,10 @@ Go to "File" > "Export Objects" > "SMB..." then we can see that the SMB3 traffic
 
 ![a80216a063739a7b2560ffee363c73b8.png](/resources/a80216a063739a7b2560ffee363c73b8.png)
 
-```
-THM{SmB_DeCrypTing_who_Could_Have_Th0ughT}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THM{SmB_DeCrypTing_who_Could_Have_Th0ughT}</code></pre>
+</details>
 
 Note: This is me after obtained a second flag of this challenge, turn out we can just go to "Edit" > "Preferences" > "Protocols" > "NTLMSSP" and insert NT Password then Wireshark will be able to decrypt SMB2 traffic for `mrealman` user just fine
 
@@ -98,9 +101,10 @@ Note: This is me after obtained a second flag of this challenge, turn out we can
 
 After we're done with the first user, the other user that accessed to client network share is this user
 
-```
-eshellstrop
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>eshellstrop</code></pre>
+</details>
 
 >What is the hash of the user in question 4?
 
@@ -112,9 +116,10 @@ Lets look up for NT hash of this user from lsass dump again
 
 This question does not need to submit password but I still tried it with Crackstation anyway which turns out there is no match for this hash on this site.
 
-```
-3f29138a04aadc19214e9c04028bf381
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>3f29138a04aadc19214e9c04028bf381</code></pre>
+</details>
 
 >What is the flag that the second user got access to?
 
@@ -138,8 +143,9 @@ After imported keytab file now we should be able to export another csv file that
 
 ![497b1524d123a5361f3d6e3b47059748.png](/resources/497b1524d123a5361f3d6e3b47059748.png)
 
-```
-THM{No_PasSw0Rd?_No_Pr0bl3m}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THM{No_PasSw0Rd?_No_Pr0bl3m}</code></pre>
+</details>
 
 ***

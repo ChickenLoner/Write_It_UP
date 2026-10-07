@@ -48,19 +48,24 @@ Email headers starting with "X-" are custom headers the sender can add. The "X-"
 
 ![71e099275f8ac2b421ae19bb4a11d104.png](/resources/71e099275f8ac2b421ae19bb4a11d104.png)
 
-```
-Latvia
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Latvia</code></pre>
+</details>
 
 >If Paul replies to this email, which email address will his reply be sent to?
-```
-no-reply@postparr0t.thm
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>no-reply@postparr0t.thm</code></pre>
+</details>
 
 >What is the value of the custom header in the email?
-```
-THM{y0u_f0und_7h3_h34d3r}
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>THM{y0u_f0und_7h3_h34d3r}</code></pre>
+</details>
 
 ## Email Attachment Analysis
 As we discovered by looking at the `.eml` file in a text editor, the email Paul received contains an embedded attachment named "*ParrotPostACTIONREQUIRED.htm.*" Based on this file type and the listed **Content-Type**, this is an HTML (Hypertext Markup Language) file used to create a web page or document that can be viewed in a web browser.
@@ -106,14 +111,18 @@ To uncover the contents of the b64 variable, copy the entire base64 string (ever
 If successful, you should see the decoded data under the **Output** pane. Copy that entire output and save it as a new HTML file named "decoded_webpage.html."
 
 >What encoding scheme is used to obfuscate the web page contents?
-```
-base64
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>base64</code></pre>
+</details>
 
 >What is the built-in JavaScript function used to decode the web page before writing it to the page?
-```
-atob()
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>atob()</code></pre>
+</details>
 
 >After the initial base64 decoding, what is the value of the leftover base64 encoded comment?
 
@@ -121,9 +130,10 @@ atob()
 
 ![5d7c92a01a9814ac55d5026ad58aaea7.png](/resources/5d7c92a01a9814ac55d5026ad58aaea7.png)
 
-```
-THM{d0ubl3_3nc0d3d}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THM{d0ubl3_3nc0d3d}</code></pre>
+</details>
 
 ## HTML Obfuscation
 **HTML Entity Decoding**
@@ -143,9 +153,11 @@ Great! Now we can copy the **Output** contents and paste them into the "decoded_
 It is still unclear, but we can make out the HTML elements now. Looking into it more, it is a login page. Some input elements prompt the user for an email and password, with a login submit button.
 
 >After decoding the HTML Entity characters, what is the text inside of the `<h1>` tag?
-```
-ParrotPost Secure Webmail Login
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>ParrotPost Secure Webmail Login</code></pre>
+</details>
 
 ## CSS Obfuscation
 CSS (Cascading Style Sheets) is a web language used for declaring the visual design of a web page written in HTML. CSS allows web developers to separate the presentation of a document from its content, making it easier to create and maintain visually appealing web pages. CSS can also be embedded directly into an existing HTML document using the `<style>` element.
@@ -159,9 +171,11 @@ Often, in the case of phishing and credential capture webpages, attackers will d
 This section was covered for the sake of thoroughness. However, we can effectively ignore everything before the closing `</style>` tag and add some line breaks to separate things visually.
 
 >What is the reverse of CSS Minify?
-```
-CSS Beautify
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>CSS Beautify</code></pre>
+</details>
 
 ## JavaScript Obfuscation
 So far, we have uncovered that the attached .htm file renders an HTML login form, and an inline stylesheet is used to define the webpage's design. However, where is the login form sending its captured data? And what happens after we submit credentials? To find these answers, we must look at the final piece of this file inside the `<script>` tag.
@@ -178,15 +192,17 @@ We can then copy and replace the output in our file with the original JavaScript
 
 ![db1c26a1b1e7022195e9ee8508cf5466.png](/resources/db1c26a1b1e7022195e9ee8508cf5466.png)
 
-```
-http://evilparrot.thm:8080/cred-capture.php
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>http://evilparrot.thm:8080/cred-capture.php</code></pre>
+</details>
 
 >What is the JavaScript property that can redirect the browser to a new URL?
 
-```
-window.location.href
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>window.location.href</code></pre>
+</details>
 
 ## Putting It All Together
 Through our investigation, we manually decoded and inferred the true nature of this webpage. To summarize, this is a login page that impersonates the legitimate ParrotPost website to capture user credentials for malicious purposes. The JavaScript code listens for the login form submission event and sends an HTTP GET request to another URL location, which is clearly not the actual ParrotPost login endpoint.
@@ -224,19 +240,25 @@ Play around by testing a request and analyzing the response. You may find some i
 
 ![067f2fd225e7fa3616c3a8d134bd4838.png](/resources/067f2fd225e7fa3616c3a8d134bd4838.png)
 
-```
-THM{c4p7ur3d_y0ur_cr3d5}
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>THM{c4p7ur3d_y0ur_cr3d5}</code></pre>
+</details>
 
 >What is the path on the web server hosting the log of captured credentials?
-```
-/creds.txt
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>/creds.txt</code></pre>
+</details>
 
 >Based on the log, what is Chris Smith's password?
 
 ![d87987a65b7b675a0dfcc21f1a7dd5a6.png](/resources/d87987a65b7b675a0dfcc21f1a7dd5a6.png)
-```
-FlyL1ke!A~Bird
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>FlyL1ke!A~Bird</code></pre>
+</details>
+
 ***

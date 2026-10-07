@@ -40,31 +40,36 @@ After that the attacker moved to `/rest/products/search` and used `sqlmap` on `q
 
 Then after done with `sqlmap`, the attacker manually exploited SQL Injection attack using `curl` and finally, the attacker used `forexbuster` possibly to find hidden content/directories on this webserver that not supposed to be found
 
-```
-nmap, hydra, sqlmap, curl, feroxbuster
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>nmap, hydra, sqlmap, curl, feroxbuster</code></pre>
+</details>
 
 >What endpoint was vulnerable to a brute-force attack?
 
 ![d2686d5472eb1fb1b88f33729e5130f2.png](/resources/d2686d5472eb1fb1b88f33729e5130f2.png)
 
-```
-/rest/user/login
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/rest/user/login</code></pre>
+</details>
 
 
 >What endpoint was vulnerable to SQL injection?
 
 ![3df8f3017f16116432a8ad04134dfe2a.png](/resources/3df8f3017f16116432a8ad04134dfe2a.png)
 
-```
-/rest/products/search
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/rest/products/search</code></pre>
+</details>
 
 >What parameter was used for the SQL injection?
-```
-q
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>q</code></pre>
+</details>
 
 >What endpoint did the attacker try to use to retrieve files? (Include the /)
 
@@ -72,9 +77,10 @@ q
 
 After directory fuzzing with `forexbuster`, the attacker found `/ftp` directory that stores 2 backup files and as we can see that the attacker tried to download them but failed
 
-```
-/ftp
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>/ftp</code></pre>
+</details>
 
 ## Stolen data
 Analyze the provided log files.
@@ -90,9 +96,10 @@ Look carefully at:
 
 Before the attacker used `hydra` to brute-force on login page, we can see that there are some sort of recon on product review section of this website and after reviewing each path then we might notice that there are some different indicating each user review hence each user email address so the attacker might scrape them from this section
 
-```
-product review
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>product review</code></pre>
+</details>
 
 >Was their brute-force attack successful? If so, what is the timestamp of the successful login? (Yay/Nay, 11/Apr/2021:09:xx:xx +0000)
 
@@ -100,9 +107,10 @@ product review
 
 Most of `hydra` request resulted in 401 HTTP Status Code but this one is 200 so this is the timestamp of successfully logged in or the time that the attacker noticed that that specific credential could be used on this website
 
-```
-Yay, 11/Apr/2021:09:16:31 +0000
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>Yay, 11/Apr/2021:09:16:31 +0000</code></pre>
+</details>
 
 >What user information was the attacker able to retrieve from the endpoint vulnerable to SQL injection?
 
@@ -110,16 +118,19 @@ Yay, 11/Apr/2021:09:16:31 +0000
 
 From previous section, we noticed that the attacker manually exploited SQL Injection vulnerability with `curl` after done with `sqlmap` and we might also notice that the attacker used `UNION` to query `id`, `email` and `password` from `Users` table 
 
-```
-email, password
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>email, password</code></pre>
+</details>
 
 >What files did they try to download from the vulnerable endpoint? (endpoint from the previous task, question #5)
 
 ![df239174acb76ecde34852e62b4d8520.png](/resources/df239174acb76ecde34852e62b4d8520.png)
-```
-coupons_2013.md.bak, www-data.bak
-```
+
+<details>
+  <summary>Answer</summary>
+<pre><code>coupons_2013.md.bak, www-data.bak</code></pre>
+</details>
 
 >What service and account name were used to retrieve files from the previous question? (service, username)
 
@@ -127,9 +138,10 @@ coupons_2013.md.bak, www-data.bak
 
 We know that the attacker found 2 backup files on `ftp` so lets review `vsftpd.log` which we will see that the attacker successfully downloaded with `anonymous` login
 
-```
-ftp, anonymous
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ftp, anonymous</code></pre>
+</details>
 
 >What service and username were used to gain shell access to the server? (service, username)
 
@@ -141,9 +153,10 @@ ftp, anonymous
 
 And the attacker successfully logged in as this user
 
-```
-ssh, www-data
-```
+<details>
+  <summary>Answer</summary>
+<pre><code>ssh, www-data</code></pre>
+</details>
 
 ![7c29e456106e2cc5c071493441fd9dd4.png](/resources/7c29e456106e2cc5c071493441fd9dd4.png)
 ***
