@@ -183,23 +183,26 @@ TOKENS_CSS = """
   --em-ink:#dbe2f5;
   --strong-q:#fff;
   --machine-kicker:#d97757;
+  --plat-pink:#f472b6;
 }
-/* light palette — identical values to the portfolio's html[data-theme="light"] */
+/* light palette — "SIEM console", IBM Carbon g10; identical values to the
+   portfolio's html[data-theme="light"] (themes/soc.css, I1 block) */
 html[data-theme="light"]{
-  --soc-bg:#eef2f9;     --soc-bg-1:#ffffff;  --soc-bg-2:#f5f8fd;
-  --soc-line:#d8e0ee;   --soc-line2:#b8c4dc;
-  --soc-ink:#0c1729;    --soc-ink2:#2c3d58;
-  --soc-ink3:#4e6080;   --soc-ink4:#6b7896;
-  --soc-cy:#0891b2;     --soc-cy2:#0e7490;
-  --soc-am:#b45309;     --soc-gn:#15803d;
-  --soc-rd:#be1d3a;     --soc-vi:#6d28d9;
-  --tb-bg:rgba(255,255,255,.85);
-  --link-hover:#0e7490;
-  --code-inline:#0e7490;
-  --code-inline-bg:rgba(8,145,178,.07);
+  --soc-bg:#f4f4f4;     --soc-bg-1:#ffffff;  --soc-bg-2:#f4f4f4;
+  --soc-line:#e0e0e0;   --soc-line2:#c6c6c6;
+  --soc-ink:#161616;    --soc-ink2:#393939;
+  --soc-ink3:#525252;   --soc-ink4:#6f6f6f;
+  --soc-cy:#0f62fe;     --soc-cy2:#0043ce;
+  --soc-am:#8e6a00;     --soc-gn:#198038;
+  --soc-rd:#da1e28;     --soc-vi:#8a3ffc;
+  --tb-bg:#ffffff;
+  --link-hover:#0043ce;
+  --code-inline:#0043ce;
+  --code-inline-bg:rgba(15,98,254,.06);
   --em-ink:var(--soc-ink);
   --strong-q:var(--soc-ink);
-  --machine-kicker:#b4532a;
+  --machine-kicker:#ba4e00;
+  --plat-pink:#d02670;
   color-scheme:light;
 }
 .p-htb-sherlock{--kicker-text:"// HTB · SHERLOCK · DFIR CASE FILE";--kicker-color:var(--soc-am)}
@@ -230,14 +233,9 @@ body::before{
 }
 a{color:var(--soc-cy);text-decoration:none}
 a:hover{color:var(--link-hover);text-decoration:underline}
-[data-theme="light"] body{
-  background:
-    radial-gradient(1200px 600px at 100% -10%,rgba(8,145,178,.08),transparent 70%),
-    radial-gradient(900px 500px at -10% 30%,rgba(109,40,217,.05),transparent 70%),
-    var(--soc-bg)
-}
-[data-theme="light"] body::before{opacity:.22}
-[data-theme="light"] .soc-tb{box-shadow:0 1px 0 rgba(12,23,41,.04)}
+[data-theme="light"] body{background:var(--soc-bg)}
+[data-theme="light"] body::before{display:none}
+[data-theme="light"] .soc-tb{backdrop-filter:none;-webkit-backdrop-filter:none}
 """
 
 TOPBAR_CSS = """
@@ -269,8 +267,8 @@ TOPBAR_CSS = """
 .soc-theme-btn .soc-tb-dark{display:inline}
 .soc-theme-btn .soc-tb-light{display:none}
 [data-theme="light"] .soc-theme-btn{background:var(--soc-bg-1);border-color:var(--soc-line)}
-[data-theme="light"] .soc-theme-btn .soc-tb-track{background:rgba(8,145,178,.15)}
-[data-theme="light"] .soc-theme-btn .soc-tb-knob{transform:translateX(16px);box-shadow:0 0 0 2px rgba(8,145,178,.18)}
+[data-theme="light"] .soc-theme-btn .soc-tb-track{background:rgba(15,98,254,.15)}
+[data-theme="light"] .soc-theme-btn .soc-tb-knob{transform:translateX(16px);box-shadow:0 0 0 2px rgba(15,98,254,.18)}
 [data-theme="light"] .soc-theme-btn .soc-tb-dark{display:none}
 [data-theme="light"] .soc-theme-btn .soc-tb-light{display:inline}
 
@@ -287,7 +285,7 @@ TOPBAR_CSS = """
 [data-answers="shown"] .wu-ans-btn .wu-ans-on{display:inline}
 [data-answers="shown"] .wu-ans-btn .wu-ans-off{display:none}
 [data-theme="light"] .wu-ans-btn{background:var(--soc-bg-1);border-color:var(--soc-line)}
-[data-theme="light"][data-answers="shown"] .wu-ans-btn .soc-tb-knob{box-shadow:0 0 0 2px rgba(21,128,61,.18)}
+[data-theme="light"][data-answers="shown"] .wu-ans-btn .soc-tb-knob{box-shadow:0 0 0 2px rgba(25,128,56,.18)}
 
 /* the portfolio hides crumb, badges and clock on phones; UPLINK stays as the home link */
 @media(max-width:1100px){.soc-tb-badges .sev-link,.soc-tb-badges .sev.green{display:none}}
@@ -312,6 +310,65 @@ TOPBAR_CSS = """
 .sev-link:hover{color:var(--soc-cy);border-color:rgba(34,225,255,.4);background:rgba(34,225,255,.06);text-decoration:none}
 .sev-link .ar{font-size:.95em;opacity:.7;margin-left:1px}
 .sev-link:hover .ar{opacity:1}
+"""
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CSS — light theme, Carbon conventions (shared by every page)
+# Mirrors the portfolio's I1/D1 blocks in themes/soc.css: square corners, no
+# shadows or glows, 2px blue focus outline, Carbon tag tints for status chips,
+# neutral grey tags, white panels with borders instead of shadows.
+# Uses html[data-theme] so it outranks the per-page dark rules.
+# ─────────────────────────────────────────────────────────────────────────────
+
+LIGHT_CARBON_CSS = """
+html[data-theme="light"] *:not(img):not(.soc-theme-btn):not(.soc-theme-btn *):not(.wu-ans-btn):not(.wu-ans-btn *):not(.dot){border-radius:0 !important}
+html[data-theme="light"] *,html[data-theme="light"] *::before,html[data-theme="light"] *::after{box-shadow:none !important;text-shadow:none !important}
+html[data-theme="light"] .content img{box-shadow:none !important}
+html[data-theme="light"] :focus-visible{outline:2px solid var(--soc-cy);outline-offset:1px}
+html[data-theme="light"] .soc-live::before{animation:none}
+
+/* status chips: Carbon tag tints (very light fill + matching border) */
+html[data-theme="light"] .sev.green{background:#defbe6;border-color:#a7f0ba}
+html[data-theme="light"] .sev.cyan {background:#edf5ff;border-color:#a6c8ff}
+html[data-theme="light"] .sev.am   {background:#fcf4d6;border-color:#f1c21b}
+html[data-theme="light"] .sev.rd   {background:#fff1f1;border-color:#ffb3b8}
+html[data-theme="light"] .sev.vi   {background:#f6f2ff;border-color:#d4bbff}
+html[data-theme="light"] .sev-link{background:var(--soc-bg-1);border-color:var(--soc-line2);color:var(--soc-ink2)}
+html[data-theme="light"] .sev-link:hover{background:#edf5ff;border-color:var(--soc-cy);color:var(--soc-cy)}
+
+/* difficulty pills (article info box + index cards): same tag tints */
+html[data-theme="light"] :is(.wu-diff,.wrow .diff).d-very-easy{color:var(--soc-cy);background:#edf5ff;border-color:#a6c8ff}
+html[data-theme="light"] :is(.wu-diff,.wrow .diff).d-easy{color:var(--soc-gn);background:#defbe6;border-color:#a7f0ba}
+html[data-theme="light"] :is(.wu-diff,.wrow .diff).d-medium{color:var(--soc-am);background:#fcf4d6;border-color:#f1c21b}
+html[data-theme="light"] :is(.wu-diff,.wrow .diff).d-hard{color:var(--soc-rd);background:#fff1f1;border-color:#ffb3b8}
+html[data-theme="light"] :is(.wu-diff,.wrow .diff).d-insane{color:var(--soc-vi);background:#f6f2ff;border-color:#d4bbff}
+
+/* tags: neutral chips, colour is reserved for state */
+html[data-theme="light"] :is(.wu-tag,.wrow .tag){background:var(--soc-bg-2);border-color:var(--soc-line);color:var(--soc-ink2)}
+
+/* panels: white on the grey page, separated by borders */
+html[data-theme="light"] :is(.wu-meta,.pcard,.wrow){background:var(--soc-bg-1)}
+html[data-theme="light"] .wrow .banner{background:var(--soc-bg-1) !important}
+html[data-theme="light"] .pcard summary,html[data-theme="light"] .pcard summary:hover{background:var(--soc-bg-1)}
+html[data-theme="light"] .pcard summary:hover{background:var(--soc-bg-2)}
+/* accent boxes: the one Carbon blue instead of the dark theme's cyan */
+html[data-theme="light"] :is(.pcard .ph-icon,.pcard.p-cd .ph-icon){background:#edf5ff;border-color:#a6c8ff;color:var(--soc-cy)}
+html[data-theme="light"] .pcard.p-cd .wrow::before,html[data-theme="light"] .wrow:hover::before{background:var(--soc-cy)}
+html[data-theme="light"] :is(.pcard[open],.pcard.p-cd[open]){border-color:var(--soc-line2)}
+html[data-theme="light"] :is(.search-input,.fchip){background-color:var(--soc-bg-1)}
+
+/* article: question boxes are white cards with a blue left rule (portfolio callouts);
+   answers get a green rule; code + answer bodies stay dark (terminal output) */
+html[data-theme="light"] .content blockquote{background:var(--soc-bg-1);border-color:var(--soc-line);border-left-color:var(--soc-cy)}
+html[data-theme="light"] .content details{background:var(--soc-bg-1);border-color:var(--soc-line);border-left:3px solid var(--soc-gn)}
+html[data-theme="light"] .content details summary::after{background:linear-gradient(90deg,rgba(25,128,56,.35),transparent)}
+html[data-theme="light"] .content code{border-color:rgba(15,98,254,.18)}
+html[data-theme="light"] .content pre code{color:#e2e8f0}
+html[data-theme="light"] .content h1 a::after{background:#edf5ff;border-color:#a6c8ff}
+html[data-theme="light"] .content th{color:var(--soc-ink2)}
+html[data-theme="light"] .content thead{background:var(--soc-bg-2)}
+html[data-theme="light"] .soc-read-track>i,html[data-theme="light"] .soc-read-bar>i{box-shadow:none}
+html[data-theme="light"] .wu-toc-item.is-active::before{box-shadow:none}
 """
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -365,7 +422,7 @@ ARTICLE_CSS = """
   color:var(--soc-cy);letter-spacing:0
 }
 .content h2[id^="table-of-contents"]::before{content:"≡";font-size:15px}
-[data-theme="light"] .content h2::before{background:rgba(8,145,178,.08);border-color:rgba(8,145,178,.25)}
+[data-theme="light"] .content h2::before{background:rgba(15,98,254,.08);border-color:rgba(15,98,254,.25)}
 .content h3{
   font-size:1rem;font-weight:700;color:var(--soc-ink2);line-height:1.4;
   margin:1.9rem 0 .7rem;padding-left:10px;border-left:3px solid var(--soc-cy)
@@ -527,8 +584,8 @@ footer.foot .sep{color:var(--soc-ink4);opacity:.5;margin:0 .55rem}
 [data-theme="light"] .content pre{border-color:#1c2433}
 [data-theme="light"] .content pre code[class]:not([class=""])::before{color:#8a9bbf;border-bottom-color:#253040}
 [data-theme="light"] .content img{background:var(--soc-bg-2);box-shadow:0 1px 2px rgba(12,23,41,.06),0 8px 22px rgba(12,23,41,.07)}
-[data-theme="light"] .content blockquote{background:linear-gradient(90deg,rgba(8,145,178,.07),rgba(8,145,178,.015) 70%,transparent);border-color:var(--soc-line);border-left-color:var(--soc-cy)}
-[data-theme="light"] .content details{background:linear-gradient(180deg,rgba(21,128,61,.06),rgba(21,128,61,.015));border-color:rgba(21,128,61,.3)}
+[data-theme="light"] .content blockquote{background:linear-gradient(90deg,rgba(15,98,254,.07),rgba(15,98,254,.015) 70%,transparent);border-color:var(--soc-line);border-left-color:var(--soc-cy)}
+[data-theme="light"] .content details{background:linear-gradient(180deg,rgba(25,128,56,.06),rgba(25,128,56,.015));border-color:rgba(25,128,56,.3)}
 [data-theme="light"] .content tr:nth-child(even) td{background:rgba(12,23,41,.02)}
 
 /* ═══ Article shell — mirrors the portfolio's .soc-article ═══════════════
@@ -566,7 +623,7 @@ footer.foot .sep{color:var(--soc-ink4);opacity:.5;margin:0 .55rem}
 .wu-toc-item.is-active{color:var(--soc-cy);background:rgba(34,225,255,.07)}
 .wu-toc-item.is-active .wu-toc-num{color:var(--soc-cy)}
 .wu-toc-item.is-active::before{content:"";position:absolute;left:-15px;top:6px;bottom:6px;width:2px;border-radius:2px;background:var(--soc-cy);box-shadow:0 0 8px rgba(34,225,255,.6)}
-[data-theme="light"] .wu-toc-item.is-active{background:rgba(8,145,178,.08)}
+[data-theme="light"] .wu-toc-item.is-active{background:rgba(15,98,254,.08)}
 
 @media(min-width:1280px){
   .soc-article.has-toc{
@@ -630,36 +687,13 @@ footer.foot .sep{color:var(--soc-ink4);opacity:.5;margin:0 .55rem}
 # ─────────────────────────────────────────────────────────────────────────────
 
 INDEX_CSS = """
-.page{max-width:1240px;margin:0 auto;padding:24px 22px 80px;position:relative;z-index:1}
+/* fluid like the portfolio's .soc-main: no fixed cap, 22px gutters that line up
+   with the topbar; very large monitors scale up instead of stretching rows */
+.page{width:100%;margin:0 auto;padding:24px 22px 80px;position:relative;z-index:1}
+@media(min-width:1800px){.page{zoom:1.125}}
+@media(min-width:2300px){.page{zoom:1.25}}
+@media(min-width:3000px){.page{zoom:1.5}}
 
-/* ─── PAGE HERO ─── */
-.soc-page-hero{
-  border:1px solid var(--soc-line2);border-radius:6px;overflow:hidden;margin-bottom:18px;
-  background:linear-gradient(180deg,rgba(34,225,255,.04),transparent 40%),linear-gradient(180deg,var(--soc-bg-1),var(--soc-bg))
-}
-.soc-page-hero-strap{display:flex;align-items:center;gap:12px;padding:7px 18px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--soc-ink3);border-bottom:1px solid var(--soc-line);background:rgba(0,0,0,.25);flex-wrap:wrap}
-.soc-page-hero-strap .seg b{color:var(--soc-ink2);font-weight:500}
-.soc-page-hero-strap .seg .v{color:var(--soc-cy);font-weight:600}
-.soc-page-hero-strap .seg .dim{color:var(--soc-ink4)}
-.soc-page-hero-body{display:flex;align-items:center;gap:16px;padding:20px 22px}
-.soc-page-hero-icon{
-  width:48px;height:48px;border-radius:8px;display:grid;place-items:center;
-  background:rgba(34,225,255,.1);border:1px solid rgba(34,225,255,.3);
-  color:var(--soc-cy);font-size:22px;flex-shrink:0;font-weight:700
-}
-.soc-page-hero-title{font-size:24px;font-weight:800;color:var(--soc-ink);margin:0;letter-spacing:-.01em}
-.soc-page-hero-sub{font-size:12.5px;color:var(--soc-ink3);font-family:'JetBrains Mono',monospace;margin:4px 0 0;letter-spacing:.02em}
-.soc-stat-grid{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--soc-line)}
-.soc-stat-cell{padding:14px 18px;border-right:1px solid var(--soc-line);background:rgba(255,255,255,.01)}
-.soc-stat-cell:last-child{border-right:none}
-.soc-stat-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--soc-ink3);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:6px}
-.soc-stat-lbl::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--soc-cy)}
-.soc-stat-cell.am .soc-stat-lbl::before{background:var(--soc-am)}
-.soc-stat-cell.rd .soc-stat-lbl::before{background:var(--soc-rd)}
-.soc-stat-cell.gn .soc-stat-lbl::before{background:var(--soc-gn)}
-.soc-stat-cell.vi .soc-stat-lbl::before{background:var(--soc-vi)}
-.soc-stat-val{font-size:24px;font-weight:700;letter-spacing:-.01em;margin-top:4px;font-variant-numeric:tabular-nums;color:var(--soc-ink)}
-.soc-stat-val .unit{font-size:13px;color:var(--soc-ink3);font-weight:500;margin-left:3px}
 
 /* ─── TOOLBAR ─── */
 .toolbar{display:flex;align-items:center;gap:12px;margin:18px 0;flex-wrap:wrap}
@@ -924,9 +958,8 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
 .tw-reset:hover{color:var(--soc-rd);border-color:rgba(255,85,119,.4);background:rgba(255,85,119,.06)}
 
 /* ─── light theme: swap the dark-only black/white overlays for palette surfaces ─── */
-[data-theme="light"] .soc-page-hero-strap{background:var(--soc-bg-2)}
 [data-theme="light"] .wlist{background:var(--soc-bg-2)}
-[data-theme="light"] .wrow .banner{background:linear-gradient(180deg,rgba(8,145,178,.04),transparent)}
+[data-theme="light"] .wrow .banner{background:linear-gradient(180deg,rgba(15,98,254,.04),transparent)}
 [data-theme="light"] .wrow .ix,[data-theme="light"] .wrow .tag,
 [data-theme="light"] .wrow .open-ic,[data-theme="light"] .tw-seg,
 [data-theme="light"] .tw-foot,[data-theme="light"] .tw-reset{background:var(--soc-bg-2)}
@@ -937,8 +970,6 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
 [data-theme="light"] #tw-panel{box-shadow:0 18px 50px rgba(12,23,41,.18)}
 
 @media(max-width:820px){
-  .soc-stat-grid{grid-template-columns:repeat(2,1fr)}
-  .soc-stat-cell{border-right:none;border-bottom:1px solid var(--soc-line)}
   .pcard .ph-right{display:none}
   .wlist{grid-template-columns:1fr;padding:10px;gap:8px}
   .wrow{min-height:auto}
@@ -946,6 +977,190 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
   .filters{margin-left:0}
   .search-wrap{max-width:none}
   #tw-panel{left:12px;right:12px;width:auto;bottom:12px}
+}
+
+/* ═══ Responsive pass ═══════════════════════════════════════════════════
+   Tablet: 5 stat cells fill two full rows (3 + 2) instead of leaving a gap.
+   Phone: compact hero, stats as one swipeable row, each filter group as one
+   swipeable row, icon-only Tweaks button — first card moves from ~1.6
+   screens down to the first screen. */
+@media(max-width:767px){
+  .page{padding:14px 16px 72px}
+  .toolbar{gap:8px;margin:12px 0 14px}
+  .search-wrap{min-width:0}
+  .toolbar{display:block}
+  .search-wrap{display:flex;max-width:none;margin-bottom:10px}
+  .filters,.dfilters{display:flex;box-sizing:border-box;width:calc(100% + 32px);max-width:none;min-width:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px 6px;padding:2px 16px;
+    -webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+  .filters::-webkit-scrollbar{display:none}
+  .fchip,.dchip,.fchip-label{flex-shrink:0}
+  .fchip-label{padding:0 4px 0 0}
+  .tweak-toggle{width:42px;height:42px;padding:0;justify-content:center;font-size:0;bottom:14px;right:14px;border-radius:50%}
+  .tweak-toggle::before{content:"⚙";font-size:17px;letter-spacing:0}
+  .pcard summary{padding:11px 12px;gap:10px}
+  .pcard summary>*{min-width:0}
+  .pcard .ph-icon{width:32px;height:32px}
+  .pcard .psub{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .wlist{padding:8px;gap:8px}
+  .wrow .banner{padding:10px 12px 11px}
+  .wrow .body{padding:9px 12px 11px}
+}
+/* ═══ HOME — modelled on the portfolio home page ════════════════════════
+   Colours come from theme variables (color-mix for tints) so the same rules
+   serve the dark console and the Carbon light theme. */
+.hm-hero{border:1px solid var(--soc-line2);border-radius:6px;overflow:hidden;margin-bottom:26px;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--soc-cy) 4%,transparent),transparent 40%),var(--soc-bg-1)}
+.hm-strap{display:flex;align-items:center;gap:16px;padding:8px 18px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--soc-ink3);border-bottom:1px solid var(--soc-line);background:color-mix(in srgb,var(--soc-bg) 55%,transparent);white-space:nowrap;overflow:hidden}
+.hm-strap b{color:var(--soc-ink2);font-weight:500}
+.hm-strap .v{color:var(--soc-cy);font-weight:600}
+.hm-strap .dim{color:var(--soc-ink4)}
+.hm-strap-r{margin-left:auto}
+.hm-id{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:22px;align-items:center;padding:20px 22px}
+.hm-av{width:84px;height:84px;padding:5px;border:1px solid var(--soc-line2);border-radius:10px;background:var(--soc-bg-2);position:relative}
+.hm-av::before,.hm-av::after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--soc-cy)}
+.hm-av::before{top:-1px;left:-1px;border-right:none;border-bottom:none}
+.hm-av::after{bottom:-1px;right:-1px;border-left:none;border-top:none}
+.hm-av img{width:100%;height:100%;object-fit:cover;border-radius:6px;display:block}
+.hm-title{font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--soc-ink);line-height:1.15;margin:0}
+/* topics never break mid-name; every item carries its separator on the left,
+   and the inner row is pulled left by that width so the separator at the start
+   of a wrapped line falls outside the clipped box */
+.hm-sub{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--soc-ink3);margin:6px 0 12px;letter-spacing:.02em;overflow:hidden}
+.hm-sub-in{display:flex;flex-wrap:wrap;row-gap:2px;margin-left:-1.6em}
+.hm-sub-in>span{white-space:nowrap;position:relative;padding-left:1.6em}
+.hm-sub-in>span::before{content:"·";position:absolute;left:.55em;color:var(--soc-ink4)}
+.hm-sub-in>.hm-sub-tail::before{content:"—";left:.5em}
+.hm-chips{display:flex;flex-wrap:wrap;gap:8px}
+.hm-kv{display:grid;grid-template-columns:auto auto;gap:6px 16px;margin:0;font-family:'JetBrains Mono',monospace;font-size:11.5px;align-self:start}
+.hm-kv dt{color:var(--soc-ink4);letter-spacing:.08em;text-align:right}
+.hm-kv dd{margin:0;color:var(--soc-ink);font-weight:600;max-width:240px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-kv dd a{color:var(--soc-cy)}
+.hm-stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--soc-line)}
+.hm-stat{padding:16px 20px;border-right:1px solid var(--soc-line);min-width:0}
+.hm-stat:last-child{border-right:none}
+.hm-stat-lbl{display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--soc-ink3)}
+.hm-stat-lbl::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--soc-cy)}
+.hm-stat.am .hm-stat-lbl::before{background:var(--soc-am)}
+.hm-stat.vi .hm-stat-lbl::before{background:var(--soc-vi)}
+.hm-stat.gn .hm-stat-lbl::before{background:var(--soc-gn)}
+.hm-stat-val{font-size:28px;font-weight:700;color:var(--soc-ink);margin:6px 0 10px;font-variant-numeric:tabular-nums;line-height:1}
+.hm-stat-sub{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--soc-ink3);margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-bar{display:flex;gap:2px;height:5px;border-radius:3px;overflow:hidden;background:var(--soc-line)}
+.hm-bar i{display:block;height:100%;min-width:3px}
+
+/* section header: cyan tick · spaced caps · dim right-hand path */
+.hm-sec{display:flex;align-items:baseline;gap:12px;margin:0 0 14px;padding-left:12px;border-left:3px solid var(--soc-cy)}
+.hm-sec-t{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--soc-ink)}
+.hm-sec-r{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--soc-ink4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.hm-sec-all{margin-top:34px;scroll-margin-top:64px}
+
+.hm-split{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:26px;margin-bottom:34px}
+.hm-col{min-width:0;display:flex;flex-direction:column}
+.hm-feed{border:1px solid var(--soc-line);border-radius:6px;background:var(--soc-bg-1);overflow:hidden;flex:1}
+.hm-feed-row{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:16px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--soc-line);color:inherit;text-decoration:none;transition:background .12s}
+.hm-feed-row:last-child{border-bottom:none}
+.hm-feed-row:hover{background:color-mix(in srgb,var(--soc-cy) 5%,transparent);text-decoration:none}
+.hm-feed-tag{justify-content:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-feed-txt{display:flex;flex-direction:column;min-width:0}
+.hm-feed-nm{font-size:14.5px;font-weight:600;color:var(--soc-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-feed-row:hover .hm-feed-nm{color:var(--soc-cy)}
+.hm-feed-sub{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--soc-ink3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-feed-btn{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--soc-cy);padding:5px 10px;border:1px solid color-mix(in srgb,var(--soc-cy) 45%,transparent);border-radius:3px;white-space:nowrap}
+.hm-feed-row:hover .hm-feed-btn{background:color-mix(in srgb,var(--soc-cy) 12%,transparent)}
+
+.hm-cov{border:1px solid var(--soc-line);border-left:3px solid var(--soc-cy);border-radius:6px;background:var(--soc-bg-1);padding:16px 18px;flex:1}
+.hm-cov-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.hm-cov-head2{margin:18px 0 10px}
+.hm-cov-kicker{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--soc-cy)}
+.hm-cov-row{display:grid;grid-template-columns:minmax(0,240px) minmax(0,1fr) 34px;gap:12px;align-items:center;padding:6px 0}
+.hm-cov-nm{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--soc-ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.hm-cov-track{height:6px;border-radius:3px;background:var(--soc-line);overflow:hidden}
+.hm-cov-track i{display:block;height:100%;border-radius:3px}
+.hm-cov-n{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--soc-ink);text-align:right;font-variant-numeric:tabular-nums}
+.hm-dchips{display:flex;flex-wrap:wrap;gap:6px}
+.hm-dchip{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--soc-line);border-radius:3px;color:var(--soc-ink3)}
+.hm-dchip b{color:var(--soc-ink);margin-left:4px}
+.hm-dchip.d-very-easy{color:var(--soc-cy)}.hm-dchip.d-easy{color:var(--soc-gn)}.hm-dchip.d-medium{color:var(--soc-am)}.hm-dchip.d-hard{color:var(--soc-rd)}.hm-dchip.d-insane{color:var(--soc-vi)}
+
+/* category matrix */
+.hm-dom{margin-bottom:22px}
+.hm-dom-h{display:flex;align-items:center;gap:12px;margin-bottom:12px;padding-left:12px;border-left:3px solid var(--dom)}
+.hm-dom-t{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.2em;color:var(--dom);white-space:nowrap}
+.hm-dom-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--soc-ink3);white-space:nowrap}
+.hm-dom-line{flex:1;height:1px;background:var(--soc-line);min-width:20px}
+.hm-dom-n{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--soc-ink4);white-space:nowrap}
+.hm-dom.d0{--dom:var(--soc-cy)}.hm-dom.d1{--dom:var(--soc-gn)}.hm-dom.d2{--dom:var(--soc-vi)}.hm-dom.d3{--dom:var(--soc-rd)}
+.hm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.hm-card{display:flex;flex-direction:column;gap:12px;text-align:left;font:inherit;color:inherit;cursor:pointer;
+  padding:16px 16px 14px;border:1px solid var(--soc-line);border-top:2px solid color-mix(in srgb,var(--dom) 60%,transparent);border-radius:6px;background:var(--soc-bg-1);transition:border-color .15s,transform .15s}
+.hm-card:hover{border-color:var(--dom);transform:translateY(-1px)}
+.hm-card:focus-visible{outline:2px solid var(--dom);outline-offset:2px}
+.hm-card-h{display:flex;align-items:center;gap:10px}
+.hm-code{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--dom);padding:3px 7px;border:1px solid color-mix(in srgb,var(--dom) 45%,transparent);background:color-mix(in srgb,var(--dom) 10%,transparent);border-radius:3px;white-space:nowrap}
+.hm-card-t{font-size:15px;font-weight:700;color:var(--soc-ink);flex:1;min-width:0}
+.hm-card-n{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--soc-ink);font-variant-numeric:tabular-nums}
+.hm-tags{display:flex;flex-wrap:wrap;gap:6px;flex:1;align-content:flex-start}
+.hm-tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--dom);padding:3px 8px;border:1px solid color-mix(in srgb,var(--dom) 35%,transparent);border-radius:3px}
+.hm-ev{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;padding-top:10px;border-top:1px solid var(--soc-line);font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--soc-ink3)}
+.hm-ev b{color:var(--soc-ink);font-weight:600}
+.hm-ev-l{letter-spacing:.16em;color:var(--soc-ink4)}
+.hm-minis{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:10px}
+.hm-minis-l{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--soc-ink4);margin-right:4px}
+.hm-mini{font:inherit;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--soc-ink3);padding:4px 9px;border:1px solid var(--soc-line);border-radius:3px;background:var(--soc-bg-1);cursor:pointer}
+.hm-mini b{color:var(--soc-ink);margin-left:4px}
+.hm-mini:hover{color:var(--dom);border-color:var(--dom)}
+:is(.hm-card,.hm-mini).is-on{border-color:var(--dom);background:color-mix(in srgb,var(--dom) 8%,var(--soc-bg-1))}
+
+/* active category pill in the toolbar */
+.catpill{display:none;align-items:center;gap:8px;font:inherit;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;padding:5px 11px;border:1px solid var(--soc-cy);border-radius:4px;color:var(--soc-cy);background:color-mix(in srgb,var(--soc-cy) 8%,transparent);cursor:pointer}
+.catpill.show{display:inline-flex}
+.catpill .x{font-size:13px;line-height:1}
+
+@media(max-width:1279px){
+  .hm-split{grid-template-columns:1fr}
+}
+@media(max-width:1023px){
+  .hm-id{grid-template-columns:auto minmax(0,1fr)}
+  .hm-kv{grid-column:1/-1;grid-template-columns:repeat(4,auto);justify-content:start;gap:4px 12px;padding-top:12px;border-top:1px dashed var(--soc-line)}
+  .hm-kv dt{text-align:left}
+  .hm-stats{grid-template-columns:repeat(2,1fr)}
+  .hm-stat:nth-child(2){border-right:none}
+  .hm-stat:nth-child(-n+2){border-bottom:1px solid var(--soc-line)}
+}
+@media(max-width:767px){
+  .hm-hero{margin-bottom:20px}
+  .hm-strap{padding:6px 14px;gap:12px;font-size:10.5px}
+  .hm-strap .seg:nth-child(n+3){display:none}
+  .hm-id{gap:14px;padding:16px}
+  .hm-av{width:58px;height:58px;padding:4px}
+  .hm-title{font-size:21px}
+  .hm-sub{font-size:11px;margin:4px 0 10px;row-gap:3px}
+  .hm-chips .sev:nth-child(3){display:none}
+  .hm-kv{display:none}
+  .hm-sub .hm-sub-tail{display:none}
+  .hm-feed-row:nth-child(n+6){display:none}
+  .hm-feed-btn{padding:4px 8px;font-size:9.5px}
+  .hm-stat{padding:12px 14px}
+  .hm-stat-val{font-size:22px;margin:4px 0 8px}
+  .hm-split{gap:20px;margin-bottom:26px}
+  .hm-sec-r{display:none}
+  .hm-feed-row{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;padding:11px 12px}
+  .hm-feed-tag{grid-column:1;justify-self:start;max-width:100%}
+  .hm-feed-txt{grid-column:1}
+  .hm-feed-btn{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .hm-cov{padding:14px}
+  .hm-cov-row{grid-template-columns:minmax(0,130px) minmax(0,1fr) 30px;gap:10px}
+  .hm-dom-tag,.hm-dom-line{display:none}
+  .hm-dom-n{margin-left:auto}
+  /* compact matrix on phones: 2-up, title + count + difficulty bar only */
+  .hm-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .hm-card{padding:11px 12px 12px;gap:9px}
+  .hm-card:hover{transform:none}
+  .hm-code,.hm-tags,.hm-ev{display:none}
+  .hm-card-h{align-items:flex-start;gap:8px}
+  .hm-card-t{font-size:13px;line-height:1.3}
+  .hm-card-n{font-size:15px}
 }
 """
 
@@ -1075,7 +1290,7 @@ def write_assets() -> dict[str, str]:
     """Write shared CSS bundles and return {name: 'assets/x.css?v=hash'}."""
     global _ASSET_HREFS
     bundles = {
-        "base":    TOKENS_CSS + TOPBAR_CSS,
+        "base":    TOKENS_CSS + TOPBAR_CSS + LIGHT_CARBON_CSS,
         "article": ARTICLE_CSS,
         "index":   INDEX_CSS,
     }
@@ -1241,6 +1456,67 @@ def _enable_markdown_in_blocks(md: str) -> str:
     return "".join(out)
 
 
+# Joplin stamps exports with two lines near the top, then a rule:
+#     Created: 18/05/2024 14:06
+#     Last Updated: 04/06/2024 08:30
+#     * * *
+# On the page they read as a stray paragraph, so they are lifted out of the
+# body and shown in the info box instead. Dates are DD/MM/YYYY.
+_STAMP_RE = re.compile(
+    r'^Created:[ \t]*(?P<c>[^\n]*)\n(?:Last Updated:[ \t]*(?P<u>[^\n]*)\n)?'
+    r'(?:[ \t]*(?:\* \* \*|\*\*\*|---)[ \t]*\n)?', re.MULTILINE)
+_DMY_RE = re.compile(r'(\d{1,2})/(\d{1,2})/(\d{4})')
+
+
+def _iso(stamp: str) -> str:
+    m = _DMY_RE.search(stamp or "")
+    return f"{m.group(3)}-{int(m.group(2)):02d}-{int(m.group(1)):02d}" if m else ""
+
+
+# CyberDefenders write-ups quote the platform's own labels right after it:
+#     >Category: Endpoint Forensics
+#     >Tags: Disk, Linux, FTK, T1496
+#     * * *
+# Same treatment: lifted into the info box as "Lab category" / "Lab tags".
+_LABMETA_RE = re.compile(
+    r'^>[ \t]*Category:[ \t]*(?P<c>[^\n]*)\n>[ \t]*Tags:[ \t]*(?P<t>[^\n]*)\n'
+    r'(?:[ \t]*(?:\* \* \*|\*\*\*|---)[ \t]*\n)?', re.MULTILINE)
+
+
+def _top_of(md: str, lines: int = 12) -> int:
+    end = 0
+    for _ in range(lines):
+        nl = md.find("\n", end)
+        if nl < 0:
+            return len(md)
+        end = nl + 1
+    return end
+
+
+def _split_lab_meta(md: str) -> tuple[str, dict]:
+    m = _LABMETA_RE.search(md, 0, _top_of(md) + 400)
+    if not m or m.start() > _top_of(md):
+        return md, {}
+    tags = [t.strip() for t in m.group("t").split(",") if t.strip()]
+    return md[:m.start()] + md[m.end():], {"lab_category": m.group("c").strip(), "lab_tags": tags}
+
+
+def _split_stamp(md: str) -> tuple[str, dict]:
+    """Remove the Joplin Created/Last Updated block if it sits in the first
+       few lines; return the markdown and {'created', 'updated'} ISO dates."""
+    head_end = 0
+    for _ in range(10):                      # only look near the top
+        nl = md.find("\n", head_end)
+        if nl < 0:
+            break
+        head_end = nl + 1
+    m = _STAMP_RE.search(md, 0, head_end + 200)
+    if not m or m.start() > head_end:
+        return md, {}
+    return md[:m.start()] + md[m.end():], {"created": _iso(m.group("c")),
+                                           "updated": _iso(m.group("u"))}
+
+
 def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
     """Render one markdown write-up to a styled HTML file."""
     # 1. Read markdown
@@ -1259,8 +1535,11 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
     # images were emitted as literal "![shot.png](...)" text on the page — 205
     # of them across 56 write-ups. markdown2 will process the contents when the
     # tag carries markdown="1", so inject that and enable the extra.
+    md_body, stamp = _split_stamp(md_content)
+    md_body, lab_meta = _split_lab_meta(md_body)
+    stamp.update(lab_meta)
     html_body = markdown2.markdown(
-        _enable_markdown_in_blocks(_space_details(md_content)),
+        _enable_markdown_in_blocks(_space_details(md_body)),
         extras=["fenced-code-blocks", "tables", "header-ids", "strike",
                 "markdown-in-html"]
     )
@@ -1326,7 +1605,7 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
 
 {topbar(crumb_html, badges_html, clock_label, ANSWERS_BTN if "<details" in html_body else "")}
 
-{article_shell(html_body, title, plat, _meta_for(md_path), index_href)}
+{article_shell(html_body, title, plat, _meta_for(md_path), index_href, stamp)}
 {OPEN_ANSWERS_JS if "<details" in html_body else ""}
 
 {article_footer(index_href)}
@@ -1402,7 +1681,8 @@ def _build_toc(html_body: str) -> str:
             + "\n    ".join(items) + "\n  </nav>")
 
 
-def article_shell(html_body: str, title: str, plat: dict, meta: dict, index_href: str) -> str:
+def article_shell(html_body: str, title: str, plat: dict, meta: dict, index_href: str,
+                  stamp: dict | None = None) -> str:
     """Header + info box + TOC rail + body, in the order the CSS grid expects
        (head > meta > toc > body) — the same shape as the portfolio's
        .soc-article (cover > meta > toc > sections)."""
@@ -1427,14 +1707,27 @@ def article_shell(html_body: str, title: str, plat: dict, meta: dict, index_href
     if diff and diff != "Unknown":
         cells.append(cell("Difficulty",
                           f'<span class="wu-diff d-{_diff_slug(diff)}">{html.escape(diff)}</span>'))
+    stamp = stamp or {}
+    if stamp.get("created"):
+        cells.append(cell("Written", f'<div class="wu-meta-val">{stamp["created"]}</div>'))
+    if stamp.get("updated") and stamp["updated"] != stamp.get("created"):
+        cells.append(cell("Updated", f'<div class="wu-meta-val">{stamp["updated"]}</div>'))
     if meta.get("category"):
         cells.append(cell("Category", f'<div class="wu-meta-val">{html.escape(meta["category"])}</div>'))
     if link:
         cells.append(cell("Lab", f'<a class="wu-meta-link" href="{link.group(1)}" target="_blank" '
                                  f'rel="noopener noreferrer">Open on platform ↗</a>'))
+    lab_cat = stamp.get("lab_category", "")
+    if lab_cat and lab_cat.lower() != (meta.get("category") or "").lower():
+        cells.append(cell("Lab category", f'<div class="wu-meta-val">{html.escape(lab_cat)}</div>'))
     if meta.get("tags"):
         chips = "".join(f'<span class="wu-tag">{html.escape(t)}</span>' for t in meta["tags"])
         cells.append(cell("Tags", f'<div class="wu-tags">{chips}</div>', "wu-meta-wide"))
+    seen = {t.lower() for t in (meta.get("tags") or [])}
+    lab_tags = [t for t in stamp.get("lab_tags", []) if t.lower() not in seen]
+    if lab_tags:
+        chips = "".join(f'<span class="wu-tag">{html.escape(t)}</span>' for t in lab_tags)
+        cells.append(cell("Lab tags", f'<div class="wu-tags">{chips}</div>', "wu-meta-wide"))
     cells.append('<div class="soc-read-card">'
                  '<div class="soc-read-head">Reading progress <span class="soc-read-pct">0%</span></div>'
                  '<div class="soc-read-track"><i></i></div>'
@@ -1548,7 +1841,7 @@ def _panel_html(group_folder: str, md_files: list) -> str:
         blob_attr = html.escape(blob, quote=True)
 
         rows_html.append(f"""
-        <a class="wrow" href="{href_safe}" data-name="{html.escape(name.lower(), quote=True)}" data-search="{blob_attr}" data-diff="{dslug}">
+        <a class="wrow" href="{href_safe}" data-name="{html.escape(name.lower(), quote=True)}" data-search="{blob_attr}" data-diff="{dslug}" data-cat="{_cat_slug(category or 'Uncategorised')}">
           <div class="banner">
             <div class="bhead">
               <span class="ix">#{i:03d}</span>
@@ -1579,6 +1872,262 @@ def _panel_html(group_folder: str, md_files: list) -> str:
   <div class="wlist">{''.join(rows_html)}
   </div>
 </details>"""
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Index — home sections modelled on the portfolio home page
+#   hero (operator card: strap · avatar · title · chips · key/value list ·
+#   4 stat cells with distribution bars) → Recent write-ups feed + Coverage
+#   panel → Category matrix (click a card to filter the list below).
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Category → domain, in display order. Categories missing here fall into the
+# last domain so a new category never disappears from the matrix.
+CATEGORY_DOMAINS = [
+    ("FORENSICS", "acquire · parse · reconstruct",
+     ["Windows DFIR", "Memory Forensics", "Linux DFIR", "Mobile Forensics",
+      "Disk Forensics", "Endpoint Forensics", "Digital Forensics"]),
+    ("DETECTION & RESPONSE", "detect · investigate · respond",
+     ["Network Forensics", "Incident Response", "Email / Phishing", "Log Analysis",
+      "Threat Intel", "Cloud Security", "Threat Hunting", "Security Operations", "OSINT"]),
+    ("MALWARE & RE", "unpack · decode · attribute",
+     ["Malware Analysis", "Reverse Engineering"]),
+    ("OFFENSE", "break in · escalate · own",
+     ["AD / Kerberos", "Web Exploitation", "Windows Privesc", "Linux Privesc"]),
+]
+MATRIX_MIN_CARD = 4          # smaller categories render as chips under the domain
+
+# Bar / dot colour per platform class (CSS custom properties, theme-aware)
+PLAT_COLOR = {
+    "p-cd": "var(--soc-cy)", "p-ld": "var(--soc-gn)", "p-btlo": "var(--soc-rd)",
+    "p-htb-sherlock": "var(--soc-am)", "p-htb-machine": "var(--machine-kicker)",
+    "p-thm": "var(--soc-vi)", "p-hacksmarter": "var(--plat-pink)",
+    "p-unlisted": "var(--soc-ink4)",
+}
+# Short platform codes for dense spots (evidence lines, hero chip). HTB's two
+# folders share one code, so their counts merge.
+PLAT_ABBR = {"p-cd": "CD", "p-ld": "LD", "p-btlo": "BTLO", "p-htb-sherlock": "HTB",
+             "p-htb-machine": "HTB", "p-thm": "THM", "p-hacksmarter": "HS", "p-unlisted": "CTF"}
+DIFF_COLOR = {"very-easy": "var(--soc-cy)", "easy": "var(--soc-gn)",
+              "medium": "var(--soc-am)", "hard": "var(--soc-rd)", "insane": "var(--soc-vi)"}
+
+
+def _cat_slug(cat: str) -> str:
+    return re.sub(r'[^a-z0-9]+', '-', cat.lower()).strip('-') or "uncategorised"
+
+
+def _bar(parts: list) -> str:
+    """parts: [(value, css colour, title)] → one segmented distribution bar."""
+    total = sum(v for v, _, _ in parts) or 1
+    segs = "".join(
+        f'<i style="flex:{v};background:{c}" title="{html.escape(t)} · {v}"></i>'
+        for v, c, t in parts if v)
+    return f'<div class="hm-bar" aria-hidden="true">{segs}</div>'
+
+
+def _entries(md_files: list) -> list:
+    out = []
+    for f in md_files:
+        folder = _platform_group_key(f)
+        plat = detect_platform(folder)
+        meta = _meta_for(f)
+        out.append({
+            "name": _strip_platform_prefix(f.stem),
+            "href": html.escape(quote(f.relative_to(SRC_DIR).with_suffix("").as_posix(), safe="/"), quote=True),
+            "plat": plat,
+            "cat": (meta.get("category") or "").strip() or "Uncategorised",
+            "diff": (meta.get("difficulty") or "").strip(),
+            "tags": [t for t in (meta.get("tags") or []) if t],
+            "date": (meta.get("date") or "").strip(),
+        })
+    return out
+
+
+def _home_html(md_files: list, class_counts: dict, class_label: dict) -> str:
+    E = _entries(md_files)
+    total = len(E)
+    by_class = sorted(class_counts.items(), key=lambda kv: -kv[1])
+    short_of = {e["plat"]["class"]: e["plat"]["short"] for e in E}
+    sev_of = {e["plat"]["class"]: e["plat"]["sev"] for e in E}
+
+    dated = sorted((e for e in E if e["date"]), key=lambda e: (e["date"], e["name"]), reverse=True)
+    latest = dated[0] if dated else None
+    cats = {}
+    for e in E:
+        cats.setdefault(e["cat"], []).append(e)
+    top_cat = max(cats.items(), key=lambda kv: len(kv[1]))[0] if cats else "—"
+
+    DIFF_ORDER = ["Very Easy", "Easy", "Medium", "Hard", "Insane"]
+    dcount = {d: sum(1 for e in E if e["diff"] == d) for d in DIFF_ORDER}
+    graded = sum(dcount.values())
+    year = latest["date"][:4] if latest else ""
+    this_year = [e for e in E if e["date"].startswith(year)] if year else []
+
+    # ── hero ────────────────────────────────────────────────────────────────
+    plat_parts = [(n, PLAT_COLOR.get(c, "var(--soc-ink4)"), class_label[c]) for c, n in by_class]
+    diff_parts = [(dcount[d], DIFF_COLOR[_diff_slug(d)], d) for d in DIFF_ORDER if dcount[d]]
+    dom_counts = []
+    placed = set()
+    for title, _, members in CATEGORY_DOMAINS:
+        n = sum(len(cats.get(m, [])) for m in members)
+        placed.update(members)
+        dom_counts.append((title, n))
+    other = sum(len(v) for k, v in cats.items() if k not in placed)
+    dom_colors = ["var(--soc-cy)", "var(--soc-gn)", "var(--soc-vi)", "var(--soc-rd)"]
+    dom_parts = [(n, dom_colors[i % 4], t) for i, (t, n) in enumerate(dom_counts)]
+    if other:
+        dom_parts.append((other, "var(--soc-ink4)", "Other"))
+    yr_counts = {}
+    for e in this_year:
+        yr_counts[e["plat"]["class"]] = yr_counts.get(e["plat"]["class"], 0) + 1
+    yr_parts = [(n, PLAT_COLOR.get(c, "var(--soc-ink4)"), class_label[c])
+                for c, n in sorted(yr_counts.items(), key=lambda kv: -kv[1])]
+
+    top3 = " · ".join(dict.fromkeys(PLAT_ABBR.get(c, c) for c, _ in by_class))
+    diff_sub = " · ".join(f"{dcount[d]} {d.lower()}" for d in ("Easy", "Medium", "Hard") if dcount[d])
+    latest_html = (f'<a href="{latest["href"]}">{html.escape(latest["name"])}</a>' if latest else "—")
+
+    stats = [
+        ("cy", "Write-ups", f"{total}", _bar(plat_parts), f"{len(class_counts)} platforms"),
+        ("am", "Graded", f"{graded}", _bar(diff_parts), diff_sub),
+        ("vi", "Categories", f"{len(cats)}", _bar(dom_parts), f"{len(CATEGORY_DOMAINS)} domains"),
+        ("gn", f"Published {year}", f"{len(this_year)}", _bar(yr_parts),
+         f"latest {latest['date']}" if latest else ""),
+    ]
+    stats_html = "".join(f"""
+      <div class="hm-stat {k}">
+        <div class="hm-stat-lbl">{lbl}</div>
+        <div class="hm-stat-val">{val}</div>
+        {bar}
+        <div class="hm-stat-sub">{html.escape(sub)}</div>
+      </div>""" for k, lbl, val, bar, sub in stats)
+
+    hero = f"""
+  <section class="hm-hero">
+    <div class="hm-strap">
+      <div class="seg"><b>portfolio</b><span class="dim">/</span><span class="v">write_ups</span></div>
+      <div class="seg"><b>indexed</b> <span class="v">{total}</span></div>
+      <div class="seg"><b>platforms</b> <span class="v">{len(class_counts)}</span></div>
+      <div class="seg hm-strap-r"><b>operator</b> <span class="v">{AUTHOR.lower()}</span></div>
+    </div>
+    <div class="hm-id">
+      <div class="hm-av"><img src="{AVATAR_URL}" alt="" width="72" height="72"></div>
+      <div class="hm-id-main">
+        <h1 class="hm-title">Write-Ups Collection</h1>
+        <p class="hm-sub"><span class="hm-sub-in"><span>DFIR</span><span>Malware Analysis</span><span>Network Forensics</span><span>Active Directory</span><span class="hm-sub-tail">lab solutions, documented and reproducible</span></span></p>
+        <div class="hm-chips">
+          <span class="sev green"><span class="dot"></span>{total} SOLVED</span>
+          <span class="sev cyan"><span class="dot"></span>TLP:CLEAR</span>
+          <span class="sev am"><span class="dot"></span>{html.escape(top3)}</span>
+        </div>
+      </div>
+      <dl class="hm-kv">
+        <dt>LATEST</dt><dd>{latest_html}</dd>
+        <dt>UPDATED</dt><dd>{latest['date'] if latest else '—'}</dd>
+        <dt>TOP_DOMAIN</dt><dd>{html.escape(top_cat)}</dd>
+        <dt>OPERATOR</dt><dd>{AUTHOR}</dd>
+      </dl>
+    </div>
+    <div class="hm-stats">{stats_html}
+    </div>
+  </section>"""
+
+    # ── recent feed + coverage panel ────────────────────────────────────────
+    feed_rows = "".join(f"""
+      <a class="hm-feed-row" href="{e['href']}">
+        <span class="sev {e['plat']['sev']} hm-feed-tag"><span class="dot"></span>{e['plat']['short']}</span>
+        <span class="hm-feed-txt">
+          <span class="hm-feed-nm">{html.escape(e['name'])}</span>
+          <span class="hm-feed-sub">{html.escape(e['cat'])} · {e['date']}{(' · ' + html.escape(e['diff'])) if e['diff'] and e['diff'] != 'Unknown' else ''}</span>
+        </span>
+        <span class="hm-feed-btn">READ ↗</span>
+      </a>""" for e in dated[:8])
+
+    maxn = by_class[0][1] if by_class else 1
+    cov_rows = "".join(f"""
+        <div class="hm-cov-row">
+          <span class="hm-cov-nm"><span class="hm-dot" style="background:{PLAT_COLOR.get(c, 'var(--soc-ink4)')}"></span>{html.escape(class_label[c])}</span>
+          <span class="hm-cov-track"><i style="width:{n / maxn * 100:.1f}%;background:{PLAT_COLOR.get(c, 'var(--soc-ink4)')}"></i></span>
+          <span class="hm-cov-n">{n}</span>
+        </div>""" for c, n in by_class)
+    diff_rows = "".join(
+        f'<span class="hm-dchip d-{_diff_slug(d)}">{d} <b>{dcount[d]}</b></span>'
+        for d in DIFF_ORDER if dcount[d])
+
+    split = f"""
+  <div class="hm-split">
+    <section class="hm-col">
+      <div class="hm-sec"><span class="hm-sec-t">Recent write-ups</span><span class="hm-sec-r">tail -f /var/log/writeups.feed</span></div>
+      <div class="hm-feed">{feed_rows}
+      </div>
+    </section>
+    <section class="hm-col">
+      <div class="hm-sec"><span class="hm-sec-t">Coverage</span><span class="hm-sec-r">/platforms/*.md</span></div>
+      <div class="hm-cov">
+        <div class="hm-cov-head"><span class="hm-cov-kicker">PLATFORM COVERAGE</span><span class="sev green"><span class="dot"></span>{total} INDEXED</span></div>
+        {cov_rows}
+        <div class="hm-cov-head hm-cov-head2"><span class="hm-cov-kicker">DIFFICULTY</span></div>
+        <div class="hm-dchips">{diff_rows}</div>
+      </div>
+    </section>
+  </div>"""
+
+    # ── category matrix ─────────────────────────────────────────────────────
+    domains = [list(d) for d in CATEGORY_DOMAINS]
+    leftovers = [c for c in cats if c not in placed]
+    if leftovers:
+        domains[-1][2] = list(domains[-1][2]) + leftovers
+    dom_html = []
+    code_n = 0
+    for di, (title, tagline, members) in enumerate(domains):
+        present = sorted((m for m in members if m in cats), key=lambda m: -len(cats[m]))
+        if not present:
+            continue
+        cards, small = [], []
+        for m in present:
+            items = cats[m]
+            if len(items) < MATRIX_MIN_CARD:
+                small.append(f'<button class="hm-mini" data-cat="{_cat_slug(m)}" data-cat-label="{html.escape(m, quote=True)}">{html.escape(m)} <b>{len(items)}</b></button>')
+                continue
+            code_n += 1
+            code = "".join(w[0] for w in re.findall(r'[A-Za-z]+', m))[:2].upper()
+            tagc = {}
+            for e in items:
+                for t in e["tags"]:
+                    tagc[t] = tagc.get(t, 0) + 1
+            tags = sorted(tagc.items(), key=lambda kv: (-kv[1], kv[0]))[:6]
+            chips = "".join(f'<span class="hm-tag">{html.escape(t)}</span>' for t, _ in tags)
+            pc = {}
+            for e in items:
+                a = PLAT_ABBR.get(e["plat"]["class"], "?")
+                pc[a] = pc.get(a, 0) + 1
+            ev = " ".join(f'<span><b>{n}</b> {html.escape(a)}</span>'
+                          for a, n in sorted(pc.items(), key=lambda kv: (-kv[1], kv[0]))[:4])
+            dparts = [(sum(1 for e in items if e["diff"] == d), DIFF_COLOR[_diff_slug(d)], d) for d in DIFF_ORDER]
+            cards.append(f"""
+        <button class="hm-card d{di}" data-cat="{_cat_slug(m)}" data-cat-label="{html.escape(m, quote=True)}">
+          <span class="hm-card-h"><span class="hm-code">{code}-{code_n:02d}</span><span class="hm-card-t">{html.escape(m)}</span><span class="hm-card-n">{len(items)}</span></span>
+          <span class="hm-tags">{chips}</span>
+          {_bar(dparts)}
+          <span class="hm-ev"><span class="hm-ev-l">EVIDENCE</span> {ev}</span>
+        </button>""")
+        total_dom = sum(len(cats[m]) for m in present)
+        small_html = f'<div class="hm-minis"><span class="hm-minis-l">also</span>{"".join(small)}</div>' if small else ""
+        dom_html.append(f"""
+    <div class="hm-dom d{di}">
+      <div class="hm-dom-h"><span class="hm-dom-t">{html.escape(title)}</span><span class="hm-dom-tag">{html.escape(tagline)}</span><span class="hm-dom-line"></span><span class="hm-dom-n">{total_dom} write-ups</span></div>
+      <div class="hm-grid">{''.join(cards)}
+      </div>{small_html}
+    </div>""")
+
+    matrix = f"""
+  <section class="hm-matrix" id="matrix">
+    <div class="hm-sec"><span class="hm-sec-t">Category matrix</span><span class="hm-sec-r">{len(cats)} categories · click to filter</span></div>{''.join(dom_html)}
+  </section>
+
+  <div class="hm-sec hm-sec-all" id="all"><span class="hm-sec-t">All write-ups</span><span class="hm-sec-r">grep · filter · sort</span></div>"""
+
+    return hero + split + matrix
 
 
 def create_index_html(md_files: list):
@@ -1620,39 +2169,6 @@ def create_index_html(md_files: list):
             dchips.append(f'<button class="dchip d-{_diff_slug(d)}" data-diff="{_diff_slug(d)}">{d} <span class="cnt">{n}</span></button>')
     dchips_html = "\n      ".join(dchips)
 
-    # ── stat grid (Total + top 3 biggest platforms + platform count) = 5 cells
-    sorted_classes = sorted(class_counts.items(), key=lambda kv: -kv[1])
-    accent_for = {
-        "p-htb-sherlock":"am", "p-htb-machine":"am",
-        "p-btlo":"rd", "p-cd":"cyan", "p-ld":"gn",
-        "p-thm":"rd", "p-hacksmarter":"am", "p-unlisted":"vi",
-    }
-    stat_cells = [f"""
-      <div class="soc-stat-cell">
-        <div class="soc-stat-lbl">Total write-ups</div>
-        <div class="soc-stat-val">{total}<span class="unit">entries</span></div>
-      </div>"""]
-    for c, n in sorted_classes[:3]:
-        accent = accent_for.get(c, "cyan").replace("cyan", "")
-        accent_class = f" {accent}" if accent else ""
-        stat_cells.append(f"""
-      <div class="soc-stat-cell{accent_class}">
-        <div class="soc-stat-lbl">{class_label[c]}</div>
-        <div class="soc-stat-val">{n}</div>
-      </div>""")
-    # pad up to 4 platform-content cells (Total + 3 platforms) before the final Platforms count cell
-    while len(stat_cells) < 4:
-        stat_cells.append("""
-      <div class="soc-stat-cell">
-        <div class="soc-stat-lbl">—</div>
-        <div class="soc-stat-val">—</div>
-      </div>""")
-    stat_cells.append(f"""
-      <div class="soc-stat-cell vi">
-        <div class="soc-stat-lbl">Platforms</div>
-        <div class="soc-stat-val">{platform_count}</div>
-      </div>""")
-    stats_html = "".join(stat_cells)
 
     # ── platform panels, sorted by count desc
     panel_blocks = []
@@ -1690,39 +2206,25 @@ def create_index_html(md_files: list):
 
 <main class="page">
 
-  <section class="soc-page-hero">
-    <div class="soc-page-hero-strap">
-      <div class="seg"><b>portfolio</b><span class="dim">/</span><span class="v">write_ups</span></div>
-      <div class="seg"><b>indexed</b> <span class="v">{total}</span></div>
-      <div class="seg"><b>platforms</b> <span class="v">{platform_count}</span></div>
-      <div class="seg" style="margin-left:auto"><b>last_sync</b> <span class="v">{today}</span></div>
-    </div>
-    <div class="soc-page-hero-body">
-      <div class="soc-page-hero-icon">⌖</div>
-      <div>
-        <h1 class="soc-page-hero-title">Write-Ups Collection</h1>
-        <p class="soc-page-hero-sub">CTF challenges &amp; cybersecurity lab solutions — documented, reproducible, verifiable on source</p>
-      </div>
-    </div>
-    <div class="soc-stat-grid">{stats_html}
-    </div>
-  </section>
+{_home_html(md_files, class_counts, class_label)}
 
   <div class="toolbar">
     <div class="search-wrap">
       <input id="search" class="search-input" type="text" placeholder="grep write-ups..." autocomplete="off" spellcheck="false">
       <span class="search-icon">⌕</span>
     </div>
+    <button class="catpill" id="catpill" type="button" title="Clear category filter"><span class="lbl"></span><span class="x">✕</span></button>
     <div class="filters" id="filters">
       <span class="fchip-label">Platform</span>
       {chips_html}
-      <button class="tweak-toggle" id="tw-open">⚙ Tweaks</button>
     </div>
     <div class="filters dfilters" id="dfilters">
       <span class="fchip-label">Difficulty</span>
       {dchips_html}
     </div>
   </div>
+
+  <button class="tweak-toggle" id="tw-open">⚙ Tweaks</button>
 
   <div class="platform-stack" id="stack">
     {panels_html}
@@ -1823,6 +2325,9 @@ def _index_scripts() -> str:
   const dchips = document.querySelectorAll('.dchip');
   let activeFilter = 'all';
   let activeDiff = 'all';
+  let activeCat = 'all';
+  const catTriggers = document.querySelectorAll('[data-cat-label]');
+  const catpill = document.getElementById('catpill');
 
   /* rows are cached once — querySelectorAll per card on every keystroke over
      ~360 entries was the bulk of the search cost */
@@ -1841,18 +2346,20 @@ def _index_scripts() -> str:
         /* data-search is emitted already lowercased by the build script */
         const blob = r.dataset.search || r.dataset.name || '';
         const diffOk = (activeDiff === 'all') || (r.dataset.diff === activeDiff);
-        const show = diffOk && (!q || blob.includes(q));
+        const catOk = (activeCat === 'all') || (r.dataset.cat === activeCat);
+        const show = diffOk && catOk && (!q || blob.includes(q));
         r.classList.toggle('hidden', !show);
         if(show) cardHasMatch = true;
       });
       card.classList.toggle('all-hidden', !cardHasMatch);
       if(cardHasMatch) anyVisible = true;
-      if((q || activeDiff !== 'all') && cardHasMatch) card.open = true;
+      if((q || activeDiff !== 'all' || activeCat !== 'all') && cardHasMatch) card.open = true;
     });
-    const filtering = !!q || activeFilter !== 'all' || activeDiff !== 'all';
+    const filtering = !!q || activeFilter !== 'all' || activeDiff !== 'all' || activeCat !== 'all';
     noRes.classList.toggle('show', !anyVisible && filtering);
     nrq.textContent = q ? ('"' + input.value.trim() + '"')
-                        : (activeDiff !== 'all' ? ('difficulty: ' + activeDiff)
+                        : (activeCat !== 'all' ? ('category: ' + activeCat)
+                        : activeDiff !== 'all' ? ('difficulty: ' + activeDiff)
                         : (activeFilter !== 'all' ? ('filter: ' + activeFilter) : ''));
   }
   /* coalesce keystrokes into one layout pass per frame */
@@ -1873,6 +2380,22 @@ def _index_scripts() -> str:
     activeDiff = c.dataset.diff;
     applyFilter();
   }));
+
+  /* category matrix: a card filters the list below and scrolls to it;
+     clicking the active card (or the pill's ✕) clears the filter */
+  function setCat(slug, label){
+    activeCat = slug;
+    catTriggers.forEach(t => t.classList.toggle('is-on', t.dataset.cat === slug));
+    catpill.classList.toggle('show', slug !== 'all');
+    catpill.querySelector('.lbl').textContent = slug === 'all' ? '' : 'Category: ' + label;
+    applyFilter();
+  }
+  catTriggers.forEach(t => t.addEventListener('click', () => {
+    if(activeCat === t.dataset.cat){ setCat('all', ''); return; }
+    setCat(t.dataset.cat, t.dataset.catLabel);
+    document.getElementById('all').scrollIntoView({behavior:'smooth', block:'start'});
+  }));
+  catpill.addEventListener('click', () => setCat('all', ''));
 
   /* ─── Tweaks ─── */
   const DEFAULTS = {
