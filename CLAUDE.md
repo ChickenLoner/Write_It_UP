@@ -204,9 +204,13 @@ here. The pieces and their portfolio counterparts:
   article; ≥1440px: TOC | article | info rail with reading progress.
 - `SITE_JS` (written to `build/assets/site.js`) is the plain-JS port of
   `soc-theme.js` + `soc-nav.js`: theme switch, clock, scroll-spy, progress.
-- The rail is built from h2/h3 headings; Q&A labs that put questions in
-  blockquotes (`Q1:`, `Task 1:`, or ending in `?`) get a question rail instead
-  (`_question_toc`, gives each question `id="q-N"`). Joplin's inline
+- The rail (`_build_toc`) walks the body in document order: numbered h2s,
+  h3s, and the lab's questions nested under the heading they sit in, so the
+  scroll-spy and reading-progress card track individual questions. A
+  blockquote is a question when it starts with `Q1:` / `Question 1` /
+  `Task 1` or ends with `?`; in `LetsDefend Alert` every blockquote after the
+  first heading is a playbook step (labelled S1, S2…). Each gets `id="q-N"`.
+  Pages with almost no headings get a questions-only rail. Joplin's inline
   "Table of Contents" is hidden by CSS whenever the rail is visible.
 - Code and answer blocks stay dark in the light theme on purpose.
 - Joplin's header lines are lifted out of the body at build time and shown in
@@ -226,15 +230,21 @@ here. The pieces and their portfolio counterparts:
 
 `_home_html()` builds the top of `index.html` in the shape of the portfolio
 home page: an operator-card hero (strap, avatar, title, chips, key/value list,
-4 stat cells with distribution bars), *Recent write-ups* (latest 8 by `date`)
+4 stat cells with distribution bars), *Recent write-ups* (latest 5 by `date`)
 beside a *Coverage* panel, then a *Category matrix*. `CATEGORY_DOMAINS` maps
 each category to one of four domains (Forensics, Detection & Response,
 Malware & RE, Offense); **add a new category there**, or it lands in the last
 domain. Categories with fewer than `MATRIX_MIN_CARD` (4) write-ups render as
-small chips instead of cards. Clicking a card or chip filters the full list
-below by category (`data-cat` on each `.wrow`) and shows a clearable pill in
-the toolbar. Below that, the search, filters, platform panels and the Tweaks
-panel are unchanged. The new CSS uses theme variables and `color-mix()` only,
+small chips instead of cards; cards show title, count, difficulty bar and a
+per-platform line (no tag chips — tags live on the write-up page). Clicking a
+card or chip filters the full list below by category (`data-cat` on each
+`.wrow`) and shows a clearable pill in the toolbar. Below that come the search,
+filters and platform panels. The list defaults to the Tweaks *Rows* view with
+every panel closed, to keep the page short (~3,100px instead of ~18,000px);
+any active search or filter opens the panels that have matches, and Tweaks
+still switches to Cards or Grid. Filtered-out rows are hidden with
+`display:none !important`, because the Rows/Grid views set `.wrow`'s display
+at a higher specificity. The new CSS uses theme variables and `color-mix()` only,
 so it needs no separate light-theme rules.
 
 ## Hosting

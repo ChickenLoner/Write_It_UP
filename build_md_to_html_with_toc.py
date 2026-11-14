@@ -618,6 +618,11 @@ footer.foot .sep{color:var(--soc-ink4);opacity:.5;margin:0 .55rem}
 .wu-toc-item:hover{background:rgba(34,225,255,.05);color:var(--soc-cy);text-decoration:none}
 .wu-toc-q .wu-toc-item span:last-child{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .wu-toc-q .wu-toc-num{width:26px}
+/* questions nested under their heading: Q-number column, two-line clamp */
+.wu-toc-item.q{padding:4px 10px 4px 22px;font-size:11.5px}
+.wu-toc-item.q .wu-toc-num{width:26px}
+.wu-toc-item.q span:last-child{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wu-toc-q .wu-toc-item.q{padding:6px 10px;font-size:12.5px}
 .wu-toc-item.sub{padding:4px 10px 4px 38px;font-size:11.5px}
 .wu-toc-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--soc-ink4);width:20px;flex-shrink:0}
 .wu-toc-item.is-active{color:var(--soc-cy);background:rgba(34,225,255,.07)}
@@ -863,7 +868,9 @@ INDEX_CSS = """
 .wrow .tags{display:flex;flex-wrap:wrap;gap:4px;padding-top:1px}
 .wrow .tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.02em;color:var(--soc-ink4);padding:2px 6px;border:1px solid var(--soc-line);border-radius:3px;background:rgba(0,0,0,.25);white-space:nowrap}
 .wrow:hover .tag{border-color:var(--soc-line2);color:var(--soc-ink3)}
-.wrow.hidden,.pcard.all-hidden{display:none}
+/* !important: the Rows / Grid views set .wrow's display with higher specificity,
+   which used to leave filtered-out rows visible in those views */
+.wrow.hidden,.pcard.all-hidden{display:none !important}
 
 /* ─── No results ─── */
 .no-results{text-align:center;padding:3rem 1rem;color:var(--soc-ink4);font-family:'JetBrains Mono',monospace;display:none;border:1px dashed var(--soc-line);border-radius:6px;margin-top:14px}
@@ -1008,7 +1015,7 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
 /* ═══ HOME — modelled on the portfolio home page ════════════════════════
    Colours come from theme variables (color-mix for tints) so the same rules
    serve the dark console and the Carbon light theme. */
-.hm-hero{border:1px solid var(--soc-line2);border-radius:6px;overflow:hidden;margin-bottom:26px;
+.hm-hero{border:1px solid var(--soc-line2);border-radius:6px;overflow:hidden;margin-bottom:40px;
   background:linear-gradient(180deg,color-mix(in srgb,var(--soc-cy) 4%,transparent),transparent 40%),var(--soc-bg-1)}
 .hm-strap{display:flex;align-items:center;gap:16px;padding:8px 18px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--soc-ink3);border-bottom:1px solid var(--soc-line);background:color-mix(in srgb,var(--soc-bg) 55%,transparent);white-space:nowrap;overflow:hidden}
 .hm-strap b{color:var(--soc-ink2);font-weight:500}
@@ -1049,22 +1056,23 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
 .hm-bar i{display:block;height:100%;min-width:3px}
 
 /* section header: cyan tick · spaced caps · dim right-hand path */
-.hm-sec{display:flex;align-items:baseline;gap:12px;margin:0 0 14px;padding-left:12px;border-left:3px solid var(--soc-cy)}
+.hm-sec{display:flex;align-items:baseline;gap:12px;margin:0 0 16px;padding-left:12px;border-left:3px solid var(--soc-cy)}
 .hm-sec-t{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--soc-ink)}
 .hm-sec-r{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--soc-ink4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.hm-sec-all{margin-top:34px;scroll-margin-top:64px}
+.hm-sec-all{margin-top:48px;scroll-margin-top:64px}
 
-.hm-split{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:26px;margin-bottom:34px}
+.hm-split{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:28px;margin-bottom:48px}
 .hm-col{min-width:0;display:flex;flex-direction:column}
-.hm-feed{border:1px solid var(--soc-line);border-radius:6px;background:var(--soc-bg-1);overflow:hidden;flex:1}
-.hm-feed-row{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:16px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--soc-line);color:inherit;text-decoration:none;transition:background .12s}
+.hm-feed{border:1px solid var(--soc-line);border-radius:6px;background:var(--soc-bg-1);overflow:hidden;flex:1;display:flex;flex-direction:column}
+.hm-feed-row{flex:1;display:grid;grid-template-columns:104px minmax(0,1fr) auto;gap:16px;align-items:center;padding:11px 16px;border-bottom:1px solid var(--soc-line);color:inherit;text-decoration:none;transition:background .12s}
 .hm-feed-row:last-child{border-bottom:none}
 .hm-feed-row:hover{background:color-mix(in srgb,var(--soc-cy) 5%,transparent);text-decoration:none}
-.hm-feed-tag{justify-content:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-feed-tag{justify-content:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:9.5px}
 .hm-feed-txt{display:flex;flex-direction:column;min-width:0}
 .hm-feed-nm{font-size:14.5px;font-weight:600;color:var(--soc-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hm-feed-row:hover .hm-feed-nm{color:var(--soc-cy)}
 .hm-feed-sub{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--soc-ink3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-feed-plat{display:none}
 .hm-feed-btn{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--soc-cy);padding:5px 10px;border:1px solid color-mix(in srgb,var(--soc-cy) 45%,transparent);border-radius:3px;white-space:nowrap}
 .hm-feed-row:hover .hm-feed-btn{background:color-mix(in srgb,var(--soc-cy) 12%,transparent)}
 
@@ -1084,25 +1092,23 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
 .hm-dchip.d-very-easy{color:var(--soc-cy)}.hm-dchip.d-easy{color:var(--soc-gn)}.hm-dchip.d-medium{color:var(--soc-am)}.hm-dchip.d-hard{color:var(--soc-rd)}.hm-dchip.d-insane{color:var(--soc-vi)}
 
 /* category matrix */
-.hm-dom{margin-bottom:22px}
+.hm-dom{margin-bottom:30px}
 .hm-dom-h{display:flex;align-items:center;gap:12px;margin-bottom:12px;padding-left:12px;border-left:3px solid var(--dom)}
 .hm-dom-t{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.2em;color:var(--dom);white-space:nowrap}
 .hm-dom-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--soc-ink3);white-space:nowrap}
 .hm-dom-line{flex:1;height:1px;background:var(--soc-line);min-width:20px}
 .hm-dom-n{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--soc-ink4);white-space:nowrap}
 .hm-dom.d0{--dom:var(--soc-cy)}.hm-dom.d1{--dom:var(--soc-gn)}.hm-dom.d2{--dom:var(--soc-vi)}.hm-dom.d3{--dom:var(--soc-rd)}
-.hm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.hm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
 .hm-card{display:flex;flex-direction:column;gap:12px;text-align:left;font:inherit;color:inherit;cursor:pointer;
-  padding:16px 16px 14px;border:1px solid var(--soc-line);border-top:2px solid color-mix(in srgb,var(--dom) 60%,transparent);border-radius:6px;background:var(--soc-bg-1);transition:border-color .15s,transform .15s}
+  padding:15px 16px 13px;border:1px solid var(--soc-line);border-top:2px solid color-mix(in srgb,var(--dom) 60%,transparent);border-radius:6px;background:var(--soc-bg-1);transition:border-color .15s,transform .15s}
 .hm-card:hover{border-color:var(--dom);transform:translateY(-1px)}
 .hm-card:focus-visible{outline:2px solid var(--dom);outline-offset:2px}
 .hm-card-h{display:flex;align-items:center;gap:10px}
 .hm-code{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--dom);padding:3px 7px;border:1px solid color-mix(in srgb,var(--dom) 45%,transparent);background:color-mix(in srgb,var(--dom) 10%,transparent);border-radius:3px;white-space:nowrap}
 .hm-card-t{font-size:15px;font-weight:700;color:var(--soc-ink);flex:1;min-width:0}
 .hm-card-n{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--soc-ink);font-variant-numeric:tabular-nums}
-.hm-tags{display:flex;flex-wrap:wrap;gap:6px;flex:1;align-content:flex-start}
-.hm-tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--dom);padding:3px 8px;border:1px solid color-mix(in srgb,var(--dom) 35%,transparent);border-radius:3px}
-.hm-ev{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;padding-top:10px;border-top:1px solid var(--soc-line);font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--soc-ink3)}
+.hm-ev{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;padding-top:9px;border-top:1px solid var(--soc-line);font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--soc-ink3)}
 .hm-ev b{color:var(--soc-ink);font-weight:600}
 .hm-ev-l{letter-spacing:.16em;color:var(--soc-ink4)}
 .hm-minis{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:10px}
@@ -1139,25 +1145,26 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
   .hm-chips .sev:nth-child(3){display:none}
   .hm-kv{display:none}
   .hm-sub .hm-sub-tail{display:none}
-  .hm-feed-row:nth-child(n+6){display:none}
   .hm-feed-btn{padding:4px 8px;font-size:9.5px}
   .hm-stat{padding:12px 14px}
   .hm-stat-val{font-size:22px;margin:4px 0 8px}
   .hm-split{gap:20px;margin-bottom:26px}
   .hm-sec-r{display:none}
-  .hm-feed-row{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;padding:11px 12px}
-  .hm-feed-tag{grid-column:1;justify-self:start;max-width:100%}
-  .hm-feed-txt{grid-column:1}
-  .hm-feed-btn{grid-column:2;grid-row:1 / span 2;align-self:center}
+  /* phones: one text column; platform moves into the sub line, the whole row is the link */
+  .hm-feed-row{grid-template-columns:minmax(0,1fr);padding:11px 14px}
+  .hm-feed-tag,.hm-feed-btn{display:none}
+  .hm-feed-plat{display:inline;color:var(--soc-ink2)}
   .hm-cov{padding:14px}
   .hm-cov-row{grid-template-columns:minmax(0,130px) minmax(0,1fr) 30px;gap:10px}
   .hm-dom-tag,.hm-dom-line{display:none}
+  body.tw-rows .wrow .cat,body.tw-rows .wrow .tags{display:none}
+  body.tw-rows .wrow .nm{max-width:none;flex:1 1 auto}
   .hm-dom-n{margin-left:auto}
   /* compact matrix on phones: 2-up, title + count + difficulty bar only */
   .hm-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
   .hm-card{padding:11px 12px 12px;gap:9px}
   .hm-card:hover{transform:none}
-  .hm-code,.hm-tags,.hm-ev{display:none}
+  .hm-code,.hm-ev{display:none}
   .hm-card-h{align-items:flex-start;gap:8px}
   .hm-card-t{font-size:13px;line-height:1.3}
   .hm-card-n{font-size:15px}
@@ -1605,7 +1612,7 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
 
 {topbar(crumb_html, badges_html, clock_label, ANSWERS_BTN if "<details" in html_body else "")}
 
-{article_shell(html_body, title, plat, _meta_for(md_path), index_href, stamp)}
+{article_shell(html_body, title, plat, _meta_for(md_path), index_href, stamp, steps="LetsDefend Alert" in folder_str)}
 {OPEN_ANSWERS_JS if "<details" in html_body else ""}
 
 {article_footer(index_href)}
@@ -1628,61 +1635,76 @@ def _plain(fragment: str) -> str:
     return html.escape(html.unescape(re.sub(r'<[^>]+>', '', fragment)).strip())
 
 
-_QUOTE_RE  = re.compile(r'<blockquote>(\s*<p>(.*?)</p>)', re.DOTALL)
 _QPREFIX_RE = re.compile(r'^(?:Q(?:uestion)?\s*(\d+)|Task\s*(\d+))\s*[:.)\-]?\s*', re.IGNORECASE)
 
+# One pass over the body in document order: h2/h3 headings and blockquotes.
+_TOC_WALK_RE = re.compile(
+    r'<h(?P<lv>[23])\b[^>]*\bid="(?P<id>[^"]+)"[^>]*>(?P<h>.*?)</h(?P=lv)>'
+    r'|<blockquote>(?P<bq>\s*<p>(?P<q>.*?)</p>)', re.DOTALL)
 
-def _question_toc(html_body: str) -> tuple[str, str]:
-    """Q&A labs (most CyberDefenders, Sherlocks, BTLO, THM) put each question
-       in a blockquote instead of a heading. Give those an id and list them in
-       the rail. A blockquote counts as a question when it starts with
-       Q1 / Question 1 / Task 1 or ends with "?"."""
-    items, n = [], 0
 
-    def tag(m):
-        nonlocal n
-        text = html.unescape(re.sub(r'<[^>]+>', '', m.group(2))).strip()
-        if not (_QPREFIX_RE.match(text) or text.endswith("?")):
+def _build_toc(html_body: str, steps: bool = False) -> tuple[str, str]:
+    """Rail TOC for a write-up, in document order: numbered h2s, h3s, and the
+       lab's questions nested under the heading they sit in.
+
+       Q&A labs put each question in a blockquote rather than a heading. A
+       blockquote counts as a question when it starts with Q1 / Question 1 /
+       Task 1 or ends with "?". With `steps` (LetsDefend alert playbooks, whose
+       steps are blockquotes like "Collect Data"), every blockquote after the
+       first heading counts, labelled S1, S2…. Questions get id="q-N" so the
+       rail can link to them and the scroll-spy can track them.
+
+       h2 numbers match the CSS counter on h2 (Joplin's own "Table of Contents"
+       heading is skipped by both). Pages with almost no headings get a
+       questions-only rail. Returns ("", body) when neither is useful."""
+    items, n_h2, n_h, n_q = [], 0, 0, 0
+    seen_heading = False
+    tag = "S" if steps else "Q"
+
+    def visit(m):
+        nonlocal n_h2, n_h, n_q, seen_heading
+        if m.group("lv"):
+            hid = m.group("id")
+            if hid.startswith("table-of-contents"):
+                return m.group(0)
+            text = _plain(m.group("h"))
+            if not text:
+                return m.group(0)
+            seen_heading = True
+            n_h += 1
+            if m.group("lv") == "2":
+                n_h2 += 1
+                items.append(("h2", f'<a class="wu-toc-item" href="#{hid}"><span class="wu-toc-num">{n_h2:02d}.</span><span>{text}</span></a>'))
+            else:
+                items.append(("h3", f'<a class="wu-toc-item sub" href="#{hid}"><span>{text}</span></a>'))
             return m.group(0)
-        n += 1
-        label = _QPREFIX_RE.sub("", text, count=1) or text
-        items.append(f'<a class="wu-toc-item" href="#q-{n}"><span class="wu-toc-num">Q{n}</span>'
-                     f'<span>{html.escape(label)}</span></a>')
-        return f'<blockquote id="q-{n}">{m.group(1)}'
+        text = html.unescape(re.sub(r'<[^>]+>', '', m.group("q"))).strip()
+        is_q = bool(_QPREFIX_RE.match(text)) or text.endswith("?") or (steps and seen_heading)
+        if not is_q or not text:
+            return m.group(0)
+        n_q += 1
+        label = html.escape(_QPREFIX_RE.sub("", text, count=1) or text)
+        items.append(("q", f'<a class="wu-toc-item q" href="#q-{n_q}"><span class="wu-toc-num">{tag}{n_q}</span><span>{label}</span></a>'))
+        return f'<blockquote id="q-{n_q}">{m.group("bq")}'
 
-    new_body = _QUOTE_RE.sub(tag, html_body)
-    if n < 3:
+    new_body = _TOC_WALK_RE.sub(visit, html_body)
+
+    if n_h2 >= 2 or n_h >= 3:                      # headings, questions nested
+        title, cls, entries = "// Table of contents", "wu-toc", [e for _, e in items]
+    elif n_q >= 3:                                 # questions only
+        title = "// Steps" if steps else "// Questions"
+        cls, entries = "wu-toc wu-toc-q", [e for k, e in items if k == "q"]
+    else:
         return "", html_body
-    return ('<nav class="wu-toc wu-toc-q" aria-label="Questions">\n'
-            '    <div class="wu-toc-title">// Questions</div>\n    '
-            + "\n    ".join(items) + "\n  </nav>"), new_body
-
-
-def _build_toc(html_body: str) -> str:
-    """Rail TOC from the rendered h2/h3s. Numbers match the CSS counter on h2
-       (Joplin's own "Table of Contents" heading is skipped by both). Returns
-       "" when there are too few headings for a rail to be useful."""
-    items, n = [], 0
-    for level, hid, inner in _HEAD_RE.findall(html_body):
-        if hid.startswith("table-of-contents"):
-            continue
-        text = _plain(inner)
-        if not text:
-            continue
-        if level == "2":
-            n += 1
-            items.append(f'<a class="wu-toc-item" href="#{hid}"><span class="wu-toc-num">{n:02d}.</span><span>{text}</span></a>')
-        else:
-            items.append(f'<a class="wu-toc-item sub" href="#{hid}"><span>{text}</span></a>')
-    if n < 2 and len(items) < 3:
-        return ""
-    return ('<nav class="wu-toc" aria-label="Table of contents">\n'
-            '    <div class="wu-toc-title">// Table of contents</div>\n    '
-            + "\n    ".join(items) + "\n  </nav>")
+    if n_q == 0:
+        new_body = html_body
+    return (f'<nav class="{cls}" aria-label="Table of contents">\n'
+            f'    <div class="wu-toc-title">{title}</div>\n    '
+            + "\n    ".join(entries) + "\n  </nav>"), new_body
 
 
 def article_shell(html_body: str, title: str, plat: dict, meta: dict, index_href: str,
-                  stamp: dict | None = None) -> str:
+                  stamp: dict | None = None, steps: bool = False) -> str:
     """Header + info box + TOC rail + body, in the order the CSS grid expects
        (head > meta > toc > body) — the same shape as the portfolio's
        .soc-article (cover > meta > toc > sections)."""
@@ -1736,9 +1758,7 @@ def article_shell(html_body: str, title: str, plat: dict, meta: dict, index_href
                  f'<a href="{index_href}">← All write-ups</a></div></div>')
     meta_html = '<aside class="wu-meta">\n    ' + "\n    ".join(cells) + "\n  </aside>"
 
-    toc = _build_toc(html_body)
-    if not toc:
-        toc, html_body = _question_toc(html_body)
+    toc, html_body = _build_toc(html_body, steps)
     cls = "soc-article has-toc" if toc else "soc-article"
     return f"""<main class="{cls}">
   {head}
@@ -2038,10 +2058,10 @@ def _home_html(md_files: list, class_counts: dict, class_label: dict) -> str:
         <span class="sev {e['plat']['sev']} hm-feed-tag"><span class="dot"></span>{e['plat']['short']}</span>
         <span class="hm-feed-txt">
           <span class="hm-feed-nm">{html.escape(e['name'])}</span>
-          <span class="hm-feed-sub">{html.escape(e['cat'])} · {e['date']}{(' · ' + html.escape(e['diff'])) if e['diff'] and e['diff'] != 'Unknown' else ''}</span>
+          <span class="hm-feed-sub"><span class="hm-feed-plat">{e['plat']['short']} · </span>{html.escape(e['cat'])} · {e['date']}{(' · ' + html.escape(e['diff'])) if e['diff'] and e['diff'] != 'Unknown' else ''}</span>
         </span>
         <span class="hm-feed-btn">READ ↗</span>
-      </a>""" for e in dated[:8])
+      </a>""" for e in dated[:5])
 
     maxn = by_class[0][1] if by_class else 1
     cov_rows = "".join(f"""
@@ -2091,12 +2111,6 @@ def _home_html(md_files: list, class_counts: dict, class_label: dict) -> str:
                 continue
             code_n += 1
             code = "".join(w[0] for w in re.findall(r'[A-Za-z]+', m))[:2].upper()
-            tagc = {}
-            for e in items:
-                for t in e["tags"]:
-                    tagc[t] = tagc.get(t, 0) + 1
-            tags = sorted(tagc.items(), key=lambda kv: (-kv[1], kv[0]))[:6]
-            chips = "".join(f'<span class="hm-tag">{html.escape(t)}</span>' for t, _ in tags)
             pc = {}
             for e in items:
                 a = PLAT_ABBR.get(e["plat"]["class"], "?")
@@ -2107,7 +2121,6 @@ def _home_html(md_files: list, class_counts: dict, class_label: dict) -> str:
             cards.append(f"""
         <button class="hm-card d{di}" data-cat="{_cat_slug(m)}" data-cat-label="{html.escape(m, quote=True)}">
           <span class="hm-card-h"><span class="hm-code">{code}-{code_n:02d}</span><span class="hm-card-t">{html.escape(m)}</span><span class="hm-card-n">{len(items)}</span></span>
-          <span class="hm-tags">{chips}</span>
           {_bar(dparts)}
           <span class="hm-ev"><span class="hm-ev-l">EVIDENCE</span> {ev}</span>
         </button>""")
@@ -2353,7 +2366,7 @@ def _index_scripts() -> str:
       });
       card.classList.toggle('all-hidden', !cardHasMatch);
       if(cardHasMatch) anyVisible = true;
-      if((q || activeDiff !== 'all' || activeCat !== 'all') && cardHasMatch) card.open = true;
+      if((q || activeFilter !== 'all' || activeDiff !== 'all' || activeCat !== 'all') && cardHasMatch) card.open = true;
     });
     const filtering = !!q || activeFilter !== 'all' || activeDiff !== 'all' || activeCat !== 'all';
     noRes.classList.toggle('show', !anyVisible && filtering);
@@ -2399,8 +2412,8 @@ def _index_scripts() -> str:
 
   /* ─── Tweaks ─── */
   const DEFAULTS = {
-    "view":"cards","cardMin":320,"showMeta":true,"showIndex":true,
-    "accent":"subtle","startOpen":"first","sort":"az"
+    "view":"rows","cardMin":320,"showMeta":true,"showIndex":true,
+    "accent":"subtle","startOpen":"none","sort":"az"
   };
   const LS = 'writeup-index-tweaks';
   let state = Object.assign({}, DEFAULTS);
