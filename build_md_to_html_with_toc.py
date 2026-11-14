@@ -618,6 +618,11 @@ footer.foot .sep{color:var(--soc-ink4);opacity:.5;margin:0 .55rem}
 .wu-toc-item:hover{background:rgba(34,225,255,.05);color:var(--soc-cy);text-decoration:none}
 .wu-toc-q .wu-toc-item span:last-child{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .wu-toc-q .wu-toc-num{width:26px}
+/* questions nested under their heading: Q-number column, two-line clamp */
+.wu-toc-item.q{padding:4px 10px 4px 22px;font-size:11.5px}
+.wu-toc-item.q .wu-toc-num{width:26px}
+.wu-toc-item.q span:last-child{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wu-toc-q .wu-toc-item.q{padding:6px 10px;font-size:12.5px}
 .wu-toc-item.sub{padding:4px 10px 4px 38px;font-size:11.5px}
 .wu-toc-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--soc-ink4);width:20px;flex-shrink:0}
 .wu-toc-item.is-active{color:var(--soc-cy);background:rgba(34,225,255,.07)}
@@ -1605,7 +1610,7 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
 
 {topbar(crumb_html, badges_html, clock_label, ANSWERS_BTN if "<details" in html_body else "")}
 
-{article_shell(html_body, title, plat, _meta_for(md_path), index_href, stamp)}
+{article_shell(html_body, title, plat, _meta_for(md_path), index_href, stamp, steps="LetsDefend Alert" in folder_str)}
 {OPEN_ANSWERS_JS if "<details" in html_body else ""}
 
 {article_footer(index_href)}
@@ -1628,61 +1633,76 @@ def _plain(fragment: str) -> str:
     return html.escape(html.unescape(re.sub(r'<[^>]+>', '', fragment)).strip())
 
 
-_QUOTE_RE  = re.compile(r'<blockquote>(\s*<p>(.*?)</p>)', re.DOTALL)
 _QPREFIX_RE = re.compile(r'^(?:Q(?:uestion)?\s*(\d+)|Task\s*(\d+))\s*[:.)\-]?\s*', re.IGNORECASE)
 
+# One pass over the body in document order: h2/h3 headings and blockquotes.
+_TOC_WALK_RE = re.compile(
+    r'<h(?P<lv>[23])\b[^>]*\bid="(?P<id>[^"]+)"[^>]*>(?P<h>.*?)</h(?P=lv)>'
+    r'|<blockquote>(?P<bq>\s*<p>(?P<q>.*?)</p>)', re.DOTALL)
 
-def _question_toc(html_body: str) -> tuple[str, str]:
-    """Q&A labs (most CyberDefenders, Sherlocks, BTLO, THM) put each question
-       in a blockquote instead of a heading. Give those an id and list them in
-       the rail. A blockquote counts as a question when it starts with
-       Q1 / Question 1 / Task 1 or ends with "?"."""
-    items, n = [], 0
 
-    def tag(m):
-        nonlocal n
-        text = html.unescape(re.sub(r'<[^>]+>', '', m.group(2))).strip()
-        if not (_QPREFIX_RE.match(text) or text.endswith("?")):
+def _build_toc(html_body: str, steps: bool = False) -> tuple[str, str]:
+    """Rail TOC for a write-up, in document order: numbered h2s, h3s, and the
+       lab's questions nested under the heading they sit in.
+
+       Q&A labs put each question in a blockquote rather than a heading. A
+       blockquote counts as a question when it starts with Q1 / Question 1 /
+       Task 1 or ends with "?". With `steps` (LetsDefend alert playbooks, whose
+       steps are blockquotes like "Collect Data"), every blockquote after the
+       first heading counts, labelled S1, S2…. Questions get id="q-N" so the
+       rail can link to them and the scroll-spy can track them.
+
+       h2 numbers match the CSS counter on h2 (Joplin's own "Table of Contents"
+       heading is skipped by both). Pages with almost no headings get a
+       questions-only rail. Returns ("", body) when neither is useful."""
+    items, n_h2, n_h, n_q = [], 0, 0, 0
+    seen_heading = False
+    tag = "S" if steps else "Q"
+
+    def visit(m):
+        nonlocal n_h2, n_h, n_q, seen_heading
+        if m.group("lv"):
+            hid = m.group("id")
+            if hid.startswith("table-of-contents"):
+                return m.group(0)
+            text = _plain(m.group("h"))
+            if not text:
+                return m.group(0)
+            seen_heading = True
+            n_h += 1
+            if m.group("lv") == "2":
+                n_h2 += 1
+                items.append(("h2", f'<a class="wu-toc-item" href="#{hid}"><span class="wu-toc-num">{n_h2:02d}.</span><span>{text}</span></a>'))
+            else:
+                items.append(("h3", f'<a class="wu-toc-item sub" href="#{hid}"><span>{text}</span></a>'))
             return m.group(0)
-        n += 1
-        label = _QPREFIX_RE.sub("", text, count=1) or text
-        items.append(f'<a class="wu-toc-item" href="#q-{n}"><span class="wu-toc-num">Q{n}</span>'
-                     f'<span>{html.escape(label)}</span></a>')
-        return f'<blockquote id="q-{n}">{m.group(1)}'
+        text = html.unescape(re.sub(r'<[^>]+>', '', m.group("q"))).strip()
+        is_q = bool(_QPREFIX_RE.match(text)) or text.endswith("?") or (steps and seen_heading)
+        if not is_q or not text:
+            return m.group(0)
+        n_q += 1
+        label = html.escape(_QPREFIX_RE.sub("", text, count=1) or text)
+        items.append(("q", f'<a class="wu-toc-item q" href="#q-{n_q}"><span class="wu-toc-num">{tag}{n_q}</span><span>{label}</span></a>'))
+        return f'<blockquote id="q-{n_q}">{m.group("bq")}'
 
-    new_body = _QUOTE_RE.sub(tag, html_body)
-    if n < 3:
+    new_body = _TOC_WALK_RE.sub(visit, html_body)
+
+    if n_h2 >= 2 or n_h >= 3:                      # headings, questions nested
+        title, cls, entries = "// Table of contents", "wu-toc", [e for _, e in items]
+    elif n_q >= 3:                                 # questions only
+        title = "// Steps" if steps else "// Questions"
+        cls, entries = "wu-toc wu-toc-q", [e for k, e in items if k == "q"]
+    else:
         return "", html_body
-    return ('<nav class="wu-toc wu-toc-q" aria-label="Questions">\n'
-            '    <div class="wu-toc-title">// Questions</div>\n    '
-            + "\n    ".join(items) + "\n  </nav>"), new_body
-
-
-def _build_toc(html_body: str) -> str:
-    """Rail TOC from the rendered h2/h3s. Numbers match the CSS counter on h2
-       (Joplin's own "Table of Contents" heading is skipped by both). Returns
-       "" when there are too few headings for a rail to be useful."""
-    items, n = [], 0
-    for level, hid, inner in _HEAD_RE.findall(html_body):
-        if hid.startswith("table-of-contents"):
-            continue
-        text = _plain(inner)
-        if not text:
-            continue
-        if level == "2":
-            n += 1
-            items.append(f'<a class="wu-toc-item" href="#{hid}"><span class="wu-toc-num">{n:02d}.</span><span>{text}</span></a>')
-        else:
-            items.append(f'<a class="wu-toc-item sub" href="#{hid}"><span>{text}</span></a>')
-    if n < 2 and len(items) < 3:
-        return ""
-    return ('<nav class="wu-toc" aria-label="Table of contents">\n'
-            '    <div class="wu-toc-title">// Table of contents</div>\n    '
-            + "\n    ".join(items) + "\n  </nav>")
+    if n_q == 0:
+        new_body = html_body
+    return (f'<nav class="{cls}" aria-label="Table of contents">\n'
+            f'    <div class="wu-toc-title">{title}</div>\n    '
+            + "\n    ".join(entries) + "\n  </nav>"), new_body
 
 
 def article_shell(html_body: str, title: str, plat: dict, meta: dict, index_href: str,
-                  stamp: dict | None = None) -> str:
+                  stamp: dict | None = None, steps: bool = False) -> str:
     """Header + info box + TOC rail + body, in the order the CSS grid expects
        (head > meta > toc > body) — the same shape as the portfolio's
        .soc-article (cover > meta > toc > sections)."""
@@ -1736,9 +1756,7 @@ def article_shell(html_body: str, title: str, plat: dict, meta: dict, index_href
                  f'<a href="{index_href}">← All write-ups</a></div></div>')
     meta_html = '<aside class="wu-meta">\n    ' + "\n    ".join(cells) + "\n  </aside>"
 
-    toc = _build_toc(html_body)
-    if not toc:
-        toc, html_body = _question_toc(html_body)
+    toc, html_body = _build_toc(html_body, steps)
     cls = "soc-article has-toc" if toc else "soc-article"
     return f"""<main class="{cls}">
   {head}

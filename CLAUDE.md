@@ -204,9 +204,13 @@ here. The pieces and their portfolio counterparts:
   article; ≥1440px: TOC | article | info rail with reading progress.
 - `SITE_JS` (written to `build/assets/site.js`) is the plain-JS port of
   `soc-theme.js` + `soc-nav.js`: theme switch, clock, scroll-spy, progress.
-- The rail is built from h2/h3 headings; Q&A labs that put questions in
-  blockquotes (`Q1:`, `Task 1:`, or ending in `?`) get a question rail instead
-  (`_question_toc`, gives each question `id="q-N"`). Joplin's inline
+- The rail (`_build_toc`) walks the body in document order: numbered h2s,
+  h3s, and the lab's questions nested under the heading they sit in, so the
+  scroll-spy and reading-progress card track individual questions. A
+  blockquote is a question when it starts with `Q1:` / `Question 1` /
+  `Task 1` or ends with `?`; in `LetsDefend Alert` every blockquote after the
+  first heading is a playbook step (labelled S1, S2…). Each gets `id="q-N"`.
+  Pages with almost no headings get a questions-only rail. Joplin's inline
   "Table of Contents" is hidden by CSS whenever the rail is visible.
 - Code and answer blocks stay dark in the light theme on purpose.
 - Joplin's header lines are lifted out of the body at build time and shown in
