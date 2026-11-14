@@ -1473,6 +1473,34 @@ def _iso(stamp: str) -> str:
     return f"{m.group(3)}-{int(m.group(2)):02d}-{int(m.group(1)):02d}" if m else ""
 
 
+# CyberDefenders write-ups quote the platform's own labels right after it:
+#     >Category: Endpoint Forensics
+#     >Tags: Disk, Linux, FTK, T1496
+#     * * *
+# Same treatment: lifted into the info box as "Lab category" / "Lab tags".
+_LABMETA_RE = re.compile(
+    r'^>[ \t]*Category:[ \t]*(?P<c>[^\n]*)\n>[ \t]*Tags:[ \t]*(?P<t>[^\n]*)\n'
+    r'(?:[ \t]*(?:\* \* \*|\*\*\*|---)[ \t]*\n)?', re.MULTILINE)
+
+
+def _top_of(md: str, lines: int = 12) -> int:
+    end = 0
+    for _ in range(lines):
+        nl = md.find("\n", end)
+        if nl < 0:
+            return len(md)
+        end = nl + 1
+    return end
+
+
+def _split_lab_meta(md: str) -> tuple[str, dict]:
+    m = _LABMETA_RE.search(md, 0, _top_of(md) + 400)
+    if not m or m.start() > _top_of(md):
+        return md, {}
+    tags = [t.strip() for t in m.group("t").split(",") if t.strip()]
+    return md[:m.start()] + md[m.end():], {"lab_category": m.group("c").strip(), "lab_tags": tags}
+
+
 def _split_stamp(md: str) -> tuple[str, dict]:
     """Remove the Joplin Created/Last Updated block if it sits in the first
        few lines; return the markdown and {'created', 'updated'} ISO dates."""
@@ -1508,6 +1536,8 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
     # of them across 56 write-ups. markdown2 will process the contents when the
     # tag carries markdown="1", so inject that and enable the extra.
     md_body, stamp = _split_stamp(md_content)
+    md_body, lab_meta = _split_lab_meta(md_body)
+    stamp.update(lab_meta)
     html_body = markdown2.markdown(
         _enable_markdown_in_blocks(_space_details(md_body)),
         extras=["fenced-code-blocks", "tables", "header-ids", "strike",
@@ -1687,9 +1717,17 @@ def article_shell(html_body: str, title: str, plat: dict, meta: dict, index_href
     if link:
         cells.append(cell("Lab", f'<a class="wu-meta-link" href="{link.group(1)}" target="_blank" '
                                  f'rel="noopener noreferrer">Open on platform ↗</a>'))
+    lab_cat = stamp.get("lab_category", "")
+    if lab_cat and lab_cat.lower() != (meta.get("category") or "").lower():
+        cells.append(cell("Lab category", f'<div class="wu-meta-val">{html.escape(lab_cat)}</div>'))
     if meta.get("tags"):
         chips = "".join(f'<span class="wu-tag">{html.escape(t)}</span>' for t in meta["tags"])
         cells.append(cell("Tags", f'<div class="wu-tags">{chips}</div>', "wu-meta-wide"))
+    seen = {t.lower() for t in (meta.get("tags") or [])}
+    lab_tags = [t for t in stamp.get("lab_tags", []) if t.lower() not in seen]
+    if lab_tags:
+        chips = "".join(f'<span class="wu-tag">{html.escape(t)}</span>' for t in lab_tags)
+        cells.append(cell("Lab tags", f'<div class="wu-tags">{chips}</div>', "wu-meta-wide"))
     cells.append('<div class="soc-read-card">'
                  '<div class="soc-read-head">Reading progress <span class="soc-read-pct">0%</span></div>'
                  '<div class="soc-read-track"><i></i></div>'

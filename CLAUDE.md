@@ -113,13 +113,13 @@ and the tools that actually appear in the commands and screenshots:
   `volatility`, `cyberchef`, `c2`, `virustotal`, `powershell`, `sysmon` — reuse
   those spellings rather than inventing variants. Skip generic filler like
   `forensics` or `ctf` that every entry would carry.
-- **date** — first-published date; the home page's *Recent write-ups* feed
-  and *Published <year>* stat sort and count on it. `publish.py` scaffolds it
-  as today, which is right for a new write-up, so leave it. The existing 361
-  were back-filled from each file's first commit (`git log --follow
-  --diff-filter=A`), so they are repo-add dates, not solve dates. The file
-  is kept as 1-space-indented, key-sorted JSON with no trailing newline;
-  `publish.py` writes it that way so a new entry is a one-entry diff.
+- **date** — the day the write-up was written; the home page's *Recent
+  write-ups* feed and *Published <year>* stat sort and count on it. It is
+  Joplin's `Created:` stamp when the export has one (DD/MM/YYYY → ISO), else
+  the day the file was first committed (`git log --follow --diff-filter=A`).
+  `publish.py` scaffolds it the same way (stamp, else today), so leave it.
+  The file is kept as 1-space-indented, key-sorted JSON with no trailing
+  newline; `publish.py` writes it that way so a new entry is a one-entry diff.
 - **summary** — what the reader *does* in this lab, active voice. Target ≤155
   characters; existing entries run 105-163 with a median of 135, so aim for
   ~135 and treat 155 as the ceiling. Never open with "This lab" / "This
@@ -209,6 +209,13 @@ here. The pieces and their portfolio counterparts:
   (`_question_toc`, gives each question `id="q-N"`). Joplin's inline
   "Table of Contents" is hidden by CSS whenever the rail is visible.
 - Code and answer blocks stay dark in the light theme on purpose.
+- Joplin's header lines are lifted out of the body at build time and shown in
+  the info box (markdown is untouched): `Created:` / `Last Updated:` become
+  *Written* / *Updated* (`_split_stamp`), and the CyberDefenders
+  `>Category:` / `>Tags:` quote becomes *Lab category* (only when it differs
+  from the meta category) and *Lab tags* (minus tags already listed)
+  (`_split_lab_meta`). Both only match in the first few lines, together with
+  the `* * *` rule that follows them.
 - **Answers switch** (`ANSWERS_BTN`, topbar, only on pages with `<details>`):
   a remembered default, `wu-answers` = `hidden` (default) or `shown`. The head
   bootstrap sets `data-answers`; `OPEN_ANSWERS_JS`, inlined right after

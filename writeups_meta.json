@@ -1,7 +1,7 @@
 {
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] 3CX Supply Chain.md": {
   "category": "Threat Intel",
-  "date": "2024-06-04",
+  "date": "2024-05-18",
   "difficulty": "Hard",
   "summary": "Trace the 3CX supply chain compromise using VirusTotal to identify malicious DLLs, evasion TTPs, malware family, and the responsible APT group",
   "tags": [
@@ -29,7 +29,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Acoustic.md": {
   "category": "Network Forensics",
-  "date": "2024-05-31",
+  "date": "2024-03-14",
   "difficulty": "Medium",
   "summary": "Analyze a VoIP honeypot pcap and log to uncover SIP scanning tools, dialed numbers, credentials, and RTP codec details",
   "tags": [
@@ -43,7 +43,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] AfricanFalls.md": {
   "category": "Windows DFIR",
-  "date": "2024-06-17",
+  "date": "2024-05-02",
   "difficulty": "Medium",
   "summary": "Examine a suspect's Windows disk image to recover browser searches, FTP servers, deleted files, Tor usage, and cracked login passwords",
   "tags": [
@@ -85,7 +85,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] BankingTroubles.md": {
   "category": "Memory Forensics",
-  "date": "2024-08-22",
+  "date": "2024-05-23",
   "difficulty": "Hard",
   "summary": "Analyze a memory image of a banking-malware infection to trace a malicious PDF exploit, embedded JavaScript, shellcode, and C2 connections",
   "tags": [
@@ -99,7 +99,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] BlackEnergy.md": {
   "category": "Memory Forensics",
-  "date": "2024-06-13",
+  "date": "2024-05-24",
   "difficulty": "Medium",
   "summary": "Analyze a memory dump infected with BlackEnergy v2 to identify the suspicious process, code injection, and the injected DLL's base address",
   "tags": [
@@ -113,7 +113,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] BlueSky Ransomware.md": {
   "category": "Network Forensics",
-  "date": "2024-06-05",
+  "date": "2024-05-18",
   "difficulty": "Hard",
   "summary": "Correlate pcap and event logs to reconstruct a BlueSky ransomware attack from SQL brute force through privilege escalation, persistence, and credential dumping",
   "tags": [
@@ -127,7 +127,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Brave.md": {
   "category": "Memory Forensics",
-  "date": "2024-06-18",
+  "date": "2024-06-15",
   "difficulty": "Medium",
   "summary": "Analyze a Windows memory image to enumerate browser processes, network connections, executable hashes, and PowerShell parent activity",
   "tags": [
@@ -169,7 +169,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] DeepDive.md": {
   "category": "Memory Forensics",
-  "date": "2024-08-07",
+  "date": "2024-06-11",
   "difficulty": "Hard",
   "summary": "Analyze a memory image to uncover a hidden unlinked process, its injected PEs, pool tags, and full path using Volatility and volshell",
   "tags": [
@@ -183,7 +183,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] DumpMe.md": {
   "category": "Memory Forensics",
-  "date": "2024-06-13",
+  "date": "2024-06-05",
   "difficulty": "Medium",
   "summary": "Analyze a memory dump of a Meterpreter infection to extract the infected PID, attacker IP, VBS script, hashes, and VAD protections",
   "tags": [
@@ -210,7 +210,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Emprisa Maldoc.md": {
   "category": "Malware Analysis",
-  "date": "2024-06-29",
+  "date": "2024-06-22",
   "difficulty": "Medium",
   "summary": "Dissect a malicious RTF exploiting CVE-2017-11882 to extract its obfuscated shellcode, payload URL, and download-and-execute functions",
   "tags": [
@@ -224,7 +224,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] EscapeRoom.md": {
   "category": "Network Forensics",
-  "date": "2024-07-01",
+  "date": "2024-05-29",
   "difficulty": "Medium",
   "summary": "Trace an SSH brute-force intrusion through PCAP and Linux logs to recover credentials and reconstruct malware installation and persistence",
   "tags": [
@@ -238,7 +238,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] FakeGPT.md": {
   "category": "Malware Analysis",
-  "date": "2024-12-16",
+  "date": "2024-12-07",
   "difficulty": "Medium",
   "summary": "Reverse a malicious fake ChatGPT browser extension to expose its keylogging, cookie theft, encryption, and C2 exfiltration behavior",
   "tags": [
@@ -266,7 +266,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] GetPDF.md": {
   "category": "Malware Analysis",
-  "date": "2024-07-13",
+  "date": "2024-06-22",
   "difficulty": "Medium",
   "summary": "Dissect a malicious PDF captured in PCAP to extract obfuscated JS object streams, shellcode, and CVE exploits that drop executables",
   "tags": [
@@ -308,7 +308,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] GrabThePhisher.md": {
   "category": "Threat Intel",
-  "date": "2024-05-31",
+  "date": "2024-02-27",
   "difficulty": "Easy",
   "summary": "Analyze a MetaMask phishing kit to recover stolen seed phrases and pivot through its Telegram bot to unmask the phishing actor",
   "tags": [
@@ -322,7 +322,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Hacked.md": {
   "category": "Linux DFIR",
-  "date": "2024-06-24",
+  "date": "2024-05-02",
   "difficulty": "Medium",
   "summary": "Examine a compromised Linux web server disk image to determine SSH brute-force access, crack credentials, and identify attacker-created accounts",
   "tags": [
@@ -336,7 +336,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Hammered.md": {
   "category": "Log Analysis",
-  "date": "2024-06-21",
+  "date": "2024-05-03",
   "difficulty": "Medium",
   "summary": "Correlate honeypot auth, kernel, and Apache logs to profile SSH brute-force attackers, firewall changes, and dropped scanning tools",
   "tags": [
@@ -350,7 +350,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] HawkEye.md": {
   "category": "Network Forensics",
-  "date": "2024-06-27",
+  "date": "2024-03-15",
   "difficulty": "Easy",
   "summary": "Profile capture endpoints, DNS queries, and hosts in a PCAP to trace malware delivered via a malicious invoice email and its exfiltration",
   "tags": [
@@ -364,7 +364,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] HireMe.md": {
   "category": "Windows DFIR",
-  "date": "2024-06-30",
+  "date": "2024-04-30",
   "difficulty": "Medium",
   "summary": "Analyze a Windows disk image via registry hives and browser artifacts to answer OS, user, and case-related questions about the suspect",
   "tags": [
@@ -448,7 +448,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Injector.md": {
   "category": "Windows DFIR",
-  "date": "2024-06-19",
+  "date": "2024-06-18",
   "difficulty": "Hard",
   "summary": "Mount a breached web server's disk and memory image to trace SQL injection and LFI exploitation of DVWA and the attacker's rogue user creation",
   "tags": [
@@ -462,7 +462,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Insider.md": {
   "category": "Linux DFIR",
-  "date": "2024-05-31",
+  "date": "2024-03-05",
   "difficulty": "Easy",
   "summary": "Examine a Kali Linux disk image to trace an insider's credential-dumping downloads, bash history, and hidden files proving lateral attacks",
   "tags": [
@@ -504,7 +504,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Lespion.md": {
   "category": "OSINT",
-  "date": "2024-05-31",
+  "date": "2024-02-28",
   "difficulty": "Medium",
   "summary": "Use OSINT, GitHub leaks, and image geolocation to unmask an insider attacker's identity, leaked credentials, and physical whereabouts",
   "tags": [
@@ -518,7 +518,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] MSIXPhish.md": {
   "category": "Threat Intel",
-  "date": "2025-01-01",
+  "date": "2024-10-08",
   "difficulty": "Easy",
   "summary": "Pivot on a malicious MSIX installer hash in VirusTotal to profile the batloader family, dropped executables, C2 domains, and threat actor",
   "tags": [
@@ -532,7 +532,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] MalDoc101.md": {
   "category": "Malware Analysis",
-  "date": "2024-06-27",
+  "date": "2024-06-21",
   "difficulty": "Easy",
   "summary": "Statically analyze a macro-laden malicious Office document with oledump and olevba to extract the base64 PowerShell dropper and its IOCs",
   "tags": [
@@ -588,7 +588,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] MrGamer.md": {
   "category": "Linux DFIR",
-  "date": "2024-09-08",
+  "date": "2024-06-30",
   "difficulty": "Medium",
   "summary": "Explore a Linux gamer's disk image using bash history and SQLite artifacts to uncover Log4j exploit attempts and user activity anomalies",
   "tags": [
@@ -602,7 +602,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] MrRobot.md": {
   "category": "Memory Forensics",
-  "date": "2024-06-27",
+  "date": "2024-06-05",
   "difficulty": "Hard",
   "summary": "Analyze memory dumps with Volatility to identify a phishing-delivered RAT, its process injection, persistence, and stolen credential hashes",
   "tags": [
@@ -616,7 +616,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] NintendoHunt.md": {
   "category": "Memory Forensics",
-  "date": "2024-08-04",
+  "date": "2024-06-15",
   "difficulty": "Medium",
   "summary": "Use Volatility to spot a masquerading svchost process injected under explorer, extract its hidden hash, and recover alternate data stream artifacts",
   "tags": [
@@ -630,7 +630,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] NukeTheBrowser.md": {
   "category": "Network Forensics",
-  "date": "2024-08-04",
+  "date": "2024-06-17",
   "difficulty": "Hard",
   "summary": "Dissect a drive-by exploit-kit PCAP, deobfuscating malicious JavaScript to identify served CVEs, executables, and geo-targeted redirects",
   "tags": [
@@ -644,7 +644,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Obfuscated.md": {
   "category": "Malware Analysis",
-  "date": "2024-07-28",
+  "date": "2024-06-23",
   "difficulty": "Medium",
   "summary": "Deobfuscate a malicious document's macros and dropped JavaScript backdoor using oledump and olevba to reveal its decryption key and staging logic",
   "tags": [
@@ -672,7 +672,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] PacketMaze.md": {
   "category": "Network Forensics",
-  "date": "2024-05-31",
+  "date": "2024-03-14",
   "difficulty": "Medium",
   "summary": "Investigate an insider's PCAP to recover FTP creds, DNS lookups, TLS session keys, and image EXIF metadata using Wireshark and NetworkMiner",
   "tags": [
@@ -714,7 +714,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Phobos.md": {
   "category": "Malware Analysis",
-  "date": "2024-11-30",
+  "date": "2024-06-25",
   "difficulty": "Hard",
   "summary": "Reverse engineer the Phobos ransomware to uncover its hashing, encryption logic, C2 protocol, and process-termination and persistence functions",
   "tags": [
@@ -728,7 +728,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] PoisonedCredentials.md": {
   "category": "Network Forensics",
-  "date": "2024-05-31",
+  "date": "2024-02-20",
   "difficulty": "Easy",
   "summary": "Trace an LLMNR/NBT-NS poisoning attack in a PCAP to identify the rogue machine, compromised account, and SMB host accessed",
   "tags": [
@@ -756,7 +756,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] PsExec Hunt.md": {
   "category": "Network Forensics",
-  "date": "2024-05-31",
+  "date": "2024-02-21",
   "difficulty": "Medium",
   "summary": "Analyze PCAP traffic to reconstruct PsExec lateral movement, identifying the pivot hosts, auth account, service executable, and network shares used",
   "tags": [
@@ -812,7 +812,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Ramnit.md": {
   "category": "Memory Forensics",
-  "date": "2024-10-09",
+  "date": "2024-05-26",
   "difficulty": "Medium",
   "summary": "Analyze a memory dump with Volatility to trace the Ramnit malware process, its executable path, C2 IP, and compilation timestamp",
   "tags": [
@@ -840,7 +840,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] RedLine.md": {
   "category": "Memory Forensics",
-  "date": "2024-05-31",
+  "date": "2024-03-05",
   "difficulty": "Medium",
   "summary": "Analyze a memory dump with Volatility and Redline to identify the oneetx.exe process, its injection, VPN connection, and malware family",
   "tags": [
@@ -854,7 +854,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Reveal.md": {
   "category": "Memory Forensics",
-  "date": "2024-11-04",
+  "date": "2024-07-17",
   "difficulty": "Medium",
   "summary": "Analyze a Windows memory dump with Volatility 3 to trace a PowerShell-launched stealer, its second-stage payload, remote share, and family",
   "tags": [
@@ -868,7 +868,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Seized.md": {
   "category": "Memory Forensics",
-  "date": "2024-06-22",
+  "date": "2024-06-05",
   "difficulty": "Hard",
   "summary": "Investigate a Linux CentOS memory dump with Volatility to uncover a reverse shell, persistence backdoor, and the attacker's rootkit and key",
   "tags": [
@@ -910,7 +910,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] SpottedInTheWild.md": {
   "category": "Windows DFIR",
-  "date": "2024-06-01",
+  "date": "2024-05-28",
   "difficulty": "Medium",
   "summary": "Investigate a compromised bank workstation to trace a WinRAR CVE-2023-38831 exploit, second-stage payload, event-log tampering, persistence, and data staging",
   "tags": [
@@ -924,7 +924,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Sysinternals.md": {
   "category": "Windows DFIR",
-  "date": "2024-05-31",
+  "date": "2024-02-27",
   "difficulty": "Medium",
   "summary": "Analyze a disk image of a fake SysInternals download using AmCache and registry artifacts to identify the malware, its C2 domain, dropped payload, and service",
   "tags": [
@@ -980,7 +980,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] The Crime.md": {
   "category": "Mobile Forensics",
-  "date": "2024-05-31",
+  "date": "2024-05-28",
   "difficulty": "Easy",
   "summary": "Parse an Android image with ALEAPP to reconstruct a murder victim's trading app, debts, SMS, location history, and Discord meeting arrangements",
   "tags": [
@@ -994,7 +994,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Tomcat Takeover.md": {
   "category": "Network Forensics",
-  "date": "2024-05-31",
+  "date": "2024-02-22",
   "difficulty": "Easy",
   "summary": "Analyze a pcap to trace a Tomcat compromise from port scanning and Gobuster enumeration through admin-panel brute force, reverse-shell upload, and persistence",
   "tags": [
@@ -1022,7 +1022,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Ulysses.md": {
   "category": "Linux DFIR",
-  "date": "2024-06-13",
+  "date": "2024-05-23",
   "difficulty": "Hard",
   "summary": "Investigate a compromised Linux server with Volatility and disk analysis to trace SSH brute force, an exploited service, downloaded files, and data exfiltration",
   "tags": [
@@ -1036,7 +1036,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] UnPackMe.md": {
   "category": "Reverse Engineering",
-  "date": "2024-10-08",
+  "date": "2024-05-29",
   "difficulty": "Hard",
   "summary": "Reverse the packed ShadowSteal stealer in IDA and Ghidra to recover its mutex string, RC4 key, version, screenshot routine, and self-delete command",
   "tags": [
@@ -1050,7 +1050,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Web Investigation.md": {
   "category": "Network Forensics",
-  "date": "2024-05-31",
+  "date": "2024-03-20",
   "difficulty": "Easy",
   "summary": "Analyze web-server traffic to trace a SQL injection attack, identify the vulnerable script, dumped databases, discovered directory, credentials, and uploaded shell",
   "tags": [
@@ -1064,7 +1064,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] WebStrike.md": {
   "category": "Network Forensics",
-  "date": "2024-05-31",
+  "date": "2024-02-19",
   "difficulty": "Easy",
   "summary": "Examine a pcap to trace a PHP web-shell upload, identify the attacker's origin and user agent, the upload directory, shell port, and exfiltrated file",
   "tags": [
@@ -1078,7 +1078,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] WireDive.md": {
   "category": "Network Forensics",
-  "date": "2024-06-21",
+  "date": "2024-03-07",
   "difficulty": "Easy",
   "summary": "Dissect multiple packet captures to analyze DHCP, DNS, SMB, and reverse-shell traffic, extracting flags, transaction IDs, file paths, and netcat details",
   "tags": [
@@ -1092,7 +1092,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] XLM Macros.md": {
   "category": "Malware Analysis",
-  "date": "2024-06-29",
+  "date": "2024-06-21",
   "difficulty": "Medium",
   "summary": "Analyze two Excel 4.0 macro documents on REMnux to crack encryption, reveal hidden sheets, decode anti-analysis checks, and extract payload URLs and families",
   "tags": [
@@ -1106,7 +1106,7 @@
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Yellow RAT.md": {
   "category": "Threat Intel",
-  "date": "2024-10-09",
+  "date": "2024-10-08",
   "difficulty": "Easy",
   "summary": "Pivot a malware hash through VirusTotal to identify the Yellow Cockatoo RAT family, its dropped files, compile timestamp, and C2 server",
   "tags": [
@@ -1554,7 +1554,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] BFT.md": {
   "category": "Windows DFIR",
-  "date": "2024-06-01",
+  "date": "2024-05-19",
   "difficulty": "Easy",
   "summary": "Parse the NTFS MFT with MFTECmd and Timeline Explorer to trace a downloaded ZIP, identify a resident invoice.bat stager, and recover its C2 IP and port",
   "tags": [
@@ -1568,7 +1568,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] BOughT.md": {
   "category": "Memory Forensics",
-  "date": "2024-09-27",
+  "date": "2024-07-27",
   "difficulty": "Hard",
   "summary": "Analyze a memory image with Volatility to find a malicious startup process, then reverse the malware's mutex, anti-debug tricks, and DGA C2 domains",
   "tags": [
@@ -1582,7 +1582,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Brutus.md": {
   "category": "Linux DFIR",
-  "date": "2024-06-01",
+  "date": "2024-05-19",
   "difficulty": "Very Easy",
   "summary": "Investigate Unix auth.log and wtmp to trace an SSH brute-force, identify the compromised account, backdoor user, and privilege escalation",
   "tags": [
@@ -1596,7 +1596,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Bumblebee.md": {
   "category": "Log Analysis",
-  "date": "2024-06-01",
+  "date": "2024-05-21",
   "difficulty": "Easy",
   "summary": "Trace an insider contractor through phpBB SQLite tables and access.log to uncover a credential-stealing XSS post and stolen database backup",
   "tags": [
@@ -1652,7 +1652,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Constellation.md": {
   "category": "OSINT",
-  "date": "2024-06-03",
+  "date": "2024-05-30",
   "difficulty": "Medium",
   "summary": "Extract timestamps from memory-recovered URLs with unfurl and use OSINT to expose an insider threat and the threat actor handler behind data exfiltration",
   "tags": [
@@ -1708,7 +1708,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Detroit becomes Human.md": {
   "category": "Windows DFIR",
-  "date": "2025-02-15",
+  "date": "2024-08-12",
   "difficulty": "Medium",
   "summary": "Analyze Edge history and MFT to trace a fake AI-tool malvertising install, uncovering the staging directory and recovering the malicious JS payload",
   "tags": [
@@ -1722,7 +1722,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Heartbreaker-Continuum.md": {
   "category": "Malware Analysis",
-  "date": "2024-07-13",
+  "date": "2024-07-12",
   "difficulty": "Medium",
   "summary": "Reverse a PowerShell-to-PE binary with pestudio and strings to recover the reversed-base64 script, network IOCs, and exfiltration password",
   "tags": [
@@ -1736,7 +1736,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Heartbreaker-Denouement.md": {
   "category": "Cloud Security",
-  "date": "2025-04-19",
+  "date": "2024-07-26",
   "difficulty": "Hard",
   "summary": "Correlate web access logs and AWS CloudTrail to trace an SSRF-driven metadata compromise, stolen IAM credentials, and database snapshot exfiltration",
   "tags": [
@@ -1750,7 +1750,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Hyperfiletable.md": {
   "category": "Windows DFIR",
-  "date": "2024-10-09",
+  "date": "2024-09-29",
   "difficulty": "Easy",
   "summary": "Triage a single MFT record with MFTECmd and MFTExplorer to identify a phished user's malicious HTA download, its ADS ZoneId, and file sizes",
   "tags": [
@@ -1764,7 +1764,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Jingle Bell.md": {
   "category": "Windows DFIR",
-  "date": "2024-06-03",
+  "date": "2024-05-20",
   "difficulty": "Medium",
   "summary": "Parse the Windows Notifications database in DB Browser to reconstruct an insider's Slack chat revealing data leaked to a rival company for money",
   "tags": [
@@ -1778,7 +1778,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Jugglin.md": {
   "category": "Incident Response",
-  "date": "2024-06-03",
+  "date": "2024-05-24",
   "difficulty": "Hard",
   "summary": "Analyze API Monitor apmx64 logs to track WSL2 activity, uncovering intercepted string functions, exfiltrated files, and lsassy credential theft",
   "tags": [
@@ -1806,7 +1806,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Litter.md": {
   "category": "Network Forensics",
-  "date": "2024-10-09",
+  "date": "2024-09-29",
   "difficulty": "Medium",
   "summary": "Investigate a PCAP of DNS-tunneled C2 traffic, decoding queries to recover attacker commands and quantify stolen customer PII records",
   "tags": [
@@ -1820,7 +1820,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Lockpick.md": {
   "category": "Malware Analysis",
-  "date": "2024-06-03",
+  "date": "2024-05-21",
   "difficulty": "Hard",
   "summary": "Reverse-engineer a Linux ransomware binary in Ghidra to recover the encryption key and decrypt Forela's ransomed UNIX server files",
   "tags": [
@@ -1834,7 +1834,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Logjammer.md": {
   "category": "Windows DFIR",
-  "date": "2024-06-01",
+  "date": "2024-05-22",
   "difficulty": "Easy",
   "summary": "Analyze Windows event logs to track a user's malicious logon, firewall tampering, scheduled task, PowerShell activity, and log clearing",
   "tags": [
@@ -1876,7 +1876,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Noted.md": {
   "category": "Windows DFIR",
-  "date": "2024-06-03",
+  "date": "2024-05-20",
   "difficulty": "Medium",
   "summary": "Reconstruct a data-extortion attack from Notepad++ artifacts to recover the attacker's exfil archive, crypto wallet, and contact details",
   "tags": [
@@ -1932,7 +1932,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OPTinselTrace24-3 Blizzard Breakdown.md": {
   "category": "Cloud Security",
-  "date": "2025-02-16",
+  "date": "2024-12-15",
   "difficulty": "Medium",
   "summary": "Correlate Windows artifacts and AWS CloudTrail logs to track a rogue insider abusing Ammyy Admin and tampering with an S3 archive",
   "tags": [
@@ -1946,7 +1946,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OPTinselTrace24-4 Neural Noel.md": {
   "category": "Web Exploitation",
-  "date": "2025-02-16",
+  "date": "2024-12-15",
   "difficulty": "Medium",
   "summary": "Investigate pcap, auth.log, and bash history to trace an AI chatbot prompt-injection leading to credential leak and root privilege escalation",
   "tags": [
@@ -1960,7 +1960,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OpSalwarKameez24-1 Super-Star.md": {
   "category": "Reverse Engineering",
-  "date": "2024-12-08",
+  "date": "2024-11-03",
   "difficulty": "Hard",
   "summary": "Reverse a malicious NSIS/Electron Node.js keylogger, decoding XOR shellcode and V8 bytecode to recover its exfil channel and fake coupon",
   "tags": [
@@ -1974,7 +1974,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OpSalwarKameez24-2 Magic-Show.md": {
   "category": "Incident Response",
-  "date": "2024-12-08",
+  "date": "2024-11-03",
   "difficulty": "Hard",
   "summary": "Correlate KAPE logs and a memory dump to track RDP access, Defender bypass, privilege escalation, and exploit use on a Windows 11 host",
   "tags": [
@@ -1988,7 +1988,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OpSalwarKameez24-4 Salsa-Dance.md": {
   "category": "Incident Response",
-  "date": "2024-12-08",
+  "date": "2024-11-03",
   "difficulty": "Hard",
   "summary": "Follow prefetch and event-log evidence to trace BITS downloads, credential dumping, and database exfiltration during lateral movement",
   "tags": [
@@ -2072,7 +2072,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OpTinselTrace24-1 Sneaky Cookies.md": {
   "category": "Windows DFIR",
-  "date": "2025-02-17",
+  "date": "2024-12-15",
   "difficulty": "Medium",
   "summary": "Trace a phishing LNK that abuses LOLBins to stage C2, then reconstruct the attacker's VPN and RDP access from Windows artifacts",
   "tags": [
@@ -2128,7 +2128,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] ReliableThreat.md": {
   "category": "Memory Forensics",
-  "date": "2025-08-09",
+  "date": "2025-02-21",
   "difficulty": "Hard",
   "summary": "Analyze a memory dump and disk image to trace a malicious VSCode extension spawning a NjRAT reverse shell and modifying the registry for persistence",
   "tags": [
@@ -2142,7 +2142,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] RogueOne.md": {
   "category": "Memory Forensics",
-  "date": "2024-06-03",
+  "date": "2024-05-22",
   "difficulty": "Medium",
   "summary": "Analyze a memory dump with Volatility malfind and dumpfiles to identify a process-hollowing C2 implant and build the incident timeline",
   "tags": [
@@ -2184,7 +2184,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Tracer.md": {
   "category": "Windows DFIR",
-  "date": "2024-06-03",
+  "date": "2024-05-22",
   "difficulty": "Easy",
   "summary": "Parse prefetch and USN journal artifacts to count PsExec executions and identify the service binary, key file, and named pipe from lateral movement",
   "tags": [
@@ -2198,7 +2198,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Trent.md": {
   "category": "Network Forensics",
-  "date": "2025-08-09",
+  "date": "2025-02-17",
   "difficulty": "Medium",
   "summary": "Analyze HTTP POST traffic to reconstruct a router web-admin brute force and command-injection CVE exploit leading to a reverse shell C2",
   "tags": [
@@ -2212,7 +2212,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Ultimatum.md": {
   "category": "Web Exploitation",
-  "date": "2024-06-03",
+  "date": "2024-05-19",
   "difficulty": "Medium",
   "summary": "Investigate CatScale logs from a WordPress server to trace a WPScan fingerprint, Ultimate Member CVE exploit, backdoor user, and web shell RCE",
   "tags": [
@@ -2226,7 +2226,7 @@
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Unit42.md": {
   "category": "Windows DFIR",
-  "date": "2024-06-01",
+  "date": "2024-05-19",
   "difficulty": "Easy",
   "summary": "Examine Sysmon logs to identify an msiexec-delivered backdoored UltraVNC installer, its timestomping, dropped files, and C2 connections",
   "tags": [
@@ -2254,7 +2254,7 @@
  },
  "LetsDefend/LetsDefend Alert/[LetsDefend Write-up] EventID 125 - ⭐ SOC175 - PowerShell Found in Requested URL - Possible CVE-2022-41082 Exploitation.md": {
   "category": "Incident Response",
-  "date": "2025-10-22",
+  "date": "2024-03-06",
   "difficulty": "Medium",
   "summary": "Investigate a SOC alert for ProxyNotShell (CVE-2022-41082) exploitation attempts against an Exchange server via malicious autodiscover URLs in IIS logs",
   "tags": [
@@ -2268,7 +2268,7 @@
  },
  "LetsDefend/LetsDefend Alert/[LetsDefend Write-up] EventID 214 - SOC251 - Quishing Detected (QR Code Phishing).md": {
   "category": "Email / Phishing",
-  "date": "2025-10-21",
+  "date": "2024-06-01",
   "difficulty": "Easy",
   "summary": "Analyze a quishing email by decoding its QR code to confirm a Microsoft-login phishing site and scope endpoint exposure",
   "tags": [
@@ -2282,7 +2282,7 @@
  },
  "LetsDefend/LetsDefend Alert/[LetsDefend Write-up] EventID 257 -⭐ SOC282 - Phishing Alert - Deceptive Mail Detected.md": {
   "category": "Email / Phishing",
-  "date": "2025-10-22",
+  "date": "2024-07-11",
   "difficulty": "Easy",
   "summary": "Triage a deceptive phishing email delivering AsyncRAT, confirming delivery, execution via explorer.exe, and C2 communication on the endpoint",
   "tags": [
@@ -2296,7 +2296,7 @@
  },
  "LetsDefend/LetsDefend Alert/[LetsDefend Write-up] EventID 36 - SOC 104 - Malware Detected.md": {
   "category": "Malware Analysis",
-  "date": "2024-08-24",
+  "date": "2024-01-10",
   "difficulty": "Easy",
   "summary": "Analyze an allowed Invoice.exe flagged as Maze ransomware, mapping its behavior and hunting endpoint C2 callbacks",
   "tags": [
@@ -2310,7 +2310,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] AS-REP Challenge.md": {
   "category": "AD / Kerberos",
-  "date": "2025-12-28",
+  "date": "2025-12-25",
   "difficulty": "Medium",
   "summary": "Parse DC and workstation Security logs and prefetch to trace an AS-REP roasting attack and the compromised account's subsequent activity",
   "tags": [
@@ -2352,7 +2352,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Batch Downloader.md": {
   "category": "Malware Analysis",
-  "date": "2024-07-28",
+  "date": "2024-07-16",
   "difficulty": "Easy",
   "summary": "Analyze a Windows batch script that uses bitsadmin LOLBIN to download, unzip, and execute Laplas Clipper malware from a C2 server",
   "tags": [
@@ -2436,7 +2436,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] DLL Stealer.md": {
   "category": "Malware Analysis",
-  "date": "2024-06-15",
+  "date": "2024-04-30",
   "difficulty": "Medium",
   "summary": "Decompile a .NET PE64 infostealer with dotPeek to uncover its anti-analysis VirusTotal checks, data-gathering commands, and Discord webhook C2",
   "tags": [
@@ -2449,7 +2449,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Disclose The Agent.md": {
   "category": "Network Forensics",
-  "date": "2024-06-05",
+  "date": "2024-01-16",
   "difficulty": "Easy",
   "summary": "Reconstruct SMTP email conversations from a pcap and extract an attachment with NetworkMiner to disclose a leaking agent's identity and meetup",
   "tags": [
@@ -2463,7 +2463,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Discord Forensics.md": {
   "category": "Windows DFIR",
-  "date": "2024-07-20",
+  "date": "2024-06-07",
   "difficulty": "Medium",
   "summary": "Trace a malware entry point on a KAPE-acquired image by parsing Windows Live Mail and Discord cache to identify the attacker and first contact",
   "tags": [
@@ -2476,7 +2476,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Downloader.md": {
   "category": "Reverse Engineering",
-  "date": "2024-08-20",
+  "date": "2024-08-19",
   "difficulty": "Medium",
   "summary": "Reverse a Visual C++ downloader binary in IDA to recover the C2 IP, user-agent, downloaded payload, and WinHTTP request functions",
   "tags": [
@@ -2489,7 +2489,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Email Analysis.md": {
   "category": "Email / Phishing",
-  "date": "2024-06-05",
+  "date": "2024-02-23",
   "difficulty": "Easy",
   "summary": "Analyze a phishing email header and its EXE attachment with pestudio and VirusTotal to confirm a malicious Loki infostealer payload",
   "tags": [
@@ -2502,7 +2502,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Excel 4.0 Macros.md": {
   "category": "Malware Analysis",
-  "date": "2024-06-05",
+  "date": "2024-01-29",
   "difficulty": "Medium",
   "summary": "Analyze a malicious Excel 4.0 XLM macro document that abuses Auto_Open and regsvr32 to fetch and execute a second-stage DLL payload",
   "tags": [
@@ -2515,7 +2515,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Golang Ransomware.md": {
   "category": "Malware Analysis",
-  "date": "2024-09-16",
+  "date": "2024-09-07",
   "difficulty": "Hard",
   "summary": "Dissect a Go-based Kuiper ransomware sample in Ghidra and IDA to recover its base64-encoded PowerShell process-killer and evasion techniques",
   "tags": [
@@ -2528,7 +2528,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Golden Ticket.md": {
   "category": "AD / Kerberos",
-  "date": "2025-12-28",
+  "date": "2025-12-25",
   "difficulty": "Hard",
   "summary": "Trace a Golden Ticket attack against a Domain Controller by parsing Security.evtx with EvtxECmd to identify the compromised service account and lateral movement",
   "tags": [
@@ -2541,7 +2541,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Http Basic Auth.md": {
   "category": "Network Forensics",
-  "date": "2024-06-05",
+  "date": "2024-01-26",
   "difficulty": "Easy",
   "summary": "Examine a pcap to enumerate HTTP GET requests and recover the server software, OpenSSL version, and Basic Authentication credentials",
   "tags": [
@@ -2554,7 +2554,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] IcedID Malware Family.md": {
   "category": "Malware Analysis",
-  "date": "2024-12-22",
+  "date": "2024-06-20",
   "difficulty": "Medium",
   "summary": "Follow an IcedID infection chain from a macro-laden Word dropper through mshta and rundll32 to the installer DLL and its C2 host",
   "tags": [
@@ -2567,7 +2567,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] ImageStegano.md": {
   "category": "Malware Analysis",
-  "date": "2024-08-03",
+  "date": "2024-04-02",
   "difficulty": "Medium",
   "summary": "Extract a PowerShell payload hidden in a PNG via Invoke-PSImage steganography, revealing embedded Mimikatz executables and their hashes",
   "tags": [
@@ -2580,7 +2580,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Infection with Cobalt Strike.md": {
   "category": "Network Forensics",
-  "date": "2024-06-05",
+  "date": "2024-02-28",
   "difficulty": "Hard",
   "summary": "Perform root-cause analysis on a Cobalt Strike infection pcap using Wireshark and NetworkMiner to trace DocuSign phishing delivery and C2 traffic",
   "tags": [
@@ -2593,7 +2593,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Investigate Web Attack.md": {
   "category": "Log Analysis",
-  "date": "2024-06-05",
+  "date": "2024-01-15",
   "difficulty": "Easy",
   "summary": "Investigate web server logs to reconstruct a Nikto scan, login brute force, code injection via whoami, and attacker persistence",
   "tags": [
@@ -2619,7 +2619,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Kernel Exploit.md": {
   "category": "Linux DFIR",
-  "date": "2024-10-23",
+  "date": "2024-10-21",
   "difficulty": "Hard",
   "summary": "Investigate a UAC-collected Linux forensic image to identify a kernel privilege-escalation exploit run from /tmp and trace the attacker's process",
   "tags": [
@@ -2632,7 +2632,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Kimsuky APT Group.md": {
   "category": "Malware Analysis",
-  "date": "2024-06-05",
+  "date": "2024-03-22",
   "difficulty": "Medium",
   "summary": "Analyze a Kimsuky APT VBScript sample to map its WMI reconnaissance, antivirus enumeration, registry tampering, and C2 exfiltration functions",
   "tags": [
@@ -2645,7 +2645,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Linux Disk Forensics.md": {
   "category": "Linux DFIR",
-  "date": "2024-09-10",
+  "date": "2024-04-02",
   "difficulty": "Easy",
   "summary": "Examine a Linux disk image to identify a cracked-software ELF malware that uses strings and netcat to exfiltrate Chrome data to an attacker IP",
   "tags": [
@@ -2658,7 +2658,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Linux Forensics.md": {
   "category": "Linux DFIR",
-  "date": "2024-06-22",
+  "date": "2024-03-20",
   "difficulty": "Easy",
   "summary": "Mount a Linux disk image and trace a disgruntled ex-employee's activity through bash_history, apt logs, auth.log and a hidden secret file",
   "tags": [
@@ -2672,7 +2672,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Linux Memory Forensics.md": {
   "category": "Memory Forensics",
-  "date": "2024-07-06",
+  "date": "2024-05-11",
   "difficulty": "Medium",
   "summary": "Examine a Linux memory dump with Volatility to recover the kernel version, a dropped PHP web shell, and the attacker's reverse-shell IP and port",
   "tags": [
@@ -2686,7 +2686,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] LockBit.md": {
   "category": "Memory Forensics",
-  "date": "2024-10-08",
+  "date": "2024-06-19",
   "difficulty": "Medium",
   "summary": "Analyze a memory dump of a LockBit ransomware infection to pinpoint the malicious process, encryption extension, ransom note and registry persistence",
   "tags": [
@@ -2700,7 +2700,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Log Analysis With Sysmon.md": {
   "category": "Log Analysis",
-  "date": "2024-09-03",
+  "date": "2024-09-02",
   "difficulty": "Medium",
   "summary": "Investigate an endpoint breach through Sysmon logs in Splunk to reconstruct the reverse shell, fodhelper UAC bypass and dropped Mimikatz",
   "tags": [
@@ -2714,7 +2714,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] MSHTML.md": {
   "category": "Malware Analysis",
-  "date": "2024-06-05",
+  "date": "2024-01-15",
   "difficulty": "Easy",
   "summary": "Use Oletools oleobj on malicious Office documents to extract embedded C2 indicators and confirm exploitation of the CVE-2021-40444 MSHTML flaw",
   "tags": [
@@ -2728,7 +2728,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Malicious AutoIT.md": {
   "category": "Malware Analysis",
-  "date": "2024-09-17",
+  "date": "2024-09-09",
   "difficulty": "Medium",
   "summary": "Analyze a packed AutoIt executable with Detect It Easy and AutoIt-Ripper to unpack the script and reveal its payload-download domain",
   "tags": [
@@ -2742,7 +2742,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Malicious Chrome Extension.md": {
   "category": "Windows DFIR",
-  "date": "2024-11-30",
+  "date": "2024-04-25",
   "difficulty": "Medium",
   "summary": "Examine a Windows disk image to identify a malicious cookie-stuffing Chrome extension by its ID, name and attacker domain",
   "tags": [
@@ -2755,7 +2755,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Malicious Doc.md": {
   "category": "Malware Analysis",
-  "date": "2024-06-05",
+  "date": "2024-01-10",
   "difficulty": "Easy",
   "summary": "Analyze a weaponized RTF document exploiting CVE-2017-11882 to identify the C2 server, downloaded payload and dropped aro.exe",
   "tags": [
@@ -2769,7 +2769,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Malicious VBA.md": {
   "category": "Malware Analysis",
-  "date": "2024-06-05",
+  "date": "2024-01-10",
   "difficulty": "Easy",
   "summary": "Decode obfuscated VBA macro strings with CyberChef to reveal the payload download URL, HTTP method, user-agent and WMI persistence object",
   "tags": [
@@ -2783,7 +2783,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Malicious Web Traffic Analys.md": {
   "category": "Network Forensics",
-  "date": "2024-08-07",
+  "date": "2024-08-06",
   "difficulty": "Medium",
   "summary": "Trace a web attack in a pcap through brute-force, an XXE source-code leak and LFI reading /etc/passwd to reconstruct the intrusion chain",
   "tags": [
@@ -2797,7 +2797,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Malicious WordPress Plugin.md": {
   "category": "Network Forensics",
-  "date": "2024-10-23",
+  "date": "2024-06-07",
   "difficulty": "Medium",
   "summary": "Analyze pcap traffic of a WordPress compromise to track wpscan enumeration, credential brute-forcing and RCE via a vulnerable plugin",
   "tags": [
@@ -2811,7 +2811,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Memory Analysis.md": {
   "category": "Memory Forensics",
-  "date": "2025-02-02",
+  "date": "2024-05-24",
   "difficulty": "Medium",
   "summary": "Use Volatility 3 on a Windows memory dump to spot a masquerading lsass, identify winPEAS and crack the compromised user's NT hash with John",
   "tags": [
@@ -2825,7 +2825,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] NTFS Forensics.md": {
   "category": "Windows DFIR",
-  "date": "2025-04-22",
+  "date": "2025-02-24",
   "difficulty": "Medium",
   "summary": "Parse a jump server's $MFT with MFTECmd and MFTExplorer to recover a downloaded file, its source URL via Zone Identifier and creation timestamps",
   "tags": [
@@ -2839,7 +2839,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Obfuscated JavaScript.md": {
   "category": "Malware Analysis",
-  "date": "2025-04-20",
+  "date": "2025-03-24",
   "difficulty": "Medium",
   "summary": "Deobfuscate a comment-bloated JavaScript dropper to reconstruct its real logic and expose the WScript network and WMI objects it abuses",
   "tags": [
@@ -2866,7 +2866,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] PCAP Analysis.md": {
   "category": "Network Forensics",
-  "date": "2024-06-05",
+  "date": "2024-02-22",
   "difficulty": "Easy",
   "summary": "Filters a pcapng capture in Wireshark to trace an HTTP file upload between two hosts and recover an exfiltrated encryption script.",
   "tags": [
@@ -2879,7 +2879,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] PDF Analysis.md": {
   "category": "Malware Analysis",
-  "date": "2024-06-05",
+  "date": "2024-02-29",
   "difficulty": "Medium",
   "summary": "Uses the Didier Stevens PDF suite and peepdf to unpack a malicious PDF's OpenAction, embedded JavaScript, and base64 PowerShell payload.",
   "tags": [
@@ -2892,7 +2892,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] PDFURI.md": {
   "category": "Windows DFIR",
-  "date": "2024-11-22",
+  "date": "2024-03-11",
   "difficulty": "Medium",
   "summary": "Images a compromised disk with FTK Imager and mines Edge browser databases and registry hives to trace a malicious PDF's PowerShell execution.",
   "tags": [
@@ -2905,7 +2905,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] PHP-CGI (CVE-2024-4577).md": {
   "category": "Web Exploitation",
-  "date": "2024-06-18",
+  "date": "2024-06-17",
   "difficulty": "Medium",
   "summary": "Reviews Apache configuration and access logs to confirm exploitation of the PHP-CGI argument injection RCE against a web server.",
   "tags": [
@@ -2918,7 +2918,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Phishing Email.md": {
   "category": "Email / Phishing",
-  "date": "2024-06-05",
+  "date": "2024-01-16",
   "difficulty": "Very Easy",
   "summary": "Parses a German PayPal-themed phishing email's headers and embedded links, confirming the malicious URL via VirusTotal.",
   "tags": [
@@ -2931,7 +2931,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Port Scan Activity.md": {
   "category": "Network Forensics",
-  "date": "2024-06-05",
+  "date": "2024-01-12",
   "difficulty": "Very Easy",
   "summary": "Applies Wireshark TCP flag filters and passive OS fingerprinting to identify a scanning host and the systems it discovered on the network.",
   "tags": [
@@ -2944,7 +2944,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] PowerShell Keylogger.md": {
   "category": "Malware Analysis",
-  "date": "2025-12-29",
+  "date": "2025-12-28",
   "difficulty": "Medium",
   "summary": "Statically reverses a PowerShell keylogger's functions to map its Tor-based C2 channel, screenshot capture, and keystroke logging.",
   "tags": [
@@ -2957,7 +2957,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] PowerShell Script.md": {
   "category": "Malware Analysis",
-  "date": "2024-06-05",
+  "date": "2024-02-27",
   "difficulty": "Easy",
   "summary": "Decodes a base64-obfuscated PowerShell one-liner in CyberChef to expose its malicious download-and-execute behavior.",
   "tags": [
@@ -2969,7 +2969,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Presentation As a Malware.md": {
   "category": "Malware Analysis",
-  "date": "2024-06-08",
+  "date": "2024-04-01",
   "difficulty": "Easy",
   "summary": "Leverages VirusTotal's behavior and relations tabs to profile a malicious PowerPoint file's dropped HTML file and mshta persistence chain.",
   "tags": [
@@ -2982,7 +2982,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] PrintNightmare.md": {
   "category": "Windows DFIR",
-  "date": "2025-01-07",
+  "date": "2024-06-11",
   "difficulty": "Hard",
   "summary": "Correlates Suricata alerts in Brim with a Redline memory dump to trace a PrintNightmare privilege-escalation exploit to the attacker's SMB share and DLL.",
   "tags": [
@@ -2995,7 +2995,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] QakBot Malware.md": {
   "category": "Email / Phishing",
-  "date": "2024-06-05",
+  "date": "2024-03-22",
   "difficulty": "Medium",
   "summary": "Dissects a phishing email's malicious OneNote attachment to trace its embedded HTA lure and registry-key creation used to deliver QakBot.",
   "tags": [
@@ -3008,7 +3008,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Ransomware Attack.md": {
   "category": "Memory Forensics",
-  "date": "2024-06-05",
+  "date": "2024-06-02",
   "difficulty": "Medium",
   "summary": "Mines a Redline memory dump for a sideloaded malicious DLL masquerading inside a Windows process to uncover a ransomware infection chain.",
   "tags": [
@@ -3021,7 +3021,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] RegistryHive.md": {
   "category": "Windows DFIR",
-  "date": "2024-06-05",
+  "date": "2024-03-21",
   "difficulty": "Easy",
   "summary": "Parses SYSTEM, SAM, SOFTWARE, and SECURITY registry hives with RegRipper and Registry Explorer to reconstruct host and user configuration details.",
   "tags": [
@@ -3033,7 +3033,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Remote Working.md": {
   "category": "Malware Analysis",
-  "date": "2024-06-05",
+  "date": "2024-01-10",
   "difficulty": "Easy",
   "summary": "Sandboxes a macro-laden Excel stager in VirusTotal and Triage to trace its dropped files and second-stage payload download URL.",
   "tags": [
@@ -3046,7 +3046,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Revenge RAT.md": {
   "category": "Reverse Engineering",
-  "date": "2024-08-12",
+  "date": "2024-07-30",
   "difficulty": "Medium",
   "summary": "Decompiles a .NET Revenge RAT sample with dotPeek to extract its mutex, C2 configuration, host fingerprinting, and anti-sleep routines.",
   "tags": [
@@ -3059,7 +3059,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Serpent Stealer.md": {
   "category": "Reverse Engineering",
-  "date": "2024-11-22",
+  "date": "2024-04-11",
   "difficulty": "Medium",
   "summary": "Decompiles a .NET information stealer to map its VirusTotal-evasion checks, UAC bypass commands, and targeted wallet and file-extension lists.",
   "tags": [
@@ -3072,7 +3072,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Shellshock Attack.md": {
   "category": "Network Forensics",
-  "date": "2024-06-05",
+  "date": "2024-01-12",
   "difficulty": "Easy",
   "summary": "Analyze a pcap in Wireshark to trace a Shellshock exploit against an Apache/Ubuntu server and recover the attacker's command",
   "tags": [
@@ -3086,7 +3086,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Suspicious Browser Extension.md": {
   "category": "Malware Analysis",
-  "date": "2024-12-07",
+  "date": "2024-04-25",
   "difficulty": "Easy",
   "summary": "Unpack and inspect a malicious Chrome CRX extension with ExtAnalysis and crxcavator to identify its metadata and scripts",
   "tags": [
@@ -3113,7 +3113,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] TeamViewer Forensics.md": {
   "category": "Windows DFIR",
-  "date": "2024-08-07",
+  "date": "2024-07-09",
   "difficulty": "Easy",
   "summary": "Reconstruct an unauthorized TeamViewer remote session from connection logs to identify the intruder, session IDs, and durations",
   "tags": [
@@ -3154,7 +3154,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] WannaCry Ransomware.md": {
   "category": "Memory Forensics",
-  "date": "2024-06-22",
+  "date": "2024-03-22",
   "difficulty": "Hard",
   "summary": "Combine memory and disk forensics with Volatility, oledump, and Outlook OST analysis to trace a WannaCry infection back to a phishing email",
   "tags": [
@@ -3168,7 +3168,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] WinRAR 0-Day.md": {
   "category": "Memory Forensics",
-  "date": "2024-10-08",
+  "date": "2024-04-03",
   "difficulty": "Medium",
   "summary": "Use Volatility 3 and CyberChef to analyze a WinRAR CVE-2023-38831 exploit in a memory dump and decode its PowerShell download chain",
   "tags": [
@@ -3196,7 +3196,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Windows Registry.md": {
   "category": "Windows DFIR",
-  "date": "2025-04-22",
+  "date": "2025-03-24",
   "difficulty": "Medium",
   "summary": "Examine SAM, SOFTWARE, SYSTEM, and NTUSER registry hives in Registry Explorer to profile added users, OS build, network config, and executed files",
   "tags": [
@@ -3209,7 +3209,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Windows Theme Spoofing.md": {
   "category": "Network Forensics",
-  "date": "2025-01-12",
+  "date": "2025-01-07",
   "difficulty": "Medium",
   "summary": "Investigate CVE-2024-21320 theme spoofing by analyzing SMB and NTLMSSP traffic to recover the attacker share and relayed NTLM hashes",
   "tags": [
@@ -3223,7 +3223,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] YARA Rule.md": {
   "category": "Malware Analysis",
-  "date": "2024-07-10",
+  "date": "2024-06-11",
   "difficulty": "Medium",
   "summary": "Dissect a YARA rule detecting the GwisinLocker Linux ransomware using IDA disassembly and hunt matching samples on Hybrid Analysis",
   "tags": [
@@ -3237,7 +3237,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] cl0p Malware.md": {
   "category": "Reverse Engineering",
-  "date": "2024-06-05",
+  "date": "2024-03-22",
   "difficulty": "Medium",
   "summary": "Reverse engineer a Linux ELF cl0p ransomware sample in IDA to extract its encryption key, target directories, extension, and ransom note",
   "tags": [
@@ -3251,7 +3251,7 @@
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] macOS Malware.md": {
   "category": "Reverse Engineering",
-  "date": "2024-11-22",
+  "date": "2024-04-02",
   "difficulty": "Hard",
   "summary": "Reverse engineer a macOS infostealer in Ghidra and IDA to map its targeted browsers, crypto wallets, Telegram exfil channel and HTTP C2",
   "tags": [
@@ -4519,7 +4519,7 @@
  },
  "TryHackMe/THM Blue Teaming/[THM Write-up] Juicy Details.md": {
   "category": "Log Analysis",
-  "date": "2024-08-16",
+  "date": "2024-08-09",
   "difficulty": "Easy",
   "summary": "Analyze web server logs to reconstruct an attacker's toolchain, vulnerable endpoints, and stolen data from a breached juice shop",
   "tags": [
@@ -4533,7 +4533,7 @@
  },
  "TryHackMe/THM Blue Teaming/[THM Write-up] Memory Forensics.md": {
   "category": "Memory Forensics",
-  "date": "2024-08-16",
+  "date": "2024-07-26",
   "difficulty": "Medium",
   "summary": "Use Volatility across multiple memory dumps to recover a password, console history, shutdown time, and a TrueCrypt passphrase",
   "tags": [
@@ -4575,7 +4575,7 @@
  },
  "TryHackMe/THM Blue Teaming/[THM Write-up] ParrotPost Phishing Analysis.md": {
   "category": "Email / Phishing",
-  "date": "2025-10-22",
+  "date": "2024-08-13",
   "difficulty": "Easy",
   "summary": "Investigate an .eml file's headers and client-side body to determine whether a ParrotPost login request is a credential-stealing phish",
   "tags": [
@@ -4603,7 +4603,7 @@
  },
  "TryHackMe/THM Blue Teaming/[THM Write-up] REvil Corp.md": {
   "category": "Incident Response",
-  "date": "2024-08-16",
+  "date": "2024-08-15",
   "difficulty": "Medium",
   "summary": "Use Redline to analyze an infected host and identify the REvil ransomware binary, its download URL, hash, and files it encrypted",
   "tags": [
@@ -4839,7 +4839,7 @@
  },
  "Unlisted Labs/MemLabs/[MemLabs Write-up] MemLabs Lab 1 - Beginner_s Luck.md": {
   "category": "Memory Forensics",
-  "date": "2024-08-24",
+  "date": "2024-07-14",
   "difficulty": "Medium",
   "summary": "Recover important files from a crashed Windows memory dump using Volatility to locate and dump a WinRAR archive across three flags",
   "tags": [
@@ -4853,7 +4853,7 @@
  },
  "Unlisted Labs/MemLabs/[MemLabs Write-up] MemLabs Lab 2 - A New World.md": {
   "category": "Memory Forensics",
-  "date": "2024-08-24",
+  "date": "2024-07-14",
   "difficulty": "Medium",
   "summary": "Dig through a Windows memory dump with Volatility to recover env vars, browser history, and a KeePass database for three flags",
   "tags": [
@@ -4867,7 +4867,7 @@
  },
  "Unlisted Labs/MemLabs/[MemLabs Write-up] MemLabs Lab 3 - The Evil_s Den.md": {
   "category": "Memory Forensics",
-  "date": "2024-08-24",
+  "date": "2024-07-14",
   "difficulty": "Medium",
   "summary": "Recover a secret encrypted by a malicious script from a memory dump, brute-forcing the XOR key to rebuild the split flag",
   "tags": [
@@ -4881,7 +4881,7 @@
  },
  "Unlisted Labs/MemLabs/[MemLabs Write-up] MemLabs Lab 4 - Obsession.md": {
   "category": "Memory Forensics",
-  "date": "2024-08-24",
+  "date": "2024-07-14",
   "difficulty": "Medium",
   "summary": "Recover a deleted flag-bearing text file from a Windows memory dump by scanning files and parsing the MFT with Volatility",
   "tags": [
@@ -4894,7 +4894,7 @@
  },
  "Unlisted Labs/MemLabs/[MemLabs Write-up] MemLabs Lab 5 - Black Tuesday.md": {
   "category": "Memory Forensics",
-  "date": "2024-08-27",
+  "date": "2024-07-14",
   "difficulty": "Medium",
   "summary": "Hunt multi-stage flags in a Windows memory dump by tracing Notepad and WinRAR processes, IE history, and a password-protected archive",
   "tags": [
@@ -4907,7 +4907,7 @@
  },
  "Unlisted Labs/MemLabs/[MemLabs Write-up] MemLabs Lab 6 - The Reckoning.md": {
   "category": "Memory Forensics",
-  "date": "2024-08-27",
+  "date": "2024-07-14",
   "difficulty": "Medium",
   "summary": "Reconstruct a split flag from a memory dump by recovering a RAR password from console history and environment variables",
   "tags": [

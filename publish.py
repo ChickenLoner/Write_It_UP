@@ -148,6 +148,16 @@ def step_answers() -> list:
     return unsure
 
 
+def _created_date(path: Path) -> str:
+    """ISO date from Joplin's 'Created: DD/MM/YYYY hh:mm' line, or ''."""
+    try:
+        head = path.read_text(encoding="utf-8", errors="replace")[:2000]
+    except OSError:
+        return ""
+    m = re.search(r"^Created:[ \t]*(\d{1,2})/(\d{1,2})/(\d{4})", head, re.MULTILINE)
+    return f"{m.group(3)}-{int(m.group(2)):02d}-{int(m.group(1)):02d}" if m else ""
+
+
 def step_meta() -> list:
     """Scaffold entries for write-ups the sidecar does not know about."""
     print("── 4. writeups_meta.json ────────────────────────────────────")
@@ -163,8 +173,10 @@ def step_meta() -> list:
             "category": "",
             "tags": [],
             "summary": "",
-            # first-published date; the index's "Recent write-ups" feed sorts on it
-            "date": date.today().isoformat(),
+            # date the write-up was written: Joplin's "Created:" stamp when the
+            # export has one, otherwise today. The home page's "Recent
+            # write-ups" feed sorts on it.
+            "date": _created_date(REPO / key) or date.today().isoformat(),
         }
     if missing:
         # Same layout the file is kept in (1-space indent, sorted keys, no
