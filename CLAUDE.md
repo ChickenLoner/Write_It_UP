@@ -173,6 +173,30 @@ What the build does and does not publish:
 - `sitemap.xml`, `robots.txt` and `_headers` are generated from the write-up
   list, plus a styled `404.html`.
 
+## Page layout (mirrors the portfolio)
+
+Write-up pages copy the portfolio's (chicken0248.fyi) research-article layout
+**by hand**, in plain CSS/JS inside `build_md_to_html_with_toc.py`. Nothing is
+loaded from the portfolio at runtime, so a theme change there must be repeated
+here. The pieces and their portfolio counterparts:
+
+- Colour tokens + `html[data-theme="light"]` palette → `themes/soc.css`.
+- Topbar (UPLINK · `SOC / OPERATOR.PROFILE / …` crumb · badges · live UTC
+  clock · `.soc-theme-btn`) → the portfolio topbar + `ThemeToggle`. The theme
+  is stored under the same `soc-theme` localStorage key, but storage is
+  per-origin, so each domain remembers its own choice.
+- `article_shell()` emits `main.soc-article > header.wu-head, aside.wu-meta,
+  nav.wu-toc, article.wu-body` — the same order as the portfolio's
+  cover > meta > toc > sections, which the grid relies on. ≥1280px: TOC rail +
+  article; ≥1440px: TOC | article | info rail with reading progress.
+- `SITE_JS` (written to `build/assets/site.js`) is the plain-JS port of
+  `soc-theme.js` + `soc-nav.js`: theme switch, clock, scroll-spy, progress.
+- The rail is built from h2/h3 headings; Q&A labs that put questions in
+  blockquotes (`Q1:`, `Task 1:`, or ending in `?`) get a question rail instead
+  (`_question_toc`, gives each question `id="q-N"`). Joplin's inline
+  "Table of Contents" is hidden by CSS whenever the rail is visible.
+- Code and answer blocks stay dark in the light theme on purpose.
+
 ## Hosting
 
 Cloudflare Pages, migrated from GitHub Pages on 2026-07-23. DNS is at
