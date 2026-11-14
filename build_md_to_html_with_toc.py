@@ -1456,6 +1456,39 @@ def _enable_markdown_in_blocks(md: str) -> str:
     return "".join(out)
 
 
+# Joplin stamps exports with two lines near the top, then a rule:
+#     Created: 18/05/2024 14:06
+#     Last Updated: 04/06/2024 08:30
+#     * * *
+# On the page they read as a stray paragraph, so they are lifted out of the
+# body and shown in the info box instead. Dates are DD/MM/YYYY.
+_STAMP_RE = re.compile(
+    r'^Created:[ \t]*(?P<c>[^\n]*)\n(?:Last Updated:[ \t]*(?P<u>[^\n]*)\n)?'
+    r'(?:[ \t]*(?:\* \* \*|\*\*\*|---)[ \t]*\n)?', re.MULTILINE)
+_DMY_RE = re.compile(r'(\d{1,2})/(\d{1,2})/(\d{4})')
+
+
+def _iso(stamp: str) -> str:
+    m = _DMY_RE.search(stamp or "")
+    return f"{m.group(3)}-{int(m.group(2)):02d}-{int(m.group(1)):02d}" if m else ""
+
+
+def _split_stamp(md: str) -> tuple[str, dict]:
+    """Remove the Joplin Created/Last Updated block if it sits in the first
+       few lines; return the markdown and {'created', 'updated'} ISO dates."""
+    head_end = 0
+    for _ in range(10):                      # only look near the top
+        nl = md.find("\n", head_end)
+        if nl < 0:
+            break
+        head_end = nl + 1
+    m = _STAMP_RE.search(md, 0, head_end + 200)
+    if not m or m.start() > head_end:
+        return md, {}
+    return md[:m.start()] + md[m.end():], {"created": _iso(m.group("c")),
+                                           "updated": _iso(m.group("u"))}
+
+
 def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
     """Render one markdown write-up to a styled HTML file."""
     # 1. Read markdown
@@ -1474,8 +1507,9 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
     # images were emitted as literal "![shot.png](...)" text on the page — 205
     # of them across 56 write-ups. markdown2 will process the contents when the
     # tag carries markdown="1", so inject that and enable the extra.
+    md_body, stamp = _split_stamp(md_content)
     html_body = markdown2.markdown(
-        _enable_markdown_in_blocks(_space_details(md_content)),
+        _enable_markdown_in_blocks(_space_details(md_body)),
         extras=["fenced-code-blocks", "tables", "header-ids", "strike",
                 "markdown-in-html"]
     )
@@ -1541,7 +1575,7 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
 
 {topbar(crumb_html, badges_html, clock_label, ANSWERS_BTN if "<details" in html_body else "")}
 
-{article_shell(html_body, title, plat, _meta_for(md_path), index_href)}
+{article_shell(html_body, title, plat, _meta_for(md_path), index_href, stamp)}
 {OPEN_ANSWERS_JS if "<details" in html_body else ""}
 
 {article_footer(index_href)}
@@ -1617,7 +1651,8 @@ def _build_toc(html_body: str) -> str:
             + "\n    ".join(items) + "\n  </nav>")
 
 
-def article_shell(html_body: str, title: str, plat: dict, meta: dict, index_href: str) -> str:
+def article_shell(html_body: str, title: str, plat: dict, meta: dict, index_href: str,
+                  stamp: dict | None = None) -> str:
     """Header + info box + TOC rail + body, in the order the CSS grid expects
        (head > meta > toc > body) — the same shape as the portfolio's
        .soc-article (cover > meta > toc > sections)."""
@@ -1642,6 +1677,11 @@ def article_shell(html_body: str, title: str, plat: dict, meta: dict, index_href
     if diff and diff != "Unknown":
         cells.append(cell("Difficulty",
                           f'<span class="wu-diff d-{_diff_slug(diff)}">{html.escape(diff)}</span>'))
+    stamp = stamp or {}
+    if stamp.get("created"):
+        cells.append(cell("Written", f'<div class="wu-meta-val">{stamp["created"]}</div>'))
+    if stamp.get("updated") and stamp["updated"] != stamp.get("created"):
+        cells.append(cell("Updated", f'<div class="wu-meta-val">{stamp["updated"]}</div>'))
     if meta.get("category"):
         cells.append(cell("Category", f'<div class="wu-meta-val">{html.escape(meta["category"])}</div>'))
     if link:
