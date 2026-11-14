@@ -686,7 +686,12 @@ footer.foot .sep{color:var(--soc-ink4);opacity:.5;margin:0 .55rem}
 # ─────────────────────────────────────────────────────────────────────────────
 
 INDEX_CSS = """
-.page{max-width:1240px;margin:0 auto;padding:24px 22px 80px;position:relative;z-index:1}
+/* fluid like the portfolio's .soc-main: no fixed cap, 22px gutters that line up
+   with the topbar; very large monitors scale up instead of stretching rows */
+.page{width:100%;margin:0 auto;padding:24px 22px 80px;position:relative;z-index:1}
+@media(min-width:1800px){.page{zoom:1.125}}
+@media(min-width:2300px){.page{zoom:1.25}}
+@media(min-width:3000px){.page{zoom:1.5}}
 
 /* ─── PAGE HERO ─── */
 .soc-page-hero{
@@ -1002,6 +1007,53 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
   .filters{margin-left:0}
   .search-wrap{max-width:none}
   #tw-panel{left:12px;right:12px;width:auto;bottom:12px}
+}
+
+/* ═══ Responsive pass ═══════════════════════════════════════════════════
+   Tablet: 5 stat cells fill two full rows (3 + 2) instead of leaving a gap.
+   Phone: compact hero, stats as one swipeable row, each filter group as one
+   swipeable row, icon-only Tweaks button — first card moves from ~1.6
+   screens down to the first screen. */
+@media(max-width:1023px){
+  .soc-stat-grid{grid-template-columns:repeat(6,1fr)}
+  .soc-stat-cell{grid-column:span 2;border-bottom:1px solid var(--soc-line)}
+  .soc-stat-cell:nth-child(n+4){grid-column:span 3;border-bottom:none}
+  .soc-stat-cell:nth-child(3){border-right:none}
+  .soc-stat-cell:nth-child(4){border-right:1px solid var(--soc-line)}
+}
+@media(max-width:767px){
+  .page{padding:14px 16px 72px}
+  .soc-page-hero{margin-bottom:12px}
+  .soc-page-hero-strap{flex-wrap:nowrap;white-space:nowrap;overflow:hidden;padding:6px 14px;gap:10px;font-size:10.5px}
+  .soc-page-hero-strap .seg:nth-child(n+3){display:none}
+  .soc-page-hero-body{padding:14px 16px;gap:12px}
+  .soc-page-hero-icon{width:36px;height:36px;font-size:16px;border-radius:6px}
+  .soc-page-hero-title{font-size:20px}
+  .soc-page-hero-sub{font-size:11px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .soc-stat-grid{display:flex;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none}
+  .soc-stat-grid::-webkit-scrollbar{display:none}
+  .soc-stat-cell,.soc-stat-cell:nth-child(n){flex:0 0 auto;min-width:118px;padding:10px 14px;border-bottom:none;border-right:1px solid var(--soc-line);scroll-snap-align:start}
+  .soc-stat-cell:last-child{border-right:none}
+  .soc-stat-lbl{white-space:nowrap;font-size:9.5px;letter-spacing:.1em}
+  .soc-stat-val{font-size:20px;margin-top:2px}
+  .toolbar{gap:8px;margin:12px 0 14px}
+  .search-wrap{min-width:0}
+  .toolbar{display:block}
+  .search-wrap{display:flex;max-width:none;margin-bottom:10px}
+  .filters,.dfilters{display:flex;box-sizing:border-box;width:calc(100% + 32px);max-width:none;min-width:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px 6px;padding:2px 16px;
+    -webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+  .filters::-webkit-scrollbar{display:none}
+  .fchip,.dchip,.fchip-label{flex-shrink:0}
+  .fchip-label{padding:0 4px 0 0}
+  .tweak-toggle{width:42px;height:42px;padding:0;justify-content:center;font-size:0;bottom:14px;right:14px;border-radius:50%}
+  .tweak-toggle::before{content:"⚙";font-size:17px;letter-spacing:0}
+  .pcard summary{padding:11px 12px;gap:10px}
+  .pcard summary>*{min-width:0}
+  .pcard .ph-icon{width:32px;height:32px}
+  .pcard .psub{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .wlist{padding:8px;gap:8px}
+  .wrow .banner{padding:10px 12px 11px}
+  .wrow .body{padding:9px 12px 11px}
 }
 """
 
@@ -1772,13 +1824,14 @@ def create_index_html(md_files: list):
     <div class="filters" id="filters">
       <span class="fchip-label">Platform</span>
       {chips_html}
-      <button class="tweak-toggle" id="tw-open">⚙ Tweaks</button>
     </div>
     <div class="filters dfilters" id="dfilters">
       <span class="fchip-label">Difficulty</span>
       {dchips_html}
     </div>
   </div>
+
+  <button class="tweak-toggle" id="tw-open">⚙ Tweaks</button>
 
   <div class="platform-stack" id="stack">
     {panels_html}
