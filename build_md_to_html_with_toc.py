@@ -176,9 +176,34 @@ TOKENS_CSS = """
   --soc-rd:#ff5577;     --soc-vi:#a78bfa;
   --kicker-text:"// WRITE-UP";
   --kicker-color:var(--soc-cy);
+  --tb-bg:rgba(13,17,23,.94);
+  --link-hover:#7df2ff;
+  --code-inline:#a5f3fc;
+  --code-inline-bg:rgba(34,225,255,.06);
+  --em-ink:#dbe2f5;
+  --strong-q:#fff;
+  --machine-kicker:#d97757;
+}
+/* light palette — identical values to the portfolio's html[data-theme="light"] */
+html[data-theme="light"]{
+  --soc-bg:#eef2f9;     --soc-bg-1:#ffffff;  --soc-bg-2:#f5f8fd;
+  --soc-line:#d8e0ee;   --soc-line2:#b8c4dc;
+  --soc-ink:#0c1729;    --soc-ink2:#2c3d58;
+  --soc-ink3:#4e6080;   --soc-ink4:#6b7896;
+  --soc-cy:#0891b2;     --soc-cy2:#0e7490;
+  --soc-am:#b45309;     --soc-gn:#15803d;
+  --soc-rd:#be1d3a;     --soc-vi:#6d28d9;
+  --tb-bg:rgba(255,255,255,.85);
+  --link-hover:#0e7490;
+  --code-inline:#0e7490;
+  --code-inline-bg:rgba(8,145,178,.07);
+  --em-ink:var(--soc-ink);
+  --strong-q:var(--soc-ink);
+  --machine-kicker:#b4532a;
+  color-scheme:light;
 }
 .p-htb-sherlock{--kicker-text:"// HTB · SHERLOCK · DFIR CASE FILE";--kicker-color:var(--soc-am)}
-.p-htb-machine {--kicker-text:"// HTB · MACHINE · OFFENSIVE";       --kicker-color:#d97757}
+.p-htb-machine {--kicker-text:"// HTB · MACHINE · OFFENSIVE";       --kicker-color:var(--machine-kicker)}
 .p-btlo        {--kicker-text:"// BTLO · DFIR INVESTIGATION";       --kicker-color:var(--soc-rd)}
 .p-cd          {--kicker-text:"// CYBERDEFENDERS · BLUE-TEAM LAB";  --kicker-color:var(--soc-cy)}
 .p-thm         {--kicker-text:"// TRYHACKME · ROOM";                --kicker-color:var(--soc-rd)}
@@ -204,16 +229,26 @@ body::before{
   background-size:36px 62px;mask-image:radial-gradient(#000 30%,transparent 80%)
 }
 a{color:var(--soc-cy);text-decoration:none}
-a:hover{color:#7df2ff;text-decoration:underline}
+a:hover{color:var(--link-hover);text-decoration:underline}
+[data-theme="light"] body{
+  background:
+    radial-gradient(1200px 600px at 100% -10%,rgba(8,145,178,.08),transparent 70%),
+    radial-gradient(900px 500px at -10% 30%,rgba(109,40,217,.05),transparent 70%),
+    var(--soc-bg)
+}
+[data-theme="light"] body::before{opacity:.22}
+[data-theme="light"] .soc-tb{box-shadow:0 1px 0 rgba(12,23,41,.04)}
 """
 
 TOPBAR_CSS = """
-.soc-tb{position:sticky;top:0;z-index:50;background:rgba(7,11,20,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--soc-line)}
-.soc-tb-row{display:flex;align-items:center;gap:14px;padding:9px 22px;font-size:12px;flex-wrap:wrap;max-width:1240px;margin:0 auto}
-.soc-live{display:inline-flex;align-items:center;gap:6px;color:var(--soc-gn);font-weight:600;letter-spacing:.06em;font-family:'JetBrains Mono',monospace}
+.soc-tb{position:sticky;top:0;z-index:50;background:var(--tb-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--soc-line)}
+.soc-tb-row{display:flex;align-items:center;gap:14px;padding:9px 22px;font-size:12px;min-height:44px}
+.soc-live{display:inline-flex;align-items:center;gap:6px;color:var(--soc-ink);font-weight:700;letter-spacing:.06em;font-family:'JetBrains Mono',monospace;flex-shrink:0;text-decoration:none}
+.soc-live:hover{color:var(--soc-cy);text-decoration:none}
 .soc-live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--soc-gn);box-shadow:0 0 8px var(--soc-gn);animation:bp 1.6s infinite}
 @keyframes bp{50%{opacity:.3}}
-.soc-crumb{color:var(--soc-ink3);font-family:'JetBrains Mono',monospace;font-size:11px;display:inline-flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+.soc-crumb{color:var(--soc-ink3);font-family:'JetBrains Mono',monospace;font-size:11px;display:block;flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.03em}
+.soc-crumb .sep{margin:0 .3rem}
 .soc-crumb a{color:var(--soc-ink3);text-decoration:none;transition:.12s}
 .soc-crumb a:hover{color:var(--soc-ink);text-decoration:none}
 .soc-crumb b{color:var(--soc-ink2);font-weight:600}
@@ -221,7 +256,49 @@ TOPBAR_CSS = """
 .soc-crumb a:hover b{color:var(--soc-ink)}
 .soc-crumb .here{color:var(--soc-cy);font-weight:700}
 .soc-crumb .sep{color:var(--soc-ink4)}
-.soc-clock{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--soc-ink3);margin-left:auto}
+.soc-clock{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--soc-ink3);white-space:nowrap;font-variant-numeric:tabular-nums}
+.soc-tb-right{margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.soc-tb-badges{display:flex;align-items:center;gap:8px}
+
+/* theme switch: same markup + behaviour as the portfolio's ThemeToggle */
+.soc-theme-btn{display:inline-flex;align-items:center;gap:8px;padding:5px 11px 5px 8px;border-radius:99px;border:1px solid var(--soc-line2);background:var(--soc-bg-2);color:var(--soc-ink2);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;font-weight:600;text-transform:uppercase;cursor:pointer;transition:border-color .18s,color .18s,background .18s;flex-shrink:0;height:28px;line-height:1}
+.soc-theme-btn:hover{border-color:var(--soc-cy);color:var(--soc-cy)}
+.soc-theme-btn .soc-tb-track{position:relative;width:30px;height:14px;border-radius:99px;background:rgba(34,225,255,.18);border:1px solid var(--soc-line2);flex-shrink:0;transition:background .25s,border-color .25s}
+.soc-theme-btn .soc-tb-knob{position:absolute;top:1px;left:1px;width:10px;height:10px;border-radius:50%;background:var(--soc-cy);box-shadow:0 0 8px var(--soc-cy);transition:transform .25s cubic-bezier(.5,.1,.25,1.3),background .25s}
+.soc-theme-btn .soc-tb-ico{font-size:13px;line-height:1}
+.soc-theme-btn .soc-tb-dark{display:inline}
+.soc-theme-btn .soc-tb-light{display:none}
+[data-theme="light"] .soc-theme-btn{background:var(--soc-bg-1);border-color:var(--soc-line)}
+[data-theme="light"] .soc-theme-btn .soc-tb-track{background:rgba(8,145,178,.15)}
+[data-theme="light"] .soc-theme-btn .soc-tb-knob{transform:translateX(16px);box-shadow:0 0 0 2px rgba(8,145,178,.18)}
+[data-theme="light"] .soc-theme-btn .soc-tb-dark{display:none}
+[data-theme="light"] .soc-theme-btn .soc-tb-light{display:inline}
+
+/* answers switch — same pill as the theme switch, green when answers are shown */
+.wu-ans-btn{display:inline-flex;align-items:center;gap:8px;padding:5px 11px;border-radius:99px;border:1px solid var(--soc-line2);background:var(--soc-bg-2);color:var(--soc-ink2);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;font-weight:600;cursor:pointer;transition:border-color .18s,color .18s;flex-shrink:0;height:28px;line-height:1}
+.wu-ans-btn:hover{border-color:var(--soc-gn);color:var(--soc-gn)}
+.wu-ans-btn .wu-ans-lbl{color:var(--soc-ink3)}
+.wu-ans-btn .soc-tb-track{position:relative;width:30px;height:14px;border-radius:99px;background:rgba(138,155,191,.18);border:1px solid var(--soc-line2);flex-shrink:0;transition:background .25s}
+.wu-ans-btn .soc-tb-knob{position:absolute;top:1px;left:1px;width:10px;height:10px;border-radius:50%;background:var(--soc-ink4);transition:transform .25s cubic-bezier(.5,.1,.25,1.3),background .25s}
+.wu-ans-btn .wu-ans-on,.wu-ans-btn .wu-ans-short{display:none}
+[data-answers="shown"] .wu-ans-btn{color:var(--soc-gn)}
+[data-answers="shown"] .wu-ans-btn .soc-tb-track{background:rgba(61,220,132,.18)}
+[data-answers="shown"] .wu-ans-btn .soc-tb-knob{transform:translateX(16px);background:var(--soc-gn);box-shadow:0 0 8px var(--soc-gn)}
+[data-answers="shown"] .wu-ans-btn .wu-ans-on{display:inline}
+[data-answers="shown"] .wu-ans-btn .wu-ans-off{display:none}
+[data-theme="light"] .wu-ans-btn{background:var(--soc-bg-1);border-color:var(--soc-line)}
+[data-theme="light"][data-answers="shown"] .wu-ans-btn .soc-tb-knob{box-shadow:0 0 0 2px rgba(21,128,61,.18)}
+
+/* the portfolio hides crumb, badges and clock on phones; UPLINK stays as the home link */
+@media(max-width:1100px){.soc-tb-badges .sev-link,.soc-tb-badges .sev.green{display:none}}
+@media(max-width:1279px){.wu-ans-btn~.soc-clock,.soc-tb-right:has(.wu-ans-btn) .soc-clock{display:none}}
+@media(max-width:767px){
+  .soc-crumb,.soc-tb-badges,.soc-clock{display:none}
+  .soc-tb-row{padding:8px 16px}
+  .wu-ans-btn .wu-ans-full{display:none}
+  .wu-ans-btn .wu-ans-short{display:inline}
+  .wu-ans-btn{gap:6px;padding:5px 9px}
+}
 
 .sev{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;font-weight:700;text-transform:uppercase}
 .sev .dot{width:6px;height:6px;border-radius:50%;background:currentcolor}
@@ -242,8 +319,8 @@ TOPBAR_CSS = """
 # ─────────────────────────────────────────────────────────────────────────────
 
 ARTICLE_CSS = """
-.article-wrap{max-width:900px;margin:0 auto;padding:1rem 1.5rem 3.5rem;position:relative;z-index:1}
-.content{max-width:100%;font-size:15px;line-height:1.7}
+.content{max-width:100%;font-size:15px;line-height:1.7;min-width:0}
+.content [id]{scroll-margin-top:72px}
 
 /* ─── headings ─────────────────────────────────────────────── */
 .content h1{
@@ -271,20 +348,28 @@ ARTICLE_CSS = """
 }
 .content h1 a:hover::after{background:rgba(34,225,255,.15);border-color:var(--soc-cy);transform:translate(2px,-2px)}
 
+.wu-body{counter-reset:wsec}
 .content h2{
-  font-size:1.35rem;font-weight:700;color:var(--soc-ink);
-  margin:2.4rem 0 .85rem;padding:0 0 .4rem;
+  display:flex;align-items:center;gap:11px;
+  font-size:1.2rem;font-weight:700;color:var(--soc-ink);line-height:1.3;
+  margin:2.6rem 0 1rem;padding:0 0 .75rem;
   border-bottom:1px solid var(--soc-line);letter-spacing:-.01em
 }
+.wu-body>h2:first-child{margin-top:.4rem}
+.content h2:not([id^="table-of-contents"]){counter-increment:wsec}
 .content h2::before{
-  content:"§ ";font-family:'JetBrains Mono',monospace;
-  color:var(--kicker-color);font-weight:700;font-size:.95rem;opacity:.85
+  content:counter(wsec,decimal-leading-zero);flex-shrink:0;
+  display:inline-grid;place-items:center;width:32px;height:32px;border-radius:6px;
+  background:rgba(34,225,255,.1);border:1px solid rgba(34,225,255,.25);
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;
+  color:var(--soc-cy);letter-spacing:0
 }
+.content h2[id^="table-of-contents"]::before{content:"≡";font-size:15px}
+[data-theme="light"] .content h2::before{background:rgba(8,145,178,.08);border-color:rgba(8,145,178,.25)}
 .content h3{
-  font-size:1.05rem;font-weight:600;color:var(--soc-cy);
-  margin:1.8rem 0 .55rem;font-family:'JetBrains Mono',monospace;letter-spacing:.02em
+  font-size:1rem;font-weight:700;color:var(--soc-ink2);line-height:1.4;
+  margin:1.9rem 0 .7rem;padding-left:10px;border-left:3px solid var(--soc-cy)
 }
-.content h3::before{content:"› ";color:var(--soc-ink4);font-weight:400}
 .content h4,.content h5,.content h6{
   font-size:.9rem;font-weight:600;color:var(--soc-ink2);
   margin:1.3rem 0 .45rem;font-family:'JetBrains Mono',monospace;
@@ -300,7 +385,7 @@ ARTICLE_CSS = """
 /* ─── text & lists ─────────────────────────────────────────── */
 .content p{margin:.85rem 0;color:var(--soc-ink2);text-wrap:pretty}
 .content strong{color:var(--soc-ink);font-weight:600}
-.content em{color:#dbe2f5}
+.content em{color:var(--em-ink)}
 .content del{color:var(--soc-ink4);text-decoration-color:var(--soc-ink4)}
 .content ul,.content ol{margin:.9rem 0 1.1rem;padding-left:1.4rem;color:var(--soc-ink2)}
 .content li{margin:.35rem 0;padding-left:.25rem}
@@ -312,7 +397,7 @@ ARTICLE_CSS = """
   color:var(--soc-cy);
   border-bottom:1px dashed rgba(34,225,255,.35);transition:.15s
 }
-.content a:hover{color:#7df2ff;border-bottom-color:var(--soc-cy);text-decoration:none}
+.content a:hover{color:var(--link-hover);border-bottom-color:var(--soc-cy);text-decoration:none}
 
 /* ─── blockquote (Q1) ...) ─────────────────────────────────── */
 .content blockquote{
@@ -323,14 +408,14 @@ ARTICLE_CSS = """
 }
 .content blockquote p{margin:0;color:var(--soc-ink);font-weight:500;font-size:.96rem;line-height:1.55}
 .content blockquote p+p{margin-top:.45rem}
-.content blockquote strong{color:#fff}
+.content blockquote strong{color:var(--strong-q)}
 .content blockquote+blockquote{margin-top:.4rem}
 
 /* ─── inline + block code ──────────────────────────────────── */
 .content code{
   font-family:'JetBrains Mono',monospace;font-size:.85em;
-  background:rgba(34,225,255,.06);
-  border:1px solid rgba(34,225,255,.18);color:#a5f3fc;
+  background:var(--code-inline-bg);
+  border:1px solid rgba(34,225,255,.18);color:var(--code-inline);
   padding:.1em .42em;border-radius:3px
 }
 .content pre{
@@ -438,11 +523,105 @@ footer.foot a{color:var(--soc-ink3);text-decoration:none}
 footer.foot a:hover{color:var(--soc-cy)}
 footer.foot .sep{color:var(--soc-ink4);opacity:.5;margin:0 .55rem}
 
-@media(max-width:640px){
+/* ─── light theme: code + answer blocks stay dark (terminal output), the rest follows the page */
+[data-theme="light"] .content pre{border-color:#1c2433}
+[data-theme="light"] .content pre code[class]:not([class=""])::before{color:#8a9bbf;border-bottom-color:#253040}
+[data-theme="light"] .content img{background:var(--soc-bg-2);box-shadow:0 1px 2px rgba(12,23,41,.06),0 8px 22px rgba(12,23,41,.07)}
+[data-theme="light"] .content blockquote{background:linear-gradient(90deg,rgba(8,145,178,.07),rgba(8,145,178,.015) 70%,transparent);border-color:var(--soc-line);border-left-color:var(--soc-cy)}
+[data-theme="light"] .content details{background:linear-gradient(180deg,rgba(21,128,61,.06),rgba(21,128,61,.015));border-color:rgba(21,128,61,.3)}
+[data-theme="light"] .content tr:nth-child(even) td{background:rgba(12,23,41,.02)}
+
+/* ═══ Article shell — mirrors the portfolio's .soc-article ═══════════════
+   <1280px : one reading column (max 900px); the info box sits under the title.
+   ≥1280px : sticky TOC rail on the left + article.
+   ≥1440px : TOC | article | sticky info rail (meta + reading progress).
+   The rail replaces Joplin's inline "Table of Contents", so that list is
+   hidden whenever the rail is on screen and kept on tablets / phones. */
+.soc-article{max-width:900px;margin:0 auto;padding:26px 22px 56px;position:relative;z-index:1}
+.wu-head h1{margin-top:0}
+.wu-dek{font-size:14.5px;line-height:1.6;color:var(--soc-ink3);margin:-.2rem 0 1.25rem;max-width:80ch;text-wrap:pretty}
+
+.wu-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 18px;background:var(--soc-bg-1);border:1px solid var(--soc-line);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.wu-meta-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--soc-ink3);text-transform:uppercase;letter-spacing:.14em;margin-bottom:4px}
+.wu-meta-val{font-size:13.5px;font-weight:600;color:var(--soc-ink);line-height:1.35}
+.wu-meta-link{font-size:13.5px;font-weight:600;color:var(--soc-cy)}
+.wu-meta-wide{grid-column:1/-1}
+.wu-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+.wu-tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--soc-ink3);padding:2px 7px;border:1px solid var(--soc-line);border-radius:3px;background:var(--soc-bg-2)}
+.wu-diff{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:3px;border:1px solid var(--soc-line);color:var(--soc-ink3)}
+.wu-diff.d-very-easy{color:var(--soc-cy);border-color:rgba(34,225,255,.35);background:rgba(34,225,255,.08)}
+.wu-diff.d-easy{color:var(--soc-gn);border-color:rgba(61,220,132,.35);background:rgba(61,220,132,.08)}
+.wu-diff.d-medium{color:var(--soc-am);border-color:rgba(255,181,71,.35);background:rgba(255,181,71,.08)}
+.wu-diff.d-hard{color:var(--soc-rd);border-color:rgba(255,85,119,.35);background:rgba(255,85,119,.08)}
+.wu-diff.d-insane{color:var(--soc-vi);border-color:rgba(167,139,250,.35);background:rgba(167,139,250,.08)}
+
+.wu-toc{display:none}
+.wu-toc-title{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--soc-ink3);margin-bottom:10px;padding-left:10px}
+.wu-toc-item{position:relative;display:flex;gap:8px;align-items:baseline;padding:6px 10px;border-radius:4px;color:var(--soc-ink3);font-size:12.5px;line-height:1.4;text-decoration:none;transition:color .15s,background .15s}
+.wu-toc-item:hover{background:rgba(34,225,255,.05);color:var(--soc-cy);text-decoration:none}
+.wu-toc-q .wu-toc-item span:last-child{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wu-toc-q .wu-toc-num{width:26px}
+.wu-toc-item.sub{padding:4px 10px 4px 38px;font-size:11.5px}
+.wu-toc-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--soc-ink4);width:20px;flex-shrink:0}
+.wu-toc-item.is-active{color:var(--soc-cy);background:rgba(34,225,255,.07)}
+.wu-toc-item.is-active .wu-toc-num{color:var(--soc-cy)}
+.wu-toc-item.is-active::before{content:"";position:absolute;left:-15px;top:6px;bottom:6px;width:2px;border-radius:2px;background:var(--soc-cy);box-shadow:0 0 8px rgba(34,225,255,.6)}
+[data-theme="light"] .wu-toc-item.is-active{background:rgba(8,145,178,.08)}
+
+@media(min-width:1280px){
+  .soc-article.has-toc{
+    max-width:none;display:grid;grid-template-columns:minmax(230px,.3fr) minmax(0,1fr);
+    column-gap:40px;padding:28px 22px 56px
+  }
+  .soc-article.has-toc>*{grid-column:2}
+  .soc-article.has-toc>.wu-head,.soc-article.has-toc>.wu-meta{grid-column:1/-1}
+  .soc-article.has-toc>.wu-toc{
+    display:block;grid-column:1;grid-row:3/span 300;align-self:start;
+    position:sticky;top:76px;max-height:calc(100vh - 96px);overflow:auto;
+    border-left:1px solid var(--soc-line);padding:4px 4px 4px 14px;scrollbar-width:thin
+  }
+  .soc-article.has-toc>.wu-body{grid-row:3}
+  .has-toc .content h2[id^="table-of-contents"],
+  .has-toc .content h2[id^="table-of-contents"]+ul{display:none}
+}
+@media(min-width:1440px){
+  .soc-article.has-toc{grid-template-columns:minmax(230px,.3fr) minmax(0,1fr) minmax(260px,.3fr);column-gap:44px}
+  .soc-article.has-toc>.wu-toc{grid-row:2/span 300}
+  .soc-article.has-toc>.wu-body{grid-row:2}
+  .soc-article.has-toc>.wu-meta{
+    grid-column:3;grid-row:2/span 300;align-self:start;position:sticky;top:76px;
+    margin:0;grid-template-columns:1fr;gap:16px;padding:18px 20px
+  }
+}
+@media(min-width:1800px){.soc-article{zoom:1.125}}
+@media(min-width:2300px){.soc-article{zoom:1.25}}
+@media(min-width:3000px){.soc-article{zoom:1.5}}
+
+/* reading progress: card in the info rail ≥1440px, thin bar under the topbar below that */
+.soc-read-card{display:none}
+.soc-read-bar{position:fixed;left:0;right:0;top:44px;height:2px;z-index:49;pointer-events:none}
+.soc-read-bar>i{display:block;height:100%;width:0;background:var(--soc-cy);box-shadow:0 0 8px rgba(34,225,255,.6)}
+@media(min-width:1440px){
+  .has-toc~.soc-read-bar{display:none}
+  .has-toc .soc-read-card{display:block;grid-column:1/-1;border-top:1px solid var(--soc-line);padding-top:16px;margin-top:2px}
+}
+.soc-read-head{display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--soc-ink3);text-transform:uppercase}
+.soc-read-pct{color:var(--soc-cy);font-size:12px;letter-spacing:.04em}
+.soc-read-track{height:4px;border-radius:4px;background:var(--soc-line);margin:10px 0 12px;overflow:hidden}
+.soc-read-track>i{display:block;height:100%;width:0;border-radius:4px;background:var(--soc-cy);box-shadow:0 0 8px rgba(34,225,255,.5)}
+.soc-read-now{font-size:13px;line-height:1.4;color:var(--soc-ink);min-height:1.4em;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.soc-read-now span{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--soc-cy);margin-right:6px}
+.soc-read-links{display:flex;justify-content:space-between;gap:10px;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px}
+.soc-read-links a,.soc-read-links button{color:var(--soc-ink3);text-decoration:none;background:none;border:none;padding:0;cursor:pointer;font:inherit}
+.soc-read-links a:hover,.soc-read-links button:hover{color:var(--soc-cy);text-decoration:none}
+
+@media(max-width:767px){
+  .soc-article{padding:18px 16px 40px}
   .content h1{font-size:1.55rem}
-  .content h2{font-size:1.15rem}
-  .article-wrap{padding:.5rem 1rem 2.5rem}
-  .soc-tb-row{padding:8px 12px;gap:8px}
+  .content h2{font-size:1.08rem;gap:9px}
+  .content h2::before{width:28px;height:28px;font-size:10.5px}
+  .wu-meta{grid-template-columns:1fr 1fr;padding:14px}
+  .soc-read-bar{top:44px}
 }
 """
 
@@ -744,6 +923,19 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
 .tw-reset{padding:5px 10px;border:1px solid var(--soc-line);background:rgba(0,0,0,.3);color:var(--soc-ink3);border-radius:3px;cursor:pointer;font-family:inherit;font-size:10px;letter-spacing:.1em;font-weight:700;text-transform:uppercase;transition:.12s}
 .tw-reset:hover{color:var(--soc-rd);border-color:rgba(255,85,119,.4);background:rgba(255,85,119,.06)}
 
+/* ─── light theme: swap the dark-only black/white overlays for palette surfaces ─── */
+[data-theme="light"] .soc-page-hero-strap{background:var(--soc-bg-2)}
+[data-theme="light"] .wlist{background:var(--soc-bg-2)}
+[data-theme="light"] .wrow .banner{background:linear-gradient(180deg,rgba(8,145,178,.04),transparent)}
+[data-theme="light"] .wrow .ix,[data-theme="light"] .wrow .tag,
+[data-theme="light"] .wrow .open-ic,[data-theme="light"] .tw-seg,
+[data-theme="light"] .tw-foot,[data-theme="light"] .tw-reset{background:var(--soc-bg-2)}
+[data-theme="light"] .tw-toggle{background:var(--soc-line)}
+[data-theme="light"] .wrow:hover .nm{color:var(--soc-cy2)}
+[data-theme="light"] .tweak-toggle{box-shadow:0 6px 20px rgba(12,23,41,.12)}
+[data-theme="light"] .tweak-toggle:hover,[data-theme="light"] .tweak-toggle.active{color:var(--soc-cy2)}
+[data-theme="light"] #tw-panel{box-shadow:0 18px 50px rgba(12,23,41,.18)}
+
 @media(max-width:820px){
   .soc-stat-grid{grid-template-columns:repeat(2,1fr)}
   .soc-stat-cell{border-right:none;border-bottom:1px solid var(--soc-line)}
@@ -756,6 +948,118 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
   #tw-panel{left:12px;right:12px;width:auto;bottom:12px}
 }
 """
+
+# ─────────────────────────────────────────────────────────────────────────────
+# JS — theme switch, UTC clock, TOC scroll-spy, reading progress
+# Plain-JS port of the portfolio's themes/soc-theme.js + soc-nav.js. Uses the
+# same 'soc-theme' localStorage key; each domain still remembers its own choice
+# because storage is per-origin.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Inline in <head> so data-theme is set before first paint (no flash).
+THEME_INIT_JS = ("<script>try{var d=document.documentElement;"
+                 "d.setAttribute('data-theme',localStorage.getItem('soc-theme')||'dark');"
+                 "d.setAttribute('data-answers',localStorage.getItem('wu-answers')||'hidden')"
+                 "}catch(e){}</script>")
+
+# Runs right after the article is parsed, before first paint, so a reader who
+# chose "shown" never sees the answers flash closed. <details> can only be
+# opened from script — CSS cannot force it.
+OPEN_ANSWERS_JS = ("<script>if(document.documentElement.getAttribute('data-answers')==='shown')"
+                   "[].forEach.call(document.querySelectorAll('.wu-body details'),"
+                   "function(d){d.open=true})</script>")
+
+SITE_JS = r"""(function(){
+  var KEY='soc-theme', root=document.documentElement;
+  function get(){try{return localStorage.getItem(KEY)||'dark'}catch(e){return 'dark'}}
+  function set(t){try{localStorage.setItem(KEY,t)}catch(e){} root.setAttribute('data-theme',t)}
+  document.addEventListener('click',function(e){
+    if(e.target.closest && e.target.closest('.soc-theme-btn')) set(get()==='dark'?'light':'dark');
+  });
+
+  /* answers switch: remembered site-wide, sets the starting state of every
+     answer block; each block can still be opened / closed on its own */
+  var AKEY='wu-answers';
+  function aget(){try{return localStorage.getItem(AKEY)||'hidden'}catch(e){return 'hidden'}}
+  document.addEventListener('click',function(e){
+    if(!(e.target.closest && e.target.closest('.wu-ans-btn'))) return;
+    var next=aget()==='shown'?'hidden':'shown';
+    try{localStorage.setItem(AKEY,next)}catch(e){}
+    root.setAttribute('data-answers',next);
+    var ds=document.querySelectorAll('.wu-body details');
+    for(var i=0;i<ds.length;i++) ds[i].open=(next==='shown');
+  });
+
+  /* live UTC clock, same format as the portfolio's SocClock */
+  var clocks=document.querySelectorAll('[data-clock]');
+  function p2(n){return (n<10?'0':'')+n}
+  function tick(){
+    var d=new Date(), s=d.getUTCFullYear()+'-'+p2(d.getUTCMonth()+1)+'-'+p2(d.getUTCDate())+
+      ' · '+p2(d.getUTCHours())+':'+p2(d.getUTCMinutes())+':'+p2(d.getUTCSeconds())+'Z';
+    for(var i=0;i<clocks.length;i++) clocks[i].textContent=s;
+  }
+  if(clocks.length){tick();setInterval(tick,1000)}
+
+  var art=document.querySelector('.soc-article'); if(!art) return;
+  var body=art.querySelector('.wu-body'); if(!body) return;
+  var toc=art.querySelector('.wu-toc');
+  var items=[].slice.call(art.querySelectorAll('.wu-toc a[href^="#"]')).map(function(a){
+    var id=decodeURIComponent(a.getAttribute('href').slice(1));
+    return {a:a, el:document.getElementById(id)};
+  }).filter(function(x){return x.el});
+
+  var bar=document.createElement('div'); bar.className='soc-read-bar'; bar.innerHTML='<i></i>';
+  art.parentNode.insertBefore(bar, art.nextSibling);
+  var tb=document.querySelector('.soc-tb');
+  var barFill=bar.firstChild, pct=art.querySelector('.soc-read-pct'),
+      track=art.querySelector('.soc-read-track > i'), now=art.querySelector('.soc-read-now');
+  var top=art.querySelector('[data-top]');
+  if(top) top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+
+  var active=null, queued=false;
+  function update(){
+    queued=false;
+    if(tb) bar.style.top=tb.getBoundingClientRect().height+'px';
+    var r=body.getBoundingClientRect(), span=r.height-window.innerHeight;
+    var f=span>0?Math.min(1,Math.max(0,-r.top/span)):1;
+    var w=(f*100).toFixed(1)+'%';
+    barFill.style.width=w; if(track) track.style.width=w;
+    if(pct) pct.textContent=Math.round(f*100)+'%';
+    var cur=null;
+    for(var i=0;i<items.length;i++){ if(items[i].el.getBoundingClientRect().top<Math.max(120,window.innerHeight*0.3)) cur=items[i]; else break; }
+    if(!cur && items.length) cur=items[0];
+    if(cur!==active){
+      if(active) active.a.classList.remove('is-active');
+      active=cur;
+      if(cur){
+        cur.a.classList.add('is-active');
+        if(now) now.innerHTML=cur.a.innerHTML;
+        if(toc && toc.scrollHeight>toc.clientHeight){
+          var o=cur.a.offsetTop;
+          if(o<toc.scrollTop+20||o>toc.scrollTop+toc.clientHeight-40) toc.scrollTop=o-toc.clientHeight/2;
+        }
+      }
+    }
+  }
+  function q(){if(!queued){queued=true;requestAnimationFrame(update)}}
+  window.addEventListener('scroll',q,{passive:true});
+  window.addEventListener('resize',q);
+  update();
+})();
+"""
+
+ANSWERS_BTN = ('<button class="wu-ans-btn" type="button" aria-label="Show or hide all answers by default" '
+               'title="Start every write-up with answers shown or hidden">'
+               '<span class="wu-ans-lbl"><span class="wu-ans-full">ANSWERS</span><span class="wu-ans-short">ANS</span></span>'
+               '<span class="soc-tb-track"><span class="soc-tb-knob"></span></span>'
+               '<span class="wu-ans-state"><span class="wu-ans-off">HIDDEN</span>'
+               '<span class="wu-ans-on">SHOWN</span></span></button>')
+
+THEME_BTN = ('<button class="soc-theme-btn" type="button" aria-label="Toggle light / dark theme">'
+             '<span class="soc-tb-ico soc-tb-dark">☀︎</span><span class="soc-tb-ico soc-tb-light">☽</span>'
+             '<span class="soc-tb-track"><span class="soc-tb-knob"></span></span>'
+             '<span class="soc-tb-label"><span class="soc-tb-dark">LIGHT</span>'
+             '<span class="soc-tb-light">DARK</span></span></button>')
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Shared HTML pieces
@@ -782,14 +1086,20 @@ def write_assets() -> dict[str, str]:
         digest = hashlib.sha1(css.encode("utf-8")).hexdigest()[:8]
         (assets_dir / f"{name}.css").write_text(css, encoding="utf-8")
         hrefs[name] = f"assets/{name}.css?v={digest}"
+    digest = hashlib.sha1(SITE_JS.encode("utf-8")).hexdigest()[:8]
+    (assets_dir / "site.js").write_text(SITE_JS, encoding="utf-8")
+    hrefs["site.js"] = f"assets/site.js?v={digest}"
     _ASSET_HREFS = hrefs
     return hrefs
 
 
 def css_links(root_prefix: str, *names: str) -> str:
-    return "\n".join(
-        f'<link rel="stylesheet" href="{root_prefix}{_ASSET_HREFS[n]}">' for n in names
-    )
+    """Stylesheets plus the theme bootstrap and the shared site script —
+       every page calls this, so every page gets the theme switch."""
+    links = [THEME_INIT_JS]
+    links += [f'<link rel="stylesheet" href="{root_prefix}{_ASSET_HREFS[n]}">' for n in names]
+    links.append(f'<script src="{root_prefix}{_ASSET_HREFS["site.js"]}" defer></script>')
+    return "\n".join(links)
 
 
 def common_head(title: str, description: str = "") -> str:
@@ -816,16 +1126,24 @@ def common_head(title: str, description: str = "") -> str:
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">"""
 
 
-def topbar(crumb_html: str, badges_html: str, clock_label: str = "") -> str:
-    clock = f'<span class="soc-clock">{clock_label}</span>' if clock_label else ""
+CRUMB_ROOT = (f'<a href="{PORTFOLIO_URL}">SOC</a> <span class="sep">/</span> '
+              f'<a href="{PORTFOLIO_URL}">OPERATOR.PROFILE</a> <span class="sep">/</span> ')
+
+
+def topbar(crumb_html: str, badges_html: str, clock_label: str = "", controls: str = "") -> str:
+    """Same anatomy as the portfolio topbar: UPLINK (home link) · crumb ·
+       badges · live UTC clock · theme switch. clock_label is only the no-JS
+       fallback; site.js replaces it with the ticking clock."""
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     return f"""<div class="soc-tb">
   <div class="soc-tb-row">
-    <span class="soc-live">UPLINK</span>
-    <span class="soc-crumb">
-      {crumb_html}
-    </span>
-    {badges_html}
-    {clock}
+    <a class="soc-live" href="{PORTFOLIO_URL}" title="chicken0248.fyi">UPLINK</a>
+    <span class="soc-crumb">{CRUMB_ROOT}{crumb_html}</span>
+    <div class="soc-tb-right">
+      <span class="soc-tb-badges">{badges_html}</span>
+      <span class="soc-clock" data-clock>{clock_label or today}</span>
+      {controls}{THEME_BTN}
+    </div>
   </div>
 </div>"""
 
@@ -979,9 +1297,7 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
     plat = detect_platform(folder_str)
 
     # 6. Build topbar crumb
-    crumb_parts = [f'<a href="{PORTFOLIO_URL}">SOC</a>',
-                   '<span class="sep">/</span>',
-                   f'<a href="{index_href}"><b>WRITE-UPS</b></a>',
+    crumb_parts = [f'<a href="{index_href}"><b>WRITE-UPS</b></a>',
                    '<span class="sep">/</span>',
                    f'<b>{plat["short"]}</b>',
                    '<span class="sep">/</span>',
@@ -1008,13 +1324,10 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
 </head>
 <body class="{plat['class']}">
 
-{topbar(crumb_html, badges_html, clock_label)}
+{topbar(crumb_html, badges_html, clock_label, ANSWERS_BTN if "<details" in html_body else "")}
 
-<div class="article-wrap">
-  <article class="content">
-{html_body}
-  </article>
-</div>
+{article_shell(html_body, title, plat, _meta_for(md_path), index_href)}
+{OPEN_ANSWERS_JS if "<details" in html_body else ""}
 
 {article_footer(index_href)}
 
@@ -1024,6 +1337,124 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
 
     ensure_build_path(out_path.parent)
     out_path.write_text(page, encoding="utf-8")
+
+
+_H1_RE      = re.compile(r'<h1\b[^>]*>.*?</h1>', re.DOTALL)
+_H1_LINK_RE = re.compile(r'<a\b[^>]*\bhref="([^"]+)"')
+_HEAD_RE    = re.compile(r'<h([23])\b[^>]*\bid="([^"]+)"[^>]*>(.*?)</h\1>', re.DOTALL)
+
+
+def _plain(fragment: str) -> str:
+    """Heading HTML → escaped plain text for the TOC."""
+    return html.escape(html.unescape(re.sub(r'<[^>]+>', '', fragment)).strip())
+
+
+_QUOTE_RE  = re.compile(r'<blockquote>(\s*<p>(.*?)</p>)', re.DOTALL)
+_QPREFIX_RE = re.compile(r'^(?:Q(?:uestion)?\s*(\d+)|Task\s*(\d+))\s*[:.)\-]?\s*', re.IGNORECASE)
+
+
+def _question_toc(html_body: str) -> tuple[str, str]:
+    """Q&A labs (most CyberDefenders, Sherlocks, BTLO, THM) put each question
+       in a blockquote instead of a heading. Give those an id and list them in
+       the rail. A blockquote counts as a question when it starts with
+       Q1 / Question 1 / Task 1 or ends with "?"."""
+    items, n = [], 0
+
+    def tag(m):
+        nonlocal n
+        text = html.unescape(re.sub(r'<[^>]+>', '', m.group(2))).strip()
+        if not (_QPREFIX_RE.match(text) or text.endswith("?")):
+            return m.group(0)
+        n += 1
+        label = _QPREFIX_RE.sub("", text, count=1) or text
+        items.append(f'<a class="wu-toc-item" href="#q-{n}"><span class="wu-toc-num">Q{n}</span>'
+                     f'<span>{html.escape(label)}</span></a>')
+        return f'<blockquote id="q-{n}">{m.group(1)}'
+
+    new_body = _QUOTE_RE.sub(tag, html_body)
+    if n < 3:
+        return "", html_body
+    return ('<nav class="wu-toc wu-toc-q" aria-label="Questions">\n'
+            '    <div class="wu-toc-title">// Questions</div>\n    '
+            + "\n    ".join(items) + "\n  </nav>"), new_body
+
+
+def _build_toc(html_body: str) -> str:
+    """Rail TOC from the rendered h2/h3s. Numbers match the CSS counter on h2
+       (Joplin's own "Table of Contents" heading is skipped by both). Returns
+       "" when there are too few headings for a rail to be useful."""
+    items, n = [], 0
+    for level, hid, inner in _HEAD_RE.findall(html_body):
+        if hid.startswith("table-of-contents"):
+            continue
+        text = _plain(inner)
+        if not text:
+            continue
+        if level == "2":
+            n += 1
+            items.append(f'<a class="wu-toc-item" href="#{hid}"><span class="wu-toc-num">{n:02d}.</span><span>{text}</span></a>')
+        else:
+            items.append(f'<a class="wu-toc-item sub" href="#{hid}"><span>{text}</span></a>')
+    if n < 2 and len(items) < 3:
+        return ""
+    return ('<nav class="wu-toc" aria-label="Table of contents">\n'
+            '    <div class="wu-toc-title">// Table of contents</div>\n    '
+            + "\n    ".join(items) + "\n  </nav>")
+
+
+def article_shell(html_body: str, title: str, plat: dict, meta: dict, index_href: str) -> str:
+    """Header + info box + TOC rail + body, in the order the CSS grid expects
+       (head > meta > toc > body) — the same shape as the portfolio's
+       .soc-article (cover > meta > toc > sections)."""
+    m = _H1_RE.search(html_body)
+    if m:
+        h1 = m.group(0)
+        html_body = html_body[:m.start()] + html_body[m.end():]
+    else:
+        h1 = f"<h1>{html.escape(title)}</h1>"
+    link = _H1_LINK_RE.search(h1)
+
+    dek = (meta.get("summary") or "").strip()
+    head = ('<header class="content wu-head">\n' + h1 +
+            (f'\n<p class="wu-dek">{html.escape(dek)}</p>' if dek else "") + "\n</header>")
+
+    def cell(label, value, cls=""):
+        return f'<div class="{cls}"><div class="wu-meta-lbl">{label}</div>{value}</div>'
+
+    cells = [cell("Author", f'<div class="wu-meta-val">{AUTHOR}</div>'),
+             cell("Platform", f'<div class="wu-meta-val">{html.escape(plat["long"])}</div>')]
+    diff = meta.get("difficulty") or ""
+    if diff and diff != "Unknown":
+        cells.append(cell("Difficulty",
+                          f'<span class="wu-diff d-{_diff_slug(diff)}">{html.escape(diff)}</span>'))
+    if meta.get("category"):
+        cells.append(cell("Category", f'<div class="wu-meta-val">{html.escape(meta["category"])}</div>'))
+    if link:
+        cells.append(cell("Lab", f'<a class="wu-meta-link" href="{link.group(1)}" target="_blank" '
+                                 f'rel="noopener noreferrer">Open on platform ↗</a>'))
+    if meta.get("tags"):
+        chips = "".join(f'<span class="wu-tag">{html.escape(t)}</span>' for t in meta["tags"])
+        cells.append(cell("Tags", f'<div class="wu-tags">{chips}</div>', "wu-meta-wide"))
+    cells.append('<div class="soc-read-card">'
+                 '<div class="soc-read-head">Reading progress <span class="soc-read-pct">0%</span></div>'
+                 '<div class="soc-read-track"><i></i></div>'
+                 '<div class="soc-read-now"></div>'
+                 '<div class="soc-read-links"><button type="button" data-top>↑ Back to top</button>'
+                 f'<a href="{index_href}">← All write-ups</a></div></div>')
+    meta_html = '<aside class="wu-meta">\n    ' + "\n    ".join(cells) + "\n  </aside>"
+
+    toc = _build_toc(html_body)
+    if not toc:
+        toc, html_body = _question_toc(html_body)
+    cls = "soc-article has-toc" if toc else "soc-article"
+    return f"""<main class="{cls}">
+  {head}
+  {meta_html}
+  {toc}
+  <article class="content wu-body">
+{html_body}
+  </article>
+</main>"""
 
 
 def _escape_attr(s: str) -> str:
@@ -1230,11 +1661,7 @@ def create_index_html(md_files: list):
     panels_html = "\n\n    ".join(panel_blocks)
 
     # ── topbar
-    crumb_html = (
-        f'<a href="{PORTFOLIO_URL}">SOC</a>'
-        ' <span class="sep">/</span> '
-        '<b class="here">WRITE-UPS</b>'
-    )
+    crumb_html = '<b class="here">WRITE-UPS</b>'
     badges_html = (
         '<span class="sev cyan"><span class="dot"></span>TLP:CLEAR</span> '
         '<span class="sev green"><span class="dot"></span>OPERATIONAL</span> '
@@ -1804,8 +2231,7 @@ def write_404_page() -> None:
 </head>
 <body>
 
-{topbar('<a href="' + PORTFOLIO_URL + '">SOC</a> <span class="sep">/</span> '
-        '<a href="/"><b>WRITE-UPS</b></a> <span class="sep">/</span> '
+{topbar('<a href="/"><b>WRITE-UPS</b></a> <span class="sep">/</span> '
         '<b class="here">404</b>',
         '<span class="sev rd"><span class="dot"></span>NOT FOUND</span>')}
 
