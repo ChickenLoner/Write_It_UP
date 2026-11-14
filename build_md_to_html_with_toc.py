@@ -274,11 +274,30 @@ TOPBAR_CSS = """
 [data-theme="light"] .soc-theme-btn .soc-tb-dark{display:none}
 [data-theme="light"] .soc-theme-btn .soc-tb-light{display:inline}
 
+/* answers switch — same pill as the theme switch, green when answers are shown */
+.wu-ans-btn{display:inline-flex;align-items:center;gap:8px;padding:5px 11px;border-radius:99px;border:1px solid var(--soc-line2);background:var(--soc-bg-2);color:var(--soc-ink2);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;font-weight:600;cursor:pointer;transition:border-color .18s,color .18s;flex-shrink:0;height:28px;line-height:1}
+.wu-ans-btn:hover{border-color:var(--soc-gn);color:var(--soc-gn)}
+.wu-ans-btn .wu-ans-lbl{color:var(--soc-ink3)}
+.wu-ans-btn .soc-tb-track{position:relative;width:30px;height:14px;border-radius:99px;background:rgba(138,155,191,.18);border:1px solid var(--soc-line2);flex-shrink:0;transition:background .25s}
+.wu-ans-btn .soc-tb-knob{position:absolute;top:1px;left:1px;width:10px;height:10px;border-radius:50%;background:var(--soc-ink4);transition:transform .25s cubic-bezier(.5,.1,.25,1.3),background .25s}
+.wu-ans-btn .wu-ans-on,.wu-ans-btn .wu-ans-short{display:none}
+[data-answers="shown"] .wu-ans-btn{color:var(--soc-gn)}
+[data-answers="shown"] .wu-ans-btn .soc-tb-track{background:rgba(61,220,132,.18)}
+[data-answers="shown"] .wu-ans-btn .soc-tb-knob{transform:translateX(16px);background:var(--soc-gn);box-shadow:0 0 8px var(--soc-gn)}
+[data-answers="shown"] .wu-ans-btn .wu-ans-on{display:inline}
+[data-answers="shown"] .wu-ans-btn .wu-ans-off{display:none}
+[data-theme="light"] .wu-ans-btn{background:var(--soc-bg-1);border-color:var(--soc-line)}
+[data-theme="light"][data-answers="shown"] .wu-ans-btn .soc-tb-knob{box-shadow:0 0 0 2px rgba(21,128,61,.18)}
+
 /* the portfolio hides crumb, badges and clock on phones; UPLINK stays as the home link */
 @media(max-width:1100px){.soc-tb-badges .sev-link,.soc-tb-badges .sev.green{display:none}}
+@media(max-width:1279px){.wu-ans-btn~.soc-clock,.soc-tb-right:has(.wu-ans-btn) .soc-clock{display:none}}
 @media(max-width:767px){
   .soc-crumb,.soc-tb-badges,.soc-clock{display:none}
   .soc-tb-row{padding:8px 16px}
+  .wu-ans-btn .wu-ans-full{display:none}
+  .wu-ans-btn .wu-ans-short{display:inline}
+  .wu-ans-btn{gap:6px;padding:5px 9px}
 }
 
 .sev{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;font-weight:700;text-transform:uppercase}
@@ -938,8 +957,17 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
 # ─────────────────────────────────────────────────────────────────────────────
 
 # Inline in <head> so data-theme is set before first paint (no flash).
-THEME_INIT_JS = ("<script>try{document.documentElement.setAttribute('data-theme',"
-                 "localStorage.getItem('soc-theme')||'dark')}catch(e){}</script>")
+THEME_INIT_JS = ("<script>try{var d=document.documentElement;"
+                 "d.setAttribute('data-theme',localStorage.getItem('soc-theme')||'dark');"
+                 "d.setAttribute('data-answers',localStorage.getItem('wu-answers')||'hidden')"
+                 "}catch(e){}</script>")
+
+# Runs right after the article is parsed, before first paint, so a reader who
+# chose "shown" never sees the answers flash closed. <details> can only be
+# opened from script — CSS cannot force it.
+OPEN_ANSWERS_JS = ("<script>if(document.documentElement.getAttribute('data-answers')==='shown')"
+                   "[].forEach.call(document.querySelectorAll('.wu-body details'),"
+                   "function(d){d.open=true})</script>")
 
 SITE_JS = r"""(function(){
   var KEY='soc-theme', root=document.documentElement;
@@ -947,6 +975,19 @@ SITE_JS = r"""(function(){
   function set(t){try{localStorage.setItem(KEY,t)}catch(e){} root.setAttribute('data-theme',t)}
   document.addEventListener('click',function(e){
     if(e.target.closest && e.target.closest('.soc-theme-btn')) set(get()==='dark'?'light':'dark');
+  });
+
+  /* answers switch: remembered site-wide, sets the starting state of every
+     answer block; each block can still be opened / closed on its own */
+  var AKEY='wu-answers';
+  function aget(){try{return localStorage.getItem(AKEY)||'hidden'}catch(e){return 'hidden'}}
+  document.addEventListener('click',function(e){
+    if(!(e.target.closest && e.target.closest('.wu-ans-btn'))) return;
+    var next=aget()==='shown'?'hidden':'shown';
+    try{localStorage.setItem(AKEY,next)}catch(e){}
+    root.setAttribute('data-answers',next);
+    var ds=document.querySelectorAll('.wu-body details');
+    for(var i=0;i<ds.length;i++) ds[i].open=(next==='shown');
   });
 
   /* live UTC clock, same format as the portfolio's SocClock */
@@ -1006,6 +1047,13 @@ SITE_JS = r"""(function(){
   update();
 })();
 """
+
+ANSWERS_BTN = ('<button class="wu-ans-btn" type="button" aria-label="Show or hide all answers by default" '
+               'title="Start every write-up with answers shown or hidden">'
+               '<span class="wu-ans-lbl"><span class="wu-ans-full">ANSWERS</span><span class="wu-ans-short">ANS</span></span>'
+               '<span class="soc-tb-track"><span class="soc-tb-knob"></span></span>'
+               '<span class="wu-ans-state"><span class="wu-ans-off">HIDDEN</span>'
+               '<span class="wu-ans-on">SHOWN</span></span></button>')
 
 THEME_BTN = ('<button class="soc-theme-btn" type="button" aria-label="Toggle light / dark theme">'
              '<span class="soc-tb-ico soc-tb-dark">☀︎</span><span class="soc-tb-ico soc-tb-light">☽</span>'
@@ -1082,7 +1130,7 @@ CRUMB_ROOT = (f'<a href="{PORTFOLIO_URL}">SOC</a> <span class="sep">/</span> '
               f'<a href="{PORTFOLIO_URL}">OPERATOR.PROFILE</a> <span class="sep">/</span> ')
 
 
-def topbar(crumb_html: str, badges_html: str, clock_label: str = "") -> str:
+def topbar(crumb_html: str, badges_html: str, clock_label: str = "", controls: str = "") -> str:
     """Same anatomy as the portfolio topbar: UPLINK (home link) · crumb ·
        badges · live UTC clock · theme switch. clock_label is only the no-JS
        fallback; site.js replaces it with the ticking clock."""
@@ -1094,7 +1142,7 @@ def topbar(crumb_html: str, badges_html: str, clock_label: str = "") -> str:
     <div class="soc-tb-right">
       <span class="soc-tb-badges">{badges_html}</span>
       <span class="soc-clock" data-clock>{clock_label or today}</span>
-      {THEME_BTN}
+      {controls}{THEME_BTN}
     </div>
   </div>
 </div>"""
@@ -1276,9 +1324,10 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
 </head>
 <body class="{plat['class']}">
 
-{topbar(crumb_html, badges_html, clock_label)}
+{topbar(crumb_html, badges_html, clock_label, ANSWERS_BTN if "<details" in html_body else "")}
 
 {article_shell(html_body, title, plat, _meta_for(md_path), index_href)}
+{OPEN_ANSWERS_JS if "<details" in html_body else ""}
 
 {article_footer(index_href)}
 

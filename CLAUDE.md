@@ -196,6 +196,11 @@ here. The pieces and their portfolio counterparts:
   (`_question_toc`, gives each question `id="q-N"`). Joplin's inline
   "Table of Contents" is hidden by CSS whenever the rail is visible.
 - Code and answer blocks stay dark in the light theme on purpose.
+- **Answers switch** (`ANSWERS_BTN`, topbar, only on pages with `<details>`):
+  a remembered default, `wu-answers` = `hidden` (default) or `shown`. The head
+  bootstrap sets `data-answers`; `OPEN_ANSWERS_JS`, inlined right after
+  `</main>`, opens every answer before first paint so "shown" never flashes
+  closed. Each answer still toggles on its own. Not on the portfolio.
 
 ## Hosting
 
