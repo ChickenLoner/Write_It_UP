@@ -180,7 +180,12 @@ Write-up pages copy the portfolio's (chicken0248.fyi) research-article layout
 loaded from the portfolio at runtime, so a theme change there must be repeated
 here. The pieces and their portfolio counterparts:
 
-- Colour tokens + `html[data-theme="light"]` palette → `themes/soc.css`.
+- Colour tokens + `html[data-theme="light"]` palette → `themes/soc.css`. The
+  light theme is the portfolio's "SIEM console" (IBM Carbon g10): flat `#f4f4f4`
+  page, white panels, one blue accent `#0f62fe`, Carbon tag tints for status
+  chips and difficulty pills, neutral tags, square corners, no shadows or
+  glows (`LIGHT_CARBON_CSS`, mirrors soc.css's I1/D1 blocks). The theme and
+  answers switches keep their rounded pills, as on the portfolio.
 - Topbar (UPLINK · `SOC / OPERATOR.PROFILE / …` crumb · badges · live UTC
   clock · `.soc-theme-btn`) → the portfolio topbar + `ThemeToggle`. The theme
   is stored under the same `soc-theme` localStorage key, but storage is

@@ -184,22 +184,23 @@ TOKENS_CSS = """
   --strong-q:#fff;
   --machine-kicker:#d97757;
 }
-/* light palette — identical values to the portfolio's html[data-theme="light"] */
+/* light palette — "SIEM console", IBM Carbon g10; identical values to the
+   portfolio's html[data-theme="light"] (themes/soc.css, I1 block) */
 html[data-theme="light"]{
-  --soc-bg:#eef2f9;     --soc-bg-1:#ffffff;  --soc-bg-2:#f5f8fd;
-  --soc-line:#d8e0ee;   --soc-line2:#b8c4dc;
-  --soc-ink:#0c1729;    --soc-ink2:#2c3d58;
-  --soc-ink3:#4e6080;   --soc-ink4:#6b7896;
-  --soc-cy:#0891b2;     --soc-cy2:#0e7490;
-  --soc-am:#b45309;     --soc-gn:#15803d;
-  --soc-rd:#be1d3a;     --soc-vi:#6d28d9;
-  --tb-bg:rgba(255,255,255,.85);
-  --link-hover:#0e7490;
-  --code-inline:#0e7490;
-  --code-inline-bg:rgba(8,145,178,.07);
+  --soc-bg:#f4f4f4;     --soc-bg-1:#ffffff;  --soc-bg-2:#f4f4f4;
+  --soc-line:#e0e0e0;   --soc-line2:#c6c6c6;
+  --soc-ink:#161616;    --soc-ink2:#393939;
+  --soc-ink3:#525252;   --soc-ink4:#6f6f6f;
+  --soc-cy:#0f62fe;     --soc-cy2:#0043ce;
+  --soc-am:#8e6a00;     --soc-gn:#198038;
+  --soc-rd:#da1e28;     --soc-vi:#8a3ffc;
+  --tb-bg:#ffffff;
+  --link-hover:#0043ce;
+  --code-inline:#0043ce;
+  --code-inline-bg:rgba(15,98,254,.06);
   --em-ink:var(--soc-ink);
   --strong-q:var(--soc-ink);
-  --machine-kicker:#b4532a;
+  --machine-kicker:#ba4e00;
   color-scheme:light;
 }
 .p-htb-sherlock{--kicker-text:"// HTB · SHERLOCK · DFIR CASE FILE";--kicker-color:var(--soc-am)}
@@ -230,14 +231,9 @@ body::before{
 }
 a{color:var(--soc-cy);text-decoration:none}
 a:hover{color:var(--link-hover);text-decoration:underline}
-[data-theme="light"] body{
-  background:
-    radial-gradient(1200px 600px at 100% -10%,rgba(8,145,178,.08),transparent 70%),
-    radial-gradient(900px 500px at -10% 30%,rgba(109,40,217,.05),transparent 70%),
-    var(--soc-bg)
-}
-[data-theme="light"] body::before{opacity:.22}
-[data-theme="light"] .soc-tb{box-shadow:0 1px 0 rgba(12,23,41,.04)}
+[data-theme="light"] body{background:var(--soc-bg)}
+[data-theme="light"] body::before{display:none}
+[data-theme="light"] .soc-tb{backdrop-filter:none;-webkit-backdrop-filter:none}
 """
 
 TOPBAR_CSS = """
@@ -269,8 +265,8 @@ TOPBAR_CSS = """
 .soc-theme-btn .soc-tb-dark{display:inline}
 .soc-theme-btn .soc-tb-light{display:none}
 [data-theme="light"] .soc-theme-btn{background:var(--soc-bg-1);border-color:var(--soc-line)}
-[data-theme="light"] .soc-theme-btn .soc-tb-track{background:rgba(8,145,178,.15)}
-[data-theme="light"] .soc-theme-btn .soc-tb-knob{transform:translateX(16px);box-shadow:0 0 0 2px rgba(8,145,178,.18)}
+[data-theme="light"] .soc-theme-btn .soc-tb-track{background:rgba(15,98,254,.15)}
+[data-theme="light"] .soc-theme-btn .soc-tb-knob{transform:translateX(16px);box-shadow:0 0 0 2px rgba(15,98,254,.18)}
 [data-theme="light"] .soc-theme-btn .soc-tb-dark{display:none}
 [data-theme="light"] .soc-theme-btn .soc-tb-light{display:inline}
 
@@ -287,7 +283,7 @@ TOPBAR_CSS = """
 [data-answers="shown"] .wu-ans-btn .wu-ans-on{display:inline}
 [data-answers="shown"] .wu-ans-btn .wu-ans-off{display:none}
 [data-theme="light"] .wu-ans-btn{background:var(--soc-bg-1);border-color:var(--soc-line)}
-[data-theme="light"][data-answers="shown"] .wu-ans-btn .soc-tb-knob{box-shadow:0 0 0 2px rgba(21,128,61,.18)}
+[data-theme="light"][data-answers="shown"] .wu-ans-btn .soc-tb-knob{box-shadow:0 0 0 2px rgba(25,128,56,.18)}
 
 /* the portfolio hides crumb, badges and clock on phones; UPLINK stays as the home link */
 @media(max-width:1100px){.soc-tb-badges .sev-link,.soc-tb-badges .sev.green{display:none}}
@@ -312,6 +308,66 @@ TOPBAR_CSS = """
 .sev-link:hover{color:var(--soc-cy);border-color:rgba(34,225,255,.4);background:rgba(34,225,255,.06);text-decoration:none}
 .sev-link .ar{font-size:.95em;opacity:.7;margin-left:1px}
 .sev-link:hover .ar{opacity:1}
+"""
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CSS — light theme, Carbon conventions (shared by every page)
+# Mirrors the portfolio's I1/D1 blocks in themes/soc.css: square corners, no
+# shadows or glows, 2px blue focus outline, Carbon tag tints for status chips,
+# neutral grey tags, white panels with borders instead of shadows.
+# Uses html[data-theme] so it outranks the per-page dark rules.
+# ─────────────────────────────────────────────────────────────────────────────
+
+LIGHT_CARBON_CSS = """
+html[data-theme="light"] *:not(img):not(.soc-theme-btn):not(.soc-theme-btn *):not(.wu-ans-btn):not(.wu-ans-btn *):not(.dot){border-radius:0 !important}
+html[data-theme="light"] *,html[data-theme="light"] *::before,html[data-theme="light"] *::after{box-shadow:none !important;text-shadow:none !important}
+html[data-theme="light"] .content img{box-shadow:none !important}
+html[data-theme="light"] :focus-visible{outline:2px solid var(--soc-cy);outline-offset:1px}
+html[data-theme="light"] .soc-live::before{animation:none}
+
+/* status chips: Carbon tag tints (very light fill + matching border) */
+html[data-theme="light"] .sev.green{background:#defbe6;border-color:#a7f0ba}
+html[data-theme="light"] .sev.cyan {background:#edf5ff;border-color:#a6c8ff}
+html[data-theme="light"] .sev.am   {background:#fcf4d6;border-color:#f1c21b}
+html[data-theme="light"] .sev.rd   {background:#fff1f1;border-color:#ffb3b8}
+html[data-theme="light"] .sev.vi   {background:#f6f2ff;border-color:#d4bbff}
+html[data-theme="light"] .sev-link{background:var(--soc-bg-1);border-color:var(--soc-line2);color:var(--soc-ink2)}
+html[data-theme="light"] .sev-link:hover{background:#edf5ff;border-color:var(--soc-cy);color:var(--soc-cy)}
+
+/* difficulty pills (article info box + index cards): same tag tints */
+html[data-theme="light"] :is(.wu-diff,.wrow .diff).d-very-easy{color:var(--soc-cy);background:#edf5ff;border-color:#a6c8ff}
+html[data-theme="light"] :is(.wu-diff,.wrow .diff).d-easy{color:var(--soc-gn);background:#defbe6;border-color:#a7f0ba}
+html[data-theme="light"] :is(.wu-diff,.wrow .diff).d-medium{color:var(--soc-am);background:#fcf4d6;border-color:#f1c21b}
+html[data-theme="light"] :is(.wu-diff,.wrow .diff).d-hard{color:var(--soc-rd);background:#fff1f1;border-color:#ffb3b8}
+html[data-theme="light"] :is(.wu-diff,.wrow .diff).d-insane{color:var(--soc-vi);background:#f6f2ff;border-color:#d4bbff}
+
+/* tags: neutral chips, colour is reserved for state */
+html[data-theme="light"] :is(.wu-tag,.wrow .tag){background:var(--soc-bg-2);border-color:var(--soc-line);color:var(--soc-ink2)}
+
+/* panels: white on the grey page, separated by borders */
+html[data-theme="light"] :is(.wu-meta,.soc-page-hero,.pcard,.wrow){background:var(--soc-bg-1)}
+html[data-theme="light"] .soc-page-hero{background:var(--soc-bg-1) !important}
+html[data-theme="light"] .wrow .banner{background:var(--soc-bg-1) !important}
+html[data-theme="light"] .pcard summary,html[data-theme="light"] .pcard summary:hover{background:var(--soc-bg-1)}
+html[data-theme="light"] .pcard summary:hover{background:var(--soc-bg-2)}
+/* accent boxes: the one Carbon blue instead of the dark theme's cyan */
+html[data-theme="light"] :is(.soc-page-hero-icon,.pcard .ph-icon,.pcard.p-cd .ph-icon){background:#edf5ff;border-color:#a6c8ff;color:var(--soc-cy)}
+html[data-theme="light"] .pcard.p-cd .wrow::before,html[data-theme="light"] .wrow:hover::before{background:var(--soc-cy)}
+html[data-theme="light"] :is(.pcard[open],.pcard.p-cd[open]){border-color:var(--soc-line2)}
+html[data-theme="light"] :is(.search-input,.fchip){background-color:var(--soc-bg-1)}
+
+/* article: question boxes are white cards with a blue left rule (portfolio callouts);
+   answers get a green rule; code + answer bodies stay dark (terminal output) */
+html[data-theme="light"] .content blockquote{background:var(--soc-bg-1);border-color:var(--soc-line);border-left-color:var(--soc-cy)}
+html[data-theme="light"] .content details{background:var(--soc-bg-1);border-color:var(--soc-line);border-left:3px solid var(--soc-gn)}
+html[data-theme="light"] .content details summary::after{background:linear-gradient(90deg,rgba(25,128,56,.35),transparent)}
+html[data-theme="light"] .content code{border-color:rgba(15,98,254,.18)}
+html[data-theme="light"] .content pre code{color:#e2e8f0}
+html[data-theme="light"] .content h1 a::after{background:#edf5ff;border-color:#a6c8ff}
+html[data-theme="light"] .content th{color:var(--soc-ink2)}
+html[data-theme="light"] .content thead{background:var(--soc-bg-2)}
+html[data-theme="light"] .soc-read-track>i,html[data-theme="light"] .soc-read-bar>i{box-shadow:none}
+html[data-theme="light"] .wu-toc-item.is-active::before{box-shadow:none}
 """
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -365,7 +421,7 @@ ARTICLE_CSS = """
   color:var(--soc-cy);letter-spacing:0
 }
 .content h2[id^="table-of-contents"]::before{content:"≡";font-size:15px}
-[data-theme="light"] .content h2::before{background:rgba(8,145,178,.08);border-color:rgba(8,145,178,.25)}
+[data-theme="light"] .content h2::before{background:rgba(15,98,254,.08);border-color:rgba(15,98,254,.25)}
 .content h3{
   font-size:1rem;font-weight:700;color:var(--soc-ink2);line-height:1.4;
   margin:1.9rem 0 .7rem;padding-left:10px;border-left:3px solid var(--soc-cy)
@@ -527,8 +583,8 @@ footer.foot .sep{color:var(--soc-ink4);opacity:.5;margin:0 .55rem}
 [data-theme="light"] .content pre{border-color:#1c2433}
 [data-theme="light"] .content pre code[class]:not([class=""])::before{color:#8a9bbf;border-bottom-color:#253040}
 [data-theme="light"] .content img{background:var(--soc-bg-2);box-shadow:0 1px 2px rgba(12,23,41,.06),0 8px 22px rgba(12,23,41,.07)}
-[data-theme="light"] .content blockquote{background:linear-gradient(90deg,rgba(8,145,178,.07),rgba(8,145,178,.015) 70%,transparent);border-color:var(--soc-line);border-left-color:var(--soc-cy)}
-[data-theme="light"] .content details{background:linear-gradient(180deg,rgba(21,128,61,.06),rgba(21,128,61,.015));border-color:rgba(21,128,61,.3)}
+[data-theme="light"] .content blockquote{background:linear-gradient(90deg,rgba(15,98,254,.07),rgba(15,98,254,.015) 70%,transparent);border-color:var(--soc-line);border-left-color:var(--soc-cy)}
+[data-theme="light"] .content details{background:linear-gradient(180deg,rgba(25,128,56,.06),rgba(25,128,56,.015));border-color:rgba(25,128,56,.3)}
 [data-theme="light"] .content tr:nth-child(even) td{background:rgba(12,23,41,.02)}
 
 /* ═══ Article shell — mirrors the portfolio's .soc-article ═══════════════
@@ -566,7 +622,7 @@ footer.foot .sep{color:var(--soc-ink4);opacity:.5;margin:0 .55rem}
 .wu-toc-item.is-active{color:var(--soc-cy);background:rgba(34,225,255,.07)}
 .wu-toc-item.is-active .wu-toc-num{color:var(--soc-cy)}
 .wu-toc-item.is-active::before{content:"";position:absolute;left:-15px;top:6px;bottom:6px;width:2px;border-radius:2px;background:var(--soc-cy);box-shadow:0 0 8px rgba(34,225,255,.6)}
-[data-theme="light"] .wu-toc-item.is-active{background:rgba(8,145,178,.08)}
+[data-theme="light"] .wu-toc-item.is-active{background:rgba(15,98,254,.08)}
 
 @media(min-width:1280px){
   .soc-article.has-toc{
@@ -926,7 +982,7 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
 /* ─── light theme: swap the dark-only black/white overlays for palette surfaces ─── */
 [data-theme="light"] .soc-page-hero-strap{background:var(--soc-bg-2)}
 [data-theme="light"] .wlist{background:var(--soc-bg-2)}
-[data-theme="light"] .wrow .banner{background:linear-gradient(180deg,rgba(8,145,178,.04),transparent)}
+[data-theme="light"] .wrow .banner{background:linear-gradient(180deg,rgba(15,98,254,.04),transparent)}
 [data-theme="light"] .wrow .ix,[data-theme="light"] .wrow .tag,
 [data-theme="light"] .wrow .open-ic,[data-theme="light"] .tw-seg,
 [data-theme="light"] .tw-foot,[data-theme="light"] .tw-reset{background:var(--soc-bg-2)}
@@ -1075,7 +1131,7 @@ def write_assets() -> dict[str, str]:
     """Write shared CSS bundles and return {name: 'assets/x.css?v=hash'}."""
     global _ASSET_HREFS
     bundles = {
-        "base":    TOKENS_CSS + TOPBAR_CSS,
+        "base":    TOKENS_CSS + TOPBAR_CSS + LIGHT_CARBON_CSS,
         "article": ARTICLE_CSS,
         "index":   INDEX_CSS,
     }
