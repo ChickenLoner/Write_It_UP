@@ -29,6 +29,7 @@ it anyway. Step 4 catches the failure the build would have reported.
 
 import argparse
 import json
+from datetime import date
 import os
 import re
 import subprocess
@@ -162,10 +163,14 @@ def step_meta() -> list:
             "category": "",
             "tags": [],
             "summary": "",
+            # first-published date; the index's "Recent write-ups" feed sorts on it
+            "date": date.today().isoformat(),
         }
     if missing:
+        # Same layout the file is kept in (1-space indent, sorted keys, no
+        # trailing newline), so scaffolding one entry is a one-entry diff.
         META_PATH.write_text(
-            json.dumps(dict(sorted(meta.items())), indent=2, ensure_ascii=False) + "\n",
+            json.dumps(meta, indent=1, sort_keys=True, ensure_ascii=False),
             encoding="utf-8")
         print(f"   scaffolded {len(missing)} entr(y/ies) — fill these in:")
         for k in missing:
