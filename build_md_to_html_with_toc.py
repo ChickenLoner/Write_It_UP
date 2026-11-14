@@ -1022,7 +1022,14 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
 .hm-av::after{bottom:-1px;right:-1px;border-left:none;border-top:none}
 .hm-av img{width:100%;height:100%;object-fit:cover;border-radius:6px;display:block}
 .hm-title{font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--soc-ink);line-height:1.15;margin:0}
-.hm-sub{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--soc-ink3);margin:6px 0 12px;letter-spacing:.02em}
+/* topics never break mid-name; every item carries its separator on the left,
+   and the inner row is pulled left by that width so the separator at the start
+   of a wrapped line falls outside the clipped box */
+.hm-sub{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--soc-ink3);margin:6px 0 12px;letter-spacing:.02em;overflow:hidden}
+.hm-sub-in{display:flex;flex-wrap:wrap;row-gap:2px;margin-left:-1.6em}
+.hm-sub-in>span{white-space:nowrap;position:relative;padding-left:1.6em}
+.hm-sub-in>span::before{content:"·";position:absolute;left:.55em;color:var(--soc-ink4)}
+.hm-sub-in>.hm-sub-tail::before{content:"—";left:.5em}
 .hm-chips{display:flex;flex-wrap:wrap;gap:8px}
 .hm-kv{display:grid;grid-template-columns:auto auto;gap:6px 16px;margin:0;font-family:'JetBrains Mono',monospace;font-size:11.5px;align-self:start}
 .hm-kv dt{color:var(--soc-ink4);letter-spacing:.08em;text-align:right}
@@ -1128,10 +1135,10 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
   .hm-id{gap:14px;padding:16px}
   .hm-av{width:58px;height:58px;padding:4px}
   .hm-title{font-size:21px}
-  .hm-sub{font-size:11px;margin:4px 0 10px}
+  .hm-sub{font-size:11px;margin:4px 0 10px;row-gap:3px}
   .hm-chips .sev:nth-child(3){display:none}
   .hm-kv{display:none}
-  .hm-sub{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .hm-sub .hm-sub-tail{display:none}
   .hm-feed-row:nth-child(n+6){display:none}
   .hm-feed-btn{padding:4px 8px;font-size:9.5px}
   .hm-stat{padding:12px 14px}
@@ -1929,7 +1936,7 @@ def _home_html(md_files: list, class_counts: dict, class_label: dict) -> str:
       <div class="hm-av"><img src="{AVATAR_URL}" alt="" width="72" height="72"></div>
       <div class="hm-id-main">
         <h1 class="hm-title">Write-Ups Collection</h1>
-        <p class="hm-sub">DFIR · Malware Analysis · Network Forensics · Active Directory — lab solutions, documented and reproducible</p>
+        <p class="hm-sub"><span class="hm-sub-in"><span>DFIR</span><span>Malware Analysis</span><span>Network Forensics</span><span>Active Directory</span><span class="hm-sub-tail">lab solutions, documented and reproducible</span></span></p>
         <div class="hm-chips">
           <span class="sev green"><span class="dot"></span>{total} SOLVED</span>
           <span class="sev cyan"><span class="dot"></span>TLP:CLEAR</span>
