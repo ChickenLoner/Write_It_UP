@@ -89,7 +89,8 @@ the lab genuinely gives no signal for a field.
   "difficulty": "Very Easy | Easy | Medium | Hard | Insane | Unknown",
   "category": "1-3 word Title-Case domain, e.g. Network Forensics / AD / Kerberos",
   "tags": ["3-6", "short", "lowercase", "tools-or-techniques"],
-  "summary": "One active-voice sentence <=155 chars; never start with \"This lab\""
+  "summary": "One active-voice sentence <=155 chars; never start with \"This lab\"",
+  "date": "YYYY-MM-DD — the day the write-up was first published"
 }
 ```
 
@@ -112,6 +113,13 @@ and the tools that actually appear in the commands and screenshots:
   `volatility`, `cyberchef`, `c2`, `virustotal`, `powershell`, `sysmon` — reuse
   those spellings rather than inventing variants. Skip generic filler like
   `forensics` or `ctf` that every entry would carry.
+- **date** — first-published date; the home page's *Recent write-ups* feed
+  and *Published <year>* stat sort and count on it. `publish.py` scaffolds it
+  as today, which is right for a new write-up, so leave it. The existing 361
+  were back-filled from each file's first commit (`git log --follow
+  --diff-filter=A`), so they are repo-add dates, not solve dates. The file
+  is kept as 1-space-indented, key-sorted JSON with no trailing newline;
+  `publish.py` writes it that way so a new entry is a one-entry diff.
 - **summary** — what the reader *does* in this lab, active voice. Target ≤155
   characters; existing entries run 105-163 with a median of 135, so aim for
   ~135 and treat 155 as the ceiling. Never open with "This lab" / "This
@@ -206,6 +214,21 @@ here. The pieces and their portfolio counterparts:
   bootstrap sets `data-answers`; `OPEN_ANSWERS_JS`, inlined right after
   `</main>`, opens every answer before first paint so "shown" never flashes
   closed. Each answer still toggles on its own. Not on the portfolio.
+
+### Home page (mirrors the portfolio home)
+
+`_home_html()` builds the top of `index.html` in the shape of the portfolio
+home page: an operator-card hero (strap, avatar, title, chips, key/value list,
+4 stat cells with distribution bars), *Recent write-ups* (latest 8 by `date`)
+beside a *Coverage* panel, then a *Category matrix*. `CATEGORY_DOMAINS` maps
+each category to one of four domains (Forensics, Detection & Response,
+Malware & RE, Offense); **add a new category there**, or it lands in the last
+domain. Categories with fewer than `MATRIX_MIN_CARD` (4) write-ups render as
+small chips instead of cards. Clicking a card or chip filters the full list
+below by category (`data-cat` on each `.wrow`) and shows a clearable pill in
+the toolbar. Below that, the search, filters, platform panels and the Tweaks
+panel are unchanged. The new CSS uses theme variables and `color-mix()` only,
+so it needs no separate light-theme rules.
 
 ## Hosting
 
