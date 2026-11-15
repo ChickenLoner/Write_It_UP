@@ -61,7 +61,8 @@ SKIP_NAMES = {"readme.md", "claude.md", "license.md", "licence.md",
 # Platform detection
 #   keyword(s) found in the folder path  →  platform descriptor
 #   class:       body class & .pcard class used for the kicker / accent
-#   icon:        glyph drawn in the platform icon tile
+#   icon:        glyph drawn in the platform icon tile (used when there is no logo)
+#   logo:        optional file in assets/platforms/ shown instead of the glyph
 #   short:       human label used in topbar crumb + meta line
 #   long:        full label used on the index panel header
 #   kicker:      // <text>  rendered above the H1 on the write-up page
@@ -72,6 +73,7 @@ PLATFORMS = [
     (("hackthebox", "sherlock"), {
         "class": "p-htb-sherlock",
         "icon":  "⬡",
+        "logo":  "htb.svg",
         "short": "HTB · SHERLOCK",
         "long":  "HTB Sherlocks",
         "kicker": "// HTB · SHERLOCK · DFIR CASE FILE",
@@ -80,6 +82,7 @@ PLATFORMS = [
     (("hackthebox", "machine"), {
         "class": "p-htb-machine",
         "icon":  "⬡",
+        "logo":  "htb.svg",
         "short": "HTB · MACHINE",
         "long":  "HTB Machines",
         "kicker": "// HTB · MACHINE · OFFENSIVE",
@@ -88,6 +91,7 @@ PLATFORMS = [
     (("hackthebox",), {
         "class": "p-htb-machine",
         "icon":  "⬡",
+        "logo":  "htb.svg",
         "short": "HTB",
         "long":  "HackTheBox",
         "kicker": "// HACKTHEBOX",
@@ -96,6 +100,7 @@ PLATFORMS = [
     (("btlo",), {
         "class": "p-btlo",
         "icon":  "⬤",
+        "logo":  "btlo.webp",
         "short": "BTLO",
         "long":  "Centri · Blue Team Labs Online",
         "kicker": "// BTLO · DFIR INVESTIGATION",
@@ -104,6 +109,7 @@ PLATFORMS = [
     (("cyberdefenders",), {
         "class": "p-cd",
         "icon":  "◈",
+        "logo":  "cd.svg",
         "short": "CYBERDEFENDERS",
         "long":  "CyberDefenders",
         "kicker": "// CYBERDEFENDERS · BLUE-TEAM LAB",
@@ -112,6 +118,7 @@ PLATFORMS = [
     (("letsdefend",), {
         "class": "p-ld",
         "icon":  "◉",
+        "logo":  "letsdefend.svg",
         "short": "LETSDEFEND",
         "long":  "LetsDefend",
         "kicker": "// LETSDEFEND · INVESTIGATION",
@@ -120,6 +127,7 @@ PLATFORMS = [
     (("tryhackme",), {
         "class": "p-thm",
         "icon":  "▲",
+        "logo":  "tryhackme.webp",
         "short": "TRYHACKME",
         "long":  "TryHackMe",
         "kicker": "// TRYHACKME · ROOM",
@@ -128,10 +136,32 @@ PLATFORMS = [
     (("hacksmarter",), {
         "class": "p-hacksmarter",
         "icon":  "◆",
+        "logo":  "hacksmarter.webp",
         "short": "HACKSMARTER",
         "long":  "HackSmarter.org",
         "kicker": "// HACKSMARTER",
         "sev":   "am",
+    }),
+    # Collections inside the Unlisted Labs folder that have a brand (and logo) of
+    # their own. Each is a full platform: own class, counts, chips and colours.
+    # Must come before the generic entry below.
+    (("unlisted", "memlabs"), {
+        "class": "p-memlabs",
+        "icon":  "⬚",
+        "logo":  "memlabs.webp",
+        "short": "MEMLABS",
+        "long":  "MemLabs",
+        "kicker": "// MEMLABS · MEMORY FORENSICS",
+        "sev":   "vi",
+    }),
+    (("unlisted", "level effect"), {
+        "class": "p-leveleffect",
+        "icon":  "⬚",
+        "logo":  "leveleffect.webp",
+        "short": "LEVEL EFFECT",
+        "long":  "Level Effect",
+        "kicker": "// LEVEL EFFECT · CTF",
+        "sev":   "vi",
     }),
     (("unlisted",), {
         "class": "p-unlisted",
@@ -213,6 +243,8 @@ html[data-theme="light"]{
 .p-ld          {--kicker-text:"// LETSDEFEND · INVESTIGATION";      --kicker-color:var(--soc-gn)}
 .p-hacksmarter {--kicker-text:"// HACKSMARTER";                     --kicker-color:var(--soc-am)}
 .p-unlisted    {--kicker-text:"// UNLISTED";                        --kicker-color:var(--soc-vi)}
+.p-memlabs    {--kicker-text:"// MEMLABS · MEMORY FORENSICS";                        --kicker-color:var(--soc-vi)}
+.p-leveleffect    {--kicker-text:"// LEVEL EFFECT · CTF";                        --kicker-color:var(--soc-vi)}
 
 html,body{background:var(--soc-bg);color:var(--soc-ink);min-height:100vh}
 body{
@@ -790,7 +822,20 @@ INDEX_CSS = """
 .pcard.p-hacksmarter       .ph-icon{background:rgba(255,181,71,.08);border-color:rgba(255,181,71,.35);color:var(--soc-am)}
 .pcard.p-hacksmarter[open] {border-color:rgba(255,181,71,.35)}
 .pcard.p-unlisted          .ph-icon{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.35);color:var(--soc-vi)}
+.pcard.p-memlabs          .ph-icon{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.35);color:var(--soc-vi)}
+.pcard.p-leveleffect          .ph-icon{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.35);color:var(--soc-vi)}
+/* Platform logo chip. Logos are drawn for dark backgrounds (white wordmarks), so
+   the chip stays dark in the light theme too. */
+.pcard .ph-icon.has-logo,
+html[data-theme="light"] .pcard .ph-icon.has-logo{
+  width:auto;min-width:38px;padding:0 10px;background:#0b1220;border-color:rgba(255,255,255,.16)
+}
+/* Fixed height + object-fit, not height:auto: an SVG with only a viewBox (LetsDefend's)
+   has no intrinsic size and would collapse. contain keeps very wide logos undistorted. */
+.pcard .ph-logo{display:block;height:24px;width:auto;max-width:136px;object-fit:contain}
 .pcard.p-unlisted[open]    {border-color:rgba(167,139,250,.35)}
+.pcard.p-memlabs[open]    {border-color:rgba(167,139,250,.35)}
+.pcard.p-leveleffect[open]    {border-color:rgba(167,139,250,.35)}
 
 /* ─── WRITE-UP CARD LIST (1 per row · banner + body) ─── */
 .wlist{
@@ -817,6 +862,8 @@ INDEX_CSS = """
 .pcard.p-thm          .wrow::before{background:rgba(255,85,119,.55)}
 .pcard.p-hacksmarter  .wrow::before{background:rgba(255,181,71,.55)}
 .pcard.p-unlisted     .wrow::before{background:rgba(167,139,250,.55)}
+.pcard.p-memlabs     .wrow::before{background:rgba(167,139,250,.55)}
+.pcard.p-leveleffect     .wrow::before{background:rgba(167,139,250,.55)}
 .pcard.p-htb-sherlock .wrow:hover::before{background:var(--soc-am);box-shadow:0 0 8px rgba(255,181,71,.5)}
 .pcard.p-htb-machine  .wrow:hover::before{background:#d97757;box-shadow:0 0 8px rgba(217,119,87,.5)}
 .pcard.p-btlo         .wrow:hover::before{background:var(--soc-rd);box-shadow:0 0 8px rgba(255,85,119,.5)}
@@ -825,6 +872,8 @@ INDEX_CSS = """
 .pcard.p-thm          .wrow:hover::before{background:var(--soc-rd);box-shadow:0 0 8px rgba(255,85,119,.5)}
 .pcard.p-hacksmarter  .wrow:hover::before{background:var(--soc-am);box-shadow:0 0 8px rgba(255,181,71,.5)}
 .pcard.p-unlisted     .wrow:hover::before{background:var(--soc-vi);box-shadow:0 0 8px rgba(167,139,250,.5)}
+.pcard.p-memlabs     .wrow:hover::before{background:var(--soc-vi);box-shadow:0 0 8px rgba(167,139,250,.5)}
+.pcard.p-leveleffect     .wrow:hover::before{background:var(--soc-vi);box-shadow:0 0 8px rgba(167,139,250,.5)}
 
 /* banner = cover strip: index · platform · difficulty + big name */
 .wrow .banner{padding:12px 16px 13px;border-bottom:1px solid var(--soc-line);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.006))}
@@ -836,6 +885,8 @@ INDEX_CSS = """
 .pcard.p-thm          .wrow .banner{background:linear-gradient(180deg,rgba(255,85,119,.09),transparent 90%)}
 .pcard.p-hacksmarter  .wrow .banner{background:linear-gradient(180deg,rgba(255,181,71,.09),transparent 90%)}
 .pcard.p-unlisted     .wrow .banner{background:linear-gradient(180deg,rgba(167,139,250,.09),transparent 90%)}
+.pcard.p-memlabs     .wrow .banner{background:linear-gradient(180deg,rgba(167,139,250,.09),transparent 90%)}
+.pcard.p-leveleffect     .wrow .banner{background:linear-gradient(180deg,rgba(167,139,250,.09),transparent 90%)}
 .wrow .bhead{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace}
 .wrow .bright{margin-left:auto;display:inline-flex;align-items:center;gap:8px;flex-shrink:0}
 .wrow .ix{font-size:9.5px;font-weight:700;letter-spacing:.08em;color:var(--soc-ink4);padding:3px 7px;border:1px solid var(--soc-line);border-radius:3px;background:rgba(0,0,0,.35)}
@@ -918,6 +969,8 @@ body.tw-accent-bold .pcard.p-ld           .wrow::before{background:rgba(61,220,1
 body.tw-accent-bold .pcard.p-thm          .wrow::before{background:rgba(255,85,119,.5)}
 body.tw-accent-bold .pcard.p-hacksmarter  .wrow::before{background:rgba(255,181,71,.5)}
 body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,250,.5)}
+body.tw-accent-bold .pcard.p-memlabs     .wrow::before{background:rgba(167,139,250,.5)}
+body.tw-accent-bold .pcard.p-leveleffect     .wrow::before{background:rgba(167,139,250,.5)}
 
 /* ─── TWEAKS PANEL ─── */
 #tw-panel{
@@ -1007,6 +1060,8 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
   .pcard summary{padding:11px 12px;gap:10px}
   .pcard summary>*{min-width:0}
   .pcard .ph-icon{width:32px;height:32px}
+  .pcard .ph-icon.has-logo{width:auto;min-width:32px;padding:0 8px}
+  .pcard .ph-logo{height:20px;max-width:96px}
   .pcard .psub{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .wlist{padding:8px;gap:8px}
   .wrow .banner{padding:10px 12px 11px}
@@ -1293,6 +1348,42 @@ THEME_BTN = ('<button class="soc-theme-btn" type="button" aria-label="Toggle lig
 # cache it across the whole site; the ?v= hash busts the cache on change.
 _ASSET_HREFS: dict[str, str] = {}
 
+PLATFORM_LOGO_SRC = SRC_DIR / "assets" / "platforms"
+_PLATFORM_LOGOS: dict[str, tuple[str, int, int]] = {}      # file -> (href, width, height)
+
+def _logo_size(path: Path) -> tuple[int, int]:
+    """Natural size, so the <img> can reserve its box before the file loads."""
+    if path.suffix.lower() == ".svg":
+        head = path.read_text(encoding="utf-8", errors="replace")[:600]
+        m = re.search(r'viewBox="[\d.\-]+[ ,]+[\d.\-]+[ ,]+([\d.]+)[ ,]+([\d.]+)"', head)
+        if m:
+            return round(float(m.group(1))), round(float(m.group(2)))
+        return 0, 0
+    try:
+        from PIL import Image
+        with Image.open(path) as im:
+            return im.size
+    except Exception:
+        return 0, 0
+
+
+def write_platform_logos() -> None:
+    """Copy assets/platforms/* to build/assets/platforms/ (content-hashed URLs)."""
+    global _PLATFORM_LOGOS
+    _PLATFORM_LOGOS = {}
+    if not PLATFORM_LOGO_SRC.is_dir():
+        return
+    dest = BUILD_DIR / "assets" / "platforms"
+    ensure_build_path(dest)
+    for src in sorted(PLATFORM_LOGO_SRC.iterdir()):
+        if src.suffix.lower() not in (".svg", ".webp", ".png"):
+            continue
+        shutil.copy2(src, dest / src.name)
+        digest = hashlib.sha1(src.read_bytes()).hexdigest()[:8]
+        w, h = _logo_size(src)
+        _PLATFORM_LOGOS[src.name] = (f"assets/platforms/{src.name}?v={digest}", w, h)
+
+
 def write_assets() -> dict[str, str]:
     """Write shared CSS bundles and return {name: 'assets/x.css?v=hash'}."""
     global _ASSET_HREFS
@@ -1311,6 +1402,7 @@ def write_assets() -> dict[str, str]:
     digest = hashlib.sha1(SITE_JS.encode("utf-8")).hexdigest()[:8]
     (assets_dir / "site.js").write_text(SITE_JS, encoding="utf-8")
     hrefs["site.js"] = f"assets/site.js?v={digest}"
+    write_platform_logos()
     _ASSET_HREFS = hrefs
     return hrefs
 
@@ -1815,6 +1907,10 @@ def _platform_group_key(md_path: Path) -> str:
 def _panel_breadcrumb(folder_str: str) -> str:
     if folder_str in (".", ""):
         return "Root"
+    # Branded collections stored under Unlisted Labs are platforms in their own
+    # right, so do not present them as living "inside" Unlisted.
+    if detect_platform(folder_str)["class"] in ("p-memlabs", "p-leveleffect"):
+        folder_str = folder_str.split("/", 1)[1] if "/" in folder_str else folder_str
     return folder_str.replace("/", " → ")
 
 
@@ -1822,6 +1918,15 @@ def _panel_html(group_folder: str, md_files: list) -> str:
     plat = detect_platform(group_folder)
     klass = plat["class"]
     icon = plat["icon"]
+    logo = _PLATFORM_LOGOS.get(plat.get("logo", ""))
+    if logo:
+        href, lw, lh = logo
+        size = f' width="{lw}" height="{lh}"' if lw and lh else ""
+        # alt="" — the platform name is printed right beside it.
+        icon_html = (f'<div class="ph-icon has-logo"><img class="ph-logo" src="{href}" alt=""'
+                     f'{size} decoding="async"></div>')
+    else:
+        icon_html = f'<div class="ph-icon">{icon}</div>'
     long_name = plat["long"]
     short_label = plat["short"]
     sev_class = plat["sev"]
@@ -1879,7 +1984,7 @@ def _panel_html(group_folder: str, md_files: list) -> str:
 
     return f"""<details class="pcard {klass}" data-platform="{klass}">
   <summary>
-    <div class="ph-icon">{icon}</div>
+    {icon_html}
     <div>
       <div class="pname">{long_name}</div>
       <div class="psub">{breadcrumb}</div>
@@ -1923,11 +2028,13 @@ PLAT_COLOR = {
     "p-htb-sherlock": "var(--soc-am)", "p-htb-machine": "var(--machine-kicker)",
     "p-thm": "var(--soc-vi)", "p-hacksmarter": "var(--plat-pink)",
     "p-unlisted": "var(--soc-ink4)",
+    "p-memlabs": "var(--soc-vi)", "p-leveleffect": "var(--soc-cy2)",
 }
 # Short platform codes for dense spots (evidence lines, hero chip). HTB's two
 # folders share one code, so their counts merge.
 PLAT_ABBR = {"p-cd": "CD", "p-ld": "LD", "p-btlo": "BTLO", "p-htb-sherlock": "HTB",
-             "p-htb-machine": "HTB", "p-thm": "THM", "p-hacksmarter": "HS", "p-unlisted": "CTF"}
+             "p-htb-machine": "HTB", "p-thm": "THM", "p-hacksmarter": "HS", "p-unlisted": "CTF",
+             "p-memlabs": "ML", "p-leveleffect": "LE"}
 DIFF_COLOR = {"very-easy": "var(--soc-cy)", "easy": "var(--soc-gn)",
               "medium": "var(--soc-am)", "hard": "var(--soc-rd)", "insane": "var(--soc-vi)"}
 

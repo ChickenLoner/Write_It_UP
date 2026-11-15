@@ -1,0 +1,28 @@
+Platform logos shown on the write-ups index (see PLATFORMS in build_md_to_html_with_toc.py).
+
+These are the platforms' own marks, used only to label their labs. They belong to
+the platforms; check each one's brand terms before reusing them elsewhere.
+
+File              Platform           Where it came from
+htb.svg           HackTheBox         chicken0248.fyi/assets/platforms/htb.svg (the portfolio's copy, unmodified)
+cd.svg            CyberDefenders     chicken0248.fyi/assets/platforms/cd.svg (the portfolio's copy, unmodified)
+btlo.webp         Blue Team Labs     rasterised from the portfolio's btlo.svg: that file is 205 KB (a 150 KB PNG
+                                     embedded in an SVG with live Arial text); this is 18 KB and font-independent
+tryhackme.webp    TryHackMe          chicken0248.fyi/assets/issuers/THM_white.png, downscaled (white on transparent)
+letsdefend.svg    LetsDefend         letsdefend.io nav logo (Webflow CDN), unmodified. It is the current lockup and
+                                     includes the "Now part of HackTheBox" tagline.
+hacksmarter.webp  HackSmarter        hacksmarter.org dark-mode horizontal logo (images.coursestack.com), downscaled
+
+Unlisted Labs and any unknown platform have no logo and fall back to the glyph in the
+platform table. Most of these are white wordmarks, so the index draws them on a dark
+chip in both themes.
+
+To add one: put an .svg/.webp/.png here and set "logo": "<file>" on its entry in PLATFORMS.
+
+memlabs.webp      MemLabs            github.com/stuxnet999/MemLabs (Images/MemLabs.png in the README), downscaled.
+                                     Blue wordmark on transparent.
+leveleffect.webp  Level Effect       chicken0248.fyi/assets/issuers/leveleffect_white.png (the portfolio's copy),
+                                     downscaled. White on transparent, so it needs the dark chip.
+
+MemLabs and Level Effect are sub-folders of Unlisted Labs. They keep the Unlisted class, so
+they still count under "Unlisted Labs" in the home-page stats; see class_long in PLATFORMS.

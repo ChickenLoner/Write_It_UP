@@ -160,6 +160,18 @@ What the build does and does not publish:
   excluded so an example `<div>` stays literal.
 - Shared CSS is written once to `build/assets/{base,article,index}.css` with a
   content-hash query string, not inlined per page.
+- Platform logos live in `assets/platforms/` and are copied to
+  `build/assets/platforms/` (content-hashed URLs). Each entry in `PLATFORMS` can
+  name one with `"logo"`; the index panel header then shows it instead of the
+  glyph, which stays as the fallback (Unlisted Labs has no logo). Most are white
+  wordmarks, so the chip is dark in **both** themes. `assets/platforms/SOURCES.txt`
+  records where each came from — the platforms own them. Keep new ones small: the
+  BTLO one was a 205 KB SVG, so it is an 18 KB WebP. MemLabs and Level Effect live under the
+  `Unlisted Labs` folder but are full platforms of their own (`p-memlabs`,
+  `p-leveleffect`: own name, logo, kicker, counts, coverage bar and filter chip).
+  They are listed before the generic `("unlisted",)` entry, which stays for the rest.
+  A new platform needs its class in the kicker/`.pcard` CSS blocks and in
+  `PLAT_COLOR`/`PLAT_ABBR`.
 - `build/resources/` gets only the images the generated HTML actually
   references, re-encoded to **lossless** WebP (~58% of the PNG bytes, no
   quality loss — readers zoom into hex dumps, so lossy is not acceptable).
