@@ -61,7 +61,8 @@ SKIP_NAMES = {"readme.md", "claude.md", "license.md", "licence.md",
 # Platform detection
 #   keyword(s) found in the folder path  →  platform descriptor
 #   class:       body class & .pcard class used for the kicker / accent
-#   icon:        glyph drawn in the platform icon tile
+#   icon:        glyph drawn in the platform icon tile (used when there is no logo)
+#   logo:        optional file in assets/platforms/ shown instead of the glyph
 #   short:       human label used in topbar crumb + meta line
 #   long:        full label used on the index panel header
 #   kicker:      // <text>  rendered above the H1 on the write-up page
@@ -72,6 +73,7 @@ PLATFORMS = [
     (("hackthebox", "sherlock"), {
         "class": "p-htb-sherlock",
         "icon":  "⬡",
+        "logo":  "htb.svg",
         "short": "HTB · SHERLOCK",
         "long":  "HTB Sherlocks",
         "kicker": "// HTB · SHERLOCK · DFIR CASE FILE",
@@ -80,6 +82,7 @@ PLATFORMS = [
     (("hackthebox", "machine"), {
         "class": "p-htb-machine",
         "icon":  "⬡",
+        "logo":  "htb.svg",
         "short": "HTB · MACHINE",
         "long":  "HTB Machines",
         "kicker": "// HTB · MACHINE · OFFENSIVE",
@@ -88,6 +91,7 @@ PLATFORMS = [
     (("hackthebox",), {
         "class": "p-htb-machine",
         "icon":  "⬡",
+        "logo":  "htb.svg",
         "short": "HTB",
         "long":  "HackTheBox",
         "kicker": "// HACKTHEBOX",
@@ -96,6 +100,7 @@ PLATFORMS = [
     (("btlo",), {
         "class": "p-btlo",
         "icon":  "⬤",
+        "logo":  "btlo.webp",
         "short": "BTLO",
         "long":  "Centri · Blue Team Labs Online",
         "kicker": "// BTLO · DFIR INVESTIGATION",
@@ -104,6 +109,7 @@ PLATFORMS = [
     (("cyberdefenders",), {
         "class": "p-cd",
         "icon":  "◈",
+        "logo":  "cd.svg",
         "short": "CYBERDEFENDERS",
         "long":  "CyberDefenders",
         "kicker": "// CYBERDEFENDERS · BLUE-TEAM LAB",
@@ -112,6 +118,7 @@ PLATFORMS = [
     (("letsdefend",), {
         "class": "p-ld",
         "icon":  "◉",
+        "logo":  "letsdefend.svg",
         "short": "LETSDEFEND",
         "long":  "LetsDefend",
         "kicker": "// LETSDEFEND · INVESTIGATION",
@@ -120,6 +127,7 @@ PLATFORMS = [
     (("tryhackme",), {
         "class": "p-thm",
         "icon":  "▲",
+        "logo":  "tryhackme.webp",
         "short": "TRYHACKME",
         "long":  "TryHackMe",
         "kicker": "// TRYHACKME · ROOM",
@@ -128,6 +136,7 @@ PLATFORMS = [
     (("hacksmarter",), {
         "class": "p-hacksmarter",
         "icon":  "◆",
+        "logo":  "hacksmarter.webp",
         "short": "HACKSMARTER",
         "long":  "HackSmarter.org",
         "kicker": "// HACKSMARTER",
@@ -790,6 +799,15 @@ INDEX_CSS = """
 .pcard.p-hacksmarter       .ph-icon{background:rgba(255,181,71,.08);border-color:rgba(255,181,71,.35);color:var(--soc-am)}
 .pcard.p-hacksmarter[open] {border-color:rgba(255,181,71,.35)}
 .pcard.p-unlisted          .ph-icon{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.35);color:var(--soc-vi)}
+/* Platform logo chip. Logos are drawn for dark backgrounds (white wordmarks), so
+   the chip stays dark in the light theme too. */
+.pcard .ph-icon.has-logo,
+html[data-theme="light"] .pcard .ph-icon.has-logo{
+  width:auto;min-width:38px;padding:0 10px;background:#0b1220;border-color:rgba(255,255,255,.16)
+}
+/* Fixed height + object-fit, not height:auto: an SVG with only a viewBox (LetsDefend's)
+   has no intrinsic size and would collapse. contain keeps very wide logos undistorted. */
+.pcard .ph-logo{display:block;height:24px;width:auto;max-width:136px;object-fit:contain}
 .pcard.p-unlisted[open]    {border-color:rgba(167,139,250,.35)}
 
 /* ─── WRITE-UP CARD LIST (1 per row · banner + body) ─── */
@@ -1007,6 +1025,8 @@ body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,
   .pcard summary{padding:11px 12px;gap:10px}
   .pcard summary>*{min-width:0}
   .pcard .ph-icon{width:32px;height:32px}
+  .pcard .ph-icon.has-logo{width:auto;min-width:32px;padding:0 8px}
+  .pcard .ph-logo{height:20px;max-width:96px}
   .pcard .psub{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .wlist{padding:8px;gap:8px}
   .wrow .banner{padding:10px 12px 11px}
@@ -1293,6 +1313,42 @@ THEME_BTN = ('<button class="soc-theme-btn" type="button" aria-label="Toggle lig
 # cache it across the whole site; the ?v= hash busts the cache on change.
 _ASSET_HREFS: dict[str, str] = {}
 
+PLATFORM_LOGO_SRC = SRC_DIR / "assets" / "platforms"
+_PLATFORM_LOGOS: dict[str, tuple[str, int, int]] = {}      # file -> (href, width, height)
+
+def _logo_size(path: Path) -> tuple[int, int]:
+    """Natural size, so the <img> can reserve its box before the file loads."""
+    if path.suffix.lower() == ".svg":
+        head = path.read_text(encoding="utf-8", errors="replace")[:600]
+        m = re.search(r'viewBox="[\d.\-]+[ ,]+[\d.\-]+[ ,]+([\d.]+)[ ,]+([\d.]+)"', head)
+        if m:
+            return round(float(m.group(1))), round(float(m.group(2)))
+        return 0, 0
+    try:
+        from PIL import Image
+        with Image.open(path) as im:
+            return im.size
+    except Exception:
+        return 0, 0
+
+
+def write_platform_logos() -> None:
+    """Copy assets/platforms/* to build/assets/platforms/ (content-hashed URLs)."""
+    global _PLATFORM_LOGOS
+    _PLATFORM_LOGOS = {}
+    if not PLATFORM_LOGO_SRC.is_dir():
+        return
+    dest = BUILD_DIR / "assets" / "platforms"
+    ensure_build_path(dest)
+    for src in sorted(PLATFORM_LOGO_SRC.iterdir()):
+        if src.suffix.lower() not in (".svg", ".webp", ".png"):
+            continue
+        shutil.copy2(src, dest / src.name)
+        digest = hashlib.sha1(src.read_bytes()).hexdigest()[:8]
+        w, h = _logo_size(src)
+        _PLATFORM_LOGOS[src.name] = (f"assets/platforms/{src.name}?v={digest}", w, h)
+
+
 def write_assets() -> dict[str, str]:
     """Write shared CSS bundles and return {name: 'assets/x.css?v=hash'}."""
     global _ASSET_HREFS
@@ -1311,6 +1367,7 @@ def write_assets() -> dict[str, str]:
     digest = hashlib.sha1(SITE_JS.encode("utf-8")).hexdigest()[:8]
     (assets_dir / "site.js").write_text(SITE_JS, encoding="utf-8")
     hrefs["site.js"] = f"assets/site.js?v={digest}"
+    write_platform_logos()
     _ASSET_HREFS = hrefs
     return hrefs
 
@@ -1822,6 +1879,15 @@ def _panel_html(group_folder: str, md_files: list) -> str:
     plat = detect_platform(group_folder)
     klass = plat["class"]
     icon = plat["icon"]
+    logo = _PLATFORM_LOGOS.get(plat.get("logo", ""))
+    if logo:
+        href, lw, lh = logo
+        size = f' width="{lw}" height="{lh}"' if lw and lh else ""
+        # alt="" — the platform name is printed right beside it.
+        icon_html = (f'<div class="ph-icon has-logo"><img class="ph-logo" src="{href}" alt=""'
+                     f'{size} decoding="async"></div>')
+    else:
+        icon_html = f'<div class="ph-icon">{icon}</div>'
     long_name = plat["long"]
     short_label = plat["short"]
     sev_class = plat["sev"]
@@ -1879,7 +1945,7 @@ def _panel_html(group_folder: str, md_files: list) -> str:
 
     return f"""<details class="pcard {klass}" data-platform="{klass}">
   <summary>
-    <div class="ph-icon">{icon}</div>
+    {icon_html}
     <div>
       <div class="pname">{long_name}</div>
       <div class="psub">{breadcrumb}</div>
