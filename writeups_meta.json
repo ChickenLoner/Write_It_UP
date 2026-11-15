@@ -489,7 +489,7 @@
   ]
  },
  "CyberDefenders/CyberDefenders - CyberRange/[CyberDefenders Write-up] Kerberoasted.md": {
-  "category": "AD / Kerberos",
+  "category": "AD Attack Detection",
   "date": "2025-08-27",
   "difficulty": "Medium",
   "summary": "Hunt domain controller logs in Splunk to detect RC4 Kerberoasting, identify the compromised service account, RDP logins, and WMI persistence",
@@ -1609,7 +1609,7 @@
   ]
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Campfire-1.md": {
-  "category": "AD / Kerberos",
+  "category": "AD Attack Detection",
   "date": "2024-06-21",
   "difficulty": "Medium",
   "summary": "Correlate DC security logs, PowerShell logs, and Prefetch to detect a kerberoasting attack executed via PowerView and Rubeus",
@@ -1623,7 +1623,7 @@
   ]
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Campfire-2.md": {
-  "category": "AD / Kerberos",
+  "category": "AD Attack Detection",
   "date": "2024-06-28",
   "difficulty": "Medium",
   "summary": "Examine domain controller security logs to detect an AS-REP roasting attack, identifying the targeted account, its SID, and the compromised asset",
@@ -1679,7 +1679,7 @@
   ]
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] CrownJewel-1.md": {
-  "category": "AD / Kerberos",
+  "category": "AD Attack Detection",
   "date": "2024-08-31",
   "difficulty": "Medium",
   "summary": "Analyze DC system and security logs to detect vssadmin abuse creating a volume shadow copy and dumping NTDS.dit with a registry hive",
@@ -1693,7 +1693,7 @@
   ]
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] CrownJewel-2.md": {
-  "category": "AD / Kerberos",
+  "category": "AD Attack Detection",
   "date": "2024-08-31",
   "difficulty": "Medium",
   "summary": "Trace ntdsutil.exe abuse through DC event logs to identify the dumped NTDS database path, enumerated privilege groups, and the malicious logon session",
@@ -1861,7 +1861,7 @@
   ]
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] NeuroSync-D.md": {
-  "category": "Web Exploitation",
+  "category": "Web Attack Investigation",
   "date": "2025-04-19",
   "difficulty": "Hard",
   "summary": "Trace log evidence of a Next.js middleware bypass (CVE-2025-29927) chained with SSRF and Redis exploitation against BCI infrastructure",
@@ -1945,7 +1945,7 @@
   ]
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] OPTinselTrace24-4 Neural Noel.md": {
-  "category": "Web Exploitation",
+  "category": "Web Attack Investigation",
   "date": "2024-12-15",
   "difficulty": "Medium",
   "summary": "Investigate pcap, auth.log, and bash history to trace an AI chatbot prompt-injection leading to credential leak and root privilege escalation",
@@ -2113,7 +2113,7 @@
   ]
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Reaper.md": {
-  "category": "AD / Kerberos",
+  "category": "AD Attack Detection",
   "date": "2024-08-16",
   "difficulty": "Medium",
   "summary": "Correlate a network capture with logon audit logs to detect an NTLM relay attack from a rogue device authenticating as a stolen account",
@@ -2211,7 +2211,7 @@
   ]
  },
  "HackTheBox/HTB Labs/HTB Sherlocks/[HTB Sherlocks Write-up] Ultimatum.md": {
-  "category": "Web Exploitation",
+  "category": "Web Attack Investigation",
   "date": "2024-05-19",
   "difficulty": "Medium",
   "summary": "Investigate CatScale logs from a WordPress server to trace a WPScan fingerprint, Ultimate Member CVE exploit, backdoor user, and web shell RCE",
@@ -2309,7 +2309,7 @@
   ]
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] AS-REP Challenge.md": {
-  "category": "AD / Kerberos",
+  "category": "AD Attack Detection",
   "date": "2025-12-25",
   "difficulty": "Medium",
   "summary": "Parse DC and workstation Security logs and prefetch to trace an AS-REP roasting attack and the compromised account's subsequent activity",
@@ -2527,7 +2527,7 @@
   ]
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] Golden Ticket.md": {
-  "category": "AD / Kerberos",
+  "category": "AD Attack Detection",
   "date": "2025-12-25",
   "difficulty": "Hard",
   "summary": "Trace a Golden Ticket attack against a Domain Controller by parsing Security.evtx with EvtxECmd to identify the compromised service account and lateral movement",
@@ -2904,7 +2904,7 @@
   ]
  },
  "LetsDefend/LetsDefend Challenge/[LetsDefend Write-up] PHP-CGI (CVE-2024-4577).md": {
-  "category": "Web Exploitation",
+  "category": "Web Attack Investigation",
   "date": "2024-06-17",
   "difficulty": "Medium",
   "summary": "Reviews Apache configuration and access logs to confirm exploitation of the PHP-CGI argument injection RCE against a web server.",
@@ -3485,7 +3485,7 @@
   ]
  },
  "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] DomainNance.md": {
-  "category": "AD / Kerberos",
+  "category": "AD Attack Detection",
   "date": "2026-05-02",
   "difficulty": "Hard",
   "summary": "Trace an attacker from DVWA web compromise through AD lateral movement using Splunk and PCAP, uncovering credential dumping and pass-the-ticket",
@@ -3835,7 +3835,7 @@
   ]
  },
  "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] MiddleMayhem.md": {
-  "category": "Web Exploitation",
+  "category": "Web Attack Investigation",
   "date": "2026-05-02",
   "difficulty": "Medium",
   "summary": "Analyze Splunk SIEM logs to trace a Next.js middleware auth bypass, uploaded reverse shell and SSH lateral movement across the network",
@@ -3989,7 +3989,7 @@
   ]
  },
  "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Plugout.md": {
-  "category": "Web Exploitation",
+  "category": "Web Attack Investigation",
   "date": "2026-05-02",
   "difficulty": "Medium",
   "summary": "Trace a WordPress defacement through access and MySQL logs, tracking WPScan enumeration, sqlmap injection, and a malicious plugin web shell",
@@ -4100,7 +4100,7 @@
   ]
  },
  "Security Blue Team/Blue Team Labs Online/BTLO - Investigations/[BTLO Write-up] Take a LAP.md": {
-  "category": "AD / Kerberos",
+  "category": "AD Attack Detection",
   "date": "2026-05-02",
   "difficulty": "Medium",
   "summary": "Carve an AD snapshot from a disk image with FTK Imager and AD Explorer to enumerate OUs, user attributes, GPO policies, and LAPS settings",

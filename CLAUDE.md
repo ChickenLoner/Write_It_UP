@@ -101,13 +101,22 @@ and the tools that actually appear in the commands and screenshots:
   (HTB, THM and CyberDefenders normally do). Never invent one to avoid
   `Unknown`; `Unknown` is the correct answer when there is no signal.
 - **category** — the investigative domain, not the platform. **Reuse an
-  existing category** unless nothing fits; there are 22 in use and the index
+  existing category** unless nothing fits; there are 24 in use and the index
   should not sprout near-duplicates. Most common, by entry count:
 
   `Windows DFIR` (59) · `Malware Analysis` (54) · `Network Forensics` (50) ·
-  `Memory Forensics` (43) · `AD / Kerberos` (27) · `Incident Response` (19) ·
-  `Linux DFIR` (18) · `Reverse Engineering` (17) · `Email / Phishing` (13) ·
-  `Log Analysis` (12) · `Web Exploitation` (10) · `Threat Intel` (9)
+  `Memory Forensics` (43) · `Incident Response` (19) · `Linux DFIR` (18) ·
+  `Reverse Engineering` (17) · `AD / Kerberos` (17) · `Email / Phishing` (13) ·
+  `Log Analysis` (12) · `AD Attack Detection` (10) · `Threat Intel` (9)
+
+  **The category must match the side you play.** The home page's category
+  matrix files each category under a domain, so `AD / Kerberos`,
+  `Web Exploitation` and the `* Privesc` categories sit under *Offense*. Use
+  them only when you attack (HTB Machines, HackSmarter). If you investigate
+  the same attack from logs or evidence, use `AD Attack Detection`
+  (Kerberoasting, AS-REP, DCSync, NTDS dumps, relay) or
+  `Web Attack Investigation` (access logs, web shells, CVE exploitation
+  traces). Both of those sit under *Detection & Response*.
 - **tags** — concrete tools, artifacts, techniques, MITRE IDs. Lowercase, no
   `#`. 875 tags are in use; the most common are `wireshark`, `pcap`,
   `volatility`, `cyberchef`, `c2`, `virustotal`, `powershell`, `sysmon` — reuse
