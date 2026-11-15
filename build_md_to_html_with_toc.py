@@ -63,6 +63,9 @@ SKIP_NAMES = {"readme.md", "claude.md", "license.md", "licence.md",
 #   class:       body class & .pcard class used for the kicker / accent
 #   icon:        glyph drawn in the platform icon tile (used when there is no logo)
 #   logo:        optional file in assets/platforms/ shown instead of the glyph
+#   class_long:  optional label for the platform's COUNTS (coverage bar, filter
+#                chip) when several descriptors share one class, so a sub-collection
+#                such as MemLabs counts under "Unlisted Labs" but is named itself
 #   short:       human label used in topbar crumb + meta line
 #   long:        full label used on the index panel header
 #   kicker:      // <text>  rendered above the H1 on the write-up page
@@ -142,6 +145,29 @@ PLATFORMS = [
         "kicker": "// HACKSMARTER",
         "sev":   "am",
     }),
+    # Sub-collections inside Unlisted Labs with a brand of their own. They keep the
+    # p-unlisted class, so the home-page counts, colours and CSS are unchanged; only
+    # their name, label and logo differ. Must come before the generic entry below.
+    (("unlisted", "memlabs"), {
+        "class": "p-unlisted",
+        "icon":  "⬚",
+        "logo":  "memlabs.webp",
+        "short": "MEMLABS",
+        "long":  "MemLabs",
+        "class_long": "Unlisted Labs",
+        "kicker": "// MEMLABS · MEMORY FORENSICS",
+        "sev":   "vi",
+    }),
+    (("unlisted", "level effect"), {
+        "class": "p-unlisted",
+        "icon":  "⬚",
+        "logo":  "leveleffect.webp",
+        "short": "LEVEL EFFECT",
+        "long":  "Level Effect",
+        "class_long": "Unlisted Labs",
+        "kicker": "// LEVEL EFFECT · CTF",
+        "sev":   "vi",
+    }),
     (("unlisted",), {
         "class": "p-unlisted",
         "icon":  "⬚",
@@ -160,6 +186,16 @@ DEFAULT_PLATFORM = {
     "kicker": "// WRITE-UP",
     "sev":   "cyan",
 }
+
+def _body_kicker_style(plat: dict) -> str:
+    """A sub-collection (MemLabs, Level Effect) shares its parent's CSS class, and
+       the kicker above the title is set per class, so it would read "// UNLISTED".
+       Give it its own kicker through the same custom property. Only descriptors
+       with class_long need this; every other page is emitted exactly as before."""
+    if not plat.get("class_long"):
+        return ""
+    return ' style="--kicker-text:%s"' % html.escape('"%s"' % plat["kicker"], quote=True)
+
 
 def detect_platform(folder_str: str) -> dict:
     """Match folder path against keyword tuples. First match wins."""
@@ -1665,7 +1701,7 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
 {common_head(title, description=description)}
 {css_links(root_prefix, "base", "article")}
 </head>
-<body class="{plat['class']}">
+<body class="{plat['class']}"{_body_kicker_style(plat)}>
 
 {topbar(crumb_html, badges_html, clock_label, ANSWERS_BTN if "<details" in html_body else "")}
 
@@ -2222,7 +2258,7 @@ def create_index_html(md_files: list):
         plat = detect_platform(folder)
         c = plat["class"]
         class_counts[c] = class_counts.get(c, 0) + len(files)
-        class_label.setdefault(c, plat["long"])
+        class_label.setdefault(c, plat.get("class_long", plat["long"]))
 
     total = len(md_files)
     platform_count = len(class_counts)

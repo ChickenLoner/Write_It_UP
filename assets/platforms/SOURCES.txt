@@ -18,3 +18,11 @@ platform table. Most of these are white wordmarks, so the index draws them on a 
 chip in both themes.
 
 To add one: put an .svg/.webp/.png here and set "logo": "<file>" on its entry in PLATFORMS.
+
+memlabs.webp      MemLabs            github.com/stuxnet999/MemLabs (Images/MemLabs.png in the README), downscaled.
+                                     Blue wordmark on transparent.
+leveleffect.webp  Level Effect       chicken0248.fyi/assets/issuers/leveleffect_white.png (the portfolio's copy),
+                                     downscaled. White on transparent, so it needs the dark chip.
+
+MemLabs and Level Effect are sub-folders of Unlisted Labs. They keep the Unlisted class, so
+they still count under "Unlisted Labs" in the home-page stats; see class_long in PLATFORMS.
