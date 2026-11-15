@@ -63,9 +63,6 @@ SKIP_NAMES = {"readme.md", "claude.md", "license.md", "licence.md",
 #   class:       body class & .pcard class used for the kicker / accent
 #   icon:        glyph drawn in the platform icon tile (used when there is no logo)
 #   logo:        optional file in assets/platforms/ shown instead of the glyph
-#   class_long:  optional label for the platform's COUNTS (coverage bar, filter
-#                chip) when several descriptors share one class, so a sub-collection
-#                such as MemLabs counts under "Unlisted Labs" but is named itself
 #   short:       human label used in topbar crumb + meta line
 #   long:        full label used on the index panel header
 #   kicker:      // <text>  rendered above the H1 on the write-up page
@@ -145,26 +142,24 @@ PLATFORMS = [
         "kicker": "// HACKSMARTER",
         "sev":   "am",
     }),
-    # Sub-collections inside Unlisted Labs with a brand of their own. They keep the
-    # p-unlisted class, so the home-page counts, colours and CSS are unchanged; only
-    # their name, label and logo differ. Must come before the generic entry below.
+    # Collections inside the Unlisted Labs folder that have a brand (and logo) of
+    # their own. Each is a full platform: own class, counts, chips and colours.
+    # Must come before the generic entry below.
     (("unlisted", "memlabs"), {
-        "class": "p-unlisted",
+        "class": "p-memlabs",
         "icon":  "⬚",
         "logo":  "memlabs.webp",
         "short": "MEMLABS",
         "long":  "MemLabs",
-        "class_long": "Unlisted Labs",
         "kicker": "// MEMLABS · MEMORY FORENSICS",
         "sev":   "vi",
     }),
     (("unlisted", "level effect"), {
-        "class": "p-unlisted",
+        "class": "p-leveleffect",
         "icon":  "⬚",
         "logo":  "leveleffect.webp",
         "short": "LEVEL EFFECT",
         "long":  "Level Effect",
-        "class_long": "Unlisted Labs",
         "kicker": "// LEVEL EFFECT · CTF",
         "sev":   "vi",
     }),
@@ -186,16 +181,6 @@ DEFAULT_PLATFORM = {
     "kicker": "// WRITE-UP",
     "sev":   "cyan",
 }
-
-def _body_kicker_style(plat: dict) -> str:
-    """A sub-collection (MemLabs, Level Effect) shares its parent's CSS class, and
-       the kicker above the title is set per class, so it would read "// UNLISTED".
-       Give it its own kicker through the same custom property. Only descriptors
-       with class_long need this; every other page is emitted exactly as before."""
-    if not plat.get("class_long"):
-        return ""
-    return ' style="--kicker-text:%s"' % html.escape('"%s"' % plat["kicker"], quote=True)
-
 
 def detect_platform(folder_str: str) -> dict:
     """Match folder path against keyword tuples. First match wins."""
@@ -258,6 +243,8 @@ html[data-theme="light"]{
 .p-ld          {--kicker-text:"// LETSDEFEND · INVESTIGATION";      --kicker-color:var(--soc-gn)}
 .p-hacksmarter {--kicker-text:"// HACKSMARTER";                     --kicker-color:var(--soc-am)}
 .p-unlisted    {--kicker-text:"// UNLISTED";                        --kicker-color:var(--soc-vi)}
+.p-memlabs    {--kicker-text:"// MEMLABS · MEMORY FORENSICS";                        --kicker-color:var(--soc-vi)}
+.p-leveleffect    {--kicker-text:"// LEVEL EFFECT · CTF";                        --kicker-color:var(--soc-vi)}
 
 html,body{background:var(--soc-bg);color:var(--soc-ink);min-height:100vh}
 body{
@@ -835,6 +822,8 @@ INDEX_CSS = """
 .pcard.p-hacksmarter       .ph-icon{background:rgba(255,181,71,.08);border-color:rgba(255,181,71,.35);color:var(--soc-am)}
 .pcard.p-hacksmarter[open] {border-color:rgba(255,181,71,.35)}
 .pcard.p-unlisted          .ph-icon{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.35);color:var(--soc-vi)}
+.pcard.p-memlabs          .ph-icon{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.35);color:var(--soc-vi)}
+.pcard.p-leveleffect          .ph-icon{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.35);color:var(--soc-vi)}
 /* Platform logo chip. Logos are drawn for dark backgrounds (white wordmarks), so
    the chip stays dark in the light theme too. */
 .pcard .ph-icon.has-logo,
@@ -845,6 +834,8 @@ html[data-theme="light"] .pcard .ph-icon.has-logo{
    has no intrinsic size and would collapse. contain keeps very wide logos undistorted. */
 .pcard .ph-logo{display:block;height:24px;width:auto;max-width:136px;object-fit:contain}
 .pcard.p-unlisted[open]    {border-color:rgba(167,139,250,.35)}
+.pcard.p-memlabs[open]    {border-color:rgba(167,139,250,.35)}
+.pcard.p-leveleffect[open]    {border-color:rgba(167,139,250,.35)}
 
 /* ─── WRITE-UP CARD LIST (1 per row · banner + body) ─── */
 .wlist{
@@ -871,6 +862,8 @@ html[data-theme="light"] .pcard .ph-icon.has-logo{
 .pcard.p-thm          .wrow::before{background:rgba(255,85,119,.55)}
 .pcard.p-hacksmarter  .wrow::before{background:rgba(255,181,71,.55)}
 .pcard.p-unlisted     .wrow::before{background:rgba(167,139,250,.55)}
+.pcard.p-memlabs     .wrow::before{background:rgba(167,139,250,.55)}
+.pcard.p-leveleffect     .wrow::before{background:rgba(167,139,250,.55)}
 .pcard.p-htb-sherlock .wrow:hover::before{background:var(--soc-am);box-shadow:0 0 8px rgba(255,181,71,.5)}
 .pcard.p-htb-machine  .wrow:hover::before{background:#d97757;box-shadow:0 0 8px rgba(217,119,87,.5)}
 .pcard.p-btlo         .wrow:hover::before{background:var(--soc-rd);box-shadow:0 0 8px rgba(255,85,119,.5)}
@@ -879,6 +872,8 @@ html[data-theme="light"] .pcard .ph-icon.has-logo{
 .pcard.p-thm          .wrow:hover::before{background:var(--soc-rd);box-shadow:0 0 8px rgba(255,85,119,.5)}
 .pcard.p-hacksmarter  .wrow:hover::before{background:var(--soc-am);box-shadow:0 0 8px rgba(255,181,71,.5)}
 .pcard.p-unlisted     .wrow:hover::before{background:var(--soc-vi);box-shadow:0 0 8px rgba(167,139,250,.5)}
+.pcard.p-memlabs     .wrow:hover::before{background:var(--soc-vi);box-shadow:0 0 8px rgba(167,139,250,.5)}
+.pcard.p-leveleffect     .wrow:hover::before{background:var(--soc-vi);box-shadow:0 0 8px rgba(167,139,250,.5)}
 
 /* banner = cover strip: index · platform · difficulty + big name */
 .wrow .banner{padding:12px 16px 13px;border-bottom:1px solid var(--soc-line);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.006))}
@@ -890,6 +885,8 @@ html[data-theme="light"] .pcard .ph-icon.has-logo{
 .pcard.p-thm          .wrow .banner{background:linear-gradient(180deg,rgba(255,85,119,.09),transparent 90%)}
 .pcard.p-hacksmarter  .wrow .banner{background:linear-gradient(180deg,rgba(255,181,71,.09),transparent 90%)}
 .pcard.p-unlisted     .wrow .banner{background:linear-gradient(180deg,rgba(167,139,250,.09),transparent 90%)}
+.pcard.p-memlabs     .wrow .banner{background:linear-gradient(180deg,rgba(167,139,250,.09),transparent 90%)}
+.pcard.p-leveleffect     .wrow .banner{background:linear-gradient(180deg,rgba(167,139,250,.09),transparent 90%)}
 .wrow .bhead{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace}
 .wrow .bright{margin-left:auto;display:inline-flex;align-items:center;gap:8px;flex-shrink:0}
 .wrow .ix{font-size:9.5px;font-weight:700;letter-spacing:.08em;color:var(--soc-ink4);padding:3px 7px;border:1px solid var(--soc-line);border-radius:3px;background:rgba(0,0,0,.35)}
@@ -972,6 +969,8 @@ body.tw-accent-bold .pcard.p-ld           .wrow::before{background:rgba(61,220,1
 body.tw-accent-bold .pcard.p-thm          .wrow::before{background:rgba(255,85,119,.5)}
 body.tw-accent-bold .pcard.p-hacksmarter  .wrow::before{background:rgba(255,181,71,.5)}
 body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,250,.5)}
+body.tw-accent-bold .pcard.p-memlabs     .wrow::before{background:rgba(167,139,250,.5)}
+body.tw-accent-bold .pcard.p-leveleffect     .wrow::before{background:rgba(167,139,250,.5)}
 
 /* ─── TWEAKS PANEL ─── */
 #tw-panel{
@@ -1701,7 +1700,7 @@ def md_to_html(md_path: Path, out_path: Path, res_sink: set | None = None):
 {common_head(title, description=description)}
 {css_links(root_prefix, "base", "article")}
 </head>
-<body class="{plat['class']}"{_body_kicker_style(plat)}>
+<body class="{plat['class']}">
 
 {topbar(crumb_html, badges_html, clock_label, ANSWERS_BTN if "<details" in html_body else "")}
 
@@ -2025,11 +2024,13 @@ PLAT_COLOR = {
     "p-htb-sherlock": "var(--soc-am)", "p-htb-machine": "var(--machine-kicker)",
     "p-thm": "var(--soc-vi)", "p-hacksmarter": "var(--plat-pink)",
     "p-unlisted": "var(--soc-ink4)",
+    "p-memlabs": "var(--soc-vi)", "p-leveleffect": "var(--soc-cy2)",
 }
 # Short platform codes for dense spots (evidence lines, hero chip). HTB's two
 # folders share one code, so their counts merge.
 PLAT_ABBR = {"p-cd": "CD", "p-ld": "LD", "p-btlo": "BTLO", "p-htb-sherlock": "HTB",
-             "p-htb-machine": "HTB", "p-thm": "THM", "p-hacksmarter": "HS", "p-unlisted": "CTF"}
+             "p-htb-machine": "HTB", "p-thm": "THM", "p-hacksmarter": "HS", "p-unlisted": "CTF",
+             "p-memlabs": "ML", "p-leveleffect": "LE"}
 DIFF_COLOR = {"very-easy": "var(--soc-cy)", "easy": "var(--soc-gn)",
               "medium": "var(--soc-am)", "hard": "var(--soc-rd)", "insane": "var(--soc-vi)"}
 
@@ -2258,7 +2259,7 @@ def create_index_html(md_files: list):
         plat = detect_platform(folder)
         c = plat["class"]
         class_counts[c] = class_counts.get(c, 0) + len(files)
-        class_label.setdefault(c, plat.get("class_long", plat["long"]))
+        class_label.setdefault(c, plat["long"])
 
     total = len(md_files)
     platform_count = len(class_counts)

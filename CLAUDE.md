@@ -166,12 +166,12 @@ What the build does and does not publish:
   glyph, which stays as the fallback (Unlisted Labs has no logo). Most are white
   wordmarks, so the chip is dark in **both** themes. `assets/platforms/SOURCES.txt`
   records where each came from — the platforms own them. Keep new ones small: the
-  BTLO one was a 205 KB SVG, so it is an 18 KB WebP. MemLabs and Level Effect are
-  sub-folders of Unlisted Labs with their own name, label, logo and page kicker,
-  but they keep the `p-unlisted` class so the home-page counts, colours and CSS do
-  not change; `class_long` pins their stats label to "Unlisted Labs". To split one
-  out as a full platform, give it its own class and add that class to the CSS and
-  `PLAT_ABBR`/colour maps.
+  BTLO one was a 205 KB SVG, so it is an 18 KB WebP. MemLabs and Level Effect live under the
+  `Unlisted Labs` folder but are full platforms of their own (`p-memlabs`,
+  `p-leveleffect`: own name, logo, kicker, counts, coverage bar and filter chip).
+  They are listed before the generic `("unlisted",)` entry, which stays for the rest.
+  A new platform needs its class in the kicker/`.pcard` CSS blocks and in
+  `PLAT_COLOR`/`PLAT_ABBR`.
 - `build/resources/` gets only the images the generated HTML actually
   references, re-encoded to **lossless** WebP (~58% of the PNG bytes, no
   quality loss — readers zoom into hex dumps, so lossy is not acceptable).
