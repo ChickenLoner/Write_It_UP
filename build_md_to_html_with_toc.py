@@ -2619,7 +2619,14 @@ def copy_resources(needed: set) -> dict:
     raster_set = set(raster)
     verbatim = [r for r in present if r not in raster_set]
 
-    if raster and not SKIP_IMAGE_OPT:
+    if raster and SKIP_IMAGE_OPT:
+        # Fast local render: copy originals untouched. They get no mapping
+        # entry, so apply_image_mapping() leaves their <img> tags as-is
+        # (no WebP rewrite, no intrinsic width/height — fine for local use).
+        print(f"SKIP_IMAGE_OPT=1 — copying {len(raster)} images verbatim, no WebP encode")
+        verbatim += raster
+        raster = []
+    elif raster:
         try:
             import PIL  # noqa: F401
         except ImportError:
