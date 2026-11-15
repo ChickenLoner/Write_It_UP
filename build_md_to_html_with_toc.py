@@ -1907,6 +1907,10 @@ def _platform_group_key(md_path: Path) -> str:
 def _panel_breadcrumb(folder_str: str) -> str:
     if folder_str in (".", ""):
         return "Root"
+    # Branded collections stored under Unlisted Labs are platforms in their own
+    # right, so do not present them as living "inside" Unlisted.
+    if detect_platform(folder_str)["class"] in ("p-memlabs", "p-leveleffect"):
+        folder_str = folder_str.split("/", 1)[1] if "/" in folder_str else folder_str
     return folder_str.replace("/", " → ")
 
 
