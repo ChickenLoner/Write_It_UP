@@ -2911,10 +2911,16 @@ def write_seo_files(md_files: list[Path]) -> None:
         encoding="utf-8")
     # Cloudflare Pages reads _redirects from the output root. Write-ups that moved
     # folder keep their old URL working with a permanent redirect.
+    # Each old path is written twice: fully percent-encoded, and with only the
+    # spaces encoded. On the live site the fully encoded form matched names that
+    # contain only spaces but missed ones with [ ] & @ !, so the second form
+    # covers those. (_redirects splits on whitespace, so spaces must stay %20.)
     lines = []
     for old, new in MOVED_WRITEUPS.items():
+        dest = "/" + quote(new, safe="/")
         for o in (old, old + ".html"):
-            lines.append(f"/{quote(o, safe='/')} /{quote(new, safe='/')} 301")
+            for src in dict.fromkeys(("/" + quote(o, safe="/"), "/" + o.replace(" ", "%20"))):
+                lines.append(f"{src} {dest} 301")
     (BUILD_DIR / "_redirects").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"✅ Wrote sitemap.xml + robots.txt + _headers + _redirects ({len(MOVED_WRITEUPS)} moved)")
 
