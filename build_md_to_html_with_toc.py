@@ -2909,20 +2909,39 @@ def write_seo_files(md_files: list[Path]) -> None:
         "  X-Content-Type-Options: nosniff\n"
         "  Referrer-Policy: strict-origin-when-cross-origin\n",
         encoding="utf-8")
-    # Cloudflare Pages reads _redirects from the output root. Write-ups that moved
-    # folder keep their old URL working with a permanent redirect.
-    # Each old path is written twice: fully percent-encoded, and with only the
-    # spaces encoded. On the live site the fully encoded form matched names that
-    # contain only spaces but missed ones with [ ] & @ !, so the second form
-    # covers those. (_redirects splits on whitespace, so spaces must stay %20.)
+    # Moved write-ups keep their old URL working two ways:
+    #  · _redirects (read by Cloudflare Pages from the output root): a real 301.
+    #    It only matched names made of letters, digits, spaces and - _ ; names
+    #    with [ ] & @ ! got a 404 whichever way the source was spelled.
+    #  · a forwarding page at the old path: always works, because Cloudflare has
+    #    always served static files at those names. Where the 301 matches,
+    #    _redirects wins and the page is never reached.
     lines = []
     for old, new in MOVED_WRITEUPS.items():
         dest = "/" + quote(new, safe="/")
         for o in (old, old + ".html"):
-            for src in dict.fromkeys(("/" + quote(o, safe="/"), "/" + o.replace(" ", "%20"))):
-                lines.append(f"{src} {dest} 301")
+            lines.append(f"/{quote(o, safe='/')} {dest} 301")
+        _write_forward_page(BUILD_DIR / f"{old}.html", dest)
     (BUILD_DIR / "_redirects").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"✅ Wrote sitemap.xml + robots.txt + _headers + _redirects ({len(MOVED_WRITEUPS)} moved)")
+    print(f"✅ Wrote sitemap.xml + robots.txt + _headers + _redirects "
+          f"+ {len(MOVED_WRITEUPS)} forwarding page(s)")
+
+
+def _write_forward_page(path: Path, dest: str) -> None:
+    """Tiny page at a moved write-up's old path that sends readers to the new one.
+       canonical + instant meta refresh is what search engines treat as a permanent
+       redirect; the script keeps any #anchor from the old link."""
+    url = f"{SITE_URL}{dest}"
+    d = html.escape(dest, quote=True)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+        f'<title>Moved</title><link rel="canonical" href="{html.escape(url, quote=True)}">'
+        f'<meta http-equiv="refresh" content="0; url={d}">'
+        f'<script>location.replace({json.dumps(dest)}+location.hash)</script>'
+        '</head><body style="font-family:system-ui,sans-serif;background:#0d1117;color:#c9d1d9">'
+        f'<p>This write-up has moved to <a href="{d}" style="color:#22e1ff">its new address</a>.</p>'
+        '</body></html>\n', encoding="utf-8")
 
 
 def write_404_page() -> None:
@@ -3018,8 +3037,8 @@ def main() -> int:
             print(f"   {md_file.relative_to(SRC_DIR)}: {e}")
         return 1
 
-    # index.html + 404.html + one page per write-up.
-    expected = len(md_files) + 2
+    # index.html + 404.html + one page per write-up + one forwarding page per move.
+    expected = len(md_files) + 2 + len(MOVED_WRITEUPS)
     if built != expected:
         print(f"\n❌ built {built} HTML pages, expected {expected} — aborting")
         return 1
