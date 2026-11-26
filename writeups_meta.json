@@ -4918,7 +4918,7 @@
    "dumpfiles"
   ]
  },
- "Unlisted Labs/SECPlayground Bloody Xmas2024 CTF - [Incident & Rev - Wowza].md": {
+ "Unlisted Labs/SECPlayground/SECPlayground Bloody Xmas2024 CTF - [Incident & Rev - Wowza].md": {
   "category": "Incident Response",
   "date": "2025-01-01",
   "difficulty": "Medium",
@@ -4931,7 +4931,7 @@
    "web"
   ]
  },
- "Unlisted Labs/SECPlayground Hackloween CTF 2024  [Log Analysis & Incident write-up - R@b!T_T].md": {
+ "Unlisted Labs/SECPlayground/SECPlayground Hackloween CTF 2024  [Log Analysis & Incident write-up - R@b!T_T].md": {
   "category": "Log Analysis",
   "date": "2024-11-01",
   "difficulty": "Medium",
@@ -4944,7 +4944,7 @@
    "hta"
   ]
  },
- "Unlisted Labs/SECPlayground Hackloween CTF 2025 Digital Forensics.md": {
+ "Unlisted Labs/SECPlayground/SECPlayground Hackloween CTF 2025 Digital Forensics.md": {
   "category": "Windows DFIR",
   "date": "2025-11-04",
   "difficulty": "Medium",
@@ -4958,7 +4958,7 @@
    "email"
   ]
  },
- "Unlisted Labs/THCTT2024 - Network_Forensic_Mobile - MaAowHa.md": {
+ "Unlisted Labs/THCTT/THCTT2024 - Network_Forensic_Mobile - MaAowHa.md": {
   "category": "Network Forensics",
   "date": "2024-09-28",
   "difficulty": "Medium",
@@ -4971,7 +4971,7 @@
    "mobile"
   ]
  },
- "Unlisted Labs/THCTT2024 - Reverse_Crypto_Programming - MaAowHa.md": {
+ "Unlisted Labs/THCTT/THCTT2024 - Reverse_Crypto_Programming - MaAowHa.md": {
   "category": "Reverse Engineering",
   "date": "2024-09-29",
   "difficulty": "Medium",

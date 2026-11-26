@@ -163,6 +163,23 @@ PLATFORMS = [
         "kicker": "// LEVEL EFFECT · CTF",
         "sev":   "vi",
     }),
+    (("unlisted", "secplayground"), {
+        "class": "p-secplayground",
+        "icon":  "⬚",
+        "logo":  "secplayground.webp",
+        "short": "SECPLAYGROUND",
+        "long":  "SECPlayground",
+        "kicker": "// SECPLAYGROUND · CTF",
+        "sev":   "vi",
+    }),
+    (("unlisted", "thctt"), {
+        "class": "p-thctt",
+        "icon":  "⬚",
+        "short": "THCTT",
+        "long":  "Thailand Cyber Top Talent",
+        "kicker": "// THAILAND CYBER TOP TALENT · CTF",
+        "sev":   "vi",
+    }),
     (("unlisted",), {
         "class": "p-unlisted",
         "icon":  "⬚",
@@ -213,7 +230,7 @@ TOKENS_CSS = """
   --em-ink:#dbe2f5;
   --strong-q:#fff;
   --machine-kicker:#d97757;
-  --plat-pink:#f472b6;
+  --plat-pink:#f472b6;  --plat-blue:#7b9cff;
 }
 /* light palette — "SIEM console", IBM Carbon g10; identical values to the
    portfolio's html[data-theme="light"] (themes/soc.css, I1 block) */
@@ -232,7 +249,7 @@ html[data-theme="light"]{
   --em-ink:var(--soc-ink);
   --strong-q:var(--soc-ink);
   --machine-kicker:#ba4e00;
-  --plat-pink:#d02670;
+  --plat-pink:#d02670;  --plat-blue:#0043ce;
   color-scheme:light;
 }
 .p-htb-sherlock{--kicker-text:"// HTB · SHERLOCK · DFIR CASE FILE";--kicker-color:var(--soc-am)}
@@ -245,6 +262,8 @@ html[data-theme="light"]{
 .p-unlisted    {--kicker-text:"// UNLISTED";                        --kicker-color:var(--soc-vi)}
 .p-memlabs    {--kicker-text:"// MEMLABS · MEMORY FORENSICS";                        --kicker-color:var(--soc-vi)}
 .p-leveleffect    {--kicker-text:"// LEVEL EFFECT · CTF";                        --kicker-color:var(--soc-vi)}
+.p-secplayground    {--kicker-text:"// SECPLAYGROUND · CTF";                        --kicker-color:var(--soc-vi)}
+.p-thctt    {--kicker-text:"// THAILAND CYBER TOP TALENT · CTF";                        --kicker-color:var(--soc-vi)}
 
 html,body{background:var(--soc-bg);color:var(--soc-ink);min-height:100vh}
 body{
@@ -824,18 +843,25 @@ INDEX_CSS = """
 .pcard.p-unlisted          .ph-icon{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.35);color:var(--soc-vi)}
 .pcard.p-memlabs          .ph-icon{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.35);color:var(--soc-vi)}
 .pcard.p-leveleffect          .ph-icon{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.35);color:var(--soc-vi)}
+.pcard.p-secplayground          .ph-icon{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.35);color:var(--soc-vi)}
+.pcard.p-thctt          .ph-icon{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.35);color:var(--soc-vi)}
 /* Platform logo chip. Logos are drawn for dark backgrounds (white wordmarks), so
    the chip stays dark in the light theme too. */
 .pcard .ph-icon.has-logo,
 html[data-theme="light"] .pcard .ph-icon.has-logo{
   width:auto;min-width:38px;padding:0 10px;background:#0b1220;border-color:rgba(255,255,255,.16)
 }
+/* SECPlayground's mark is dark blue on transparent, unreadable on the dark chip. */
+.pcard.p-secplayground .ph-icon.has-logo,
+html[data-theme="light"] .pcard.p-secplayground .ph-icon.has-logo{background:#fff;border-color:rgba(0,0,0,.12)}
 /* Fixed height + object-fit, not height:auto: an SVG with only a viewBox (LetsDefend's)
    has no intrinsic size and would collapse. contain keeps very wide logos undistorted. */
 .pcard .ph-logo{display:block;height:24px;width:auto;max-width:136px;object-fit:contain}
 .pcard.p-unlisted[open]    {border-color:rgba(167,139,250,.35)}
 .pcard.p-memlabs[open]    {border-color:rgba(167,139,250,.35)}
 .pcard.p-leveleffect[open]    {border-color:rgba(167,139,250,.35)}
+.pcard.p-secplayground[open]    {border-color:rgba(167,139,250,.35)}
+.pcard.p-thctt[open]    {border-color:rgba(167,139,250,.35)}
 
 /* ─── WRITE-UP CARD LIST (1 per row · banner + body) ─── */
 .wlist{
@@ -864,6 +890,8 @@ html[data-theme="light"] .pcard .ph-icon.has-logo{
 .pcard.p-unlisted     .wrow::before{background:rgba(167,139,250,.55)}
 .pcard.p-memlabs     .wrow::before{background:rgba(167,139,250,.55)}
 .pcard.p-leveleffect     .wrow::before{background:rgba(167,139,250,.55)}
+.pcard.p-secplayground     .wrow::before{background:rgba(167,139,250,.55)}
+.pcard.p-thctt     .wrow::before{background:rgba(167,139,250,.55)}
 .pcard.p-htb-sherlock .wrow:hover::before{background:var(--soc-am);box-shadow:0 0 8px rgba(255,181,71,.5)}
 .pcard.p-htb-machine  .wrow:hover::before{background:#d97757;box-shadow:0 0 8px rgba(217,119,87,.5)}
 .pcard.p-btlo         .wrow:hover::before{background:var(--soc-rd);box-shadow:0 0 8px rgba(255,85,119,.5)}
@@ -874,6 +902,8 @@ html[data-theme="light"] .pcard .ph-icon.has-logo{
 .pcard.p-unlisted     .wrow:hover::before{background:var(--soc-vi);box-shadow:0 0 8px rgba(167,139,250,.5)}
 .pcard.p-memlabs     .wrow:hover::before{background:var(--soc-vi);box-shadow:0 0 8px rgba(167,139,250,.5)}
 .pcard.p-leveleffect     .wrow:hover::before{background:var(--soc-vi);box-shadow:0 0 8px rgba(167,139,250,.5)}
+.pcard.p-secplayground     .wrow:hover::before{background:var(--soc-vi);box-shadow:0 0 8px rgba(167,139,250,.5)}
+.pcard.p-thctt     .wrow:hover::before{background:var(--soc-vi);box-shadow:0 0 8px rgba(167,139,250,.5)}
 
 /* banner = cover strip: index · platform · difficulty + big name */
 .wrow .banner{padding:12px 16px 13px;border-bottom:1px solid var(--soc-line);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.006))}
@@ -887,6 +917,8 @@ html[data-theme="light"] .pcard .ph-icon.has-logo{
 .pcard.p-unlisted     .wrow .banner{background:linear-gradient(180deg,rgba(167,139,250,.09),transparent 90%)}
 .pcard.p-memlabs     .wrow .banner{background:linear-gradient(180deg,rgba(167,139,250,.09),transparent 90%)}
 .pcard.p-leveleffect     .wrow .banner{background:linear-gradient(180deg,rgba(167,139,250,.09),transparent 90%)}
+.pcard.p-secplayground     .wrow .banner{background:linear-gradient(180deg,rgba(167,139,250,.09),transparent 90%)}
+.pcard.p-thctt     .wrow .banner{background:linear-gradient(180deg,rgba(167,139,250,.09),transparent 90%)}
 .wrow .bhead{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace}
 .wrow .bright{margin-left:auto;display:inline-flex;align-items:center;gap:8px;flex-shrink:0}
 .wrow .ix{font-size:9.5px;font-weight:700;letter-spacing:.08em;color:var(--soc-ink4);padding:3px 7px;border:1px solid var(--soc-line);border-radius:3px;background:rgba(0,0,0,.35)}
@@ -971,6 +1003,8 @@ body.tw-accent-bold .pcard.p-hacksmarter  .wrow::before{background:rgba(255,181,
 body.tw-accent-bold .pcard.p-unlisted     .wrow::before{background:rgba(167,139,250,.5)}
 body.tw-accent-bold .pcard.p-memlabs     .wrow::before{background:rgba(167,139,250,.5)}
 body.tw-accent-bold .pcard.p-leveleffect     .wrow::before{background:rgba(167,139,250,.5)}
+body.tw-accent-bold .pcard.p-secplayground     .wrow::before{background:rgba(167,139,250,.5)}
+body.tw-accent-bold .pcard.p-thctt     .wrow::before{background:rgba(167,139,250,.5)}
 
 /* ─── TWEAKS PANEL ─── */
 #tw-panel{
@@ -1904,12 +1938,16 @@ def _platform_group_key(md_path: Path) -> str:
     return str(md_path.parent.relative_to(SRC_DIR)).replace("\\", "/")
 
 
+# Platforms that live in a subfolder of Unlisted Labs but are shown as their own.
+UNLISTED_BRANDS = ("p-memlabs", "p-leveleffect", "p-secplayground", "p-thctt")
+
+
 def _panel_breadcrumb(folder_str: str) -> str:
     if folder_str in (".", ""):
         return "Root"
     # Branded collections stored under Unlisted Labs are platforms in their own
     # right, so do not present them as living "inside" Unlisted.
-    if detect_platform(folder_str)["class"] in ("p-memlabs", "p-leveleffect"):
+    if detect_platform(folder_str)["class"] in UNLISTED_BRANDS:
         folder_str = folder_str.split("/", 1)[1] if "/" in folder_str else folder_str
     return folder_str.replace("/", " → ")
 
@@ -2030,12 +2068,14 @@ PLAT_COLOR = {
     "p-thm": "var(--soc-vi)", "p-hacksmarter": "var(--plat-pink)",
     "p-unlisted": "var(--soc-ink4)",
     "p-memlabs": "var(--soc-vi)", "p-leveleffect": "var(--soc-cy2)",
+    "p-secplayground": "var(--plat-blue)", "p-thctt": "var(--soc-am)",
 }
 # Short platform codes for dense spots (evidence lines, hero chip). HTB's two
 # folders share one code, so their counts merge.
 PLAT_ABBR = {"p-cd": "CD", "p-ld": "LD", "p-btlo": "BTLO", "p-htb-sherlock": "HTB",
              "p-htb-machine": "HTB", "p-thm": "THM", "p-hacksmarter": "HS", "p-unlisted": "CTF",
-             "p-memlabs": "ML", "p-leveleffect": "LE"}
+             "p-memlabs": "ML", "p-leveleffect": "LE", "p-secplayground": "SPG",
+             "p-thctt": "TCTT"}
 DIFF_COLOR = {"very-easy": "var(--soc-cy)", "easy": "var(--soc-gn)",
               "medium": "var(--soc-am)", "hard": "var(--soc-rd)", "insane": "var(--soc-vi)"}
 
@@ -2817,6 +2857,22 @@ def apply_image_mapping(mapping: dict) -> None:
     print(f"✅ Rewrote {rewritten} <img> tags across {pages} pages to WebP + intrinsic size")
 
 
+# Old path → new path (repo-relative, no .md) for write-ups moved to another
+# folder. Add an entry whenever a published write-up moves, or its old URL 404s.
+MOVED_WRITEUPS = {
+    "Unlisted Labs/SECPlayground Bloody Xmas2024 CTF - [Incident & Rev - Wowza]":
+        "Unlisted Labs/SECPlayground/SECPlayground Bloody Xmas2024 CTF - [Incident & Rev - Wowza]",
+    "Unlisted Labs/SECPlayground Hackloween CTF 2024  [Log Analysis & Incident write-up - R@b!T_T]":
+        "Unlisted Labs/SECPlayground/SECPlayground Hackloween CTF 2024  [Log Analysis & Incident write-up - R@b!T_T]",
+    "Unlisted Labs/SECPlayground Hackloween CTF 2025 Digital Forensics":
+        "Unlisted Labs/SECPlayground/SECPlayground Hackloween CTF 2025 Digital Forensics",
+    "Unlisted Labs/THCTT2024 - Network_Forensic_Mobile - MaAowHa":
+        "Unlisted Labs/THCTT/THCTT2024 - Network_Forensic_Mobile - MaAowHa",
+    "Unlisted Labs/THCTT2024 - Reverse_Crypto_Programming - MaAowHa":
+        "Unlisted Labs/THCTT/THCTT2024 - Reverse_Crypto_Programming - MaAowHa",
+}
+
+
 def write_seo_files(md_files: list[Path]) -> None:
     urls = [f"{SITE_URL}/"]
     for md in md_files:
@@ -2850,7 +2906,14 @@ def write_seo_files(md_files: list[Path]) -> None:
         "  X-Content-Type-Options: nosniff\n"
         "  Referrer-Policy: strict-origin-when-cross-origin\n",
         encoding="utf-8")
-    print("✅ Wrote sitemap.xml + robots.txt + _headers")
+    # Cloudflare Pages reads _redirects from the output root. Write-ups that moved
+    # folder keep their old URL working with a permanent redirect.
+    lines = []
+    for old, new in MOVED_WRITEUPS.items():
+        for o in (old, old + ".html"):
+            lines.append(f"/{quote(o, safe='/')} /{quote(new, safe='/')} 301")
+    (BUILD_DIR / "_redirects").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"✅ Wrote sitemap.xml + robots.txt + _headers + _redirects ({len(MOVED_WRITEUPS)} moved)")
 
 
 def write_404_page() -> None:

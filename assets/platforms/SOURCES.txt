@@ -23,6 +23,11 @@ memlabs.webp      MemLabs            github.com/stuxnet999/MemLabs (Images/MemLa
                                      Blue wordmark on transparent.
 leveleffect.webp  Level Effect       chicken0248.fyi/assets/issuers/leveleffect_white.png (the portfolio's copy),
                                      downscaled. White on transparent, so it needs the dark chip.
+secplayground.webp SECPlayground     secplayground.com og:image (secplayground-logo.png), trimmed and
+                                     downscaled to 64px tall. Dark blue on transparent, so its chip is white.
+
+Thailand Cyber Top Talent (THCTT) has no logo here: the NCSA/Huawei event has no site or
+public logo file of its own, so its panel uses the glyph.
 
 MemLabs and Level Effect are sub-folders of Unlisted Labs. They keep the Unlisted class, so
 they still count under "Unlisted Labs" in the home-page stats; see class_long in PLATFORMS.
