@@ -188,9 +188,12 @@ What the build does and does not publish:
   chips are white instead of dark.
 - **Moving a published write-up changes its URL.** Add the old → new path to
   `MOVED_WRITEUPS`; the build writes it to `_redirects` as a 301 (with and without
-  `.html`), which Cloudflare Pages reads from the output root. Each source is
-  written fully percent-encoded and again with only spaces encoded: on the live
-  site the fully encoded form missed names containing `[ ] & @ !`. An old URL
+  `.html`), which Cloudflare Pages reads from the output root, **and** writes a
+  small forwarding page at the old path (canonical + meta refresh + script, keeps
+  the `#anchor`). The 301 only matches names made of letters, digits, spaces and
+  `- _`; for names with `[ ] & @ !` it 404s however the source is spelled (both
+  fully encoded and space-only-encoded were tried on the live site), so those rely
+  on the forwarding page. The build's page-count check counts these pages. An old URL
   can still show the old page from Cloudflare's edge cache after the deploy
   (`cf-cache-status: HIT`, large `age`); purge the cache if it lingers. Rename the key in
   `writeups_meta.json` too, or the card loses its metadata.
@@ -213,7 +216,7 @@ What the build does and does not publish:
   `git rev-list --all --objects | grep <name>` then
   `git cat-file -p <sha> > resources/<name>`.
 - `sitemap.xml`, `robots.txt`, `_headers` and `_redirects` are generated from the write-up
-  list, plus a styled `404.html`.
+  list, plus a styled `404.html` and the forwarding pages for moved write-ups.
 
 ## Page layout (mirrors the portfolio)
 
