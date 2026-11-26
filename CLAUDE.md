@@ -188,7 +188,11 @@ What the build does and does not publish:
   chips are white instead of dark.
 - **Moving a published write-up changes its URL.** Add the old → new path to
   `MOVED_WRITEUPS`; the build writes it to `_redirects` as a 301 (with and without
-  `.html`), which Cloudflare Pages reads from the output root. Rename the key in
+  `.html`), which Cloudflare Pages reads from the output root. Each source is
+  written fully percent-encoded and again with only spaces encoded: on the live
+  site the fully encoded form missed names containing `[ ] & @ !`. An old URL
+  can still show the old page from Cloudflare's edge cache after the deploy
+  (`cf-cache-status: HIT`, large `age`); purge the cache if it lingers. Rename the key in
   `writeups_meta.json` too, or the card loses its metadata.
 - `build/resources/` gets only the images the generated HTML actually
   references, re-encoded to **lossless** WebP (~58% of the PNG bytes, no
