@@ -175,6 +175,7 @@ PLATFORMS = [
     (("unlisted", "thctt"), {
         "class": "p-thctt",
         "icon":  "⬚",
+        "logo":  "thctt.webp",
         "short": "THCTT",
         "long":  "Thailand Cyber Top Talent",
         "kicker": "// THAILAND CYBER TOP TALENT · CTF",
@@ -851,9 +852,11 @@ INDEX_CSS = """
 html[data-theme="light"] .pcard .ph-icon.has-logo{
   width:auto;min-width:38px;padding:0 10px;background:#0b1220;border-color:rgba(255,255,255,.16)
 }
-/* SECPlayground's mark is dark blue on transparent, unreadable on the dark chip. */
+/* SECPlayground's and THCTT's marks are dark on transparent, unreadable on the dark chip. */
 .pcard.p-secplayground .ph-icon.has-logo,
-html[data-theme="light"] .pcard.p-secplayground .ph-icon.has-logo{background:#fff;border-color:rgba(0,0,0,.12)}
+html[data-theme="light"] .pcard.p-secplayground .ph-icon.has-logo,
+.pcard.p-thctt .ph-icon.has-logo,
+html[data-theme="light"] .pcard.p-thctt .ph-icon.has-logo{background:#fff;border-color:rgba(0,0,0,.12)}
 /* Fixed height + object-fit, not height:auto: an SVG with only a viewBox (LetsDefend's)
    has no intrinsic size and would collapse. contain keeps very wide logos undistorted. */
 .pcard .ph-logo{display:block;height:24px;width:auto;max-width:136px;object-fit:contain}

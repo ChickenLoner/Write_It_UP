@@ -184,9 +184,8 @@ What the build does and does not publish:
   `Unlisted Labs/`. They are listed before the generic `("unlisted",)` entry, which
   stays for the rest. A new platform needs its class in the kicker/`.pcard` CSS
   blocks, in `PLAT_COLOR`/`PLAT_ABBR` and in `UNLISTED_BRANDS` when it sits under
-  Unlisted. THCTT has no logo (no public one exists), so it shows the glyph.
-  SECPlayground's logo is dark blue on transparent, so its chip is white instead of
-  dark.
+  Unlisted. SECPlayground's and THCTT's logos are dark on transparent, so their
+  chips are white instead of dark.
 - **Moving a published write-up changes its URL.** Add the old → new path to
   `MOVED_WRITEUPS`; the build writes it to `_redirects` as a 301 (with and without
   `.html`), which Cloudflare Pages reads from the output root. Rename the key in

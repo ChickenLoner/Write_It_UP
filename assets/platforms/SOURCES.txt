@@ -25,9 +25,11 @@ leveleffect.webp  Level Effect       chicken0248.fyi/assets/issuers/leveleffect_
                                      downscaled. White on transparent, so it needs the dark chip.
 secplayground.webp SECPlayground     secplayground.com og:image (secplayground-logo.png), trimmed and
                                      downscaled to 64px tall. Dark blue on transparent, so its chip is white.
-
-Thailand Cyber Top Talent (THCTT) has no logo here: the NCSA/Huawei event has no site or
-public logo file of its own, so its panel uses the glyph.
+thctt.webp        Thailand Cyber     the event emblem embedded in the owner's THCTT 2025 participation
+                  Top Talent         certificate (extracted as-is with its alpha mask, not cropped from a
+                                     render). Emblem only: the "THAILAND CYBER TOP TALENT 2025" text is
+                                     unreadable at 24px and the panel title already names it. No public
+                                     logo file exists (NCSA/Huawei event, no site of its own). White chip.
 
 MemLabs and Level Effect are sub-folders of Unlisted Labs. They keep the Unlisted class, so
 they still count under "Unlisted Labs" in the home-page stats; see class_long in PLATFORMS.
