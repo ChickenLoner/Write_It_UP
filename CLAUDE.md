@@ -175,12 +175,21 @@ What the build does and does not publish:
   glyph, which stays as the fallback (Unlisted Labs has no logo). Most are white
   wordmarks, so the chip is dark in **both** themes. `assets/platforms/SOURCES.txt`
   records where each came from — the platforms own them. Keep new ones small: the
-  BTLO one was a 205 KB SVG, so it is an 18 KB WebP. MemLabs and Level Effect live under the
-  `Unlisted Labs` folder but are full platforms of their own (`p-memlabs`,
-  `p-leveleffect`: own name, logo, kicker, counts, coverage bar and filter chip).
-  They are listed before the generic `("unlisted",)` entry, which stays for the rest.
-  A new platform needs its class in the kicker/`.pcard` CSS blocks and in
-  `PLAT_COLOR`/`PLAT_ABBR`.
+  BTLO one was a 205 KB SVG, so it is an 18 KB WebP. MemLabs, Level Effect,
+  SECPlayground and Thailand Cyber Top Talent live in subfolders of
+  `Unlisted Labs` (`MemLabs/`, `Level Effect Cyber Defense CTF/`, `SECPlayground/`,
+  `THCTT/`) but are full platforms of their own (`p-memlabs`, `p-leveleffect`,
+  `p-secplayground`, `p-thctt`: own name, kicker, counts, coverage bar and filter
+  chip). Put a new write-up from one of those events in its subfolder, not loose in
+  `Unlisted Labs/`. They are listed before the generic `("unlisted",)` entry, which
+  stays for the rest. A new platform needs its class in the kicker/`.pcard` CSS
+  blocks, in `PLAT_COLOR`/`PLAT_ABBR` and in `UNLISTED_BRANDS` when it sits under
+  Unlisted. SECPlayground's and THCTT's logos are dark on transparent, so their
+  chips are white instead of dark.
+- **Moving a published write-up changes its URL.** Add the old → new path to
+  `MOVED_WRITEUPS`; the build writes it to `_redirects` as a 301 (with and without
+  `.html`), which Cloudflare Pages reads from the output root. Rename the key in
+  `writeups_meta.json` too, or the card loses its metadata.
 - `build/resources/` gets only the images the generated HTML actually
   references, re-encoded to **lossless** WebP (~58% of the PNG bytes, no
   quality loss — readers zoom into hex dumps, so lossy is not acceptable).
@@ -199,7 +208,7 @@ What the build does and does not publish:
   usually still in git history:
   `git rev-list --all --objects | grep <name>` then
   `git cat-file -p <sha> > resources/<name>`.
-- `sitemap.xml`, `robots.txt` and `_headers` are generated from the write-up
+- `sitemap.xml`, `robots.txt`, `_headers` and `_redirects` are generated from the write-up
   list, plus a styled `404.html`.
 
 ## Page layout (mirrors the portfolio)
